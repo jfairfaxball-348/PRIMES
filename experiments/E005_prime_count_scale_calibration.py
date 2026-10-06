@@ -297,3 +297,153 @@ def execute_generation_plan(
 
 def _count_for(counts: dict[str, dict[str, int]], anchor_name: str, width_name: str) -> int:
     try:
+        return int(counts[anchor_name][width_name])
+    except KeyError as exc:
+        raise ValueError(f"missing count cell {anchor_name}/{width_name}") from exc
+
+
+def exact_count_objects(
+    counts: dict[str, dict[str, int]], anchors: tuple[tuple[str, int], ...]
+) -> dict[str, Any]:
+    cells: dict[str, dict[str, Any]] = {}
+    for anchor_name, anchor in anchors:
+        cells[anchor_name] = {}
+        for width_name, width in WIDTHS:
+            count = _count_for(counts, anchor_name, width_name)
+            cells[anchor_name][width_name] = {
+                "count": count,
+                "density": rational_pair(Fraction(count, width)),
+                "mean_spacing": rational_pair(Fraction(width, count)) if count else None,
+                "scale_coordinate": rational_pair(Fraction(2 * anchor + width, 2)),
+            }
+
+    anchor_adjacent: dict[str, list[dict[str, Any]]] = {}
+    for width_name, width in WIDTHS:
+        rows: list[dict[str, Any]] = []
+        for (left_name, _), (right_name, _) in zip(anchors, anchors[1:], strict=False):
+            left = _count_for(counts, left_name, width_name)
+            right = _count_for(counts, right_name, width_name)
+            left_density = Fraction(left, width)
+            right_density = Fraction(right, width)
+            rows.append(
+                {
+                    "from": left_name,
+                    "to": right_name,
+                    "count_ratio": rational_pair(Fraction(right, left)),
+                    "density_ratio": rational_pair(right_density / left_density),
+                    "count_difference": right - left,
+                    "density_difference": rational_pair(right_density - left_density),
+                }
+            )
+        anchor_adjacent[width_name] = rows
+
+    width_adjacent: dict[str, list[dict[str, Any]]] = {}
+    for anchor_name, _ in anchors:
+        rows = []
+        for (left_width_name, left_width), (right_width_name, right_width) in zip(
+            WIDTHS, WIDTHS[1:], strict=False
+        ):
+            left = _count_for(counts, anchor_name, left_width_name)
+            right = _count_for(counts, anchor_name, right_width_name)
+            left_density = Fraction(left, left_width)
+            right_density = Fraction(right, right_width)
+            rows.append(
+                {
+                    "from": left_width_name,
+                    "to": right_width_name,
+                    "count_ratio": rational_pair(Fraction(right, left)),
+                    "density_ratio": rational_pair(right_density / left_density),
+                    "count_difference": right - left,
+                    "density_difference": rational_pair(right_density - left_density),
+                }
+            )
+        width_adjacent[anchor_name] = rows
+    return {
+        "cells": cells,
+        "adjacent_anchor_objects": anchor_adjacent,
+        "adjacent_width_objects": width_adjacent,
+    }
+
+
+def transformed_matrices(
+    counts: dict[str, dict[str, int]], anchors: tuple[tuple[str, int], ...]
+) -> tuple[dict[str, dict[str, dict[str, Decimal]]], dict[str, Any]]:
+    raw: dict[str, dict[str, dict[str, Decimal]]] = {}
+    rendered: dict[str, Any] = {}
+    for candidate in CANDIDATES:
+        raw[candidate] = {}
+        rendered[candidate] = {}
+        for anchor_name, anchor in anchors:
+            raw[candidate][anchor_name] = {}
+            rendered[candidate][anchor_name] = {}
+            for width_name, width in WIDTHS:
+                value = transform_density(
+                    candidate,
+                    _count_for(counts, anchor_name, width_name),
+                    anchor,
+                    width,
+                )
+                raw[candidate][anchor_name][width_name] = value
+                rendered[candidate][anchor_name][width_name] = decimal_string(value)
+    return raw, rendered
+
+
+def _rounded_score(value: Decimal) -> Decimal:
+    return Decimal(decimal_string(value))
+
+
+def score_candidates(
+    transformed: dict[str, dict[str, dict[str, Decimal]]],
+    anchors: tuple[tuple[str, int], ...],
+) -> dict[str, Any]:
+    width_spreads_raw: dict[str, dict[str, Decimal]] = {}
+    global_scores_raw: dict[str, Decimal] = {}
+    width_rankings: dict[str, list[str]] = {}
+    candidate_index = {candidate: index for index, candidate in enumerate(CANDIDATES)}
+
+    for candidate in CANDIDATES:
+        width_spreads_raw[candidate] = {}
+        for width_name, _ in WIDTHS:
+            values = [transformed[candidate][anchor_name][width_name] for anchor_name, _ in anchors]
+            low = min(values)
+            high = max(values)
+            if low <= 0:
+                raise ValueError("spread score requires positive transformed values")
+            with localcontext(DECIMAL_CONTEXT):
+                width_spreads_raw[candidate][width_name] = high / low
+        global_scores_raw[candidate] = max(width_spreads_raw[candidate].values())
+
+    ranking = sorted(
+        CANDIDATES,
+        key=lambda candidate: (_rounded_score(global_scores_raw[candidate]), candidate_index[candidate]),
+    )
+    for width_name, _ in WIDTHS:
+        width_rankings[width_name] = sorted(
+            CANDIDATES,
+            key=lambda candidate: (
+                _rounded_score(width_spreads_raw[candidate][width_name]),
+                candidate_index[candidate],
+            ),
+        )
+    return {
+        "raw_global_scores": global_scores_raw,
+        "raw_width_spreads": width_spreads_raw,
+        "candidate_scores": {
+            candidate: decimal_string(global_scores_raw[candidate]) for candidate in CANDIDATES
+        },
+        "width_spreads": {
+            candidate: {
+                width_name: decimal_string(width_spreads_raw[candidate][width_name])
+                for width_name, _ in WIDTHS
+            }
+            for candidate in CANDIDATES
+        },
+        "candidate_ranking": ranking,
+        "width_rankings": width_rankings,
+    }
+
+
+def _sign(value: Decimal) -> int:
+    if value > 0:
+        return 1
+    if value < 0:
