@@ -4,14 +4,14 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-08 SQ-003 D3 discovery complete; NO ELIGIBLE E003 OBSERVATION; SQ-004 preflight next; A1/H3/A3 untouched**
+**DISCOVERY-1 — D1-09 SQ-004 preflight complete; E004 FROZEN / NOT EXECUTED; D1-10 D4 execution next; A1/H3/A3/H4/A4 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-003 D3 COMPLETE; SQ-004 PREFLIGHT NEXT | E003 closed without promotion; next blind design unit is residue-transition factorization |
+| Pattern discovery | OPEN / SQ-004 PREFLIGHT COMPLETE; E004 D4 EXECUTION NEXT | E004 frozen before output; next unit is D4-only implementation/execution |
 | Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -47,6 +47,10 @@ Status date: 2026-10-06
 - the identical complete D3 command was run twice before result inspection and produced byte-identical 2,848,769-byte artifacts, SHA-256 `885a0b7f50b36157c4b57ae72ae10748e5f84927aa9c261122bf6ae7bdb181b3`;
 - D3 contains 57,487 primes; frozen event counts are 187 dense events, 193 sparse events, and 790 serializable strict rolling-record-gap events with zero boundary omissions;
 - the frozen 12-cell promotion pool produced **NO ELIGIBLE OBSERVATION**: raw/residual/integer-asymmetry modes all have count 1, while all three sign-signature modal counts are tied 6–6. No `OBS-###` was allocated, no H3 criterion was needed, and H3/A3/A1 remain untouched;
+- D1-09 froze E004 before any E004 output: the modulus family remains exactly `{6,10,12,30,60}`; the arithmetic relation graph is the five divisibility-cover edges `6->12`, `6->30`, `10->30`, `12->60`, and `30->60`; exact projection residuals are validation-only, while ordered refinement fibres, forbidden-lift masks, integer balance vectors, and exact 2x2-minor systems form the frozen discovery objects;
+- E004 metadata-only partition is frozen as guard `[38_000_000,39_000_000)`, D4=`[39_000_000,40_000_000)`, guard `[40_000_000,41_000_000)`, H4=`[41_000_000,42_000_000)`, and A4=`[78_000_000,79_000_000)`; committed generation provenance still ends at D3 value 35,999,999, so D4/H4/A4 were untouched at freeze and A1/H3/A3 retain their historical untouched roles;
+- E004 promotion is capped at five observations under a frozen grammar covering complete uniform refinement, complete positive rank-one refinement, and strict-unique repeated exact masks/vectors; the forced coarse projection identity, support completeness by itself, and encoding identities are explicitly non-promotable;
+- E004 has not been implemented or executed and no new prime-derived output was generated during D1-09;
 - no E002 mining, candidate creation, mechanism work, proof work, or prior-art search was performed;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
@@ -79,6 +83,17 @@ D0 has been generated and used for discovery. H0 was generated twice byte-identi
 
 D3 has now been generated only by the validated segmented E003 path and inspected only through the frozen descriptive allowlist. H3 and A3 remain ungenerated/uninspected, and A1 remains frozen untouched outside E003. The pre-generation guard continues to forbid whole-prefix generation above 100,000 and non-target high-value traversal.
 
+## Frozen E004 partition
+
+- Pre-discovery guard G4-pre: `[38_000_000, 39_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
+- Discovery D4: `[39_000_000, 40_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Discovery/holdout guard G4-mid: `[40_000_000, 41_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
+- Holdout H4: `[41_000_000, 42_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Adversarial A4: `[78_000_000, 79_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Historical reserves A1/H3/A3 — **UNCHANGED / UNTOUCHED / EXCLUDED FROM E004**
+
+D4 is the first E004 target and may later be generated only by a validated segmented path plus already-generated low base support inside `[0,100_000)`. H4 and A4 remain untouched until later bounded units. Whole-prefix high-value generation and traversal through any historical reserve, E003 guard/target, E004 guard, or non-target E004 band are forbidden.
+
 ## Session control
 
 - Autonomous closeout protocol: **ACTIVE**
@@ -88,7 +103,7 @@ D3 has now been generated only by the validated segmented E003 path and inspecte
 
 ## Active task
 
-**D1-09 / SQ-004:** design and freeze a residue-transition factorization experiment before any SQ-004 prime-derived execution. Declare exact related-modulus/projection objects, fresh untouched ranges, promotion/replication rules, deterministic serialization, and a fail-closed generation guard. Preserve A1, H3, and A3 untouched and do not mine E003 further.
+**D1-10 / SQ-004:** implement the frozen E004 residue-transition factorization evaluator and fail-closed generation guard, validate exact transition/projection/refinement semantics, execute D4 only twice for byte determinism, inspect only the frozen allowlist, and apply the frozen promotion grammar. Do not generate H4/A4 or touch A1/H3/A3.
 
 ## Research inventory
 
@@ -111,6 +126,8 @@ D3 has now been generated only by the validated segmented E003 path and inspecte
 
 ## Next stage
 
-DISCOVERY-1 remains active. D1-08 completed SQ-003 discovery exactly as frozen. D3 was generated twice byte-identically under implementation commit `64d0d0ce485872e2cbdf17a17b31c0452787a06d`; the artifact is 2,848,769 bytes with SHA-256 `885a0b7f50b36157c4b57ae72ae10748e5f84927aa9c261122bf6ae7bdb181b3`. The promotion grammar yields zero eligible observations: raw, residual, and integer-asymmetry families have only singleton modes, while every sign-signature mode is tied at count 6. No observation or candidate was created, so H3 replication is not opened and H3/A3/A1 remain untouched.
+DISCOVERY-1 remains active. D1-09 completed the design-only SQ-004 preflight. E004 is frozen before output with modulus family `{6,10,12,30,60}`, the five divisibility-cover relations, exact reduced-residue transition/projection/refinement semantics, a five-observation promotion grammar, one-shot H4 criterion templates, deterministic serialization, and a fail-closed segmented-generation guard.
 
-The next bounded unit is D1-09 / SQ-004 design-only preflight. Freeze an exact residue-transition factorization experiment, including related-modulus structure, projection/refinement maps, representation grammar, fresh metadata-only discovery/holdout/adversarial ranges beyond existing untouched reserves, promotion/replication rules, deterministic outputs, and a generation-path guard. Do not execute SQ-004, mine E003, or repurpose A1/H3/A3 in that preflight.
+The fresh E004 partition is G4-pre=`[38_000_000,39_000_000)`, D4=`[39_000_000,40_000_000)`, G4-mid=`[40_000_000,41_000_000)`, H4=`[41_000_000,42_000_000)`, and A4=`[78_000_000,79_000_000)`. No E004 prime-derived output exists. A1, H3, A3, H4, and A4 remain untouched.
+
+The next bounded unit is D1-10 / SQ-004 D4-only execution: implement from the frozen E004 specification, checkpoint and validate the implementation before generation, authorize only low base support plus segmented D4, run the identical full command twice before inspection, and apply only the frozen promotion grammar. H4/A4 and all historical reserves remain out of scope.
