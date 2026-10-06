@@ -149,6 +149,7 @@ def nested_interval_counts(values: Iterable[int], anchor: int) -> dict[str, int]
         for width_name, width in WIDTHS
     }
 
+
 def _base_primes(stop: int) -> tuple[int, ...]:
     if stop < 2:
         return ()
@@ -897,6 +898,7 @@ def build_assessment_payload(
         "milestones": milestones,
         "raw_prime_values_serialized": False,
     }
+
 
 def serialise_payload(payload: dict[str, Any]) -> bytes:
     return (json.dumps(payload, sort_keys=True, indent=2) + "\n").encode("utf-8")
