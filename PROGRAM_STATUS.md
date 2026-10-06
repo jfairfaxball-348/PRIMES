@@ -4,16 +4,16 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — E001 D0 sweep complete; four observations frozen for untouched H0 replication**
+**DISCOVERY-1 — E001 H0 replication complete; three observations replicated, one refuted; A0 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / D0 EXECUTED | Frozen E001 discovery grammar and partition |
-| Observation promotion | OPEN / 4 OBSERVED | Exact reproducible observation |
-| Candidate conjecture | CLOSED | Holdout survival + exact statement |
+| Pattern discovery | OPEN / H0 REPLICATED | Frozen E001 discovery grammar and partition |
+| Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
+| Candidate conjecture | OPEN / ELIGIBLE | Holdout survival satisfied by OBS-001 through OBS-003; exact candidate synthesis still required |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -30,6 +30,9 @@ Status date: 2026-10-06
 - E001 implementation and boundary/determinism tests committed at `beab213501dab318075199c3fcac6d5501d0b9d3`;
 - E001 D0 executed twice with byte-identical 24,923,621-byte artifacts, SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`;
 - four exact D0 observations promoted with H0 criteria frozen before holdout generation;
+- E001 H0 executed twice with byte-identical 25,557,012-byte artifacts, SHA-256 `80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254`;
+- H0 frozen-criterion outcomes: `OBS-001`, `OBS-002`, and `OBS-003` REPLICATED; `OBS-004` REFUTED by the empty anchored block `[1_671_800, 1_671_900)`;
+- reserved A0 remains untouched; no candidate, mechanism work, or prior-art search has yet been performed;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
@@ -49,7 +52,7 @@ Local-session limitations: detached runner network/Ruff availability and current
 - Untouched holdout H0: `[1_000_000, 2_000_000)`
 - Reserved adversarial A0: `[10_000_000, 11_000_000)`
 
-D0 has been generated, repeated byte-identically, and inspected. Promoted observations are `OBS-001` through `OBS-004`. H0 and A0 remain untouched.
+D0 has been generated and used for discovery. H0 has now been generated twice byte-identically and inspected only against the four frozen replication criteria. `OBS-001` through `OBS-003` replicated; `OBS-004` was refuted. A0 remains untouched.
 
 ## Session control
 
@@ -60,11 +63,11 @@ D0 has been generated, repeated byte-identically, and inspected. Promoted observ
 
 ## Active task
 
-**D1-01 / SQ-001:** one-shot replication of `OBS-001` through `OBS-004` on untouched H0 only, using the frozen definitions. Do not mine H0 for new observations, generate A0, or create a candidate in the same bounded unit.
+**D1-02 / SQ-001:** candidate-synthesis triage for replicated `OBS-001` through `OBS-003` only. Decide whether each supports an exact candidate statement and falsification/adversarial plan. Keep novelty `UNAUDITED`; do not run prior-art, mechanism work, or A0 in the same bounded unit.
 
 ## Research inventory
 
-- Active observations: 4
+- Active observations: 3
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -83,4 +86,4 @@ D0 has been generated, repeated byte-identically, and inspected. Promoted observ
 
 ## Next stage
 
-DISCOVERY-1 is active. The next natural checkpoint is one-shot H0 replication of the four frozen observations. Surviving observations may open the candidate gate for a later bounded unit; failed observations must be recorded as refuted. A0 remains reserved.
+DISCOVERY-1 is active. H0 replication is complete: three observations survived and one was refuted. The candidate gate is now eligible for a separate synthesis unit, but no candidate exists yet. The next natural checkpoint is bounded candidate-synthesis triage for `OBS-001` through `OBS-003`; A0 remains reserved and untouched.
