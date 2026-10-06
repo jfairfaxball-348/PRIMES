@@ -1,0 +1,286 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 224641,
+    "sha256": "4d0fa870a3bb304809bc713fbf0536d7c9a1e69d73273b8b6aeae9af570b2b1c"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D4",
+    "range": [
+      39000000,
+      40000000
+    ]
+  },
+  "experiment": "E004",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 6325,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 39000000,
+      "stop": 40000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "15fd85b14a079ece06bb89e786695d093c7b574b",
+  "prime_summary": {
+    "count": 57252,
+    "first_prime": 39000001,
+    "last_prime": 39999983
+  },
+  "promotion_result": {
+    "eligible_pattern_count": 0,
+    "promoted_observation_ids": [],
+    "reason": "No P1-P5 record satisfies the frozen E004 promotion grammar on D4.",
+    "result": "NO_ELIGIBLE_OBSERVATION"
+  },
+  "relations": [
+    {
+      "P1_complete_positive_uniform_refinement": false,
+      "P2_complete_positive_rank_one_refinement": false,
+      "P3": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "P4": {
+        "coarse_pair_floor_passed": true,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 4,
+        "mechanical_eligible": false,
+        "mode_count": 1,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 1,
+        "strict_unique_mode": false
+      },
+      "P5": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "edge": [
+        6,
+        12
+      ],
+      "lift_cardinality": 2,
+      "max_absolute_projection_residual": 0
+    },
+    {
+      "P1_complete_positive_uniform_refinement": false,
+      "P2_complete_positive_rank_one_refinement": false,
+      "P3": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "P4": {
+        "coarse_pair_floor_passed": true,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 4,
+        "mechanical_eligible": false,
+        "mode_count": 1,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 1,
+        "strict_unique_mode": false
+      },
+      "P5": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "edge": [
+        6,
+        30
+      ],
+      "lift_cardinality": 4,
+      "max_absolute_projection_residual": 0
+    },
+    {
+      "P1_complete_positive_uniform_refinement": false,
+      "P2_complete_positive_rank_one_refinement": false,
+      "P3": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "P4": {
+        "coarse_pair_floor_passed": true,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 16,
+        "mechanical_eligible": false,
+        "mode_count": 1,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 1,
+        "strict_unique_mode": false
+      },
+      "P5": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "edge": [
+        10,
+        30
+      ],
+      "lift_cardinality": 2,
+      "max_absolute_projection_residual": 0
+    },
+    {
+      "P1_complete_positive_uniform_refinement": false,
+      "P2_complete_positive_rank_one_refinement": false,
+      "P3": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "P4": {
+        "coarse_pair_floor_passed": true,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 16,
+        "mechanical_eligible": false,
+        "mode_count": 1,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 1,
+        "strict_unique_mode": false
+      },
+      "P5": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "edge": [
+        12,
+        60
+      ],
+      "lift_cardinality": 4,
+      "max_absolute_projection_residual": 0
+    },
+    {
+      "P1_complete_positive_uniform_refinement": false,
+      "P2_complete_positive_rank_one_refinement": false,
+      "P3": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "P4": {
+        "coarse_pair_floor_passed": true,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 64,
+        "mechanical_eligible": false,
+        "mode_count": 1,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 1,
+        "strict_unique_mode": false
+      },
+      "P5": {
+        "coarse_pair_floor_passed": false,
+        "dominance_margin": 0,
+        "eligible_coarse_pair_count": 0,
+        "mechanical_eligible": false,
+        "mode_count": 0,
+        "occurrence_floor_passed": false,
+        "runner_up_count": 0,
+        "strict_unique_mode": false
+      },
+      "edge": [
+        30,
+        60
+      ],
+      "lift_cardinality": 2,
+      "max_absolute_projection_residual": 0
+    }
+  ],
+  "transition_support": [
+    {
+      "missing_allowed_pair_count": 0,
+      "modulus": 6,
+      "possible_support_size": 4,
+      "support_size": 4,
+      "transition_total": 57251
+    },
+    {
+      "missing_allowed_pair_count": 0,
+      "modulus": 10,
+      "possible_support_size": 16,
+      "support_size": 16,
+      "transition_total": 57251
+    },
+    {
+      "missing_allowed_pair_count": 0,
+      "modulus": 12,
+      "possible_support_size": 16,
+      "support_size": 16,
+      "transition_total": 57251
+    },
+    {
+      "missing_allowed_pair_count": 0,
+      "modulus": 30,
+      "possible_support_size": 64,
+      "support_size": 64,
+      "transition_total": 57251
+    },
+    {
+      "missing_allowed_pair_count": 0,
+      "modulus": 60,
+      "possible_support_size": 256,
+      "support_size": 256,
+      "transition_total": 57251
+    }
+  ],
+  "validation": {
+    "compileall": "success",
+    "focused_pytest": "13 passed",
+    "ruff": "unavailable in detached runner; existing FAIL-001/FAIL-002 environment limitation"
+  }
+}
