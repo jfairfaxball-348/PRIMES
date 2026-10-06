@@ -82,11 +82,35 @@ Next bounded action: D1-07 / SQ-003 — design and freeze an event-centred neigh
 
 Stage: discovery
 
-Define prime-dense, prime-sparse, and record-gap events using frozen thresholds. Encode fixed-radius neighbourhoods around those events.
+Status: **PREFLIGHT COMPLETE — E003 FROZEN / NOT EXECUTED; D3 NEXT; H3/A3/A1 UNTOUCHED**
 
-Goal: search for repeated exact local configurations and before/after asymmetries.
+Frozen specification: `experiments/E003_EVENT_CENTRED_NEIGHBOURHOODS.md`
 
-Promotion cap: 5 observations.
+Fresh metadata-only partition:
+
+- discovery D3: `[35_000_000, 36_000_000)`;
+- untouched holdout H3: `[37_000_000, 38_000_000)`;
+- adversarial A3: `[70_000_000, 71_000_000)`.
+
+The selection rule uses only the frozen one-million width and A1's metadata. D3 starts at the first million-aligned lower endpoint strictly greater than A1's exclusive upper endpoint 34,000,000; H3 leaves one full-width guard band after D3; A3 starts at twice the D3 lower endpoint. FAIL-003 records generation only through 32,999,999, and A1=`[33_000_000,34_000_000)` remains ungenerated, so all three E003 targets are untouched under committed generation provenance. A1 is not an E003 target.
+
+Frozen event classes:
+
+- `prime_dense`: globally anchored width-1,000 occupancy block whose centre occupancy is strictly greater than the two neighbouring block occupancies on each side;
+- `prime_sparse`: same, with the centre occupancy strictly lower than the two neighbouring occupancies on each side;
+- `strict_in_band_record_gap`: an in-band prime gap, excluding the first, strictly larger than every earlier in-band gap. This is intentionally distinct from E001's historical strict global record-gap event.
+
+Dense/sparse descriptive radius is 8 blocks; record-gap descriptive radius is 8 gaps. Dense/sparse promotion asymmetry uses only outer offsets 3 through 8 so the selection halo cannot itself become an observation. Exact raw words, centred residual words, integer asymmetry vectors, and sign signatures are the only neighbourhood object families.
+
+Goal: search for repeated exact local configurations and before/after asymmetries under the frozen grammar.
+
+Promotion cap: 5 observations. OBS eligibility requires at least 20 serializable events in the class, an exact target tuple that is the strict unique mode of one frozen object family, at least 3 target occurrences, and survival of explicit definitional/triviality exclusions. If more than five patterns qualify, the frozen deterministic ranking in the E003 specification selects the first five.
+
+Any promoted D3 observation must freeze the exact same-target strict-unique-mode H3 criterion before H3 generation. A tie, fewer than 20 serializable H3 events, fewer than 3 target occurrences, or a higher-frequency competitor fails replication.
+
+Generation guard: discovery execution may generate only low base support within `[0,100_000)` plus segmented D3. Whole-prefix generation above 100,000 is forbidden. The implementation must fail before generation if any requested interval can intersect A1, H3, A3, a guard band, or another non-target high range.
+
+Next bounded action: D1-08 / SQ-003 — implement the frozen E003 evaluator and guard, validate semantics, execute D3 only twice for byte determinism, inspect only the allowlisted descriptive outputs, and promote at most five observations under the frozen grammar with H3 criteria frozen before any H3 generation.
 
 ## SQ-004 — Residue-transition factorization
 
