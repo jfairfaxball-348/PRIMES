@@ -28,6 +28,8 @@ Failures are research outputs. Preserve them so the project does not repeatedly 
 
 **D1-01 recurrence:** During E001 H0 replication, the detached runner again returned `ruff: command not found` (exit 127). The connector again returned empty combined-status and PR-triggered workflow-run collections for both the frozen E001 implementation commit `beab213501dab318075199c3fcac6d5501d0b9d3` and then-current main head `d087f332239817b128d810c08a75057ffcc1572b`. The exact reconstructed E001 source matched the committed blob, pytest passed 14/14, and compilation succeeded before H0 generation. This is a recurrence of FAIL-002, not a new failure ID or repository defect.
 
+**D1-04 recurrence:** Before valid E002 generation, `PYTHONPATH=src pytest -q` passed 21/21 and `python -m compileall -q src experiments tests` succeeded. The detached runner again returned `ruff: command not found` (exit 127), and direct `git ls-remote` again failed because `github.com` could not be resolved. Exact committed source bytes were reconstructed/verified through the GitHub connector instead. This is a recurrence of FAIL-002's environment/tooling limitation, not an E002 code or data-quality failure.
+
 ### FAIL-003
 
 **Date:** 2026-10-06  
