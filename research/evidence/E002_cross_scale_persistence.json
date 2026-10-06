@@ -1,0 +1,445 @@
+{
+  "bands": [
+    {
+      "name": "S1",
+      "range": [
+        2000000,
+        3000000
+      ]
+    },
+    {
+      "name": "S2",
+      "range": [
+        4000000,
+        5000000
+      ]
+    },
+    {
+      "name": "S3",
+      "range": [
+        8000000,
+        9000000
+      ]
+    },
+    {
+      "name": "S4",
+      "range": [
+        16000000,
+        17000000
+      ]
+    },
+    {
+      "name": "S5",
+      "range": [
+        32000000,
+        33000000
+      ]
+    }
+  ],
+  "criteria": {
+    "OBS-001": "third difference 0 is the strict unique mode",
+    "OBS-002": "width-2 gap motif [6,6] is the strict unique mode",
+    "OBS-003": "complete directed reduced-residue transition support at every frozen modulus"
+  },
+  "experiment": "E002",
+  "frozen_moduli": [
+    6,
+    10,
+    12,
+    30,
+    60
+  ],
+  "implementation_commit": "1d819af033b1869a144de6e840c72af0c13abea6",
+  "overall_outcomes": {
+    "OBS-001": "NOT PERSISTENT",
+    "OBS-002": "PERSISTENT",
+    "OBS-003": "PERSISTENT"
+  },
+  "results": [
+    {
+      "OBS-001": {
+        "highest_frequency_competitor": {
+          "count": 3323,
+          "value": 12
+        },
+        "passed": false,
+        "third_difference_count": 67880,
+        "zero_count": 3292
+      },
+      "OBS-002": {
+        "highest_frequency_competitor": {
+          "count": 1161,
+          "motif": [
+            4,
+            6
+          ]
+        },
+        "motif_window_count": 67881,
+        "passed": true,
+        "target_count": 1273,
+        "target_motif": [
+          6,
+          6
+        ]
+      },
+      "OBS-003": {
+        "moduli": [
+          {
+            "missing": [],
+            "modulus": 6,
+            "observed_distinct_support_size": 4,
+            "passed": true,
+            "possible_support_size": 4
+          },
+          {
+            "missing": [],
+            "modulus": 10,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 12,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 30,
+            "observed_distinct_support_size": 64,
+            "passed": true,
+            "possible_support_size": 64
+          },
+          {
+            "missing": [],
+            "modulus": 60,
+            "observed_distinct_support_size": 256,
+            "passed": true,
+            "possible_support_size": 256
+          }
+        ],
+        "passed": true
+      },
+      "band": "S1",
+      "prime_summary": {
+        "count": 67883,
+        "first_prime": 2000003,
+        "last_prime": 2999999
+      },
+      "range": [
+        2000000,
+        3000000
+      ]
+    },
+    {
+      "OBS-001": {
+        "highest_frequency_competitor": {
+          "count": 3021,
+          "value": 12
+        },
+        "passed": true,
+        "third_difference_count": 65364,
+        "zero_count": 3104
+      },
+      "OBS-002": {
+        "highest_frequency_competitor": {
+          "count": 1077,
+          "motif": [
+            4,
+            6
+          ]
+        },
+        "motif_window_count": 65365,
+        "passed": true,
+        "target_count": 1140,
+        "target_motif": [
+          6,
+          6
+        ]
+      },
+      "OBS-003": {
+        "moduli": [
+          {
+            "missing": [],
+            "modulus": 6,
+            "observed_distinct_support_size": 4,
+            "passed": true,
+            "possible_support_size": 4
+          },
+          {
+            "missing": [],
+            "modulus": 10,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 12,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 30,
+            "observed_distinct_support_size": 64,
+            "passed": true,
+            "possible_support_size": 64
+          },
+          {
+            "missing": [],
+            "modulus": 60,
+            "observed_distinct_support_size": 256,
+            "passed": true,
+            "possible_support_size": 256
+          }
+        ],
+        "passed": true
+      },
+      "band": "S2",
+      "prime_summary": {
+        "count": 65367,
+        "first_prime": 4000037,
+        "last_prime": 4999999
+      },
+      "range": [
+        4000000,
+        5000000
+      ]
+    },
+    {
+      "OBS-001": {
+        "highest_frequency_competitor": {
+          "count": 2881,
+          "value": 12
+        },
+        "passed": false,
+        "third_difference_count": 62709,
+        "zero_count": 2839
+      },
+      "OBS-002": {
+        "highest_frequency_competitor": {
+          "count": 940,
+          "motif": [
+            6,
+            4
+          ]
+        },
+        "motif_window_count": 62710,
+        "passed": true,
+        "target_count": 1003,
+        "target_motif": [
+          6,
+          6
+        ]
+      },
+      "OBS-003": {
+        "moduli": [
+          {
+            "missing": [],
+            "modulus": 6,
+            "observed_distinct_support_size": 4,
+            "passed": true,
+            "possible_support_size": 4
+          },
+          {
+            "missing": [],
+            "modulus": 10,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 12,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 30,
+            "observed_distinct_support_size": 64,
+            "passed": true,
+            "possible_support_size": 64
+          },
+          {
+            "missing": [],
+            "modulus": 60,
+            "observed_distinct_support_size": 256,
+            "passed": true,
+            "possible_support_size": 256
+          }
+        ],
+        "passed": true
+      },
+      "band": "S3",
+      "prime_summary": {
+        "count": 62712,
+        "first_prime": 8000009,
+        "last_prime": 8999993
+      },
+      "range": [
+        8000000,
+        9000000
+      ]
+    },
+    {
+      "OBS-001": {
+        "highest_frequency_competitor": {
+          "count": 2544,
+          "value": 12
+        },
+        "passed": true,
+        "third_difference_count": 60181,
+        "zero_count": 2645
+      },
+      "OBS-002": {
+        "highest_frequency_competitor": {
+          "count": 824,
+          "motif": [
+            4,
+            6
+          ]
+        },
+        "motif_window_count": 60182,
+        "passed": true,
+        "target_count": 924,
+        "target_motif": [
+          6,
+          6
+        ]
+      },
+      "OBS-003": {
+        "moduli": [
+          {
+            "missing": [],
+            "modulus": 6,
+            "observed_distinct_support_size": 4,
+            "passed": true,
+            "possible_support_size": 4
+          },
+          {
+            "missing": [],
+            "modulus": 10,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 12,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 30,
+            "observed_distinct_support_size": 64,
+            "passed": true,
+            "possible_support_size": 64
+          },
+          {
+            "missing": [],
+            "modulus": 60,
+            "observed_distinct_support_size": 256,
+            "passed": true,
+            "possible_support_size": 256
+          }
+        ],
+        "passed": true
+      },
+      "band": "S4",
+      "prime_summary": {
+        "count": 60184,
+        "first_prime": 16000057,
+        "last_prime": 16999999
+      },
+      "range": [
+        16000000,
+        17000000
+      ]
+    },
+    {
+      "OBS-001": {
+        "highest_frequency_competitor": {
+          "count": 2404,
+          "value": 12
+        },
+        "passed": true,
+        "third_difference_count": 57849,
+        "zero_count": 2445
+      },
+      "OBS-002": {
+        "highest_frequency_competitor": {
+          "count": 745,
+          "motif": [
+            6,
+            4
+          ]
+        },
+        "motif_window_count": 57850,
+        "passed": true,
+        "target_count": 831,
+        "target_motif": [
+          6,
+          6
+        ]
+      },
+      "OBS-003": {
+        "moduli": [
+          {
+            "missing": [],
+            "modulus": 6,
+            "observed_distinct_support_size": 4,
+            "passed": true,
+            "possible_support_size": 4
+          },
+          {
+            "missing": [],
+            "modulus": 10,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 12,
+            "observed_distinct_support_size": 16,
+            "passed": true,
+            "possible_support_size": 16
+          },
+          {
+            "missing": [],
+            "modulus": 30,
+            "observed_distinct_support_size": 64,
+            "passed": true,
+            "possible_support_size": 64
+          },
+          {
+            "missing": [],
+            "modulus": 60,
+            "observed_distinct_support_size": 256,
+            "passed": true,
+            "possible_support_size": 256
+          }
+        ],
+        "passed": true
+      },
+      "band": "S5",
+      "prime_summary": {
+        "count": 57852,
+        "first_prime": 32000011,
+        "last_prime": 32999983
+      },
+      "range": [
+        32000000,
+        33000000
+      ]
+    }
+  ]
+}
