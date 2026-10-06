@@ -86,7 +86,7 @@ Permanent append-only register of reproducible phenomena.
 ### OBS-005
 
 **Title:** Shift 900 uniquely maximizes D6 translation overlap within odd-radical class 15  
-**Status:** OBSERVED  
+**Status:** REFUTED  
 **Date:** 2026-10-06  
 **Experiment:** E006 / SQ-006  
 **Exact definition:** Under the frozen E006 semantics, let C_B(h) count all prime pairs (p,p+h) with even h in {2,4,...,1000} and common left anchor p in [L,U-1000). Let rho(h) be the odd radical. On D6, among exactly the frozen shifts with rho(h)=15, h=900 has strictly greater C_D6(h) than every other class member.  
@@ -94,15 +94,15 @@ Permanent append-only register of reproducible phenomena.
 **Holdout range:** H6 = [44_000_000, 45_000_000), untouched at promotion  
 **Observation:** The rho=15 class has 19 members. C_D6(900)=11,503; the deterministic runner-up count is 11,440, so the strict dominance margin is 63.  
 **Triviality checks:** Parity is fixed by the all-even shift set and the odd-radical class fixes the frozen deterministic two-point modular-admissibility profile. The claim compares counts only within that control class; it is not a parity/radical identity, common-anchor/boundary consequence, serialization/tie-break consequence, cross-class comparison, or consecutive-gap statement. The maximum is strict by exact counts.  
-**Replication result:** PENDING. Frozen one-shot H6 criterion: using unchanged E006 shifts, common anchor, all-pairs overlap and rho=15 class, shift 900 must have C_H6(900) >= 8 and strictly exceed C_H6(h) for every other frozen h with rho(h)=15. A tie, target count below 8, or any higher-frequency class competitor fails.  
+**Replication result:** REFUTED on one-shot H6 = `[44_000_000, 45_000_000)`. `C_H6(900)=11,397`, satisfying the occurrence floor, but same-class shift 90 has count 11,456. The frozen strict-maximum criterion therefore fails by 59; no retargeting was performed.
 **Possible mechanism:** Unknown; no mechanism work performed in D1-16.  
 **Candidate link:** none  
-**Notes:** Selected first by the frozen E006 promotion ranking. D6 artifact: 111,534 bytes, SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6/A6 were not generated.
+**Notes:** Selected first by the frozen E006 promotion ranking. D6 artifact: 111,534 bytes, SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
 
 ### OBS-006
 
 **Title:** Shift 280 uniquely maximizes D6 translation overlap within odd-radical class 35  
-**Status:** OBSERVED  
+**Status:** REFUTED  
 **Date:** 2026-10-06  
 **Experiment:** E006 / SQ-006  
 **Exact definition:** Under the frozen E006 semantics, among exactly the frozen shifts h in {2,4,...,1000} with rho(h)=35, h=280 has strictly greater C_D6(h) than every other class member, where C_B uses the common [L,U-1000) anchor and counts all prime pairs without an adjacency requirement.  
@@ -110,15 +110,15 @@ Permanent append-only register of reproducible phenomena.
 **Holdout range:** H6 = [44_000_000, 45_000_000), untouched at promotion  
 **Observation:** The rho=35 class has 8 members. C_D6(280)=6,905; runner-up 6,852; strict margin 53.  
 **Triviality checks:** Same frozen exclusions as OBS-005: parity and deterministic two-point modular admissibility are controlled within class; the result is not an anchor, encoding, ordering, cross-class, or consecutive-gap consequence. The maximum is strict by exact counts.  
-**Replication result:** PENDING. Frozen H6 criterion: under unchanged E006 semantics, C_H6(280) >= 8 and shift 280 strictly exceeds every other frozen shift with rho=35. Tie, count below 8, or a higher competitor fails.  
+**Replication result:** REFUTED on one-shot H6 = `[44_000_000, 45_000_000)`. `C_H6(280)=6,776`, satisfying the occurrence floor, but same-class shift 560 has count 6,855. The frozen strict-maximum criterion therefore fails by 79; no retargeting was performed.
 **Possible mechanism:** Unknown; no mechanism work performed.  
 **Candidate link:** none  
-**Notes:** Selected second by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6/A6 ungenerated.
+**Notes:** Selected second by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
 
 ### OBS-007
 
 **Title:** Shift 56 uniquely maximizes D6 translation overlap within odd-radical class 7  
-**Status:** OBSERVED  
+**Status:** REFUTED  
 **Date:** 2026-10-06  
 **Experiment:** E006 / SQ-006  
 **Exact definition:** Under frozen E006, among exactly the frozen shifts with rho(h)=7, h=56 has strictly greater D6 common-anchor all-pairs translation-overlap count than every other class member.  
@@ -126,15 +126,15 @@ Permanent append-only register of reproducible phenomena.
 **Holdout range:** H6 = [44_000_000, 45_000_000), untouched at promotion  
 **Observation:** The rho=7 class has 12 members. C_D6(56)=5,225; runner-up 5,184; strict margin 41.  
 **Triviality checks:** Same frozen within-class parity/radical, anchor/boundary, encoding/ordering, cross-class, and adjacency exclusions as OBS-005. The maximum is strict by exact counts.  
-**Replication result:** PENDING. Frozen H6 criterion: C_H6(56) >= 8 and shift 56 strictly exceeds every other frozen shift with rho=7 under unchanged E006 semantics. Tie, count below 8, or a higher competitor fails.  
+**Replication result:** REFUTED on one-shot H6 = `[44_000_000, 45_000_000)`. `C_H6(56)=5,047`, satisfying the occurrence floor, but same-class shift 28 has count 5,179. The frozen strict-maximum criterion therefore fails by 132; no retargeting was performed.
 **Possible mechanism:** Unknown; no mechanism work performed.  
 **Candidate link:** none  
-**Notes:** Selected third by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6/A6 ungenerated.
+**Notes:** Selected third by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
 
 ### OBS-008
 
 **Title:** Shift 294 uniquely maximizes D6 translation overlap within odd-radical class 21  
-**Status:** OBSERVED  
+**Status:** REPLICATED  
 **Date:** 2026-10-06  
 **Experiment:** E006 / SQ-006  
 **Exact definition:** Under frozen E006, among exactly the frozen shifts with rho(h)=21, h=294 has strictly greater D6 common-anchor all-pairs translation-overlap count than every other class member.  
@@ -142,15 +142,15 @@ Permanent append-only register of reproducible phenomena.
 **Holdout range:** H6 = [44_000_000, 45_000_000), untouched at promotion  
 **Observation:** The rho=21 class has 13 members. C_D6(294)=10,373; runner-up 10,333; strict margin 40.  
 **Triviality checks:** Same frozen within-class parity/radical, anchor/boundary, encoding/ordering, cross-class, and adjacency exclusions as OBS-005. The maximum is strict by exact counts.  
-**Replication result:** PENDING. Frozen H6 criterion: C_H6(294) >= 8 and shift 294 strictly exceeds every other frozen shift with rho=21 under unchanged E006 semantics. Tie, count below 8, or a higher competitor fails.  
+**Replication result:** REPLICATED on one-shot H6 = `[44_000_000, 45_000_000)`. `C_H6(294)=10,305`, and the highest same-class competitor is shift 126 at 10,301, so target 294 remains the strict unique maximum with margin 4 and satisfies the occurrence floor without tuning.
 **Possible mechanism:** Unknown; no mechanism work performed.  
 **Candidate link:** none  
-**Notes:** Selected fourth by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6/A6 ungenerated.
+**Notes:** Selected fourth by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
 
 ### OBS-009
 
 **Title:** Shift 324 uniquely maximizes D6 translation overlap within odd-radical class 3  
-**Status:** OBSERVED  
+**Status:** REFUTED  
 **Date:** 2026-10-06  
 **Experiment:** E006 / SQ-006  
 **Exact definition:** Under frozen E006, among exactly the frozen shifts with rho(h)=3, h=324 has strictly greater D6 common-anchor all-pairs translation-overlap count than every other class member.  
@@ -158,8 +158,8 @@ Permanent append-only register of reproducible phenomena.
 **Holdout range:** H6 = [44_000_000, 45_000_000), untouched at promotion  
 **Observation:** The rho=3 class has 24 members. C_D6(324)=8,675; runner-up 8,643; strict margin 32.  
 **Triviality checks:** Same frozen within-class parity/radical, anchor/boundary, encoding/ordering, cross-class, and adjacency exclusions as OBS-005. The maximum is strict by exact counts.  
-**Replication result:** PENDING. Frozen H6 criterion: C_H6(324) >= 8 and shift 324 strictly exceeds every other frozen shift with rho=3 under unchanged E006 semantics. Tie, count below 8, or a higher competitor fails.  
+**Replication result:** REFUTED on one-shot H6 = `[44_000_000, 45_000_000)`. `C_H6(324)=8,527`, satisfying the occurrence floor, but same-class shift 216 has count 8,667. The frozen strict-maximum criterion therefore fails by 140; no retargeting was performed.
 **Possible mechanism:** Unknown; no mechanism work performed.  
 **Candidate link:** none  
-**Notes:** Selected fifth by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6/A6 ungenerated.
+**Notes:** Selected fifth by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
 
