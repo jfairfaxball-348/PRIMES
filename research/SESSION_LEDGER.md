@@ -315,7 +315,7 @@ Never reuse or renumber a completed session.
 **Decision blocker:** none  
 **Outgoing state:** DISCOVERY-1; D1-17 complete; OBS-008 is the sole E006 holdout survivor; OBS-005/006/007/009 are permanently REFUTED under their frozen criteria; H6 is consumed only for the five predeclared checks; A6 and all historical reserves/guards remain untouched/non-target; active candidates 0; next task is synthesis-only D1-18 over OBS-008.  
 **Next session:** D1-18 / SQ-006 — candidate-synthesis triage over OBS-008 only using committed D6+H6 evidence, with no new prime generation, H6/D6 mining, A6/protected-range inspection, mechanism/proof work, or prior-art/collision search. Create a candidate only if an exact non-arbitrary falsifiable statement is justified beyond finite restatement.  
-**Commit:** criterion evidence `da86d595e7725ea44ddd968ea7d79ab4d8cdd495`; H6 replication record `4f4ce3a728f02e6dc4c32384ff1d0e49da8449f6`; observation outcomes `8be91e519933aa986b78e516911edfe5cf30b1a8`; SQ-006 state `0eb6283f64bdc9a4b88a00ea7cdc8289d2f13d16`; programme state `c2e52f40f1e35308456165e1ea30d7702f48e7a7`; live D1-18 handoff `767ca5afe69aee567ab43745a65059c8f809b99c`.
+**Commit:** criterion evidence `da86d595e7725ea44ddd968ea7d79ab4d8cdd495`; H6 replication record `4f4ce3a728f02e6dc4c32384ff1d0e49da8449f6`; observation outcomes `8be91e519933aa986b78e516911edfe5cf30b1a8`; SQ-006 state `69119574a30a41ac7ce49052b6864f53889011d8`; programme state `c2e52f40f1e35308456165e1ea30d7702f48e7a7`; live D1-18 handoff `767ca5afe69aee567ab43745a65059c8f809b99c`.
 
 ## Entry template
 
