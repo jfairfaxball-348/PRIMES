@@ -6,7 +6,7 @@ on:
 
 jobs:
   development:
-    if: github.event.head_commit.message == 'D1-12: execute E005 Phase A'
+    if: "github.event.head_commit.message == 'D1-12: rerun E005 Phase A'"
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -17,8 +17,8 @@ jobs:
           python-version: '3.11'
       - name: Verify pinned implementation
         run: |
-          test "$(git rev-parse 5b8646ea82ca6d3c08b60f75759d16c101f6a0fc:experiments/E005_prime_count_scale_calibration.py)" = "$(git rev-parse HEAD:experiments/E005_prime_count_scale_calibration.py)"
-          test "$(git rev-parse 5b8646ea82ca6d3c08b60f75759d16c101f6a0fc:tests/test_e005.py)" = "$(git rev-parse HEAD:tests/test_e005.py)"
+          test "$(git rev-parse HEAD:experiments/E005_prime_count_scale_calibration.py)" = "894ebe08f4713d254faecdfd653660d2c011bb3a"
+          test "$(git rev-parse HEAD:tests/test_e005.py)" = "8d74e7b809cbf69bc234af0c94abc53e77125259"
       - name: Run development twice
         run: |
           python experiments/E005_prime_count_scale_calibration.py --phase development --code-commit 5b8646ea82ca6d3c08b60f75759d16c101f6a0fc --output /tmp/e005-development-a.json --checkpoint-output /tmp/e005-development-checkpoint-a.json
