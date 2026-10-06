@@ -243,7 +243,7 @@ Next bounded action: **D1-19 / SQ-007 blind novelty representation-family prefli
 
 Stage: discovery
 
-Status: **D1-21 H7 REPLICATION COMPLETE — OBS-010/OBS-011 REPLICATED; A7 UNTOUCHED; D1-22 SYNTHESIS TRIAGE NEXT**
+Status: **D1-22 CANDIDATE TRIAGE COMPLETE — NO CANDIDATE; OBS-010/OBS-011 RETAINED REPLICATED; A7 UNTOUCHED; SQ-007 CLOSED**
 
 Frozen specification: `experiments/E007_NEIGHBOUR_FACTORIZATION_COUPLING.md`
 
@@ -294,4 +294,26 @@ D1-21 verified the frozen evaluator/test bytes against checkpoint `ad09ec3d72dc2
 
 The identical complete H7 command then ran twice before criterion inspection and produced byte-identical 450,687-byte artifacts, SHA-256 `6a25381c7430a6e720e619fb27696ec75e8696514d72a8f7a26398f616d85ced`. Only the frozen anchor-population and F2/F3 same-target criteria were inspected. H7 has 56,387 prime anchors and 443,612 composite controls. OBS-010/F2 `[3,3]` REPLICATED with prime count 7,917 versus highest competitor `[3,2]` at 6,404, composite target count 52,339, and enrichment numerator 560,837,011. OBS-011/F3 `[3,3]` REPLICATED with prime count 5,106 versus highest competitor `[3,2]` at 3,977, composite target count 38,940, and enrichment numerator 69,373,092. No fallback, retargeting, H7 mining, or non-target-family promotion inspection occurred. A7 and all guards/historical protected ranges remain untouched/non-target.
 
-Next bounded action: **D1-22 / SQ-007 candidate-synthesis triage over OBS-010 and OBS-011 only.** Use only committed D7+H7 evidence to decide whether either observation, or a non-duplicative exact synthesis of the two frozen family statements, supports an exact non-arbitrary falsifiable `CAND-###` statement beyond restating the two finite bands. Generate no new primes, do not execute A7, do not mine D7/H7 or retarget either family, and do not perform mechanism/proof, adversarial, prior-art/collision, or literature work in that triage unit.
+D1-22 candidate-synthesis result: **NO CANDIDATE CREATED.** Only OBS-010 and OBS-011 were eligible. Separately, each frozen family statement is established only on D7 and H7: exact target `[3,3]` remains the strict unique prime-anchor mode, both support floors pass, and exact composite-control enrichment is positive under unchanged F2 or F3 semantics. A statement confined to those two bands would only restate committed finite computation. Any stronger statement requires an unsupported quantifier over an untested band, origin, width, later scale, anchor population, factorization/representation family, or infinitely many values.
+
+The one permitted joint synthesis also fails candidate promotion. Saying that both F2 and F3 target `[3,3]` satisfy their frozen criteria on D7 and H7 is only the conjunction of OBS-010 and OBS-011; asserting common persistence or stronger cross-family coupling beyond those bands adds structure and a quantifier not supplied by the committed evidence. No `CAND-###` was allocated, both observations remain REPLICATED with no candidate link, and no novelty status was assigned.
+
+SQ-007 is closed without candidate promotion. A7=`[92_000_000,93_000_000)` remains frozen, untouched, uninspected, and unexecuted. No new prime-derived computation, D7/H7 mining, retargeting, factorization-rule change, mechanism/proof work, adversarial execution, prior-art/collision search, literature search, novelty claim, calibration-object transfer, or protected-range inspection occurred.
+
+Next bounded action: **D1-23 / SQ-008 blind novelty representation-family preflight.** Select and freeze exactly one qualitatively distinct blind novelty representation family using only novelty-lane authority and target-agnostic methodology. The next unit is design-only: it may choose a fresh metadata-only partition and freeze exact primitive/transform, descriptive/promotion, one-shot holdout, determinism, and fail-closed future-generation rules, but it must generate no prime-derived output, preserve A7 and all historical reserves/guards, allocate no OBS/CAND ID, and perform no mechanism/proof or prior-art/literature work.
+
+## SQ-008 — Blind novelty representation-family preflight
+
+Stage: discovery
+
+Status: **QUEUED — D1-23 PREFLIGHT NEXT**
+
+Purpose: choose and freeze exactly one qualitatively distinct novelty representation family not already exhausted by E001/E003/E004/E006/E007, using only novelty-lane authority and target-agnostic methodology.
+
+D1-23 is design-only. It must preserve all historical observation/candidate/failure statuses; treat SQ-005 calibration as closed and quarantined; generate no prime-derived data; inspect no protected reserve or guard; allocate no OBS/CAND ID; perform no mechanism/proof or prior-art/collision/literature work; and not use calibration objects or historical-unblinding mechanisms to steer the family.
+
+The preflight must declare exact primitive objects and transforms, a fresh metadata-only partition disjoint from every historical generated/protected/guard range, a descriptive allowlist and promotion grammar, untouched one-shot holdout criteria, deterministic ordering/serialization, and a fail-closed future generation plan before any SQ-008 execution.
+
+A7=`[92_000_000,93_000_000)` remains a frozen untouched E007 adversarial reserve and is excluded from SQ-008 targets, as are A1, H3, H4, G6-mid, A3, A4, A6, every E003/E004 guard, and G7-pre/G7-mid.
+
+Next bounded action: **D1-23 / SQ-008 — complete the design-only preflight and stop before implementation or prime generation.**
