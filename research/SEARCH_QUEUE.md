@@ -98,9 +98,9 @@ Frozen event classes:
 
 - `prime_dense`: globally anchored width-1,000 occupancy block whose centre occupancy is strictly greater than the two neighbouring block occupancies on each side;
 - `prime_sparse`: same, with the centre occupancy strictly lower than the two neighbouring occupancies on each side;
-- `strict_in_band_record_gap`: an in-band prime gap, excluding the first, strictly larger than every earlier in-band gap. This is intentionally distinct from E001's historical strict global record-gap event.
+- `strict_rolling_record_gap`: an in-band prime gap strictly larger than each of the preceding 64 in-band gaps, with 64 fixed as 8 times the frozen gap-neighbourhood radius. This is intentionally distinct from E001's historical strict global record-gap event.
 
-Dense/sparse descriptive radius is 8 blocks; record-gap descriptive radius is 8 gaps. Dense/sparse promotion asymmetry uses only outer offsets 3 through 8 so the selection halo cannot itself become an observation. Exact raw words, centred residual words, integer asymmetry vectors, and sign signatures are the only neighbourhood object families.
+Dense/sparse descriptive radius is 8 blocks; rolling-record descriptive radius is 8 gaps with a frozen 64-gap lookback. Dense/sparse promotion asymmetry uses only outer offsets 3 through 8 so the selection halo cannot itself become an observation. Exact raw words, centred residual words, integer asymmetry vectors, and sign signatures are the only neighbourhood object families.
 
 Goal: search for repeated exact local configurations and before/after asymmetries under the frozen grammar.
 
