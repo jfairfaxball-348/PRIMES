@@ -194,9 +194,9 @@ Next bounded action: **D1-15 / SQ-006 novelty representation-family preflight.**
 
 ## SQ-006 — Translation-overlap spectrum
 
-Stage: discovery / replication pending
+Stage: discovery / replication complete
 
-Status: **D1-16 D6 DISCOVERY COMPLETE — OBS-005 THROUGH OBS-009 PROMOTED; H6 FROZEN / UNTOUCHED; D1-17 H6 REPLICATION NEXT**
+Status: **D1-17 H6 REPLICATION COMPLETE — OBS-008 REPLICATED; OBS-005/006/007/009 REFUTED; A6 UNTOUCHED; D1-18 SYNTHESIS NEXT**
 
 Frozen specification: experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md
 
@@ -227,7 +227,11 @@ Mechanical promotion result: all 11 size-at-least-8 radical classes had strict u
 
 The six lower-ranked eligible classes were not promoted because of the frozen cap. No grammar was relaxed. Compact evidence is research/evidence/E006_D6_discovery.json and the execution record is experiments/E006_D6_DISCOVERY_2026-10-06.md.
 
-The exact one-shot H6 criteria for OBS-005 through OBS-009 were frozen in the observation ledger before any H6 generation. Each criterion keeps the same rho and target h, requires target count at least 8, and requires the target to strictly exceed every same-class competitor under unchanged E006 semantics. A tie fails. H6 has not been generated.
+The exact one-shot H6 criteria for OBS-005 through OBS-009 were frozen in the observation ledger before H6 generation. D1-17 reused the unchanged implementation/test checkpoint `8bfcc27d96dc1b0858c514cf2bfab81790ab71b0`, validated the H6-only plan `[0,6709)` plus segmented H6, and executed the identical H6 command twice before criterion inspection. The outputs were byte-identical: 111,561 bytes, SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`.
 
-Next bounded action: **D1-17 / SQ-006 one-shot H6 replication.** Validate the frozen E006 implementation/guard, execute only H6 twice for byte determinism, inspect only the five frozen replication criteria (no H6 mining), update OBS-005 through OBS-009 to REPLICATED or REFUTED, and stop without generating A6 or creating a candidate.
+Frozen H6 outcomes: **OBS-008 REPLICATED** with target h=294 at 10,305 versus highest rho=21 competitor h=126 at 10,301 (margin +4). **OBS-005 REFUTED**: h=900 has 11,397 versus h=90 at 11,456. **OBS-006 REFUTED**: h=280 has 6,776 versus h=560 at 6,855. **OBS-007 REFUTED**: h=56 has 5,047 versus h=28 at 5,179. **OBS-009 REFUTED**: h=324 has 8,527 versus h=216 at 8,667. Every target count exceeds the occurrence floor of 8; all four failures are solely higher-frequency same-class competitors. Compact evidence is `research/evidence/E006_H6_replication.json`; replication record is `experiments/E006_H6_REPLICATION_2026-10-06.md`.
+
+H6 was inspected only against those five frozen criteria. No new H6 observation was promoted, no failed target was retargeted, and no unselected class was mined. A6 and all historical protected ranges/guards remain untouched/non-target.
+
+Next bounded action: **D1-18 / SQ-006 candidate-synthesis triage.** Consider only the sole E006 holdout survivor OBS-008 using committed D6+H6 evidence. Do not generate new primes, inspect A6 or any protected reserve/guard, mine H6, retarget refuted observations, perform mechanism/proof work, or run prior-art/collision search. Create a candidate only if an exact non-arbitrary falsifiable statement is justified beyond restating the two finite bands.
 
