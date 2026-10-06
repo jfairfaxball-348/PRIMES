@@ -447,3 +447,153 @@ def _sign(value: Decimal) -> int:
     if value > 0:
         return 1
     if value < 0:
+        return -1
+    return 0
+
+
+def residual_objects(
+    selected: str,
+    transformed: dict[str, dict[str, dict[str, Decimal]]],
+    anchors: tuple[tuple[str, int], ...],
+    *,
+    baselines: dict[str, Decimal] | None = None,
+) -> tuple[dict[str, Decimal], dict[str, Any], dict[str, Counter[tuple[int, ...]]]]:
+    if baselines is None:
+        baselines = {}
+        for width_name, _ in WIDTHS:
+            values = [transformed[selected][anchor_name][width_name] for anchor_name, _ in anchors]
+            with localcontext(DECIMAL_CONTEXT):
+                baselines[width_name] = sum(values, Decimal(0)) / Decimal(3)
+    objects: dict[str, Any] = {}
+    r1_words: list[tuple[int, ...]] = []
+    r3_words: list[tuple[int, ...]] = []
+    for width_name, _ in WIDTHS:
+        baseline = baselines[width_name]
+        if baseline <= 0 or not baseline.is_finite():
+            raise ValueError("baseline must be positive and finite")
+        residuals: list[Decimal] = []
+        for anchor_name, _ in anchors:
+            with localcontext(DECIMAL_CONTEXT):
+                residual = transformed[selected][anchor_name][width_name] / baseline - Decimal(1)
+            residuals.append(residual)
+        with localcontext(DECIMAL_CONTEXT):
+            first_differences = [residuals[1] - residuals[0], residuals[2] - residuals[1]]
+            second_difference = residuals[2] - Decimal(2) * residuals[1] + residuals[0]
+        r1 = tuple(_sign(value) for value in residuals)
+        r3 = tuple(_sign(value) for value in first_differences)
+        r1_words.append(r1)
+        r3_words.append(r3)
+        objects[width_name] = {
+            "R0": [decimal_string(value) for value in residuals],
+            "R1": list(r1),
+            "R2": [decimal_string(value) for value in first_differences],
+            "R3": list(r3),
+            "R4": decimal_string(second_difference),
+        }
+    return baselines, objects, {"R1": Counter(r1_words), "R3": Counter(r3_words)}
+
+
+def _frequency_table(counter: Counter[tuple[int, ...]]) -> list[dict[str, Any]]:
+    return [{"word": list(word), "count": counter[word]} for word in sorted(counter)]
+
+
+def _strict_target(counter: Counter[tuple[int, ...]]) -> tuple[int, ...] | None:
+    ranked = sorted(counter.items(), key=lambda item: (-item[1], item[0]))
+    if not ranked:
+        return None
+    top_word, top_count = ranked[0]
+    runner_up = ranked[1][1] if len(ranked) > 1 else 0
+    if top_count >= 3 and top_count > runner_up:
+        return top_word
+    return None
+
+
+def select_residual_target(
+    counters: dict[str, Counter[tuple[int, ...]]]
+) -> tuple[dict[str, Any] | str, dict[str, Any]]:
+    tables = {family: _frequency_table(counters[family]) for family in ("R1", "R3")}
+    for family in ("R1", "R3"):
+        target = _strict_target(counters[family])
+        if target is not None:
+            return (
+                {
+                    "family": family,
+                    "word": list(target),
+                    "development_count": counters[family][target],
+                },
+                tables,
+            )
+    return "NO_RESIDUAL_SIGN_TARGET", tables
+
+
+def eligible_questions(
+    selected: str,
+    scores: dict[str, Any],
+    residual_target: dict[str, Any] | str,
+) -> list[dict[str, str]]:
+    selected_score = scores["raw_global_scores"][selected]
+    identity_score = scores["raw_global_scores"]["N00"]
+    selected_widths = scores["raw_width_spreads"][selected]
+    identity_widths = scores["raw_width_spreads"]["N00"]
+    width_wins = sum(
+        selected_widths[width_name] < identity_widths[width_name]
+        for width_name, _ in WIDTHS
+    )
+    questions: list[dict[str, str]] = []
+    if selected != "N00" and selected_score < identity_score:
+        questions.append(
+            {
+                "id": "Q1",
+                "text": (
+                    f"For each fixed w in the frozen width set, does T_{selected}(a,w) "
+                    "approach a finite nonzero limit along indefinitely repeated doublings of a?"
+                ),
+            }
+        )
+    if width_wins >= 4:
+        questions.append(
+            {
+                "id": "Q2",
+                "text": (
+                    f"Is the same scale normalization {selected} eventually more stable than raw "
+                    "density for every width in the frozen width family under repeated anchor doubling?"
+                ),
+            }
+        )
+    if isinstance(residual_target, dict):
+        family = residual_target["family"]
+        word = tuple(residual_target["word"])
+        questions.append(
+            {
+                "id": "Q3",
+                "text": (
+                    f"Does the exact selected {family} residual sign word {word} remain the strict "
+                    "modal sign word across the frozen width family for all sufficiently large doubled anchors?"
+                ),
+            }
+        )
+    return questions
+
+
+def evaluate_milestones(
+    *,
+    selected: str,
+    development_selected_score: Decimal,
+    development_identity_score: Decimal,
+    assessment_selected_score: Decimal,
+    assessment_identity_score: Decimal,
+    development_width_wins: int,
+    assessment_width_wins: int,
+    development_target: dict[str, Any] | str,
+    assessment_target_passed: bool,
+    questions: list[dict[str, str]],
+    m5_conditions: dict[str, bool],
+    deterministic_reproduction: bool,
+    guard_validation: bool,
+) -> dict[str, Any]:
+    m1 = (
+        selected != "N00"
+        and development_selected_score < development_identity_score
+        and assessment_selected_score < assessment_identity_score
+    )
+    m2 = development_width_wins >= 4 and assessment_width_wins >= 4
