@@ -163,3 +163,35 @@ Permanent append-only register of reproducible phenomena.
 **Candidate link:** none  
 **Notes:** Selected fifth by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
 
+### OBS-010
+
+**Title:** `[3,3]` is the unique F2 distinct-factor-count pair mode on D7  
+**Status:** OBSERVED  
+**Date:** 2026-10-06  
+**Experiment:** E007 / SQ-007  
+**Exact definition:** Under frozen E007, for every prime anchor `x` in the common odd-anchor domain of D7, remove the complete power of two from `x-1` and `x+1`, canonically align the v2=1 neighbour as thin `T` and the other as thick `K`, and let `F2(x)=(omega(o_T),omega(o_K))`. The observation is that exact signature `[3,3]` has strictly greater D7 prime-anchor frequency than every other F2 signature, occurs at least 32 times, and has strictly positive exact relative-frequency enrichment against the odd composite-anchor controls.  
+**Discovery range:** D7 = `[46_000_000, 47_000_000)`  
+**Holdout range:** H7 = `[48_000_000, 49_000_000)`, untouched at promotion  
+**Observation:** D7 has 56,640 prime anchors and 443,359 composite controls. F2 target `[3,3]` occurs 7,740 times among prime anchors; the deterministic runner-up count is 6,364. The same target occurs 52,501 times among composite controls. Its exact enrichment numerator is `7,740*443,359 - 52,501*56,640 = 457,942,020 > 0`.  
+**Triviality checks:** The claim is not the forced 2-adic thin/thick orientation, the odd-core coprimality identity, factorization reconstruction, a serialization/ranking rule, or a composite-control fact by itself. F2 is a frozen predeclared coarsening of F1; separate F2 eligibility was frozen before D7. The target survived the exact cross-family duplicate-suppression rule.  
+**Replication result:** Not yet tested. Frozen one-shot H7 criterion: under unchanged E007 semantics, both H7 prime/composite anchor populations must be at least 1,000; exact F2 target `[3,3]` must be the strict unique H7 prime-anchor mode; its H7 prime-anchor count must be at least 32; and its exact H7 enrichment numerator `n_P N_C - n_C N_P` must be strictly positive. Any tie or higher-frequency F2 competitor, target count below 32, population-floor failure, or nonpositive enrichment is REFUTED. No fallback target or retargeting is permitted.  
+**Possible mechanism:** Unknown; no mechanism work performed.  
+**Candidate link:** none  
+**Notes:** D7 artifact: 448,997 bytes, SHA-256 `dde63c44ed6090c0dbdd7897e440b7cbd642336c82dbc126c513acc1357f4635`. Compact evidence: `research/evidence/E007_D7_discovery.json`. H7 and A7 remain ungenerated.
+
+### OBS-011
+
+**Title:** `[3,3]` is the unique F3 total-multiplicity pair mode on D7  
+**Status:** OBSERVED  
+**Date:** 2026-10-06  
+**Experiment:** E007 / SQ-007  
+**Exact definition:** Under frozen E007, for every prime anchor `x` in the common odd-anchor domain of D7, remove the complete power of two from `x-1` and `x+1`, canonically align the v2=1 neighbour as thin `T` and the other as thick `K`, and let `F3(x)=(Omega(o_T),Omega(o_K))`. The observation is that exact signature `[3,3]` has strictly greater D7 prime-anchor frequency than every other F3 signature, occurs at least 32 times, and has strictly positive exact relative-frequency enrichment against the odd composite-anchor controls.  
+**Discovery range:** D7 = `[46_000_000, 47_000_000)`  
+**Holdout range:** H7 = `[48_000_000, 49_000_000)`, untouched at promotion  
+**Observation:** D7 has 56,640 prime anchors and 443,359 composite controls. F3 target `[3,3]` occurs 5,009 times among prime anchors; the deterministic runner-up count is 3,958. The same target occurs 39,183 times among composite controls. Its exact enrichment numerator is `5,009*443,359 - 39,183*56,640 = 1,460,111 > 0`.  
+**Triviality checks:** The claim is not the forced 2-adic thin/thick orientation, the odd-core coprimality identity, factorization reconstruction, a serialization/ranking rule, or a composite-control fact by itself. F3 is a frozen predeclared coarsening of F1; separate F3 eligibility was frozen before D7. Although OBS-010 and OBS-011 have the same displayed integer pair, they are different frozen families and select different D7 prime-anchor subsets, so the exact duplicate-suppression rule removes neither.  
+**Replication result:** Not yet tested. Frozen one-shot H7 criterion: under unchanged E007 semantics, both H7 prime/composite anchor populations must be at least 1,000; exact F3 target `[3,3]` must be the strict unique H7 prime-anchor mode; its H7 prime-anchor count must be at least 32; and its exact H7 enrichment numerator `n_P N_C - n_C N_P` must be strictly positive. Any tie or higher-frequency F3 competitor, target count below 32, population-floor failure, or nonpositive enrichment is REFUTED. No fallback target or retargeting is permitted.  
+**Possible mechanism:** Unknown; no mechanism work performed.  
+**Candidate link:** none  
+**Notes:** D7 artifact: 448,997 bytes, SHA-256 `dde63c44ed6090c0dbdd7897e440b7cbd642336c82dbc126c513acc1357f4635`. Compact evidence: `research/evidence/E007_D7_discovery.json`. H7 and A7 remain ungenerated.
+
