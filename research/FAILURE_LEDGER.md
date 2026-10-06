@@ -28,6 +28,18 @@ Failures are research outputs. Preserve them so the project does not repeatedly 
 
 **D1-01 recurrence:** During E001 H0 replication, the detached runner again returned `ruff: command not found` (exit 127). The connector again returned empty combined-status and PR-triggered workflow-run collections for both the frozen E001 implementation commit `beab213501dab318075199c3fcac6d5501d0b9d3` and then-current main head `d087f332239817b128d810c08a75057ffcc1572b`. The exact reconstructed E001 source matched the committed blob, pytest passed 14/14, and compilation succeeded before H0 generation. This is a recurrence of FAIL-002, not a new failure ID or repository defect.
 
+### FAIL-003
+
+**Date:** 2026-10-06  
+**Related observation/candidate/experiment:** D1-04 / E002 cross-scale persistence execution  
+**Idea attempted:** Implement the frozen five-band E002 evaluator by sieving once through the maximum S5 endpoint and filtering the five declared bands from that global prime list.  
+**Why it looked plausible:** A single exact sieve reused the existing E001 prime generator and produced the same band-local prime sequences efficiently.  
+**Failure mode:** computational flaw / protocol contamination  
+**Exact evidence:** Initial implementation checkpoint `1eb80e6ad015d2b387d76aa661a5ef37bb6bb088` called `sieve(32_999_999)` before selecting S1-S5. Therefore it transiently generated primes in reserved A0=`[10_000_000,11_000_000)`, violating the frozen E002 rule that A0 not be generated or inspected. Two runs of that implementation were byte-identical (10,107 bytes, SHA-256 `2a62e7c54579343c822e338be860a0f9c615878efbc7fde5e84af712c574e7e7`) but are discarded and not committed as evidence. No A0 values or A0-derived criterion output were serialized or inspected. The implementation was corrected to independently segmented S-band generation at valid checkpoint `1d819af033b1869a144de6e840c72af0c13abea6`; pre-result validation passed 21/21 tests and compilation, and the corrected command then repeated byte-identically with SHA-256 `32d24d5ea2417b1fdbf02b0787e6a616170162e0f7373dae32cf6906f19d37d5`.  
+**Lesson:** A holdout/adversarial exclusion applies to internal generation as well as serialization and inspection. Criterion-only band evaluators must not construct whole-prefix prime lists that traverse excluded ranges.  
+**What remains valid:** The frozen E002 criteria and bands were never changed. The corrected segmented evaluator preserves E001 band-local semantics, generates only the declared S-band prime sequences (with small base-sieve support), and yields the committed valid E002 criterion evidence. OBS-001 is NOT PERSISTENT; OBS-002 and OBS-003 are PERSISTENT. A0 was not inspected, but under the literal generation rule it is contaminated and must not be represented as untouched or used later as an untouched adversarial band.  
+**Do-not-repeat condition:** For any future reserved-range protocol, inspect the generation path itself before execution; use isolated/segmented generation or another exact method that cannot traverse reserved intervals.
+
 ## Template
 
 ### FAIL-###
