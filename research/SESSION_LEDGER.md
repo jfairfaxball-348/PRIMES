@@ -235,7 +235,7 @@ Never reuse or renumber a completed session.
 **Decision blocker:** none  
 **Outgoing state:** DISCOVERY-1; D1-12 complete; E005 PARTIAL_PASS and still historically blinded; compact evidence/process record committed; novelty reserves A1/H3/A3/H4/A4 preserved untouched/uninspected; next bounded unit is D1-13 historical-theory unblinding/comparison.  
 **Next session:** D1-13 / SQ-005 — first freeze/commit a source-free blinded summary of the D1-12 selected normalization/rankings, M1-M5/PARTIAL_PASS result, residual-target outcome, Q1-Q3 and process stall point; then unblind against authoritative historical mathematical sources under Section 18 and assign only the frozen calibration labels, with no novelty promotion or collision audit.  
-**Commit:** implementation checkpoint `5b8646ea82ca6d3c08b60f75759d16c101f6a0fc`; Phase-A selection checkpoint `8bf4821106e4c5c3acc79bfadc85c2872797935e`; assessment evidence checkpoint `a5a79a9f67d20f88ee5381ead6d9220aeeb31a2f`; blinded execution record `e28ddec9f20b7a4c9c6fbdd9dc6a3a56e48fa0a6`; closeout state checkpoint `CLOSEOUT_STATE_COMMIT`.
+**Commit:** implementation checkpoint `5b8646ea82ca6d3c08b60f75759d16c101f6a0fc`; Phase-A selection checkpoint `8bf4821106e4c5c3acc79bfadc85c2872797935e`; assessment evidence checkpoint `a5a79a9f67d20f88ee5381ead6d9220aeeb31a2f`; blinded execution record `e28ddec9f20b7a4c9c6fbdd9dc6a3a56e48fa0a6`; closeout state checkpoint `0277d3a03ebede8169b9116d9ee2bcef4fafac45`.
 
 ## Entry template
 
