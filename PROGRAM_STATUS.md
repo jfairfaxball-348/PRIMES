@@ -4,14 +4,14 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-13 SQ-005 historical unblinding complete; E005 mechanical PARTIAL_PASS / historical comparison STALLED_BEFORE_KEY_IDEA; D1-14 calibration postmortem next; A1/H3/A3/H4/A4 untouched**
+**DISCOVERY-1 — D1-14 SQ-005 calibration postmortem complete; SQ-005 methodologically closed; D1-15 / SQ-006 novelty representation preflight next; A1/H3/A3/H4/A4 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-005 D1-13 UNBLINDING COMPLETE; POSTMORTEM NEXT | E005 remains mechanically PARTIAL_PASS; bounded historical comparison is STALLED_BEFORE_KEY_IDEA; calibration quarantine remains intact |
+| Pattern discovery | OPEN / SQ-005 COMPLETE; NOVELTY PREFLIGHT NEXT | E005 remains mechanically PARTIAL_PASS and historically STALLED_BEFORE_KEY_IDEA; D1-14 process hardening is complete; calibration quarantine remains intact |
 | Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -74,6 +74,10 @@ Status date: 2026-10-06
 - only after that checkpoint, D1-13 performed the bounded Section-18 comparison against Riemann's 1859 paper plus authoritative DLMF/Clay references and committed `experiments/E005_HISTORICAL_UNBLINDING_2026-10-06.md` at `7717aecb1fb27f10c71f7f6a97cd0110f44bc36a`;
 - historical comparison: selected `N03` is **DESCRIPTIVE_ONLY** as a leading description; frozen `N01=d*ln(s)` is a **DIRECT_HISTORICAL_MATCH** at the object level but was not selected; the scale-search process is **USEFUL_PARTIAL_REDISCOVERY**; the empirical residual/R0-R4 search is **DESCRIPTIVE_ONLY**; the missing global weighted-prime-power/multiplicative analytic representation is **STALLED_BEFORE_KEY_IDEA**; overall E005 historical label **STALLED_BEFORE_KEY_IDEA**;
 - the post-unblinding label does not alter the frozen mechanical **PARTIAL_PASS**; no E005 value was rerun or retuned, no novelty evidence/status changed, no collision audit was run, and A1/H3/A3/H4/A4 remain untouched/uninspected;
+- D1-14 closed SQ-005 without additional calibration execution: no prime data were generated, no E005 object was recomputed or relabelled, and no novelty observation/candidate/failure status changed;
+- `docs/CALIBRATION_PROTOCOL.md` now contains a target-agnostic representation-switch trigger: when a frozen family achieves some development compression but fails predeclared generalization criteria, freeze the failure/partial result and, if continuation is justified, use a separately frozen qualitatively different representation family rather than retuning inspected holdout output;
+- the calibration protocol also now requires multi-subscale selectors to expose per-subscale diagnostics, identify dominant/worst-case subscales, predeclare an influence diagnostic such as leave-one-subscale-out re-ranking, flag subscale-sensitive winners, and treat any post-assessment reweighting/removal as a new design requiring fresh untouched assessment data;
+- these D1-14 lessons are process-only: unblinded E005 objects and historical mechanisms remain barred from novelty feature selection, evidence, targets, candidates, and reserve-inspection rationale;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
@@ -126,6 +130,7 @@ D4 has now been generated only by the validated segmented E004 path plus low sup
 - Development selections were committed before assessment generation.
 - D1-12 mechanical outcome: **PARTIAL_PASS**.
 - D1-13 historical comparison outcome: **STALLED_BEFORE_KEY_IDEA**.
+- D1-14 methodological outcome: **SQ-005 COMPLETE** with generic representation-switch and scoring-diagnostic safeguards added to the calibration protocol; no E005 semantics changed.
 - Calibration outputs and historical comparison are permanently ineligible for OBS/CAND allocation or novelty evidence.
 
 All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H3, A3, H4, A4 and all novelty guard bands. D1-12 executed exactly the three development and three assessment segments through the frozen segmented guard. Compact committed records are `research/evidence/E005_development_selection.json` and `research/evidence/E005_assessment.json`; the full blinded execution record is `experiments/E005_BLINDED_EXECUTION_2026-10-06.md`.
@@ -141,7 +146,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-14 / SQ-005:** perform one calibration postmortem/process-hardening unit using E005 and D1-13 only as frozen calibration history. Extract target-agnostic methodological lessons from the mechanical PARTIAL_PASS and historical STALLED_BEFORE_KEY_IDEA result: define when a future calibration should switch representation families rather than retune a stalled elementary grammar, and record generic scoring-design safeguards against one high-variance subscale dominating selection. Do not change E005, import historical E005 objects into novelty discovery, generate prime data, create OBS/CAND IDs, run a novelty collision audit, or touch A1/H3/A3/H4/A4. If the generic lessons are fully governed by the existing calibration protocol, encode them and close SQ-005 methodologically.
+**D1-15 / SQ-006:** run a design-only novelty representation-family preflight. Using only the project charter, discovery protocol, frozen E001/E002/E003/E004 novelty history, and target-agnostic methodology, choose and freeze one qualitatively distinct representation family not already exhausted by E001/E003/E004. Declare its primitive objects, transform grammar, deterministic serialization, descriptive allowlist, promotion grammar, one-shot holdout criterion templates, fresh metadata-only discovery/holdout/adversarial ranges, and a fail-closed future generation plan. Do not generate prime data, inspect A1/H3/A3/H4/A4 or guard ranges, create OBS/CAND IDs, alter existing statuses, perform mechanism/proof work, run prior-art search, or use E005 historical objects/theory to steer the representation choice.
 
 ## Research inventory
 
@@ -161,11 +166,13 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 6. Historical rediscovery is a quarantined calibration lane and cannot generate novelty claims.
 7. E001 H0 cannot be used to tune any feature; proposed observations must be frozen exactly before one-shot holdout replication.
 8. No candidate conjecture may be created unless an exact observation has survived an untouched holdout.
+9. A failed or partial calibration representation must not be repaired on inspected assessment data; a justified continuation uses a separately frozen qualitatively different family with untouched assessment data.
+10. Multi-subscale calibration selectors must expose subscale influence diagnostics; post-assessment reweighting or subscale removal is a new calibration design, not a repair of the old one.
 
 ## Next stage
 
-DISCOVERY-1 remains active inside the quarantined historical-rediscovery calibration lane. D1-13 completed the required historical-theory unblinding/comparison after first committing the source-free checkpoint.
+DISCOVERY-1 returns to the novelty lane after the quarantined historical-rediscovery calibration unit.
 
-The frozen D1-12 result remains **PARTIAL_PASS**. Post-unblinding, E005 receives the overall historical calibration label **STALLED_BEFORE_KEY_IDEA**: the elementary scale search made a **USEFUL_PARTIAL_REDISCOVERY**, the historically matched full-log object N01 was present but not selected, the selected N03 and residual-sign machinery were **DESCRIPTIVE_ONLY**, and the decisive global weighted-prime-power/multiplicative analytic representation lay outside the frozen grammar.
+SQ-005 is methodologically complete. Its frozen history remains: D1-12 mechanical **PARTIAL_PASS**, D1-13 historical comparison **STALLED_BEFORE_KEY_IDEA**, and D1-14 target-agnostic process hardening only. The calibration protocol now records when to switch representation families rather than retune a failed grammar and how to expose single-subscale dominance in selector diagnostics. None of those amendments changes E005 or transfers its historical objects into novelty work.
 
-The next bounded unit is D1-14 / SQ-005 calibration postmortem and generic process-hardening. It must extract only target-agnostic lessons, preserve the E005 quarantine, and avoid steering the novelty lane with the now-unblinded historical objects. If those lessons can be codified under the existing calibration protocol, D1-14 should close SQ-005 methodologically and hand the programme back to a separately bounded novelty-discovery unit.
+The next bounded unit is D1-15 / SQ-006, a design-only novelty representation-family preflight. It must choose and freeze one qualitatively distinct blind-discovery family using novelty-lane authority only, predeclare fresh metadata-only ranges and promotion/holdout rules, and stop before prime generation. A1, H3, A3, H4, and A4 remain untouched/uninspected and must stay outside the new target ranges.
