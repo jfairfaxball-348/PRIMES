@@ -4,14 +4,14 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-18 / SQ-006 synthesis complete with no candidate; OBS-008 remains REPLICATED; SQ-006 closed; SQ-007 blind novelty preflight next; A6 and historical reserves/guards untouched**
+**DISCOVERY-1 — D1-19 / SQ-007 preflight complete; E007 neighbour-factorization coupling FROZEN / NOT EXECUTED; D1-20 D7 discovery next; historical reserves/guards and fresh H7/A7 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-006 CLOSED; SQ-007 PREFLIGHT NEXT | E006 produced one replicated observation but no justified candidate; continue with a fresh blind novelty representation family while calibration quarantine remains intact |
+| Pattern discovery | OPEN / SQ-007 E007 FROZEN; D7 DISCOVERY NEXT | E007 is frozen before output as a multiplicative neighbour-factorization family; execute D7 only under the frozen grammar while calibration quarantine and all protected ranges remain intact |
 | Observation promotion | OPEN / 4 REPLICATED; 5 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / NONE PROMOTED | D1-18 found no non-arbitrary CAND statement from OBS-008 beyond a two-band finite restatement; D1-02/D1-06/D1-18 are explicit no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -154,6 +154,10 @@ No H6 mining, retargeting, new observation promotion, candidate synthesis, mecha
 
 D1-18 then performed synthesis-only triage over OBS-008 and allocated no `CAND-###`. The exact evidence remains h=294 as the rho=21 strict within-class maximum on D6 (10,373 versus 10,333; margin 40) and H6 (10,305 versus highest same-class competitor h=126 at 10,301; margin 4). Restricting a statement to those two bands would only restate committed computation; extending beyond them would require an unsupported quantifier over an untested band, origin, width, later scale, infinite family, or broader shift/class family. OBS-008 therefore remains REPLICATED with no candidate link. SQ-006 is closed without candidate promotion and A6 remains untouched.
 
+D1-19 then froze E007 before any E007 prime-derived output. E007 is a qualitatively distinct multiplicative neighbour-factorization representation: for a common odd-anchor domain, it compares exact factorization profiles of the two adjacent even composites x-1 and x+1 at prime anchors against odd-composite control anchors. All powers of two are stripped and the sides are canonically aligned as thin (v2=1) and thick (v2>=2), making parity/orientation controls non-promotable. Exactly four signature families are frozen: exponent-shape pairs, distinct-factor-count pairs, total-multiplicity pairs, and the sign of the largest-odd-factor comparison. Only a family's strict unique prime-anchor mode can be considered; tied modes have no fallback. Promotion additionally requires both anchor populations at least 1,000, target count at least 32, and strictly positive exact enrichment numerator against composite controls. The hard promotion cap is four, one per family.
+
+The E007 metadata-only partition is frozen as G7-pre=`[45_000_000,46_000_000)`, D7=`[46_000_000,47_000_000)`, G7-mid=`[47_000_000,48_000_000)`, H7=`[48_000_000,49_000_000)`, and A7=`[92_000_000,93_000_000)`. D7 is separated from consumed H6 by a full untouched guard; H7 is separated from D7 by another guard; A7 uses the established twice-discovery-lower-endpoint convention. A1, H3, H4, G6-mid, A3, A4, A6, and every E003/E004 guard remain untouched/non-target. E007 future generation is fail-closed: D7 may use only historically safe low support through 6,855 plus segmented D7, and every protected/non-target/partial/whole-prefix traversal must fail before prime generation. D1-19 generated no primes, allocated no OBS/CAND ID, ran no mechanism/proof/prior-art/literature work, and did not use SQ-005 calibration objects or historical-unblinding mechanisms to steer the family.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -180,7 +184,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-19 / SQ-007:** blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct representation family not already exhausted by E001/E003/E004/E006, using only novelty-lane authority and target-agnostic methodology. Generate no prime-derived output, inspect no protected reserve/guard, allocate no OBS/CAND ID, perform no mechanism/proof or prior-art work, and do not use SQ-005 calibration objects or historical-unblinding mechanisms to steer the family.
+**D1-20 / SQ-007:** implement and execute the frozen E007 D7 discovery unit only. Preserve the exact neighbour-factorization grammar, common odd-anchor prime/composite control partition, thin/thick normalization, F1-F4 signature families, floors, enrichment rule, deterministic allowlist/serialization, and fail-closed generation guard. Validate fully before generation; generate D7 twice for byte determinism; inspect only the frozen allowlist; allocate at most four observations mechanically and freeze exact H7 criteria before any future holdout generation. Do not generate H7/A7 or any historical protected range, create a candidate, perform mechanism/proof work, or run prior-art/collision/literature search.
 
 ## Research inventory
 
@@ -205,9 +209,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-18 / SQ-006 candidate-synthesis triage is complete with **NO CANDIDATE CREATED**. OBS-008 remains REPLICATED; OBS-005/006/007/009 remain REFUTED; SQ-006 is closed without A6 execution.
+DISCOVERY-1 remains in the blind novelty lane. D1-19 / SQ-007 is complete with E007 **FROZEN / NOT EXECUTED** and no observation/candidate allocation.
 
-The next bounded unit is D1-19 / SQ-007 blind novelty representation-family preflight. Choose and freeze exactly one qualitatively distinct representation family before any prime-derived execution, with a metadata-only numerical partition, exact descriptive/promotion grammar, one-shot holdout criteria, deterministic serialization, and fail-closed generation plan. Do not import SQ-005 calibration objects or historical-unblinding mechanisms, and do not rerun or mine prior novelty experiments.
+The next bounded unit is D1-20 / SQ-007 E007 D7 discovery execution. Implement the exact frozen neighbour-factorization evaluator and fail-closed guard, satisfy every pre-generation validation obligation in `experiments/E007_NEIGHBOUR_FACTORIZATION_COUPLING.md`, execute only D7=`[46_000_000,47_000_000)` twice for byte determinism, inspect only the frozen descriptive allowlist, and mechanically apply only the F1-F4 promotion grammar. Freeze exact same-family/same-target H7 criteria for any promoted observations before any future H7 generation. If no family qualifies, record NO ELIGIBLE OBSERVATION and close SQ-007 without relaxing the grammar.
 
-A1, H3, H4, A3, A4, G6-mid, A6, and all E003/E004 guards remain untouched/non-target.
-
+G7-pre, G7-mid, H7, A7, A1, H3, H4, G6-mid, A3, A4, A6, and all E003/E004 guards remain untouched/non-target. SQ-005 calibration objects and historical-unblinding mechanisms remain quarantined from novelty selection and interpretation.
