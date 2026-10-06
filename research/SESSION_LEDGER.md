@@ -57,6 +57,24 @@ Never reuse or renumber a completed session.
 **Next session:** D1-02 / SQ-001 — candidate-synthesis triage over OBS-001 through OBS-003 only, using committed D0+H0 evidence without new mining or tuning; create only exact justified CAND records, keep novelty UNAUDITED, and do not run prior-art, mechanism work, or A0 in the same bounded unit.  
 **Commit:** substantive checkpoint commits `0675fbae1fc59cf47f7ce6e94bfbd6e14f12eea8`, `cfb585d8ecbb881212d50ae1c927e03b68a759ed`, `2bb1ef79ab9deed55409fff42dd8815f32330c33`, `679be3774fc6eb80c0e560fccc490f591d08b62f`, `769f139df003693426c25dbb1d76bbb76e3c765f`, `72baff1db3cf06e5871d1ace433788d20413396d`, `2dbdf1e526067b42ccb9fa5e7e77f2629be2bd21`.
 
+
+### S004
+
+**Date:** 2026-10-06  
+**Stage:** discovery  
+**Bounded objective:** D1-02 / SQ-001 — triage the three replicated E001 observations for mathematically precise, falsifiable candidate synthesis using only committed D0+H0 evidence, without retuning, new computation, A0 inspection, mechanism work, proof work, or prior-art search.  
+**Incoming state:** DISCOVERY-1 at main head `a5ea4c50afd7d94bae76d6d00e029c907aa377fa`; OBS-001 through OBS-003 REPLICATED, OBS-004 REFUTED, candidate gate eligible but no candidates, A0 untouched, live prompt requested candidate-synthesis triage.  
+**Work performed:** Read all required authority, ledgers, frozen E001 specification, D0/H0 execution records, compact evidence, and the live prompt before changing anything; additionally checked the committed candidate-promotion protocol. Considered only OBS-001, OBS-002, and OBS-003. Tested whether the exact two-band evidence admitted a non-arbitrary mathematical statement rather than a finite restatement or an unsupported extrapolation. Recorded per-observation triage reasons in the conjecture register and observation ledger, preserved OBS-004 exactly as REFUTED, advanced SQ-002 to the next preflight unit, updated programme status, and replaced the live prompt with a cross-scale persistence preflight. No prime-derived computation was run.  
+**Result:** No `CAND-###` was created. OBS-001 and OBS-002 remain replicated range-local modal-rank observations: promoting either now would require an unsupported quantifier over band origin, width, scale, or eventual/asymptotic behaviour, while a D0+H0-only statement would merely restate finite evidence. OBS-003 remains a replicated finite-grid support observation: the five frozen moduli across D0+H0 do not justify an all-moduli and/or infinite-occurrence claim, while a candidate restricted to the observed grid would largely restate finite coverage. OBS-004 remains REFUTED by `[1_671_800, 1_671_900)`.  
+**Observations/candidates affected:** OBS-001, OBS-002, OBS-003 retained at REPLICATED with no candidate link; OBS-004 preserved at REFUTED; active candidates remain 0 and no candidate ID was allocated.  
+**Validation:** Documentation-only consistency checks passed after checkpoint: no allocated `CAND-###` heading; active candidates still none; all three replicated observations contain explicit no-promotion notes; OBS-004 status and exact H0 counterexample are preserved; A0 remains recorded untouched; `PROGRAM_STATUS.md`, `research/SEARCH_QUEUE.md`, and `NEXT_SESSION_PROMPT.md` agree on D1-03 / SQ-002; the next prompt explicitly forbids E002 execution and A0 use. No code or mathematical computation changed, so pytest/Ruff/experiment reruns were not appropriate validation for this unit.  
+**Failures/limitations:** No new execution or repository failure. Candidate synthesis remains evidence-limited: two adjacent low-scale bands are enough for replication but not for a non-arbitrary extrapolation. No novelty conclusion was attempted.  
+**Decision blocker:** none  
+**Outgoing state:** DISCOVERY-1; D1-02 complete with no candidate created; OBS-001 through OBS-003 remain replicated; OBS-004 remains refuted; A0 untouched; next task is a design-only cross-scale persistence preflight.  
+**Next session:** D1-03 / SQ-002 — freeze E002 cross-scale persistence bands and exact criteria for OBS-001 through OBS-003 without executing E002, touching A0, creating a candidate, or performing mechanism/prior-art work.  
+**Commit:** substantive checkpoint commit `89cdcfb432ea63a22b148a3596b6a5818b9633bb`.
+
+
 ## Entry template
 
 ### S###
