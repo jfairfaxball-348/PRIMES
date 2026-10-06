@@ -164,7 +164,7 @@ Next bounded action: D1-11 / SQ-005 — design and freeze the first quarantined 
 
 Stage: calibration
 
-Status: **D1-12 BLINDED EXECUTION COMPLETE — PARTIAL_PASS; HISTORICAL THEORY STILL BLINDED; D1-13 UNBLINDING NEXT**
+Status: **D1-13 HISTORICAL UNBLINDING COMPLETE — MECHANICAL PARTIAL_PASS; HISTORICAL COMPARISON STALLED_BEFORE_KEY_IDEA; D1-14 CALIBRATION POSTMORTEM NEXT**
 
 Governing protocol: `docs/CALIBRATION_PROTOCOL.md`.
 
@@ -172,36 +172,38 @@ Frozen benchmark: `experiments/E005_PRIME_COUNT_SCALE_CALIBRATION.md`.
 
 Blinded execution record: `experiments/E005_BLINDED_EXECUTION_2026-10-06.md`.
 
-Compact evidence:
+Required pre-unblinding checkpoint:
+
+- `experiments/E005_PRE_UNBLINDING_SUMMARY_2026-10-06.md`;
+- committed at `8187a5a2021c124860848da39fc53702eac73921` before any historical source lookup.
+
+Historical comparison:
+
+- `experiments/E005_HISTORICAL_UNBLINDING_2026-10-06.md`;
+- committed at `7717aecb1fb27f10c71f7f6a97cd0110f44bc36a`.
+
+Compact blinded evidence remains frozen:
 
 - `research/evidence/E005_development_selection.json`;
 - `research/evidence/E005_assessment.json`.
 
 E005 remains permanently quarantined from the novelty lane and can never allocate `OBS-###` or `CAND-###` IDs or become novelty discovery/holdout/adversarial evidence.
 
-Implementation checkpoint: `5b8646ea82ca6d3c08b60f75759d16c101f6a0fc`. Pre-generation GitHub Actions validation passed Ruff, 57 tests, and the E000 baseline smoke.
+The D1-12 mechanical result remains exactly **PARTIAL_PASS** and is not reinterpreted by unblinding. Development selected `N03 = d * sqrt(ln(s))`; M1 FAIL, M2 PASS, M3 FAIL, M4 PASS, and M5 PASS. The frozen R1 target `(1,-1,-1)` failed assessment, where `(-1,-1,-1)` occurred at all five widths.
 
-Phase A generated only low support `[0,22651)` plus the frozen 128M/256M/512M maximum segments. Repeated development outputs were byte-identical: 44,730 bytes, SHA-256 `f40cfe0b5ca81ca8c4d78ab72cff3aebbad6f261f578b1f1bf97765797a8d8dd`.
+D1-13 followed Section 18 in the required order. The source-free summary above was committed before historical consultation. The bounded historical comparison used Riemann's 1859 paper as the primary source, with NIST DLMF and Clay Mathematics Institute material as authoritative modern/expository references.
 
-The mechanical development ranking is:
+Historical calibration result:
 
-`N03, N01, N05, N00, N06, N04, N02, N07, N08, N09, N10, N11, N12`.
+- selected `N03` as a leading historical description: **DESCRIPTIVE_ONLY**;
+- `N01 = d * ln(s)`, which was already present in the frozen palette but was not selected, corresponds directly to the historical logarithmic leading scale: **DIRECT_HISTORICAL_MATCH** at the object level only;
+- the scale-search process, because it reached the correct logarithmic neighbourhood and one nontrivial normalization compressed multiple widths, is **USEFUL_PARTIAL_REDISCOVERY**;
+- the empirical width-baseline residual and frozen R0-R4 residual transforms are **DESCRIPTIVE_ONLY**;
+- the missing move from local elementary density transforms to a global weighted prime-power / multiplicative analytic representation is **STALLED_BEFORE_KEY_IDEA**;
+- overall E005 historical-theory label: **STALLED_BEFORE_KEY_IDEA**.
 
-Selected `N* = N03 = d * sqrt(ln(s))`. It beats N00 at all five development widths. The five frozen baselines and complete ranking are committed in the development record. The frozen residual target is R1 word `(1,-1,-1)`, occurring for 3/5 development widths. Q1, Q2, and Q3 are all mechanically eligible.
+In hindsight, Q1 as instantiated with N03 is **DESCRIPTIVE_ONLY**, Q2 is **USEFUL_PARTIAL_REDISCOVERY**, and Q3 is **DESCRIPTIVE_ONLY**. The crucial methodological lesson is that further retuning inside the frozen pointwise elementary grammar would not have supplied the missing representation switch.
 
-The complete Phase-A selection checkpoint was committed at `8bf4821106e4c5c3acc79bfadc85c2872797935e`, record SHA-256 `8a61a5b0e2ceca49f5af06f26970c37808cacc2d55c82bbcfd0eb87f6434b401`, before any assessment generation.
+Novelty reserves A1=`[33_000_000,34_000_000)`, H3=`[37_000_000,38_000_000)`, H4=`[41_000_000,42_000_000)`, A3=`[70_000_000,71_000_000)`, and A4=`[78_000_000,79_000_000)` remain untouched/uninspected. No existing observation/candidate/failure status changed, no novelty evidence was created, and no novelty collision audit was performed.
 
-Phase B then generated only low support `[0,64009)` plus the frozen 1.024B/2.048B/4.096B maximum segments. Repeated assessment outputs were byte-identical: 43,858 bytes, SHA-256 `4e363aa0ea34abd1ac96cd4136bbf6a89446d68e5cdda49afda90b23d7cd4d6d`.
-
-Frozen milestone outcome:
-
-- M1 FAIL — N03's assessment global spread `1.081395173183311354015959147128421186572241186879867120340799E+0` is worse than N00's `1.070182118154705247794910844596738371724094168411701250079320E+0`;
-- M2 PASS — N03 beats N00 width-by-width at 5/5 development widths and 4/5 assessment widths;
-- M3 FAIL — the frozen R1 target `(1,-1,-1)` occurs 0/5 on assessment, while `(-1,-1,-1)` occurs 5/5;
-- M4 PASS — Q1-Q3 were mechanically formed from development-selected objects;
-- M5 PASS — generation/firewall/holdout/quarantine discipline remained intact;
-- overall: **PARTIAL_PASS**.
-
-Novelty reserves A1=`[33_000_000,34_000_000)`, H3=`[37_000_000,38_000_000)`, H4=`[41_000_000,42_000_000)`, A3=`[70_000_000,71_000_000)`, and A4=`[78_000_000,79_000_000)` remain untouched/uninspected.
-
-Next bounded action: D1-13 / SQ-005 — perform the frozen historical-theory unblinding/comparison only. Before consulting historical sources, freeze and commit a short blinded calibration summary containing the selected normalization/rankings, M1-M5 and PARTIAL_PASS outcome, residual target result, Q1-Q3, and where the process stalled. Then consult authoritative historical mathematical sources and assign only the frozen calibration labels `DIRECT_HISTORICAL_MATCH`, `USEFUL_PARTIAL_REDISCOVERY`, `DESCRIPTIVE_ONLY`, or `STALLED_BEFORE_KEY_IDEA`. Do not create novelty evidence, OBS/CAND IDs, or a novelty collision audit.
+Next bounded action: **D1-14 / SQ-005 calibration postmortem and generic process-hardening.** Treat E005 and D1-13 as frozen calibration history. Extract only target-agnostic methodological lessons from the `PARTIAL_PASS` / `STALLED_BEFORE_KEY_IDEA` combination: define a generic trigger for switching representation families when a fixed elementary grammar compresses some scales but fails holdout/residual persistence, and record generic scoring-design safeguards against one high-variance subscale dominating selection. Do not retune E005, do not import Riemann/zeta/zero terminology or N01 as a novelty-lane feature/target, do not generate prime data, do not touch A1/H3/A3/H4/A4, and do not allocate OBS/CAND IDs. If those lessons can be encoded cleanly under the existing calibration protocol, update that protocol and close SQ-005 methodologically; otherwise record the exact remaining calibration-process dependency.
