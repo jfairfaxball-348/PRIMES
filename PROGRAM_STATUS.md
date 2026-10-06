@@ -4,14 +4,14 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-12 SQ-005 blinded execution complete; E005 PARTIAL_PASS / HISTORICAL THEORY STILL BLINDED; D1-13 unblinding comparison next; A1/H3/A3/H4/A4 untouched**
+**DISCOVERY-1 — D1-13 SQ-005 historical unblinding complete; E005 mechanical PARTIAL_PASS / historical comparison STALLED_BEFORE_KEY_IDEA; D1-14 calibration postmortem next; A1/H3/A3/H4/A4 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-005 E005 BLINDED EXECUTION COMPLETE; UNBLINDING NEXT | E005 completed with PARTIAL_PASS under the frozen blinded process; historical-theory comparison remains separate |
+| Pattern discovery | OPEN / SQ-005 D1-13 UNBLINDING COMPLETE; POSTMORTEM NEXT | E005 remains mechanically PARTIAL_PASS; bounded historical comparison is STALLED_BEFORE_KEY_IDEA; calibration quarantine remains intact |
 | Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -69,7 +69,11 @@ Status date: 2026-10-06
 - the complete development selection/baselines/target/questions record was committed at `8bf4821106e4c5c3acc79bfadc85c2872797935e` before assessment generation; compact record SHA-256 `8a61a5b0e2ceca49f5af06f26970c37808cacc2d55c82bbcfd0eb87f6434b401`;
 - Phase B then generated only low support `[0,64009)` plus the three frozen assessment segments, repeated byte-identically before assessment inspection: full artifact 43,858 bytes, SHA-256 `4e363aa0ea34abd1ac96cd4136bbf6a89446d68e5cdda49afda90b23d7cd4d6d`;
 - frozen assessment results: M1 FAIL because `S_N03(H5)=1.081395173183311354015959147128421186572241186879867120340799E+0` exceeds `S_N00(H5)=1.070182118154705247794910844596738371724094168411701250079320E+0`; M2 PASS with N03 better at 4/5 assessment widths; M3 FAIL because the frozen R1 target occurs 0/5 while `(-1,-1,-1)` occurs 5/5; M4 PASS; M5 PASS; overall outcome **PARTIAL_PASS**;
-- E005 remains historically blinded and permanently quarantined; no historical mathematical source was consulted, no OBS/CAND ID was allocated, and A1/H3/A3/H4/A4 remain untouched/uninspected;
+- E005 D1-12 execution remained historically blinded through its natural stop; no historical mathematical source was consulted during execution, no OBS/CAND ID was allocated, and A1/H3/A3/H4/A4 remained untouched/uninspected;
+- D1-13 committed the required source-free pre-unblinding summary at `8187a5a2021c124860848da39fc53702eac73921` before any historical-source lookup; the summary is `experiments/E005_PRE_UNBLINDING_SUMMARY_2026-10-06.md`;
+- only after that checkpoint, D1-13 performed the bounded Section-18 comparison against Riemann's 1859 paper plus authoritative DLMF/Clay references and committed `experiments/E005_HISTORICAL_UNBLINDING_2026-10-06.md` at `7717aecb1fb27f10c71f7f6a97cd0110f44bc36a`;
+- historical comparison: selected `N03` is **DESCRIPTIVE_ONLY** as a leading description; frozen `N01=d*ln(s)` is a **DIRECT_HISTORICAL_MATCH** at the object level but was not selected; the scale-search process is **USEFUL_PARTIAL_REDISCOVERY**; the empirical residual/R0-R4 search is **DESCRIPTIVE_ONLY**; the missing global weighted-prime-power/multiplicative analytic representation is **STALLED_BEFORE_KEY_IDEA**; overall E005 historical label **STALLED_BEFORE_KEY_IDEA**;
+- the post-unblinding label does not alter the frozen mechanical **PARTIAL_PASS**; no E005 value was rerun or retuned, no novelty evidence/status changed, no collision audit was run, and A1/H3/A3/H4/A4 remain untouched/uninspected;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
@@ -119,11 +123,14 @@ D4 has now been generated only by the validated segmented E004 path plus low sup
 - Nested widths: 4,096; 16,384; 65,536; 262,144; 1,048,576.
 - Maximum high-value segment per anchor: `[a,a+1_048_576)`.
 - Primitive prime-derived object: exact interval count only.
-- Development selections must be committed before assessment generation.
-- Historical theory remains blinded until a separate post-execution unblinding unit.
-- Calibration outputs are permanently ineligible for OBS/CAND allocation or novelty evidence.
+- Development selections were committed before assessment generation.
+- D1-12 mechanical outcome: **PARTIAL_PASS**.
+- D1-13 historical comparison outcome: **STALLED_BEFORE_KEY_IDEA**.
+- Calibration outputs and historical comparison are permanently ineligible for OBS/CAND allocation or novelty evidence.
 
-All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H3, A3, H4, A4 and all novelty guard bands. D1-12 has now executed exactly the three development and three assessment segments through the frozen segmented guard. The development and assessment outputs are permanently calibration-only. Compact committed records are `research/evidence/E005_development_selection.json` and `research/evidence/E005_assessment.json`; the full blinded execution record is `experiments/E005_BLINDED_EXECUTION_2026-10-06.md`. Historical theory remains blinded until D1-13.
+All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H3, A3, H4, A4 and all novelty guard bands. D1-12 executed exactly the three development and three assessment segments through the frozen segmented guard. Compact committed records are `research/evidence/E005_development_selection.json` and `research/evidence/E005_assessment.json`; the full blinded execution record is `experiments/E005_BLINDED_EXECUTION_2026-10-06.md`.
+
+D1-13 then unblinded only after the required source-free checkpoint. The pre-unblinding summary is `experiments/E005_PRE_UNBLINDING_SUMMARY_2026-10-06.md` (commit `8187a5a2021c124860848da39fc53702eac73921`), and the bounded historical comparison is `experiments/E005_HISTORICAL_UNBLINDING_2026-10-06.md` (commit `7717aecb1fb27f10c71f7f6a97cd0110f44bc36a`). These records are calibration-only and permanently quarantined from novelty synthesis.
 
 ## Session control
 
@@ -134,7 +141,7 @@ All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H
 
 ## Active task
 
-**D1-13 / SQ-005:** execute exactly one historical-theory unblinding/comparison unit under Section 18 of the frozen E005 specification. Before any historical-source lookup, freeze and checkpoint a short blinded summary of the D1-12 selection/ranking, M1-M5/outcome, residual target result, eligible Q1-Q3, and process stall point. Only after that checkpoint may historical sources/theory be consulted. Compare the blinded process to the hidden historical theory using only the frozen calibration labels; do not modify E005, create OBS/CAND IDs, make novelty claims, run a novelty collision audit, or touch A1/H3/A3/H4/A4.
+**D1-14 / SQ-005:** perform one calibration postmortem/process-hardening unit using E005 and D1-13 only as frozen calibration history. Extract target-agnostic methodological lessons from the mechanical PARTIAL_PASS and historical STALLED_BEFORE_KEY_IDEA result: define when a future calibration should switch representation families rather than retune a stalled elementary grammar, and record generic scoring-design safeguards against one high-variance subscale dominating selection. Do not change E005, import historical E005 objects into novelty discovery, generate prime data, create OBS/CAND IDs, run a novelty collision audit, or touch A1/H3/A3/H4/A4. If the generic lessons are fully governed by the existing calibration protocol, encode them and close SQ-005 methodologically.
 
 ## Research inventory
 
@@ -157,8 +164,8 @@ All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H
 
 ## Next stage
 
-DISCOVERY-1 remains active inside the quarantined historical-rediscovery calibration lane. D1-12 completed the frozen E005 benchmark with **PARTIAL_PASS** while historical theory remained blinded.
+DISCOVERY-1 remains active inside the quarantined historical-rediscovery calibration lane. D1-13 completed the required historical-theory unblinding/comparison after first committing the source-free checkpoint.
 
-The selected development normalization is N03 = d * sqrt(ln(s)). It won all five development width comparisons against raw density, but its one-shot assessment global spread was worse than raw density; it nevertheless retained lower spread at four of five assessment widths. The frozen development R1 sign target (1,-1,-1) did not persist: assessment produced (-1,-1,-1) at all five widths. Q1-Q3 were mechanically eligible and the firewall/holdout milestone passed.
+The frozen D1-12 result remains **PARTIAL_PASS**. Post-unblinding, E005 receives the overall historical calibration label **STALLED_BEFORE_KEY_IDEA**: the elementary scale search made a **USEFUL_PARTIAL_REDISCOVERY**, the historically matched full-log object N01 was present but not selected, the selected N03 and residual-sign machinery were **DESCRIPTIVE_ONLY**, and the decisive global weighted-prime-power/multiplicative analytic representation lay outside the frozen grammar.
 
-The next bounded unit is D1-13 / SQ-005 historical-theory unblinding/comparison. It must first commit a source-free blinded summary of these already-frozen results, then consult historical sources only for the comparison specified in Section 18 of E005. The comparison is calibration-only and can never change novelty-lane evidence or statuses.
+The next bounded unit is D1-14 / SQ-005 calibration postmortem and generic process-hardening. It must extract only target-agnostic lessons, preserve the E005 quarantine, and avoid steering the novelty lane with the now-unblinded historical objects. If those lessons can be codified under the existing calibration protocol, D1-14 should close SQ-005 methodologically and hand the programme back to a separately bounded novelty-discovery unit.
