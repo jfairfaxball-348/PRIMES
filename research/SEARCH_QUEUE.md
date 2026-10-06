@@ -192,21 +192,45 @@ SQ-005 is closed methodologically. Historical calibration records remain permane
 
 Next bounded action: **D1-15 / SQ-006 novelty representation-family preflight.** Return to the novelty lane in a design-only unit. Using only the project charter, discovery protocol, frozen novelty-lane records, and target-agnostic methodology, choose and freeze one qualitatively distinct representation family not already exhausted by E001/E003/E004. Do not generate prime data, inspect protected reserves, allocate OBS/CAND IDs, run prior-art search, or use E005 historical objects to choose the family.
 
-## SQ-006 — Novelty representation-family preflight
+## SQ-006 — Translation-overlap spectrum
 
 Stage: discovery
 
-Status: **D1-15 PREFLIGHT NEXT — DESIGN ONLY / NO PRIME GENERATION**
+Status: **D1-15 PREFLIGHT COMPLETE — E006 FROZEN / NOT EXECUTED; D1-16 D6 DISCOVERY EXECUTION NEXT**
 
-Purpose: restart blind novelty discovery after closing the calibration lane, without transferring target-specific historical content from E005.
+Frozen specification: `experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md`
 
-D1-15 must:
+Purpose: search an exact value-space translation representation that is qualitatively distinct from E001 sequential/occupancy representations, E003 event-centred neighbourhoods, and E004 residue-transition factorization. E006 counts all prime pairs at frozen additive shifts whether or not the primes are consecutive.
 
-- select exactly one new representation family using only novelty-lane history plus the generic project/discovery methodology;
-- make the family qualitatively distinct from the already executed E001 baseline grid, E003 event-centred neighbourhood grammar, and E004 residue-transition factorization grammar;
-- freeze primitive objects, transform grammar, deterministic ordering/serialization, descriptive allowlist, promotion grammar, and one-shot holdout criterion templates before any output;
-- select fresh discovery/holdout/adversarial ranges by a metadata-only rule that preserves A1/H3/A3/H4/A4 and all guard ranges as untouched/non-target;
-- define a fail-closed generation plan before any later execution;
-- keep E005 design/results/unblinded theory outside the novelty feature-selection rationale.
+Fresh metadata-only partition:
 
-D1-15 is preflight only. It must not generate prime-derived output, inspect a protected range, allocate an `OBS-###` or `CAND-###`, alter an existing status, perform mechanism/proof work, or run a prior-art/collision audit.
+- discovery D6: `[42_000_000, 43_000_000)`;
+- E006 discovery/holdout guard G6-mid: `[43_000_000, 44_000_000)`;
+- untouched holdout H6: `[44_000_000, 45_000_000)`;
+- adversarial A6: `[84_000_000, 85_000_000)`.
+
+Range rule: start at the first million-aligned width-1,000,000 band after the greatest valid novelty discovery value reached by D4 and skip every frozen protected/non-target novelty band. `[40M,41M)` is G4-mid and `[41M,42M)` is H4, so D6 is the first eligible band. Leave one full-width guard before H6. Set A6's lower endpoint to twice D6's lower endpoint. This rule uses only committed novelty generation/range metadata and arithmetic, not prime behaviour.
+
+A1=`[33M,34M)`, H3=`[37M,38M)`, H4=`[41M,42M)`, A3=`[70M,71M)`, A4=`[78M,79M)`, both E003 guards, and both E004 guards retain their frozen untouched/non-target roles and are excluded from E006.
+
+Frozen primitive/transform grammar:
+
+- band-local prime indicator `I_B(x)`;
+- common shift horizon `H=floor(sqrt(1_000_000))=1000`;
+- frozen shifts `S={2,4,...,1000}`;
+- common anchor domain `L <= x < U-H` for every shift;
+- exact all-pairs translation overlap `C_B(h)=sum I_B(x)I_B(x+h)`;
+- no adjacency requirement and no gap, occupancy, event, residue-transition, or modulus-refinement object.
+
+Exact non-promotable triviality control: group shifts by odd radical `rho(h)`, which fixes the complete deterministic two-point modular-admissibility profile of `{0,h}` while keeping parity fixed. This control uses shift metadata only. The frozen 500 shifts form 204 radical classes; 11 classes contain at least eight shifts.
+
+Promotion cap: 5 observations. A radical class is eligible only if it has at least 8 members, one shift is the strict unique maximum of exact `C_D6(h)`, and that target has at least 8 pair occurrences. Ties fail. If more than five classes qualify, rank by dominance margin, target count, class size, radical, then shift. Parity/radical facts, boundary exposure, encoding identities, cross-class comparisons, and conversions into consecutive-gap claims are non-promotable.
+
+Any promoted D6 observation freezes the exact same-target strict-unique-maximum H6 criterion before H6 generation. H6 replication later requires the unchanged class/transform semantics, at least 8 target pair occurrences, and the same shift strictly beating every class competitor.
+
+Generation guard: low base support may use only historically generated safe support inside `[0,100_000)`; every new high-value interval must be segmented directly inside the currently authorized E006 target. D6 needs base primes only through 6,557. Whole-prefix high-value generation and any traversal of historical protected/guard ranges, G6-mid, H6, A6, or other non-target ranges must fail before prime generation.
+
+D1-15 result: **PREFLIGHT FROZEN CLEANLY / NO PRIME-DERIVED OUTPUT GENERATED**. No `OBS-###` or `CAND-###` ID was allocated; no prior novelty grammar was rerun/mined/relaxed; calibration objects did not steer the representation; observation/conjecture/failure statuses remain unchanged.
+
+Next bounded action: **D1-16 / SQ-006 E006 D6 discovery execution.** Implement the frozen E006 evaluator and fail-closed guard, validate exact semantics before generation, execute D6 twice for byte determinism, inspect only the frozen allowlist, mechanically apply the frozen promotion grammar, and stop without generating H6/A6 or creating a candidate.
+
