@@ -32,6 +32,21 @@ No `CAND-###` was allocated. D1-06 considered only `OBS-002` and `OBS-003`, beca
 **Triage conclusion:** this is a second explicit no-candidate result. Cross-scale persistence resolved the D1-02 evidence gap for repeated fixed-width testing, but did not resolve the quantifier-selection problem. Active candidates therefore remain zero; no candidate ID was allocated; novelty audit remains inapplicable. No mechanism/proof work, prior-art search, A0/A1 generation, new prime-derived computation, representation mining, modulus addition, band addition, or threshold tuning was performed. A1 remains frozen and untouched.
 
 
+## D1-18 / SQ-006 candidate-synthesis triage — 2026-10-06
+
+No `CAND-###` was allocated. D1-18 considered only `OBS-008`, the sole E006 observation that survived its frozen one-shot H6 criterion. `OBS-005`, `OBS-006`, `OBS-007`, and `OBS-009` remain REFUTED and were excluded from promotion.
+
+| Observation | Triage outcome | Reason |
+|---|---|---|
+| `OBS-005` | EXCLUDED | REFUTED on H6 under its frozen same-class strict-maximum criterion; no retargeting is permitted. |
+| `OBS-006` | EXCLUDED | REFUTED on H6 under its frozen same-class strict-maximum criterion; no retargeting is permitted. |
+| `OBS-007` | EXCLUDED | REFUTED on H6 under its frozen same-class strict-maximum criterion; no retargeting is permitted. |
+| `OBS-008` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E006 semantics, rho=21 target shift h=294 is the strict within-class maximum on D6 with 10,373 versus 10,333 (margin 40) and on H6 with 10,305 versus highest same-class competitor h=126 at 10,301 (margin 4). A statement restricted to exactly D6 and H6 would only restate the committed finite computation. Any stronger statement would have to quantify over at least one untested band, origin, width, later scale, infinite family, or broader shift/class family. E006 supplies no non-arbitrary rule supporting such an added quantifier, and D1-18 is forbidden to introduce one. |
+| `OBS-009` | EXCLUDED | REFUTED on H6 under its frozen same-class strict-maximum criterion; no retargeting is permitted. |
+
+**Triage conclusion:** no candidate created. `OBS-008` remains REPLICATED with no candidate link. The two-band D6+H6 evidence is sufficient for replication but not for an exact non-arbitrary conjectural extrapolation under the project candidate-promotion rules. Active candidates remain zero; no candidate ID or novelty status was allocated. A6 remains frozen, untouched, uninspected, and unexecuted. No new prime-derived computation, H6/D6 mining, mechanism/proof work, prior-art/collision search, literature search, calibration-object transfer, protected-range inspection, retargeting, or grammar change occurred.
+
+
 Do not create a candidate merely because a pattern is visually interesting. See `docs/DISCOVERY_PROTOCOL.md`.
 
 ## Template
