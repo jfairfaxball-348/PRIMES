@@ -40,7 +40,7 @@ Next bounded action: D1-03 / SQ-002 cross-scale persistence preflight. Freeze a 
 
 Stage: replication
 
-Status: **FROZEN — E002 READY FOR EXECUTION; NO E002 RESULTS GENERATED**
+Status: **EXECUTION COMPLETE — OBS-001 NOT PERSISTENT; OBS-002/003 PERSISTENT; A0 QUARANTINED AFTER PROTOCOL CONTAMINATION**
 
 Frozen specification: `experiments/E002_CROSS_SCALE_PERSISTENCE.md`
 
@@ -68,7 +68,11 @@ Goal: test definition-preserving persistence with increasing value magnitude whi
 
 Promotion cap: no new observations or candidates in the E002 execution unit; it records persistence outcomes for the existing replicated observations only.
 
-Next bounded action: D1-04 / SQ-002 — implement and execute the frozen E002 criterion-only test, validate determinism, evaluate only the predeclared criteria, keep A0 untouched, and do not mine new phenomena or perform candidate/mechanism/prior-art work.
+Execution result: valid implementation checkpoint `1d819af033b1869a144de6e840c72af0c13abea6` produced a byte-deterministic 10,107-byte criterion artifact, SHA-256 `32d24d5ea2417b1fdbf02b0787e6a616170162e0f7373dae32cf6906f19d37d5`. OBS-001 is **NOT PERSISTENT** because S1 and S3 fail the frozen strict unique-mode criterion. OBS-002 is **PERSISTENT** across S1-S5. OBS-003 is **PERSISTENT** across S1-S5 with complete support for every frozen modulus in every band. Historical E001 REPLICATED/REFUTED statuses are unchanged.
+
+Protocol incident: the discarded first implementation constructed a whole-prefix prime list through 32,999,999 and therefore internally generated A0 before filtering. No A0 values or A0-derived criterion output were inspected, but under the literal exclusion rule A0 is contaminated and quarantined; see FAIL-003. The corrected valid E002 run used isolated segmented generation and did not traverse A0.
+
+Next bounded action: D1-05 / SQ-002 — protocol-recovery preflight. Preserve the valid E002 outcomes, formally retire A0 from untouched-adversarial use, and freeze a fresh replacement adversarial reserve by a declared deterministic rule before any candidate synthesis, adversarial execution, mechanism work, or prior-art audit. Do not generate the replacement range in that preflight.
 
 ## SQ-003 — Event-centred neighbourhoods
 
