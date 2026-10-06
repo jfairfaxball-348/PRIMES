@@ -238,3 +238,104 @@ def test_guard_rejects_before_any_prime_generation(monkeypatch: pytest.MonkeyPat
     with pytest.raises(ValueError, match="undeclared or duplicate"):
         execute_generation_plan(undeclared, phase="development")
     assert called is False
+
+    with pytest.raises(ValueError, match="raw-prime serialization"):
+        execute_generation_plan(good, phase="development", serialize_raw_primes=True)
+    assert called is False
+
+
+def test_assessment_plan_rejection_precedes_generation(monkeypatch: pytest.MonkeyPatch) -> None:
+    called = False
+
+    def forbidden_base(_: int) -> tuple[int, ...]:
+        nonlocal called
+        called = True
+        return ()
+
+    monkeypatch.setattr(
+        "experiments.E005_prime_count_scale_calibration._base_primes", forbidden_base
+    )
+    plan = generation_plan("assessment", development_checkpoint_verified=True)
+    with pytest.raises(ValueError, match="verified committed development checkpoint"):
+        execute_generation_plan(plan, phase="assessment")
+    assert called is False
+
+
+
+def test_compact_checkpoint_records_bind_full_artifact_digest() -> None:
+    development = {
+        "experiment": "E005",
+        "lane": "historical_rediscovery_calibration",
+        "phase": "development",
+        "implementation_commit": "a" * 40,
+        "candidate_order": list(CANDIDATES),
+        "candidate_scores": {candidate: decimal_string(Decimal(index + 1)) for index, candidate in enumerate(CANDIDATES)},
+        "candidate_ranking": list(CANDIDATES),
+        "width_spreads": {candidate: {name: decimal_string(Decimal(1)) for name, _ in WIDTHS} for candidate in CANDIDATES},
+        "selection": {
+            "normalization": "N01",
+            "development_width_wins_over_N00": 5,
+            "baselines": {name: decimal_string(Decimal(1)) for name, _ in WIDTHS},
+            "residual_sign_target": "NO_RESIDUAL_SIGN_TARGET",
+            "eligible_questions": [{"id": "Q1", "text": "x"}],
+        },
+    }
+    full = serialise_payload(development)
+    checkpoint = build_development_checkpoint(development, full)
+    assert checkpoint["phase"] == "development_selection_checkpoint"
+    assert checkpoint["development_artifact"]["bytes"] == len(full)
+    assert checkpoint["selection"]["normalization"] == "N01"
+
+    assessment = {
+        "experiment": "E005",
+        "lane": "historical_rediscovery_calibration",
+        "phase": "assessment",
+        "implementation_commit": "a" * 40,
+        "development_checkpoint": {"record_sha256": "0" * 64},
+        "candidate_scores": development["candidate_scores"],
+        "candidate_ranking": development["candidate_ranking"],
+        "width_spreads": development["width_spreads"],
+        "selected_normalization_assessment": {
+            "normalization": "N01",
+            "assessment_width_wins_over_N00": 4,
+            "residual_target_evaluation": None,
+        },
+        "milestones": {"M1": True, "M2": True, "M3": False, "M4": True, "M5": True, "overall_outcome": "STRONG_PASS"},
+    }
+    assessment_full = serialise_payload(assessment)
+    assessment_checkpoint = build_assessment_checkpoint(assessment, assessment_full)
+    assert assessment_checkpoint["phase"] == "assessment_checkpoint"
+    assert assessment_checkpoint["assessment_artifact"]["bytes"] == len(assessment_full)
+    assert assessment_checkpoint["milestones"]["overall_outcome"] == "STRONG_PASS"
+
+def test_development_record_verification(tmp_path: Path) -> None:
+    record = {
+        "experiment": "E005",
+        "phase": "development_selection_checkpoint",
+        "implementation_commit": "a" * 40,
+        "selection": {
+            "normalization": "N01",
+            "baselines": {name: "1.000000000000000000000000000000000000000000000000000000000000E+0" for name, _ in WIDTHS},
+            "eligible_questions": [],
+        },
+    }
+    data = serialise_payload(record)
+    path = tmp_path / "development.json"
+    path.write_bytes(data)
+    import hashlib
+
+    digest = hashlib.sha256(data).hexdigest()
+    loaded = verify_development_record(
+        path,
+        expected_sha256=digest,
+        development_record_commit="b" * 40,
+        code_commit="a" * 40,
+    )
+    assert loaded["selection"]["normalization"] == "N01"
+    with pytest.raises(ValueError, match="SHA-256"):
+        verify_development_record(
+            path,
+            expected_sha256="0" * 64,
+            development_record_commit="b" * 40,
+            code_commit="a" * 40,
+        )
