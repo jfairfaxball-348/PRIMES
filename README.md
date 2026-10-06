@@ -4,7 +4,7 @@ A long-horizon experimental mathematics programme for discovering, stress-testin
 
 **Current stage: BOOTSTRAP / DISCOVERY-0. No novelty claim, conjecture claim, or theorem claim is currently active.**
 
-Start every serious session at [START_HERE.md](START_HERE.md), then read [PROJECT_CHARTER.md](PROJECT_CHARTER.md) and [AGENTS.md](AGENTS.md).
+Start every serious session at [START_HERE.md](START_HERE.md), then read [PROJECT_CHARTER.md](PROJECT_CHARTER.md), [AGENTS.md](AGENTS.md), and [docs/SESSION_PROTOCOL.md](docs/SESSION_PROTOCOL.md). Sessions close autonomously at a natural checkpoint and emit the next runnable session prompt unless a genuine owner decision blocks continuation.
 
 ## Mission
 
@@ -162,12 +162,16 @@ PRIMES/
 ├── docs/
 │   ├── DISCOVERY_PROTOCOL.md
 │   ├── NOVELTY_PROTOCOL.md
+│   ├── SESSION_PROTOCOL.md
+│   ├── CALIBRATION_PROTOCOL.md
 │   ├── RIEMANN_AS_METHOD.md
 │   └── RESEARCH_ATLAS.md
 ├── research/
 │   ├── OBSERVATION_LEDGER.md
 │   ├── CONJECTURE_REGISTER.md
-│   └── FAILURE_LEDGER.md
+│   ├── FAILURE_LEDGER.md
+│   ├── SESSION_LEDGER.md
+│   └── SEARCH_QUEUE.md
 ├── experiments/
 │   ├── README.md
 │   └── E000_baseline_scan.py
