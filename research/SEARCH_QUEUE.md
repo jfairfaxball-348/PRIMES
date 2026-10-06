@@ -120,7 +120,7 @@ Next bounded action: D1-09 / SQ-004 — design and freeze a residue-transition f
 
 Stage: discovery
 
-Status: **PREFLIGHT COMPLETE — E004 FROZEN / NOT YET EXECUTED**
+Status: **D4 DISCOVERY COMPLETE — NO ELIGIBLE OBSERVATION; H4/A4/A1/H3/A3 UNTOUCHED; SQ-004 CLOSED WITHOUT PROMOTION**
 
 Frozen specification: `experiments/E004_RESIDUE_TRANSITION_FACTORIZATION.md`
 
@@ -154,14 +154,22 @@ Generation guard: D4 execution may generate only historically generated low base
 
 Goal: test whether exact non-definitional refinement/factorization structure exists across the predeclared related moduli.
 
-Next bounded action: D1-10 / SQ-004 — implement the frozen E004 evaluator and fail-closed generation guard, validate the exact transition/projection/refinement semantics, execute D4 only twice for byte determinism, inspect only the frozen allowlist, and apply the frozen promotion grammar without generating H4/A4 or touching A1/H3/A3.
+D4 execution result: implementation/test checkpoint `15fd85b14a079ece06bb89e786695d093c7b574b` passed 13/13 focused E004 tests plus compilation before generation. The validated plan used only low base support `[0,6325)` plus segmented D4. The identical complete D4 command was executed twice before inspection and produced byte-identical 224,641-byte artifacts, SHA-256 `4d0fa870a3bb304809bc713fbf0536d7c9a1e69d73273b8b6aeae9af570b2b1c`. D4 contains 57,252 primes. All frozen transition supports are complete and all mandatory projection residuals are zero.
+
+Promotion result: **NO ELIGIBLE OBSERVATION**. P1 and P2 fail on every relation. P3 and P5 have zero filtered coarse pairs on every relation. P4 has 4, 4, 16, 16, and 64 eligible nonzero balance vectors across the frozen relation order, but every exact vector occurs once, so every modal count ties its runner-up 1–1 and fails both strict-unique-mode and occurrence-floor requirements. No `OBS-###` was allocated, no H4 criterion was needed, and H4/A4/A1/H3/A3 remain untouched. Compact evidence: `research/evidence/E004_D4_discovery.json`; execution record: `experiments/E004_D4_DISCOVERY_2026-10-06.md`.
+
+Next bounded action: D1-11 / SQ-005 — design and freeze the first quarantined historical rediscovery calibration benchmark before any calibration execution or unblinding. Do not mine D4 further.
 
 ## SQ-005 — Historical rediscovery calibration
 
 Stage: calibration
+
+Status: **READY FOR PREFLIGHT — FIRST CALIBRATION BENCHMARK DESIGN NEXT**
 
 Run the method in the quarantined calibration lane described in docs/CALIBRATION_PROTOCOL.md.
 
 Goal: learn which discovery operations are capable of producing genuinely explanatory objects.
 
 Nothing from this queue item can be promoted as novel.
+
+Next bounded action: D1-11 / SQ-005 — design and freeze one Riemann-style historical rediscovery benchmark from prime counts and elementary derived data, including its primitive inputs, transform grammar, ranges, deterministic outputs, success/failure criteria, execution guard, and later unblinding procedure. The preflight must not execute the benchmark, inspect hidden historical theory, generate new prime-derived output, or create an observation/candidate.
