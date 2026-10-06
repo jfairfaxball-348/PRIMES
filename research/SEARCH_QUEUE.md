@@ -120,13 +120,41 @@ Next bounded action: D1-09 / SQ-004 — design and freeze a residue-transition f
 
 Stage: discovery
 
-Status: **PREFLIGHT NEXT — NOT YET FROZEN / NOT EXECUTED**
+Status: **PREFLIGHT COMPLETE — E004 FROZEN / NOT YET EXECUTED**
 
-Compare transition fingerprints across related moduli and ask whether one fingerprint can be exactly derived from another by a simple projection/refinement rule.
+Frozen specification: `experiments/E004_RESIDUE_TRANSITION_FACTORIZATION.md`
 
-Goal: exact inter-modulus identities or forbidden transition patterns.
+Frozen modulus family:
 
-Promotion cap: 5 observations.
+`{6, 10, 12, 30, 60}`.
+
+Frozen divisibility-cover relation graph, in deterministic order:
+
+1. `6 -> 12`;
+2. `6 -> 30`;
+3. `10 -> 30`;
+4. `12 -> 60`;
+5. `30 -> 60`.
+
+E004 reuses E001's exact reduced-residue filtering semantics but does not inspect or retune against E001/E002 transition counts. For each edge it freezes exact coarse projection, ordered refinement fibres, forbidden-lift masks, integer balance vectors, and exact 2x2-minor systems. The forced zero projection residual on the high E004 bands is validation-only and cannot be promoted.
+
+Fresh metadata-only partition:
+
+- E004 pre-discovery guard G4-pre: `[38_000_000, 39_000_000)`;
+- discovery D4: `[39_000_000, 40_000_000)`;
+- E004 discovery/holdout guard G4-mid: `[40_000_000, 41_000_000)`;
+- untouched holdout H4: `[41_000_000, 42_000_000)`;
+- adversarial A4: `[78_000_000, 79_000_000)`.
+
+The range rule uses only the established width, H3 metadata, and arithmetic: leave one full-width guard after H3, take D4, leave one full-width guard before H4, and set A4's lower endpoint to twice D4's lower endpoint. At freeze, committed generation provenance reaches only through D3's final integer 35,999,999, so D4/H4/A4 are untouched. A1=`[33_000_000,34_000_000)`, H3=`[37_000_000,38_000_000)`, and A3=`[70_000_000,71_000_000)` retain their frozen historical roles and are excluded from E004.
+
+Promotion cap: 5 observations. The only admissible families are complete uniform refinement on one relation, complete positive rank-one refinement on one relation, a strict unique repeated nonempty forbidden-lift mask, a strict unique repeated nonzero balance vector, or a strict unique repeated nontrivial minor-zero mask. Projection identities, support completeness by itself, enumeration identities, and serialization consequences are excluded. Exact one-shot H4 templates and deterministic tie/ordering rules are frozen in the E004 specification.
+
+Generation guard: D4 execution may generate only historically generated low base support inside `[0,100_000)` plus segmented D4. Whole-prefix generation above 100,000 is forbidden. Every high-value interval must be predeclared, be a subset of the currently authorized E004 target, and reject A1/H3/A3, E003 ranges/guards, E004 guards, and all non-target E004 bands before generation.
+
+Goal: test whether exact non-definitional refinement/factorization structure exists across the predeclared related moduli.
+
+Next bounded action: D1-10 / SQ-004 — implement the frozen E004 evaluator and fail-closed generation guard, validate the exact transition/projection/refinement semantics, execute D4 only twice for byte determinism, inspect only the frozen allowlist, and apply the frozen promotion grammar without generating H4/A4 or touching A1/H3/A3.
 
 ## SQ-005 — Historical rediscovery calibration
 
