@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from collections import Counter
-from typing import Hashable, TypeVar
+from collections.abc import Hashable
+from typing import TypeVar
 
 T = TypeVar("T", bound=Hashable)
 
