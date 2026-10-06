@@ -1,0 +1,221 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 2848769,
+    "sha256": "885a0b7f50b36157c4b57ae72ae10748e5f84927aa9c261122bf6ae7bdb181b3"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D3",
+    "range": [
+      35000000,
+      36000000
+    ]
+  },
+  "event_summary": {
+    "prime_dense": {
+      "eligible_anchor_count": 984,
+      "event_count": 187
+    },
+    "prime_sparse": {
+      "eligible_anchor_count": 984,
+      "event_count": 193
+    },
+    "strict_rolling_record_gap": {
+      "boundary_omission_count": 0,
+      "event_count": 790,
+      "raw_record_count": 790,
+      "serializable_count": 790
+    }
+  },
+  "experiment": "E003",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 6000,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 35000000,
+      "stop": 36000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "64d0d0ce485872e2cbdf17a17b31c0452787a06d",
+  "prime_summary": {
+    "count": 57487,
+    "first_prime": 35000011,
+    "last_prime": 35999993
+  },
+  "promotion_pool": [
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_dense",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [45,54,64,67,54,52,60,55,61,57,57,58,53,60,71,53,61],
+      "object_family": "raw_word",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 187,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_sparse",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [43,53,54,62,51,58,64,59,54,59,60,53,50,57,44,56,64],
+      "object_family": "raw_word",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 193,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "strict_rolling_record_gap",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [2,4,2,22,12,8,30,6,84,22,20,6,24,4,24,6,14],
+      "object_family": "raw_word",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 790,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_dense",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [-22,-15,-19,-4,-8,-16,-10,-27,0,-7,-10,-9,-13,-10,-9,-10,-14],
+      "object_family": "centered_residual_word",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 187,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_sparse",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [-11,-11,0,9,0,3,3,6,0,3,9,4,-8,6,1,11,-6],
+      "object_family": "centered_residual_word",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 193,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "strict_rolling_record_gap",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [-148,-144,-126,-146,-114,-144,-148,-132,0,-146,-144,-78,-102,-132,-144,-142,-140],
+      "object_family": "centered_residual_word",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 790,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_dense",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [-25,0,11,-7,3,3],
+      "object_family": "integer_asymmetry_vector",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 187,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_sparse",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [-24,-2,2,-5,10,-6],
+      "object_family": "integer_asymmetry_vector",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 193,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "strict_rolling_record_gap",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 1,
+      "mode_value": [-80,8,32,-12,-4,16,26,-2],
+      "object_family": "integer_asymmetry_vector",
+      "occurrence_floor_passed": false,
+      "runner_up_count": 1,
+      "serializable_event_count": 790,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_dense",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 6,
+      "mode_value": [-1,-1,1,1,-1,-1],
+      "object_family": "asymmetry_sign_signature",
+      "occurrence_floor_passed": true,
+      "runner_up_count": 6,
+      "serializable_event_count": 187,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "prime_sparse",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 6,
+      "mode_value": [-1,1,-1,1,1,-1],
+      "object_family": "asymmetry_sign_signature",
+      "occurrence_floor_passed": true,
+      "runner_up_count": 6,
+      "serializable_event_count": 193,
+      "strict_unique_mode": false
+    },
+    {
+      "dominance_margin": 0,
+      "event_class": "strict_rolling_record_gap",
+      "event_floor_passed": true,
+      "mechanical_frequency_eligible": false,
+      "mode_count": 6,
+      "mode_value": [1,-1,1,-1,1,1,1,-1],
+      "object_family": "asymmetry_sign_signature",
+      "occurrence_floor_passed": true,
+      "runner_up_count": 6,
+      "serializable_event_count": 790,
+      "strict_unique_mode": false
+    }
+  ],
+  "promotion_result": {
+    "eligible_pattern_count": 0,
+    "promoted_observation_ids": [],
+    "reason": "No frozen object family has a target satisfying the strict-unique-mode and occurrence grammar on D3.",
+    "result": "NO_ELIGIBLE_OBSERVATION"
+  },
+  "validation": {
+    "compileall": "success",
+    "pytest": "31 passed",
+    "ruff": "unavailable in detached runner; existing FAIL-001/FAIL-002 environment limitation"
+  }
+}
