@@ -6,7 +6,7 @@ This queue contains bounded discovery work, not claims.
 
 Stage: discovery
 
-Status: **D0 EXECUTED — FOUR OBSERVATIONS FROZEN; H0/A0 UNTOUCHED**
+Status: **H0 REPLICATION COMPLETE — THREE REPLICATED, ONE REFUTED; A0 UNTOUCHED**
 
 Frozen specification: `experiments/E001_REPRESENTATION_GRID.md`
 
@@ -28,9 +28,11 @@ Goal: produce descriptive summaries and artifact checks only.
 
 Promotion cap: 10 observations.
 
-D0 result: deterministic discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; four promoted observations (`OBS-001` through `OBS-004`) now have exact one-shot H0 replication criteria frozen in `research/OBSERVATION_LEDGER.md`.
+D0 result: deterministic discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; four observations were frozen before holdout.
 
-Next bounded action: execute E001 on untouched **H0 only** using the unchanged implementation semantics and evaluate only the four frozen replication criteria. Do not mine H0 for new observations, do not generate A0, and do not create a candidate in the same bounded unit.
+H0 result: deterministic holdout artifact SHA-256 `80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254`. `OBS-001`, `OBS-002`, and `OBS-003` replicated under their frozen criteria. `OBS-004` was refuted by the empty anchored block `[1_671_800, 1_671_900)`. A0 remains untouched.
+
+Next bounded action: D1-02 candidate-synthesis triage for the replicated observations only. Decide whether each of `OBS-001` through `OBS-003` supports an exact `CAND-###` statement with a falsification/adversarial plan. Keep novelty status `UNAUDITED`; do not perform prior-art search, mechanism work, or generate A0 in the same unit.
 
 ## SQ-002 — Cross-scale persistence
 
