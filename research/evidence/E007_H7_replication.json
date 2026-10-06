@@ -1,0 +1,97 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 450687,
+    "sha256": "6a25381c7430a6e720e619fb27696ec75e8696514d72a8f7a26398f616d85ced"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H7",
+    "range": [
+      48000000,
+      49000000
+    ]
+  },
+  "criteria": [
+    {
+      "enrichment_numerator": 560837011,
+      "enrichment_passed": true,
+      "family": "F2",
+      "max_competitor_count": 6404,
+      "max_competitor_signatures": [
+        [
+          3,
+          2
+        ]
+      ],
+      "observation_id": "OBS-010",
+      "occurrence_floor": 32,
+      "occurrence_floor_passed": true,
+      "population_floor": 1000,
+      "population_floor_passed": true,
+      "replication_status": "REPLICATED",
+      "strict_unique_target_mode": true,
+      "target_composite_count": 52339,
+      "target_prime_count": 7917,
+      "target_signature": [
+        3,
+        3
+      ]
+    },
+    {
+      "enrichment_numerator": 69373092,
+      "enrichment_passed": true,
+      "family": "F3",
+      "max_competitor_count": 3977,
+      "max_competitor_signatures": [
+        [
+          3,
+          2
+        ]
+      ],
+      "observation_id": "OBS-011",
+      "occurrence_floor": 32,
+      "occurrence_floor_passed": true,
+      "population_floor": 1000,
+      "population_floor_passed": true,
+      "replication_status": "REPLICATED",
+      "strict_unique_target_mode": true,
+      "target_composite_count": 38940,
+      "target_prime_count": 5106,
+      "target_signature": [
+        3,
+        3
+      ]
+    }
+  ],
+  "experiment": "E007",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 7000,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 48000000,
+      "stop": 49000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "ad09ec3d72dc291d4930f13d9954a5a155590574",
+  "population": {
+    "composite_anchor_count": 443612,
+    "prime_anchor_count": 56387
+  },
+  "stage": "H7 one-shot replication",
+  "validation": {
+    "compileall": "success",
+    "current_head_ci": "no combined-status objects and no PR-triggered workflow runs for checkpoint ad09ec3d72dc291d4930f13d9954a5a155590574 or D1-20 head 3a0e07d55f1272ed052797368fd78160296db9b7; existing FAIL-002 observability limitation",
+    "evaluator_blob": "e81601ac9d557c94273b21885b675cf8a502cc60",
+    "focused_pytest": "22 passed",
+    "focused_test_blob": "657aabd557d8cd2434907f03ded2d07b4b1ecd1a",
+    "h7_generation_guard": "canonical [0,7000) support plus segmented H7 only; 30 deliberate whole-prefix, wrong-support, partial/expanded, guard, historical protected/generated, adversarial, and other non-target plans rejected before generation",
+    "ruff": "unavailable in detached runner; existing FAIL-001/FAIL-002 environment limitation"
+  }
+}
