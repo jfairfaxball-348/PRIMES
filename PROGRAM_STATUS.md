@@ -25,9 +25,17 @@ Status date: 2026-10-06
 - pytest: passed;
 - E000 baseline smoke run: passed;
 - authoritative discovery/novelty/calibration protocols: committed;
-- observation, conjecture, failure, and search-queue records: committed.
+- observation, conjecture, failure, and search-queue records: committed;
+- autonomous session protocol and permanent session ledger: committed.
 
 Validated CI head: `e47b272b6e3867fb10d0eefc199b1231557659da`.
+
+## Session control
+
+- Autonomous closeout protocol: **ACTIVE**
+- Owner decision blocker: **NONE**
+- Live next-session prompt: **ACTIVE — `NEXT_SESSION_PROMPT.md`**
+- Closeout rule: automatically emit the next runnable prompt unless an owner decision blocks continuation.
 
 ## Active task
 
