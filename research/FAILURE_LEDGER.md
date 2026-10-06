@@ -14,6 +14,18 @@ Failures are research outputs. Preserve them so the project does not repeatedly 
 **What remains valid:** No E000 data-quality defect was found. The exact committed Python sources execute correctly under pytest and produce deterministic E000 summaries at both declared preflight limits.  
 **Do-not-repeat condition:** Check runner network/tool availability before chaining validation commands; when Ruff is absent, do not misclassify that as a code failure, and use the committed GitHub Actions Ruff result unless a runnable lint environment is available.
 
+### FAIL-002
+
+**Date:** 2026-10-06  
+**Related observation/candidate/experiment:** D0-03 / E001 discovery execution  
+**Idea attempted:** Reproduce the repository's full lint/test validation path locally for the new E001 implementation and retrieve current-head CI evidence through the available GitHub connector.  
+**Why it looked plausible:** E001 adds new Python experiment and test files, and the repository declares Ruff and pytest as development dependencies with a push-triggered CI workflow.  
+**Failure mode:** other — execution-environment / CI-observability plumbing  
+**Exact evidence:** The detached runner uses Python 3.13.5. `PYTHONPATH=src pytest -q` passed 14/14 tests and `python -m compileall -q src experiments tests` succeeded. `ruff --version` failed with `ruff: command not found` (exit 127), repeating the local-tool limitation seen in FAIL-001. For implementation commit `beab213501dab318075199c3fcac6d5501d0b9d3`, the available GitHub connector returned `statuses: []` from combined-status retrieval and `workflow_runs: []` from its commit-workflow wrapper, which is documented as exposing pull-request-triggered runs only. Those empty responses do not establish either a CI pass or CI failure for the push commit. The last independently recorded green CI head remains `e47b272b6e3867fb10d0eefc199b1231557659da`, predating E001.  
+**Lesson:** Do not infer current-head CI state from an empty connector response, and do not misclassify a missing local linter as a repository defect. State exactly which validation was reproduced locally and which CI evidence is unavailable.  
+**What remains valid:** All 14 local tests pass; byte-deterministic E001 D0 generation passes; Python compilation succeeds; an independent SymPy prime list exactly matches the repository sieve on D0; no implementation or data-quality failure was found.  
+**Do-not-repeat condition:** Unless the runner gains Ruff or the connector exposes push/check-run status, reuse this limitation rather than treating absent objects as CI evidence.
+
 ## Template
 
 ### FAIL-###
