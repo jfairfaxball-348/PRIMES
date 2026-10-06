@@ -4,16 +4,16 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-16 / SQ-006 D6 discovery complete; OBS-005 through OBS-009 frozen for one-shot H6 replication; H6/A6 and historical reserves/guards untouched**
+**DISCOVERY-1 — D1-17 / SQ-006 H6 replication complete; OBS-008 REPLICATED; OBS-005/006/007/009 REFUTED; A6 and historical reserves/guards untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-006 D6 COMPLETE; H6 REPLICATION NEXT | Five exact E006 D6 observations are frozen with one-shot H6 criteria; calibration quarantine remains intact |
-| Observation promotion | OPEN / 5 E006 OBSERVED; 3 HISTORICAL REPLICATED; 1 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
+| Pattern discovery | OPEN / SQ-006 H6 REPLICATION COMPLETE; SYNTHESIS NEXT | One E006 observation survived its untouched H6 criterion; four were refuted; calibration quarantine remains intact |
+| Observation promotion | OPEN / 4 REPLICATED; 5 REFUTED | Exact reproducible observation |
+| Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | OBS-008 has survived untouched H6; D1-18 synthesis triage is next, while D1-02/D1-06 remain historical no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -132,7 +132,7 @@ D4 has now been generated only by the validated segmented E004 path plus low sup
 
 - Discovery D6: [42_000_000, 43_000_000) — **EXECUTED DETERMINISTICALLY / INSPECTED UNDER FROZEN ALLOWLIST**
 - Discovery/holdout guard G6-mid: [43_000_000, 44_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
-- Holdout H6: [44_000_000, 45_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Holdout H6: [44_000_000, 45_000_000) — **EXECUTED DETERMINISTICALLY / INSPECTED ONLY AGAINST FIVE FROZEN CRITERIA**
 - Adversarial A6: [84_000_000, 85_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
 - Historical A1/H3/H4/A3/A4 and E003/E004 guards — **UNCHANGED / UNTOUCHED OR NON-TARGET / EXCLUDED FROM E006**
 
@@ -144,7 +144,13 @@ The frozen 500 shifts form 204 odd-radical classes; 11 have size at least 8. All
 
 Each promoted statement is only a finite within-class strict-maximum observation. Odd-radical metadata remain a non-promotable triviality control; no parity/radical identity, boundary/anchor fact, cross-class claim, consecutive-gap reinterpretation, mechanism, candidate, or novelty claim was promoted.
 
-The exact same-(rho,target-shift) one-shot H6 criteria are frozen in the observation ledger: unchanged E006 semantics, target count at least 8, and strict superiority over every same-class competitor; a tie fails. H6 and A6 remain ungenerated.
+The exact same-(rho,target-shift) one-shot H6 criteria were frozen in the observation ledger before H6 generation: unchanged E006 semantics, target count at least 8, and strict superiority over every same-class competitor; a tie fails.
+
+D1-17 verified the current evaluator/test bytes exactly match implementation checkpoint `8bfcc27d96dc1b0858c514cf2bfab81790ab71b0`, reran 14/14 focused tests and compilation, and validated the fail-closed H6 plan using only `[0,6709)` base support plus segmented H6. Invalid whole-prefix, partial-H6, protected, guard, D6/G6-mid, and A6 traversals failed before the sieve call. Ruff/current-head CI observability remained only the existing FAIL-001/FAIL-002 environment limitation.
+
+The identical complete H6 command was executed twice before criterion inspection and produced byte-identical 111,561-byte artifacts, SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`. Only the five frozen criteria were inspected. OBS-008 **REPLICATED**: rho=21 target h=294 has 10,305 versus highest same-class competitor h=126 at 10,301, margin +4. OBS-005 **REFUTED**: h=900 has 11,397 versus h=90 at 11,456. OBS-006 **REFUTED**: h=280 has 6,776 versus h=560 at 6,855. OBS-007 **REFUTED**: h=56 has 5,047 versus h=28 at 5,179. OBS-009 **REFUTED**: h=324 has 8,527 versus h=216 at 8,667. Every target count remained above the occurrence floor; all four failures are strict-maximum failures only.
+
+No H6 mining, retargeting, new observation promotion, candidate synthesis, mechanism/proof work, or prior-art/collision search occurred. Compact evidence is `research/evidence/E006_H6_replication.json`; the replication record is `experiments/E006_H6_REPLICATION_2026-10-06.md`. A6 remains ungenerated and untouched, as do all historical reserves/guards.
 
 ## Frozen E005 calibration benchmark
 
@@ -172,11 +178,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-17 / SQ-006:** one-shot H6 replication of OBS-005 through OBS-009 only. Treat experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md, the D6 evidence, and all five frozen observation criteria as immutable. Validate the exact E006 implementation/guard before generation; generate only safe low support plus segmented H6=[44_000_000,45_000_000); run the identical H6 command twice before criterion inspection for byte determinism; inspect only the five frozen same-class/same-shift replication criteria; update each observation to REPLICATED or REFUTED. Do not mine H6 for new patterns, generate A6 or any historical reserve/guard, change a class/target/threshold, create a candidate, perform mechanism/proof work, run prior-art/collision search, or import calibration objects.
+**D1-18 / SQ-006:** candidate-synthesis triage over OBS-008 only, using committed D6+H6 evidence and no new prime generation. Preserve OBS-005/006/007/009 as REFUTED, keep A6 and every historical reserve/guard untouched, and do not mine or rerun H6/D6. Create a CAND record only if the finite strict-maximum replication evidence supports an exact non-arbitrary falsifiable statement beyond merely restating D6 and H6. Do not perform mechanism/proof work, prior-art/collision search, or import calibration objects in this unit.
 
 ## Research inventory
 
-- Active observations: 8
+- Active observations: 4
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -197,9 +203,9 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-16 / SQ-006 D6 discovery is complete with OBS-005 through OBS-009 frozen at OBSERVED status and exact H6 criteria committed before any H6 generation.
+DISCOVERY-1 remains in the blind novelty lane. D1-17 / SQ-006 H6 replication is complete: OBS-008 is REPLICATED and OBS-005/006/007/009 are REFUTED under their unchanged one-shot criteria. No new H6 pattern was promoted.
 
-The next bounded unit is D1-17 / SQ-006 one-shot H6 replication. Reuse the unchanged E006 transform, odd-radical classes, common-anchor semantics, ordering, serialization, and fail-closed generation discipline. Generate only H6 (plus safe low base support), repeat the identical H6 command for determinism, evaluate only the five predeclared criteria, and stop without H6 mining, A6 generation, candidate synthesis, mechanism/proof work, or prior-art search.
+The next bounded unit is D1-18 / SQ-006 candidate-synthesis triage over OBS-008 only. Use committed D6+H6 evidence without new computation or mining, and decide whether an exact non-arbitrary falsifiable candidate is justified beyond a two-band finite restatement. Candidate creation, if justified, must remain novelty-UNAUDITED; mechanism/proof and prior-art/collision work remain separate later units.
 
 A1, H3, H4, A3, A4, G6-mid, A6, and all E003/E004 guards remain untouched/non-target.
 
