@@ -4,15 +4,15 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-0 — E001 grid frozen; first structured discovery sweep pending**
+**DISCOVERY-1 — E001 D0 sweep complete; four observations frozen for untouched H0 replication**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / READY | Frozen E001 discovery grammar and partition |
-| Observation promotion | OPEN | Exact reproducible observation |
+| Pattern discovery | OPEN / D0 EXECUTED | Frozen E001 discovery grammar and partition |
+| Observation promotion | OPEN / 4 OBSERVED | Exact reproducible observation |
 | Candidate conjecture | CLOSED | Holdout survival + exact statement |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
@@ -27,6 +27,9 @@ Status date: 2026-10-06
 - E000 repeated at limits 10,000 and 100,000 with byte-identical summaries on repeat execution;
 - repository sieve independently matched a trial-division generator at both E000 limits;
 - E001 representation grid and numerical partition: **FROZEN BEFORE RESULT INSPECTION**;
+- E001 implementation and boundary/determinism tests committed at `beab213501dab318075199c3fcac6d5501d0b9d3`;
+- E001 D0 executed twice with byte-identical 24,923,621-byte artifacts, SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`;
+- four exact D0 observations promoted with H0 criteria frozen before holdout generation;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
@@ -36,7 +39,9 @@ E000 preflight evidence: `experiments/E000_PREFLIGHT_2026-10-06.md`.
 
 E001 frozen specification: `experiments/E001_REPRESENTATION_GRID.md`.
 
-Local-session limitation: detached runner network access and Ruff availability were incomplete; recorded as `FAIL-001`. No E000 data-quality failure was found.
+E001 D0 execution evidence: `experiments/E001_D0_DISCOVERY_2026-10-06.md`.
+
+Local-session limitations: detached runner network/Ruff availability and current-head CI observability are incomplete; recorded as `FAIL-001` and `FAIL-002`. Local E001 pytest passed 14/14, compilation succeeded, and an independent SymPy prime list exactly matched the repository sieve on D0.
 
 ## E001 frozen partition
 
@@ -44,7 +49,7 @@ Local-session limitation: detached runner network access and Ruff availability w
 - Untouched holdout H0: `[1_000_000, 2_000_000)`
 - Reserved adversarial A0: `[10_000_000, 11_000_000)`
 
-No E001 result has yet been generated or inspected. H0 and A0 remain untouched.
+D0 has been generated, repeated byte-identically, and inspected. Promoted observations are `OBS-001` through `OBS-004`. H0 and A0 remain untouched.
 
 ## Session control
 
@@ -55,11 +60,11 @@ No E001 result has yet been generated or inspected. H0 and A0 remain untouched.
 
 ## Active task
 
-**D0-03 / SQ-001:** implement the frozen E001 representation grid, validate deterministic serialization/boundary semantics, and execute/inspect the discovery range D0 only. Do not generate or inspect H0.
+**D1-01 / SQ-001:** one-shot replication of `OBS-001` through `OBS-004` on untouched H0 only, using the frozen definitions. Do not mine H0 for new observations, generate A0, or create a candidate in the same bounded unit.
 
 ## Research inventory
 
-- Active observations: 0
+- Active observations: 4
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -78,4 +83,4 @@ No E001 result has yet been generated or inspected. H0 and A0 remain untouched.
 
 ## Next stage
 
-DISCOVERY-1 begins when the first structured observation sweep has been recorded and its promoted observations have untouched holdout ranges reserved.
+DISCOVERY-1 is active. The next natural checkpoint is one-shot H0 replication of the four frozen observations. Surviving observations may open the candidate gate for a later bounded unit; failed observations must be recorded as refuted. A0 remains reserved.
