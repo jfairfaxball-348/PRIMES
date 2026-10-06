@@ -75,6 +75,22 @@ Never reuse or renumber a completed session.
 **Commit:** substantive checkpoint commit `89cdcfb432ea63a22b148a3596b6a5818b9633bb`.
 
 
+### S005
+
+**Date:** 2026-10-06  
+**Stage:** replication preflight  
+**Bounded objective:** D1-03 / SQ-002 — design and freeze a cross-scale persistence experiment for replicated OBS-001 through OBS-003 only, using unchanged E001 feature definitions, fresh disjoint value bands, and exact predeclared persistence criteria, without executing E002 or generating any new prime-derived result.  
+**Incoming state:** DISCOVERY-1 at main head `dbfaa4a216621b1db7bc954e80fe5ea628e31691`; OBS-001 through OBS-003 REPLICATED, OBS-004 REFUTED, D1-02 completed with no candidate, A0 untouched, and SQ-002 awaiting preflight.  
+**Work performed:** Read all requested project authority, protocols, ledgers, E001 frozen specification, D0/H0 execution records, compact D0/H0 evidence, and the live prompt before changing anything. Preserved the exact E001 definitions for OBS-001, OBS-002, and OBS-003. Froze E002 as a criterion-only test over five width-1,000,000 bands with lower endpoints 2M, 4M, 8M, 16M, and 32M; froze strict unique-mode criteria for OBS-001/002, complete frozen-modulus transition support for OBS-003, all-five-band overall persistence, full-ladder execution with no early stopping or replacement bands, deterministic criterion-only serialization, and an A0 exclusion. Updated the search queue, programme status, observation notes, and live execution prompt. No literature search, mechanism work, proof work, candidate creation, collision audit, code execution, or prime-derived computation occurred.  
+**Result:** E002 is FROZEN / NOT YET EXECUTED. Bands are S1=`[2_000_000,3_000_000)`, S2=`[4_000_000,5_000_000)`, S3=`[8_000_000,9_000_000)`, S4=`[16_000_000,17_000_000)`, and S5=`[32_000_000,33_000_000)`. They are mutually disjoint and exclude D0, H0, and reserved A0=`[10_000_000,11_000_000)`. A tie fails the OBS-001/002 strict modal criterion; any missing allowed pair at any modulus in `{6,10,12,30,60}` fails OBS-003; overall E002 persistence requires passing every frozen band.  
+**Observations/candidates affected:** OBS-001 through OBS-003 remain REPLICATED with definitions unchanged and now link to the frozen E002 preflight; OBS-004 remains REFUTED and excluded; active candidates remain 0 and no candidate ID was allocated.  
+**Validation:** Documentation/consistency validation is required after checkpoint: E002 must remain marked NOT YET EXECUTED; the five bands must be identical in the E002 spec, search queue, observation notes where enumerated, programme status, and next prompt; all bands must be disjoint from D0/H0/A0; the frozen modulus family must remain `{6,10,12,30,60}`; OBS-004 must remain REFUTED; A0 must remain untouched; no E002 evidence/result artifact or candidate may be introduced in this preflight. No code changed, so pytest/Ruff/experiment execution is not appropriate for this design-only unit.  
+**Failures/limitations:** No new repository or execution failure. E002 deliberately tests value-scale persistence at fixed band width; it does not test arbitrary band widths/origins or establish an eventual/asymptotic statement.  
+**Decision blocker:** none  
+**Outgoing state:** DISCOVERY-1; D1-03 complete; E002 frozen before execution; no E002 prime-derived results; OBS-001 through OBS-003 remain replicated; OBS-004 remains refuted; no candidate; A0 untouched.  
+**Next session:** D1-04 / SQ-002 — implement and execute the frozen E002 criterion-only test across S1 through S5, verify deterministic output, evaluate only the frozen persistence criteria, and keep A0/candidate/mechanism/prior-art work out of scope.  
+**Commit:** substantive checkpoint commits `c214784e591e44192ad63f72b9611be3985d58b9`, `2e3b6fac196af821c4042115c6513e3f3961e4b4`, `aa0479da7838e085d196b015e8106806ecb53d59`, `bc8a586e9325f3b701efc42c818caacb2c748085`, `cce31de29eedbe80898665bae9b9f906a9837a82`.
+
 ## Entry template
 
 ### S###
