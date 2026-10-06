@@ -82,7 +82,7 @@ Next bounded action: D1-07 / SQ-003 — design and freeze an event-centred neigh
 
 Stage: discovery
 
-Status: **PREFLIGHT COMPLETE — E003 FROZEN / NOT EXECUTED; D3 NEXT; H3/A3/A1 UNTOUCHED**
+Status: **D3 DISCOVERY COMPLETE — NO ELIGIBLE OBSERVATION; H3/A3/A1 UNTOUCHED; SQ-003 CLOSED WITHOUT PROMOTION**
 
 Frozen specification: `experiments/E003_EVENT_CENTRED_NEIGHBOURHOODS.md`
 
@@ -110,11 +110,17 @@ Any promoted D3 observation must freeze the exact same-target strict-unique-mode
 
 Generation guard: discovery execution may generate only low base support within `[0,100_000)` plus segmented D3. Whole-prefix generation above 100,000 is forbidden. The implementation must fail before generation if any requested interval can intersect A1, H3, A3, a guard band, or another non-target high range.
 
-Next bounded action: D1-08 / SQ-003 — implement the frozen E003 evaluator and guard, validate semantics, execute D3 only twice for byte determinism, inspect only the allowlisted descriptive outputs, and promote at most five observations under the frozen grammar with H3 criteria frozen before any H3 generation.
+D3 execution result: implementation checkpoint `64d0d0ce485872e2cbdf17a17b31c0452787a06d` validated a fail-closed plan consisting only of low base-sieve support `[0,6000)` plus segmented D3. The identical D3 command was executed twice before inspection and produced byte-identical 2,848,769-byte artifacts, SHA-256 `885a0b7f50b36157c4b57ae72ae10748e5f84927aa9c261122bf6ae7bdb181b3`. D3 contains 57,487 primes. Frozen event counts are 187 dense events from 984 eligible anchors, 193 sparse events from 984 eligible anchors, and 790 serializable strict rolling-record gaps with zero boundary omissions.
+
+Promotion result: **NO ELIGIBLE OBSERVATION**. All raw-word, centred-residual-word, and integer-asymmetry-vector modes have count 1. Each asymmetry-sign-signature family reaches mode count 6 but ties a runner-up at count 6, so all fail the frozen strict-unique-mode rule. No `OBS-###` ID was allocated and the grammar was not relaxed. Because there is no promoted D3 observation, no H3 replication criterion is required and H3 was not generated. Compact evidence: `research/evidence/E003_D3_discovery.json`; execution record: `experiments/E003_D3_DISCOVERY_2026-10-06.md`.
+
+Next bounded action: D1-09 / SQ-004 — design and freeze a residue-transition factorization experiment before any SQ-004 prime-derived execution. Declare the exact related-modulus family, projection/refinement maps, object grammar, fresh untouched discovery/holdout/adversarial ranges, promotion rules, determinism, and generation-path guard. Preserve A1, H3, and A3 as untouched historical reserves and do not mine E003 further.
 
 ## SQ-004 — Residue-transition factorization
 
 Stage: discovery
+
+Status: **PREFLIGHT NEXT — NOT YET FROZEN / NOT EXECUTED**
 
 Compare transition fingerprints across related moduli and ask whether one fingerprint can be exactly derived from another by a simple projection/refinement rule.
 
