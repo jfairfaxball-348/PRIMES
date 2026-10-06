@@ -4,16 +4,16 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-21 / SQ-007 H7 replication complete; OBS-010/OBS-011 REPLICATED; D1-22 candidate-synthesis triage next; A7 and historical reserves/guards untouched**
+**DISCOVERY-1 — D1-22 / SQ-007 candidate triage complete; NO CANDIDATE; OBS-010/OBS-011 retained REPLICATED; SQ-007 closed; D1-23 / SQ-008 blind novelty preflight next; A7 and historical reserves/guards untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-007 H7 COMPLETE; SYNTHESIS TRIAGE NEXT | D7 discovery and one-shot H7 replication complete under frozen E007 semantics; next decide whether the two replicated finite observations support any exact non-arbitrary candidate statement |
+| Pattern discovery | OPEN / SQ-007 CLOSED; SQ-008 PREFLIGHT NEXT | D1-22 closed SQ-007 without candidate promotion; next freeze one qualitatively distinct blind novelty representation family before any new execution |
 | Observation promotion | OPEN / 6 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / NONE PROMOTED; D1-22 TRIAGE NEXT | D1-22 will test whether replicated OBS-010/OBS-011 support an exact non-arbitrary falsifiable statement beyond restating D7+H7; D1-02/D1-06/D1-18 remain explicit no-candidate results |
+| Candidate conjecture | OPEN / NONE PROMOTED; D1-22 NO-CANDIDATE COMPLETE | D1-22 found no exact non-arbitrary statement beyond the finite D7+H7 evidence; D1-02/D1-06/D1-18/D1-22 are explicit no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -171,6 +171,9 @@ D1-21 then performed the frozen one-shot H7 replication only. The evaluator, foc
 Before prime generation, the exact H7 plan was validated as low support `[0,7000)` plus segmented H7=`[48_000_000,49_000_000)`. Thirty deliberate high whole-prefix, wrong-support, partial/expanded target, guard, historical protected/generated, adversarial, and other non-target plans failed before generation. The identical complete H7 command then ran twice before criterion inspection and produced byte-identical 450,687-byte artifacts, SHA-256 `6a25381c7430a6e720e619fb27696ec75e8696514d72a8f7a26398f616d85ced`.
 
 Only the two frozen replication criteria were inspected. H7 contains 56,387 prime anchors and 443,612 composite controls. `OBS-010` REPLICATED: F2 target `[3,3]` has 7,917 prime occurrences versus highest competitor `[3,2]` at 6,404, 52,339 composite occurrences, and exact enrichment numerator 560,837,011 > 0. `OBS-011` REPLICATED: F3 target `[3,3]` has 5,106 prime occurrences versus highest competitor `[3,2]` at 3,977, 38,940 composite occurrences, and exact enrichment numerator 69,373,092 > 0. Both population and occurrence floors pass. No fallback, retargeting, threshold/ranking change, H7 pattern mining, F1/F4 promotion inspection, candidate creation, mechanism/proof/adversarial work, or prior-art/collision/literature search occurred. Compact evidence is `research/evidence/E007_H7_replication.json`; replication record is `experiments/E007_H7_REPLICATION_2026-10-06.md`. A7 and all historical guards/reserves remain untouched/non-target.
+D1-22 then performed synthesis-only candidate triage over `OBS-010` and `OBS-011`, separately first and then through the one permitted exact joint statement. **NO CANDIDATE CREATED.** For F2 and F3 separately, the exact committed evidence is the unchanged target `[3,3]` as strict unique prime-anchor mode with population/occurrence floors passing and positive exact composite-control enrichment on D7 and H7. Restricting a statement to those two bands only restates finite computation; any extension to an untested band, origin, width, later scale, anchor population, factorization/representation family, or infinitely many values adds an unsupported quantifier. The exact F2+F3 conjunction is likewise only a repackaging of the two finite observations; stronger common persistence or cross-family coupling would add unsupported structure.
+
+Both observations remain REPLICATED with no candidate link; active candidates remain zero and no novelty status was allocated. SQ-007 is closed without executing A7. A7 remains frozen, untouched, uninspected, and unexecuted. No prime-derived data were generated, no D7/H7 output was mined, no family/target/threshold/normalization/factorization rule was changed, and no mechanism/proof, adversarial, prior-art/collision, literature, novelty, calibration-transfer, or protected-range work occurred. D1-23 / SQ-008 is the next bounded design-only blind novelty representation-family preflight.
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -197,7 +200,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-22 / SQ-007:** perform candidate-synthesis triage over replicated OBS-010 and OBS-011 only, using committed D7+H7 evidence. Decide whether either observation, or a non-duplicative exact synthesis of the two frozen family statements, supports an exact non-arbitrary falsifiable `CAND-###` statement beyond restating the two finite bands. Generate no new primes, do not execute A7, do not mine D7/H7 or retarget either family, and do not perform mechanism/proof, adversarial, prior-art/collision, or literature work in this triage.
+**D1-23 / SQ-008:** design and freeze exactly one qualitatively distinct blind novelty representation family using only novelty-lane authority and target-agnostic methodology. This is a preflight-only unit: choose any fresh numerical partition from metadata/provenance only, freeze exact primitive/transform, descriptive/promotion, one-shot holdout, determinism, and fail-closed future-generation rules, but generate no prime-derived output, preserve A7 and all historical reserves/guards, allocate no OBS/CAND ID, and perform no mechanism/proof, prior-art/collision, or literature work.
 
 ## Research inventory
 
@@ -222,8 +225,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-21 / SQ-007 is complete: H7 was executed twice deterministically under the unchanged E007 implementation, and both frozen observations replicated exactly.
+DISCOVERY-1 remains in the blind novelty lane. D1-22 / SQ-007 is complete with **NO CANDIDATE CREATED**. OBS-010 and OBS-011 remain REPLICATED with no candidate links: separately, their unchanged F2/F3 target `[3,3]` statements are established only on D7 and H7; jointly, their exact conjunction is still only a finite restatement. Any stronger persistence or cross-family claim would add an unsupported quantifier or structure not supplied by the committed evidence.
 
-The next bounded unit is D1-22 / SQ-007 candidate-synthesis triage over `OBS-010` and `OBS-011` only. Use only committed D7+H7 criterion evidence to decide whether either replicated observation, or a non-duplicative exact synthesis of the two frozen family statements, supports an exact non-arbitrary falsifiable candidate beyond a finite-band restatement. Do not generate new primes, execute A7, mine D7/H7, retarget either family, or begin mechanism/proof, adversarial, prior-art/collision, or literature work in that unit.
+SQ-007 is closed without spending A7. The next bounded unit is D1-23 / SQ-008, a design-only blind novelty representation-family preflight. Freeze exactly one qualitatively distinct representation family and its fresh metadata-only partition, descriptive/promotion grammar, one-shot holdout criteria, deterministic serialization, and fail-closed future-generation plan before any execution. Generate no prime-derived output, allocate no OBS/CAND ID, and do not begin mechanism/proof, adversarial, prior-art/collision, or literature work.
 
 G7-pre, G7-mid, A7, A1, H3, H4, G6-mid, A3, A4, A6, and all E003/E004 guards remain untouched/non-target. SQ-005 calibration objects and historical-unblinding mechanisms remain quarantined from novelty selection and interpretation.
