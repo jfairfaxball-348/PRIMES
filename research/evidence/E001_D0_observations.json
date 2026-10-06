@@ -1,0 +1,101 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 24923621,
+    "sha256": "822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284"
+  },
+  "band": {
+    "name": "D0",
+    "range": [
+      0,
+      1000000
+    ]
+  },
+  "experiment": "E001",
+  "implementation_commit": "beab213501dab318075199c3fcac6d5501d0b9d3",
+  "observations": {
+    "OBS-001": {
+      "definition": "Third forward difference value 0 is the unique modal value on D0.",
+      "largest_zero_supporting_motif": {
+        "count": 306,
+        "motif": [
+          6,
+          4,
+          2
+        ]
+      },
+      "runner_up": {
+        "count": 4241,
+        "value": 6
+      },
+      "zero_count": 4656,
+      "zero_supporting_width3_motif_count": 131
+    },
+    "OBS-002": {
+      "count": 1929,
+      "definition": "Gap motif [6,6] is the unique modal width-2 gap motif on D0.",
+      "gap_window_count": 78496,
+      "runner_up": {
+        "count": 1771,
+        "motif": [
+          4,
+          6
+        ]
+      },
+      "single_gap_6_count": 13549
+    },
+    "OBS-003": {
+      "definition": "Every directed pair of reduced residues occurs for every frozen modulus on D0.",
+      "support": [
+        {
+          "modulus": 6,
+          "observed_distinct": 4,
+          "possible": 4
+        },
+        {
+          "modulus": 10,
+          "observed_distinct": 16,
+          "possible": 16
+        },
+        {
+          "modulus": 12,
+          "observed_distinct": 16,
+          "possible": 16
+        },
+        {
+          "modulus": 30,
+          "observed_distinct": 64,
+          "possible": 64
+        },
+        {
+          "modulus": 60,
+          "observed_distinct": 256,
+          "possible": 256
+        }
+      ]
+    },
+    "OBS-004": {
+      "definition": "Every globally anchored width-100 block in D0 contains at least one prime.",
+      "maximum_prime_gap": 114,
+      "minimum_blocks": [
+        {
+          "count": 1,
+          "start": 155900,
+          "stop": 156000
+        },
+        {
+          "count": 1,
+          "start": 268300,
+          "stop": 268400
+        },
+        {
+          "count": 1,
+          "start": 413300,
+          "stop": 413400
+        }
+      ],
+      "minimum_occupancy": 1,
+      "zero_block_count": 0
+    }
+  }
+}
