@@ -6,7 +6,7 @@ This queue contains bounded discovery work, not claims.
 
 Stage: discovery
 
-Status: **PREFLIGHT COMPLETE — E001 GRID FROZEN, NOT YET EXECUTED**
+Status: **D0 EXECUTED — FOUR OBSERVATIONS FROZEN; H0/A0 UNTOUCHED**
 
 Frozen specification: `experiments/E001_REPRESENTATION_GRID.md`
 
@@ -28,7 +28,9 @@ Goal: produce descriptive summaries and artifact checks only.
 
 Promotion cap: 10 observations.
 
-Next bounded action: implement the frozen E001 specification, test deterministic serialization and boundary semantics, and execute/inspect **D0 only**. Do not generate or inspect H0 until any proposed observation and its one-shot replication criterion have been frozen exactly.
+D0 result: deterministic discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; four promoted observations (`OBS-001` through `OBS-004`) now have exact one-shot H0 replication criteria frozen in `research/OBSERVATION_LEDGER.md`.
+
+Next bounded action: execute E001 on untouched **H0 only** using the unchanged implementation semantics and evaluate only the four frozen replication criteria. Do not mine H0 for new observations, do not generate A0, and do not create a candidate in the same bounded unit.
 
 ## SQ-002 — Cross-scale persistence
 
