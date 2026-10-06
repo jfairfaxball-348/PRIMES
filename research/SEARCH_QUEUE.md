@@ -38,15 +38,37 @@ Next bounded action: D1-03 / SQ-002 cross-scale persistence preflight. Freeze a 
 
 ## SQ-002 — Cross-scale persistence
 
-Stage: replication/discovery
+Stage: replication
 
-Status: **NEXT — PREFLIGHT REQUIRED BEFORE ANY EXECUTION**
+Status: **FROZEN — E002 READY FOR EXECUTION; NO E002 RESULTS GENERATED**
 
-Take only definitions frozen by SQ-001 and compare their rankings/extrema/support across disjoint magnitude bands. The preflight must declare a deterministic fresh scale ladder, keep D0/H0 and reserved A0 out of the new test ranges, and freeze exact persistence criteria before any new output is generated.
+Frozen specification: `experiments/E002_CROSS_SCALE_PERSISTENCE.md`
 
-Goal: identify features whose *definition* survives scale rather than features tuned to one band.
+Scope: `OBS-001`, `OBS-002`, and `OBS-003` only. `OBS-004` remains REFUTED and excluded.
 
-Promotion cap: 5 observations.
+Fresh fixed-width scale ladder:
+
+- S1: `[2_000_000, 3_000_000)`;
+- S2: `[4_000_000, 5_000_000)`;
+- S3: `[8_000_000, 9_000_000)`;
+- S4: `[16_000_000, 17_000_000)`;
+- S5: `[32_000_000, 33_000_000)`.
+
+All five bands are mutually disjoint and exclude E001 D0, H0, and reserved A0 = `[10_000_000, 11_000_000)`. A0 remains untouched.
+
+Frozen persistence tests preserve the exact E001 definitions:
+
+- OBS-001: third forward difference `0` must be the strict unique mode in every E002 band;
+- OBS-002: width-2 gap motif `[6, 6]` must be the strict unique mode in every E002 band;
+- OBS-003: directed reduced-residue transition support must be complete for every modulus in the unchanged family `{6,10,12,30,60}` in every E002 band.
+
+A tie fails the applicable modal-rank criterion; any missing allowed transition fails OBS-003. Overall E002 persistence requires passing all five bands. The full predeclared ladder is evaluated even after an earlier failure; no replacement/additional bands or post-result thresholds are allowed.
+
+Goal: test definition-preserving persistence with increasing value magnitude while holding the one-million band width fixed.
+
+Promotion cap: no new observations or candidates in the E002 execution unit; it records persistence outcomes for the existing replicated observations only.
+
+Next bounded action: D1-04 / SQ-002 — implement and execute the frozen E002 criterion-only test, validate determinism, evaluate only the predeclared criteria, keep A0 untouched, and do not mine new phenomena or perform candidate/mechanism/prior-art work.
 
 ## SQ-003 — Event-centred neighbourhoods
 
