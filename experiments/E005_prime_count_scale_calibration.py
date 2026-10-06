@@ -148,3 +148,152 @@ def nested_interval_counts(values: Iterable[int], anchor: int) -> dict[str, int]
         width_name: count_half_open(materialized, anchor, anchor + width)
         for width_name, width in WIDTHS
     }
+
+def _base_primes(stop: int) -> tuple[int, ...]:
+    if stop < 2:
+        return ()
+    flags = bytearray(b"\x01") * stop
+    flags[0:2] = b"\x00\x00"
+    limit = isqrt(stop - 1)
+    for prime in range(2, limit + 1):
+        if not flags[prime]:
+            continue
+        first = prime * prime
+        count = ((stop - 1 - first) // prime) + 1
+        flags[first:stop:prime] = b"\x00" * count
+    return tuple(index for index, flag in enumerate(flags) if flag)
+
+
+def _segmented_counts(
+    start: int, stop: int, widths: tuple[tuple[str, int], ...], base_primes: tuple[int, ...]
+) -> dict[str, int]:
+    if stop <= start:
+        raise ValueError("segmented interval must be non-empty")
+    flags = bytearray(b"\x01") * (stop - start)
+    if start == 0:
+        flags[0:2] = b"\x00\x00"
+    elif start == 1:
+        flags[0] = 0
+    for prime in base_primes:
+        first = max(prime * prime, ((start + prime - 1) // prime) * prime)
+        if first >= stop:
+            continue
+        count = ((stop - 1 - first) // prime) + 1
+        flags[first - start : stop - start : prime] = b"\x00" * count
+    result: dict[str, int] = {}
+    for width_name, width in widths:
+        if width > stop - start:
+            raise ValueError("nested width exceeds generated segment")
+        result[width_name] = sum(flags[:width])
+    return result
+
+
+def generation_plan(phase: str, *, development_checkpoint_verified: bool = False) -> list[dict[str, Any]]:
+    anchors = _anchors_for_phase(phase)
+    if phase == "assessment" and not development_checkpoint_verified:
+        raise ValueError("assessment generation requires a verified committed development checkpoint")
+    maximum_stop = max(anchor + WIDTHS[-1][1] for _, anchor in anchors)
+    base_stop = isqrt(maximum_stop - 1) + 1
+    rows: list[dict[str, Any]] = [
+        {
+            "purpose": "base_sieve_support",
+            "strategy": "whole_prefix",
+            "start": 0,
+            "stop": base_stop,
+        }
+    ]
+    rows.extend(
+        {
+            "anchor_name": anchor_name,
+            "purpose": "segmented_target",
+            "strategy": "segmented",
+            "start": anchor,
+            "stop": anchor + WIDTHS[-1][1],
+        }
+        for anchor_name, anchor in anchors
+    )
+    return rows
+
+
+def validate_generation_plan(
+    plan: list[dict[str, Any]],
+    *,
+    phase: str,
+    development_checkpoint_verified: bool = False,
+    serialize_raw_primes: bool = False,
+) -> None:
+    anchors = _anchors_for_phase(phase)
+    if serialize_raw_primes:
+        raise ValueError("raw-prime serialization is forbidden")
+    if phase == "assessment" and not development_checkpoint_verified:
+        raise ValueError("assessment generation requires a verified committed development checkpoint")
+    if len(plan) != 1 + len(anchors):
+        raise ValueError("generation plan must contain one base request and exactly three targets")
+
+    expected_targets = {
+        name: (anchor, anchor + WIDTHS[-1][1]) for name, anchor in anchors
+    }
+    base_rows = [row for row in plan if row.get("purpose") == "base_sieve_support"]
+    target_rows = [row for row in plan if row.get("purpose") == "segmented_target"]
+    if len(base_rows) != 1 or len(target_rows) != len(anchors):
+        raise ValueError("generation plan has invalid base/target cardinality")
+
+    maximum_stop = max(stop for _, stop in expected_targets.values())
+    required_base_stop = isqrt(maximum_stop - 1) + 1
+    base = base_rows[0]
+    if (
+        int(base.get("start", -1)) != 0
+        or int(base.get("stop", -1)) != required_base_stop
+        or base.get("strategy") != "whole_prefix"
+    ):
+        raise ValueError("base support must be the exact frozen whole-prefix request")
+    if int(base["stop"]) > LOW_SUPPORT_STOP:
+        raise ValueError("whole-prefix generation above 100,000 is forbidden")
+
+    seen: set[str] = set()
+    for row in target_rows:
+        name = str(row.get("anchor_name", ""))
+        if name not in expected_targets or name in seen:
+            raise ValueError("undeclared or duplicate calibration anchor")
+        seen.add(name)
+        start = int(row.get("start", -1))
+        stop = int(row.get("stop", -1))
+        if row.get("strategy") != "segmented":
+            if row.get("strategy") == "whole_prefix" and stop > LOW_SUPPORT_STOP:
+                raise ValueError("whole-prefix generation above 100,000 is forbidden")
+            raise ValueError("all high-value calibration generation must be segmented")
+        if (start, stop) != expected_targets[name]:
+            raise ValueError("undeclared or widened calibration segment")
+        interval = (start, stop)
+        for protected_name, protected in PROTECTED_RANGES.items():
+            if _intersects(interval, protected):
+                raise ValueError(f"generation interval intersects protected range {protected_name}")
+
+
+def execute_generation_plan(
+    plan: list[dict[str, Any]],
+    *,
+    phase: str,
+    development_checkpoint_verified: bool = False,
+    serialize_raw_primes: bool = False,
+) -> dict[str, dict[str, int]]:
+    validate_generation_plan(
+        plan,
+        phase=phase,
+        development_checkpoint_verified=development_checkpoint_verified,
+        serialize_raw_primes=serialize_raw_primes,
+    )
+    base = next(row for row in plan if row["purpose"] == "base_sieve_support")
+    base_primes = _base_primes(int(base["stop"]))
+    counts: dict[str, dict[str, int]] = {}
+    for row in plan:
+        if row["purpose"] != "segmented_target":
+            continue
+        counts[str(row["anchor_name"])] = _segmented_counts(
+            int(row["start"]), int(row["stop"]), WIDTHS, base_primes
+        )
+    return counts
+
+
+def _count_for(counts: dict[str, dict[str, int]], anchor_name: str, width_name: str) -> int:
+    try:
