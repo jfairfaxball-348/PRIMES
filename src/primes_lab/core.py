@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from collections import Counter
+from collections.abc import Iterable, Sequence
 from math import gcd, isqrt
-from typing import Iterable, Sequence
 
 
 def sieve(limit: int) -> list[int]:
