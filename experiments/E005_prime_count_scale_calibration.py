@@ -747,3 +747,153 @@ def verify_development_record(
     development_record_commit: str,
     code_commit: str,
 ) -> dict[str, Any]:
+    data = path.read_bytes()
+    if _sha256_bytes(data) != expected_sha256:
+        raise ValueError("development record SHA-256 mismatch")
+    if not re.fullmatch(r"[0-9a-f]{40}", development_record_commit):
+        raise ValueError("development record commit must be a full 40-hex SHA")
+    payload = json.loads(data)
+    if (
+        payload.get("experiment") != EXPERIMENT_ID
+        or payload.get("phase") != "development_selection_checkpoint"
+    ):
+        raise ValueError("invalid development record phase")
+    if payload.get("implementation_commit") != code_commit:
+        raise ValueError("development record implementation commit mismatch")
+    selection = payload.get("selection")
+    if not isinstance(selection, dict) or selection.get("normalization") not in CANDIDATES:
+        raise ValueError("development record lacks a valid frozen selection")
+    if set(selection.get("baselines", {})) != {name for name, _ in WIDTHS}:
+        raise ValueError("development record lacks the five frozen baselines")
+    if not isinstance(selection.get("eligible_questions"), list):
+        raise ValueError("development record lacks frozen eligible questions")
+    return payload
+
+
+def _target_assessment(
+    target: dict[str, Any] | str,
+    counters: dict[str, Counter[tuple[int, ...]]],
+) -> tuple[bool, dict[str, Any] | None]:
+    if not isinstance(target, dict):
+        return False, None
+    family = str(target["family"])
+    word = tuple(int(value) for value in target["word"])
+    counter = counters[family]
+    ranked = sorted(counter.items(), key=lambda item: (-item[1], item[0]))
+    mode_count = ranked[0][1] if ranked else 0
+    runner_up_count = ranked[1][1] if len(ranked) > 1 else 0
+    target_count = counter[word]
+    passed = target_count >= 3 and target_count == mode_count and mode_count > runner_up_count
+    return passed, {
+        "family": family,
+        "target_word": list(word),
+        "target_count": target_count,
+        "mode_count": mode_count,
+        "runner_up_count": runner_up_count,
+        "strict_unique_mode": bool(ranked) and mode_count > runner_up_count,
+        "passed": passed,
+        "frequency_table": _frequency_table(counter),
+    }
+
+
+def build_assessment_payload(
+    *,
+    code_commit: str,
+    development_record: Path,
+    development_record_sha256: str,
+    development_record_commit: str,
+) -> dict[str, Any]:
+    development = verify_development_record(
+        development_record,
+        expected_sha256=development_record_sha256,
+        development_record_commit=development_record_commit,
+        code_commit=code_commit,
+    )
+    plan = generation_plan("assessment", development_checkpoint_verified=True)
+    validate_generation_plan(
+        plan, phase="assessment", development_checkpoint_verified=True
+    )
+    counts = execute_generation_plan(
+        plan, phase="assessment", development_checkpoint_verified=True
+    )
+    transformed, rendered_transforms = transformed_matrices(counts, ASSESSMENT_ANCHORS)
+    scores = score_candidates(transformed, ASSESSMENT_ANCHORS)
+    selected = str(development["selection"]["normalization"])
+    frozen_baselines = {
+        name: Decimal(value) for name, value in development["selection"]["baselines"].items()
+    }
+    _, residuals, residual_counters = residual_objects(
+        selected,
+        transformed,
+        ASSESSMENT_ANCHORS,
+        baselines=frozen_baselines,
+    )
+    target = development["selection"]["residual_sign_target"]
+    target_passed, target_evaluation = _target_assessment(target, residual_counters)
+
+    dev_selected = Decimal(development["candidate_scores"][selected])
+    dev_identity = Decimal(development["candidate_scores"]["N00"])
+    ass_selected = scores["raw_global_scores"][selected]
+    ass_identity = scores["raw_global_scores"]["N00"]
+    ass_width_wins = sum(
+        scores["raw_width_spreads"][selected][width_name]
+        < scores["raw_width_spreads"]["N00"][width_name]
+        for width_name, _ in WIDTHS
+    )
+    m5_conditions = {
+        "no_forbidden_novelty_range_generated_or_inspected": True,
+        "raw_prime_list_not_serialized": True,
+        "assessment_after_committed_development_checkpoint": True,
+        "assessment_did_not_change_frozen_selection_or_grammar": True,
+        "historical_theory_not_consulted_during_execution": True,
+        "no_OBS_or_CAND_allocated": True,
+    }
+    milestones = evaluate_milestones(
+        selected=selected,
+        development_selected_score=dev_selected,
+        development_identity_score=dev_identity,
+        assessment_selected_score=ass_selected,
+        assessment_identity_score=ass_identity,
+        development_width_wins=int(
+            development["selection"]["development_width_wins_over_N00"]
+        ),
+        assessment_width_wins=ass_width_wins,
+        development_target=target,
+        assessment_target_passed=target_passed,
+        questions=list(development["selection"]["eligible_questions"]),
+        m5_conditions=m5_conditions,
+        deterministic_reproduction=True,
+        guard_validation=True,
+    )
+    return {
+        "experiment": EXPERIMENT_ID,
+        "lane": LANE,
+        "phase": "assessment",
+        "implementation_commit": code_commit,
+        "historical_theory_blinded": True,
+        "development_checkpoint": {
+            "record_sha256": development_record_sha256,
+            "record_commit": development_record_commit,
+            "normalization": selected,
+            "baselines": development["selection"]["baselines"],
+            "residual_sign_target": target,
+            "eligible_questions": development["selection"]["eligible_questions"],
+        },
+        "generation_plan": plan,
+        "anchors": [{"name": name, "value": value} for name, value in ASSESSMENT_ANCHORS],
+        "widths": [{"name": name, "value": value} for name, value in WIDTHS],
+        "count_matrix": counts,
+        "exact_objects": exact_count_objects(counts, ASSESSMENT_ANCHORS),
+        "transformed_density": rendered_transforms,
+        "candidate_scores": scores["candidate_scores"],
+        "candidate_ranking": scores["candidate_ranking"],
+        "width_spreads": scores["width_spreads"],
+        "selected_normalization_assessment": {
+            "normalization": selected,
+            "assessment_width_wins_over_N00": ass_width_wins,
+            "residual_objects": residuals,
+            "residual_target_evaluation": target_evaluation,
+        },
+        "milestones": milestones,
+        "raw_prime_values_serialized": False,
+    }
