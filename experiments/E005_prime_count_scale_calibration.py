@@ -897,3 +897,59 @@ def build_assessment_payload(
         "milestones": milestones,
         "raw_prime_values_serialized": False,
     }
+
+def serialise_payload(payload: dict[str, Any]) -> bytes:
+    return (json.dumps(payload, sort_keys=True, indent=2) + "\n").encode("utf-8")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--phase", choices=("development", "assessment"), required=True)
+    parser.add_argument("--code-commit", required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--checkpoint-output", type=Path, required=True)
+    parser.add_argument("--development-record", type=Path)
+    parser.add_argument("--development-record-sha256")
+    parser.add_argument("--development-record-commit")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    if args.phase == "development":
+        if any(
+            value is not None
+            for value in (
+                args.development_record,
+                args.development_record_sha256,
+                args.development_record_commit,
+            )
+        ):
+            raise ValueError("development phase does not accept an assessment checkpoint")
+        payload = build_development_payload(code_commit=args.code_commit)
+        rendered = serialise_payload(payload)
+        checkpoint = build_development_checkpoint(payload, rendered)
+    else:
+        if not all(
+            value is not None
+            for value in (
+                args.development_record,
+                args.development_record_sha256,
+                args.development_record_commit,
+            )
+        ):
+            raise ValueError("assessment requires the committed development record, digest, and commit")
+        payload = build_assessment_payload(
+            code_commit=args.code_commit,
+            development_record=args.development_record,
+            development_record_sha256=args.development_record_sha256,
+            development_record_commit=args.development_record_commit,
+        )
+        rendered = serialise_payload(payload)
+        checkpoint = build_assessment_checkpoint(payload, rendered)
+    args.output.write_bytes(rendered)
+    args.checkpoint_output.write_bytes(serialise_payload(checkpoint))
+
+
+if __name__ == "__main__":
+    main()
