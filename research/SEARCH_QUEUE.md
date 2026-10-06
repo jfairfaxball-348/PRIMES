@@ -243,7 +243,7 @@ Next bounded action: **D1-19 / SQ-007 blind novelty representation-family prefli
 
 Stage: discovery
 
-Status: **D1-20 D7 DISCOVERY COMPLETE — OBS-010/OBS-011 OBSERVED; H7 UNTOUCHED; D1-21 H7 REPLICATION NEXT**
+Status: **D1-21 H7 REPLICATION COMPLETE — OBS-010/OBS-011 REPLICATED; A7 UNTOUCHED; D1-22 SYNTHESIS TRIAGE NEXT**
 
 Frozen specification: `experiments/E007_NEIGHBOUR_FACTORIZATION_COUPLING.md`
 
@@ -290,4 +290,8 @@ The identical complete D7 command ran twice before descriptive inspection and pr
 
 Frozen mechanical promotion result: F1 and F4 fail positive enrichment and have no fallback; F2 target `[3,3]` is eligible with prime count 7,740, runner-up 6,364, composite count 52,501, and enrichment numerator 457,942,020; F3 target `[3,3]` is eligible with prime count 5,009, runner-up 3,958, composite count 39,183, and enrichment numerator 1,460,111. The F2 and F3 targets select different prime-anchor subsets, so duplicate suppression removes neither. `OBS-010` and `OBS-011` are allocated at status OBSERVED with exact unchanged one-shot H7 criteria frozen in the observation ledger. H7/A7 and all guards/historical protected ranges remain untouched/non-target.
 
-Next bounded action: **D1-21 / SQ-007 one-shot H7 replication of OBS-010 and OBS-011 only.** Verify unchanged E007 executable semantics, validate the H7-only generation plan, execute H7 twice for byte determinism before criterion inspection, evaluate only the two frozen same-family/same-target criteria, update each observation to REPLICATED or REFUTED, and stop without H7 mining, retargeting, A7, candidate/mechanism/proof, or prior-art/literature work.
+D1-21 verified the frozen evaluator/test bytes against checkpoint `ad09ec3d72dc291d4930f13d9954a5a155590574`, passed 22/22 focused tests and compilation, and reused FAIL-001/FAIL-002 for unavailable Ruff and empty GitHub CI-observability collections. Before generation, the exact H7 plan `[0,7000)` low support plus segmented H7=`[48_000_000,49_000_000)` was validated; 30 deliberate whole-prefix, wrong-support, partial/expanded, guard, protected/generated, adversarial, and other non-target plans failed before generation.
+
+The identical complete H7 command then ran twice before criterion inspection and produced byte-identical 450,687-byte artifacts, SHA-256 `6a25381c7430a6e720e619fb27696ec75e8696514d72a8f7a26398f616d85ced`. Only the frozen anchor-population and F2/F3 same-target criteria were inspected. H7 has 56,387 prime anchors and 443,612 composite controls. OBS-010/F2 `[3,3]` REPLICATED with prime count 7,917 versus highest competitor `[3,2]` at 6,404, composite target count 52,339, and enrichment numerator 560,837,011. OBS-011/F3 `[3,3]` REPLICATED with prime count 5,106 versus highest competitor `[3,2]` at 3,977, composite target count 38,940, and enrichment numerator 69,373,092. No fallback, retargeting, H7 mining, or non-target-family promotion inspection occurred. A7 and all guards/historical protected ranges remain untouched/non-target.
+
+Next bounded action: **D1-22 / SQ-007 candidate-synthesis triage over OBS-010 and OBS-011 only.** Use only committed D7+H7 evidence to decide whether either observation, or a non-duplicative exact synthesis of the two frozen family statements, supports an exact non-arbitrary falsifiable `CAND-###` statement beyond restating the two finite bands. Generate no new primes, do not execute A7, do not mine D7/H7 or retarget either family, and do not perform mechanism/proof, adversarial, prior-art/collision, or literature work in that triage unit.
