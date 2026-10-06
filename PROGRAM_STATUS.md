@@ -4,14 +4,14 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-14 SQ-005 calibration postmortem complete; SQ-005 methodologically closed; D1-15 / SQ-006 novelty representation preflight next; A1/H3/A3/H4/A4 untouched**
+**DISCOVERY-1 — D1-15 / SQ-006 novelty preflight complete; E006 translation-overlap spectrum frozen before output; D1-16 D6 execution next; A1/H3/A3/H4/A4/H6/A6 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-005 COMPLETE; NOVELTY PREFLIGHT NEXT | E005 remains mechanically PARTIAL_PASS and historically STALLED_BEFORE_KEY_IDEA; D1-14 process hardening is complete; calibration quarantine remains intact |
+| Pattern discovery | OPEN / SQ-006 E006 PREFLIGHT FROZEN; D6 EXECUTION NEXT | E006 is frozen before output as an exact value-space translation-overlap family; calibration quarantine remains intact |
 | Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -81,6 +81,14 @@ Status date: 2026-10-06
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
+- D1-15 returned to the blind novelty lane and froze E006 before any E006 prime-derived output: an exact value-space translation-overlap representation over the band-local prime indicator, counting all prime pairs at fixed even displacements without requiring adjacency;
+- E006 freezes `H=1000`, shifts `{2,4,...,1000}`, one common anchor domain for every shift, and exact overlap counts `C_B(h)`; no gap, occupancy, event-centred, residue-transition, modulus-refinement, fitted, floating, or Fourier object is admitted;
+- E006 uses the shift's odd radical only as a non-promotable exact triviality control. The 500 frozen shifts form 204 odd-radical classes, 11 of which have at least eight members; equal odd radical fixes the two-point modular-admissibility profile for every prime modulus while parity is fixed by the even-shift grammar;
+- E006 metadata-only partition is frozen as D6=`[42_000_000,43_000_000)`, guard G6-mid=`[43_000_000,44_000_000)`, H6=`[44_000_000,45_000_000)`, and A6=`[84_000_000,85_000_000)`; D6 is the first eligible million band after D4 once G4-mid and H4 are skipped, and A6 uses the established twice-discovery-lower-endpoint convention;
+- E006 promotion is capped at five observations and only exact within-radical-class strict maxima are eligible: class size at least 8, target overlap count at least 8, ties fail, and any promoted target must freeze the unchanged same-class/same-shift H6 criterion before H6 generation;
+- E006 future generation is fail-closed: low support is confined to historically generated safe support below 100,000, every new high-value interval must be segmented directly inside the authorized target, and protected/non-target traversal must fail before prime generation; D6 needs base primes only through 6,557;
+- D1-15 generated no primes, allocated no OBS/CAND ID, ran no prior-art/collision or mechanism/proof work, did not rerun/mine/relax E001-E004, and left all existing observation/conjecture/failure statuses and protected novelty ranges unchanged;
+
 Validated E005 implementation CI head: `5b8646ea82ca6d3c08b60f75759d16c101f6a0fc` — Ruff passed, 57 tests passed, and the E000 baseline smoke passed before valid E005 generation.
 
 E000 preflight evidence: `experiments/E000_PREFLIGHT_2026-10-06.md`.
@@ -120,6 +128,18 @@ D3 has now been generated only by the validated segmented E003 path and inspecte
 
 D4 has now been generated only by the validated segmented E004 path plus low support `[0,6325)` and inspected only through the frozen descriptive allowlist. H4 and A4 remain ungenerated/uninspected, both E004 guards remain ungenerated, and A1/H3/A3 remain frozen untouched outside E004. Whole-prefix high-value generation and traversal through protected/non-target ranges remain forbidden.
 
+## Frozen E006 partition and representation
+
+- Discovery D6: `[42_000_000, 43_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Discovery/holdout guard G6-mid: `[43_000_000, 44_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
+- Holdout H6: `[44_000_000, 45_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Adversarial A6: `[84_000_000, 85_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Historical A1/H3/H4/A3/A4 and E003/E004 guards — **UNCHANGED / UNTOUCHED OR NON-TARGET / EXCLUDED FROM E006**
+
+The frozen primitive is the band-local prime indicator. For every even shift `h` from 2 through 1000, E006 counts all prime pairs `(p,p+h)` using the common anchor domain `L <= p < U-1000`; intervening primes do not matter. Shifts are grouped only for triviality control by exact odd radical, which fixes the deterministic two-point modular-admissibility profile and is itself non-promotable.
+
+The D6 execution unit may promote at most five exact within-class strict-maximum observations under the frozen class-size/occurrence/tie rules. H6 remains untouched until any D6 targets and one-shot criteria are frozen. Whole-prefix high-value generation and every protected/non-target traversal remain forbidden.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -146,7 +166,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-15 / SQ-006:** run a design-only novelty representation-family preflight. Using only the project charter, discovery protocol, frozen E001/E002/E003/E004 novelty history, and target-agnostic methodology, choose and freeze one qualitatively distinct representation family not already exhausted by E001/E003/E004. Declare its primitive objects, transform grammar, deterministic serialization, descriptive allowlist, promotion grammar, one-shot holdout criterion templates, fresh metadata-only discovery/holdout/adversarial ranges, and a fail-closed future generation plan. Do not generate prime data, inspect A1/H3/A3/H4/A4 or guard ranges, create OBS/CAND IDs, alter existing statuses, perform mechanism/proof work, run prior-art search, or use E005 historical objects/theory to steer the representation choice.
+**D1-16 / SQ-006:** implement and execute the frozen E006 D6 translation-overlap discovery only. Treat `experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md` as frozen: do not change its ranges, shift horizon/set, common-anchor semantics, odd-radical control, descriptive allowlist, promotion grammar, holdout templates, ordering, or generation guard after seeing output. Validate exact semantics and fail-closed traversal before generation; generate only safe low support plus segmented D6; run the identical D6 command twice before inspection for byte determinism; inspect only the frozen allowlist and apply only the frozen promotion grammar. If eligible D6 patterns exist, allocate at most five observations and freeze exact H6 criteria before any future H6 generation. Do not generate H6/A6 or any historical reserve/guard, create a candidate, perform mechanism/proof work, run prior-art/collision search, or import calibration objects.
 
 ## Research inventory
 
@@ -171,8 +191,9 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 returns to the novelty lane after the quarantined historical-rediscovery calibration unit.
+DISCOVERY-1 remains in the blind novelty lane. D1-15 / SQ-006 preflight is complete and E006 is frozen before any prime-derived output.
 
-SQ-005 is methodologically complete. Its frozen history remains: D1-12 mechanical **PARTIAL_PASS**, D1-13 historical comparison **STALLED_BEFORE_KEY_IDEA**, and D1-14 target-agnostic process hardening only. The calibration protocol now records when to switch representation families rather than retune a failed grammar and how to expose single-subscale dominance in selector diagnostics. None of those amendments changes E005 or transfers its historical objects into novelty work.
+The next bounded unit is D1-16 / SQ-006 D6 discovery execution. Implement the exact frozen translation-overlap evaluator and guard, validate before generation, execute only D6 twice for determinism, inspect only allowlisted output, and mechanically apply the frozen promotion grammar. H6, A6, A1, H3, H4, A3, A4, and all guard bands remain untouched/non-target.
 
-The next bounded unit is D1-15 / SQ-006, a design-only novelty representation-family preflight. It must choose and freeze one qualitatively distinct blind-discovery family using novelty-lane authority only, predeclare fresh metadata-only ranges and promotion/holdout rules, and stop before prime generation. A1, H3, A3, H4, and A4 remain untouched/uninspected and must stay outside the new target ranges.
+If D6 yields eligible observations, freeze their exact one-shot H6 criteria in the observation ledger and stop without generating H6. If D6 yields no eligible observation, record that result and close SQ-006 without relaxing the grammar.
+
