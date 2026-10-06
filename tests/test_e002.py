@@ -4,10 +4,17 @@ from experiments.E002_cross_scale_persistence import (
     _obs001_evidence,
     _obs002_evidence,
     _residue_support_evidence,
+    _sieve_band,
     _strict_target_mode,
     evaluate_band,
     serialise_payload,
 )
+from primes_lab.core import sieve
+
+
+def test_segmented_band_sieve_matches_e001_sieve_semantics() -> None:
+    expected = [prime for prime in sieve(100_099) if 100_000 <= prime < 100_100]
+    assert _sieve_band(100_000, 100_100) == expected
 
 
 def test_band_boundary_exclusion() -> None:
