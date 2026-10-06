@@ -8,9 +8,11 @@ Read, in order:
 
 1. `PROGRAM_STATUS.md`
 2. `PROJECT_CHARTER.md`
-3. `research/CONJECTURE_REGISTER.md`
-4. `research/OBSERVATION_LEDGER.md`
-5. the experiment or candidate record being continued.
+3. `docs/SESSION_PROTOCOL.md`
+4. `research/SESSION_LEDGER.md`
+5. `research/CONJECTURE_REGISTER.md`
+6. `research/OBSERVATION_LEDGER.md`
+7. the experiment, search item, or candidate record being continued.
 
 ## Stage discipline
 
@@ -110,3 +112,16 @@ When a pattern is found, ask in this order:
 ## Graduation rule
 
 PRIMES is discovery infrastructure. A serious surviving theorem candidate should be frozen and exported to a dedicated proof repository rather than allowing this repository to become an unbounded proof-development tree.
+
+
+## Autonomous session completion
+
+Every serious session follows `docs/SESSION_PROTOCOL.md`.
+
+Do not wait for the owner to ask for a wrap-up. When the bounded unit reaches a natural checkpoint, update the authoritative records, validate the work, checkpoint it, and finish automatically.
+
+If there is a clear runnable continuation, update `NEXT_SESSION_PROMPT.md` and include exactly one copyable next-session prompt in the closeout.
+
+If meaningful continuation requires a genuine owner decision, checkpoint first, record the exact blocker, remove/suppress the live next-session prompt, and ask only for the required decision. Do not emit a conditional or placeholder continuation prompt.
+
+If the programme or stage is naturally complete, record that state and do not invent another task merely to keep the session chain alive.
