@@ -119,25 +119,29 @@ All four inequalities are strict. Any tie means the anchor is not sparse. There 
 
 Because both classes use strict opposite inequalities, one anchor cannot be both dense and sparse.
 
-## Event class E3-RECORD — strict in-band record gaps
+## Event class E3-RECORD — strict rolling-record gaps
 
 This is a new SQ-003 event class and must not be confused with E001 G5's historical **strict global record-gap** definition.
-
-For the full in-band gap sequence `g_0, ..., g_{n-2}`, a gap `g_i` with `i >= 1` is a **strict in-band record gap** exactly when
-
-`g_i > max(g_0, ..., g_{i-1})`.
-
-The first in-band gap `g_0` is not an event. Equality with the previous in-band maximum is not a record.
-
-Record status is computed over the complete in-band gap sequence before neighbourhood-boundary filtering.
 
 Frozen descriptive gap radius:
 
 `R_gap = 8`.
 
-A strict in-band record event is serializable only if all gaps `g_{i-8}, ..., g_{i+8}` exist inside the band. A record event lacking the full radius is omitted from neighbourhood summaries and counted in `boundary_omission_count`. There is no padding, wrapping, or cross-band completion.
+Frozen record lookback:
 
-This band-local record definition is chosen before E003 execution so the experiment can obey the A1 generation exclusion without reconstructing the prime prefix through excluded ranges.
+`L_record = 8 * R_gap = 64` preceding in-band gaps.
+
+For the full in-band gap sequence `g_0, ..., g_{n-2}`, a gap `g_i` with `i >= 64` is a **strict rolling-record gap** exactly when
+
+`g_i > max(g_{i-64}, ..., g_{i-1})`.
+
+All 64 inequalities are strict. Equality with the lookback maximum is not a record. Gaps with `i < 64` are not record-event candidates.
+
+Record status is computed on the complete in-band gap sequence before neighbourhood-boundary filtering.
+
+A strict rolling-record event is serializable only if all gaps `g_{i-8}, ..., g_{i+8}` exist inside the band. A record event lacking the full descriptive radius is omitted from neighbourhood summaries and counted in `boundary_omission_count`. There is no padding, wrapping, or cross-band completion.
+
+The lookback 64 is fixed algebraically from the frozen radius rather than from observed prime behaviour. This local record definition is chosen before E003 execution so the experiment can obey the A1 generation exclusion without reconstructing the prime prefix through excluded ranges.
 
 ## Frozen neighbourhood encodings
 
@@ -158,9 +162,9 @@ Offsets 1 and 2 are deliberately excluded from the promotable asymmetry signatur
 
 The event coordinate is the integer block start `1000k`.
 
-### Strict in-band record-gap events
+### Strict rolling-record-gap events
 
-For each serializable record event at gap index `i`, serialize in offset order `-8, -7, ..., 0, ..., 7, 8`:
+For each serializable rolling-record event at gap index `i`, serialize in offset order `-8, -7, ..., 0, ..., 7, 8`:
 
 1. **raw gap word**
    `G = (g_{i-8}, ..., g_i, ..., g_{i+8})`;
@@ -195,7 +199,7 @@ Event-class order is frozen as:
 
 1. `prime_dense`;
 2. `prime_sparse`;
-3. `strict_in_band_record_gap`.
+3. `strict_rolling_record_gap`.
 
 Event catalogs are sorted:
 
@@ -229,7 +233,7 @@ A D3 pattern is eligible for an `OBS-###` only if all of the following hold:
 4. the target occurs at least 3 times;
 5. the statement is not a restatement of an event-selection condition, a boundary rule, a deterministic encoding identity, or a tie-breaking rule;
 6. for dense/sparse asymmetry claims, only the predeclared outer offsets 3 through 8 may participate;
-7. for record-gap claims, the observation cannot consist only of the definitional fact that the centre gap exceeds earlier in-band gaps;
+7. for rolling-record-gap claims, the observation cannot consist only of the definitional fact that the centre gap exceeds the preceding 64 in-band gaps;
 8. the exact statement and one-shot H3 replication criterion are written to the observation ledger before H3 is generated.
 
 If more than five non-duplicate patterns satisfy these rules, rank the promotion pool deterministically by:
@@ -288,7 +292,7 @@ Before D3 generation, the implementation must test:
 - globally anchored width-1,000 occupancy semantics;
 - full-radius block-boundary exclusion;
 - strict dense/sparse inequalities and tie rejection;
-- strict in-band record semantics, including equal-gap non-records;
+- strict 64-gap rolling-record semantics, including equal-lookback-maximum non-records;
 - record classification before boundary omission;
 - exact neighbourhood coordinates and offset ordering;
 - asymmetry/sign encodings;
