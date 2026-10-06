@@ -1,0 +1,107 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 25557012,
+    "sha256": "80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254"
+  },
+  "band": {
+    "name": "H0",
+    "range": [
+      1000000,
+      2000000
+    ]
+  },
+  "experiment": "E001",
+  "implementation_commit": "beab213501dab318075199c3fcac6d5501d0b9d3",
+  "observations": {
+    "OBS-001": {
+      "criterion": "Third forward difference value 0 is the unique modal value.",
+      "mode": {
+        "count": 3764,
+        "value": 0
+      },
+      "replication_status": "REPLICATED",
+      "runner_up": {
+        "count": 3408,
+        "value": 12
+      }
+    },
+    "OBS-002": {
+      "criterion": "Gap motif [6,6] is the unique modal width-2 motif.",
+      "mode": {
+        "count": 1409,
+        "motif": [
+          6,
+          6
+        ]
+      },
+      "replication_status": "REPLICATED",
+      "runner_up": {
+        "count": 1335,
+        "motif": [
+          6,
+          4
+        ]
+      }
+    },
+    "OBS-003": {
+      "criterion": "Directed reduced-residue transition support is complete for every frozen modulus.",
+      "replication_status": "REPLICATED",
+      "support": [
+        {
+          "missing": [],
+          "modulus": 6,
+          "observed_distinct": 4,
+          "possible": 4
+        },
+        {
+          "missing": [],
+          "modulus": 10,
+          "observed_distinct": 16,
+          "possible": 16
+        },
+        {
+          "missing": [],
+          "modulus": 12,
+          "observed_distinct": 16,
+          "possible": 16
+        },
+        {
+          "missing": [],
+          "modulus": 30,
+          "observed_distinct": 64,
+          "possible": 64
+        },
+        {
+          "missing": [],
+          "modulus": 60,
+          "observed_distinct": 256,
+          "possible": 256
+        }
+      ]
+    },
+    "OBS-004": {
+      "criterion": "Every globally anchored width-100 H0 block has occupancy at least 1.",
+      "first_empty_block": {
+        "count": 0,
+        "start": 1671800,
+        "stop": 1671900
+      },
+      "minimum_occupancy": 0,
+      "replication_status": "REFUTED",
+      "width": 100,
+      "zero_block_count": 1
+    }
+  },
+  "prime_summary": {
+    "count": 70435,
+    "first_prime": 1000003,
+    "last_prime": 1999993
+  },
+  "validation": {
+    "compileall": "success",
+    "e001_source_blob": "01edecf0a1e992459807264fbf92bb816d242c7f",
+    "pytest": "14 passed",
+    "ruff": "unavailable (exit 127); reused FAIL-002"
+  }
+}
