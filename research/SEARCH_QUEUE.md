@@ -196,7 +196,7 @@ Next bounded action: **D1-15 / SQ-006 novelty representation-family preflight.**
 
 Stage: discovery / replication complete
 
-Status: **D1-17 H6 REPLICATION COMPLETE — OBS-008 REPLICATED; OBS-005/006/007/009 REFUTED; A6 UNTOUCHED; D1-18 SYNTHESIS NEXT**
+Status: **D1-18 CANDIDATE TRIAGE COMPLETE — NO CANDIDATE; OBS-008 RETAINED REPLICATED; OBS-005/006/007/009 REFUTED; A6 UNTOUCHED; SQ-006 CLOSED**
 
 Frozen specification: experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md
 
@@ -233,5 +233,21 @@ Frozen H6 outcomes: **OBS-008 REPLICATED** with target h=294 at 10,305 versus hi
 
 H6 was inspected only against those five frozen criteria. No new H6 observation was promoted, no failed target was retargeted, and no unselected class was mined. A6 and all historical protected ranges/guards remain untouched/non-target.
 
-Next bounded action: **D1-18 / SQ-006 candidate-synthesis triage.** Consider only the sole E006 holdout survivor OBS-008 using committed D6+H6 evidence. Do not generate new primes, inspect A6 or any protected reserve/guard, mine H6, retarget refuted observations, perform mechanism/proof work, or run prior-art/collision search. Create a candidate only if an exact non-arbitrary falsifiable statement is justified beyond restating the two finite bands.
+D1-18 candidate-synthesis result: **NO CANDIDATE CREATED.** Only OBS-008 was eligible for consideration. Its exact committed evidence is the rho=21 within-class strict maximum at h=294 on D6 (10,373 versus 10,333) and H6 (10,305 versus highest same-class competitor h=126 at 10,301). A statement restricted to exactly D6 and H6 would only restate those finite computations. Any broader statement would require an unsupported quantifier over an untested band, origin, width, later scale, infinite family, or broader shift/class family. No such quantifier is supplied by E006, so no `CAND-###` was allocated. OBS-008 remains REPLICATED with no candidate link. A6 remains frozen, untouched, uninspected, and unexecuted.
+
+SQ-006 is closed without candidate promotion. No mechanism/proof work, prior-art/collision search, literature search, new prime-derived computation, H6 mining, retargeting, or protected-range inspection occurred.
+
+Next bounded action: **D1-19 / SQ-007 blind novelty representation-family preflight.** Select and freeze exactly one qualitatively distinct novelty representation family using only novelty-lane authority and target-agnostic methodology. Generate no prime-derived data, preserve all historical reserves/guards including A6, allocate no OBS/CAND IDs, and do not use SQ-005 calibration objects or historical-unblinding mechanisms to steer the family.
+
+## SQ-007 — Blind novelty representation-family preflight
+
+Stage: discovery
+
+Status: **PENDING D1-19 PREFLIGHT — DESIGN ONLY / NO PRIME-DERIVED OUTPUT**
+
+Purpose: continue the blind novelty lane after SQ-006 closes without a candidate by choosing exactly one qualitatively distinct representation family not already exhausted by E001/E003/E004/E006, then freeze its primitive objects, transform grammar, metadata-only numerical partition, descriptive allowlist, observation-promotion grammar, one-shot holdout criteria, deterministic serialization, and fail-closed future generation plan before any output inspection.
+
+Historical facts are immutable inputs only: E001/E002/E003/E004/E006 outcomes and no-candidate/no-observation results remain frozen; SQ-005 remains permanently quarantined; A1, H3, H4, G6-mid, A3, A4, A6, and all E003/E004 guards remain untouched/non-target unless a future separately frozen protocol explicitly and lawfully assigns a new role.
+
+D1-19 must generate no primes or other prime-derived output, inspect no protected reserve/guard, rerun or mine no historical experiment, allocate no observation/candidate, perform no mechanism/proof work, and run no prior-art/collision search.
 
