@@ -47,6 +47,19 @@ No `CAND-###` was allocated. D1-18 considered only `OBS-008`, the sole E006 obse
 **Triage conclusion:** no candidate created. `OBS-008` remains REPLICATED with no candidate link. The two-band D6+H6 evidence is sufficient for replication but not for an exact non-arbitrary conjectural extrapolation under the project candidate-promotion rules. Active candidates remain zero; no candidate ID or novelty status was allocated. A6 remains frozen, untouched, uninspected, and unexecuted. No new prime-derived computation, H6/D6 mining, mechanism/proof work, prior-art/collision search, literature search, calibration-object transfer, protected-range inspection, retargeting, or grammar change occurred.
 
 
+## D1-22 / SQ-007 candidate-synthesis triage — 2026-10-06
+
+No `CAND-###` was allocated. D1-22 considered only `OBS-010` and `OBS-011`, the two E007 observations that survived their frozen one-shot H7 criteria. All E001/E002/E003/E004/E006 facts and statuses remain historical and were excluded from synthesis.
+
+| Observation | Triage outcome | Reason |
+|---|---|---|
+| `OBS-010` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E007 F2 semantics, exact target `[3,3]` is the strict unique prime-anchor mode and has positive composite-control enrichment in D7 and H7, with both population and occurrence floors passing. A statement restricted to exactly D7 and H7 only restates committed finite computation. Any stronger mathematical statement requires a quantifier over an untested band, origin, width, later scale, anchor population, representation/factorization family, or infinitely many values that E007 did not establish. |
+| `OBS-011` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E007 F3 semantics, exact target `[3,3]` is the strict unique prime-anchor mode and has positive composite-control enrichment in D7 and H7, with both population and occurrence floors passing. The evidence is still only the two frozen bands. Extending the fact beyond them adds an unsupported quantifier; restricting it to them is a finite restatement. |
+| `OBS-010` + `OBS-011` | NO JOINT CANDIDATE | The exact joint statement that F2 and F3 both have target `[3,3]` satisfying their frozen criteria on D7 and H7 is merely the conjunction of the two committed finite observations. Any stronger common-persistence or cross-family-coupling claim introduces an unsupported quantifier or new structure not established by the frozen D7+H7 evidence. |
+
+**Triage conclusion: NO CANDIDATE CREATED.** Both observations remain REPLICATED with no candidate link. Active candidates remain zero; no candidate ID or novelty status was allocated. SQ-007 closes without A7 execution. A7 remains frozen, untouched, uninspected, and unexecuted. No new prime-derived computation, D7/H7 mining, retargeting, factorization-rule change, mechanism/proof work, adversarial execution, prior-art/collision search, literature search, novelty claim, calibration-object transfer, or protected-range inspection occurred.
+
+
 Do not create a candidate merely because a pattern is visually interesting. See `docs/DISCOVERY_PROTOCOL.md`.
 
 ## Template
