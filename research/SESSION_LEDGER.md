@@ -123,6 +123,24 @@ Never reuse or renumber a completed session.
 **Next session:** D1-06 / SQ-002 — candidate-synthesis triage using only committed D0/H0/E002 evidence for OBS-002 and OBS-003, with A1 kept untouched and no new computation, mechanism/proof work, or prior-art audit.  
 **Commit:** recovery/state checkpoint `04ef5d37535d0918e7ef5f9128a0eeb9000af46f`.
 
+
+### S008
+
+**Date:** 2026-10-06  
+**Stage:** discovery  
+**Bounded objective:** D1-06 / SQ-002 — perform candidate-synthesis triage after E002 using only committed D0/H0/S1-S5 evidence, considering only E002-persistent OBS-002 and OBS-003, while preserving all frozen historical facts and keeping A1 untouched.  
+**Incoming state:** DISCOVERY-1 at main head `257edb11ae3c6c7173834c8913e02979bd275e9f`; OBS-001 historically REPLICATED but E002 NOT PERSISTENT; OBS-002 and OBS-003 REPLICATED and E002 PERSISTENT; OBS-004 REFUTED; active candidates 0; A0 contaminated-by-generation/uninspected and retired; A1=`[33_000_000,34_000_000)` frozen untouched/uninspected.  
+**Work performed:** Read all requested programme authority, protocols, ledgers, E001/E002 specifications and execution records, reserve-recovery record, all three committed evidence JSONs, and the live prompt before changing anything. Performed synthesis only from committed evidence. For OBS-002, tested whether seven successful fixed-width bands support a statement beyond the finite bands without importing an arbitrary scale/origin/width/eventual quantifier. For OBS-003, tested whether complete support for the five frozen moduli across all seven bands supports a statement beyond the finite modulus/range grid without importing an arbitrary all-moduli, broader-family, all-band/eventual, or infinite-occurrence quantifier. Recorded the second no-candidate triage, updated candidate-link/notes consistency for OBS-002/003, closed SQ-002 through synthesis, advanced programme state to an SQ-003 preflight, and replaced the live prompt accordingly. No new prime-derived computation, A0/A1 generation or inspection, representation mining, mechanism/proof work, or prior-art audit occurred.  
+**Result:** No `CAND-###` was created. OBS-002 is strongly persistent across the seven tested million-wide bands, but the committed experiment does not identify a mathematical invariant that licenses extrapolation to untested band origins, widths, later scales, or infinitely many ladder members. OBS-003 has complete support for every frozen modulus in every tested band, but the modulus family was explicitly a finite experimental grid and the evidence does not justify an all-moduli, broader-family, all-band/eventual, or infinite-occurrence claim. Statements restricted to the tested finite grid would merely restate computation. Active candidates remain 0.  
+**Observations/candidates affected:** OBS-002 and OBS-003 remain REPLICATED with E002 PERSISTENT and no candidate link; OBS-001 remains REPLICATED with E002 NOT PERSISTENT and was excluded from D1-06 promotion; OBS-004 remains REFUTED; no candidate ID allocated.  
+**Validation:** Documentation/state consistency checks confirm the conjecture register still reports no active candidates and contains a distinct D1-06 no-candidate triage; OBS-002/003 retain their frozen definitions and statuses while recording the D1-06 no-promotion result; programme status, search queue, and live prompt agree that D1-06 is complete and D1-07 / SQ-003 is next; A1 remains recorded as FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED and is explicitly excluded from SQ-003. No code or mathematical computation changed, so pytest/Ruff/experiment reruns were not appropriate validation for this synthesis-only unit.  
+**Failures/limitations:** No new failure. The remaining synthesis limitation is quantifier selection: repeated finite persistence materially strengthens the observations but does not by itself supply a principled infinite, eventual, all-band, all-width, or all-moduli statement. No novelty conclusion was attempted.  
+**Decision blocker:** none  
+**Outgoing state:** DISCOVERY-1; SQ-002 complete through second candidate-synthesis triage; no candidate; OBS-002/003 remain persistent observations; A1 untouched; next task is design-only D1-07 / SQ-003 event-centred neighbourhood preflight.  
+**Next session:** D1-07 / SQ-003 — design and freeze E003 event-centred neighbourhood definitions, thresholds, encodings, fresh untouched ranges beyond A1, promotion/holdout rules, determinism, and generation-path guards without executing E003 or touching A1.  
+**Commit:** substantive D1-06 checkpoints `2e4d8199b4f853202c86f97e25f58351ad9fc6d0`, `2374af9cb35046666ee2989ce4151a584bebec1f`, `c2e32af0123740d7f91f957fa4340c0dce702e5b`, `0c5fa062e407143aa310d55ebf52ba72fe8fc194`, `e5645a5cf9d5ff84e89f5df3afab2f724e62306a`.
+
+
 ## Entry template
 
 ### S###
