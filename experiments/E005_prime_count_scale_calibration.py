@@ -8,11 +8,12 @@ import hashlib
 import json
 import re
 from collections import Counter
-from decimal import Context, Decimal, ROUND_HALF_EVEN, localcontext
+from collections.abc import Iterable
+from decimal import ROUND_HALF_EVEN, Context, Decimal, localcontext
 from fractions import Fraction
 from math import isqrt
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 EXPERIMENT_ID = "E005"
 LANE = "historical_rediscovery_calibration"
