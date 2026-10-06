@@ -4,15 +4,15 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-19 / SQ-007 preflight complete; E007 neighbour-factorization coupling FROZEN / NOT EXECUTED; D1-20 D7 discovery next; historical reserves/guards and fresh H7/A7 untouched**
+**DISCOVERY-1 — D1-20 / SQ-007 D7 discovery complete; OBS-010/OBS-011 OBSERVED with frozen H7 criteria; D1-21 H7 replication next; H7/A7 and historical reserves/guards untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-007 E007 FROZEN; D7 DISCOVERY NEXT | E007 is frozen before output as a multiplicative neighbour-factorization family; execute D7 only under the frozen grammar while calibration quarantine and all protected ranges remain intact |
-| Observation promotion | OPEN / 4 REPLICATED; 5 REFUTED | Exact reproducible observation |
+| Pattern discovery | OPEN / SQ-007 D7 COMPLETE; H7 REPLICATION NEXT | D7 executed under the frozen E007 grammar; replicate only OBS-010/OBS-011 on untouched H7 with unchanged same-family/same-target criteria |
+| Observation promotion | OPEN / 4 REPLICATED; 2 OBSERVED; 5 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / NONE PROMOTED | D1-18 found no non-arbitrary CAND statement from OBS-008 beyond a two-band finite restatement; D1-02/D1-06/D1-18 are explicit no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
@@ -158,6 +158,14 @@ D1-19 then froze E007 before any E007 prime-derived output. E007 is a qualitativ
 
 The E007 metadata-only partition is frozen as G7-pre=`[45_000_000,46_000_000)`, D7=`[46_000_000,47_000_000)`, G7-mid=`[47_000_000,48_000_000)`, H7=`[48_000_000,49_000_000)`, and A7=`[92_000_000,93_000_000)`. D7 is separated from consumed H6 by a full untouched guard; H7 is separated from D7 by another guard; A7 uses the established twice-discovery-lower-endpoint convention. A1, H3, H4, G6-mid, A3, A4, A6, and every E003/E004 guard remain untouched/non-target. E007 future generation is fail-closed: D7 may use only historically safe low support through 6,855 plus segmented D7, and every protected/non-target/partial/whole-prefix traversal must fail before prime generation. D1-19 generated no primes, allocated no OBS/CAND ID, ran no mechanism/proof/prior-art/literature work, and did not use SQ-005 calibration objects or historical-unblinding mechanisms to steer the family.
 
+D1-20 implemented and validated E007 before D7 generation. The implementation/test checkpoint is `ad09ec3d72dc291d4930f13d9954a5a155590574` (evaluator blob `e81601ac9d557c94273b21885b675cf8a502cc60`, focused-test blob `657aabd557d8cd2434907f03ded2d07b4b1ecd1a`). Focused validation passed 22/22 tests and compilation; Ruff/current-head CI observability remain only the existing FAIL-001/FAIL-002 detached-runner limitation. The canonical generation plan used exact low support `[0,6856)` plus segmented D7 only, with whole-prefix, partial-target, guard, holdout, adversarial, historical protected/generated, and other non-target traversals rejected before generation.
+
+The identical complete D7 command ran twice before descriptive inspection and produced byte-identical 448,997-byte artifacts, SHA-256 `dde63c44ed6090c0dbdd7897e440b7cbd642336c82dbc126c513acc1357f4635`. The common odd-anchor domain contains 499,999 anchors: 56,640 prime anchors and 443,359 composite controls. Factorization reconstruction, thin/thick classification, and odd-core gcd validation failure counts are all zero. Only the frozen allowlist was inspected.
+
+Every F1-F4 prime table has a strict unique mode and clears the population/occurrence floors. F1 target `[[1,1,1],[1,1,1]]` fails enrichment with numerator -15,774,983; F4 target `1` fails enrichment with numerator -12,534,377; neither has a fallback. F2 target `[3,3]` is mechanically eligible with 7,740 prime occurrences versus runner-up 6,364, composite count 52,501, and exact enrichment numerator 457,942,020. F3 target `[3,3]` is mechanically eligible with 5,009 prime occurrences versus runner-up 3,958, composite count 39,183, and exact enrichment numerator 1,460,111. Their selected prime-anchor subsets differ, so duplicate suppression removes neither.
+
+Exactly two observations were promoted: `OBS-010` (F2 distinct-factor-count pair `[3,3]`) and `OBS-011` (F3 total-multiplicity pair `[3,3]`), both at status OBSERVED. Their unchanged one-shot H7 criteria are frozen in `research/OBSERVATION_LEDGER.md`: the same family/target must remain the strict unique H7 prime mode, both anchor populations must be at least 1,000, target count at least 32, and exact enrichment numerator strictly positive. H7 and A7 remain ungenerated; all historical reserves/guards remain untouched/non-target. No candidate, mechanism/proof work, adversarial execution, prior-art/collision search, literature search, retargeting, or calibration-object transfer occurred. Compact evidence is `research/evidence/E007_D7_discovery.json`; execution record is `experiments/E007_D7_DISCOVERY_2026-10-06.md`.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -184,11 +192,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-20 / SQ-007:** implement and execute the frozen E007 D7 discovery unit only. Preserve the exact neighbour-factorization grammar, common odd-anchor prime/composite control partition, thin/thick normalization, F1-F4 signature families, floors, enrichment rule, deterministic allowlist/serialization, and fail-closed generation guard. Validate fully before generation; generate D7 twice for byte determinism; inspect only the frozen allowlist; allocate at most four observations mechanically and freeze exact H7 criteria before any future holdout generation. Do not generate H7/A7 or any historical protected range, create a candidate, perform mechanism/proof work, or run prior-art/collision/literature search.
+**D1-21 / SQ-007:** perform one-shot H7 replication of OBS-010 and OBS-011 only. Preserve the exact frozen E007 evaluator semantics and the two same-family/same-target H7 criteria, validate the H7-only generation plan before generation, execute H7 twice for byte determinism before criterion inspection, inspect only the two frozen criteria, and update each observation to REPLICATED or REFUTED. Do not mine H7, retarget either observation, generate A7/guards/historical protected ranges, create a candidate, perform mechanism/proof work, or run prior-art/collision/literature search.
 
 ## Research inventory
 
-- Active observations: 4
+- Active observations: 6
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -209,8 +217,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-19 / SQ-007 is complete with E007 **FROZEN / NOT EXECUTED** and no observation/candidate allocation.
+DISCOVERY-1 remains in the blind novelty lane. D1-20 / SQ-007 is complete with D7 executed deterministically and exactly two observations, `OBS-010` and `OBS-011`, promoted at status OBSERVED under the frozen grammar.
 
-The next bounded unit is D1-20 / SQ-007 E007 D7 discovery execution. Implement the exact frozen neighbour-factorization evaluator and fail-closed guard, satisfy every pre-generation validation obligation in `experiments/E007_NEIGHBOUR_FACTORIZATION_COUPLING.md`, execute only D7=`[46_000_000,47_000_000)` twice for byte determinism, inspect only the frozen descriptive allowlist, and mechanically apply only the F1-F4 promotion grammar. Freeze exact same-family/same-target H7 criteria for any promoted observations before any future H7 generation. If no family qualifies, record NO ELIGIBLE OBSERVATION and close SQ-007 without relaxing the grammar.
+The next bounded unit is D1-21 / SQ-007 one-shot H7 replication of those two observations only. Verify the frozen E007 executable semantics, validate the H7-only fail-closed plan using exact low support through 6,999 (exclusive endpoint 7,000) plus segmented H7=`[48_000_000,49_000_000)`, execute the identical complete H7 command twice before criterion inspection, and evaluate only the two frozen same-family/same-target criteria. Update OBS-010 and OBS-011 to REPLICATED or REFUTED without mining H7 or retargeting a failure.
 
-G7-pre, G7-mid, H7, A7, A1, H3, H4, G6-mid, A3, A4, A6, and all E003/E004 guards remain untouched/non-target. SQ-005 calibration objects and historical-unblinding mechanisms remain quarantined from novelty selection and interpretation.
+G7-pre, G7-mid, A7, A1, H3, H4, G6-mid, A3, A4, A6, and all E003/E004 guards remain untouched/non-target. SQ-005 calibration objects and historical-unblinding mechanisms remain quarantined from novelty selection and interpretation.
