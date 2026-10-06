@@ -4,7 +4,7 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — E001 H0 replication complete; three observations replicated, one refuted; A0 untouched**
+**DISCOVERY-1 — E001 candidate-synthesis triage complete; no candidate promoted; three replicated observations retained; A0 untouched**
 
 ## Gates
 
@@ -13,7 +13,7 @@ Status date: 2026-10-06
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
 | Pattern discovery | OPEN / H0 REPLICATED | Frozen E001 discovery grammar and partition |
 | Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / ELIGIBLE | Holdout survival satisfied by OBS-001 through OBS-003; exact candidate synthesis still required |
+| Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | Holdout survival satisfied by OBS-001 through OBS-003; D1-02 found no exact non-arbitrary candidate statement justified by current evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -32,7 +32,8 @@ Status date: 2026-10-06
 - four exact D0 observations promoted with H0 criteria frozen before holdout generation;
 - E001 H0 executed twice with byte-identical 25,557,012-byte artifacts, SHA-256 `80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254`;
 - H0 frozen-criterion outcomes: `OBS-001`, `OBS-002`, and `OBS-003` REPLICATED; `OBS-004` REFUTED by the empty anchored block `[1_671_800, 1_671_900)`;
-- reserved A0 remains untouched; no candidate, mechanism work, or prior-art search has yet been performed;
+- D1-02 candidate-synthesis triage considered only OBS-001 through OBS-003 and created no candidate: OBS-001/002 remain range-local modal-rank facts whose natural generalizations introduce unsupported scale/banding quantifiers, while OBS-003's finite frozen-modulus coverage does not justify an all-moduli or infinite-occurrence extrapolation;
+- reserved A0 remains untouched; no mechanism work or prior-art search has yet been performed;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
@@ -63,7 +64,7 @@ D0 has been generated and used for discovery. H0 has now been generated twice by
 
 ## Active task
 
-**D1-02 / SQ-001:** candidate-synthesis triage for replicated `OBS-001` through `OBS-003` only. Decide whether each supports an exact candidate statement and falsification/adversarial plan. Keep novelty `UNAUDITED`; do not run prior-art, mechanism work, or A0 in the same bounded unit.
+**D1-03 / SQ-002:** cross-scale persistence preflight for replicated `OBS-001` through `OBS-003`. Freeze a new E002 scale-persistence design and fresh disjoint numerical bands before execution. Preserve the E001 definitions, keep A0 reserved and untouched, and do not create a candidate or perform prior-art/mechanism work in the preflight unit.
 
 ## Research inventory
 
@@ -86,4 +87,4 @@ D0 has been generated and used for discovery. H0 has now been generated twice by
 
 ## Next stage
 
-DISCOVERY-1 is active. H0 replication is complete: three observations survived and one was refuted. The candidate gate is now eligible for a separate synthesis unit, but no candidate exists yet. The next natural checkpoint is bounded candidate-synthesis triage for `OBS-001` through `OBS-003`; A0 remains reserved and untouched.
+DISCOVERY-1 is active. H0 replication is complete: three observations survived and one was refuted. D1-02 candidate-synthesis triage created no `CAND-###`: the current two-band evidence is sufficient for replication but not for a mathematically non-arbitrary extrapolation. The next natural checkpoint is D1-03 / SQ-002 cross-scale persistence preflight, which must freeze a new design and fresh disjoint ranges before any new execution. A0 remains reserved and untouched.

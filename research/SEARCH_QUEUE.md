@@ -6,7 +6,7 @@ This queue contains bounded discovery work, not claims.
 
 Stage: discovery
 
-Status: **H0 REPLICATION COMPLETE — THREE REPLICATED, ONE REFUTED; A0 UNTOUCHED**
+Status: **CANDIDATE TRIAGE COMPLETE — NO CANDIDATE CREATED; THREE REPLICATED OBSERVATIONS RETAINED; A0 UNTOUCHED**
 
 Frozen specification: `experiments/E001_REPRESENTATION_GRID.md`
 
@@ -32,13 +32,17 @@ D0 result: deterministic discovery artifact SHA-256 `822431d664d5a35949abdf230a1
 
 H0 result: deterministic holdout artifact SHA-256 `80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254`. `OBS-001`, `OBS-002`, and `OBS-003` replicated under their frozen criteria. `OBS-004` was refuted by the empty anchored block `[1_671_800, 1_671_900)`. A0 remains untouched.
 
-Next bounded action: D1-02 candidate-synthesis triage for the replicated observations only. Decide whether each of `OBS-001` through `OBS-003` supports an exact `CAND-###` statement with a falsification/adversarial plan. Keep novelty status `UNAUDITED`; do not perform prior-art search, mechanism work, or generate A0 in the same unit.
+Candidate-synthesis result: D1-02 considered `OBS-001` through `OBS-003` only and allocated no `CAND-###`. OBS-001 and OBS-002 remain exact replicated modal-rank facts but do not yet support a non-arbitrary scale/band quantifier. OBS-003 remains exact replicated finite-grid coverage but does not yet justify an all-moduli or infinite-occurrence extrapolation. OBS-004 remains REFUTED and excluded.
+
+Next bounded action: D1-03 / SQ-002 cross-scale persistence preflight. Freeze a new E002 design and fresh disjoint ranges before execution, using the E001 definitions unchanged and excluding reserved A0. Do not generate new results, create a candidate, perform mechanism work, or run prior-art search in that preflight unit.
 
 ## SQ-002 — Cross-scale persistence
 
 Stage: replication/discovery
 
-Take only definitions frozen by SQ-001 and compare their rankings/extrema across disjoint magnitude bands.
+Status: **NEXT — PREFLIGHT REQUIRED BEFORE ANY EXECUTION**
+
+Take only definitions frozen by SQ-001 and compare their rankings/extrema/support across disjoint magnitude bands. The preflight must declare a deterministic fresh scale ladder, keep D0/H0 and reserved A0 out of the new test ranges, and freeze exact persistence criteria before any new output is generated.
 
 Goal: identify features whose *definition* survives scale rather than features tuned to one band.
 
