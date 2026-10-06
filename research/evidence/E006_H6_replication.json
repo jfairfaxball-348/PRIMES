@@ -1,0 +1,118 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 111561,
+    "sha256": "be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H6",
+    "range": [
+      44000000,
+      45000000
+    ]
+  },
+  "criteria": [
+    {
+      "class_size": 19,
+      "max_competitor_count": 11456,
+      "max_competitor_shifts": [
+        90
+      ],
+      "observation_id": "OBS-005",
+      "occurrence_floor": 8,
+      "occurrence_floor_passed": true,
+      "replication_status": "REFUTED",
+      "rho": 15,
+      "strict_margin": -59,
+      "target_count": 11397,
+      "target_shift": 900
+    },
+    {
+      "class_size": 8,
+      "max_competitor_count": 6855,
+      "max_competitor_shifts": [
+        560
+      ],
+      "observation_id": "OBS-006",
+      "occurrence_floor": 8,
+      "occurrence_floor_passed": true,
+      "replication_status": "REFUTED",
+      "rho": 35,
+      "strict_margin": -79,
+      "target_count": 6776,
+      "target_shift": 280
+    },
+    {
+      "class_size": 12,
+      "max_competitor_count": 5179,
+      "max_competitor_shifts": [
+        28
+      ],
+      "observation_id": "OBS-007",
+      "occurrence_floor": 8,
+      "occurrence_floor_passed": true,
+      "replication_status": "REFUTED",
+      "rho": 7,
+      "strict_margin": -132,
+      "target_count": 5047,
+      "target_shift": 56
+    },
+    {
+      "class_size": 13,
+      "max_competitor_count": 10301,
+      "max_competitor_shifts": [
+        126
+      ],
+      "observation_id": "OBS-008",
+      "occurrence_floor": 8,
+      "occurrence_floor_passed": true,
+      "replication_status": "REPLICATED",
+      "rho": 21,
+      "strict_margin": 4,
+      "target_count": 10305,
+      "target_shift": 294
+    },
+    {
+      "class_size": 24,
+      "max_competitor_count": 8667,
+      "max_competitor_shifts": [
+        216
+      ],
+      "observation_id": "OBS-009",
+      "occurrence_floor": 8,
+      "occurrence_floor_passed": true,
+      "replication_status": "REFUTED",
+      "rho": 3,
+      "strict_margin": -140,
+      "target_count": 8527,
+      "target_shift": 324
+    }
+  ],
+  "experiment": "E006",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 6709,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 44000000,
+      "stop": 45000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "8bfcc27d96dc1b0858c514cf2bfab81790ab71b0",
+  "stage": "H6 one-shot replication",
+  "validation": {
+    "compileall": "success",
+    "current_head_ci": "no status objects and no PR-triggered workflow runs; existing FAIL-002 observability limitation",
+    "evaluator_blob": "4f79c435c8213c49859da351c7393a692be34b0c",
+    "focused_pytest": "14 passed",
+    "focused_test_blob": "2102f44af67497cf293bf95b5a3a8afcb21a8b31",
+    "h6_generation_guard": "canonical [0,6709) support plus segmented H6; invalid prefix/partial/non-target traversals rejected before sieve call",
+    "ruff": "unavailable in detached runner; existing FAIL-001/FAIL-002 limitation"
+  }
+}
