@@ -164,12 +164,65 @@ Next bounded action: D1-11 / SQ-005 — design and freeze the first quarantined 
 
 Stage: calibration
 
-Status: **READY FOR PREFLIGHT — FIRST CALIBRATION BENCHMARK DESIGN NEXT**
+Status: **D1-11 PREFLIGHT COMPLETE — E005 FROZEN / NOT YET EXECUTED; HISTORICAL THEORY BLINDED**
 
-Run the method in the quarantined calibration lane described in docs/CALIBRATION_PROTOCOL.md.
+Governing protocol: `docs/CALIBRATION_PROTOCOL.md`.
 
-Goal: learn which discovery operations are capable of producing genuinely explanatory objects.
+Frozen benchmark: `experiments/E005_PRIME_COUNT_SCALE_CALIBRATION.md`.
 
-Nothing from this queue item can be promoted as novel.
+E005 is permanently quarantined from the novelty lane. It may never allocate `OBS-###` or `CAND-###` IDs, support a novelty claim, or become discovery/holdout/adversarial evidence for E001-E004 or any later novelty experiment.
 
-Next bounded action: D1-11 / SQ-005 — design and freeze one Riemann-style historical rediscovery benchmark from prime counts and elementary derived data, including its primitive inputs, transform grammar, ranges, deterministic outputs, success/failure criteria, execution guard, and later unblinding procedure. The preflight must not execute the benchmark, inspect hidden historical theory, generate new prime-derived output, or create an observation/candidate.
+Primitive prime-derived input: exact interval count
+
+`C(a,w) = # {p prime : a <= p < a+w}`
+
+only. Raw prime values, gaps, residues, novelty artifacts, mature historical terminology/formulas, and historical-source information are excluded from the active benchmark.
+
+Frozen development anchors:
+
+- 128,000,000;
+- 256,000,000;
+- 512,000,000.
+
+Frozen one-shot assessment anchors:
+
+- 1,024,000,000;
+- 2,048,000,000;
+- 4,096,000,000.
+
+Frozen nested widths at every anchor:
+
+- 4,096;
+- 16,384;
+- 65,536;
+- 262,144;
+- 1,048,576.
+
+The maximum generated segment at each anchor is `[a,a+1_048_576)`. All six calibration segments are fresh, mutually disjoint, and strictly above A4's exclusive upper endpoint 79,000,000. They were selected from metadata only and do not overlap A1, H3, A3, H4, A4, or novelty guard bands.
+
+The frozen elementary transform tournament compares exact density plus twelve multiply/divide normalizations built from a broad palette of logarithm, iterated logarithm, roots, and the scale coordinate. Natural logarithm/iterated logarithm are explicitly labelled theory-informed generic elementary choices; no prime-specific target formula, integral, series, complex object, zero set, or historical solution is encoded or privileged. Development chooses one transform by the frozen spread score only.
+
+E005 freezes:
+
+- exact rational count/density/spacing objects and elementary ratios/differences;
+- deterministic Decimal semantics for irrational transforms;
+- a development-only normalization ranking and selection rule;
+- five development baselines;
+- residual representations R0-R4;
+- a strict-unique residual-sign compression test;
+- exact structural-question templates Q1-Q3;
+- process milestones M1-M5 and STRONG_PASS/PARTIAL_PASS/FAIL/INVALID outcomes;
+- deterministic ordering/serialization;
+- a fail-closed segmented-generation guard;
+- a two-phase development/assessment protocol requiring a committed development selection record before any assessment generation;
+- a later unblinding protocol that compares the blinded process to hidden historical theory only after execution/process records are committed, without novelty promotion.
+
+Novelty reserves preserved untouched/uninspected:
+
+- A1 = `[33_000_000,34_000_000)`;
+- H3 = `[37_000_000,38_000_000)`;
+- H4 = `[41_000_000,42_000_000)`;
+- A3 = `[70_000_000,71_000_000)`;
+- A4 = `[78_000_000,79_000_000)`.
+
+Next bounded action: D1-12 / SQ-005 — implement and execute exactly the frozen E005 benchmark while historical theory remains blinded. Validate and checkpoint implementation/tests before generation; run Phase A development twice for byte determinism; commit the mechanically selected normalization/baselines/residual target before generating Phase B; then run Phase B assessment twice and evaluate only the frozen targets/milestones. Do not unblind, search historical sources, modify E005, touch novelty reserves, or allocate OBS/CAND IDs.
