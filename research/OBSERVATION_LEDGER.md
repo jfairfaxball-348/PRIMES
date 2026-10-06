@@ -33,7 +33,7 @@ Permanent append-only register of reproducible phenomena.
 **Replication result:** REPLICATED on untouched H0 = `[1_000_000, 2_000_000)`. Value 0 occurs 3,764 times and is the unique modal third-forward-difference value; the runner-up is value 12 with 3,408 occurrences. Frozen criterion satisfied without tuning. H0 artifact SHA-256 `80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254`.  
 **Possible mechanism:** Unknown; arithmetic-progression structure among consecutive gap triples is the immediate exact reformulation.  
 **Candidate link:** none — D1-02 triage retained OBS-001 as REPLICATED without promotion.  
-**Notes:** Discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; compact evidence in `research/evidence/E001_D0_observations.json`. D1-02 synthesis found that the two adjacent million-wide bands establish replication but do not justify choosing a universal/eventual quantifier over band origin, width, or scale; a D0+H0-only candidate would merely restate finite evidence.
+**Notes:** Discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; compact evidence in `research/evidence/E001_D0_observations.json`. D1-02 synthesis found that the two adjacent million-wide bands establish replication but do not justify choosing a universal/eventual quantifier over band origin, width, or scale; a D0+H0-only candidate would merely restate finite evidence. D1-03/E002 preflight froze this exact definition unchanged for the five fresh bands S1=[2,000,000,3,000,000), S2=[4,000,000,5,000,000), S3=[8,000,000,9,000,000), S4=[16,000,000,17,000,000), and S5=[32,000,000,33,000,000); E002 has not been executed.
 
 ### OBS-002
 
@@ -49,7 +49,7 @@ Permanent append-only register of reproducible phenomena.
 **Replication result:** REPLICATED on untouched H0 = `[1_000_000, 2_000_000)`. Motif `[6, 6]` occurs 1,409 times and is the unique modal width-2 motif; runner-up `[6, 4]` occurs 1,335 times. Frozen criterion satisfied without tuning. H0 artifact SHA-256 `80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254`.  
 **Possible mechanism:** Unknown; could reflect an interaction between the marginal abundance of gap 6 and local admissibility/correlation, to be investigated only after replication.  
 **Candidate link:** none — D1-02 triage retained OBS-002 as REPLICATED without promotion.  
-**Notes:** Discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; compact evidence in `research/evidence/E001_D0_observations.json`. D1-02 synthesis found that the two adjacent million-wide bands establish replication of the modal pair but do not justify a universal/eventual modal-rank claim across arbitrary or chosen scales; a D0+H0-only candidate would not extend beyond the evidence.
+**Notes:** Discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; compact evidence in `research/evidence/E001_D0_observations.json`. D1-02 synthesis found that the two adjacent million-wide bands establish replication of the modal pair but do not justify a universal/eventual modal-rank claim across arbitrary or chosen scales; a D0+H0-only candidate would not extend beyond the evidence. D1-03/E002 preflight froze this exact definition unchanged for the same five fresh scale bands; E002 has not been executed and no motif width/value was retuned.
 
 ### OBS-003
 
@@ -65,7 +65,7 @@ Permanent append-only register of reproducible phenomena.
 **Replication result:** REPLICATED on untouched H0 = `[1_000_000, 2_000_000)`. Directed reduced-residue transition support is complete at every frozen modulus: 4/4 for 6, 16/16 for 10, 16/16 for 12, 64/64 for 30, and 256/256 for 60; no allowed directed pair is missing. Frozen criterion satisfied without tuning. H0 artifact SHA-256 `80c8c49f1845e941764b31471404a8e674fa794394687cb6502dbd2eca980254`.  
 **Possible mechanism:** Unknown; later SQ-004 may test exact projection/refinement structure if this coverage property survives holdout.  
 **Candidate link:** none — D1-02 triage retained OBS-003 as REPLICATED without promotion.  
-**Notes:** Discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; compact evidence in `research/evidence/E001_D0_observations.json`. D1-02 synthesis found that exact complete support on the five frozen moduli in D0+H0 is not yet enough to justify an all-moduli and/or infinite-occurrence statement; restricting a candidate to the finite modulus grid would largely restate finite coverage.
+**Notes:** Discovery artifact SHA-256 `822431d664d5a35949abdf230a1b8abb41afa1f97511b7c129e5d18779f2e284`; compact evidence in `research/evidence/E001_D0_observations.json`. D1-02 synthesis found that exact complete support on the five frozen moduli in D0+H0 is not yet enough to justify an all-moduli and/or infinite-occurrence statement; restricting a candidate to the finite modulus grid would largely restate finite coverage. D1-03/E002 preflight froze this exact definition and the modulus family {6,10,12,30,60} unchanged for the same five fresh scale bands; E002 has not been executed and no modulus was added or removed.
 
 ### OBS-004
 
