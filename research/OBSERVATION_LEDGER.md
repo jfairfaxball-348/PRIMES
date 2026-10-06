@@ -144,8 +144,8 @@ Permanent append-only register of reproducible phenomena.
 **Triviality checks:** Same frozen within-class parity/radical, anchor/boundary, encoding/ordering, cross-class, and adjacency exclusions as OBS-005. The maximum is strict by exact counts.  
 **Replication result:** REPLICATED on one-shot H6 = `[44_000_000, 45_000_000)`. `C_H6(294)=10,305`, and the highest same-class competitor is shift 126 at 10,301, so target 294 remains the strict unique maximum with margin 4 and satisfies the occurrence floor without tuning.
 **Possible mechanism:** Unknown; no mechanism work performed.  
-**Candidate link:** none  
-**Notes:** Selected fourth by the frozen ranking. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
+**Candidate link:** none — D1-18 synthesis triage found no non-arbitrary candidate statement beyond the committed D6+H6 finite evidence.  
+**Notes:** Selected fourth by the frozen ranking. D1-18 considered OBS-008 alone for candidate synthesis and retained it as REPLICATED: restricting a statement to D6+H6 would only restate finite computation, while extending to any untested band/origin/width/later scale/infinite family or broader shift/class family would add an unsupported quantifier. A6 remains untouched. D6 artifact SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. H6 has now been executed once for frozen-criterion replication; A6 remains ungenerated. H6 artifact SHA-256 `be1694f488777be97202d9ccb047d56ba97a2d8fe087bab968090837dfc6ca3e`; compact criterion evidence in `research/evidence/E006_H6_replication.json`.
 
 ### OBS-009
 
