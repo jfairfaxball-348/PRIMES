@@ -4,14 +4,14 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-11 SQ-005 calibration preflight complete; E005 FROZEN / HISTORICALLY BLINDED; D1-12 execution next; A1/H3/A3/H4/A4 untouched**
+**DISCOVERY-1 — D1-12 SQ-005 blinded execution complete; E005 PARTIAL_PASS / HISTORICAL THEORY STILL BLINDED; D1-13 unblinding comparison next; A1/H3/A3/H4/A4 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-005 E005 FROZEN; CALIBRATION EXECUTION NEXT | D4 closed without promotion; E005 is frozen in the quarantined calibration lane and awaits blinded execution |
+| Pattern discovery | OPEN / SQ-005 E005 BLINDED EXECUTION COMPLETE; UNBLINDING NEXT | E005 completed with PARTIAL_PASS under the frozen blinded process; historical-theory comparison remains separate |
 | Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -63,10 +63,17 @@ Status date: 2026-10-06
 - natural logarithm and iterated logarithm are explicitly labelled theory-informed generic elementary choices inside a symmetric transform palette; no mature historical formula, integral, series, complex object, zero set, theorem terminology, or equivalent target solution is predeclared;
 - all E005 design/results are permanently quarantined from novelty promotion: no OBS-### or CAND-### may ever be allocated from calibration and no calibration output may become novelty discovery/holdout/adversarial evidence;
 - D1-11 generated no primes, executed no benchmark, consulted no historical source, performed no unblinding, and changed no existing observation/candidate/failure status; A1/H3/A3/H4/A4 remain untouched/uninspected;
+- D1-12 implemented the exact frozen E005 evaluator and fail-closed guard; final implementation checkpoint `5b8646ea82ca6d3c08b60f75759d16c101f6a0fc` passed GitHub Actions Ruff, 57 tests, and the E000 baseline smoke before any valid calibration generation;
+- Phase A generated only low support `[0,22651)` plus the three frozen development segments, repeated byte-identically before inspection: full artifact 44,730 bytes, SHA-256 `f40cfe0b5ca81ca8c4d78ab72cff3aebbad6f261f578b1f1bf97765797a8d8dd`;
+- the mechanical development tournament selected `N03 = d * sqrt(ln(s))`; complete ranking is `N03,N01,N05,N00,N06,N04,N02,N07,N08,N09,N10,N11,N12`; N03 beat N00 at all five development widths; the frozen R1 target is `(1,-1,-1)` with count 3/5 and Q1-Q3 are all eligible;
+- the complete development selection/baselines/target/questions record was committed at `8bf4821106e4c5c3acc79bfadc85c2872797935e` before assessment generation; compact record SHA-256 `8a61a5b0e2ceca49f5af06f26970c37808cacc2d55c82bbcfd0eb87f6434b401`;
+- Phase B then generated only low support `[0,64009)` plus the three frozen assessment segments, repeated byte-identically before assessment inspection: full artifact 43,858 bytes, SHA-256 `4e363aa0ea34abd1ac96cd4136bbf6a89446d68e5cdda49afda90b23d7cd4d6d`;
+- frozen assessment results: M1 FAIL because `S_N03(H5)=1.081395173183311354015959147128421186572241186879867120340799E+0` exceeds `S_N00(H5)=1.070182118154705247794910844596738371724094168411701250079320E+0`; M2 PASS with N03 better at 4/5 assessment widths; M3 FAIL because the frozen R1 target occurs 0/5 while `(-1,-1,-1)` occurs 5/5; M4 PASS; M5 PASS; overall outcome **PARTIAL_PASS**;
+- E005 remains historically blinded and permanently quarantined; no historical mathematical source was consulted, no OBS/CAND ID was allocated, and A1/H3/A3/H4/A4 remain untouched/uninspected;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
-Validated CI head: `e47b272b6e3867fb10d0eefc199b1231557659da`.
+Validated E005 implementation CI head: `5b8646ea82ca6d3c08b60f75759d16c101f6a0fc` — Ruff passed, 57 tests passed, and the E000 baseline smoke passed before valid E005 generation.
 
 E000 preflight evidence: `experiments/E000_PREFLIGHT_2026-10-06.md`.
 
@@ -116,7 +123,7 @@ D4 has now been generated only by the validated segmented E004 path plus low sup
 - Historical theory remains blinded until a separate post-execution unblinding unit.
 - Calibration outputs are permanently ineligible for OBS/CAND allocation or novelty evidence.
 
-All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H3, A3, H4, A4 and all novelty guard bands. No E005 segment has been generated or inspected.
+All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H3, A3, H4, A4 and all novelty guard bands. D1-12 has now executed exactly the three development and three assessment segments through the frozen segmented guard. The development and assessment outputs are permanently calibration-only. Compact committed records are `research/evidence/E005_development_selection.json` and `research/evidence/E005_assessment.json`; the full blinded execution record is `experiments/E005_BLINDED_EXECUTION_2026-10-06.md`. Historical theory remains blinded until D1-13.
 
 ## Session control
 
@@ -127,7 +134,7 @@ All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H
 
 ## Active task
 
-**D1-12 / SQ-005:** implement and execute exactly the frozen E005 prime-count scale calibration benchmark while historical theory remains blinded. Validate and checkpoint implementation/tests before generation; execute Phase A development twice for byte determinism; commit the mechanically selected normalization, baselines, residual-sign target, and eligible question instances before any assessment generation; then execute Phase B assessment twice and evaluate only the frozen selected objects and M1-M5. Do not change E005, unblind/search historical theory, touch A1/H3/A3/H4/A4, rerun/mine E001-E004, or allocate OBS/CAND IDs.
+**D1-13 / SQ-005:** execute exactly one historical-theory unblinding/comparison unit under Section 18 of the frozen E005 specification. Before any historical-source lookup, freeze and checkpoint a short blinded summary of the D1-12 selection/ranking, M1-M5/outcome, residual target result, eligible Q1-Q3, and process stall point. Only after that checkpoint may historical sources/theory be consulted. Compare the blinded process to the hidden historical theory using only the frozen calibration labels; do not modify E005, create OBS/CAND IDs, make novelty claims, run a novelty collision audit, or touch A1/H3/A3/H4/A4.
 
 ## Research inventory
 
@@ -150,8 +157,8 @@ All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H
 
 ## Next stage
 
-DISCOVERY-1 remains active, but work is now inside the quarantined historical-rediscovery calibration lane. D1-11 completed the design-only SQ-005 preflight and froze `experiments/E005_PRIME_COUNT_SCALE_CALIBRATION.md` before any E005 prime-derived output or historical unblinding.
+DISCOVERY-1 remains active inside the quarantined historical-rediscovery calibration lane. D1-12 completed the frozen E005 benchmark with **PARTIAL_PASS** while historical theory remained blinded.
 
-E005 uses only exact interval prime counts at six fresh doubled anchors and five nested widths. The three development anchors are 128M/256M/512M; the one-shot assessment anchors are 1.024B/2.048B/4.096B. The maximum segment at each anchor is only 1,048,576 values wide, enabling segmented generation with low base support below 100,000 and no traversal of the untouched novelty reserves A1/H3/A3/H4/A4. The active transform grammar, selection score, residual objects, compression test, exact-question grammar, milestone outcomes, deterministic serialization, generation guard, and later unblinding protocol are all frozen.
+The selected development normalization is N03 = d * sqrt(ln(s)). It won all five development width comparisons against raw density, but its one-shot assessment global spread was worse than raw density; it nevertheless retained lower spread at four of five assessment widths. The frozen development R1 sign target (1,-1,-1) did not persist: assessment produced (-1,-1,-1) at all five widths. Q1-Q3 were mechanically eligible and the firewall/holdout milestone passed.
 
-The next bounded unit is D1-12 / SQ-005 execution of exactly E005 with historical theory still blinded. It must checkpoint implementation/tests before any generation, complete and commit Phase A development selection before Phase B assessment generation, preserve all novelty reserves untouched, and stop after the frozen calibration process outcome is recorded. Historical-source comparison/unblinding remains a separate later unit.
+The next bounded unit is D1-13 / SQ-005 historical-theory unblinding/comparison. It must first commit a source-free blinded summary of these already-frozen results, then consult historical sources only for the comparison specified in Section 18 of E005. The comparison is calibration-only and can never change novelty-lane evidence or statuses.
