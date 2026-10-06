@@ -78,7 +78,7 @@ Never reuse or renumber a completed session.
 ### S005
 
 **Date:** 2026-10-06  
-**Stage:** replication preflight  
+**Stage:** replication  
 **Bounded objective:** D1-03 / SQ-002 — design and freeze a cross-scale persistence experiment for replicated OBS-001 through OBS-003 only, using unchanged E001 feature definitions, fresh disjoint value bands, and exact predeclared persistence criteria, without executing E002 or generating any new prime-derived result.  
 **Incoming state:** DISCOVERY-1 at main head `dbfaa4a216621b1db7bc954e80fe5ea628e31691`; OBS-001 through OBS-003 REPLICATED, OBS-004 REFUTED, D1-02 completed with no candidate, A0 untouched, and SQ-002 awaiting preflight.  
 **Work performed:** Read all requested project authority, protocols, ledgers, E001 frozen specification, D0/H0 execution records, compact D0/H0 evidence, and the live prompt before changing anything. Preserved the exact E001 definitions for OBS-001, OBS-002, and OBS-003. Froze E002 as a criterion-only test over five width-1,000,000 bands with lower endpoints 2M, 4M, 8M, 16M, and 32M; froze strict unique-mode criteria for OBS-001/002, complete frozen-modulus transition support for OBS-003, all-five-band overall persistence, full-ladder execution with no early stopping or replacement bands, deterministic criterion-only serialization, and an A0 exclusion. Updated the search queue, programme status, observation notes, and live execution prompt. No literature search, mechanism work, proof work, candidate creation, collision audit, code execution, or prime-derived computation occurred.  
