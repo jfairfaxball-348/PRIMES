@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 from collections import Counter
-from math import gcd
+from math import gcd, isqrt
 from pathlib import Path
 from typing import Any, TypeVar
 
@@ -26,6 +26,25 @@ TARGET_THIRD_DIFFERENCE = 0
 TARGET_GAP_MOTIF = (6, 6)
 
 T = TypeVar("T")
+
+
+def _sieve_band(start: int, stop: int) -> list[int]:
+    """Return primes in [start, stop) without generating primes in intervening ranges."""
+    if start < 0 or stop <= start:
+        raise ValueError("band must be a non-empty non-negative half-open interval")
+
+    flags = bytearray(b"\x01") * (stop - start)
+    for value in range(start, min(stop, 2)):
+        flags[value - start] = 0
+
+    for prime in sieve(isqrt(stop - 1)):
+        first = max(prime * prime, ((start + prime - 1) // prime) * prime)
+        if first >= stop:
+            continue
+        count = ((stop - 1 - first) // prime) + 1
+        flags[first - start : stop - start : prime] = b"\x00" * count
+
+    return [start + offset for offset, flag in enumerate(flags) if flag]
 
 
 def _strict_target_mode(counter: Counter[T], target: T) -> tuple[int, T | None, int, bool]:
@@ -127,9 +146,13 @@ def evaluate_band(
 
 def build_payload(*, code_commit: str) -> dict[str, Any]:
     """Evaluate the complete frozen five-band ladder without early stopping."""
-    global_primes = sieve(max(stop for _, stop in BANDS.values()) - 1)
     bands = [
-        evaluate_band(global_primes, band_name=name, start=start, stop=stop)
+        evaluate_band(
+            _sieve_band(start, stop),
+            band_name=name,
+            start=start,
+            stop=stop,
+        )
         for name, (start, stop) in BANDS.items()
     ]
     outcomes = {
