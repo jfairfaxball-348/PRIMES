@@ -4,16 +4,16 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-20 / SQ-007 D7 discovery complete; OBS-010/OBS-011 OBSERVED with frozen H7 criteria; D1-21 H7 replication next; H7/A7 and historical reserves/guards untouched**
+**DISCOVERY-1 — D1-21 / SQ-007 H7 replication complete; OBS-010/OBS-011 REPLICATED; D1-22 candidate-synthesis triage next; A7 and historical reserves/guards untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-007 D7 COMPLETE; H7 REPLICATION NEXT | D7 executed under the frozen E007 grammar; replicate only OBS-010/OBS-011 on untouched H7 with unchanged same-family/same-target criteria |
-| Observation promotion | OPEN / 4 REPLICATED; 2 OBSERVED; 5 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / NONE PROMOTED | D1-18 found no non-arbitrary CAND statement from OBS-008 beyond a two-band finite restatement; D1-02/D1-06/D1-18 are explicit no-candidate results |
+| Pattern discovery | OPEN / SQ-007 H7 COMPLETE; SYNTHESIS TRIAGE NEXT | D7 discovery and one-shot H7 replication complete under frozen E007 semantics; next decide whether the two replicated finite observations support any exact non-arbitrary candidate statement |
+| Observation promotion | OPEN / 6 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
+| Candidate conjecture | OPEN / NONE PROMOTED; D1-22 TRIAGE NEXT | D1-22 will test whether replicated OBS-010/OBS-011 support an exact non-arbitrary falsifiable statement beyond restating D7+H7; D1-02/D1-06/D1-18 remain explicit no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -166,6 +166,11 @@ Every F1-F4 prime table has a strict unique mode and clears the population/occur
 
 Exactly two observations were promoted: `OBS-010` (F2 distinct-factor-count pair `[3,3]`) and `OBS-011` (F3 total-multiplicity pair `[3,3]`), both at status OBSERVED. Their unchanged one-shot H7 criteria are frozen in `research/OBSERVATION_LEDGER.md`: the same family/target must remain the strict unique H7 prime mode, both anchor populations must be at least 1,000, target count at least 32, and exact enrichment numerator strictly positive. H7 and A7 remain ungenerated; all historical reserves/guards remain untouched/non-target. No candidate, mechanism/proof work, adversarial execution, prior-art/collision search, literature search, retargeting, or calibration-object transfer occurred. Compact evidence is `research/evidence/E007_D7_discovery.json`; execution record is `experiments/E007_D7_DISCOVERY_2026-10-06.md`.
 
+D1-21 then performed the frozen one-shot H7 replication only. The evaluator, focused tests, core module, package init, and project configuration on `main` matched implementation/test checkpoint `ad09ec3d72dc291d4930f13d9954a5a155590574` exactly; evaluator/test blobs remain `e81601ac9d557c94273b21885b675cf8a502cc60` and `657aabd557d8cd2434907f03ded2d07b4b1ecd1a`. Focused validation passed 22/22 tests and compilation. Ruff remained unavailable and GitHub combined-status/PR-triggered workflow collections were empty for the checkpoint and D1-20 head, reusing existing FAIL-001/FAIL-002 only.
+
+Before prime generation, the exact H7 plan was validated as low support `[0,7000)` plus segmented H7=`[48_000_000,49_000_000)`. Thirty deliberate high whole-prefix, wrong-support, partial/expanded target, guard, historical protected/generated, adversarial, and other non-target plans failed before generation. The identical complete H7 command then ran twice before criterion inspection and produced byte-identical 450,687-byte artifacts, SHA-256 `6a25381c7430a6e720e619fb27696ec75e8696514d72a8f7a26398f616d85ced`.
+
+Only the two frozen replication criteria were inspected. H7 contains 56,387 prime anchors and 443,612 composite controls. `OBS-010` REPLICATED: F2 target `[3,3]` has 7,917 prime occurrences versus highest competitor `[3,2]` at 6,404, 52,339 composite occurrences, and exact enrichment numerator 560,837,011 > 0. `OBS-011` REPLICATED: F3 target `[3,3]` has 5,106 prime occurrences versus highest competitor `[3,2]` at 3,977, 38,940 composite occurrences, and exact enrichment numerator 69,373,092 > 0. Both population and occurrence floors pass. No fallback, retargeting, threshold/ranking change, H7 pattern mining, F1/F4 promotion inspection, candidate creation, mechanism/proof/adversarial work, or prior-art/collision/literature search occurred. Compact evidence is `research/evidence/E007_H7_replication.json`; replication record is `experiments/E007_H7_REPLICATION_2026-10-06.md`. A7 and all historical guards/reserves remain untouched/non-target.
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -192,7 +197,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-21 / SQ-007:** perform one-shot H7 replication of OBS-010 and OBS-011 only. Preserve the exact frozen E007 evaluator semantics and the two same-family/same-target H7 criteria, validate the H7-only generation plan before generation, execute H7 twice for byte determinism before criterion inspection, inspect only the two frozen criteria, and update each observation to REPLICATED or REFUTED. Do not mine H7, retarget either observation, generate A7/guards/historical protected ranges, create a candidate, perform mechanism/proof work, or run prior-art/collision/literature search.
+**D1-22 / SQ-007:** perform candidate-synthesis triage over replicated OBS-010 and OBS-011 only, using committed D7+H7 evidence. Decide whether either observation, or a non-duplicative exact synthesis of the two frozen family statements, supports an exact non-arbitrary falsifiable `CAND-###` statement beyond restating the two finite bands. Generate no new primes, do not execute A7, do not mine D7/H7 or retarget either family, and do not perform mechanism/proof, adversarial, prior-art/collision, or literature work in this triage.
 
 ## Research inventory
 
@@ -217,8 +222,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-20 / SQ-007 is complete with D7 executed deterministically and exactly two observations, `OBS-010` and `OBS-011`, promoted at status OBSERVED under the frozen grammar.
+DISCOVERY-1 remains in the blind novelty lane. D1-21 / SQ-007 is complete: H7 was executed twice deterministically under the unchanged E007 implementation, and both frozen observations replicated exactly.
 
-The next bounded unit is D1-21 / SQ-007 one-shot H7 replication of those two observations only. Verify the frozen E007 executable semantics, validate the H7-only fail-closed plan using exact low support through 6,999 (exclusive endpoint 7,000) plus segmented H7=`[48_000_000,49_000_000)`, execute the identical complete H7 command twice before criterion inspection, and evaluate only the two frozen same-family/same-target criteria. Update OBS-010 and OBS-011 to REPLICATED or REFUTED without mining H7 or retargeting a failure.
+The next bounded unit is D1-22 / SQ-007 candidate-synthesis triage over `OBS-010` and `OBS-011` only. Use only committed D7+H7 criterion evidence to decide whether either replicated observation, or a non-duplicative exact synthesis of the two frozen family statements, supports an exact non-arbitrary falsifiable candidate beyond a finite-band restatement. Do not generate new primes, execute A7, mine D7/H7, retarget either family, or begin mechanism/proof, adversarial, prior-art/collision, or literature work in that unit.
 
 G7-pre, G7-mid, A7, A1, H3, H4, G6-mid, A3, A4, A6, and all E003/E004 guards remain untouched/non-target. SQ-005 calibration objects and historical-unblinding mechanisms remain quarantined from novelty selection and interpretation.
