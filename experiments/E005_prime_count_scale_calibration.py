@@ -597,3 +597,153 @@ def evaluate_milestones(
         and assessment_selected_score < assessment_identity_score
     )
     m2 = development_width_wins >= 4 and assessment_width_wins >= 4
+    m3 = isinstance(development_target, dict) and assessment_target_passed
+    m4 = bool(questions)
+    m5 = all(m5_conditions.values())
+    if not m5 or not deterministic_reproduction or not guard_validation:
+        outcome = "INVALID"
+    elif m1 and m4 and (m2 or m3):
+        outcome = "STRONG_PASS"
+    elif sum((m1, m2, m3, m4)) >= 2:
+        outcome = "PARTIAL_PASS"
+    else:
+        outcome = "FAIL"
+    return {
+        "M1": m1,
+        "M2": m2,
+        "M3": m3,
+        "M4": m4,
+        "M5": m5,
+        "M5_conditions": m5_conditions,
+        "overall_outcome": outcome,
+    }
+
+
+def build_development_payload(*, code_commit: str) -> dict[str, Any]:
+    plan = generation_plan("development")
+    validate_generation_plan(plan, phase="development")
+    counts = execute_generation_plan(plan, phase="development")
+    transformed, rendered_transforms = transformed_matrices(counts, DEVELOPMENT_ANCHORS)
+    scores = score_candidates(transformed, DEVELOPMENT_ANCHORS)
+    selected = scores["candidate_ranking"][0]
+    baselines, residuals, residual_counters = residual_objects(
+        selected, transformed, DEVELOPMENT_ANCHORS
+    )
+    residual_target, frequency_tables = select_residual_target(residual_counters)
+    questions = eligible_questions(selected, scores, residual_target)
+    selected_widths = scores["raw_width_spreads"][selected]
+    identity_widths = scores["raw_width_spreads"]["N00"]
+    width_wins = sum(
+        selected_widths[width_name] < identity_widths[width_name]
+        for width_name, _ in WIDTHS
+    )
+    return {
+        "experiment": EXPERIMENT_ID,
+        "lane": LANE,
+        "phase": "development",
+        "implementation_commit": code_commit,
+        "historical_theory_blinded": True,
+        "generation_plan": plan,
+        "anchors": [{"name": name, "value": value} for name, value in DEVELOPMENT_ANCHORS],
+        "widths": [{"name": name, "value": value} for name, value in WIDTHS],
+        "candidate_order": list(CANDIDATES),
+        "residual_family_order": list(RESIDUAL_FAMILIES),
+        "count_matrix": counts,
+        "exact_objects": exact_count_objects(counts, DEVELOPMENT_ANCHORS),
+        "transformed_density": rendered_transforms,
+        "candidate_scores": scores["candidate_scores"],
+        "candidate_ranking": scores["candidate_ranking"],
+        "width_spreads": scores["width_spreads"],
+        "width_rankings": scores["width_rankings"],
+        "selection": {
+            "normalization": selected,
+            "development_width_wins_over_N00": width_wins,
+            "baselines": {name: decimal_string(value) for name, value in baselines.items()},
+            "residual_objects": residuals,
+            "residual_sign_frequency_tables": frequency_tables,
+            "residual_sign_target": residual_target,
+            "eligible_questions": questions,
+        },
+        "serialization": {
+            "decimal_precision": DECIMAL_PRECISION,
+            "decimal_rounding": "ROUND_HALF_EVEN",
+            "decimal_scientific_digits_after_point": 60,
+            "json_sort_keys": True,
+            "json_indent": 2,
+        },
+        "raw_prime_values_serialized": False,
+    }
+
+
+def _sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def build_development_checkpoint(
+    development_payload: dict[str, Any], development_artifact: bytes
+) -> dict[str, Any]:
+    selection = development_payload["selection"]
+    return {
+        "experiment": EXPERIMENT_ID,
+        "lane": LANE,
+        "phase": "development_selection_checkpoint",
+        "implementation_commit": development_payload["implementation_commit"],
+        "historical_theory_blinded": True,
+        "development_artifact": {
+            "bytes": len(development_artifact),
+            "sha256": _sha256_bytes(development_artifact),
+        },
+        "candidate_order": development_payload["candidate_order"],
+        "candidate_scores": development_payload["candidate_scores"],
+        "candidate_ranking": development_payload["candidate_ranking"],
+        "width_spreads": development_payload["width_spreads"],
+        "selection": {
+            "normalization": selection["normalization"],
+            "development_width_wins_over_N00": selection[
+                "development_width_wins_over_N00"
+            ],
+            "baselines": selection["baselines"],
+            "residual_sign_target": selection["residual_sign_target"],
+            "eligible_questions": selection["eligible_questions"],
+        },
+        "raw_prime_values_serialized": False,
+    }
+
+
+def build_assessment_checkpoint(
+    assessment_payload: dict[str, Any], assessment_artifact: bytes
+) -> dict[str, Any]:
+    selected = assessment_payload["selected_normalization_assessment"]
+    return {
+        "experiment": EXPERIMENT_ID,
+        "lane": LANE,
+        "phase": "assessment_checkpoint",
+        "implementation_commit": assessment_payload["implementation_commit"],
+        "historical_theory_blinded": True,
+        "assessment_artifact": {
+            "bytes": len(assessment_artifact),
+            "sha256": _sha256_bytes(assessment_artifact),
+        },
+        "development_checkpoint": assessment_payload["development_checkpoint"],
+        "candidate_scores": assessment_payload["candidate_scores"],
+        "candidate_ranking": assessment_payload["candidate_ranking"],
+        "width_spreads": assessment_payload["width_spreads"],
+        "selected_normalization_assessment": {
+            "normalization": selected["normalization"],
+            "assessment_width_wins_over_N00": selected[
+                "assessment_width_wins_over_N00"
+            ],
+            "residual_target_evaluation": selected["residual_target_evaluation"],
+        },
+        "milestones": assessment_payload["milestones"],
+        "raw_prime_values_serialized": False,
+    }
+
+
+def verify_development_record(
+    path: Path,
+    *,
+    expected_sha256: str,
+    development_record_commit: str,
+    code_commit: str,
+) -> dict[str, Any]:
