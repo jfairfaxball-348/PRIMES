@@ -243,7 +243,7 @@ Next bounded action: **D1-19 / SQ-007 blind novelty representation-family prefli
 
 Stage: discovery
 
-Status: **D1-19 PREFLIGHT COMPLETE — E007 FROZEN / NOT EXECUTED; D1-20 D7 DISCOVERY NEXT**
+Status: **D1-20 D7 DISCOVERY COMPLETE — OBS-010/OBS-011 OBSERVED; H7 UNTOUCHED; D1-21 H7 REPLICATION NEXT**
 
 Frozen specification: `experiments/E007_NEIGHBOUR_FACTORIZATION_COUPLING.md`
 
@@ -282,6 +282,12 @@ Any promoted D7 observation must freeze the exact same-family/same-target H7 cri
 
 Future generation is fail-closed. Low whole-prefix prime support is confined to historically safe `[0,100_000)`; every new high-value prime-generation interval must be segmented directly inside the authorized target. D7 may generate only segmented `[46_000_000,47_000_000)` plus exact low support through 6,855 (exclusive endpoint at most 6,856). Any whole-prefix, partial-target, guard, holdout, adversarial, historical protected, or other non-target traversal must fail before prime generation.
 
-D1-19 generated no primes or other prime-derived output, inspected no protected range, allocated no OBS/CAND ID, performed no mechanism/proof or prior-art/literature work, and did not use SQ-005 calibration objects or historical-unblinding mechanisms to steer E007. Observation/conjecture/failure ledgers are unchanged.
+D1-19 generated no primes or other prime-derived output, inspected no protected range, allocated no OBS/CAND ID, performed no mechanism/proof or prior-art/literature work, and did not use SQ-005 calibration objects or historical-unblinding mechanisms to steer E007.
 
-Next bounded action: **D1-20 / SQ-007 E007 D7 discovery execution.** Implement the frozen evaluator and fail-closed guard, satisfy every pre-generation validation obligation in the specification, execute D7 twice for byte determinism, inspect only the frozen allowlist, mechanically apply only the F1-F4 promotion grammar, freeze H7 criteria for any promoted observations, and stop without H7/A7 or candidate/mechanism/prior-art work.
+D1-20 implemented the frozen evaluator and fail-closed planner at implementation/test checkpoint `ad09ec3d72dc291d4930f13d9954a5a155590574`. Focused E007 validation passed 22/22 tests and compilation before D7 generation; Ruff remained unavailable under existing FAIL-001/FAIL-002. The canonical D7 plan used only low support `[0,6856)` plus segmented D7=`[46_000_000,47_000_000)`; all deliberate whole-prefix, partial-target, guard, holdout, adversarial, historical protected/generated, and other non-target requests failed before generation.
+
+The identical complete D7 command ran twice before descriptive inspection and produced byte-identical 448,997-byte artifacts, SHA-256 `dde63c44ed6090c0dbdd7897e440b7cbd642336c82dbc126c513acc1357f4635`. D7 has 499,999 common odd anchors: 56,640 prime anchors and 443,359 composite controls. All factorization reconstruction, thin/thick classification, and odd-core gcd validation-failure counts are zero.
+
+Frozen mechanical promotion result: F1 and F4 fail positive enrichment and have no fallback; F2 target `[3,3]` is eligible with prime count 7,740, runner-up 6,364, composite count 52,501, and enrichment numerator 457,942,020; F3 target `[3,3]` is eligible with prime count 5,009, runner-up 3,958, composite count 39,183, and enrichment numerator 1,460,111. The F2 and F3 targets select different prime-anchor subsets, so duplicate suppression removes neither. `OBS-010` and `OBS-011` are allocated at status OBSERVED with exact unchanged one-shot H7 criteria frozen in the observation ledger. H7/A7 and all guards/historical protected ranges remain untouched/non-target.
+
+Next bounded action: **D1-21 / SQ-007 one-shot H7 replication of OBS-010 and OBS-011 only.** Verify unchanged E007 executable semantics, validate the H7-only generation plan, execute H7 twice for byte determinism before criterion inspection, evaluate only the two frozen same-family/same-target criteria, update each observation to REPLICATED or REFUTED, and stop without H7 mining, retargeting, A7, candidate/mechanism/proof, or prior-art/literature work.
