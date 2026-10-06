@@ -4,15 +4,15 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-15 / SQ-006 novelty preflight complete; E006 translation-overlap spectrum frozen before output; D1-16 D6 execution next; A1/H3/A3/H4/A4/H6/A6 untouched**
+**DISCOVERY-1 — D1-16 / SQ-006 D6 discovery complete; OBS-005 through OBS-009 frozen for one-shot H6 replication; H6/A6 and historical reserves/guards untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-006 E006 PREFLIGHT FROZEN; D6 EXECUTION NEXT | E006 is frozen before output as an exact value-space translation-overlap family; calibration quarantine remains intact |
-| Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
+| Pattern discovery | OPEN / SQ-006 D6 COMPLETE; H6 REPLICATION NEXT | Five exact E006 D6 observations are frozen with one-shot H6 criteria; calibration quarantine remains intact |
+| Observation promotion | OPEN / 5 E006 OBSERVED; 3 HISTORICAL REPLICATED; 1 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
@@ -130,15 +130,21 @@ D4 has now been generated only by the validated segmented E004 path plus low sup
 
 ## Frozen E006 partition and representation
 
-- Discovery D6: `[42_000_000, 43_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
-- Discovery/holdout guard G6-mid: `[43_000_000, 44_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
-- Holdout H6: `[44_000_000, 45_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
-- Adversarial A6: `[84_000_000, 85_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Discovery D6: [42_000_000, 43_000_000) — **EXECUTED DETERMINISTICALLY / INSPECTED UNDER FROZEN ALLOWLIST**
+- Discovery/holdout guard G6-mid: [43_000_000, 44_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
+- Holdout H6: [44_000_000, 45_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- Adversarial A6: [84_000_000, 85_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
 - Historical A1/H3/H4/A3/A4 and E003/E004 guards — **UNCHANGED / UNTOUCHED OR NON-TARGET / EXCLUDED FROM E006**
 
-The frozen primitive is the band-local prime indicator. For every even shift `h` from 2 through 1000, E006 counts all prime pairs `(p,p+h)` using the common anchor domain `L <= p < U-1000`; intervening primes do not matter. Shifts are grouped only for triviality control by exact odd radical, which fixes the deterministic two-point modular-admissibility profile and is itself non-promotable.
+E006 implementation/test checkpoint 8bfcc27d96dc1b0858c514cf2bfab81790ab71b0 passed 14/14 focused tests plus compilation before generation. The validated D6 plan used only historically safe low support [0,6558) plus segmented D6. Ruff and current-head CI observability remain the existing FAIL-001/FAIL-002 detached-runner limitation only.
 
-The D6 execution unit may promote at most five exact within-class strict-maximum observations under the frozen class-size/occurrence/tie rules. H6 remains untouched until any D6 targets and one-shot criteria are frozen. Whole-prefix high-value generation and every protected/non-target traversal remain forbidden.
+The identical complete D6 command ran twice before descriptive inspection and produced byte-identical 111,534-byte artifacts, SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. D6 contains 56,915 primes. No high-value prime generation occurred outside D6.
+
+The frozen 500 shifts form 204 odd-radical classes; 11 have size at least 8. All 11 large classes had strict unique D6 maxima above the occurrence floor, and the frozen ranking/cap promoted exactly five observations: OBS-005 (rho=15,h=900, 11,503 vs 11,440), OBS-006 (rho=35,h=280, 6,905 vs 6,852), OBS-007 (rho=7,h=56, 5,225 vs 5,184), OBS-008 (rho=21,h=294, 10,373 vs 10,333), and OBS-009 (rho=3,h=324, 8,675 vs 8,643). The six lower-ranked eligible classes received no OBS ID because the cap is five.
+
+Each promoted statement is only a finite within-class strict-maximum observation. Odd-radical metadata remain a non-promotable triviality control; no parity/radical identity, boundary/anchor fact, cross-class claim, consecutive-gap reinterpretation, mechanism, candidate, or novelty claim was promoted.
+
+The exact same-(rho,target-shift) one-shot H6 criteria are frozen in the observation ledger: unchanged E006 semantics, target count at least 8, and strict superiority over every same-class competitor; a tie fails. H6 and A6 remain ungenerated.
 
 ## Frozen E005 calibration benchmark
 
@@ -166,11 +172,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-16 / SQ-006:** implement and execute the frozen E006 D6 translation-overlap discovery only. Treat `experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md` as frozen: do not change its ranges, shift horizon/set, common-anchor semantics, odd-radical control, descriptive allowlist, promotion grammar, holdout templates, ordering, or generation guard after seeing output. Validate exact semantics and fail-closed traversal before generation; generate only safe low support plus segmented D6; run the identical D6 command twice before inspection for byte determinism; inspect only the frozen allowlist and apply only the frozen promotion grammar. If eligible D6 patterns exist, allocate at most five observations and freeze exact H6 criteria before any future H6 generation. Do not generate H6/A6 or any historical reserve/guard, create a candidate, perform mechanism/proof work, run prior-art/collision search, or import calibration objects.
+**D1-17 / SQ-006:** one-shot H6 replication of OBS-005 through OBS-009 only. Treat experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md, the D6 evidence, and all five frozen observation criteria as immutable. Validate the exact E006 implementation/guard before generation; generate only safe low support plus segmented H6=[44_000_000,45_000_000); run the identical H6 command twice before criterion inspection for byte determinism; inspect only the five frozen same-class/same-shift replication criteria; update each observation to REPLICATED or REFUTED. Do not mine H6 for new patterns, generate A6 or any historical reserve/guard, change a class/target/threshold, create a candidate, perform mechanism/proof work, run prior-art/collision search, or import calibration objects.
 
 ## Research inventory
 
-- Active observations: 3
+- Active observations: 8
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -191,9 +197,9 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-15 / SQ-006 preflight is complete and E006 is frozen before any prime-derived output.
+DISCOVERY-1 remains in the blind novelty lane. D1-16 / SQ-006 D6 discovery is complete with OBS-005 through OBS-009 frozen at OBSERVED status and exact H6 criteria committed before any H6 generation.
 
-The next bounded unit is D1-16 / SQ-006 D6 discovery execution. Implement the exact frozen translation-overlap evaluator and guard, validate before generation, execute only D6 twice for determinism, inspect only allowlisted output, and mechanically apply the frozen promotion grammar. H6, A6, A1, H3, H4, A3, A4, and all guard bands remain untouched/non-target.
+The next bounded unit is D1-17 / SQ-006 one-shot H6 replication. Reuse the unchanged E006 transform, odd-radical classes, common-anchor semantics, ordering, serialization, and fail-closed generation discipline. Generate only H6 (plus safe low base support), repeat the identical H6 command for determinism, evaluate only the five predeclared criteria, and stop without H6 mining, A6 generation, candidate synthesis, mechanism/proof work, or prior-art search.
 
-If D6 yields eligible observations, freeze their exact one-shot H6 criteria in the observation ledger and stop without generating H6. If D6 yields no eligible observation, record that result and close SQ-006 without relaxing the grammar.
+A1, H3, H4, A3, A4, G6-mid, A6, and all E003/E004 guards remain untouched/non-target.
 
