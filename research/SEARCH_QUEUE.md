@@ -194,43 +194,40 @@ Next bounded action: **D1-15 / SQ-006 novelty representation-family preflight.**
 
 ## SQ-006 — Translation-overlap spectrum
 
-Stage: discovery
+Stage: discovery / replication pending
 
-Status: **D1-15 PREFLIGHT COMPLETE — E006 FROZEN / NOT EXECUTED; D1-16 D6 DISCOVERY EXECUTION NEXT**
+Status: **D1-16 D6 DISCOVERY COMPLETE — OBS-005 THROUGH OBS-009 PROMOTED; H6 FROZEN / UNTOUCHED; D1-17 H6 REPLICATION NEXT**
 
-Frozen specification: `experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md`
+Frozen specification: experiments/E006_TRANSLATION_OVERLAP_SPECTRUM.md
 
-Purpose: search an exact value-space translation representation that is qualitatively distinct from E001 sequential/occupancy representations, E003 event-centred neighbourhoods, and E004 residue-transition factorization. E006 counts all prime pairs at frozen additive shifts whether or not the primes are consecutive.
+Purpose: exact value-space translation overlap of the band-local prime indicator, counting all prime pairs at frozen even shifts whether or not consecutive.
 
-Fresh metadata-only partition:
+Frozen partition remains unchanged:
 
-- discovery D6: `[42_000_000, 43_000_000)`;
-- E006 discovery/holdout guard G6-mid: `[43_000_000, 44_000_000)`;
-- untouched holdout H6: `[44_000_000, 45_000_000)`;
-- adversarial A6: `[84_000_000, 85_000_000)`.
+- D6: [42_000_000,43_000_000) — executed in D1-16;
+- G6-mid: [43_000_000,44_000_000) — non-target / ungenerated;
+- H6: [44_000_000,45_000_000) — untouched holdout;
+- A6: [84_000_000,85_000_000) — untouched adversarial band.
 
-Range rule: start at the first million-aligned width-1,000,000 band after the greatest valid novelty discovery value reached by D4 and skip every frozen protected/non-target novelty band. `[40M,41M)` is G4-mid and `[41M,42M)` is H4, so D6 is the first eligible band. Leave one full-width guard before H6. Set A6's lower endpoint to twice D6's lower endpoint. This rule uses only committed novelty generation/range metadata and arithmetic, not prime behaviour.
+Historical A1, H3, H4, A3, A4, and every E003/E004 guard retain their frozen untouched/non-target roles.
 
-A1=`[33M,34M)`, H3=`[37M,38M)`, H4=`[41M,42M)`, A3=`[70M,71M)`, A4=`[78M,79M)`, both E003 guards, and both E004 guards retain their frozen untouched/non-target roles and are excluded from E006.
+Frozen grammar remains exactly H=1000, shifts {2,4,...,1000}, common anchor [L,U-H), all-pairs C_B(h), and non-promotable odd-radical control classes. Metadata remain 500 shifts, 204 radical classes, and exactly 11 classes of size at least 8.
 
-Frozen primitive/transform grammar:
+Implementation/test checkpoint: 8bfcc27d96dc1b0858c514cf2bfab81790ab71b0. Focused validation passed 14/14 tests plus compilation before D6 generation. Ruff/current-head CI observability remain only the existing FAIL-001/FAIL-002 environment limitations.
 
-- band-local prime indicator `I_B(x)`;
-- common shift horizon `H=floor(sqrt(1_000_000))=1000`;
-- frozen shifts `S={2,4,...,1000}`;
-- common anchor domain `L <= x < U-H` for every shift;
-- exact all-pairs translation overlap `C_B(h)=sum I_B(x)I_B(x+h)`;
-- no adjacency requirement and no gap, occupancy, event, residue-transition, or modulus-refinement object.
+D6 generation plan was exactly low support [0,6558) plus segmented D6. The identical complete D6 command was executed twice before inspection and produced byte-identical 111,534-byte artifacts, SHA-256 0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c. D6 contains 56,915 primes. No high-value prime generation occurred outside D6.
 
-Exact non-promotable triviality control: group shifts by odd radical `rho(h)`, which fixes the complete deterministic two-point modular-admissibility profile of `{0,h}` while keeping parity fixed. This control uses shift metadata only. The frozen 500 shifts form 204 radical classes; 11 classes contain at least eight shifts.
+Mechanical promotion result: all 11 size-at-least-8 radical classes had strict unique maxima with target counts at least 8. The frozen ranking/cap promoted exactly five observations:
 
-Promotion cap: 5 observations. A radical class is eligible only if it has at least 8 members, one shift is the strict unique maximum of exact `C_D6(h)`, and that target has at least 8 pair occurrences. Ties fail. If more than five classes qualify, rank by dominance margin, target count, class size, radical, then shift. Parity/radical facts, boundary exposure, encoding identities, cross-class comparisons, and conversions into consecutive-gap claims are non-promotable.
+- OBS-005: rho=15, h=900, count 11,503 vs runner-up 11,440, margin 63;
+- OBS-006: rho=35, h=280, count 6,905 vs 6,852, margin 53;
+- OBS-007: rho=7, h=56, count 5,225 vs 5,184, margin 41;
+- OBS-008: rho=21, h=294, count 10,373 vs 10,333, margin 40;
+- OBS-009: rho=3, h=324, count 8,675 vs 8,643, margin 32.
 
-Any promoted D6 observation freezes the exact same-target strict-unique-maximum H6 criterion before H6 generation. H6 replication later requires the unchanged class/transform semantics, at least 8 target pair occurrences, and the same shift strictly beating every class competitor.
+The six lower-ranked eligible classes were not promoted because of the frozen cap. No grammar was relaxed. Compact evidence is research/evidence/E006_D6_discovery.json and the execution record is experiments/E006_D6_DISCOVERY_2026-10-06.md.
 
-Generation guard: low base support may use only historically generated safe support inside `[0,100_000)`; every new high-value interval must be segmented directly inside the currently authorized E006 target. D6 needs base primes only through 6,557. Whole-prefix high-value generation and any traversal of historical protected/guard ranges, G6-mid, H6, A6, or other non-target ranges must fail before prime generation.
+The exact one-shot H6 criteria for OBS-005 through OBS-009 were frozen in the observation ledger before any H6 generation. Each criterion keeps the same rho and target h, requires target count at least 8, and requires the target to strictly exceed every same-class competitor under unchanged E006 semantics. A tie fails. H6 has not been generated.
 
-D1-15 result: **PREFLIGHT FROZEN CLEANLY / NO PRIME-DERIVED OUTPUT GENERATED**. No `OBS-###` or `CAND-###` ID was allocated; no prior novelty grammar was rerun/mined/relaxed; calibration objects did not steer the representation; observation/conjecture/failure statuses remain unchanged.
-
-Next bounded action: **D1-16 / SQ-006 E006 D6 discovery execution.** Implement the frozen E006 evaluator and fail-closed guard, validate exact semantics before generation, execute D6 twice for byte determinism, inspect only the frozen allowlist, mechanically apply the frozen promotion grammar, and stop without generating H6/A6 or creating a candidate.
+Next bounded action: **D1-17 / SQ-006 one-shot H6 replication.** Validate the frozen E006 implementation/guard, execute only H6 twice for byte determinism, inspect only the five frozen replication criteria (no H6 mining), update OBS-005 through OBS-009 to REPLICATED or REFUTED, and stop without generating A6 or creating a candidate.
 
