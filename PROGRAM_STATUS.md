@@ -4,16 +4,16 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-17 / SQ-006 H6 replication complete; OBS-008 REPLICATED; OBS-005/006/007/009 REFUTED; A6 and historical reserves/guards untouched**
+**DISCOVERY-1 — D1-18 / SQ-006 synthesis complete with no candidate; OBS-008 remains REPLICATED; SQ-006 closed; SQ-007 blind novelty preflight next; A6 and historical reserves/guards untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-006 H6 REPLICATION COMPLETE; SYNTHESIS NEXT | One E006 observation survived its untouched H6 criterion; four were refuted; calibration quarantine remains intact |
+| Pattern discovery | OPEN / SQ-006 CLOSED; SQ-007 PREFLIGHT NEXT | E006 produced one replicated observation but no justified candidate; continue with a fresh blind novelty representation family while calibration quarantine remains intact |
 | Observation promotion | OPEN / 4 REPLICATED; 5 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | OBS-008 has survived untouched H6; D1-18 synthesis triage is next, while D1-02/D1-06 remain historical no-candidate results |
+| Candidate conjecture | OPEN / NONE PROMOTED | D1-18 found no non-arbitrary CAND statement from OBS-008 beyond a two-band finite restatement; D1-02/D1-06/D1-18 are explicit no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -152,6 +152,8 @@ The identical complete H6 command was executed twice before criterion inspection
 
 No H6 mining, retargeting, new observation promotion, candidate synthesis, mechanism/proof work, or prior-art/collision search occurred. Compact evidence is `research/evidence/E006_H6_replication.json`; the replication record is `experiments/E006_H6_REPLICATION_2026-10-06.md`. A6 remains ungenerated and untouched, as do all historical reserves/guards.
 
+D1-18 then performed synthesis-only triage over OBS-008 and allocated no `CAND-###`. The exact evidence remains h=294 as the rho=21 strict within-class maximum on D6 (10,373 versus 10,333; margin 40) and H6 (10,305 versus highest same-class competitor h=126 at 10,301; margin 4). Restricting a statement to those two bands would only restate committed computation; extending beyond them would require an unsupported quantifier over an untested band, origin, width, later scale, infinite family, or broader shift/class family. OBS-008 therefore remains REPLICATED with no candidate link. SQ-006 is closed without candidate promotion and A6 remains untouched.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -178,7 +180,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-18 / SQ-006:** candidate-synthesis triage over OBS-008 only, using committed D6+H6 evidence and no new prime generation. Preserve OBS-005/006/007/009 as REFUTED, keep A6 and every historical reserve/guard untouched, and do not mine or rerun H6/D6. Create a CAND record only if the finite strict-maximum replication evidence supports an exact non-arbitrary falsifiable statement beyond merely restating D6 and H6. Do not perform mechanism/proof work, prior-art/collision search, or import calibration objects in this unit.
+**D1-19 / SQ-007:** blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct representation family not already exhausted by E001/E003/E004/E006, using only novelty-lane authority and target-agnostic methodology. Generate no prime-derived output, inspect no protected reserve/guard, allocate no OBS/CAND ID, perform no mechanism/proof or prior-art work, and do not use SQ-005 calibration objects or historical-unblinding mechanisms to steer the family.
 
 ## Research inventory
 
@@ -203,9 +205,9 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-17 / SQ-006 H6 replication is complete: OBS-008 is REPLICATED and OBS-005/006/007/009 are REFUTED under their unchanged one-shot criteria. No new H6 pattern was promoted.
+DISCOVERY-1 remains in the blind novelty lane. D1-18 / SQ-006 candidate-synthesis triage is complete with **NO CANDIDATE CREATED**. OBS-008 remains REPLICATED; OBS-005/006/007/009 remain REFUTED; SQ-006 is closed without A6 execution.
 
-The next bounded unit is D1-18 / SQ-006 candidate-synthesis triage over OBS-008 only. Use committed D6+H6 evidence without new computation or mining, and decide whether an exact non-arbitrary falsifiable candidate is justified beyond a two-band finite restatement. Candidate creation, if justified, must remain novelty-UNAUDITED; mechanism/proof and prior-art/collision work remain separate later units.
+The next bounded unit is D1-19 / SQ-007 blind novelty representation-family preflight. Choose and freeze exactly one qualitatively distinct representation family before any prime-derived execution, with a metadata-only numerical partition, exact descriptive/promotion grammar, one-shot holdout criteria, deterministic serialization, and fail-closed generation plan. Do not import SQ-005 calibration objects or historical-unblinding mechanisms, and do not rerun or mine prior novelty experiments.
 
 A1, H3, H4, A3, A4, G6-mid, A6, and all E003/E004 guards remain untouched/non-target.
 
