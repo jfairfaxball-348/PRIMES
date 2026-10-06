@@ -1,0 +1,91 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 111534,
+    "sha256": "0e3e1565f3d26b221ffc17ecd8e550db445390e210213aaa27c77045e339a23c"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D6",
+    "range": [42000000, 43000000]
+  },
+  "experiment": "E006",
+  "frozen_metadata": {
+    "horizon": 1000,
+    "promotion_floor_class_count": 11,
+    "radical_class_count": 204,
+    "shift_count": 500
+  },
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 6558,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 42000000,
+      "stop": 43000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "8bfcc27d96dc1b0858c514cf2bfab81790ab71b0",
+  "prime_summary": {
+    "count": 56915,
+    "first_prime": 42000011,
+    "last_prime": 42999977
+  },
+  "promotion_result": {
+    "eligible_class_count": 11,
+    "promoted_observation_ids": ["OBS-005", "OBS-006", "OBS-007", "OBS-008", "OBS-009"],
+    "selected_records": [
+      {
+        "class_size": 19,
+        "dominance_margin": 63,
+        "rho": 15,
+        "runner_up_count": 11440,
+        "target_count": 11503,
+        "target_shift": 900
+      },
+      {
+        "class_size": 8,
+        "dominance_margin": 53,
+        "rho": 35,
+        "runner_up_count": 6852,
+        "target_count": 6905,
+        "target_shift": 280
+      },
+      {
+        "class_size": 12,
+        "dominance_margin": 41,
+        "rho": 7,
+        "runner_up_count": 5184,
+        "target_count": 5225,
+        "target_shift": 56
+      },
+      {
+        "class_size": 13,
+        "dominance_margin": 40,
+        "rho": 21,
+        "runner_up_count": 10333,
+        "target_count": 10373,
+        "target_shift": 294
+      },
+      {
+        "class_size": 24,
+        "dominance_margin": 32,
+        "rho": 3,
+        "runner_up_count": 8643,
+        "target_count": 8675,
+        "target_shift": 324
+      }
+    ]
+  },
+  "validation": {
+    "compileall": "success",
+    "current_head_ci": "no status objects and no PR-triggered workflow runs; existing FAIL-002 observability limitation",
+    "focused_pytest": "14 passed",
+    "ruff": "unavailable in detached runner; existing FAIL-001/FAIL-002 environment limitation"
+  }
+}
