@@ -239,15 +239,49 @@ SQ-006 is closed without candidate promotion. No mechanism/proof work, prior-art
 
 Next bounded action: **D1-19 / SQ-007 blind novelty representation-family preflight.** Select and freeze exactly one qualitatively distinct novelty representation family using only novelty-lane authority and target-agnostic methodology. Generate no prime-derived data, preserve all historical reserves/guards including A6, allocate no OBS/CAND IDs, and do not use SQ-005 calibration objects or historical-unblinding mechanisms to steer the family.
 
-## SQ-007 — Blind novelty representation-family preflight
+## SQ-007 — Blind novelty neighbour-factorization coupling
 
 Stage: discovery
 
-Status: **PENDING D1-19 PREFLIGHT — DESIGN ONLY / NO PRIME-DERIVED OUTPUT**
+Status: **D1-19 PREFLIGHT COMPLETE — E007 FROZEN / NOT EXECUTED; D1-20 D7 DISCOVERY NEXT**
 
-Purpose: continue the blind novelty lane after SQ-006 closes without a candidate by choosing exactly one qualitatively distinct representation family not already exhausted by E001/E003/E004/E006, then freeze its primitive objects, transform grammar, metadata-only numerical partition, descriptive allowlist, observation-promotion grammar, one-shot holdout criteria, deterministic serialization, and fail-closed future generation plan before any output inspection.
+Frozen specification: `experiments/E007_NEIGHBOUR_FACTORIZATION_COUPLING.md`
 
-Historical facts are immutable inputs only: E001/E002/E003/E004/E006 outcomes and no-candidate/no-observation results remain frozen; SQ-005 remains permanently quarantined; A1, H3, H4, G6-mid, A3, A4, A6, and all E003/E004 guards remain untouched/non-target unless a future separately frozen protocol explicitly and lawfully assigns a new role.
+Purpose: test exact multiplicative coupling between the two neighbouring composites around an odd anchor. E007 strips every power of two from `x-1` and `x+1`, canonically aligns the two sides by their forced thin/thick 2-adic roles, factors the odd cores exactly, and compares four frozen profile families at prime anchors against odd-composite control anchors.
 
-D1-19 must generate no primes or other prime-derived output, inspect no protected reserve/guard, rerun or mine no historical experiment, allocate no observation/candidate, perform no mechanism/proof work, and run no prior-art/collision search.
+Qualitative distinction: E007 is not a gap/difference/occupancy/event representation (E001/E003), not residue-transition factorization (E004), and not additive translation overlap (E006). Its primitive discovery object is the exact multiplicative factorization profile of the adjacent even composites around each odd anchor.
 
+Fresh metadata-only partition:
+
+- G7-pre: `[45_000_000,46_000_000)` — non-target / ungenerated;
+- D7: `[46_000_000,47_000_000)` — discovery / untouched at freeze;
+- G7-mid: `[47_000_000,48_000_000)` — non-target / ungenerated;
+- H7: `[48_000_000,49_000_000)` — untouched holdout;
+- A7: `[92_000_000,93_000_000)` — untouched adversarial reserve, from the frozen `2*L_D` convention.
+
+A1=`[33_000_000,34_000_000)`, H3=`[37_000_000,38_000_000)`, H4=`[41_000_000,42_000_000)`, G6-mid=`[43_000_000,44_000_000)`, A3=`[70_000_000,71_000_000)`, A4=`[78_000_000,79_000_000)`, A6=`[84_000_000,85_000_000)`, and every E003/E004 guard remain frozen untouched/non-target and are never E007 targets.
+
+Frozen anchor/control semantics:
+
+- common odd-anchor domain `A_B={x: L<x<U-1, x odd}`, so both neighbours lie in-band;
+- prime anchors `P_B` and odd composite controls `C_B` partition that common domain;
+- exactly one neighbour has `v2=1` (thin T) and the other has `v2>=2` (thick K);
+- all powers of two are stripped before any promotable signature;
+- `gcd(o_T,o_K)=1`, thin-side physical orientation, 2-adic control counts, factorization reconstruction, and composite-control frequencies by themselves are non-promotable controls.
+
+Frozen promotable families, at most one observation each:
+
+1. F1 exponent-shape pair `(sigma(o_T),sigma(o_K))`;
+2. F2 distinct-factor-count pair `(omega(o_T),omega(o_K))`;
+3. F3 total-multiplicity pair `(Omega(o_T),Omega(o_K))`;
+4. F4 sign of the largest-odd-factor comparison `sgn(Pplus(o_T)-Pplus(o_K))`.
+
+For each family, only the strict unique mode of the complete D7 prime-anchor table can be considered. The family fails mechanically on a tied prime mode. Frozen population floor is 1,000 prime anchors and 1,000 composite controls; frozen target-occurrence floor is 32. A target must also have strictly positive exact enrichment numerator `n_P(t)N_C-n_C(t)N_P`; no floating normalization is allowed. A family can contribute no alternate target if its mode fails. Hard promotion cap: 4 observations, with exact duplicate suppression as specified in E007.
+
+Any promoted D7 observation must freeze the exact same-family/same-target H7 criterion before H7 generation. H7 requires unchanged semantics, both population floors, the same target as strict unique prime mode, target count at least 32, and strictly positive exact enrichment numerator. H7 is not available for mining.
+
+Future generation is fail-closed. Low whole-prefix prime support is confined to historically safe `[0,100_000)`; every new high-value prime-generation interval must be segmented directly inside the authorized target. D7 may generate only segmented `[46_000_000,47_000_000)` plus exact low support through 6,855 (exclusive endpoint at most 6,856). Any whole-prefix, partial-target, guard, holdout, adversarial, historical protected, or other non-target traversal must fail before prime generation.
+
+D1-19 generated no primes or other prime-derived output, inspected no protected range, allocated no OBS/CAND ID, performed no mechanism/proof or prior-art/literature work, and did not use SQ-005 calibration objects or historical-unblinding mechanisms to steer E007. Observation/conjecture/failure ledgers are unchanged.
+
+Next bounded action: **D1-20 / SQ-007 E007 D7 discovery execution.** Implement the frozen evaluator and fail-closed guard, satisfy every pre-generation validation obligation in the specification, execute D7 twice for byte determinism, inspect only the frozen allowlist, mechanically apply only the F1-F4 promotion grammar, freeze H7 criteria for any promoted observations, and stop without H7/A7 or candidate/mechanism/prior-art work.
