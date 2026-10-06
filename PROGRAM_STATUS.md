@@ -4,14 +4,14 @@ Status date: 2026-10-06
 
 ## Current stage
 
-**DISCOVERY-1 — D1-10 SQ-004 D4 complete; NO ELIGIBLE OBSERVATION; SQ-005 calibration preflight next; A1/H3/A3/H4/A4 untouched**
+**DISCOVERY-1 — D1-11 SQ-005 calibration preflight complete; E005 FROZEN / HISTORICALLY BLINDED; D1-12 execution next; A1/H3/A3/H4/A4 untouched**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-004 D4 COMPLETE; NO OBSERVATION; SQ-005 CALIBRATION NEXT | D4 closed under frozen grammar; next bounded unit is quarantined calibration preflight |
+| Pattern discovery | OPEN / SQ-005 E005 FROZEN; CALIBRATION EXECUTION NEXT | D4 closed without promotion; E005 is frozen in the quarantined calibration lane and awaits blinded execution |
 | Observation promotion | OPEN / 3 REPLICATED, 1 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / ELIGIBLE, NONE PROMOTED | D1-02 and D1-06 both found no exact non-arbitrary candidate statement justified by committed evidence |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -57,6 +57,12 @@ Status date: 2026-10-06
 - D4 contains 57,252 primes; all frozen transition supports are complete and every mandatory coarse-projection residual is exactly zero;
 - the frozen P1-P5 promotion pool produced **NO ELIGIBLE OBSERVATION**: P1/P2 fail on every relation; P3/P5 have zero filtered coarse pairs; P4 has filtered counts 4, 4, 16, 16, and 64 but every exact balance vector occurs once, so every modal count ties its runner-up 1-1 and fails strict uniqueness/occurrence. No `OBS-###` was allocated and no H4 criterion was needed;
 - no E002 mining, candidate creation, mechanism work, proof work, or prior-art search was performed;
+- D1-11 entered the quarantined historical-rediscovery calibration lane and froze exactly one first benchmark, E005, before any calibration prime-derived output or historical unblinding;
+- E005 primitive prime-derived input is interval count only, with fresh calibration-only development anchors 128M/256M/512M, one-shot assessment anchors 1.024B/2.048B/4.096B, and nested widths 4,096/16,384/65,536/262,144/1,048,576; all six maximum segments are strictly above A4 and disjoint from every frozen novelty reserve/holdout;
+- E005 freezes a broad elementary scale-normalization tournament, deterministic Decimal semantics, development-only selection, frozen residual/baseline objects, residual-sign compression, exact structural-question templates, process milestones, deterministic serialization, and a two-phase segmented-generation guard requiring a committed development selection record before assessment generation;
+- natural logarithm and iterated logarithm are explicitly labelled theory-informed generic elementary choices inside a symmetric transform palette; no mature historical formula, integral, series, complex object, zero set, theorem terminology, or equivalent target solution is predeclared;
+- all E005 design/results are permanently quarantined from novelty promotion: no OBS-### or CAND-### may ever be allocated from calibration and no calibration output may become novelty discovery/holdout/adversarial evidence;
+- D1-11 generated no primes, executed no benchmark, consulted no historical source, performed no unblinding, and changed no existing observation/candidate/failure status; A1/H3/A3/H4/A4 remain untouched/uninspected;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
@@ -99,6 +105,19 @@ D3 has now been generated only by the validated segmented E003 path and inspecte
 
 D4 has now been generated only by the validated segmented E004 path plus low support `[0,6325)` and inspected only through the frozen descriptive allowlist. H4 and A4 remain ungenerated/uninspected, both E004 guards remain ungenerated, and A1/H3/A3 remain frozen untouched outside E004. Whole-prefix high-value generation and traversal through protected/non-target ranges remain forbidden.
 
+## Frozen E005 calibration benchmark
+
+- Development anchors: 128,000,000; 256,000,000; 512,000,000.
+- One-shot assessment anchors: 1,024,000,000; 2,048,000,000; 4,096,000,000.
+- Nested widths: 4,096; 16,384; 65,536; 262,144; 1,048,576.
+- Maximum high-value segment per anchor: `[a,a+1_048_576)`.
+- Primitive prime-derived object: exact interval count only.
+- Development selections must be committed before assessment generation.
+- Historical theory remains blinded until a separate post-execution unblinding unit.
+- Calibration outputs are permanently ineligible for OBS/CAND allocation or novelty evidence.
+
+All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H3, A3, H4, A4 and all novelty guard bands. No E005 segment has been generated or inspected.
+
 ## Session control
 
 - Autonomous closeout protocol: **ACTIVE**
@@ -108,7 +127,7 @@ D4 has now been generated only by the validated segmented E004 path plus low sup
 
 ## Active task
 
-**D1-11 / SQ-005:** design and freeze the first quarantined historical rediscovery calibration benchmark from prime counts and elementary derived data. Predeclare primitive inputs, transform grammar, ranges, deterministic outputs, success/failure criteria, execution guard, and later unblinding procedure. Do not execute or unblind the calibration benchmark in this unit, generate new prime-derived output, create an observation/candidate, or mine D4 further.
+**D1-12 / SQ-005:** implement and execute exactly the frozen E005 prime-count scale calibration benchmark while historical theory remains blinded. Validate and checkpoint implementation/tests before generation; execute Phase A development twice for byte determinism; commit the mechanically selected normalization, baselines, residual-sign target, and eligible question instances before any assessment generation; then execute Phase B assessment twice and evaluate only the frozen selected objects and M1-M5. Do not change E005, unblind/search historical theory, touch A1/H3/A3/H4/A4, rerun/mine E001-E004, or allocate OBS/CAND IDs.
 
 ## Research inventory
 
@@ -131,8 +150,8 @@ D4 has now been generated only by the validated segmented E004 path plus low sup
 
 ## Next stage
 
-DISCOVERY-1 remains active. D1-10 completed SQ-004 D4 execution under the frozen E004 specification. The implementation/test checkpoint is `15fd85b14a079ece06bb89e786695d093c7b574b`; the repeated D4 artifact is 224,641 bytes with SHA-256 `4d0fa870a3bb304809bc713fbf0536d7c9a1e69d73273b8b6aeae9af570b2b1c`. D4 was inspected only through the frozen allowlist and produced no P1-P5-eligible observation.
+DISCOVERY-1 remains active, but work is now inside the quarantined historical-rediscovery calibration lane. D1-11 completed the design-only SQ-005 preflight and froze `experiments/E005_PRIME_COUNT_SCALE_CALIBRATION.md` before any E005 prime-derived output or historical unblinding.
 
-Because SQ-004 promoted nothing, H4 is not required and remains untouched. A4, A1, H3, and A3 also remain untouched; both E004 guard bands remain ungenerated. Active observations remain the three historical E001 replicated observations and active candidate count remains zero.
+E005 uses only exact interval prime counts at six fresh doubled anchors and five nested widths. The three development anchors are 128M/256M/512M; the one-shot assessment anchors are 1.024B/2.048B/4.096B. The maximum segment at each anchor is only 1,048,576 values wide, enabling segmented generation with low base support below 100,000 and no traversal of the untouched novelty reserves A1/H3/A3/H4/A4. The active transform grammar, selection score, residual objects, compression test, exact-question grammar, milestone outcomes, deterministic serialization, generation guard, and later unblinding protocol are all frozen.
 
-The next bounded unit is D1-11 / SQ-005 historical rediscovery calibration preflight. Design and freeze one quarantined Riemann-style benchmark from prime counts and elementary derived data, including primitive inputs, transform grammar, ranges, deterministic outputs, success/failure criteria, execution guard, and a later unblinding procedure. Do not execute or unblind the benchmark, generate new prime-derived output, create novelty observations/candidates, or mine D4 further.
+The next bounded unit is D1-12 / SQ-005 execution of exactly E005 with historical theory still blinded. It must checkpoint implementation/tests before any generation, complete and commit Phase A development selection before Phase B assessment generation, preserve all novelty reserves untouched, and stop after the frozen calibration process outcome is recorded. Historical-source comparison/unblinding remains a separate later unit.
