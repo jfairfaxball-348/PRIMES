@@ -1,0 +1,153 @@
+{
+  "artifact": {
+    "byte_deterministic_repeat": true,
+    "bytes": 448997,
+    "sha256": "dde63c44ed6090c0dbdd7897e440b7cbd642336c82dbc126c513acc1357f4635"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D7",
+    "range": [
+      46000000,
+      47000000
+    ]
+  },
+  "experiment": "E007",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 6856,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 46000000,
+      "stop": 47000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "ad09ec3d72dc291d4930f13d9954a5a155590574",
+  "anchor_summary": {
+    "common_odd_anchor_count": 499999,
+    "prime_anchor_count": 56640,
+    "composite_anchor_count": 443359,
+    "first_prime_anchor": 46000013,
+    "last_prime_anchor": 46999987
+  },
+  "validation_aggregates": {
+    "factorization_reconstruction_failure_count": 0,
+    "thin_thick_classification_failure_count": 0,
+    "odd_core_gcd_failure_count": 0
+  },
+  "family_results": [
+    {
+      "family": "F1",
+      "target_signature": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "prime_mode_count": 3943,
+      "runner_up_count": 3487,
+      "strict_unique_prime_mode": true,
+      "composite_target_count": 31143,
+      "enrichment_numerator": -15774983,
+      "population_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "enrichment_passed": false,
+      "mechanically_eligible": false
+    },
+    {
+      "family": "F2",
+      "target_signature": [
+        3,
+        3
+      ],
+      "prime_mode_count": 7740,
+      "runner_up_count": 6364,
+      "strict_unique_prime_mode": true,
+      "composite_target_count": 52501,
+      "enrichment_numerator": 457942020,
+      "population_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "enrichment_passed": true,
+      "mechanically_eligible": true
+    },
+    {
+      "family": "F3",
+      "target_signature": [
+        3,
+        3
+      ],
+      "prime_mode_count": 5009,
+      "runner_up_count": 3958,
+      "strict_unique_prime_mode": true,
+      "composite_target_count": 39183,
+      "enrichment_numerator": 1460111,
+      "population_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "enrichment_passed": true,
+      "mechanically_eligible": true
+    },
+    {
+      "family": "F4",
+      "target_signature": 1,
+      "prime_mode_count": 32137,
+      "runner_up_count": 24503,
+      "strict_unique_prime_mode": true,
+      "composite_target_count": 251779,
+      "enrichment_numerator": -12534377,
+      "population_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "enrichment_passed": false,
+      "mechanically_eligible": false
+    }
+  ],
+  "promotion_result": {
+    "eligible_family_count": 2,
+    "promoted_observation_ids": [
+      "OBS-010",
+      "OBS-011"
+    ],
+    "selected_records": [
+      {
+        "family": "F2",
+        "target_signature": [
+          3,
+          3
+        ],
+        "prime_count": 7740,
+        "composite_count": 52501,
+        "enrichment_numerator": 457942020
+      },
+      {
+        "family": "F3",
+        "target_signature": [
+          3,
+          3
+        ],
+        "prime_count": 5009,
+        "composite_count": 39183,
+        "enrichment_numerator": 1460111
+      }
+    ]
+  },
+  "validation": {
+    "focused_pytest": "22 passed",
+    "compileall": "success",
+    "ruff": "unavailable in detached runner; existing FAIL-001/FAIL-002 environment limitation",
+    "current_head_ci": "no status objects and no PR-triggered workflow runs; existing FAIL-002 observability limitation",
+    "source_blob": "e81601ac9d557c94273b21885b675cf8a502cc60",
+    "focused_test_blob": "657aabd557d8cd2434907f03ded2d07b4b1ecd1a",
+    "generation_guard": "canonical [0,6856) support plus segmented D7 only; whole-prefix, partial, guard, holdout, adversarial, historical protected/generated, and other non-target requests rejected before generation",
+    "allowlist_consistency": "frequency tables exhaust common anchor populations; control totals and exact enrichment numerators recomputed successfully"
+  }
+}
