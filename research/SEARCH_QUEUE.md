@@ -206,7 +206,7 @@ Frozen partition remains unchanged:
 
 - D6: [42_000_000,43_000_000) — executed in D1-16;
 - G6-mid: [43_000_000,44_000_000) — non-target / ungenerated;
-- H6: [44_000_000,45_000_000) — untouched holdout;
+- H6: [44_000_000,45_000_000) — executed in D1-17 as one-shot criterion-only holdout;
 - A6: [84_000_000,85_000_000) — untouched adversarial band.
 
 Historical A1, H3, H4, A3, A4, and every E003/E004 guard retain their frozen untouched/non-target roles.
