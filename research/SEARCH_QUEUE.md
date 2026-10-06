@@ -6,17 +6,29 @@ This queue contains bounded discovery work, not claims.
 
 Stage: discovery
 
+Status: **PREFLIGHT COMPLETE — E001 GRID FROZEN, NOT YET EXECUTED**
+
+Frozen specification: `experiments/E001_REPRESENTATION_GRID.md`
+
+Predeclared value ranges:
+
+- discovery D0: `[0, 1_000_000)`;
+- untouched holdout H0: `[1_000_000, 2_000_000)`;
+- reserved adversarial A0: `[10_000_000, 11_000_000)`.
+
 Run exact scans over:
 
 - gap words of widths 2 through 6;
 - finite differences through order 4;
-- residue transitions for a small declared modulus family;
-- block occupancies at logarithmically separated widths;
-- record-gap local neighbourhoods.
+- residue transitions for the frozen modulus family `6, 10, 12, 30, 60`;
+- globally anchored block occupancies at widths `100, 1_000, 10_000, 100_000`;
+- strict global record-gap neighbourhoods at gap radii `2, 4, 8`.
 
 Goal: produce descriptive summaries and artifact checks only.
 
 Promotion cap: 10 observations.
+
+Next bounded action: implement the frozen E001 specification, test deterministic serialization and boundary semantics, and execute/inspect **D0 only**. Do not generate or inspect H0 until any proposed observation and its one-shot replication criterion have been frozen exactly.
 
 ## SQ-002 — Cross-scale persistence
 
