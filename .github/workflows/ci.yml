@@ -19,3 +19,5 @@ jobs:
         run: ruff check .
       - name: Tests
         run: pytest
+      - name: Baseline smoke
+        run: python experiments/E000_baseline_scan.py --limit 10000 > /tmp/e000.json
