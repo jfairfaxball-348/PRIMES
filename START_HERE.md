@@ -6,6 +6,8 @@ The immediate objective is to establish a trustworthy observation pipeline befor
 
 ## Session protocol
 
+The controlling closeout rules are in `docs/SESSION_PROTOCOL.md`. Each session runs one bounded research unit and finishes automatically at a natural checkpoint.
+
 For each bounded research session:
 
 1. Read `PROGRAM_STATUS.md` and the ledgers.
@@ -18,6 +20,8 @@ For each bounded research session:
 8. If the observation is interesting, replicate it on untouched data.
 9. Promote only exact, falsifiable statements.
 10. Update the authoritative ledgers before ending.
+11. If unblocked, write one immediately runnable `NEXT_SESSION_PROMPT.md` and include it in the closeout.
+12. If an owner decision is required, suppress the next-session prompt and ask only for that decision.
 
 ## DISCOVERY-0 task sequence
 
