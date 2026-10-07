@@ -1,0 +1,51 @@
+name: d1-34-h11-replication
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  replicate:
+    if: github.event.head_commit.message == 'Run D1-34 H11 replication runner'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 8194e8fa5e371e942c449e88d1abab0bea44839a
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Validate frozen checkpoint before generation
+        run: |
+          test "$(git rev-parse HEAD)" = "8194e8fa5e371e942c449e88d1abab0bea44839a"
+          test "$(git hash-object experiments/E011_finite_field_factor_degree_shapes.py)" = "610f962c99257a7148d0ef74b1d54963ebf05cf9"
+          test "$(git hash-object experiments/e011_ff_runtime.c)" = "122728702f574afebefb4e0e8e37b1b702227000"
+          test "$(git hash-object tests/test_e011.py)" = "54c369328547a946ea0fb01bccea008bba969a81"
+          test "$(git hash-object src/primes_lab/core.py)" = "ee600508452e1036f52d00fb9c0b22844c646601"
+          test "$(git hash-object pyproject.toml)" = "dc4f15f98caf407eaaddd1506e1c323c5c2efbff"
+          ruff check experiments/E011_finite_field_factor_degree_shapes.py tests/test_e011.py
+          PYTHONPATH=.:src pytest -q tests/test_e011.py
+          PYTHONPATH=.:src python -m compileall -q experiments/E011_finite_field_factor_degree_shapes.py tests/test_e011.py src/primes_lab
+      - name: Execute H11 twice and establish byte identity
+        run: |
+          OUT=/tmp/e011-h11.json
+          FIRST=/tmp/e011-h11-first.json
+          PYTHONPATH=.:src python experiments/E011_finite_field_factor_degree_shapes.py --band H11 --code-commit 8194e8fa5e371e942c449e88d1abab0bea44839a --output "$OUT"
+          cp "$OUT" "$FIRST"
+          PYTHONPATH=.:src python experiments/E011_finite_field_factor_degree_shapes.py --band H11 --code-commit 8194e8fa5e371e942c449e88d1abab0bea44839a --output "$OUT"
+          cmp -s "$FIRST" "$OUT"
+          echo "BYTE_IDENTITY=PASS"
+          printf "BYTES="
+          wc -c < "$OUT"
+          printf "SHA256="
+          sha256sum "$OUT" | cut -d' ' -f1
+          echo "CRITERION_ARTIFACT_BEGIN"
+          cat "$OUT"
+          echo "CRITERION_ARTIFACT_END"
