@@ -82,10 +82,10 @@ def test_j_core_order_parity_and_higher_coordinate_exclusion() -> None:
     value = (1 << 25) | (1 << 19) | (1 << 17) | (1 << 1) | 1
     core = binary_core(value)
     assert len(core) == 19
-    assert core[0] == 1
-    assert core[1] == 0
-    assert core[2] == 1
-    assert core[-1] == 1
+    assert core[0] == 1  # b19
+    assert core[1] == 0  # b18
+    assert core[2] == 1  # b17
+    assert core[-1] == 1  # b1
     assert ((value >> 0) & 1) == 1
     assert core == tuple((value >> j) & 1 for j in range(19, 0, -1))
     changed_high = value ^ (1 << 20) ^ (1 << 22)
@@ -164,21 +164,15 @@ def test_population_and_occurrence_floors() -> None:
     prime = Counter({9: 32, 8: 31})
     composite = Counter({9: 1})
     passing, _ = _family_row(
-        family="B1",
-        prime_counter=prime,
-        composite_counter=composite,
-        N_prime=1000,
-        N_composite=1000,
+        family="B1", prime_counter=prime, composite_counter=composite,
+        N_prime=1000, N_composite=1000,
     )
     assert passing["population_floor_passed"] is True
     assert passing["occurrence_floor_passed"] is True
     assert passing["enrichment_passed"] is True
     failing, _ = _family_row(
-        family="B1",
-        prime_counter=Counter({9: 31, 8: 30}),
-        composite_counter=composite,
-        N_prime=999,
-        N_composite=1000,
+        family="B1", prime_counter=Counter({9: 31, 8: 30}), composite_counter=composite,
+        N_prime=999, N_composite=1000,
     )
     assert failing["population_floor_passed"] is False
     assert failing["occurrence_floor_passed"] is False
@@ -224,43 +218,21 @@ def test_exact_duplicate_suppression_family_order_and_cap() -> None:
 
 def test_descriptive_allowlist_shape_excludes_forbidden_catalogs() -> None:
     assert PAYLOAD_KEYS == {
-        "experiment",
-        "implementation_commit",
-        "band",
-        "partition",
-        "parameters",
-        "generation_plan",
-        "anchor_summary",
-        "validation",
-        "families",
-        "promotions",
+        "experiment", "implementation_commit", "band", "partition", "parameters",
+        "generation_plan", "anchor_summary", "validation", "families", "promotions",
     }
     assert ANCHOR_SUMMARY_KEYS == {
-        "admissible_count",
-        "prime_count",
-        "composite_count",
-        "first_prime",
-        "last_prime",
+        "admissible_count", "prime_count", "composite_count", "first_prime", "last_prime"
     }
     assert VALIDATION_KEYS == {
-        "admissible_partition_failure_count",
-        "binary_reconstruction_failure_count",
-        "core_length_failure_count",
-        "parity_control_failure_count",
+        "admissible_partition_failure_count", "binary_reconstruction_failure_count",
+        "core_length_failure_count", "parity_control_failure_count",
     }
     assert FAMILY_ROW_KEYS == {
-        "family",
-        "prime_frequency_table",
-        "composite_frequency_table",
-        "prime_mode_count",
-        "prime_maximizing_signatures",
-        "runner_up_count",
-        "strict_unique_prime_mode",
-        "unique_mode_composite_count",
-        "unique_mode_enrichment_numerator",
-        "population_floor_passed",
-        "occurrence_floor_passed",
-        "enrichment_passed",
+        "family", "prime_frequency_table", "composite_frequency_table", "prime_mode_count",
+        "prime_maximizing_signatures", "runner_up_count", "strict_unique_prime_mode",
+        "unique_mode_composite_count", "unique_mode_enrichment_numerator",
+        "population_floor_passed", "occurrence_floor_passed", "enrichment_passed",
         "mechanically_eligible",
     }
     forbidden = {"anchors", "binary_words", "exact_word_frequency_table", "non_mode_enrichment"}
@@ -279,25 +251,13 @@ def test_byte_deterministic_serialization() -> None:
 def test_d8_generation_plan_exact_support_and_target() -> None:
     plan = generation_plan("D8")
     assert plan == [
-        {
-            "purpose": "base_sieve_support",
-            "strategy": "whole_prefix",
-            "start": 0,
-            "stop": 7142,
-        },
-        {
-            "purpose": "segmented_target",
-            "strategy": "segmented",
-            "start": 50_000_000,
-            "stop": 51_000_000,
-        },
+        {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7142},
+        {"purpose": "segmented_target", "strategy": "segmented", "start": 50_000_000, "stop": 51_000_000},
     ]
     validate_generation_plan(plan, band_name="D8")
 
 
-def test_fail_closed_generation_rejection_before_prime_generator(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
+def test_fail_closed_generation_rejection_before_prime_generator(monkeypatch: pytest.MonkeyPatch) -> None:
     plan = generation_plan("D8")
     called = False
 
@@ -310,98 +270,46 @@ def test_fail_closed_generation_rejection_before_prime_generator(
 
     invalid_plans = [
         [
-            {
-                "purpose": "base_sieve_support",
-                "strategy": "whole_prefix",
-                "start": 0,
-                "stop": 200_000,
-            },
+            {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 200_000},
             plan[1],
         ],
         [
             plan[0],
-            {
-                "purpose": "segmented_target",
-                "strategy": "segmented",
-                "start": 50_000_000,
-                "stop": 50_999_999,
-            },
+            {"purpose": "segmented_target", "strategy": "segmented", "start": 50_000_000, "stop": 50_999_999},
         ],
         [
             plan[0],
-            {
-                "purpose": "segmented_target",
-                "strategy": "segmented",
-                "start": 49_999_999,
-                "stop": 51_000_000,
-            },
+            {"purpose": "segmented_target", "strategy": "segmented", "start": 49_999_999, "stop": 51_000_000},
         ],
     ]
     forbidden_intervals = (
-        (0, 1_000_000),
-        (1_000_000, 2_000_000),
-        (2_000_000, 3_000_000),
-        (4_000_000, 5_000_000),
-        (8_000_000, 9_000_000),
-        (10_000_000, 11_000_000),
-        (16_000_000, 17_000_000),
-        (32_000_000, 33_000_000),
-        (33_000_000, 34_000_000),
-        (34_000_000, 35_000_000),
-        (35_000_000, 36_000_000),
-        (36_000_000, 37_000_000),
-        (37_000_000, 38_000_000),
-        (38_000_000, 39_000_000),
-        (39_000_000, 40_000_000),
-        (40_000_000, 41_000_000),
-        (41_000_000, 42_000_000),
-        (42_000_000, 43_000_000),
-        (43_000_000, 44_000_000),
-        (44_000_000, 45_000_000),
-        (45_000_000, 46_000_000),
-        (46_000_000, 47_000_000),
-        (47_000_000, 48_000_000),
-        (48_000_000, 49_000_000),
-        (49_000_000, 50_000_000),
-        (51_000_000, 52_000_000),
-        (52_000_000, 53_000_000),
-        (66_000_000, 67_000_000),
-        (70_000_000, 71_000_000),
-        (78_000_000, 79_000_000),
-        (84_000_000, 85_000_000),
-        (92_000_000, 93_000_000),
-        (60_000_000, 61_000_000),
+        (0, 1_000_000), (1_000_000, 2_000_000), (2_000_000, 3_000_000),
+        (4_000_000, 5_000_000), (8_000_000, 9_000_000), (10_000_000, 11_000_000),
+        (16_000_000, 17_000_000), (32_000_000, 33_000_000), (33_000_000, 34_000_000),
+        (34_000_000, 35_000_000), (35_000_000, 36_000_000), (36_000_000, 37_000_000),
+        (37_000_000, 38_000_000), (38_000_000, 39_000_000), (39_000_000, 40_000_000),
+        (40_000_000, 41_000_000), (41_000_000, 42_000_000), (42_000_000, 43_000_000),
+        (43_000_000, 44_000_000), (44_000_000, 45_000_000), (45_000_000, 46_000_000),
+        (46_000_000, 47_000_000), (47_000_000, 48_000_000), (48_000_000, 49_000_000),
+        (49_000_000, 50_000_000), (51_000_000, 52_000_000), (52_000_000, 53_000_000),
+        (66_000_000, 67_000_000), (70_000_000, 71_000_000), (78_000_000, 79_000_000),
+        (84_000_000, 85_000_000), (92_000_000, 93_000_000), (60_000_000, 61_000_000),
     )
     for start, stop in forbidden_intervals:
         invalid_plans.append(
             [
                 plan[0],
-                {
-                    "purpose": "segmented_target",
-                    "strategy": "segmented",
-                    "start": start,
-                    "stop": stop,
-                },
+                {"purpose": "segmented_target", "strategy": "segmented", "start": start, "stop": stop},
             ]
         )
     invalid_plans.extend(
         [
             [
-                {
-                    "purpose": "base_sieve_support",
-                    "strategy": "whole_prefix",
-                    "start": 0,
-                    "stop": 7141,
-                },
+                {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7141},
                 plan[1],
             ],
             [
-                {
-                    "purpose": "base_sieve_support",
-                    "strategy": "whole_prefix",
-                    "start": 0,
-                    "stop": 7143,
-                },
+                {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7143},
                 plan[1],
             ],
         ]
