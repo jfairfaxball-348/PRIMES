@@ -30,6 +30,9 @@ Q = 210
 LOW_SUPPORT_STOP = 100_000
 SUMMARY_WORKERS = 5
 SUMMARY_BLOCK_SIZE = 10_000
+H10_OBSERVATION_ID = "OBS-014"
+H10_FAMILY = "L2"
+H10_TARGET_SIGNATURE = 1487
 BANDS = {
     "D10": (58_000_000, 59_000_000),
     "H10": (60_000_000, 61_000_000),
@@ -99,6 +102,19 @@ FAMILY_ROW_KEYS = frozenset({
 })
 
 
+H10_PAYLOAD_KEYS = frozenset({
+    "experiment", "implementation_commit", "band", "generation_plan", "replication",
+})
+H10_REPLICATION_KEYS = frozenset({
+    "observation_id", "family", "target_signature",
+    "prime_population", "composite_population",
+    "target_prime_count", "highest_competing_prime_count",
+    "target_composite_count", "target_enrichment_numerator",
+    "population_floor_passed", "occurrence_floor_passed",
+    "strict_unique_prime_mode", "enrichment_passed", "replication_passed",
+})
+
+
 def _intersects(left: tuple[int, int], right: tuple[int, int]) -> bool:
     return max(left[0], right[0]) < min(left[1], right[1])
 
@@ -145,29 +161,29 @@ def generation_plan(band_name: str) -> list[dict[str, Any]]:
 
 
 def validate_generation_plan(plan: list[dict[str, Any]], *, band_name: str) -> None:
-    """D1-30 fail-closed gate; runs before either prime generator."""
+    """D1-31 fail-closed H10 gate; runs before either prime generator."""
     validate_frozen_metadata()
-    if band_name != "D10":
-        raise ValueError("D1-30 authorizes D10 generation only")
-    canonical = generation_plan("D10")
+    if band_name != "H10":
+        raise ValueError("D1-31 authorizes H10 generation only")
+    canonical = generation_plan("H10")
     if plan != canonical:
-        raise ValueError("D1-30 plan must equal exact canonical D10 plan")
+        raise ValueError("D1-31 plan must equal exact canonical H10 plan")
     if canonical != [
-        {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7682},
+        {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7811},
         {"purpose": "segmented_target", "strategy": "segmented",
-         "start": 58_000_000, "stop": 59_000_000},
+         "start": 60_000_000, "stop": 61_000_000},
     ]:
-        raise ValueError("canonical D10 generation arithmetic changed")
+        raise ValueError("canonical H10 generation arithmetic changed")
     if canonical[0]["stop"] > LOW_SUPPORT_STOP:
         raise ValueError("whole-prefix generation above 100,000 is forbidden")
-    target = BANDS["D10"]
+    target = BANDS["H10"]
     if any(_intersects(target, prior) for prior in HISTORICAL_RANGES.values()):
-        raise ValueError("D10 intersects historical novelty range")
+        raise ValueError("H10 intersects historical novelty range")
     if any(_intersects(target, prior) for prior in E005_CALIBRATION_RANGES):
-        raise ValueError("D10 intersects E005 calibration range")
-    if any(name != "D10" and _intersects(target, interval)
+        raise ValueError("H10 intersects E005 calibration range")
+    if any(name != "H10" and _intersects(target, interval)
            for name, _, interval in FROZEN_PARTITION):
-        raise ValueError("D10 intersects E010 non-target")
+        raise ValueError("H10 intersects E010 non-target")
 
 
 def _segmented_target_prime_flags(start: int, stop: int, base_primes: Sequence[int]) -> bytearray:
@@ -388,12 +404,161 @@ def summarise_band(
         raise ValueError("E010 family row escaped frozen descriptive allowlist")
     return payload
 
+def h10_replication_fields(
+    *, prime_counter: Mapping[int, int], composite_counter: Mapping[int, int],
+    N_prime: int, N_composite: int,
+) -> dict[str, Any]:
+    """Evaluate only the precommitted OBS-014 L2/1487 H10 criterion."""
+    if sum(int(count) for count in prime_counter.values()) != N_prime:
+        raise ValueError("H10 L2 prime counter does not exhaust prime anchors")
+    if sum(int(count) for count in composite_counter.values()) != N_composite:
+        raise ValueError("H10 L2 composite counter does not exhaust composite anchors")
+    if any(not isinstance(signature, int) or signature < 1 for signature in prime_counter):
+        raise ValueError("H10 L2 prime signatures must be positive integers")
+    if any(not isinstance(signature, int) or signature < 1 for signature in composite_counter):
+        raise ValueError("H10 L2 composite signatures must be positive integers")
+
+    target_prime_count = int(prime_counter.get(H10_TARGET_SIGNATURE, 0))
+    highest_competing_prime_count = max(
+        (int(count) for signature, count in prime_counter.items()
+         if signature != H10_TARGET_SIGNATURE),
+        default=0,
+    )
+    target_composite_count = int(composite_counter.get(H10_TARGET_SIGNATURE, 0))
+    target_enrichment_numerator = (
+        target_prime_count * N_composite - target_composite_count * N_prime
+    )
+    population_floor_passed = (
+        N_prime >= POPULATION_FLOOR and N_composite >= POPULATION_FLOOR
+    )
+    occurrence_floor_passed = target_prime_count >= OCCURRENCE_FLOOR
+    strict_unique_prime_mode = target_prime_count > highest_competing_prime_count
+    enrichment_passed = target_enrichment_numerator > 0
+    replication_passed = bool(
+        population_floor_passed
+        and occurrence_floor_passed
+        and strict_unique_prime_mode
+        and enrichment_passed
+    )
+    fields = {
+        "observation_id": H10_OBSERVATION_ID,
+        "family": H10_FAMILY,
+        "target_signature": H10_TARGET_SIGNATURE,
+        "prime_population": N_prime,
+        "composite_population": N_composite,
+        "target_prime_count": target_prime_count,
+        "highest_competing_prime_count": highest_competing_prime_count,
+        "target_composite_count": target_composite_count,
+        "target_enrichment_numerator": target_enrichment_numerator,
+        "population_floor_passed": population_floor_passed,
+        "occurrence_floor_passed": occurrence_floor_passed,
+        "strict_unique_prime_mode": strict_unique_prime_mode,
+        "enrichment_passed": enrichment_passed,
+        "replication_passed": replication_passed,
+    }
+    if frozenset(fields) != H10_REPLICATION_KEYS:
+        raise ValueError("H10 replication fields escaped frozen criterion allowlist")
+    return fields
+
+
+def _evaluate_h10_l2_block(bounds: tuple[int, int]) -> dict[str, Any]:
+    block_start, block_stop = bounds
+    prime_counter: Counter[int] = Counter()
+    composite_counter: Counter[int] = Counter()
+    admissible_count = N_prime = N_composite = 0
+    for anchor in range(block_start, block_stop):
+        if not is_q_admissible(anchor):
+            continue
+        root = isqrt(anchor)
+        if root * root == anchor:
+            continue
+        admissible_count += 1
+        is_prime = bool(_WORKER_PRIME_FLAGS[anchor - _WORKER_BAND_START])
+        if is_prime:
+            N_prime += 1
+            counter = prime_counter
+        else:
+            N_composite += 1
+            counter = composite_counter
+        signature = cycle_signatures(anchor)[H10_FAMILY]
+        if not isinstance(signature, int):
+            raise ValueError("frozen H10 L2 signature must be an integer")
+        counter[signature] += 1
+    return {
+        "prime_counter": prime_counter,
+        "composite_counter": composite_counter,
+        "admissible_count": admissible_count,
+        "prime_count": N_prime,
+        "composite_count": N_composite,
+    }
+
+
+def _evaluate_all_h10_l2_blocks(
+    *, start: int, stop: int, target_prime_flags: Sequence[int]
+) -> list[dict[str, Any]]:
+    blocks = [
+        (block_start, min(block_start + SUMMARY_BLOCK_SIZE, stop))
+        for block_start in range(start, stop, SUMMARY_BLOCK_SIZE)
+    ]
+    with get_context("spawn").Pool(
+        processes=SUMMARY_WORKERS,
+        initializer=_init_summary_worker,
+        initargs=(start, bytes(target_prime_flags)),
+    ) as pool:
+        return pool.map(_evaluate_h10_l2_block, blocks, chunksize=1)
+
+
+def summarise_h10_replication(
+    *, code_commit: str, plan: list[dict[str, Any]], target_prime_flags: Sequence[int],
+) -> dict[str, Any]:
+    validate_generation_plan(plan, band_name="H10")
+    start, stop = BANDS["H10"]
+    if len(target_prime_flags) != stop - start:
+        raise ValueError("target flags must span exactly H10")
+
+    prime_counter: Counter[int] = Counter()
+    composite_counter: Counter[int] = Counter()
+    admissible_count = N_prime = N_composite = 0
+    for result in _evaluate_all_h10_l2_blocks(
+        start=start, stop=stop, target_prime_flags=target_prime_flags
+    ):
+        admissible_count += int(result["admissible_count"])
+        N_prime += int(result["prime_count"])
+        N_composite += int(result["composite_count"])
+        prime_counter.update(result["prime_counter"])
+        composite_counter.update(result["composite_counter"])
+
+    if admissible_count != N_prime + N_composite:
+        raise ValueError("H10 prime/composite partition does not exhaust common domain")
+    if N_prime != sum(int(flag) for flag in target_prime_flags):
+        raise ValueError("H10 prime flags do not equal prime anchor population")
+
+    replication = h10_replication_fields(
+        prime_counter=prime_counter,
+        composite_counter=composite_counter,
+        N_prime=N_prime,
+        N_composite=N_composite,
+    )
+    payload = {
+        "experiment": EXPERIMENT_ID,
+        "implementation_commit": code_commit,
+        "band": {"name": "H10", "range": [start, stop], "interval_semantics": "half-open"},
+        "generation_plan": plan,
+        "replication": replication,
+    }
+    if frozenset(payload) != H10_PAYLOAD_KEYS:
+        raise ValueError("H10 payload escaped frozen replication allowlist")
+    return payload
+
+
 def build_payload(*, band_name: str, code_commit: str) -> dict[str, Any]:
-    plan = generation_plan(band_name)
-    validate_generation_plan(plan, band_name=band_name)
-    _, flags = execute_generation_plan(plan, band_name=band_name)
-    return summarise_band(
-        band_name=band_name, code_commit=code_commit, plan=plan, target_prime_flags=flags
+    if band_name != "H10":
+        raise ValueError("D1-31 build path authorizes H10 only")
+    plan = generation_plan("H10")
+    validate_generation_plan(plan, band_name="H10")
+    _, flags = execute_generation_plan(plan, band_name="H10")
+    return summarise_h10_replication(
+        code_commit=code_commit, plan=plan, target_prime_flags=flags
     )
 
 
@@ -403,7 +568,7 @@ def serialise_payload(payload: Mapping[str, Any]) -> bytes:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--band", choices=("D10",), required=True)
+    parser.add_argument("--band", choices=("H10",), required=True)
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
