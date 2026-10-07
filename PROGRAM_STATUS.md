@@ -4,14 +4,14 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-31 / SQ-010 H10 replication complete; OBS-014 REFUTED; SQ-010 closed; D1-32 / SQ-011 blind novelty preflight next**
+**DISCOVERY-1 — D1-32 / SQ-011 blind novelty preflight complete; E011 frozen; D1-33 / SQ-011 D11 discovery execution next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-010 CLOSED; SQ-011 PREFLIGHT NEXT | D1-31 consumed H10 under the frozen OBS-014 criterion; E010 closed after refutation and A10 remains untouched |
+| Pattern discovery | OPEN / SQ-011 FROZEN; D11 EXECUTION NEXT | D1-32 froze E011 before output; D11/H11/A11 remain untouched and A10/A9 remain protected |
 | Observation promotion | OPEN / 8 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-014 failed its frozen H10 criterion; no E010 observation remains holdout-pending |
 | Candidate conjecture | OPEN / NONE PROMOTED | No candidate exists; OBS-014 is REFUTED and cannot seed synthesis; blind discovery continues |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -236,7 +236,7 @@ Both observations remain REPLICATED with no candidate link; active candidates re
 - G10-pre: [57_000_000,58_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
 - D10: [58_000_000,59_000_000) — **EXECUTED DETERMINISTICALLY / INSPECTED UNDER FROZEN ALLOWLIST**
 - G10-mid: [59_000_000,60_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
-- H10: [60_000_000,61_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- H10: [60_000_000,61_000_000) — **EXECUTED ONE-SHOT / REPLICATION-CONSUMED**
 - A10: [116_000_000,117_000_000) — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
 
 E010 is frozen in experiments/E010_QUADRATIC_SURD_CYCLE_SHAPES.md. It studies the exact integer recurrence for the periodic simple continued fraction of sqrt(x) on individual Q=210-admissible nonsquare anchors. Prime/composite status labels the two common-domain populations only; the recurrence itself is identical for both.
@@ -266,6 +266,28 @@ The frozen L1-L4 grammar promoted exactly one observation. L1 target `1331` has 
 - **OBS-014 is REFUTED mechanically**. No fallback, retargeting, new OBS ID, candidate synthesis, mechanism/proof work, adversarial execution, prior-art/collision/literature search, or A10 generation occurred. H10 is consumed replication evidence; A10 remains untouched/uninspected/unexecuted/un-generated; G10-pre/G10-mid remain ungenerated non-target guards. Execution record: `experiments/E010_H10_REPLICATION_2026-10-07.md`.
 
 
+## Frozen E011 partition and representation
+
+- G11-pre: [61_000_000,62_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
+- D11: [62_000_000,63_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- G11-mid: [63_000_000,64_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
+- H11: [64_000_000,65_000_000) — **FROZEN / UNTOUCHED / ONE-SHOT HOLDOUT**
+- A11: [124_000_000,125_000_000) — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
+
+E011 is frozen in experiments/E011_FINITE_FIELD_FACTOR_DEGREE_SHAPES.md. Its primitive is exact finite-field polynomial factor-degree shape for the single target-agnostically selected polynomial F(T)=T^5+T+1 at each prime anchor. Degree 5 is fixed as the least d>=2 with at least seven integer partitions; the polynomial rule is F_d(T)=T^d+T+1. The exact discriminant 3381=3*7^2*23 and all polynomial-arithmetic identities are validation-only.
+
+The partition is metadata-only: starting at consumed H10's exclusive endpoint 61_000_000, preserve G11-pre, then D11, G11-mid, and H11 as consecutive width-1,000,000 bands; set L_A11=2*L_D11=124_000_000. No existing reserve is consumed. The five bands are disjoint from all historical generated/protected/non-target novelty intervals, A10/A9/H8/A8, and every E005 calibration segment.
+
+Exactly four promotable families are frozen: K1 exact factor-degree partition, K2 factor count, K3 linear-factor count, and K4 largest factor degree. Promotion is mechanical only: N_P>=1000, strict unique mode, target count>=32, at least 8 mixed reduced residue classes under the non-promotable Q=210 artifact control, and zero validation failures. Ties or failed gates have no fallback. Exact support-set duplicate suppression keeps the lowest-numbered family; hard cap is four.
+
+There is no composite-ring surrogate or theory-informed expected-distribution baseline. Per-prime polynomial internals, roots/factors, s_k/c_d vectors, residue identities/counts, complete frequency tables, non-mode signatures, alternate-polynomial results, timings, and exploratory features are excluded from serialization. Canonical JSON semantics and family/signature ordering are frozen for byte-identical repeats.
+
+Every promoted D11 target must freeze an unchanged same-family/same-signature H11 criterion before holdout generation. H11 uses the same population/occurrence/mixed-residue floors and strict-mode/validation gates; ties, higher competitors, floor/control failures, or validation failures mechanically refute. No holdout mining, retargeting, polynomial/degree/family/control/threshold change, or fallback is permitted.
+
+Future generation is fail-closed. D1-33 may authorize only [0,7938) whole-prefix support plus segmented D11. Later H11 and A11 phases would authorize only [0,8063)+H11 and [0,11181)+A11 respectively. Wrong support, high whole-prefix generation, partial/expanded/shifted/split targets, guards, out-of-phase holdout/adversarial targets, every historical generated/protected/guard interval, E005 calibration segments, and arbitrary non-target high intervals fail before prime generation.
+
+D1-32 was design-only: no E011 prime-derived output exists; no protected range was inspected; no OBS/CAND ID was allocated; no synthesis/mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work occurred. Observation, conjecture, and failure ledgers are unchanged.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -292,7 +314,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-32 / SQ-011:** design-only blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct family using only novelty-lane authority and generic target-agnostic protocol rules; choose fresh metadata-only ranges by deterministic provenance/arithmetic rules; freeze exact primitives/transforms, controls, descriptive allowlist, promotion/holdout criteria, deterministic serialization, and fail-closed future-generation rules. Generate no prime-derived output and preserve A10/A9 plus every historical reserve/holdout/guard.
+**D1-33 / SQ-011:** execute only the frozen E011 D11 discovery unit. Implement and validate the exact finite-field polynomial evaluator/guard, checkpoint implementation/test bytes before generation, authorize exactly low support [0,7938) plus segmented D11=[62_000_000,63_000_000), establish byte determinism before descriptive inspection, apply only the frozen K1-K4 promotion grammar, and freeze unchanged H11 criteria for any promoted observations. Generate no H11/A11 output and preserve every historical protected/non-target interval.
 
 ## Research inventory
 
@@ -317,8 +339,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. SQ-009 stays closed historical novelty work: D9/H9 remain consumed, OBS-012/013 remain REPLICATED with no candidate link, and A9=[108_000_000,109_000_000) remains frozen untouched/uninspected/unexecuted.
+DISCOVERY-1 remains in the blind novelty lane. SQ-010 stays closed historical novelty work: D10 and H10 are consumed, OBS-014 remains REFUTED, and A10=[116_000_000,117_000_000) remains frozen untouched/uninspected/unexecuted. SQ-009 remains closed with A9=[108_000_000,109_000_000) untouched.
 
-SQ-010 is now closed. D10 remains consumed discovery evidence and H10 is consumed replication evidence. Under the frozen OBS-014 criterion, H10 has 55,930 prime anchors and 172,626 Q-admissible nonsquare composite controls; target L2 signature `1487` occurs 20 times among prime anchors versus a highest competing count of 41, occurs 50 times among composite controls, and has exact positive enrichment `656,020`. Because the target misses the frozen 32-occurrence floor and is not the strict unique H10 L2 prime mode, **OBS-014 is REFUTED**. No E010 candidate exists and A10=[116_000_000,117_000_000) remains untouched/uninspected/unexecuted/un-generated.
+D1-32 / SQ-011 is complete. E011 is frozen before output as the finite-field polynomial factor-degree family with D11=[62_000_000,63_000_000), H11=[64_000_000,65_000_000), A11=[124_000_000,125_000_000), and permanent guards G11-pre/G11-mid. No E011 prime-derived output exists, no OBS/CAND ID was allocated, and observation/conjecture/failure records are unchanged.
 
-The next bounded unit is D1-32 / SQ-011 blind novelty representation-family preflight. It is design-only: select exactly one qualitatively distinct family without using calibration objects, historical-unblinding mechanisms, hidden targets, or inspected protected-range output; freeze a deterministic metadata-only discovery/guard/holdout/adversarial partition and all exact semantics, controls, serialization, promotion, holdout, and fail-closed generation rules before execution; generate no prime-derived output, allocate no OBS/CAND ID, and preserve A10/A9 and every historical reserve/holdout/guard.
+The next bounded unit is D1-33 / SQ-011 D11 discovery execution. It may implement/validate only the frozen E011 evaluator and fail-closed planner, checkpoint exact implementation/test bytes before generation, generate exactly low support [0,7938) plus segmented D11, run the identical D11 command twice before allowlisted inspection, mechanically apply K1-K4 promotion/duplicate suppression, and freeze exact H11 criteria for any promoted observations. It must not generate H11/A11 or perform candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature/novelty work, historical-output mining, calibration transfer, retargeting, or protected-range inspection.

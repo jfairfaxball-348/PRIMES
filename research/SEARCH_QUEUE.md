@@ -475,22 +475,43 @@ SQ-010 is closed without A10 execution. A10=`[116_000_000,117_000_000)` remains 
 Next bounded action: **D1-32 / SQ-011 blind novelty representation-family preflight.** Select and freeze exactly one qualitatively distinct blind novelty representation family using only novelty-lane authority and target-agnostic methodology. The unit is design-only: choose a fresh metadata-only partition by deterministic provenance/arithmetic rules, freeze exact primitives/transforms, validation/triviality controls, descriptive allowlist, promotion grammar/cap, unchanged one-shot holdout criteria, deterministic serialization, and fail-closed future-generation rules. Generate no prime-derived output, preserve A10/A9 and every historical reserve/holdout/guard, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
 
 
-## SQ-011 — Blind novelty representation-family preflight
+## SQ-011 — Finite-field polynomial factor-degree shapes
 
 Stage: discovery
 
-Status: **D1-32 PREFLIGHT NEXT — REPRESENTATION NOT YET FROZEN; NO PRIME-DERIVED OUTPUT**
+Status: **D1-32 PREFLIGHT COMPLETE — E011 FROZEN / NOT EXECUTED; D11/H11/A11 UNTOUCHED; D1-33 DISCOVERY EXECUTION NEXT**
 
-Purpose: return to blind novelty discovery after SQ-010 closed by frozen H10 refutation. D1-32 must select exactly one qualitatively distinct representation family without importing a historical target or any quarantined SQ-005 calibration object/mechanism.
+Frozen specification: experiments/E011_FINITE_FIELD_FACTOR_DEGREE_SHAPES.md
 
-Preflight constraints:
+E011 freezes one qualitatively distinct primitive family: for each prime anchor p, reduce the single predeclared polynomial F(T)=T^5+T+1 modulo p and retain only its exact irreducible factor-degree partition plus three predeclared coarsenings. Degree 5 is chosen before prime output as the least d>=2 with at least seven integer partitions, using P(2)=2, P(3)=3, P(4)=5, P(5)=7; F_d(T)=T^d+T+1 is the fixed sparse-polynomial rule. No E001-E010 observation value, E005 calibration object/mechanism, hidden historical target, prior-art result, or literature result selected the family.
 
-- use only committed novelty-lane authority plus generic target-agnostic protocol rules;
-- remain qualitatively distinct from the frozen E001-E010 representation families;
-- choose any new numerical partition only by deterministic provenance/arithmetic rules before prime-derived output;
-- preserve A10=`[116_000_000,117_000_000)`, A9, H8/A8, and every historical reserve/holdout/guard exactly as committed;
-- freeze exact primitives/transforms, controls/triviality exclusions, common domains, descriptive serialization allowlist, promotion grammar/cap, one-shot holdout criterion, deterministic ordering/serialization, and fail-closed generation rules before execution;
-- generate no primes or other prime-derived output in the preflight;
-- allocate no OBS/CAND ID and perform no candidate synthesis, mechanism/proof work, adversarial execution, prior-art/collision/literature search, novelty claim, historical-output mining, or calibration-object transfer.
+This primitive is finite-field polynomial arithmetic at the prime anchor, not a prime-gap/difference, occupancy/event, residue-transition/refinement, additive-overlap, neighbouring-factorization, binary-word, modular-order/action-cover, or quadratic-surd recurrence representation.
 
-Next bounded action: D1-32 executes this design-only preflight and, if no owner blocker arises, freezes the resulting E011 specification and hands off to a separate discovery-execution unit.
+Fresh metadata-only partition:
+
+- G11-pre=[61_000_000,62_000_000) — frozen non-target / ungenerated;
+- D11=[62_000_000,63_000_000) — frozen discovery / untouched;
+- G11-mid=[63_000_000,64_000_000) — frozen non-target / ungenerated;
+- H11=[64_000_000,65_000_000) — frozen untouched one-shot holdout;
+- A11=[124_000_000,125_000_000) — frozen untouched adversarial reserve.
+
+The partition uses only consumed H10's exclusive endpoint 61_000_000, W=1_000_000, one full guard before D11, one full guard before H11, and L_A11=2*L_D11. It consumes no prior reserve and is disjoint from every historical generated/protected/non-target novelty interval and all E005 calibration segments.
+
+Exact finite-field arithmetic computes R_k=T^(p^k) mod F_p and s_k=deg gcd(F_p,R_k-T), k=1,...,5. The frozen divisor recursion derives nonnegative integer counts c_d satisfying all divisor-sum reconstruction identities and sum d*c_d=5. Raw polynomial coefficients modulo p, roots/factors, R_k, gcd polynomials, s_k, and per-anchor c_d vectors are validation/computation objects only.
+
+Exactly four promotable families are frozen: K1 exact factor-degree partition; K2 number of irreducible factors; K3 number of linear factors; K4 largest factor degree. K2-K4 are predeclared coarsenings of K1. No fifth transform, alternate degree, alternate polynomial, coefficient search, or polynomial panel is permitted.
+
+E011 has no composite-ring surrogate and imports no theory-informed distribution baseline. The target-agnostic artifact control is Q=210: for a strict-unique modal target, count reduced residue classes containing both a target prime and a non-target prime for the same family. The mixed-residue floor is 8; residue identities and per-residue counts are not serialized.
+
+Promotion requires N_P>=1000, a strict unique D11 family mode, target count>=32, mixed-residue count>=8, and zero mandatory validation failures. Ties and failed gates have no fallback. Exact support-set duplicate suppression retains the lowest-numbered family K1<K2<K3<K4 when eligible targets select identical D11 prime supports. Hard cap: four observations.
+
+Every promoted D11 target must freeze an unchanged same-family/same-signature H11 criterion before holdout generation. H11 requires N_P>=1000, the identical target as strict unique H11 mode, target count>=32, mixed-residue count>=8, and all validation controls passing. A tie, higher competitor, floor failure, control failure, or validation failure mechanically refutes; no holdout mining, retargeting, threshold/control/polynomial/degree/family change, or fallback is permitted.
+
+The D11 serialization allowlist is minimal: experiment/checkpoint/band/partition/parameters/generation plan; prime count/first/last; seven aggregate validation counts; criterion-only family mode fields; and promotion precursors. Per-prime objects, prime lists, residue identities/counts, polynomial internals, complete frequency tables, non-mode signatures, alternate-polynomial output, timings, and exploratory fields are forbidden. Canonical UTF-8 JSON uses sorted keys, indent=2, one trailing newline, frozen ordering, and must repeat byte-identically for identical complete commands on the same checkpoint.
+
+Future generation is fail-closed. D1-33 may authorize exactly whole-prefix support [0,7938) plus segmented D11. A later H11 phase would authorize exactly [0,8063) plus H11; a later A11 phase exactly [0,11181) plus A11. Wrong support, high whole-prefix generation, partial/expanded/shifted/split targets, E011 guards/H11/A11 outside the current phase, every historical generated/protected/guard interval, all E005 calibration segments, and arbitrary non-target high intervals must fail before prime generation.
+
+D1-32 generated no primes or other E011 prime-derived output, inspected no protected range, allocated no OBS/CAND ID, and performed no candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, historical-output mining, or calibration transfer. Observation, conjecture, and failure records remain unchanged.
+
+Next bounded action: **D1-33 / SQ-011 E011 D11 discovery execution.** Implement and validate only the frozen E011 evaluator/planner, checkpoint exact implementation/test bytes before generation, authorize only [0,7938) plus segmented D11, execute the identical D11 command twice before allowlisted inspection, mechanically apply K1-K4 promotion/duplicate suppression, freeze exact H11 criteria for any promoted observations, and stop without H11/A11 or downstream work.
+
