@@ -10,6 +10,8 @@ static _Thread_local uint64_t denom_keys[E010_TABLE_SIZE];
 static _Thread_local uint32_t denom_counts[E010_TABLE_SIZE];
 static _Thread_local uint32_t denom_stamps[E010_TABLE_SIZE];
 static _Thread_local uint32_t denom_generation = 1u;
+static _Thread_local uint32_t denom_used_slots[E010_TABLE_SIZE];
+static _Thread_local uint32_t denom_used_count = 0u;
 
 static _Thread_local uint64_t state_keys[E010_TABLE_SIZE];
 static _Thread_local uint32_t state_stamps[E010_TABLE_SIZE];
@@ -25,6 +27,7 @@ static uint64_t mix64(uint64_t x) {
 }
 
 static void next_generations(void) {
+    denom_used_count = 0u;
     ++denom_generation;
     if (denom_generation == 0u) {
         memset(denom_stamps, 0, sizeof(denom_stamps));
@@ -44,6 +47,10 @@ static int denom_increment(uint64_t key) {
             denom_stamps[slot] = denom_generation;
             denom_keys[slot] = key;
             denom_counts[slot] = 1u;
+            if (denom_used_count >= E010_TABLE_SIZE) {
+                return 6;
+            }
+            denom_used_slots[denom_used_count++] = slot;
             return 0;
         }
         if (denom_keys[slot] == key) {
@@ -145,10 +152,8 @@ int e010_cycle_signatures(
 
     uint32_t distinct = 0u;
     uint32_t maximum = 0u;
-    for (uint32_t slot = 0; slot < E010_TABLE_SIZE; ++slot) {
-        if (denom_stamps[slot] != denom_generation) {
-            continue;
-        }
+    for (uint32_t i = 0; i < denom_used_count; ++i) {
+        uint32_t slot = denom_used_slots[i];
         ++distinct;
         if (denom_counts[slot] > maximum) {
             maximum = denom_counts[slot];
@@ -158,10 +163,8 @@ int e010_cycle_signatures(
         return 5;
     }
     memset(out_profile, 0, (size_t)maximum * sizeof(uint32_t));
-    for (uint32_t slot = 0; slot < E010_TABLE_SIZE; ++slot) {
-        if (denom_stamps[slot] != denom_generation) {
-            continue;
-        }
+    for (uint32_t i = 0; i < denom_used_count; ++i) {
+        uint32_t slot = denom_used_slots[i];
         uint32_t count = denom_counts[slot];
         if (count == 0u || count > maximum) {
             return 5;
