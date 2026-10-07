@@ -4,16 +4,16 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-29 / SQ-010 blind novelty preflight complete; E010 FROZEN / NOT EXECUTED; D10/H10/A10 untouched; D1-30 D10 discovery execution next**
+**DISCOVERY-1 — D1-30 / SQ-010 D10 discovery complete; OBS-014 OBSERVED; H10/A10 untouched; D1-31 H10 replication next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / E010 FROZEN; D10 NEXT | D1-29 froze E010 before output; D10/H10/A10 remain untouched and D1-30 is the bounded D10 discovery execution |
-| Observation promotion | OPEN / 8 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / NONE PROMOTED; SQ-010 PREFLIGHT ONLY | No candidate exists; D1-29 allocated no observation/candidate and future promotion still requires an exact observation to survive untouched holdout replication |
+| Pattern discovery | OPEN / E010 D10 COMPLETE; H10 NEXT | D1-30 consumed D10 under the frozen grammar and promoted OBS-014; H10/A10 remain untouched |
+| Observation promotion | OPEN / 8 REPLICATED; 1 OBSERVED; 5 REFUTED | OBS-014 now awaits its frozen one-shot H10 replication |
+| Candidate conjecture | OPEN / NONE PROMOTED; OBS-014 HOLDOUT PENDING | No candidate exists; OBS-014 cannot seed synthesis unless it survives untouched H10 replication |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -234,7 +234,7 @@ Both observations remain REPLICATED with no candidate link; active candidates re
 ## Frozen E010 partition and representation
 
 - G10-pre: [57_000_000,58_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
-- D10: [58_000_000,59_000_000) — **FROZEN / DISCOVERY / UNTOUCHED / NOT EXECUTED**
+- D10: [58_000_000,59_000_000) — **EXECUTED DETERMINISTICALLY / INSPECTED UNDER FROZEN ALLOWLIST**
 - G10-mid: [59_000_000,60_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
 - H10: [60_000_000,61_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
 - A10: [116_000_000,117_000_000) — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
@@ -252,6 +252,12 @@ The partition is metadata-only: starting at consumed H9's exclusive endpoint 57,
 Future generation is fail-closed. D1-30 may authorize exactly low whole-prefix support [0,7682) plus segmented D10. A later H10 mode would authorize exactly [0,7811) plus segmented H10; a later A10 mode exactly [0,10817) plus segmented A10. Whole-prefix high generation, wrong low support, partial/expanded/shifted targets, guards, historical generated/protected intervals, E005 calibration segments, and arbitrary other non-target ranges must fail before the prime generator is called.
 
 D1-29 was design-only. It generated no prime-derived output, executed no experiment, inspected no protected range, allocated no OBS/CAND ID, and performed no mechanism/proof/adversarial/prior-art/collision/literature/novelty work. SQ-005 contributed only generic target-agnostic freeze/switch safeguards; no calibration object or historical mechanism entered E010.
+
+D1-30 then implemented and validated the frozen E010 evaluator/runtime/guard before generation, with final implementation checkpoint `e9ab511a06e612792cbf95953d2e1b71307fb40f`. Exact evaluator/runtime/native-helper/test blobs were reproduced locally; 19/19 focused tests passed and compilation succeeded before D10 generation. The canonical plan was exactly low support `[0,7682)` plus segmented D10, and the fail-closed tests reject wrong support, high whole-prefix, partial/shifted/split targets, E010 guards/H10/A10, historical ranges, E005 calibration segments, and arbitrary other non-target high intervals before any generator call. Ruff remains unavailable only under the existing FAIL-001/FAIL-002 detached-runner limitation.
+
+The identical complete D10 command ran twice on that same checkpoint and output path before descriptive inspection, producing byte-identical 52,653,877-byte artifacts with SHA-256 `52c7be1bd4ba53eb78596fa7a0738a412742d10d31583a574901d47f1915ce74`. D10 has 55,978 prime anchors, 172,580 Q-admissible nonsquare composite controls, and 15 Q-admissible perfect squares excluded before labelling; all six frozen runtime validation-failure aggregates are zero.
+
+The frozen L1-L4 grammar promoted exactly one observation. L1 target `1331` has 16 prime occurrences versus runner-up 15 and positive enrichment, but fails the frozen 32-occurrence floor. L2 target `1487` has 44 prime occurrences versus runner-up 40, 53 composite occurrences, and exact enrichment `4,626,686 > 0`, so **OBS-014** is promoted at status OBSERVED. L3 target `8` has negative enrichment `-141,186,550`; L4 target `[2,2]` has only 10 prime occurrences and negative enrichment `-3,704,066`. OBS-014's exact unchanged L2/1487 H10 criterion is frozen in the observation ledger before any H10 generation. H10 and A10 remain untouched/uninspected/unexecuted; A9 and every historical protected range remain unchanged. Compact evidence is `research/evidence/E010_D10_discovery.json`; execution record is `experiments/E010_D10_DISCOVERY_2026-10-07.md`.
 
 ## Frozen E005 calibration benchmark
 
@@ -279,11 +285,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-30 / SQ-010:** implement and validate the frozen E010 quadratic-surd recurrence evaluator and fail-closed planner, checkpoint exact implementation/test bytes before any D10 generation, execute only D10 twice for byte determinism, inspect only the frozen allowlist, mechanically apply L1-L4 promotion, freeze exact unchanged H10 criteria for any promoted observations, and stop without generating H10/A10 or performing candidate/mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
+**D1-31 / SQ-010:** perform the one-shot H10 replication of OBS-014 only under unchanged E010 semantics. Minimally enable/validate the frozen H10 execution mode, checkpoint exact bytes before generation, authorize only low support [0,7811) plus segmented H10=[60_000_000,61_000_000), run the identical H10 command twice before criterion inspection, inspect only the frozen L2 target-1487 replication fields, and stop without H10 mining, A10 generation, candidate synthesis, mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
 
 ## Research inventory
 
-- Active observations: 8
+- Active observations: 9
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -304,11 +310,10 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. SQ-009 is closed historical novelty work: D9/H9 stay consumed, OBS-012/013 remain REPLICATED with no candidate link, and A9=[108_000_000,109_000_000) remains frozen untouched/uninspected/unexecuted.
+DISCOVERY-1 remains in the blind novelty lane. SQ-009 stays closed historical novelty work: D9/H9 remain consumed, OBS-012/013 remain REPLICATED with no candidate link, and A9=[108_000_000,109_000_000) remains frozen untouched/uninspected/unexecuted.
 
-D1-29 completed the design-only SQ-010 preflight and froze E010 before any E010 output. The selected family is the exact quadratic-surd recurrence denominator-cycle representation on individual Q=210-admissible nonsquare anchors. It is materially distinct from the exhausted gap/difference, occupancy/event, residue-transition/refinement, additive-overlap, neighbour-factorization, binary-core, and unit-action-cover families, and it uses no historical observed target as a seed.
+D1-30 has completed the D10 discovery execution for frozen E010. The exact D10 command repeated byte-identically at 52,653,877 bytes, SHA-256 `52c7be1bd4ba53eb78596fa7a0738a412742d10d31583a574901d47f1915ce74`. The mechanical L1-L4 grammar produced exactly OBS-014, the L2 distinct-denominator-count target `1487`, with D10 prime count 44 versus runner-up 40 and exact positive composite-control enrichment `4,626,686`. L1/L3/L4 are ineligible under the frozen gates and no fallback is permitted.
 
-The fresh partition is G10-pre=[57M,58M), D10=[58M,59M), G10-mid=[59M,60M), H10=[60M,61M), A10=[116M,117M). All are ungenerated at preflight close; D10/H10/A10 are untouched, guards are non-target, and all historical reserves/holdouts/guards remain in their prior roles.
+OBS-014 is OBSERVED with its exact unchanged one-shot H10 criterion frozen. H10=[60M,61M) remains untouched/uninspected and A10=[116M,117M) remains untouched/uninspected/unexecuted. G10-pre/G10-mid remain ungenerated non-target guards; A9 and all historical reserves/holdouts/guards retain their prior roles.
 
-The next bounded unit is D1-30 / SQ-010 D10 discovery execution. Implement and validate only the frozen E010 semantics/planner; checkpoint implementation/test bytes before generation; generate only exact low support [0,7682) plus segmented D10; execute the complete D10 command twice before descriptive inspection; inspect only the frozen allowlist; apply only the L1-L4 promotion grammar; freeze exact H10 criteria for any promoted observation; and stop without H10/A10, candidate, mechanism/proof/adversarial, prior-art/collision, literature, novelty, or calibration-transfer work.
-
+The next bounded unit is D1-31 / SQ-010 one-shot H10 replication of OBS-014 only. Preserve the frozen recurrence, domain, L2 family, target `1487`, floors, exact enrichment rule, and no-fallback criterion; minimally enable/validate the frozen H10 execution mode, checkpoint exact implementation/test bytes before generation, authorize exactly low support `[0,7811)` plus segmented H10, execute H10 twice before criterion inspection, inspect only the precommitted target criterion, and stop without mining H10, generating A10, creating/synthesizing a candidate, or performing mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
