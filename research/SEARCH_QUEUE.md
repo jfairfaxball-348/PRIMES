@@ -411,7 +411,7 @@ Next bounded action: **D1-29 / SQ-010 blind novelty representation-family prefli
 
 Stage: discovery
 
-Status: **D1-29 PREFLIGHT FROZEN — E010 NOT EXECUTED; D10/H10/A10 UNTOUCHED**
+Status: **D1-30 D10 COMPLETE — OBS-014 OBSERVED; H10/A10 UNTOUCHED; H10 REPLICATION NEXT**
 
 Frozen specification: experiments/E010_QUADRATIC_SURD_CYCLE_SHAPES.md
 
@@ -460,5 +460,12 @@ Fail-closed future generation is frozen. Whole-prefix prime generation is allowe
 
 D1-29 generated no prime-derived data, executed no experiment, inspected no protected range, allocated no OBS/CAND ID, and performed no mechanism/proof/adversarial/prior-art/collision/literature/novelty work. Observation, conjecture, and failure records are unchanged.
 
-Next bounded action: **D1-30 / SQ-010 E010 D10 discovery execution.** Implement and validate only the frozen E010 evaluator/planner, checkpoint implementation/test bytes before any D10 generation, execute only D10 twice for byte determinism, inspect only the frozen allowlist, mechanically apply L1-L4 promotion, freeze exact H10 criteria for any promoted observation, and stop without H10/A10, candidate, mechanism/proof/adversarial, prior-art/collision, literature, novelty, or calibration-transfer work.
+D1-30 implemented and validated the frozen evaluator/runtime/guard before generation at final implementation checkpoint `e9ab511a06e612792cbf95953d2e1b71307fb40f`. Exact committed evaluator/runtime/native-helper/test blobs were reproduced locally; 19/19 focused tests passed and compilation succeeded. Ruff remains unavailable only under the existing FAIL-001/FAIL-002 detached-runner limitation. The canonical D10 generation plan was exactly low support `[0,7682)` plus segmented D10=`[58_000_000,59_000_000)`; deliberate wrong-support, high whole-prefix, partial/shifted/split, guard/H10/A10, historical, E005-calibration, and arbitrary non-target plans fail before the prime generator is called.
 
+The identical complete D10 command was executed twice on the same checkpoint and same output path before descriptive inspection. Both artifacts are byte-identical: 52,653,877 bytes, SHA-256 `52c7be1bd4ba53eb78596fa7a0738a412742d10d31583a574901d47f1915ce74`. D10 has 228,558 Q-admissible nonsquare anchors, comprising 55,978 prime anchors and 172,580 composite controls; 15 Q-admissible perfect squares are excluded before labelling. All six frozen validation-failure aggregates are zero.
+
+Mechanical L1-L4 promotion yields exactly one observation. L1 target `1331` is a strict unique prime mode with count 16 versus 15 and positive enrichment 2,033,566, but fails the frozen 32-occurrence floor. L2 target `1487` is a strict unique prime mode with count 44 versus 40, composite count 53, and exact enrichment `4,626,686 > 0`, so it is eligible. L3 target `8` has count 20,348 versus 20,232 but enrichment `-141,186,550`, so it fails. L4 target `[2,2]` has count 10 versus 9 and enrichment `-3,704,066`, so it fails both occurrence and enrichment. No duplicate suppression removes L2 because no other family survives the pre-duplicate gates.
+
+**OBS-014** is allocated at status OBSERVED for exact L2 target `1487`; its unchanged same-family/same-signature one-shot H10 criterion is frozen in the observation ledger before any H10 generation. H10=`[60_000_000,61_000_000)` and A10=`[116_000_000,117_000_000)` remain untouched/uninspected/unexecuted. A9 and every historical protected/non-target range retain their prior roles. No candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, historical-output mining, calibration transfer, fallback, retargeting, threshold/normalization change, or post-result feature invention occurred.
+
+Next bounded action: **D1-31 / SQ-010 one-shot H10 replication of OBS-014 only.** Preserve all frozen E010 semantics and the exact L2 target `1487`. Minimally enable/validate the already-frozen H10 execution mode without changing recurrence/family/control/promotion semantics, checkpoint exact implementation/test bytes before generation, authorize only exact low support `[0,7811)` plus segmented H10=`[60_000_000,61_000_000)`, execute the identical complete H10 command twice before criterion inspection, inspect only the frozen OBS-014 replication fields, and stop without mining H10, generating A10, creating or synthesizing a candidate, or performing mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
