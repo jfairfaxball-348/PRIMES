@@ -9,12 +9,15 @@ from experiments.E010_quadratic_surd_cycle_shapes import (
     FAMILY_ROW_KEYS,
     FROZEN_PARTITION,
     HISTORICAL_RANGES,
+    H10_PAYLOAD_KEYS,
+    H10_REPLICATION_KEYS,
     PAYLOAD_KEYS,
     Q,
     VALIDATION_KEYS,
     WIDTH,
     execute_generation_plan,
     generation_plan,
+    h10_replication_fields,
     is_anchor_in_common_domain,
     is_q_admissible,
     partition_admissible_anchors,
@@ -105,18 +108,20 @@ def test_byte_deterministic_serialization() -> None:
     assert serialise_payload(payload).index(b'"a"') < serialise_payload(payload).index(b'"b"')
 
 
-def test_d10_generation_plan_is_exact_complete_plan() -> None:
-    plan = generation_plan("D10")
+def test_h10_generation_plan_is_exact_complete_plan() -> None:
+    plan = generation_plan("H10")
     assert plan == [
-        {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7682},
+        {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7811},
         {"purpose": "segmented_target", "strategy": "segmented",
-         "start": 58_000_000, "stop": 59_000_000},
+         "start": 60_000_000, "stop": 61_000_000},
     ]
-    validate_generation_plan(plan, band_name="D10")
+    validate_generation_plan(plan, band_name="H10")
 
 
-def test_fail_closed_generation_rejection_before_prime_generator(monkeypatch: pytest.MonkeyPatch) -> None:
-    plan = generation_plan("D10")
+def test_fail_closed_h10_rejection_before_prime_generator(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    plan = generation_plan("H10")
     calls: list[str] = []
 
     def forbidden_sieve(_: int) -> list[int]:
@@ -133,19 +138,19 @@ def test_fail_closed_generation_rejection_before_prime_generator(monkeypatch: py
         forbidden_segmented,
     )
     invalid = [
-        [{**plan[0], "stop": 7681}, plan[1]],
-        [{**plan[0], "stop": 7683}, plan[1]],
-        [{**plan[0], "stop": 59_000_000}, plan[1]],
-        [plan[0], {**plan[1], "stop": 58_999_999}],
-        [plan[0], {**plan[1], "start": 57_999_999}],
-        [plan[0], {**plan[1], "start": 58_000_001, "stop": 59_000_001}],
+        [{**plan[0], "stop": 7810}, plan[1]],
+        [{**plan[0], "stop": 7812}, plan[1]],
+        [{**plan[0], "stop": 61_000_000}, plan[1]],
+        [plan[0], {**plan[1], "stop": 60_999_999}],
+        [plan[0], {**plan[1], "start": 59_999_999}],
+        [plan[0], {**plan[1], "start": 60_000_001, "stop": 61_000_001}],
         [plan[0], {**plan[1], "strategy": "whole_prefix"}],
-        [plan[0], {**plan[1], "stop": 58_500_000},
-         {**plan[1], "start": 58_500_000}],
+        [plan[0], {**plan[1], "stop": 60_500_000},
+         {**plan[1], "start": 60_500_000}],
     ]
     forbidden_intervals = [
-        (57_000_000, 58_000_000), (59_000_000, 60_000_000),
-        (60_000_000, 61_000_000), (116_000_000, 117_000_000),
+        (57_000_000, 58_000_000), (58_000_000, 59_000_000),
+        (59_000_000, 60_000_000), (116_000_000, 117_000_000),
         (54_000_000, 55_000_000), (56_000_000, 57_000_000),
         (108_000_000, 109_000_000), (52_000_000, 53_000_000),
         (66_000_000, 67_000_000), *HISTORICAL_RANGES.values(),
@@ -155,11 +160,73 @@ def test_fail_closed_generation_rejection_before_prime_generator(monkeypatch: py
         invalid.append([plan[0], {**plan[1], "start": start, "stop": stop}])
     for bad in invalid:
         with pytest.raises(ValueError):
-            execute_generation_plan(bad, band_name="D10")
+            execute_generation_plan(bad, band_name="H10")
         assert calls == []
-    with pytest.raises(ValueError, match="D10 generation only"):
-        execute_generation_plan(generation_plan("H10"), band_name="H10")
+    with pytest.raises(ValueError, match="H10 generation only"):
+        execute_generation_plan(generation_plan("D10"), band_name="D10")
     assert calls == []
+
+
+def _counter_with_singletons(target: int, target_count: int, total: int, start: int) -> Counter[int]:
+    counter: Counter[int] = Counter({target: target_count})
+    for signature in range(start, start + total - target_count):
+        counter[signature] += 1
+    return counter
+
+
+def test_h10_replication_criterion_and_restricted_serialization_fields() -> None:
+    prime = _counter_with_singletons(1487, 40, 1000, 3000)
+    composite = _counter_with_singletons(1487, 10, 1000, 5000)
+    fields = h10_replication_fields(
+        prime_counter=prime, composite_counter=composite,
+        N_prime=1000, N_composite=1000,
+    )
+    assert frozenset(fields) == H10_REPLICATION_KEYS
+    assert H10_PAYLOAD_KEYS == {
+        "experiment", "implementation_commit", "band", "generation_plan", "replication",
+    }
+    assert fields == {
+        "observation_id": "OBS-014",
+        "family": "L2",
+        "target_signature": 1487,
+        "prime_population": 1000,
+        "composite_population": 1000,
+        "target_prime_count": 40,
+        "highest_competing_prime_count": 1,
+        "target_composite_count": 10,
+        "target_enrichment_numerator": 30_000,
+        "population_floor_passed": True,
+        "occurrence_floor_passed": True,
+        "strict_unique_prime_mode": True,
+        "enrichment_passed": True,
+        "replication_passed": True,
+    }
+    forbidden = {
+        "families", "promotions", "prime_frequency_table", "composite_frequency_table",
+        "competing_signature", "recurrence_states", "a0_values", "denominator_words",
+        "partial_quotient_words", "convergents", "non_mode_enrichment",
+        "alternative_controls",
+    }
+    assert forbidden.isdisjoint(H10_PAYLOAD_KEYS | H10_REPLICATION_KEYS)
+
+    tied_prime = _counter_with_singletons(1487, 40, 960, 7000)
+    tied_prime[9000] = 40
+    tied = h10_replication_fields(
+        prime_counter=tied_prime, composite_counter=composite,
+        N_prime=1000, N_composite=1000,
+    )
+    assert tied["highest_competing_prime_count"] == 40
+    assert tied["strict_unique_prime_mode"] is False
+    assert tied["replication_passed"] is False
+
+    enriched_against = _counter_with_singletons(1487, 50, 1000, 10_000)
+    nonpositive = h10_replication_fields(
+        prime_counter=prime, composite_counter=enriched_against,
+        N_prime=1000, N_composite=1000,
+    )
+    assert nonpositive["target_enrichment_numerator"] == -10_000
+    assert nonpositive["enrichment_passed"] is False
+    assert nonpositive["replication_passed"] is False
 
 
 def test_parallel_block_evaluator_preserves_exact_anchor_semantics() -> None:
