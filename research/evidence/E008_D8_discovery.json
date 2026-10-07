@@ -1,0 +1,121 @@
+{
+  "anchor_summary": {
+    "admissible_count": 228571,
+    "composite_count": 172211,
+    "first_prime": 50000017,
+    "last_prime": 50999999,
+    "prime_count": 56360
+  },
+  "artifact": {
+    "bytes": 220817,
+    "sha256": "f5cf0a93ac556d9634885a4ece6e1c2d1f59fd4c9241370295d9fbaef4722b28"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D8",
+    "range": [
+      50000000,
+      51000000
+    ]
+  },
+  "experiment": "E008",
+  "families": [
+    {
+      "enrichment_passed": false,
+      "family": "B1",
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        10
+      ],
+      "prime_mode_count": 10006,
+      "runner_up_count": 9725,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 30585,
+      "unique_mode_enrichment_numerator": -627334
+    },
+    {
+      "enrichment_passed": false,
+      "family": "B2",
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        9
+      ],
+      "prime_mode_count": 10550,
+      "runner_up_count": 9638,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 32322,
+      "unique_mode_enrichment_numerator": -4841870
+    },
+    {
+      "enrichment_passed": false,
+      "family": "B3",
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        [
+          3,
+          3
+        ]
+      ],
+      "prime_mode_count": 5491,
+      "runner_up_count": 4146,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 17117,
+      "unique_mode_enrichment_numerator": -19103519
+    },
+    {
+      "enrichment_passed": false,
+      "family": "B4",
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        [
+          4,
+          3,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "prime_mode_count": 1946,
+      "runner_up_count": 1633,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 6057,
+      "unique_mode_enrichment_numerator": -6249914
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 7142,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 50000000,
+      "stop": 51000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "234a11378c64749a0638cb580f1045817ed25062",
+  "promotions": [],
+  "validation": {
+    "admissible_partition_failure_count": 0,
+    "binary_reconstruction_failure_count": 0,
+    "core_length_failure_count": 0,
+    "parity_control_failure_count": 0
+  }
+}
