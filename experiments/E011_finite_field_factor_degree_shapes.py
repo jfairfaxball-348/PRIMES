@@ -518,3 +518,183 @@ def factor_counts(p: int) -> tuple[int, int, int, int, int]:
 def signature_sort_key(family: str, signature: Signature) -> Any:
     if family == "K1" and isinstance(signature, tuple):
         return signature
+    if family in {"K2", "K3", "K4"} and isinstance(signature, int):
+        return signature
+    raise ValueError(f"invalid signature for frozen family {family}")
+
+
+def signature_to_json(family: str, signature: Signature) -> int | list[int]:
+    signature_sort_key(family, signature)
+    return list(signature) if isinstance(signature, tuple) else int(signature)
+
+
+def mode_summary(family: str, counter: Mapping[Signature, int]) -> dict[str, Any]:
+    if not counter:
+        return {
+            "prime_mode_count": 0,
+            "maximizer_count": 0,
+            "highest_competing_count": 0,
+            "strict_unique_prime_mode": False,
+            "unique_mode": None,
+        }
+    ranking = sorted(
+        counter.items(), key=lambda item: (-int(item[1]), signature_sort_key(family, item[0]))
+    )
+    maximum = int(ranking[0][1])
+    maximizers = [signature for signature, count in ranking if int(count) == maximum]
+    unique = maximizers[0] if len(maximizers) == 1 else None
+    if unique is None:
+        highest_competing = maximum if len(ranking) >= 2 else 0
+    else:
+        highest_competing = max(
+            (int(count) for signature, count in counter.items() if signature != unique), default=0
+        )
+    return {
+        "prime_mode_count": maximum,
+        "maximizer_count": len(maximizers),
+        "highest_competing_count": highest_competing,
+        "strict_unique_prime_mode": unique is not None,
+        "unique_mode": unique,
+    }
+
+
+def mixed_residue_count(
+    target: Signature,
+    signatures: Sequence[Signature],
+    residues: Sequence[int],
+) -> int:
+    if len(signatures) != len(residues):
+        raise ValueError("signature/residue lengths differ")
+    target_residues: set[int] = set()
+    other_residues: set[int] = set()
+    for signature, residue in zip(signatures, residues, strict=True):
+        if signature == target:
+            target_residues.add(int(residue))
+        else:
+            other_residues.add(int(residue))
+    return len(target_residues & other_residues)
+
+
+def _family_row(
+    *,
+    family: str,
+    counter: Mapping[Signature, int],
+    signatures: Sequence[Signature],
+    residues: Sequence[int],
+    population: int,
+) -> tuple[dict[str, Any], Signature | None, frozenset[int] | None, bool]:
+    if sum(int(count) for count in counter.values()) != population:
+        raise ValueError(f"{family} frequency table does not exhaust prime anchors")
+    summary = mode_summary(family, counter)
+    unique = summary.pop("unique_mode")
+    population_ok = population >= POPULATION_FLOOR
+    occurrence_ok = bool(unique is not None and summary["prime_mode_count"] >= OCCURRENCE_FLOOR)
+    mixed = mixed_residue_count(unique, signatures, residues) if unique is not None else None
+    residue_ok = bool(mixed is not None and mixed >= MIXED_RESIDUE_FLOOR)
+    pre_duplicate = bool(
+        population_ok
+        and summary["strict_unique_prime_mode"]
+        and occurrence_ok
+        and residue_ok
+    )
+    support = (
+        frozenset(i for i, signature in enumerate(signatures) if signature == unique)
+        if unique is not None
+        else None
+    )
+    row = {
+        "family": family,
+        **summary,
+        "unique_mode_signature": signature_to_json(family, unique) if unique is not None else None,
+        "population_floor_passed": population_ok,
+        "occurrence_floor_passed": occurrence_ok,
+        "unique_mode_mixed_residue_count": mixed,
+        "residue_control_passed": residue_ok,
+        "mechanically_eligible": pre_duplicate,
+    }
+    if frozenset(row) != FAMILY_ROW_KEYS:
+        raise ValueError("E011 family row escaped frozen descriptive allowlist")
+    return row, unique, support, pre_duplicate
+
+
+def apply_duplicate_suppression(
+    family_rows: Sequence[dict[str, Any]],
+    unique_modes: Mapping[str, Signature | None],
+    support_sets: Mapping[str, frozenset[int] | None],
+) -> list[dict[str, Any]]:
+    retained_supports: list[frozenset[int]] = []
+    promotions: list[dict[str, Any]] = []
+    for row in family_rows:
+        family = str(row["family"])
+        if not row["mechanically_eligible"]:
+            continue
+        support = support_sets[family]
+        target = unique_modes[family]
+        if support is None or target is None:
+            raise ValueError("eligible family lacks frozen unique mode/support")
+        if any(support == earlier for earlier in retained_supports):
+            row["mechanically_eligible"] = False
+            continue
+        retained_supports.append(support)
+        promotions.append(
+            {
+                "family": family,
+                "target_signature": signature_to_json(family, target),
+                "target_prime_count": int(row["prime_mode_count"]),
+                "target_mixed_residue_count": int(row["unique_mode_mixed_residue_count"]),
+            }
+        )
+    if len(promotions) > PROMOTION_CAP:
+        raise ValueError("E011 promotion cap exceeded")
+    if any(frozenset(row) != PROMOTION_KEYS for row in promotions):
+        raise ValueError("E011 promotion escaped frozen allowlist")
+    return promotions
+
+
+def _parameters() -> dict[str, Any]:
+    return {
+        "degree_selection": {"partition_counts": {"2": 2, "3": 3, "4": 5, "5": 7}, "degree": 5},
+        "polynomial": {
+            "coefficient_order": "constant_to_highest_degree",
+            "coefficients": list(POLYNOMIAL),
+            "discriminant": DISCRIMINANT,
+            "discriminant_factorization": [3, 7, 7, 23],
+        },
+        "Q": Q,
+        "width": WIDTH,
+        "population_floor": POPULATION_FLOOR,
+        "occurrence_floor": OCCURRENCE_FLOOR,
+        "mixed_residue_floor": MIXED_RESIDUE_FLOOR,
+        "promotion_cap": PROMOTION_CAP,
+        "family_definitions": [
+            {"family": "K1", "definition": "exact nonincreasing factor-degree partition"},
+            {"family": "K2", "definition": "number of irreducible factors"},
+            {"family": "K3", "definition": "number of linear factors"},
+            {"family": "K4", "definition": "largest irreducible-factor degree"},
+        ],
+    }
+
+
+
+def validate_payload_allowlist(payload: Mapping[str, Any]) -> None:
+    if frozenset(payload) != PAYLOAD_KEYS:
+        raise ValueError("E011 payload escaped frozen descriptive allowlist")
+    if not isinstance(payload.get("anchor_summary"), Mapping) or frozenset(payload["anchor_summary"]) != ANCHOR_SUMMARY_KEYS:
+        raise ValueError("E011 anchor summary escaped frozen descriptive allowlist")
+    if not isinstance(payload.get("validation"), Mapping) or frozenset(payload["validation"]) != VALIDATION_KEYS:
+        raise ValueError("E011 validation escaped frozen descriptive allowlist")
+    families = payload.get("families")
+    if not isinstance(families, list) or any(not isinstance(row, Mapping) or frozenset(row) != FAMILY_ROW_KEYS for row in families):
+        raise ValueError("E011 family row escaped frozen descriptive allowlist")
+    promotions = payload.get("promotions")
+    if not isinstance(promotions, list) or any(not isinstance(row, Mapping) or frozenset(row) != PROMOTION_KEYS for row in promotions):
+        raise ValueError("E011 promotion escaped frozen descriptive allowlist")
+
+
+def summarise_primes(
+    *, band_name: str, code_commit: str, plan: list[dict[str, Any]], primes: Sequence[int]
+) -> dict[str, Any]:
+    validate_generation_plan(plan, band_name=band_name)
+    start, stop = BANDS[band_name]
+    if any(prime < start or prime >= stop for prime in primes):
+        raise ValueError("prime anchors escaped exact D11 band")
