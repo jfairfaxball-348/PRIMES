@@ -1,17 +1,17 @@
 # PRIMES Programme Status
 
-Status date: 2026-10-06
+Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-23 / SQ-008 preflight complete; E008 binary core-shape family FROZEN / NOT EXECUTED; D8/H8/A8 and all historical reserves/guards untouched; D1-24 / SQ-008 D8 discovery execution next**
+**DISCOVERY-1 — D1-24 / SQ-008 D8 discovery complete; NO ELIGIBLE OBSERVATION; SQ-008 CLOSED; H8/A8 untouched; D1-25 / SQ-009 blind novelty representation-family preflight next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-008 FROZEN; D8 EXECUTION NEXT | D1-23 froze E008 before output; next implement/validate the frozen evaluator and execute D8 only under the predeclared grammar |
+| Pattern discovery | OPEN / SQ-008 CLOSED; SQ-009 PREFLIGHT NEXT | D1-24 executed frozen E008 D8 and produced no eligible observation; next freeze one new blind novelty representation family before any SQ-009 output |
 | Observation promotion | OPEN / 6 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / NONE PROMOTED; D1-22 NO-CANDIDATE COMPLETE | D1-22 found no exact non-arbitrary statement beyond the finite D7+H7 evidence; D1-02/D1-06/D1-18/D1-22 are explicit no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -182,17 +182,23 @@ The E008 metadata-only partition is frozen as G8-pre=`[49_000_000,50_000_000)`, 
 For each B1-B4 family, only the strict unique D8 prime-anchor mode may be considered, with no fallback target. Promotion additionally requires both prime/composite populations at least 1,000, target count at least 32, and strictly positive exact enrichment numerator against Q-admissible composite controls; exact duplicate suppression keeps the lower-numbered family if two targets select the same prime-anchor subset. The hard promotion cap is four. Any promoted target must freeze the unchanged same-family/same-target H8 criterion before H8 generation.
 
 E008 future generation is fail-closed: D8 may use only historically safe low support through 7,141 plus segmented D8; H8 and A8 remain unauthorized. Whole-prefix, partial/expanded target, guard, holdout, adversarial, historical protected/generated, and other non-target traversals must fail before prime generation. D1-23 generated no primes, inspected no protected range, allocated no OBS/CAND ID, did not edit observation/conjecture/failure statuses, and performed no mechanism/proof/adversarial/prior-art/collision/literature work. SQ-005 contributed only target-agnostic process safeguards and no calibration object or historical mechanism.
-## Frozen E008 partition and representation
+
+D1-24 implemented the exact frozen E008 evaluator and focused tests before any D8 generation. Final implementation/test checkpoint `234a11378c64749a0638cb580f1045817ed25062` has evaluator blob `1293af766b1906339330406c829694f78b6debd8` and focused-test blob `faa04909656517ef95fcac547cfe1fff44e98373`; the detached runner matched those exact blobs. Focused validation passed 19/19 tests plus compilation. The canonical generation plan was exactly low support `[0,7142)` plus segmented D8=`[50_000_000,51_000_000)`; deliberate forbidden plans failed before the prime generator was called. Ruff absence remains only the existing FAIL-001/FAIL-002 environment limitation.
+
+The identical complete D8 command ran twice before descriptive inspection and produced byte-identical 220,817-byte artifacts, SHA-256 `f5cf0a93ac556d9634885a4ece6e1c2d1f59fd4c9241370295d9fbaef4722b28`. D8 has 228,571 Q-admissible anchors, partitioned into 56,360 prime anchors and 172,211 composite controls; all four frozen validation-failure counts are zero. Only the frozen descriptive allowlist was inspected.
+
+The frozen B1-B4 promotion grammar produced **NO ELIGIBLE OBSERVATION**. Each family has a strict unique D8 prime-anchor mode and clears population/occurrence floors, but exact enrichment is negative for every target: B1 target 10 has -627,334; B2 target 9 has -4,841,870; B3 target `[3,3]` has -19,103,519; B4 target `[4,3,2,2,2,1,1,1,1,1,1]` has -6,249,914. No fallback target is permitted. No OBS/CAND ID was allocated, no H8 criterion is required, and SQ-008 closes without retuning. H8/A8, G8-pre/G8-mid, and every historical reserve/guard remain untouched/non-target.
+## Closed E008 partition and representation
 
 - G8-pre: `[49_000_000,50_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
-- D8: `[50_000_000,51_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- D8: `[50_000_000,51_000_000)` — **EXECUTED / DISCOVERY CONSUMED IN D1-24**
 - G8-mid: `[51_000_000,52_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
 - H8: `[52_000_000,53_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
 - A8: `[66_000_000,67_000_000)` — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
 
 E008 uses Q=210 as a non-promotable small-prime control and the exact 19-bit core `(b_19,...,b_1)` of individual admissible anchors. B1-B4 are Hamming weight, transition count, longest zero/one run pair, and unordered run-length shape. The exact word is non-promotable. D8/H8/A8 remain in one 26-bit shell; A8 is selected by the frozen same-shell arithmetic edge rule, not prime behaviour.
 
-The D8 future plan may generate only low support `[0,7142)` plus segmented D8. H8/A8 and every historical reserve/guard remain excluded until their own authorized units.
+D8 was generated only through low support `[0,7142)` plus segmented D8. Because no observation was promoted, H8 is not required and remains untouched; A8 also remains untouched. Every historical reserve/guard retains its prior protected/non-target role.
 
 ## Frozen E005 calibration benchmark
 
@@ -220,7 +226,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-24 / SQ-008:** implement and validate the frozen E008 binary core-shape evaluator and fail-closed planner before any output; execute only D8 twice for byte determinism; inspect only the frozen allowlist; mechanically apply only B1-B4 promotion; freeze exact H8 criteria for any promoted observations; and stop without H8/A8, candidate, mechanism/proof, adversarial, prior-art/collision, or literature work.
+**D1-25 / SQ-009:** design-only blind novelty representation-family preflight. Choose and freeze exactly one qualitatively distinct target-agnostic novelty representation and a fresh metadata/provenance-only partition; freeze primitive/transform, descriptive allowlist, promotion grammar, one-shot holdout criteria, deterministic serialization, and fail-closed future-generation rules; generate no prime-derived output and preserve all protected ranges.
 
 ## Research inventory
 
@@ -245,8 +251,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-23 / SQ-008 is complete as a design-only preflight. E008 is frozen before execution as the binary core-shape family defined in `experiments/E008_BINARY_CORE_SHAPES.md`; no E008 prime-derived output exists, no observation/candidate was allocated, and the observation, conjecture, and failure ledgers remain unchanged.
+DISCOVERY-1 remains in the blind novelty lane. D1-24 / SQ-008 is complete. E008 D8 was executed under the unchanged frozen grammar and produced NO ELIGIBLE OBSERVATION; SQ-008 is closed without retuning. No observation or candidate was allocated, and the observation, conjecture, and failure ledgers remain unchanged.
 
-The frozen partition is G8-pre=`[49_000_000,50_000_000)`, D8=`[50_000_000,51_000_000)`, G8-mid=`[51_000_000,52_000_000)`, H8=`[52_000_000,53_000_000)`, and A8=`[66_000_000,67_000_000)`. A1, H3, H4, G6-mid, A3, A4, A6, G7-pre, G7-mid, A7, and every E003/E004 guard retain their frozen historical roles.
+The E008 partition remains G8-pre=`[49_000_000,50_000_000)` ungenerated, D8=`[50_000_000,51_000_000)` discovery-consumed, G8-mid=`[51_000_000,52_000_000)` ungenerated, H8=`[52_000_000,53_000_000)` untouched, and A8=`[66_000_000,67_000_000)` untouched. A1, H3, H4, G6-mid, A3, A4, A6, G7-pre, G7-mid, A7, and every E003/E004 guard retain their frozen historical roles.
 
-The next bounded unit is D1-24 / SQ-008 D8 discovery execution. Implement the frozen evaluator and generation planner, satisfy all pre-generation semantic/guard/determinism tests, execute only D8 twice before inspection, inspect only the frozen descriptive allowlist, and mechanically apply the B1-B4 promotion grammar. If eligible observations exist, allocate at most four OBS IDs and freeze their exact same-family/same-target H8 criteria before any future H8 generation. If none are eligible, record NO ELIGIBLE OBSERVATION and close SQ-008 without relaxing the grammar. Do not generate H8 or A8 and do not begin candidate, mechanism/proof, adversarial, prior-art/collision, or literature work.
+The next bounded unit is D1-25 / SQ-009 blind novelty representation-family preflight. Using only novelty-lane authority and target-agnostic methodology, choose and freeze exactly one qualitatively distinct representation family and a fresh metadata/provenance-only discovery/guard/holdout/adversarial partition before any SQ-009 prime-derived output. Freeze exact primitive/transform, descriptive allowlist, promotion grammar, one-shot holdout criteria, deterministic ordering/serialization, and a fail-closed future-generation guard. Preserve H8/A8, A7, and every historical reserve/holdout/guard; generate no primes or other prime-derived data; allocate no OBS/CAND ID; and perform no mechanism/proof, adversarial, prior-art/collision, literature, novelty, or calibration-transfer work.
