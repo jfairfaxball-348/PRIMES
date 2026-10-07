@@ -250,3 +250,52 @@ Permanent append-only register of reproducible phenomena.
 **Possible mechanism:** Unknown; no mechanism work performed.  
 **Candidate link:** none — OBS-014 failed its frozen one-shot H10 criterion, so it is ineligible to seed candidate synthesis.  
 **Notes:** D10 artifact: 52,653,877 bytes, SHA-256 `52c7be1bd4ba53eb78596fa7a0738a412742d10d31583a574901d47f1915ce74`; compact discovery evidence in `research/evidence/E010_D10_discovery.json`. The identical complete D10 command ran twice on implementation checkpoint `e9ab511a06e612792cbf95953d2e1b71307fb40f` before descriptive inspection. H10 replication artifact: 1,003 bytes, SHA-256 `8730125952a015951d4e2fa698e3e354ba59b03b0d5d1d3f29fb93c2f5d88ad9`; compact criterion-only evidence in `research/evidence/E010_H10_replication.json` and execution record in `experiments/E010_H10_REPLICATION_2026-10-07.md`. H10 is now consumed replication evidence. A10 remains ungenerated, untouched, uninspected, and unexecuted; A9 and every historical protected range retain their prior frozen roles.
+
+## OBS-015
+
+**Title:** `[2,1,1,1]` is the unique K1 factor-degree-partition mode on D11  
+**Status:** OBSERVED  
+**Date:** 2026-10-07  
+**Experiment:** E011 / SQ-011  
+**Exact definition:** Under frozen E011, for every prime anchor `p` in D11, reduce `F(T)=T^5+T+1` modulo `p`, compute the exact squarefree finite-field factor-degree counts through the frozen `R_k/s_k/c_d` semantics, and let K1 be the nonincreasing irreducible factor-degree partition. The observation is that exact K1 signature `[2,1,1,1]` is the strict unique D11 K1 mode, occurs at least 32 times, and clears the frozen Q=210 mixed-residue control.  
+**Discovery range:** D11 = `[62_000_000,63_000_000)`  
+**Holdout range:** H11 = `[64_000_000,65_000_000)`, untouched at promotion  
+**Observation:** D11 has 55,706 prime anchors. K1 target `[2,1,1,1]` occurs 18,575 times; the highest competing K1 count is 13,868. The target has 48 mixed reduced residue classes modulo 210. All mandatory E011 validation aggregates are zero.  
+**Triviality checks:** The claim is not polynomial/discriminant metadata, squarefreeness, an exact polynomial-arithmetic identity, an s_k/c_d reconstruction identity, the total-degree identity, membership in the seven degree-5 partitions, a K1/K2/K3/K4 coarsening identity, a residue identity, a floor, serialization consequence, or duplicate-suppression consequence. K1 is a frozen predeclared promotable family.  
+**Frozen one-shot H11 replication criterion:** With unchanged E011 definitions and K1 semantics, H11 must contain at least 1,000 prime anchors; exact K1 signature `[2,1,1,1]` must be the strict unique H11 K1 mode; it must occur at least 32 times; it must have at least 8 mixed reduced residue classes under unchanged Q=210 control; and every mandatory E011 validation aggregate must be zero. A tie, any higher-frequency competitor, population-floor failure, target count below 32, mixed-residue count below 8, or any validation failure mechanically REFUTES the observation. No fallback, retargeting, or changed polynomial/degree/family/control/threshold is permitted.  
+**Possible mechanism:** Unknown; no mechanism work performed.  
+**Candidate link:** none — holdout replication pending.  
+**Notes:** D11 artifact: 4,861 bytes, SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`; implementation checkpoint `f9cfec77b4da93a714df00fc7513617a561c1f3c`; compact evidence in `research/evidence/E011_D11_discovery.json`. H11 and A11 remain untouched.
+
+## OBS-016
+
+**Title:** `3` is the unique K2 irreducible-factor-count mode on D11  
+**Status:** OBSERVED  
+**Date:** 2026-10-07  
+**Experiment:** E011 / SQ-011  
+**Exact definition:** Under frozen E011, for every prime anchor `p` in D11, compute the exact factor-degree counts of `F(T)=T^5+T+1` over the finite field of characteristic `p`; K2 is the total number of irreducible factors. The observation is that exact K2 signature `3` is the strict unique D11 K2 mode, occurs at least 32 times, and clears the frozen Q=210 mixed-residue control.  
+**Discovery range:** D11 = `[62_000_000,63_000_000)`  
+**Holdout range:** H11 = `[64_000_000,65_000_000)`, untouched at promotion  
+**Observation:** D11 has 55,706 prime anchors. K2 target `3` occurs 23,152 times; the highest competing K2 count is 18,575. The target has 48 mixed reduced residue classes modulo 210. All mandatory E011 validation aggregates are zero.  
+**Triviality checks:** The claim is not polynomial/discriminant metadata, squarefreeness, an exact polynomial-arithmetic or reconstruction identity, total degree, a deterministic K1 coarsening fact by itself, a residue identity, a floor, serialization consequence, or duplicate-suppression consequence. K2 was a frozen predeclared promotable family and survives exact cross-family duplicate suppression.  
+**Frozen one-shot H11 replication criterion:** With unchanged E011 definitions and K2 semantics, H11 must contain at least 1,000 prime anchors; exact K2 signature `3` must be the strict unique H11 K2 mode; it must occur at least 32 times; it must have at least 8 mixed reduced residue classes under unchanged Q=210 control; and every mandatory E011 validation aggregate must be zero. A tie, any higher-frequency competitor, population-floor failure, target count below 32, mixed-residue count below 8, or any validation failure mechanically REFUTES the observation. No fallback, retargeting, or changed polynomial/degree/family/control/threshold is permitted.  
+**Possible mechanism:** Unknown; no mechanism work performed.  
+**Candidate link:** none — holdout replication pending.  
+**Notes:** D11 artifact: 4,861 bytes, SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`; implementation checkpoint `f9cfec77b4da93a714df00fc7513617a561c1f3c`; compact evidence in `research/evidence/E011_D11_discovery.json`. H11 and A11 remain untouched.
+
+## OBS-017
+
+**Title:** `2` is the unique K4 largest-factor-degree mode on D11  
+**Status:** OBSERVED  
+**Date:** 2026-10-07  
+**Experiment:** E011 / SQ-011  
+**Exact definition:** Under frozen E011, for every prime anchor `p` in D11, compute the exact factor-degree counts of `F(T)=T^5+T+1` over the finite field of characteristic `p`; K4 is the largest irreducible-factor degree present. The observation is that exact K4 signature `2` is the strict unique D11 K4 mode, occurs at least 32 times, and clears the frozen Q=210 mixed-residue control.  
+**Discovery range:** D11 = `[62_000_000,63_000_000)`  
+**Holdout range:** H11 = `[64_000_000,65_000_000)`, untouched at promotion  
+**Observation:** D11 has 55,706 prime anchors. K4 target `2` occurs 32,443 times; the highest competing K4 count is 18,571. The target has 48 mixed reduced residue classes modulo 210. All mandatory E011 validation aggregates are zero.  
+**Triviality checks:** The claim is not polynomial/discriminant metadata, squarefreeness, an exact polynomial-arithmetic or reconstruction identity, total degree, a deterministic K1 coarsening fact by itself, a residue identity, a floor, serialization consequence, or duplicate-suppression consequence. K4 was a frozen predeclared promotable family and survives exact cross-family duplicate suppression.  
+**Frozen one-shot H11 replication criterion:** With unchanged E011 definitions and K4 semantics, H11 must contain at least 1,000 prime anchors; exact K4 signature `2` must be the strict unique H11 K4 mode; it must occur at least 32 times; it must have at least 8 mixed reduced residue classes under unchanged Q=210 control; and every mandatory E011 validation aggregate must be zero. A tie, any higher-frequency competitor, population-floor failure, target count below 32, mixed-residue count below 8, or any validation failure mechanically REFUTES the observation. No fallback, retargeting, or changed polynomial/degree/family/control/threshold is permitted.  
+**Possible mechanism:** Unknown; no mechanism work performed.  
+**Candidate link:** none — holdout replication pending.  
+**Notes:** D11 artifact: 4,861 bytes, SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`; implementation checkpoint `f9cfec77b4da93a714df00fc7513617a561c1f3c`; compact evidence in `research/evidence/E011_D11_discovery.json`. H11 and A11 remain untouched.
+
