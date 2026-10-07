@@ -60,6 +60,19 @@ No `CAND-###` was allocated. D1-22 considered only `OBS-010` and `OBS-011`, the 
 **Triage conclusion: NO CANDIDATE CREATED.** Both observations remain REPLICATED with no candidate link. Active candidates remain zero; no candidate ID or novelty status was allocated. SQ-007 closes without A7 execution. A7 remains frozen, untouched, uninspected, and unexecuted. No new prime-derived computation, D7/H7 mining, retargeting, factorization-rule change, mechanism/proof work, adversarial execution, prior-art/collision search, literature search, novelty claim, calibration-object transfer, or protected-range inspection occurred.
 
 
+## D1-28 / SQ-009 candidate-synthesis triage — 2026-10-07
+
+No `CAND-###` was allocated. D1-28 considered only `OBS-012` and `OBS-013`, the two E009 observations that survived their frozen one-shot H9 criteria. All earlier novelty-lane observations and the quarantined SQ-005 calibration objects were excluded from synthesis.
+
+| Observation | Triage outcome | Reason |
+|---|---|---|
+| `OBS-012` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E009 C2 semantics, exact target `[2,0,0,0]` is the strict unique prime-anchor mode and has positive exact composite-control enrichment in both D9 and H9. A statement restricted to exactly those two frozen one-million bands is only a finite restatement of committed computation. Any stronger statement requires an untested quantifier over band origin, width, later scale, basis, wheel, anchor population, representation family, or infinitely many values. |
+| `OBS-013` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E009 C4 semantics, exact target `[]` is the strict unique prime-anchor mode and has positive exact composite-control enrichment in both D9 and H9. Restricting the wording to D9 and H9 only packages the finite replicated evidence; persistence, eventuality, universality, family-level generalization, or infinite occurrence would add an unsupported quantifier. |
+| `OBS-012` + `OBS-013` | NO JOINT CANDIDATE | The exact conjunction that both frozen targets satisfy their committed D9 and H9 criteria is merely the conjunction of two finite replicated facts. Any stronger common mechanism, coupling, persistence, scale law, basis/wheel generalization, or family-level statement introduces structure not established by the frozen evidence. No anchor-level overlap or other unlisted statistic was inspected. |
+
+**Triage conclusion: NO CANDIDATE CREATED.** Both observations remain REPLICATED with no candidate link. Active candidates remain zero; no candidate ID or novelty status was allocated. SQ-009 closes without A9 execution. A9 remains frozen, untouched, uninspected, and unexecuted. No new prime-derived computation, D9/H9 mining, retargeting, representation change, mechanism/proof work, adversarial execution, prior-art/collision search, literature search, novelty claim, calibration-object transfer, or protected-range inspection occurred.
+
+
 Do not create a candidate merely because a pattern is visually interesting. See `docs/DISCOVERY_PROTOCOL.md`.
 
 ## Template
