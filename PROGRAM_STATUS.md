@@ -4,16 +4,16 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-25 / SQ-009 preflight complete; E009 UNIT-ACTION COVER SHAPES FROZEN / NOT EXECUTED; D9/H9/A9 untouched; D1-26 / SQ-009 E009 D9 discovery execution next**
+**DISCOVERY-1 — D1-27 / SQ-009 H9 replication complete; OBS-012/OBS-013 REPLICATED; A9 untouched; D1-28 / SQ-009 synthesis-only candidate triage next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / E009 FROZEN; D9 EXECUTION NEXT | D1-25 froze the exact SQ-009 unit-action cover-shape family and fresh partition before output; next implement/validate E009 and execute D9 only |
-| Observation promotion | OPEN / 6 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / NONE PROMOTED; D1-22 NO-CANDIDATE COMPLETE | D1-22 found no exact non-arbitrary statement beyond the finite D7+H7 evidence; D1-02/D1-06/D1-18/D1-22 are explicit no-candidate results |
+| Pattern discovery | OPEN / E009 D9+H9 COMPLETE; SYNTHESIS NEXT | D1-26 completed frozen D9 discovery and D1-27 completed one-shot H9 replication; A9 remains untouched |
+| Observation promotion | OPEN / 8 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
+| Candidate conjecture | OPEN / NONE PROMOTED; D1-28 TRIAGE NEXT | OBS-012 and OBS-013 now survive untouched H9 replication; D1-28 must test whether their finite D9+H9 evidence supports any exact non-arbitrary candidate without adding untested quantifiers |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -214,16 +214,18 @@ D8 was generated only through low support `[0,7142)` plus segmented D8. Because 
 - G9-pre: `[53_000_000,54_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
 - D9: `[54_000_000,55_000_000)` — **EXECUTED / DISCOVERY CONSUMED IN D1-26**
 - G9-mid: `[55_000_000,56_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
-- H9: `[56_000_000,57_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- H9: `[56_000_000,57_000_000)` — **EXECUTED / REPLICATION CONSUMED IN D1-27**
 - A9: `[108_000_000,109_000_000)` — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
 
 E009 freezes ordered basis A=(2,3,5,7), Q=210, exact deterministic factorization, exact odd-anchor unit-group exponent Lambda(x), exact multiplicative orders, all 15 nonempty basis subsets, and the inclusion-minimal cover antichain M(x). The four frozen discovery families are C1 minimum minimal-cover size, C2 minimal-cover size profile, C3 all-cover size profile, and C4 exact minimal-cover antichain shape. Raw factors, Lambda values, order vectors, and cover tables are non-promotable/non-serializable control objects.
 
-D9/H9/A9 were selected entirely from frozen range metadata and arithmetic. D1-26 generated D9 only; H9/A9 remain untouched and every historical reserve/holdout/guard retains its prior protected/non-target role. The full frozen specification is `experiments/E009_UNIT_ACTION_COVER_SHAPES.md`.
+D9/H9/A9 were selected entirely from frozen range metadata and arithmetic. D1-26 generated D9 only; D1-27 generated H9 only for the frozen one-shot criteria; A9 remains untouched and every historical reserve/holdout/guard retains its prior protected/non-target role. The full frozen specification is `experiments/E009_UNIT_ACTION_COVER_SHAPES.md`.
 
 D1-26 final evaluator/runtime checkpoint is `52f295f46ce8225f195f9e772dd7462a0dd873a1`. The exact D9 plan was `[0,7417)` low support plus segmented D9. Two successful identical complete commands produced byte-identical 82,398-byte artifacts, SHA-256 `a157a7b62667a76fee741db33e1cbf60594cb83aa17c54c4cbf57eb399b7cde9`; all eight frozen validation-failure aggregates are zero. D9 contains 55,997 prime anchors and 172,574 composite controls.
 
-The frozen grammar promoted exactly OBS-012 (C2 target `[2,0,0,0]`, enrichment numerator 387,132,627) and OBS-013 (C4 target `[]`, enrichment numerator 375,110,487). C1 fails positive enrichment and C3 is duplicate-suppressed because it selects the identical D9 prime-anchor subset as C2. Exact unchanged H9 criteria for OBS-012/013 are frozen in the observation ledger; H9 has not been generated.
+The frozen grammar promoted exactly OBS-012 (C2 target `[2,0,0,0]`, enrichment numerator 387,132,627) and OBS-013 (C4 target `[]`, enrichment numerator 375,110,487). C1 fails positive enrichment and C3 is duplicate-suppressed because it selects the identical D9 prime-anchor subset as C2. Exact unchanged H9 criteria for OBS-012/013 were frozen in the observation ledger before H9 generation.
+
+D1-27 then performed the one-shot H9 replication only. Exact committed evaluator/runtime/test blobs were verified; focused validation passed 22/22 tests plus compilation. The canonical H9 generation plan was exactly low support `[0,7550)` plus segmented H9=`[56_000_000,57_000_000)`, and 53 deliberate invalid plans were rejected before the prime generator was called. The identical complete H9 command ran twice before criterion inspection and produced byte-identical 85,386-byte artifacts, SHA-256 `9fccccd71c49983870e226f6f03ab80bff60820874edc2fe09cfbc6fdd361126`. H9 contains 56,105 prime anchors and 172,466 composite controls; all eight frozen validation aggregates are zero. OBS-012 REPLICATED with target count 13,900 versus highest competitor 11,411, composite count 35,726, and enrichment 392,870,170 > 0. OBS-013 REPLICATED with target count 3,869 versus highest competitor 3,089, composite count 5,075, and enrichment 382,538,079 > 0. No new H9 observation was allocated, no non-target signature was promoted, and A9 remains untouched. Compact evidence is `research/evidence/E009_H9_replication.json`; replication record is `experiments/E009_H9_REPLICATION_2026-10-07.md`.
 
 ## Frozen E005 calibration benchmark
 
@@ -251,7 +253,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-27 / SQ-009:** execute the one-shot H9 replication of OBS-012 and OBS-013 only under unchanged frozen E009 semantics. Validate exactly low support `[0,7550)` plus segmented H9=`[56_000_000,57_000_000)`, run the identical complete H9 command twice before criterion inspection, inspect only the frozen allowlist needed for the two precommitted tests, and classify each observation mechanically. Do not mine H9 for new patterns, retarget failures, generate A9, create a candidate, or perform synthesis/mechanism/proof/adversarial/prior-art/collision/literature/novelty work.
+**D1-28 / SQ-009:** perform synthesis-only candidate triage over REPLICATED OBS-012 and OBS-013 using only committed D9+H9 evidence. Evaluate each observation separately and then at most their exact conjunction for whether any exact non-arbitrary candidate is supported without adding untested quantifiers. Generate no new prime-derived data, leave A9 and every protected range untouched, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty work in this unit.
 
 ## Research inventory
 
@@ -276,9 +278,9 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-26 / SQ-009 D9 discovery is complete. D9 is discovery-consumed; G9-pre/G9-mid remain ungenerated non-target guards; H9=`[56_000_000,57_000_000)` is untouched/uninspected; A9=`[108_000_000,109_000_000)` is untouched/uninspected. H8/A8 and every historical reserve/holdout/guard retain their prior protected roles.
+DISCOVERY-1 remains in the blind novelty lane. D1-26 / SQ-009 D9 discovery and D1-27 one-shot H9 replication are complete. D9 is discovery-consumed and H9 is replication-consumed; G9-pre/G9-mid remain ungenerated non-target guards; A9=`[108_000_000,109_000_000)` remains frozen, untouched, uninspected, and unexecuted. H8/A8 and every historical reserve/holdout/guard retain their prior protected roles.
 
-OBS-012 and OBS-013 are OBSERVED with their exact one-shot H9 criteria frozen before any H9 generation. OBS-012 requires exact C2 signature `[2,0,0,0]` to remain the strict unique H9 prime mode with both populations >=1,000, target count >=32, and strictly positive exact enrichment. OBS-013 requires exact C4 signature `[]` under the identical conditions. A tie, higher competitor, floor failure, or nonpositive enrichment fails the relevant criterion with no fallback or retargeting.
+OBS-012 and OBS-013 are both REPLICATED under their exact criteria frozen before H9 generation. OBS-012's C2 target `[2,0,0,0]` has H9 prime count 13,900 versus highest competitor count 11,411 and exact enrichment 392,870,170 > 0. OBS-013's C4 target `[]` has H9 prime count 3,869 versus highest competitor count 3,089 and exact enrichment 382,538,079 > 0. Population and occurrence floors pass for both. No H9 fallback, retargeting, new observation, or non-target discovery was allowed.
 
-The next bounded unit is D1-27 / SQ-009 H9 replication of OBS-012 and OBS-013 only. Use the unchanged committed E009 evaluator/runtime; validate the exact `[0,7550)` plus segmented-H9 plan before generation; execute H9 twice for byte determinism; inspect only the precommitted criterion fields; update observation statuses and authoritative state; do not mine H9, generate A9, create a candidate, or perform candidate synthesis, mechanism/proof/adversarial work, prior-art/collision search, literature search, novelty claims, or calibration transfer.
+The next bounded unit is D1-28 / SQ-009 synthesis-only candidate triage over OBS-012 and OBS-013. Use only their committed D9+H9 evidence; evaluate each separately and then at most the exact joint conjunction for an exact non-arbitrary statement. Do not generate or inspect A9, do not create unsupported scale/base/wheel/family/infinite quantifiers, and do not perform mechanism/proof/adversarial/prior-art/collision/literature/novelty work in the same unit. If no candidate survives, close SQ-009 without A9 and return to a fresh blind novelty preflight.
 
