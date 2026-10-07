@@ -4,16 +4,16 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-28 / SQ-009 synthesis complete; NO CANDIDATE; SQ-009 closed; A9 untouched; D1-29 / SQ-010 blind novelty preflight next**
+**DISCOVERY-1 — D1-29 / SQ-010 blind novelty preflight complete; E010 FROZEN / NOT EXECUTED; D10/H10/A10 untouched; D1-30 D10 discovery execution next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / E009 CLOSED; FRESH PREFLIGHT NEXT | D1-28 closed SQ-009 with no candidate; A9 remains untouched and D1-29 begins a fresh blind representation-family preflight |
+| Pattern discovery | OPEN / E010 FROZEN; D10 NEXT | D1-29 froze E010 before output; D10/H10/A10 remain untouched and D1-30 is the bounded D10 discovery execution |
 | Observation promotion | OPEN / 8 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / NONE PROMOTED; SQ-009 CLOSED | D1-28 found no exact non-arbitrary candidate beyond the finite D9+H9 evidence; future candidate promotion requires new replicated evidence under a separately frozen blind family |
+| Candidate conjecture | OPEN / NONE PROMOTED; SQ-010 PREFLIGHT ONLY | No candidate exists; D1-29 allocated no observation/candidate and future promotion still requires an exact observation to survive untouched holdout replication |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -231,6 +231,28 @@ D1-28 then performed synthesis-only candidate triage over OBS-012 and OBS-013, s
 
 Both observations remain REPLICATED with no candidate link; active candidates remain zero and no novelty status was allocated. SQ-009 is closed without A9 execution. A9 remains frozen, untouched, uninspected, and unexecuted; G9-pre/G9-mid and every historical protected/non-target range retain their frozen roles. No new prime-derived data, D9/H9 mining, retargeting, representation change, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, calibration transfer, or protected-range inspection occurred.
 
+## Frozen E010 partition and representation
+
+- G10-pre: [57_000_000,58_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
+- D10: [58_000_000,59_000_000) — **FROZEN / DISCOVERY / UNTOUCHED / NOT EXECUTED**
+- G10-mid: [59_000_000,60_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
+- H10: [60_000_000,61_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- A10: [116_000_000,117_000_000) — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
+
+E010 is frozen in experiments/E010_QUADRATIC_SURD_CYCLE_SHAPES.md. It studies the exact integer recurrence for the periodic simple continued fraction of sqrt(x) on individual Q=210-admissible nonsquare anchors. Prime/composite status labels the two common-domain populations only; the recurrence itself is identical for both.
+
+For each anchor x, E010 uses exact isqrt, the integer recurrence (m_k,d_k,a_k), canonical first termination at (a0,1,2a0), and the exact denominator cycle D(x)=(d_1,...,d_ell). Raw states, a0, denominator values, partial-quotient words, convergents, and per-anchor sequences are non-promotable/non-serializable. The four frozen families are L1 period length, L2 distinct-denominator count, L3 peak denominator multiplicity, and L4 exact denominator-multiplicity profile. Forced recurrence/profile identities are validation-only.
+
+Only a strict unique D10 prime-anchor mode can be considered for one family. Frozen gates are N_P>=1000, N_C>=1000, target count>=32, and strictly positive exact enrichment n_P(t)N_C-n_C(t)N_P against Q-admissible nonsquare composite controls. Exact duplicate suppression retains the lowest-numbered family when eligible targets select the identical D10 prime-anchor subset. Hard cap: four observations, one per family. There is no fallback target.
+
+Every promoted D10 target must freeze the exact unchanged same-family/same-signature H10 criterion before H10 generation. H10 is replication-only and unavailable for mining, retargeting, threshold/normalization changes, family changes, recurrence changes, or post-result feature invention.
+
+The partition is metadata-only: starting at consumed H9's exclusive endpoint 57,000,000, preserve G10-pre, then D10, G10-mid, and H10 as consecutive width-1,000,000 bands; set L_A10=2*L_D10=116,000,000. This consumes no historical reserve and is disjoint from every historical generated/protected/non-target novelty band, A9, and all quarantined E005 calibration segments.
+
+Future generation is fail-closed. D1-30 may authorize exactly low whole-prefix support [0,7682) plus segmented D10. A later H10 mode would authorize exactly [0,7811) plus segmented H10; a later A10 mode exactly [0,10817) plus segmented A10. Whole-prefix high generation, wrong low support, partial/expanded/shifted targets, guards, historical generated/protected intervals, E005 calibration segments, and arbitrary other non-target ranges must fail before the prime generator is called.
+
+D1-29 was design-only. It generated no prime-derived output, executed no experiment, inspected no protected range, allocated no OBS/CAND ID, and performed no mechanism/proof/adversarial/prior-art/collision/literature/novelty work. SQ-005 contributed only generic target-agnostic freeze/switch safeguards; no calibration object or historical mechanism entered E010.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -257,7 +279,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-29 / SQ-010:** perform a design-only blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct family using only novelty-lane authority and target-agnostic methodology; choose a fresh metadata-only partition by deterministic provenance/arithmetic rules; freeze primitives/transforms, controls, descriptive allowlist, promotion grammar/cap, one-shot holdout criteria, deterministic serialization, adversarial-reserve metadata, and fail-closed future-generation rules. Generate no prime-derived data, preserve A9 and every historical protected range, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty work.
+**D1-30 / SQ-010:** implement and validate the frozen E010 quadratic-surd recurrence evaluator and fail-closed planner, checkpoint exact implementation/test bytes before any D10 generation, execute only D10 twice for byte determinism, inspect only the frozen allowlist, mechanically apply L1-L4 promotion, freeze exact unchanged H10 criteria for any promoted observations, and stop without generating H10/A10 or performing candidate/mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
 
 ## Research inventory
 
@@ -282,9 +304,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. SQ-009 is closed after D1-26 D9 discovery, D1-27 one-shot H9 replication, and D1-28 synthesis-only candidate triage. D9 is discovery-consumed and H9 is replication-consumed; G9-pre/G9-mid remain ungenerated non-target guards; A9=`[108_000_000,109_000_000)` remains frozen, untouched, uninspected, and unexecuted. H8/A8 and every historical reserve/holdout/guard retain their prior protected roles.
+DISCOVERY-1 remains in the blind novelty lane. SQ-009 is closed historical novelty work: D9/H9 stay consumed, OBS-012/013 remain REPLICATED with no candidate link, and A9=[108_000_000,109_000_000) remains frozen untouched/uninspected/unexecuted.
 
-OBS-012 and OBS-013 remain REPLICATED under their exact unchanged E009 definitions, but D1-28 created no candidate. For each observation separately, an exact statement confined to D9 and H9 only restates finite committed computation; every stronger persistence, scale, basis, wheel, family or infinite-value statement requires an unsupported quantifier. Their exact conjunction likewise only packages the two finite facts and supplies no justified common coupling or mechanism. Active candidates remain zero.
+D1-29 completed the design-only SQ-010 preflight and froze E010 before any E010 output. The selected family is the exact quadratic-surd recurrence denominator-cycle representation on individual Q=210-admissible nonsquare anchors. It is materially distinct from the exhausted gap/difference, occupancy/event, residue-transition/refinement, additive-overlap, neighbour-factorization, binary-core, and unit-action-cover families, and it uses no historical observed target as a seed.
 
-The next bounded unit is D1-29 / SQ-010, a design-only fresh blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct family from target-agnostic primitives, choose a fresh metadata-only partition without prime-derived inspection, and freeze its controls, promotion/replication grammar, determinism and fail-closed future-generation rules. Generate no prime-derived data, preserve A9 and every historical protected range, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty work in that unit.
+The fresh partition is G10-pre=[57M,58M), D10=[58M,59M), G10-mid=[59M,60M), H10=[60M,61M), A10=[116M,117M). All are ungenerated at preflight close; D10/H10/A10 are untouched, guards are non-target, and all historical reserves/holdouts/guards remain in their prior roles.
+
+The next bounded unit is D1-30 / SQ-010 D10 discovery execution. Implement and validate only the frozen E010 semantics/planner; checkpoint implementation/test bytes before generation; generate only exact low support [0,7682) plus segmented D10; execute the complete D10 command twice before descriptive inspection; inspect only the frozen allowlist; apply only the L1-L4 promotion grammar; freeze exact H10 criteria for any promoted observation; and stop without H10/A10, candidate, mechanism/proof/adversarial, prior-art/collision, literature, novelty, or calibration-transfer work.
 
