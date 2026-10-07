@@ -7,6 +7,7 @@ import json
 from collections import Counter
 from collections.abc import Iterable, Mapping, Sequence
 from math import gcd, isqrt
+from multiprocessing import get_context
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +28,8 @@ EXPERIMENT_ID = "E010"
 WIDTH = 1_000_000
 Q = 210
 LOW_SUPPORT_STOP = 100_000
+SUMMARY_WORKERS = 5
+SUMMARY_BLOCK_SIZE = 10_000
 BANDS = {
     "D10": (58_000_000, 59_000_000),
     "H10": (60_000_000, 61_000_000),
@@ -240,21 +243,24 @@ def _parameters() -> dict[str, Any]:
     }
 
 
-def summarise_band(
-    *, band_name: str, code_commit: str, plan: list[dict[str, Any]],
-    target_prime_flags: Sequence[int],
-) -> dict[str, Any]:
-    validate_generation_plan(plan, band_name=band_name)
-    start, stop = BANDS[band_name]
-    if len(target_prime_flags) != stop - start:
-        raise ValueError("target flags must span exactly D10")
+_WORKER_BAND_START = 0
+_WORKER_PRIME_FLAGS = b""
+
+
+def _init_summary_worker(band_start: int, prime_flags: bytes) -> None:
+    global _WORKER_BAND_START, _WORKER_PRIME_FLAGS
+    _WORKER_BAND_START = band_start
+    _WORKER_PRIME_FLAGS = prime_flags
+
+
+def _evaluate_anchor_block(bounds: tuple[int, int]) -> dict[str, Any]:
+    block_start, block_stop = bounds
     prime_counters = {family: Counter() for family in FAMILY_ORDER}
     composite_counters = {family: Counter() for family in FAMILY_ORDER}
     prime_signatures: dict[str, list[Signature]] = {family: [] for family in FAMILY_ORDER}
     admissible_count = square_excluded = N_prime = N_composite = 0
     first_prime = last_prime = None
-    validation = {key: 0 for key in sorted(VALIDATION_KEYS)}
-    for anchor in range(start, stop):
+    for anchor in range(block_start, block_stop):
         if not is_q_admissible(anchor):
             continue
         root = isqrt(anchor)
@@ -262,7 +268,7 @@ def summarise_band(
             square_excluded += 1
             continue
         admissible_count += 1
-        is_prime = bool(target_prime_flags[anchor - start])
+        is_prime = bool(_WORKER_PRIME_FLAGS[anchor - _WORKER_BAND_START])
         if is_prime:
             N_prime += 1
             first_prime = anchor if first_prime is None else first_prime
@@ -277,6 +283,65 @@ def summarise_band(
             counters[family][signature] += 1
             if is_prime:
                 prime_signatures[family].append(signature)
+    return {
+        "prime_counters": prime_counters,
+        "composite_counters": composite_counters,
+        "prime_signatures": prime_signatures,
+        "admissible_count": admissible_count,
+        "square_excluded": square_excluded,
+        "prime_count": N_prime,
+        "composite_count": N_composite,
+        "first_prime": first_prime,
+        "last_prime": last_prime,
+    }
+
+
+def _evaluate_all_anchor_blocks(
+    *, start: int, stop: int, target_prime_flags: Sequence[int]
+) -> list[dict[str, Any]]:
+    blocks = [
+        (block_start, min(block_start + SUMMARY_BLOCK_SIZE, stop))
+        for block_start in range(start, stop, SUMMARY_BLOCK_SIZE)
+    ]
+    with get_context("spawn").Pool(
+        processes=SUMMARY_WORKERS,
+        initializer=_init_summary_worker,
+        initargs=(start, bytes(target_prime_flags)),
+    ) as pool:
+        return pool.map(_evaluate_anchor_block, blocks, chunksize=1)
+
+
+def summarise_band(
+    *, band_name: str, code_commit: str, plan: list[dict[str, Any]],
+    target_prime_flags: Sequence[int],
+) -> dict[str, Any]:
+    validate_generation_plan(plan, band_name=band_name)
+    start, stop = BANDS[band_name]
+    if len(target_prime_flags) != stop - start:
+        raise ValueError("target flags must span exactly D10")
+    prime_counters = {family: Counter() for family in FAMILY_ORDER}
+    composite_counters = {family: Counter() for family in FAMILY_ORDER}
+    prime_signatures: dict[str, list[Signature]] = {family: [] for family in FAMILY_ORDER}
+    admissible_count = square_excluded = N_prime = N_composite = 0
+    first_prime = last_prime = None
+    validation = {key: 0 for key in sorted(VALIDATION_KEYS)}
+
+    for result in _evaluate_all_anchor_blocks(
+        start=start, stop=stop, target_prime_flags=target_prime_flags
+    ):
+        admissible_count += int(result["admissible_count"])
+        square_excluded += int(result["square_excluded"])
+        N_prime += int(result["prime_count"])
+        N_composite += int(result["composite_count"])
+        if first_prime is None and result["first_prime"] is not None:
+            first_prime = int(result["first_prime"])
+        if result["last_prime"] is not None:
+            last_prime = int(result["last_prime"])
+        for family in FAMILY_ORDER:
+            prime_counters[family].update(result["prime_counters"][family])
+            composite_counters[family].update(result["composite_counters"][family])
+            prime_signatures[family].extend(result["prime_signatures"][family])
+
     if admissible_count != N_prime + N_composite:
         raise ValueError("prime/composite partition does not exhaust common domain")
     if N_prime != sum(int(flag) for flag in target_prime_flags):
@@ -322,7 +387,6 @@ def summarise_band(
     if any(frozenset(row) != FAMILY_ROW_KEYS for row in family_rows):
         raise ValueError("E010 family row escaped frozen descriptive allowlist")
     return payload
-
 
 def build_payload(*, band_name: str, code_commit: str) -> dict[str, Any]:
     plan = generation_plan(band_name)
