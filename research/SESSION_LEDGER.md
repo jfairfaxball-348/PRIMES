@@ -562,6 +562,23 @@ Never reuse or renumber a completed session.
 **Next session:** D1-33 / SQ-011 — implement/validate frozen E011, checkpoint bytes before generation, authorize exactly [0,7938) plus segmented D11, execute D11 twice before allowlisted inspection, mechanically apply K1-K4 promotion/duplicate suppression, freeze exact H11 criteria for any promoted observations, and stop without H11/A11 or downstream work.
 **Commit:** E011 freeze 7f05f1958bcf23be4cb8bb2c19f997882fe9e46e; authoritative state 19e3e534477313f883a5221b8ab912774599ce78; session checkpoint is this entry's containing commit.
 
+
+### S035
+
+**Date:** 2026-10-07
+**Stage:** discovery
+**Bounded objective:** D1-33 / SQ-011 — execute frozen E011 D11 discovery only.
+**Incoming state:** DISCOVERY-1 after D1-32; E011 frozen/not executed; D11/H11/A11 untouched; OBS-014 REFUTED; A10/A9 and every historical protected/non-target range preserved; active candidates 0; SQ-005 closed/quarantined.
+**Work performed:** Re-read the requested authority, protocols, ledgers, E011 freeze, E010 D10/H10 evidence and REFUTED OBS-014 state, E009 records, and SQ-005 closure/generic rules only. Implemented the frozen E011 evaluator, exact deterministic degree-5 finite-field native helper, fail-closed D11 planner, canonical serializer, and focused tests. Committed all exact implementation/test bytes before any D11 prime-generator call; fetched the repository blobs back and verified exact byte identity against the locally validated checkpoint. Ran the full focused validation, constructed/validated the complete D11 generation plan before either generator, executed the identical complete D11 command twice on the same checkpoint/output path, established byte identity before descriptive inspection, then inspected only the frozen allowlist and applied K1-K4 promotion/duplicate suppression mechanically.
+**Result:** Pre-generation checkpoint `f9cfec77b4da93a714df00fc7513617a561c1f3c`; evaluator blob `4344c3b94285e44da24a0f7eef1749a181ea4cdc`; native-helper blob `122728702f574afebefb4e0e8e37b1b702227000`; focused-test blob `e03d359498ab35b670caf550af8a0cb3d45d7811`. Focused validation passed 18 tests plus compilation before generation; Ruff remained unavailable under existing FAIL-001/FAIL-002 only. Authorized generation was exactly [0,7938) plus segmented D11=[62M,63M). Both D11 executions produced byte-identical 4,861-byte artifacts, SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`. D11 has 55,706 prime anchors, first 62,000,009, last 62,999,999, and all seven mandatory validation aggregates zero. K1 target `[2,1,1,1]`, K2 target `3`, and K4 target `2` survive; K3 target `3` is exact-support duplicate-suppressed by K1.
+**Observations/candidates affected:** Allocated OBS-015 (K1 `[2,1,1,1]`), OBS-016 (K2 `3`), and OBS-017 (K4 `2`) as OBSERVED. Each exact unchanged same-family/same-signature H11 criterion was committed before any H11 generation. No CAND ID allocated; conjecture register unchanged.
+**Validation:** Programme status, SQ-011, observation ledger, next-session prompt, compact D11 evidence, and execution record are mutually consistent. Conjecture-register blob remains `05af4a9442b123f53d7c15db0b6661cb3d622a80`; failure-ledger blob remains `6bb7c51a27b07344a6b1591707c1c41e6b45a053`. Program-status blob is `d5e23a79b126b8be106235e7620474f5e05de212`; search-queue blob `f5a35ae48a4c0749d1da42115df917da756ec4e7`; observation-ledger blob `40acff7f81c51a12bd19cdce7c16f40ac17fb86d`; next-prompt blob `c0ab845e8e772220ca0a22aef0d16327b611f3ca`.
+**Failures/limitations:** No new FAILURE_LEDGER ID. Ruff remains unavailable in the detached runner under existing FAIL-001/FAIL-002. No determinism, arithmetic, planner, validation, repository-content, or evidence failure occurred.
+**Decision blocker:** none
+**Outgoing state:** DISCOVERY-1; D1-33 complete; D11 consumed discovery evidence; OBS-015/016/017 OBSERVED with frozen H11 criteria; G11-pre/G11-mid ungenerated; H11/A11 untouched/uninspected/ungenerated; A10/A9 and every historical protected range preserved; active candidates 0.
+**Next session:** D1-34 / SQ-011 — one-shot H11 replication of OBS-015, OBS-016, and OBS-017 only, with exact low support [0,8063) plus segmented H11 and criterion-only inspection after byte determinism.
+**Commit:** implementation checkpoint `f9cfec77b4da93a714df00fc7513617a561c1f3c`; execution record commit `0023478fbca1b830945d2a3ec4c078203f92bc40`; authoritative state updated through programme-status commit `eebf6c543f1b904a37d8580d234c2899ec2375c9`; session checkpoint is this entry's containing commit.
+
 ## Entry template
 
 ### S###
