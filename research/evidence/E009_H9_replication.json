@@ -1,0 +1,84 @@
+{
+  "anchor_summary": {
+    "admissible_count": 228571,
+    "composite_count": 172466,
+    "first_prime": 56000003,
+    "last_prime": 56999989,
+    "prime_count": 56105
+  },
+  "artifact": {
+    "byte_identical_repeat": true,
+    "bytes": 85386,
+    "sha256": "9fccccd71c49983870e226f6f03ab80bff60820874edc2fe09cfbc6fdd361126"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H9",
+    "range": [
+      56000000,
+      57000000
+    ]
+  },
+  "criteria": [
+    {
+      "enrichment_numerator": 392870170,
+      "enrichment_passed": true,
+      "family": "C2",
+      "highest_competing_prime_count": 11411,
+      "observation": "OBS-012",
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "result": "REPLICATED",
+      "strict_superiority_passed": true,
+      "target_composite_count": 35726,
+      "target_prime_count": 13900,
+      "target_signature": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "enrichment_numerator": 382538079,
+      "enrichment_passed": true,
+      "family": "C4",
+      "highest_competing_prime_count": 3089,
+      "observation": "OBS-013",
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "result": "REPLICATED",
+      "strict_superiority_passed": true,
+      "target_composite_count": 5075,
+      "target_prime_count": 3869,
+      "target_signature": []
+    }
+  ],
+  "experiment": "E009",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 7550,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 56000000,
+      "stop": 57000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "52f295f46ce8225f195f9e772dd7462a0dd873a1",
+  "scope": {
+    "A9_generated": false,
+    "candidate_created": false,
+    "new_observations_allocated": 0
+  },
+  "validation": {
+    "all_runtime_validation_aggregates_zero": true,
+    "compilation_succeeded": true,
+    "focused_tests_passed": 22,
+    "invalid_plans_rejected_before_generation": 53
+  }
+}
