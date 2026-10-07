@@ -4,16 +4,16 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-34 / SQ-011 H11 replication complete; OBS-015 / OBS-016 / OBS-017 replicated; D1-35 synthesis-only candidate triage next**
+**DISCOVERY-1 — D1-35 / SQ-011 synthesis complete; NO CANDIDATE CREATED; SQ-011 closed; D1-36 / SQ-012 blind novelty representation-family preflight next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-011 D11+H11 COMPLETE; SYNTHESIS NEXT | D1-34 consumed only H11 after frozen one-shot criteria; A11 remains untouched |
+| Pattern discovery | OPEN / SQ-011 CLOSED; SQ-012 PREFLIGHT NEXT | D1-35 closed E011 with no candidate; A11 remains untouched |
 | Observation promotion | OPEN / 11 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-015/016/017 all passed their unchanged H11 criteria mechanically |
-| Candidate conjecture | OPEN / NONE PROMOTED | No candidate exists; OBS-015/016/017 are now eligible only for bounded synthesis triage from committed D11+H11 evidence |
+| Candidate conjecture | OPEN / NONE PROMOTED | D1-35 created no candidate; OBS-015/016/017 remain REPLICATED with no candidate link |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -269,9 +269,9 @@ The frozen L1-L4 grammar promoted exactly one observation. L1 target `1331` has 
 ## Frozen E011 partition and representation
 
 - G11-pre: [61_000_000,62_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
-- D11: [62_000_000,63_000_000) — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- D11: [62_000_000,63_000_000) — **EXECUTED DETERMINISTICALLY / DISCOVERY-CONSUMED**
 - G11-mid: [63_000_000,64_000_000) — **FROZEN / NON-TARGET / UNGENERATED**
-- H11: [64_000_000,65_000_000) — **FROZEN / UNTOUCHED / ONE-SHOT HOLDOUT**
+- H11: [64_000_000,65_000_000) — **EXECUTED ONE-SHOT / REPLICATION-CONSUMED**
 - A11: [124_000_000,125_000_000) — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
 
 E011 is frozen in experiments/E011_FINITE_FIELD_FACTOR_DEGREE_SHAPES.md. Its primitive is exact finite-field polynomial factor-degree shape for the single target-agnostically selected polynomial F(T)=T^5+T+1 at each prime anchor. Degree 5 is fixed as the least d>=2 with at least seven integer partitions; the polynomial rule is F_d(T)=T^d+T+1. The exact discriminant 3381=3*7^2*23 and all polynomial-arithmetic identities are validation-only.
@@ -307,6 +307,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 - D1-33 executed frozen E011 D11 only after checkpointing exact evaluator/runtime/test bytes at `f9cfec77b4da93a714df00fc7513617a561c1f3c`; 18 focused tests plus compilation passed before generation. The only authorized plan was [0,7938) support plus segmented D11. The identical D11 command repeated byte-identically at 4,861 bytes, SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`, before allowlisted inspection. D11 has 55,706 primes and zero mandatory validation failures. K1 target `[2,1,1,1]`, K2 target `3`, and K4 target `2` are promoted as OBS-015/016/017; K3 target `3` is exact-support duplicate-suppressed by K1. H11/A11 remain untouched; no candidate or downstream work occurred.
 - D1-34 checkpointed the minimal H11 phase-control/criterion-only evaluator and focused tests at `8194e8fa5e371e942c449e88d1abab0bea44839a`; the D1-33 native helper remained byte-identical. Checkpoint-pinned targeted validation passed Ruff, 20/20 focused E011 tests, compilation, blob identity checks, frozen-target/criterion allowlist checks, and the fail-closed exact H11 plan before generation. The identical complete H11 command then ran twice with the same output path under exactly `[0,8063)` low support plus segmented H11=`[64_000_000,65_000_000)` and produced byte-identical 2,205-byte criterion artifacts, SHA-256 `cfebc67d4bad294edd4d26e267ddab4ec434dbc73a34760ffb8445e5eb1ee9ef`, before criterion inspection. H11 has 55,468 prime anchors and all seven mandatory validation counts are zero. OBS-015 target `[2,1,1,1]` has 18,508 versus competitor count 13,863 and 48 mixed classes; OBS-016 target `3` has 23,039 versus 18,508 and 48 mixed classes; OBS-017 target `2` has 32,371 versus 18,490 and 48 mixed classes. All three are REPLICATED mechanically. H11 is consumed; A11 remains untouched; no new OBS/CAND ID or downstream work occurred.
+- D1-35 performed synthesis-only candidate triage over exactly OBS-015, OBS-016, and OBS-017 plus exact conjunctions of their already-committed aggregate facts. **NO CANDIDATE CREATED.** Each individual target is a replicated strict unique mode in D11 and H11, but a statement restricted to those two bands only restates finite computation, while every stronger persistence, eventuality, universality, density, distributional, polynomial-family, degree-family, or scale statement requires a quantifier not supplied by frozen E011. Exact conjunctions likewise only package the finite facts; any stronger coupling or common-law claim would introduce unsupported structure. No anchor-level overlap or new statistic was inspected. OBS-015/016/017 remain REPLICATED with no candidate link; active candidates remain zero; SQ-011 is closed without A11 execution; A11 remains frozen, untouched, uninspected, unexecuted, and ungenerated. No prime-derived computation, D11/H11 mining, retargeting, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, historical-output mining, calibration transfer, protected-range inspection, or post-result feature invention occurred.
 
 ## Session control
 
@@ -317,7 +318,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-35 / SQ-011:** synthesis-only candidate triage over OBS-015, OBS-016, and OBS-017 only. Use only their committed D11+H11 finite evidence and frozen exact definitions; consider each observation separately and only exact conjunctions already supported by those records; allocate a CAND ID only if an exact non-arbitrary falsifiable mathematical statement is justified under the project promotion rules. Generate no A11 or other prime data; do not mine D11/H11, add a feature/target/control/threshold/quantifier, perform mechanism/proof/adversarial work, or run prior-art/collision/literature/novelty search.
+**D1-36 / SQ-012:** design-only blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct exact target-agnostic representation family using only novelty-lane authority and generic target-agnostic protocol rules. Generate no prime-derived output; preserve A11 and every historical generated/protected/non-target range; allocate no OBS/CAND ID; and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
 
 ## Research inventory
 
@@ -344,6 +345,6 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 DISCOVERY-1 remains in the blind novelty lane. SQ-010 stays closed historical novelty work: D10/H10 are consumed, OBS-014 remains REFUTED, and A10=[116_000_000,117_000_000) remains untouched. SQ-009 remains closed with A9=[108_000_000,109_000_000) untouched.
 
-D1-34 / SQ-011 is complete. D11 remains consumed discovery evidence and H11=[64_000_000,65_000_000) is now consumed one-shot replication evidence. The H11 criterion artifact is byte-deterministic at 2,205 bytes with SHA-256 `cfebc67d4bad294edd4d26e267ddab4ec434dbc73a34760ffb8445e5eb1ee9ef`. OBS-015 (K1 `[2,1,1,1]`), OBS-016 (K2 `3`), and OBS-017 (K4 `2`) are all REPLICATED under their exact unchanged criteria. G11-pre/G11-mid remain ungenerated guards and A11=[124_000_000,125_000_000) remains untouched/uninspected/unexecuted/ungenerated.
+D1-35 / SQ-011 is complete. Synthesis used only the committed D11+H11 aggregate evidence and frozen definitions for OBS-015, OBS-016, and OBS-017. No individual observation or exact conjunction supplied a representation-derived non-arbitrary quantifier beyond the two tested bands, so **NO CANDIDATE CREATED**. All three observations remain REPLICATED with no candidate link; active candidates remain zero. SQ-011 is closed. G11-pre/G11-mid remain ungenerated guards and A11=[124_000_000,125_000_000) remains untouched/uninspected/unexecuted/ungenerated.
 
-The next bounded unit is D1-35 / SQ-011 synthesis-only candidate triage over OBS-015, OBS-016, and OBS-017. It must use only committed D11+H11 evidence and frozen definitions, consider each observation and any exact already-supported conjunction, and decide whether the evidence supports an exact non-arbitrary falsifiable candidate rather than a finite restatement or unsupported extrapolation. It must not generate A11 or new prime-derived data, mine D11/H11, add a feature/target/control/threshold/quantifier, perform mechanism/proof/adversarial work, run prior-art/collision/literature/novelty search, import calibration objects, or inspect protected ranges.
+The next bounded unit is D1-36 / SQ-012 design-only blind novelty representation-family preflight. It must select and freeze exactly one qualitatively distinct exact target-agnostic representation family, choose any fresh numerical partition only from committed provenance and deterministic metadata/arithmetic rules, freeze exact transforms/controls/allowlist/promotion/holdout/serialization/fail-closed-generation semantics before output, and generate no prime-derived data. It must preserve A11 and all historical protected/non-target ranges, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
