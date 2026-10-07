@@ -347,7 +347,7 @@ Next bounded action: **D1-25 / SQ-009 blind novelty representation-family prefli
 
 Stage: discovery
 
-Status: **D1-25 PREFLIGHT COMPLETE — E009 FROZEN / NOT EXECUTED; D9/H9/A9 UNTOUCHED; D1-26 EXECUTION NEXT**
+Status: **D1-26 D9 DISCOVERY COMPLETE — OBS-012/OBS-013 PROMOTED; H9/A9 UNTOUCHED; D1-27 H9 REPLICATION NEXT**
 
 Frozen specification: `experiments/E009_UNIT_ACTION_COVER_SHAPES.md`
 
@@ -358,7 +358,7 @@ Qualitative distinction: E009 is not a gap/difference, occupancy/event, residue-
 Fresh metadata-only partition:
 
 - G9-pre: `[53_000_000,54_000_000)` — non-target / ungenerated;
-- D9: `[54_000_000,55_000_000)` — discovery / ungenerated;
+- D9: `[54_000_000,55_000_000)` — discovery consumed in D1-26;
 - G9-mid: `[55_000_000,56_000_000)` — non-target / ungenerated;
 - H9: `[56_000_000,57_000_000)` — untouched one-shot holdout;
 - A9: `[108_000_000,109_000_000)` — untouched adversarial reserve, selected by the frozen metadata-only rule L_A9=2*L_D9.
@@ -393,6 +393,11 @@ Every promoted D9 target must freeze the exact unchanged same-family/same-signat
 
 Generation guard: D1-26 may use exactly low base support `[0,7417)` plus segmented D9 only. Whole-prefix generation above 100,000 and any wrong-support, partial/expanded/shifted target, guard, H9/A9, H8/A8, historical protected/generated, E005 calibration, or other non-target traversal must fail before any prime generator call. Later H9 would use exactly `[0,7550)` plus segmented H9; later A9 exactly `[0,10441)` plus segmented A9.
 
-D1-25 generated no primes or other E009 prime-derived data, inspected no protected range, allocated no OBS/CAND ID, created no candidate, and performed no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work. Observation, conjecture, and failure ledgers remain unchanged.
+D1-26 implemented and validated the frozen evaluator/guard, with final runtime/test checkpoint \`52f295f46ce8225f195f9e772dd7462a0dd873a1\`. The canonical generation plan was exactly low support \`[0,7417)\` plus segmented D9. Two successful identical complete commands produced byte-identical 82,398-byte artifacts, SHA-256 \`a157a7b62667a76fee741db33e1cbf60594cb83aa17c54c4cbf57eb399b7cde9\`. Only the frozen descriptive allowlist was inspected; all eight validation-failure aggregates are zero.
 
-Next bounded action: **D1-26 / SQ-009 E009 D9 discovery execution.** Implement and validate the exact frozen evaluator/guard, commit implementation/test bytes before any generation, execute only D9 twice for byte determinism, inspect only the frozen descriptive allowlist, mechanically apply C1-C4 promotion, freeze H9 criteria for any promoted observations, and stop without H9/A9, candidate, mechanism/proof, adversarial, prior-art/collision, or literature work.
+D9 has 55,997 prime anchors and 172,574 Q-admissible composite controls. Frozen promotion produced exactly two observations. C2 target \`[2,0,0,0]\` is a strict unique prime mode with count 13,849 versus runner-up 11,341, composite count 35,767, and exact enrichment numerator 387,132,627 > 0, yielding OBS-012. C4 target \`[]\` is a strict unique prime mode with count 3,797 versus runner-up 3,078, composite count 5,003, and exact enrichment numerator 375,110,487 > 0, yielding OBS-013. C1 target \`1\` fails positive enrichment with numerator -457,132,656. C3 target \`[2,5,4,1]\` has positive enrichment but selects the identical D9 prime-anchor subset as C2 and is therefore duplicate-suppressed with no fallback.
+
+OBS-012 and OBS-013 each have their exact unchanged same-family/same-signature H9 criteria frozen in the observation ledger before any H9 generation. H9 remains untouched/uninspected; A9 remains untouched/uninspected. No candidate was created and no candidate synthesis, mechanism/proof/adversarial work, prior-art/collision search, literature search, novelty claim, calibration-object transfer, or protected-range inspection was performed. Conjecture and failure ledgers remain unchanged.
+
+Next bounded action: **D1-27 / SQ-009 one-shot H9 replication of OBS-012 and OBS-013 only.** Use the unchanged frozen E009 semantics and committed evaluator/runtime, validate exactly low support \`[0,7550)\` plus segmented H9=\`[56_000_000,57_000_000)\`, execute H9 twice before criterion inspection for byte determinism, inspect only the frozen allowlist needed to test the two precommitted criteria, and classify each observation mechanically. Do not mine H9 for new patterns, do not retarget a failed criterion, do not generate A9 or any non-target/protected range, and do not create a candidate or perform synthesis/mechanism/proof/adversarial/prior-art/collision/literature/novelty work.
+
