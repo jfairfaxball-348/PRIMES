@@ -1,0 +1,45 @@
+name: d1-32-closeout-v2
+
+"on":
+  push:
+    paths:
+      - ".github/workflows/d1-32-closeout-v2.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply D1-32 authoritative state
+        run: python scripts/d1_32_closeout.py apply
+
+      - name: Commit authoritative state
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PROGRAM_STATUS.md research/SEARCH_QUEUE.md NEXT_SESSION_PROMPT.md
+          git commit -m "[skip ci] Close D1-32 authoritative state"
+          echo "STATE_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Append D1-32 session checkpoint
+        shell: bash
+        run: |
+          python scripts/d1_32_closeout.py session "$STATE_COMMIT" "$GITHUB_SHA"
+
+      - name: Finalize and push
+        shell: bash
+        run: |
+          rm -f .github/workflows/d1-32-closeout.yml
+          rm -f .github/workflows/d1-32-closeout-v2.yml
+          rm -f scripts/d1_32_closeout.py
+          git add -A
+          git commit -m "[skip ci] Checkpoint D1-32 session"
+          git push origin HEAD:main
+          git push origin --delete d1-32-sq011-closeout || true
