@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from copy import deepcopy
 from math import gcd
 
@@ -21,6 +22,11 @@ def test_frozen_metadata_partition_polynomial_and_floors() -> None:
     assert e011.OCCURRENCE_FLOOR == 32
     assert e011.MIXED_RESIDUE_FLOOR == 8
     assert e011.FAMILY_ORDER == ("K1", "K2", "K3", "K4")
+    assert e011.H11_TARGETS == (
+        ("OBS-015", "K1", (2, 1, 1, 1)),
+        ("OBS-016", "K2", 3),
+        ("OBS-017", "K4", 2),
+    )
 
 
 def test_partition_is_disjoint_from_all_historical_and_calibration_ranges() -> None:
@@ -179,12 +185,12 @@ def test_family_frequency_total_is_mandatory() -> None:
         )
 
 
-def test_d11_generation_plan_is_exact() -> None:
-    assert e011.generation_plan("D11") == [
-        {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 7938},
-        {"purpose": "segmented_target", "strategy": "segmented", "start": 62_000_000, "stop": 63_000_000},
+def test_h11_generation_plan_is_exact() -> None:
+    assert e011.generation_plan("H11") == [
+        {"purpose": "base_sieve_support", "strategy": "whole_prefix", "start": 0, "stop": 8063},
+        {"purpose": "segmented_target", "strategy": "segmented", "start": 64_000_000, "stop": 65_000_000},
     ]
-    e011.validate_generation_plan(e011.generation_plan("D11"), band_name="D11")
+    e011.validate_generation_plan(e011.generation_plan("H11"), band_name="H11")
 
 
 def test_fail_closed_plan_rejection_precedes_prime_generators(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -197,19 +203,19 @@ def test_fail_closed_plan_rejection_precedes_prime_generators(monkeypatch: pytes
 
     monkeypatch.setattr(e011, "sieve", forbidden)
     monkeypatch.setattr(e011, "_segmented_target_prime_flags", forbidden)
-    canonical = e011.generation_plan("D11")
+    canonical = e011.generation_plan("H11")
     invalid_plans = []
-    for stop in (7937, 7939, 100_001):
+    for stop in (8062, 8064, 100_001):
         plan = deepcopy(canonical)
         plan[0]["stop"] = stop
         invalid_plans.append(plan)
     for interval in [
         (61_000_000, 62_000_000),
-        (62_000_001, 63_000_000),
-        (62_000_000, 63_000_001),
-        (62_000_001, 63_000_001),
+        (62_000_000, 63_000_000),
         (63_000_000, 64_000_000),
-        (64_000_000, 65_000_000),
+        (64_000_001, 65_000_000),
+        (64_000_000, 65_000_001),
+        (64_000_001, 65_000_001),
         (124_000_000, 125_000_000),
         (58_000_000, 59_000_000),
         (60_000_000, 61_000_000),
@@ -227,7 +233,7 @@ def test_fail_closed_plan_rejection_precedes_prime_generators(monkeypatch: pytes
         plan[1]["start"], plan[1]["stop"] = interval
         invalid_plans.append(plan)
     split = deepcopy(canonical) + [
-        {"purpose": "segmented_target", "strategy": "segmented", "start": 62_500_000, "stop": 63_000_000}
+        {"purpose": "segmented_target", "strategy": "segmented", "start": 64_500_000, "stop": 65_000_000}
     ]
     invalid_plans.append(split)
     reordered = [canonical[1], canonical[0]]
@@ -238,11 +244,113 @@ def test_fail_closed_plan_rejection_precedes_prime_generators(monkeypatch: pytes
     invalid_plans.append(whole_prefix_high)
     for plan in invalid_plans:
         with pytest.raises(ValueError):
-            e011.execute_generation_plan(plan, band_name="D11")
+            e011.execute_generation_plan(plan, band_name="H11")
     assert called is False
     with pytest.raises(ValueError):
-        e011.execute_generation_plan(canonical, band_name="H11")
+        e011.execute_generation_plan(e011.generation_plan("D11"), band_name="D11")
     assert called is False
+
+
+def _passing_h11_criterion(
+    observation_id: str, family: str, target: e011.Signature, competitor: e011.Signature
+) -> dict[str, object]:
+    reduced = [r for r in range(210) if gcd(r, 210) == 1]
+    signatures = [target] * 600 + [competitor] * 400
+    residues = [reduced[i % len(reduced)] for i in range(600)] + [
+        reduced[i % len(reduced)] for i in range(400)
+    ]
+    counter: Counter[e011.Signature] = Counter(signatures)
+    return e011.h11_criterion_fields(
+        observation_id=observation_id,
+        family=family,
+        target=target,
+        counter=counter,
+        signatures=signatures,
+        residues=residues,
+        population=1000,
+        validation={key: 0 for key in e011.VALIDATION_KEYS},
+    )
+
+
+def test_h11_exact_targets_criteria_and_criterion_only_allowlist() -> None:
+    criteria = {
+        "OBS-015": _passing_h11_criterion("OBS-015", "K1", (2, 1, 1, 1), (3, 2)),
+        "OBS-016": _passing_h11_criterion("OBS-016", "K2", 3, 2),
+        "OBS-017": _passing_h11_criterion("OBS-017", "K4", 2, 3),
+    }
+    for row in criteria.values():
+        assert row["target_count"] == 600
+        assert row["highest_competing_count"] == 400
+        assert row["mixed_residue_count"] == 48
+        assert row["replication_passed"] is True
+
+    payload = {
+        "experiment": "E011",
+        "implementation_commit": "checkpoint",
+        "band": {"name": "H11", "range": [64_000_000, 65_000_000], "interval_semantics": "half-open"},
+        "generation_plan": e011.generation_plan("H11"),
+        "validation": {key: 0 for key in e011.VALIDATION_KEYS},
+        "criteria": criteria,
+    }
+    e011.validate_h11_payload_allowlist(payload)
+    first = e011.serialise_payload(payload)
+    second = e011.serialise_payload(deepcopy(payload))
+    assert first == second
+    assert first.endswith(b"\n")
+
+    contaminated = deepcopy(payload)
+    contaminated["criteria"]["OBS-015"]["competing_signature"] = [3, 2]
+    with pytest.raises(ValueError, match="allowlist"):
+        e011.validate_h11_payload_allowlist(contaminated)
+    contaminated = deepcopy(payload)
+    contaminated["families"] = []
+    with pytest.raises(ValueError, match="allowlist"):
+        e011.validate_h11_payload_allowlist(contaminated)
+
+
+def test_h11_tie_and_validation_failure_refute_without_retargeting() -> None:
+    reduced = [r for r in range(210) if gcd(r, 210) == 1]
+    signatures = [3] * 500 + [2] * 500
+    residues = [reduced[i % len(reduced)] for i in range(1000)]
+    tied = e011.h11_criterion_fields(
+        observation_id="OBS-016",
+        family="K2",
+        target=3,
+        counter=Counter(signatures),
+        signatures=signatures,
+        residues=residues,
+        population=1000,
+        validation={key: 0 for key in e011.VALIDATION_KEYS},
+    )
+    assert tied["strict_unique_mode_passed"] is False
+    assert tied["replication_passed"] is False
+
+    failed_validation = {key: 0 for key in e011.VALIDATION_KEYS}
+    failed_validation["finite_field_squarefree_failure_count"] = 1
+    row = e011.h11_criterion_fields(
+        observation_id="OBS-016",
+        family="K2",
+        target=3,
+        counter=Counter([3] * 600 + [2] * 400),
+        signatures=[3] * 600 + [2] * 400,
+        residues=[reduced[i % len(reduced)] for i in range(1000)],
+        population=1000,
+        validation=failed_validation,
+    )
+    assert row["validation_passed"] is False
+    assert row["replication_passed"] is False
+
+    with pytest.raises(ValueError, match="frozen observation"):
+        e011.h11_criterion_fields(
+            observation_id="OBS-016",
+            family="K2",
+            target=2,
+            counter=Counter([2] * 1000),
+            signatures=[2] * 1000,
+            residues=[reduced[i % len(reduced)] for i in range(1000)],
+            population=1000,
+            validation={key: 0 for key in e011.VALIDATION_KEYS},
+        )
 
 
 def test_payload_allowlist_and_deterministic_serialization() -> None:
