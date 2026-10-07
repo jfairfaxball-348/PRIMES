@@ -30,6 +30,11 @@ MIXED_RESIDUE_FLOOR = 8
 PROMOTION_CAP = 4
 LOW_SUPPORT_STOP = 100_000
 FAMILY_ORDER = ("K1", "K2", "K3", "K4")
+H11_TARGETS = (
+    ("OBS-015", "K1", (2, 1, 1, 1)),
+    ("OBS-016", "K2", 3),
+    ("OBS-017", "K4", 2),
+)
 BANDS = {
     "D11": (62_000_000, 63_000_000),
     "H11": (64_000_000, 65_000_000),
@@ -151,6 +156,24 @@ FAMILY_ROW_KEYS = frozenset(
 PROMOTION_KEYS = frozenset(
     {"family", "target_signature", "target_prime_count", "target_mixed_residue_count"}
 )
+H11_PAYLOAD_KEYS = frozenset(
+    {"experiment", "implementation_commit", "band", "generation_plan", "validation", "criteria"}
+)
+H11_CRITERION_KEYS = frozenset(
+    {
+        "target_signature",
+        "target_count",
+        "highest_competing_count",
+        "mixed_residue_count",
+        "prime_population",
+        "population_floor_passed",
+        "occurrence_floor_passed",
+        "strict_unique_mode_passed",
+        "mixed_residue_floor_passed",
+        "validation_passed",
+        "replication_passed",
+    }
+)
 
 K1Signature: TypeAlias = tuple[int, ...]
 Signature: TypeAlias = K1Signature | int
@@ -230,40 +253,40 @@ def generation_plan(band_name: str) -> list[dict[str, Any]]:
 
 
 def validate_generation_plan(plan: list[dict[str, Any]], *, band_name: str) -> None:
-    """D1-33 fail-closed gate; must run before either prime generator."""
+    """D1-34 fail-closed H11 gate; must run before either prime generator."""
     validate_frozen_metadata()
-    if band_name != "D11":
-        raise ValueError("D1-33 authorizes D11 generation only")
-    canonical = generation_plan("D11")
+    if band_name != "H11":
+        raise ValueError("D1-34 authorizes H11 generation only")
+    canonical = generation_plan("H11")
     if plan != canonical:
-        raise ValueError("D1-33 plan must equal exact canonical D11 plan")
+        raise ValueError("D1-34 plan must equal exact canonical H11 plan")
     if canonical != [
         {
             "purpose": "base_sieve_support",
             "strategy": "whole_prefix",
             "start": 0,
-            "stop": 7938,
+            "stop": 8063,
         },
         {
             "purpose": "segmented_target",
             "strategy": "segmented",
-            "start": 62_000_000,
-            "stop": 63_000_000,
+            "start": 64_000_000,
+            "stop": 65_000_000,
         },
     ]:
-        raise ValueError("canonical D11 generation arithmetic changed")
+        raise ValueError("canonical H11 generation arithmetic changed")
     if canonical[0]["stop"] > LOW_SUPPORT_STOP:
         raise ValueError("whole-prefix generation above 100,000 is forbidden")
-    target = BANDS["D11"]
+    target = BANDS["H11"]
     if any(_intersects(target, prior) for prior in HISTORICAL_RANGES.values()):
-        raise ValueError("D11 intersects historical novelty range")
+        raise ValueError("H11 intersects historical novelty range")
     if any(_intersects(target, prior) for prior in E005_CALIBRATION_RANGES):
-        raise ValueError("D11 intersects E005 calibration range")
+        raise ValueError("H11 intersects E005 calibration range")
     if any(
-        name != "D11" and _intersects(target, interval)
+        name != "H11" and _intersects(target, interval)
         for name, _, interval in FROZEN_PARTITION
     ):
-        raise ValueError("D11 intersects E011 non-target range")
+        raise ValueError("H11 intersects E011 non-target range")
 
 
 def _segmented_target_prime_flags(
@@ -691,6 +714,24 @@ def validate_payload_allowlist(payload: Mapping[str, Any]) -> None:
         raise ValueError("E011 promotion escaped frozen descriptive allowlist")
 
 
+def validate_h11_payload_allowlist(payload: Mapping[str, Any]) -> None:
+    if frozenset(payload) != H11_PAYLOAD_KEYS:
+        raise ValueError("H11 payload escaped frozen criterion allowlist")
+    validation = payload.get("validation")
+    if not isinstance(validation, Mapping) or frozenset(validation) != VALIDATION_KEYS:
+        raise ValueError("H11 validation escaped frozen criterion allowlist")
+    criteria = payload.get("criteria")
+    expected_ids = tuple(observation_id for observation_id, _, _ in H11_TARGETS)
+    if not isinstance(criteria, Mapping) or tuple(criteria) != expected_ids:
+        raise ValueError("H11 criteria escaped frozen observation order")
+    if any(
+        not isinstance(criteria[observation_id], Mapping)
+        or frozenset(criteria[observation_id]) != H11_CRITERION_KEYS
+        for observation_id in expected_ids
+    ):
+        raise ValueError("H11 criterion record escaped frozen allowlist")
+
+
 def summarise_primes(
     *, band_name: str, code_commit: str, plan: list[dict[str, Any]], primes: Sequence[int]
 ) -> dict[str, Any]:
@@ -756,15 +797,136 @@ def summarise_primes(
     return payload
 
 
-def build_payload(*, band_name: str, code_commit: str) -> dict[str, Any]:
-    if band_name != "D11":
-        raise ValueError("D1-33 build path authorizes D11 only")
-    plan = generation_plan("D11")
-    validate_generation_plan(plan, band_name="D11")
-    _, primes = execute_generation_plan(plan, band_name="D11")
-    return summarise_primes(
-        band_name="D11", code_commit=code_commit, plan=plan, primes=primes
+def h11_criterion_fields(
+    *,
+    observation_id: str,
+    family: str,
+    target: Signature,
+    counter: Mapping[Signature, int],
+    signatures: Sequence[Signature],
+    residues: Sequence[int],
+    population: int,
+    validation: Mapping[str, int],
+) -> dict[str, Any]:
+    """Evaluate exactly one precommitted E011 H11 criterion."""
+    if (observation_id, family, target) not in H11_TARGETS:
+        raise ValueError("H11 target does not match a frozen observation")
+    signature_sort_key(family, target)
+    if sum(int(count) for count in counter.values()) != population:
+        raise ValueError(f"H11 {family} frequency table does not exhaust prime anchors")
+    if len(signatures) != population or len(residues) != population:
+        raise ValueError("H11 criterion vectors do not exhaust prime anchors")
+    if frozenset(validation) != VALIDATION_KEYS:
+        raise ValueError("H11 mandatory validation aggregate changed")
+    if any(
+        not isinstance(value, int) or isinstance(value, bool) or value < 0
+        for value in validation.values()
+    ):
+        raise ValueError("H11 validation aggregates must be nonnegative integers")
+
+    target_count = int(counter.get(target, 0))
+    highest_competing_count = max(
+        (int(count) for signature, count in counter.items() if signature != target),
+        default=0,
     )
+    mixed = mixed_residue_count(target, signatures, residues)
+    population_ok = population >= POPULATION_FLOOR
+    occurrence_ok = target_count >= OCCURRENCE_FLOOR
+    strict_unique_ok = target_count > highest_competing_count
+    residue_ok = mixed >= MIXED_RESIDUE_FLOOR
+    validation_ok = all(int(value) == 0 for value in validation.values())
+    replication_ok = bool(
+        population_ok
+        and occurrence_ok
+        and strict_unique_ok
+        and residue_ok
+        and validation_ok
+    )
+    fields = {
+        "target_signature": signature_to_json(family, target),
+        "target_count": target_count,
+        "highest_competing_count": highest_competing_count,
+        "mixed_residue_count": mixed,
+        "prime_population": population,
+        "population_floor_passed": population_ok,
+        "occurrence_floor_passed": occurrence_ok,
+        "strict_unique_mode_passed": strict_unique_ok,
+        "mixed_residue_floor_passed": residue_ok,
+        "validation_passed": validation_ok,
+        "replication_passed": replication_ok,
+    }
+    if frozenset(fields) != H11_CRITERION_KEYS:
+        raise ValueError("H11 criterion record escaped frozen allowlist")
+    return fields
+
+
+def summarise_h11_replication(
+    *, code_commit: str, plan: list[dict[str, Any]], primes: Sequence[int]
+) -> dict[str, Any]:
+    validate_generation_plan(plan, band_name="H11")
+    start, stop = BANDS["H11"]
+    if any(prime < start or prime >= stop for prime in primes):
+        raise ValueError("prime anchors escaped exact H11 band")
+    if any(a >= b for a, b in zip(primes, primes[1:], strict=False)):
+        raise ValueError("H11 prime anchors must be strictly increasing")
+    if not primes:
+        raise ValueError("H11 prime anchor population is empty")
+
+    selected_families = tuple(family for _, family, _ in H11_TARGETS)
+    counters: dict[str, Counter[Signature]] = {
+        family: Counter() for family in selected_families
+    }
+    per_family_signatures: dict[str, list[Signature]] = {
+        family: [] for family in selected_families
+    }
+    residues: list[int] = []
+    for prime in primes:
+        counts = factor_counts(int(prime))
+        signatures = signatures_from_counts(counts)
+        residues.append(int(prime) % Q)
+        for family in selected_families:
+            signature = signatures[family]
+            counters[family][signature] += 1
+            per_family_signatures[family].append(signature)
+
+    population = len(primes)
+    validation = {key: 0 for key in sorted(VALIDATION_KEYS)}
+    for family in selected_families:
+        if sum(int(count) for count in counters[family].values()) != population:
+            validation["family_frequency_total_failure_count"] += 1
+
+    criteria: dict[str, dict[str, Any]] = {}
+    for observation_id, family, target in H11_TARGETS:
+        criteria[observation_id] = h11_criterion_fields(
+            observation_id=observation_id,
+            family=family,
+            target=target,
+            counter=counters[family],
+            signatures=per_family_signatures[family],
+            residues=residues,
+            population=population,
+            validation=validation,
+        )
+
+    payload = {
+        "experiment": EXPERIMENT_ID,
+        "implementation_commit": code_commit,
+        "band": {"name": "H11", "range": [start, stop], "interval_semantics": "half-open"},
+        "generation_plan": plan,
+        "validation": validation,
+        "criteria": criteria,
+    }
+    validate_h11_payload_allowlist(payload)
+    return payload
+
+
+def build_payload(*, band_name: str, code_commit: str) -> dict[str, Any]:
+    if band_name != "H11":
+        raise ValueError("D1-34 build path authorizes H11 only")
+    plan = generation_plan("H11")
+    validate_generation_plan(plan, band_name="H11")
+    _, primes = execute_generation_plan(plan, band_name="H11")
+    return summarise_h11_replication(code_commit=code_commit, plan=plan, primes=primes)
 
 
 def serialise_payload(payload: Mapping[str, Any]) -> bytes:
@@ -773,7 +935,7 @@ def serialise_payload(payload: Mapping[str, Any]) -> bytes:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--band", choices=("D11",), required=True)
+    parser.add_argument("--band", choices=("H11",), required=True)
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
