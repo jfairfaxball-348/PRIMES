@@ -1,0 +1,81 @@
+{
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H11",
+    "range": [
+      64000000,
+      65000000
+    ]
+  },
+  "criteria": {
+    "OBS-015": {
+      "highest_competing_count": 13863,
+      "mixed_residue_count": 48,
+      "mixed_residue_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_population": 55468,
+      "replication_passed": true,
+      "strict_unique_mode_passed": true,
+      "target_count": 18508,
+      "target_signature": [
+        2,
+        1,
+        1,
+        1
+      ],
+      "validation_passed": true
+    },
+    "OBS-016": {
+      "highest_competing_count": 18508,
+      "mixed_residue_count": 48,
+      "mixed_residue_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_population": 55468,
+      "replication_passed": true,
+      "strict_unique_mode_passed": true,
+      "target_count": 23039,
+      "target_signature": 3,
+      "validation_passed": true
+    },
+    "OBS-017": {
+      "highest_competing_count": 18490,
+      "mixed_residue_count": 48,
+      "mixed_residue_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_population": 55468,
+      "replication_passed": true,
+      "strict_unique_mode_passed": true,
+      "target_count": 32371,
+      "target_signature": 2,
+      "validation_passed": true
+    }
+  },
+  "experiment": "E011",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 8063,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 64000000,
+      "stop": 65000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "8194e8fa5e371e942c449e88d1abab0bea44839a",
+  "validation": {
+    "divisor_sum_reconstruction_failure_count": 0,
+    "factor_count_integrality_or_nonnegativity_failure_count": 0,
+    "family_frequency_total_failure_count": 0,
+    "finite_field_squarefree_failure_count": 0,
+    "gcd_degree_range_failure_count": 0,
+    "polynomial_metadata_or_discriminant_failure_count": 0,
+    "total_degree_or_partition_failure_count": 0
+  }
+}
