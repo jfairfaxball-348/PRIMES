@@ -251,7 +251,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-27 / SQ-009:** execute the one-shot H9 replication of OBS-012 and OBS-013 only under unchanged frozen E009 semantics. Validate exactly low support \`[0,7550)\` plus segmented H9=\`[56_000_000,57_000_000)\`, run the identical complete H9 command twice before criterion inspection, inspect only the frozen allowlist needed for the two precommitted tests, and classify each observation mechanically. Do not mine H9 for new patterns, retarget failures, generate A9, create a candidate, or perform synthesis/mechanism/proof/adversarial/prior-art/collision/literature/novelty work.
+**D1-27 / SQ-009:** execute the one-shot H9 replication of OBS-012 and OBS-013 only under unchanged frozen E009 semantics. Validate exactly low support `[0,7550)` plus segmented H9=`[56_000_000,57_000_000)`, run the identical complete H9 command twice before criterion inspection, inspect only the frozen allowlist needed for the two precommitted tests, and classify each observation mechanically. Do not mine H9 for new patterns, retarget failures, generate A9, create a candidate, or perform synthesis/mechanism/proof/adversarial/prior-art/collision/literature/novelty work.
 
 ## Research inventory
 
@@ -276,9 +276,9 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-26 / SQ-009 D9 discovery is complete. D9 is discovery-consumed; G9-pre/G9-mid remain ungenerated non-target guards; H9=\`[56_000_000,57_000_000)\` is untouched/uninspected; A9=\`[108_000_000,109_000_000)\` is untouched/uninspected. H8/A8 and every historical reserve/holdout/guard retain their prior protected roles.
+DISCOVERY-1 remains in the blind novelty lane. D1-26 / SQ-009 D9 discovery is complete. D9 is discovery-consumed; G9-pre/G9-mid remain ungenerated non-target guards; H9=`[56_000_000,57_000_000)` is untouched/uninspected; A9=`[108_000_000,109_000_000)` is untouched/uninspected. H8/A8 and every historical reserve/holdout/guard retain their prior protected roles.
 
-OBS-012 and OBS-013 are OBSERVED with their exact one-shot H9 criteria frozen before any H9 generation. OBS-012 requires exact C2 signature \`[2,0,0,0]\` to remain the strict unique H9 prime mode with both populations >=1,000, target count >=32, and strictly positive exact enrichment. OBS-013 requires exact C4 signature \`[]\` under the identical conditions. A tie, higher competitor, floor failure, or nonpositive enrichment fails the relevant criterion with no fallback or retargeting.
+OBS-012 and OBS-013 are OBSERVED with their exact one-shot H9 criteria frozen before any H9 generation. OBS-012 requires exact C2 signature `[2,0,0,0]` to remain the strict unique H9 prime mode with both populations >=1,000, target count >=32, and strictly positive exact enrichment. OBS-013 requires exact C4 signature `[]` under the identical conditions. A tie, higher competitor, floor failure, or nonpositive enrichment fails the relevant criterion with no fallback or retargeting.
 
-The next bounded unit is D1-27 / SQ-009 H9 replication of OBS-012 and OBS-013 only. Use the unchanged committed E009 evaluator/runtime; validate the exact \`[0,7550)\` plus segmented-H9 plan before generation; execute H9 twice for byte determinism; inspect only the precommitted criterion fields; update observation statuses and authoritative state; do not mine H9, generate A9, create a candidate, or perform candidate synthesis, mechanism/proof/adversarial work, prior-art/collision search, literature search, novelty claims, or calibration transfer.
+The next bounded unit is D1-27 / SQ-009 H9 replication of OBS-012 and OBS-013 only. Use the unchanged committed E009 evaluator/runtime; validate the exact `[0,7550)` plus segmented-H9 plan before generation; execute H9 twice for byte determinism; inspect only the precommitted criterion fields; update observation statuses and authoritative state; do not mine H9, generate A9, create a candidate, or perform candidate synthesis, mechanism/proof/adversarial work, prior-art/collision search, literature search, novelty claims, or calibration transfer.
 
