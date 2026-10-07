@@ -407,3 +407,58 @@ SQ-009 is closed without executing A9. A9=`[108_000_000,109_000_000)` remains fr
 
 Next bounded action: **D1-29 / SQ-010 blind novelty representation-family preflight.** Select and freeze exactly one qualitatively distinct blind novelty representation family using only novelty-lane authority and target-agnostic methodology. The unit is design-only: choose a fresh metadata-only partition by deterministic provenance/arithmetic rules, freeze exact primitives/transforms, artifact controls, descriptive allowlist, promotion grammar/cap, unchanged one-shot holdout criteria, deterministic serialization, and fail-closed future-generation rules. Generate no prime-derived output, preserve A9 and every historical reserve/holdout/guard, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty work.
 
+## SQ-010 — Quadratic-surd recurrence cycle shapes
+
+Stage: discovery
+
+Status: **D1-29 PREFLIGHT FROZEN — E010 NOT EXECUTED; D10/H10/A10 UNTOUCHED**
+
+Frozen specification: experiments/E010_QUADRATIC_SURD_CYCLE_SHAPES.md
+
+Purpose: study exact multiplicity shapes of the denominator cycle in the integer-only periodic continued-fraction recurrence of sqrt(x) for individual Q-admissible nonsquare anchors. Prime anchors will be compared against composite controls from the same frozen common domain.
+
+Qualitative distinction: E010 is a per-anchor quadratic-surd recurrence representation. It uses no consecutive-prime gaps/differences, occupancy/event neighbourhoods, residue-transition/refinement objects, additive translation overlaps, x±1 neighbour factorization, positional binary words, or modular unit-action/order/cover objects. No historical observation target seeds the family. SQ-005 contributes only generic freeze-before-output and qualitative-representation-switch discipline; no calibration object, score, residual, historical mechanism, or hidden target transfers into E010.
+
+Fresh metadata-only partition:
+
+- G10-pre: [57_000_000,58_000_000) — frozen non-target / ungenerated;
+- D10: [58_000_000,59_000_000) — frozen discovery / untouched;
+- G10-mid: [59_000_000,60_000_000) — frozen non-target / ungenerated;
+- H10: [60_000_000,61_000_000) — frozen untouched one-shot holdout;
+- A10: [116_000_000,117_000_000) — frozen untouched adversarial reserve.
+
+The partition rule uses only committed range/provenance metadata and integer arithmetic. Starting at the exclusive upper endpoint 57,000,000 of consumed E009 H9, preserve one full million-width guard, then place D10, another guard, and H10 consecutively. Set L_A10=2*L_D10=116,000,000. These bands are mutually disjoint and disjoint from every historical generated novelty band, every historical guard, A1/H3/H4/H8/A8/A3/A4/A6/A7/A9, every other protected/non-target interval, and all quarantined E005 calibration segments. No existing reserve is consumed to place SQ-010.
+
+Frozen common domain and recurrence:
+
+- Q=210, the product of the first four primes, is a non-promotable small-prime artifact control only;
+- A_B={x in B:gcd(x,210)=1 and x is not a perfect square};
+- P_B and C_B are respectively prime and composite anchors in A_B;
+- a0=isqrt(x), with exact nonsquare bracket a0^2<x<(a0+1)^2;
+- exact recurrence m_{k+1}=d_k a_k-m_k, d_{k+1}=(x-m_{k+1}^2)/d_k, a_{k+1}=floor((a0+m_{k+1})/d_{k+1});
+- positivity, divisibility, quotient bounds, first canonical terminal state (a0,1,2a0), and nonterminal-state-repeat rejection are validation-only;
+- D(x)=(d_1,...,d_ell) is the exact denominator cycle through the terminal denominator;
+- mu_x(v) counts occurrences of each distinct denominator value v;
+- H(x)=(h_1,...,h_M), where h_j is the number of distinct denominator values occurring exactly j times and h_M>0.
+
+Exactly four promotable families are frozen:
+
+1. L1: period length ell;
+2. L2: number of distinct recurrence denominators;
+3. L3: maximum denominator multiplicity;
+4. L4: exact denominator-multiplicity profile H(x).
+
+Raw recurrence states, a0 values, denominator/partial-quotient words, convergents, and all unlisted transforms are non-promotable and non-serializable. L1-L3 are predeclared exact coarsenings of L4; the coarsening identities themselves are validation-only.
+
+Promotion is frozen before D10: both P/C populations must be at least 1,000; only the strict unique D10 prime-anchor mode of a family can be considered; its prime count must be at least 32; and its exact enrichment numerator n_P(t)N_C-n_C(t)N_P must be strictly positive. A tie or failed gate gives no fallback. If eligible targets from multiple families select the identical D10 prime-anchor subset, retain only the lowest-numbered family. Hard cap: four observations, at most one per family.
+
+Every promoted D10 observation must freeze its exact unchanged same-family/same-signature H10 criterion before H10 generation. H10 is replication-only: the same target must remain the strict unique prime mode, clear the unchanged 1,000/32 floors, and retain strictly positive exact enrichment. H10 cannot be mined, used for fallback/retargeting, or used to change the recurrence, family, threshold, control population, normalization, or feature set.
+
+Determinism is frozen: canonical family/signature/ranking orders, stable lexical JSON keys, UTF-8, no nondeterministic metadata, and canonical writer equivalent to json.dumps(payload, sort_keys=True, indent=2)+"\n". The same complete command on the same implementation commit must be byte-identical.
+
+Fail-closed future generation is frozen. Whole-prefix prime generation is allowed only inside historically safe [0,100_000). D1-30 may authorize exactly low support [0,7682) plus segmented D10=[58_000_000,59_000_000); floor(sqrt(58,999,999))=7,681. A later H10 mode would authorize exactly [0,7811) plus H10; a later A10 mode exactly [0,10817) plus A10. Any high whole-prefix, wrong low support, partial/expanded/shifted target, guard, historical generated/protected band, E005 calibration segment, or other non-target traversal must fail before the prime generator is called.
+
+D1-29 generated no prime-derived data, executed no experiment, inspected no protected range, allocated no OBS/CAND ID, and performed no mechanism/proof/adversarial/prior-art/collision/literature/novelty work. Observation, conjecture, and failure records are unchanged.
+
+Next bounded action: **D1-30 / SQ-010 E010 D10 discovery execution.** Implement and validate only the frozen E010 evaluator/planner, checkpoint implementation/test bytes before any D10 generation, execute only D10 twice for byte determinism, inspect only the frozen allowlist, mechanically apply L1-L4 promotion, freeze exact H10 criteria for any promoted observation, and stop without H10/A10, candidate, mechanism/proof/adversarial, prior-art/collision, literature, novelty, or calibration-transfer work.
+
