@@ -698,3 +698,91 @@ def summarise_primes(
     start, stop = BANDS[band_name]
     if any(prime < start or prime >= stop for prime in primes):
         raise ValueError("prime anchors escaped exact D11 band")
+    if any(a >= b for a, b in zip(primes, primes[1:], strict=False)):
+        raise ValueError("prime anchors must be strictly increasing")
+    if not primes:
+        raise ValueError("D11 prime anchor population is empty")
+
+    counters: dict[str, Counter[Signature]] = {family: Counter() for family in FAMILY_ORDER}
+    per_family_signatures: dict[str, list[Signature]] = {family: [] for family in FAMILY_ORDER}
+    residues: list[int] = []
+    for prime in primes:
+        counts = factor_counts(int(prime))
+        signatures = signatures_from_counts(counts)
+        residues.append(int(prime) % Q)
+        for family in FAMILY_ORDER:
+            signature = signatures[family]
+            counters[family][signature] += 1
+            per_family_signatures[family].append(signature)
+
+    population = len(primes)
+    family_rows: list[dict[str, Any]] = []
+    unique_modes: dict[str, Signature | None] = {}
+    support_sets: dict[str, frozenset[int] | None] = {}
+    for family in FAMILY_ORDER:
+        row, unique, support, _ = _family_row(
+            family=family,
+            counter=counters[family],
+            signatures=per_family_signatures[family],
+            residues=residues,
+            population=population,
+        )
+        family_rows.append(row)
+        unique_modes[family] = unique
+        support_sets[family] = support
+
+    promotions = apply_duplicate_suppression(family_rows, unique_modes, support_sets)
+    validation = {key: 0 for key in sorted(VALIDATION_KEYS)}
+    payload = {
+        "experiment": EXPERIMENT_ID,
+        "implementation_commit": code_commit,
+        "band": {"name": band_name, "range": [start, stop], "interval_semantics": "half-open"},
+        "partition": [
+            {"name": name, "role": role, "range": list(interval)}
+            for name, role, interval in FROZEN_PARTITION
+        ],
+        "parameters": _parameters(),
+        "generation_plan": plan,
+        "anchor_summary": {
+            "prime_count": population,
+            "first_prime": int(primes[0]),
+            "last_prime": int(primes[-1]),
+        },
+        "validation": validation,
+        "families": family_rows,
+        "promotions": promotions,
+    }
+    validate_payload_allowlist(payload)
+    return payload
+
+
+def build_payload(*, band_name: str, code_commit: str) -> dict[str, Any]:
+    if band_name != "D11":
+        raise ValueError("D1-33 build path authorizes D11 only")
+    plan = generation_plan("D11")
+    validate_generation_plan(plan, band_name="D11")
+    _, primes = execute_generation_plan(plan, band_name="D11")
+    return summarise_primes(
+        band_name="D11", code_commit=code_commit, plan=plan, primes=primes
+    )
+
+
+def serialise_payload(payload: Mapping[str, Any]) -> bytes:
+    return (json.dumps(payload, sort_keys=True, indent=2) + "\n").encode("utf-8")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--band", choices=("D11",), required=True)
+    parser.add_argument("--code-commit", required=True)
+    parser.add_argument("--output", type=Path)
+    args = parser.parse_args()
+    rendered = serialise_payload(build_payload(band_name=args.band, code_commit=args.code_commit))
+    if args.output is None:
+        print(rendered.decode(), end="")
+    else:
+        args.output.write_bytes(rendered)
+
+
+if __name__ == "__main__":
+    main()
