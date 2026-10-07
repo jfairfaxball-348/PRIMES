@@ -477,41 +477,35 @@ Next bounded action: **D1-32 / SQ-011 blind novelty representation-family prefli
 
 ## SQ-011 — Finite-field polynomial factor-degree shapes
 
-Stage: discovery
+Stage: discovery / replication pending
 
-Status: **D1-32 PREFLIGHT COMPLETE — E011 FROZEN / NOT EXECUTED; D11/H11/A11 UNTOUCHED; D1-33 DISCOVERY EXECUTION NEXT**
+Status: **D1-33 D11 DISCOVERY COMPLETE — OBS-015 / OBS-016 / OBS-017 PROMOTED; H11/A11 UNTOUCHED; D1-34 ONE-SHOT H11 REPLICATION NEXT**
 
-Frozen specification: experiments/E011_FINITE_FIELD_FACTOR_DEGREE_SHAPES.md
+Frozen specification: `experiments/E011_FINITE_FIELD_FACTOR_DEGREE_SHAPES.md`
 
-E011 freezes one qualitatively distinct primitive family: for each prime anchor p, reduce the single predeclared polynomial F(T)=T^5+T+1 modulo p and retain only its exact irreducible factor-degree partition plus three predeclared coarsenings. Degree 5 is chosen before prime output as the least d>=2 with at least seven integer partitions, using P(2)=2, P(3)=3, P(4)=5, P(5)=7; F_d(T)=T^d+T+1 is the fixed sparse-polynomial rule. No E001-E010 observation value, E005 calibration object/mechanism, hidden historical target, prior-art result, or literature result selected the family.
+D1-32 froze E011 before output. D1-33 implemented only the frozen exact finite-field evaluator, native arithmetic acceleration, fail-closed planner, deterministic serializer, and focused tests. The final pre-generation implementation/test checkpoint is `f9cfec77b4da93a714df00fc7513617a561c1f3c`, with evaluator blob `4344c3b94285e44da24a0f7eef1749a181ea4cdc`, native-helper blob `122728702f574afebefb4e0e8e37b1b702227000`, and focused-test blob `e03d359498ab35b670caf550af8a0cb3d45d7811`. The repository blobs were fetched back and matched the locally validated bytes before prime generation. Focused E011 validation passed 18 tests plus compilation; Ruff remains unavailable only under the existing FAIL-001/FAIL-002 detached-runner limitation.
 
-This primitive is finite-field polynomial arithmetic at the prime anchor, not a prime-gap/difference, occupancy/event, residue-transition/refinement, additive-overlap, neighbouring-factorization, binary-word, modular-order/action-cover, or quadratic-surd recurrence representation.
+The complete D11 generation plan was validated before either prime generator as exactly whole-prefix support `[0,7938)` plus segmented D11=`[62_000_000,63_000_000)`. The fail-closed gate rejects wrong support, high whole-prefix generation, partial/expanded/shifted/split/reordered D11, G11-pre/G11-mid/H11/A11, D10/H10/A10, D9/H9/A9, H8/A8, historical generated/protected/guard ranges, E005 calibration segments, and arbitrary non-target high intervals before generation.
 
-Fresh metadata-only partition:
+The identical complete D11 command was executed twice on checkpoint `f9cfec77b4da93a714df00fc7513617a561c1f3c` with the same output path before descriptive inspection. The artifacts are byte-identical: 4,861 bytes, SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`. Compact evidence is `research/evidence/E011_D11_discovery.json`; execution record is `experiments/E011_D11_DISCOVERY_2026-10-07.md`.
 
-- G11-pre=[61_000_000,62_000_000) — frozen non-target / ungenerated;
-- D11=[62_000_000,63_000_000) — frozen discovery / untouched;
-- G11-mid=[63_000_000,64_000_000) — frozen non-target / ungenerated;
-- H11=[64_000_000,65_000_000) — frozen untouched one-shot holdout;
-- A11=[124_000_000,125_000_000) — frozen untouched adversarial reserve.
+After byte identity, inspection was limited to the frozen allowlist. D11 has 55,706 prime anchors; first prime 62,000,009; last prime 62,999,999; all seven mandatory validation-failure aggregates are zero.
 
-The partition uses only consumed H10's exclusive endpoint 61_000_000, W=1_000_000, one full guard before D11, one full guard before H11, and L_A11=2*L_D11. It consumes no prior reserve and is disjoint from every historical generated/protected/non-target novelty interval and all E005 calibration segments.
+Frozen family results:
 
-Exact finite-field arithmetic computes R_k=T^(p^k) mod F_p and s_k=deg gcd(F_p,R_k-T), k=1,...,5. The frozen divisor recursion derives nonnegative integer counts c_d satisfying all divisor-sum reconstruction identities and sum d*c_d=5. Raw polynomial coefficients modulo p, roots/factors, R_k, gcd polynomials, s_k, and per-anchor c_d vectors are validation/computation objects only.
+- K1: strict unique target `[2,1,1,1]`, count 18,575, highest competing count 13,868, 48 mixed Q=210 classes — eligible;
+- K2: strict unique target `3`, count 23,152, highest competing count 18,575, 48 mixed classes — eligible;
+- K3: strict unique target `3`, count 18,575, highest competing count 13,868, 48 mixed classes — passes individual gates but is exact-support duplicate-suppressed by lower-numbered K1;
+- K4: strict unique target `2`, count 32,443, highest competing count 18,571, 48 mixed classes — eligible.
 
-Exactly four promotable families are frozen: K1 exact factor-degree partition; K2 number of irreducible factors; K3 number of linear factors; K4 largest factor degree. K2-K4 are predeclared coarsenings of K1. No fifth transform, alternate degree, alternate polynomial, coefficient search, or polynomial panel is permitted.
+Mechanical promotion in frozen family order allocates exactly:
 
-E011 has no composite-ring surrogate and imports no theory-informed distribution baseline. The target-agnostic artifact control is Q=210: for a strict-unique modal target, count reduced residue classes containing both a target prime and a non-target prime for the same family. The mixed-residue floor is 8; residue identities and per-residue counts are not serialized.
+- OBS-015 — K1 target `[2,1,1,1]`;
+- OBS-016 — K2 target `3`;
+- OBS-017 — K4 target `2`.
 
-Promotion requires N_P>=1000, a strict unique D11 family mode, target count>=32, mixed-residue count>=8, and zero mandatory validation failures. Ties and failed gates have no fallback. Exact support-set duplicate suppression retains the lowest-numbered family K1<K2<K3<K4 when eligible targets select identical D11 prime supports. Hard cap: four observations.
+For each, the observation ledger freezes the unchanged same-family/same-signature H11 criterion before any H11 generation: H11 prime population at least 1,000; identical target is the strict unique H11 mode of the same family; target count at least 32; target has at least 8 mixed Q=210 reduced residue classes; and all mandatory E011 validation aggregates are zero. A tie, higher competitor, any floor/control failure, or any validation failure mechanically REFUTES the observation. There is no fallback, retargeting, or polynomial/degree/family/control/threshold change.
 
-Every promoted D11 target must freeze an unchanged same-family/same-signature H11 criterion before holdout generation. H11 requires N_P>=1000, the identical target as strict unique H11 mode, target count>=32, mixed-residue count>=8, and all validation controls passing. A tie, higher competitor, floor failure, control failure, or validation failure mechanically refutes; no holdout mining, retargeting, threshold/control/polynomial/degree/family change, or fallback is permitted.
+Preserved state: G11-pre=`[61_000_000,62_000_000)` and G11-mid=`[63_000_000,64_000_000)` remain ungenerated non-target guards; H11=`[64_000_000,65_000_000)` remains untouched/uninspected/ungenerated; A11=`[124_000_000,125_000_000)` remains untouched/uninspected/ungenerated. A10, A9, H8/A8, and every historical protected range retain their frozen roles. No CAND ID was allocated and no candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, historical-output mining, calibration transfer, or protected-range inspection occurred.
 
-The D11 serialization allowlist is minimal: experiment/checkpoint/band/partition/parameters/generation plan; prime count/first/last; seven aggregate validation counts; criterion-only family mode fields; and promotion precursors. Per-prime objects, prime lists, residue identities/counts, polynomial internals, complete frequency tables, non-mode signatures, alternate-polynomial output, timings, and exploratory fields are forbidden. Canonical UTF-8 JSON uses sorted keys, indent=2, one trailing newline, frozen ordering, and must repeat byte-identically for identical complete commands on the same checkpoint.
-
-Future generation is fail-closed. D1-33 may authorize exactly whole-prefix support [0,7938) plus segmented D11. A later H11 phase would authorize exactly [0,8063) plus H11; a later A11 phase exactly [0,11181) plus A11. Wrong support, high whole-prefix generation, partial/expanded/shifted/split targets, E011 guards/H11/A11 outside the current phase, every historical generated/protected/guard interval, all E005 calibration segments, and arbitrary non-target high intervals must fail before prime generation.
-
-D1-32 generated no primes or other E011 prime-derived output, inspected no protected range, allocated no OBS/CAND ID, and performed no candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, historical-output mining, or calibration transfer. Observation, conjecture, and failure records remain unchanged.
-
-Next bounded action: **D1-33 / SQ-011 E011 D11 discovery execution.** Implement and validate only the frozen E011 evaluator/planner, checkpoint exact implementation/test bytes before generation, authorize only [0,7938) plus segmented D11, execute the identical D11 command twice before allowlisted inspection, mechanically apply K1-K4 promotion/duplicate suppression, freeze exact H11 criteria for any promoted observations, and stop without H11/A11 or downstream work.
-
+Next bounded action: **D1-34 / SQ-011 one-shot H11 replication of OBS-015, OBS-016, and OBS-017 only.** Use the unchanged E011 semantics and frozen targets; checkpoint any phase-control/test delta before generation; authorize exactly whole-prefix support `[0,8063)` plus segmented H11=`[64_000_000,65_000_000)`; execute the identical complete H11 command twice before criterion inspection; inspect only fields needed by the three frozen criteria; mechanically mark each observation REPLICATED or REFUTED; generate no A11 and perform no synthesis or downstream work.
