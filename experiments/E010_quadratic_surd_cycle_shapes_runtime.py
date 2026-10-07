@@ -167,16 +167,9 @@ def mode_summary(family: str, counter: Mapping[Signature, int]) -> dict[str, Any
             "runner_up_count": None,
             "strict_unique_prime_mode": False,
         }
-    ranking = sorted(
-        counter.items(),
-        key=lambda item: (-int(item[1]), signature_sort_key(family, item[0])),
-    )
+    ranking = sorted(counter.items(), key=lambda item: (-int(item[1]), signature_sort_key(family, item[0])))
     maximum = int(ranking[0][1])
-    maximizers = [
-        signature_to_json(family, sig)
-        for sig, count in ranking
-        if int(count) == maximum
-    ]
+    maximizers = [signature_to_json(family, sig) for sig, count in ranking if int(count) == maximum]
     return {
         "prime_mode_count": maximum,
         "prime_maximizing_signatures": maximizers,
@@ -185,19 +178,13 @@ def mode_summary(family: str, counter: Mapping[Signature, int]) -> dict[str, Any
     }
 
 
-def enrichment_numerator(
-    *, n_prime: int, n_composite: int, N_prime: int, N_composite: int
-) -> int:
+def enrichment_numerator(*, n_prime: int, n_composite: int, N_prime: int, N_composite: int) -> int:
     return n_prime * N_composite - n_composite * N_prime
 
 
 def family_row(
-    *,
-    family: str,
-    prime_counter: Counter[Signature],
-    composite_counter: Counter[Signature],
-    N_prime: int,
-    N_composite: int,
+    *, family: str, prime_counter: Counter[Signature], composite_counter: Counter[Signature],
+    N_prime: int, N_composite: int,
 ) -> tuple[dict[str, Any], Signature | None]:
     mode = mode_summary(family, prime_counter)
     unique: Signature | None = None
@@ -212,31 +199,24 @@ def family_row(
         n_prime = int(prime_counter[unique])
         n_composite = int(composite_counter.get(unique, 0))
         enrichment = enrichment_numerator(
-            n_prime=n_prime,
-            n_composite=n_composite,
-            N_prime=N_prime,
-            N_composite=N_composite,
+            n_prime=n_prime, n_composite=n_composite,
+            N_prime=N_prime, N_composite=N_composite,
         )
         occurrence_passed = n_prime >= OCCURRENCE_FLOOR
         enrichment_passed = enrichment > 0
-    population_passed = (
-        N_prime >= POPULATION_FLOOR and N_composite >= POPULATION_FLOOR
-    )
-    return (
-        {
-            "family": family,
-            "prime_frequency_table": frequency_table(family, prime_counter),
-            "composite_frequency_table": frequency_table(family, composite_counter),
-            **mode,
-            "unique_mode_composite_count": n_composite,
-            "unique_mode_enrichment_numerator": enrichment,
-            "population_floor_passed": population_passed,
-            "occurrence_floor_passed": occurrence_passed,
-            "enrichment_passed": enrichment_passed,
-            "mechanically_eligible": False,
-        },
-        unique,
-    )
+    population_passed = N_prime >= POPULATION_FLOOR and N_composite >= POPULATION_FLOOR
+    return ({
+        "family": family,
+        "prime_frequency_table": frequency_table(family, prime_counter),
+        "composite_frequency_table": frequency_table(family, composite_counter),
+        **mode,
+        "unique_mode_composite_count": n_composite,
+        "unique_mode_enrichment_numerator": enrichment,
+        "population_floor_passed": population_passed,
+        "occurrence_floor_passed": occurrence_passed,
+        "enrichment_passed": enrichment_passed,
+        "mechanically_eligible": False,
+    }, unique)
 
 
 def apply_duplicate_suppression(
@@ -247,25 +227,19 @@ def apply_duplicate_suppression(
     for row in rows:
         family = str(row["family"])
         pre_duplicate = bool(
-            row["population_floor_passed"]
-            and row["strict_unique_prime_mode"]
-            and row["occurrence_floor_passed"]
-            and row["enrichment_passed"]
+            row["population_floor_passed"] and row["strict_unique_prime_mode"]
+            and row["occurrence_floor_passed"] and row["enrichment_passed"]
         )
         target_set = mode_anchor_sets.get(family, frozenset())
         duplicate = pre_duplicate and any(target_set == prior for prior in retained_sets)
         row["mechanically_eligible"] = pre_duplicate and not duplicate
         if row["mechanically_eligible"]:
             retained_sets.append(target_set)
-            promotions.append(
-                {
-                    "family": family,
-                    "target_signature": row["prime_maximizing_signatures"][0],
-                    "prime_count": int(row["prime_mode_count"]),
-                    "composite_count": int(row["unique_mode_composite_count"]),
-                    "enrichment_numerator": int(
-                        row["unique_mode_enrichment_numerator"]
-                    ),
-                }
-            )
+            promotions.append({
+                "family": family,
+                "target_signature": row["prime_maximizing_signatures"][0],
+                "prime_count": int(row["prime_mode_count"]),
+                "composite_count": int(row["unique_mode_composite_count"]),
+                "enrichment_numerator": int(row["unique_mode_enrichment_numerator"]),
+            })
     return promotions[:PROMOTION_CAP]
