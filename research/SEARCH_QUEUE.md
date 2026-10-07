@@ -343,14 +343,56 @@ SQ-008 is closed without retuning or replacement.
 
 Next bounded action: **D1-25 / SQ-009 blind novelty representation-family preflight.** Choose and freeze exactly one qualitatively distinct blind novelty representation family using only novelty-lane authority and target-agnostic methodology. Select a fresh metadata-only partition, freeze exact primitive/transform, descriptive/promotion, one-shot holdout, determinism, and fail-closed future-generation rules, and generate no prime-derived output. Preserve H8/A8, A7, and every historical reserve/holdout/guard; allocate no OBS/CAND ID; perform no mechanism/proof or prior-art/literature work.
 
-## SQ-009 — Blind novelty representation family
+## SQ-009 — Unit-action cover shapes
 
 Stage: discovery
 
-Status: **QUEUED — D1-25 DESIGN-ONLY PREFLIGHT NEXT**
+Status: **D1-25 PREFLIGHT COMPLETE — E009 FROZEN / NOT EXECUTED; D9/H9/A9 UNTOUCHED; D1-26 EXECUTION NEXT**
 
-Purpose: select and freeze one new qualitatively distinct novelty representation after the closed E008 no-observation result, using only committed novelty-lane facts and target-agnostic methodology.
+Frozen specification: `experiments/E009_UNIT_ACTION_COVER_SHAPES.md`
 
-D1-25 must be design-only. It may choose one fresh representation family and a fresh metadata/provenance-only discovery/guard/holdout/adversarial partition, then freeze the complete exact transform, descriptive allowlist, observation-promotion grammar, one-shot holdout criteria, deterministic ordering/serialization, and fail-closed future-generation guard before any SQ-009 output exists.
+Purpose: study exact algebraic action-cover shapes of individual Q-admissible integer anchors. For the fixed ordered basis A=(2,3,5,7), E009 computes exact multiplicative orders modulo each anchor, the exact odd-anchor unit-group exponent Lambda(x), and the inclusion-minimal basis subsets whose order-lcm attains Lambda(x). Prime anchors are compared against composite controls from the same gcd(x,210)=1 domain.
 
-D1-25 must not generate primes or other prime-derived output; inspect or repurpose H8/A8 or any historical reserve/guard; mine E008 or earlier evidence; allocate an OBS/CAND ID; create a candidate; perform mechanism/proof/adversarial work; run prior-art/collision or literature search; or transfer any SQ-005 calibration object or historical-unblinding mechanism into the novelty lane.
+Qualitative distinction: E009 is not a gap/difference, occupancy/event, residue-transition/refinement, additive translation-overlap, neighbouring-factorization-profile, or digit-word experiment. Factorization is deterministic computation only; per-anchor factors, Lambda values, and raw order vectors are non-promotable and non-serializable. The discovery object is the canonical finite antichain of minimal action covers and three frozen exact coarsenings.
+
+Fresh metadata-only partition:
+
+- G9-pre: `[53_000_000,54_000_000)` — non-target / ungenerated;
+- D9: `[54_000_000,55_000_000)` — discovery / ungenerated;
+- G9-mid: `[55_000_000,56_000_000)` — non-target / ungenerated;
+- H9: `[56_000_000,57_000_000)` — untouched one-shot holdout;
+- A9: `[108_000_000,109_000_000)` — untouched adversarial reserve, selected by the frozen metadata-only rule L_A9=2*L_D9.
+
+The partition uses only W=1,000,000, H8's frozen exclusive endpoint 53,000,000, historical protected/generated range metadata, and arithmetic. It is disjoint from every historical generated novelty band, A1/H3/H4/H8/A8/A3/A4/A6/A7, G6-mid/G7-pre/G7-mid/G8-pre/G8-mid, every E003/E004 guard, and all other protected/non-target ranges. A9 lies below the quarantined E005 calibration segments beginning at 128,000,000.
+
+Frozen primitive/control domain:
+
+- ordered action basis A=(2,3,5,7), chosen as the first four primes;
+- Q=210;
+- common anchor domain A_B={x in B:gcd(x,210)=1};
+- exact prime/composite partition of A_B;
+- exact deterministic ascending factorization of x;
+- exact Lambda(x)=lcm(q^(e-1)(q-1)) over the odd prime powers q^e || x;
+- exact multiplicative orders ord_x(a) for a in A, computed by prime-divisor reduction from Lambda(x);
+- all 15 nonempty subsets of A ordered by cardinality then lexicographically;
+- a subset covers x iff the lcm of its member orders equals Lambda(x);
+- M(x) is the canonically ordered inclusion-minimal cover antichain, with the empty antichain permitted.
+
+Exactly four promotable families are frozen:
+
+1. C1: minimum minimal-cover size kappa(x), with 0 for an empty antichain;
+2. C2: four-entry profile counting minimal covers by cardinality;
+3. C3: four-entry profile counting all covering subsets by cardinality;
+4. C4: the exact canonically ordered minimal-cover antichain M(x).
+
+Only a family's strict unique D9 prime-anchor mode may be considered, with no fallback target. Promotion additionally requires N_P>=1000, N_C>=1000, target count>=32, and strictly positive exact enrichment numerator against Q-admissible composite controls. Exact duplicate suppression retains the lowest-numbered family if eligible targets select the identical subset of D9 prime anchors. The hard promotion cap is four, one per family.
+
+Forced/control identities are ineligible: factorization reconstruction, Lambda construction, basis-unit gcd facts, order-divides-Lambda and order-witness facts, upward cover monotonicity, minimal-antichain construction identities, C1-C3 coarsening identities, combinatorial bounds, control frequencies, and serialization/floor consequences cannot receive an OBS ID.
+
+Every promoted D9 target must freeze the exact unchanged same-family/same-signature H9 criterion before H9 generation. Replication requires both H9 populations>=1000, the identical target as strict unique H9 prime mode, target count>=32, and strictly positive exact H9 enrichment. A tie, any higher competitor, floor failure, or nonpositive enrichment fails mechanically; there is no fallback, retargeting, or changed semantics.
+
+Generation guard: D1-26 may use exactly low base support `[0,7417)` plus segmented D9 only. Whole-prefix generation above 100,000 and any wrong-support, partial/expanded/shifted target, guard, H9/A9, H8/A8, historical protected/generated, E005 calibration, or other non-target traversal must fail before any prime generator call. Later H9 would use exactly `[0,7550)` plus segmented H9; later A9 exactly `[0,10441)` plus segmented A9.
+
+D1-25 generated no primes or other E009 prime-derived data, inspected no protected range, allocated no OBS/CAND ID, created no candidate, and performed no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work. Observation, conjecture, and failure ledgers remain unchanged.
+
+Next bounded action: **D1-26 / SQ-009 E009 D9 discovery execution.** Implement and validate the exact frozen evaluator/guard, commit implementation/test bytes before any generation, execute only D9 twice for byte determinism, inspect only the frozen descriptive allowlist, mechanically apply C1-C4 promotion, freeze H9 criteria for any promoted observations, and stop without H9/A9, candidate, mechanism/proof, adversarial, prior-art/collision, or literature work.
