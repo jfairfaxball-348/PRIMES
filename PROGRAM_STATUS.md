@@ -4,16 +4,16 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-32 / SQ-011 blind novelty preflight complete; E011 frozen; D1-33 / SQ-011 D11 discovery execution next**
+**DISCOVERY-1 — D1-33 / SQ-011 D11 discovery complete; OBS-015 / OBS-016 / OBS-017 promoted; D1-34 one-shot H11 replication next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-011 FROZEN; D11 EXECUTION NEXT | D1-32 froze E011 before output; D11/H11/A11 remain untouched and A10/A9 remain protected |
-| Observation promotion | OPEN / 8 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-014 failed its frozen H10 criterion; no E010 observation remains holdout-pending |
-| Candidate conjecture | OPEN / NONE PROMOTED | No candidate exists; OBS-014 is REFUTED and cannot seed synthesis; blind discovery continues |
+| Pattern discovery | OPEN / SQ-011 D11 COMPLETE; H11 REPLICATION NEXT | D1-33 consumed only D11; OBS-015/016/017 have frozen unchanged H11 criteria; H11/A11 remain untouched |
+| Observation promotion | OPEN / 8 REPLICATED; 3 OBSERVED; 6 REFUTED | OBS-015/016/017 are D11-promoted with exact H11 criteria frozen before holdout generation |
+| Candidate conjecture | OPEN / NONE PROMOTED | No candidate exists; OBS-015/016/017 remain holdout-pending and cannot seed synthesis before H11 |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -305,6 +305,8 @@ All E005 high-value segments begin above 128,000,000 and are disjoint from A1, H
 
 D1-13 then unblinded only after the required source-free checkpoint. The pre-unblinding summary is `experiments/E005_PRE_UNBLINDING_SUMMARY_2026-10-06.md` (commit `8187a5a2021c124860848da39fc53702eac73921`), and the bounded historical comparison is `experiments/E005_HISTORICAL_UNBLINDING_2026-10-06.md` (commit `7717aecb1fb27f10c71f7f6a97cd0110f44bc36a`). These records are calibration-only and permanently quarantined from novelty synthesis.
 
+- D1-33 executed frozen E011 D11 only after checkpointing exact evaluator/runtime/test bytes at `f9cfec77b4da93a714df00fc7513617a561c1f3c`; 18 focused tests plus compilation passed before generation. The only authorized plan was [0,7938) support plus segmented D11. The identical D11 command repeated byte-identically at 4,861 bytes, SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`, before allowlisted inspection. D11 has 55,706 primes and zero mandatory validation failures. K1 target `[2,1,1,1]`, K2 target `3`, and K4 target `2` are promoted as OBS-015/016/017; K3 target `3` is exact-support duplicate-suppressed by K1. H11/A11 remain untouched; no candidate or downstream work occurred.
+
 ## Session control
 
 - Autonomous closeout protocol: **ACTIVE**
@@ -314,11 +316,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-33 / SQ-011:** execute only the frozen E011 D11 discovery unit. Implement and validate the exact finite-field polynomial evaluator/guard, checkpoint implementation/test bytes before generation, authorize exactly low support [0,7938) plus segmented D11=[62_000_000,63_000_000), establish byte determinism before descriptive inspection, apply only the frozen K1-K4 promotion grammar, and freeze unchanged H11 criteria for any promoted observations. Generate no H11/A11 output and preserve every historical protected/non-target interval.
+**D1-34 / SQ-011:** one-shot H11 replication of OBS-015, OBS-016, and OBS-017 only. Preserve the frozen E011 semantics and exact targets K1 `[2,1,1,1]`, K2 `3`, and K4 `2`; implement only minimal H11 phase-control/criterion serialization; checkpoint every delta before generation; authorize exactly low support [0,8063) plus segmented H11=[64_000_000,65_000_000); establish byte determinism before criterion inspection; and mechanically mark each observation REPLICATED or REFUTED. Generate no A11 and perform no candidate synthesis or downstream work.
 
 ## Research inventory
 
-- Active observations: 8
+- Active observations: 11
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -339,8 +341,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. SQ-010 stays closed historical novelty work: D10 and H10 are consumed, OBS-014 remains REFUTED, and A10=[116_000_000,117_000_000) remains frozen untouched/uninspected/unexecuted. SQ-009 remains closed with A9=[108_000_000,109_000_000) untouched.
+DISCOVERY-1 remains in the blind novelty lane. SQ-010 stays closed historical novelty work: D10/H10 are consumed, OBS-014 remains REFUTED, and A10=[116_000_000,117_000_000) remains untouched. SQ-009 remains closed with A9=[108_000_000,109_000_000) untouched.
 
-D1-32 / SQ-011 is complete. E011 is frozen before output as the finite-field polynomial factor-degree family with D11=[62_000_000,63_000_000), H11=[64_000_000,65_000_000), A11=[124_000_000,125_000_000), and permanent guards G11-pre/G11-mid. No E011 prime-derived output exists, no OBS/CAND ID was allocated, and observation/conjecture/failure records are unchanged.
+D1-33 / SQ-011 is complete. E011 D11=[62_000_000,63_000_000) is now consumed discovery evidence. The deterministic D11 artifact is 4,861 bytes with SHA-256 `8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25`. OBS-015 (K1 `[2,1,1,1]`), OBS-016 (K2 `3`), and OBS-017 (K4 `2`) are OBSERVED with exact unchanged H11 criteria committed. K3 is duplicate-suppressed with no fallback. G11-pre/G11-mid remain ungenerated guards; H11=[64_000_000,65_000_000) and A11=[124_000_000,125_000_000) remain untouched/uninspected/ungenerated.
 
-The next bounded unit is D1-33 / SQ-011 D11 discovery execution. It may implement/validate only the frozen E011 evaluator and fail-closed planner, checkpoint exact implementation/test bytes before generation, generate exactly low support [0,7938) plus segmented D11, run the identical D11 command twice before allowlisted inspection, mechanically apply K1-K4 promotion/duplicate suppression, and freeze exact H11 criteria for any promoted observations. It must not generate H11/A11 or perform candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature/novelty work, historical-output mining, calibration transfer, retargeting, or protected-range inspection.
+The next bounded unit is D1-34 / SQ-011 one-shot H11 replication of OBS-015, OBS-016, and OBS-017 only. It may add only minimal H11 phase-control/criterion serialization while preserving the D1-33 finite-field semantics, must checkpoint bytes before generation, authorize exactly low support [0,8063) plus segmented H11, repeat the identical complete H11 command twice before criterion inspection, inspect only the three frozen criteria and mandatory validation aggregate, and mechanically mark each observation REPLICATED or REFUTED. It must not generate A11 or perform candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature/novelty work, historical-output mining, calibration transfer, retargeting, or protected-range inspection.
