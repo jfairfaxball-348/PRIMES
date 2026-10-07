@@ -22,6 +22,8 @@ from experiments.E010_quadratic_surd_cycle_shapes import (
     validate_frequency_totals,
     validate_frozen_metadata,
     validate_generation_plan,
+    _evaluate_anchor_block,
+    _init_summary_worker,
 )
 from experiments.E010_quadratic_surd_cycle_shapes_runtime import FAMILY_ORDER
 
@@ -158,3 +160,18 @@ def test_fail_closed_generation_rejection_before_prime_generator(monkeypatch: py
     with pytest.raises(ValueError, match="D10 generation only"):
         execute_generation_plan(generation_plan("H10"), band_name="H10")
     assert calls == []
+
+
+def test_parallel_block_evaluator_preserves_exact_anchor_semantics() -> None:
+    start, stop = 121, 151
+    flags = bytearray(stop - start)
+    for prime in (127, 131, 137, 139, 149):
+        flags[prime - start] = 1
+    _init_summary_worker(start, bytes(flags))
+    result = _evaluate_anchor_block((start, stop))
+    assert result["prime_count"] == 5
+    assert result["first_prime"] == 127 and result["last_prime"] == 149
+    assert result["admissible_count"] == result["prime_count"] + result["composite_count"]
+    for family in FAMILY_ORDER:
+        assert sum(result["prime_counters"][family].values()) == 5
+        assert len(result["prime_signatures"][family]) == 5
