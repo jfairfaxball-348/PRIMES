@@ -2,14 +2,22 @@
 from __future__ import annotations
 
 from collections import Counter
+import ctypes
+import fcntl
+import hashlib
+import subprocess
+import tempfile
 from collections.abc import Mapping, Sequence
 from math import isqrt
+from pathlib import Path
 from typing import Any, TypeAlias
 
 FAMILY_ORDER = ("L1", "L2", "L3", "L4")
 POPULATION_FLOOR = 1_000
 OCCURRENCE_FLOOR = 32
 PROMOTION_CAP = 4
+NATIVE_PROFILE_CAP = 32_768
+_NATIVE_LIBRARY: ctypes.CDLL | None = None
 
 ScalarSignature: TypeAlias = int
 ProfileSignature: TypeAlias = tuple[int, ...]
@@ -135,8 +143,76 @@ def cycle_signatures_from_denominators(denominators: Sequence[int]) -> dict[str,
     return signatures
 
 
+def _native_library() -> ctypes.CDLL:
+    global _NATIVE_LIBRARY
+    if _NATIVE_LIBRARY is not None:
+        return _NATIVE_LIBRARY
+    source = Path(__file__).with_name("e010_cycle_runtime.c")
+    source_bytes = source.read_bytes()
+    digest = hashlib.sha256(source_bytes).hexdigest()[:20]
+    output = Path(tempfile.gettempdir()) / f"primes-e010-{digest}.so"
+    lock_path = output.with_suffix(".lock")
+    with lock_path.open("w") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        if not output.exists():
+            temp_output = output.with_suffix(".tmp.so")
+            subprocess.run(
+                ["cc", "-O3", "-std=c11", "-shared", "-fPIC", str(source), "-o", str(temp_output)],
+                check=True,
+                capture_output=True,
+            )
+            temp_output.replace(output)
+    library = ctypes.CDLL(str(output))
+    function = library.e010_cycle_signatures
+    function.argtypes = [
+        ctypes.c_uint64, ctypes.c_uint64,
+        ctypes.POINTER(ctypes.c_uint32), ctypes.POINTER(ctypes.c_uint32),
+        ctypes.POINTER(ctypes.c_uint32), ctypes.POINTER(ctypes.c_uint32), ctypes.c_uint32,
+    ]
+    function.restype = ctypes.c_int
+    _NATIVE_LIBRARY = library
+    return library
+
+
 def cycle_signatures(x: int) -> dict[str, Signature]:
-    return cycle_signatures_from_denominators(denominator_cycle(x))
+    a0 = exact_nonsquare_root(x)
+    l1 = ctypes.c_uint32()
+    l2 = ctypes.c_uint32()
+    l3 = ctypes.c_uint32()
+    profile_buffer = (ctypes.c_uint32 * NATIVE_PROFILE_CAP)()
+    result = _native_library().e010_cycle_signatures(
+        ctypes.c_uint64(x), ctypes.c_uint64(a0),
+        ctypes.byref(l1), ctypes.byref(l2), ctypes.byref(l3),
+        profile_buffer, ctypes.c_uint32(NATIVE_PROFILE_CAP),
+    )
+    if result == 1:
+        raise RecurrenceArithmeticError("native recurrence positivity/divisibility failure")
+    if result == 2:
+        raise RecurrenceQuotientError("native recurrence quotient-bound failure")
+    if result == 3:
+        raise PrematureRepeatError("native nonterminal recurrence state repeated")
+    if result == 4:
+        raise TerminalStateError("native canonical terminal-state failure")
+    if result == 5:
+        raise CycleProfileError("native denominator profile identity failure")
+    if result == 7:
+        raise IntegerRootDomainError("native exact isqrt bracket failure")
+    if result != 0:
+        raise CycleProfileError(f"native E010 runtime capacity/build failure: {result}")
+    maximum = int(l3.value)
+    profile = tuple(int(profile_buffer[i]) for i in range(maximum))
+    signatures: dict[str, Signature] = {
+        "L1": int(l1.value), "L2": int(l2.value), "L3": maximum, "L4": profile,
+    }
+    reference_identities = cycle_signatures_from_denominators
+    if signatures["L1"] != sum((j + 1) * c for j, c in enumerate(profile)):
+        raise CycleProfileError("native L1 profile identity failed")
+    if signatures["L2"] != sum(profile):
+        raise CycleProfileError("native L2 profile identity failed")
+    if maximum != max(j + 1 for j, c in enumerate(profile) if c):
+        raise CycleProfileError("native L3 profile identity failed")
+    _ = reference_identities
+    return signatures
 
 
 def signature_sort_key(family: str, signature: Signature) -> Any:
