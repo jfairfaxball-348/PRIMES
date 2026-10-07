@@ -4,14 +4,14 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-24 / SQ-008 D8 discovery complete; NO ELIGIBLE OBSERVATION; SQ-008 CLOSED; H8/A8 untouched; D1-25 / SQ-009 blind novelty representation-family preflight next**
+**DISCOVERY-1 — D1-25 / SQ-009 preflight complete; E009 UNIT-ACTION COVER SHAPES FROZEN / NOT EXECUTED; D9/H9/A9 untouched; D1-26 / SQ-009 E009 D9 discovery execution next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-008 CLOSED; SQ-009 PREFLIGHT NEXT | D1-24 executed frozen E008 D8 and produced no eligible observation; next freeze one new blind novelty representation family before any SQ-009 output |
+| Pattern discovery | OPEN / E009 FROZEN; D9 EXECUTION NEXT | D1-25 froze the exact SQ-009 unit-action cover-shape family and fresh partition before output; next implement/validate E009 and execute D9 only |
 | Observation promotion | OPEN / 6 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
 | Candidate conjecture | OPEN / NONE PROMOTED; D1-22 NO-CANDIDATE COMPLETE | D1-22 found no exact non-arbitrary statement beyond the finite D7+H7 evidence; D1-02/D1-06/D1-18/D1-22 are explicit no-candidate results |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -78,6 +78,15 @@ Status date: 2026-10-07
 - `docs/CALIBRATION_PROTOCOL.md` now contains a target-agnostic representation-switch trigger: when a frozen family achieves some development compression but fails predeclared generalization criteria, freeze the failure/partial result and, if continuation is justified, use a separately frozen qualitatively different representation family rather than retuning inspected holdout output;
 - the calibration protocol also now requires multi-subscale selectors to expose per-subscale diagnostics, identify dominant/worst-case subscales, predeclare an influence diagnostic such as leave-one-subscale-out re-ranking, flag subscale-sensitive winners, and treat any post-assessment reweighting/removal as a new design requiring fresh untouched assessment data;
 - these D1-14 lessons are process-only: unblinded E005 objects and historical mechanisms remain barred from novelty feature selection, evidence, targets, candidates, and reserve-inspection rationale;
+- D1-25 returned to design-only blind novelty preflight after E008 closed with no eligible observation and froze E009 before any E009 prime-derived output;
+- E009 is an exact unit-action cover-shape representation over individual Q=210-admissible integer anchors: for the fixed ordered basis A=(2,3,5,7), exact multiplicative orders modulo x are combined by lcm and compared with the exact odd-anchor unit-group exponent Lambda(x);
+- the canonical discovery object is the inclusion-minimal cover antichain M(x), where a basis subset covers x exactly when its order-lcm equals Lambda(x); exactly four promotable families are frozen: C1 minimum cover size, C2 minimal-cover size profile, C3 all-cover size profile, and C4 exact minimal-cover antichain;
+- factorization of x and Lambda(x), raw order values, order-divisibility witnesses, cover monotonicity, antichain construction identities, and C1-C3 coarsening identities are validation/control only and cannot be promoted;
+- E009 metadata-only partition is frozen as G9-pre=`[53_000_000,54_000_000)`, D9=`[54_000_000,55_000_000)`, G9-mid=`[55_000_000,56_000_000)`, H9=`[56_000_000,57_000_000)`, and A9=`[108_000_000,109_000_000)`; A9 uses the established arithmetic rule L_A9=2*L_D9 and all bands are disjoint from historical generated/protected ranges and E005 calibration segments;
+- E009 promotion is capped at four observations, one per family: only the strict unique prime-anchor mode may qualify, with both anchor populations at least 1,000, target occurrence at least 32, strictly positive exact enrichment versus Q-admissible composite controls, exact duplicate suppression, and no fallback/retargeting;
+- the one-shot H9 template is unchanged same-family/same-signature replication: both populations at least 1,000, identical target as strict unique H9 prime mode, target occurrence at least 32, and positive exact enrichment; ties, higher competitors, floor failures, or nonpositive enrichment fail mechanically;
+- E009 future generation is fail-closed: D9 requires exactly low support `[0,7417)` plus segmented D9; later H9 would require exactly `[0,7550)` plus segmented H9 and A9 exactly `[0,10441)` plus segmented A9; whole-prefix high generation and every protected, historical, guard, calibration, partial/expanded, or other non-target interval must fail before generation;
+- D1-25 generated no primes or other E009 output, inspected no protected range, allocated no OBS/CAND ID, changed no observation/conjecture/failure status, and performed no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work;
 - authoritative discovery/novelty/calibration protocols: committed;
 - observation, conjecture, failure, search-queue, autonomous-session records: committed.
 
@@ -200,6 +209,18 @@ E008 uses Q=210 as a non-promotable small-prime control and the exact 19-bit cor
 
 D8 was generated only through low support `[0,7142)` plus segmented D8. Because no observation was promoted, H8 is not required and remains untouched; A8 also remains untouched. Every historical reserve/guard retains its prior protected/non-target role.
 
+## Frozen E009 partition and representation
+
+- G9-pre: `[53_000_000,54_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
+- D9: `[54_000_000,55_000_000)` — **FROZEN / DISCOVERY / NOT EXECUTED**
+- G9-mid: `[55_000_000,56_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**
+- H9: `[56_000_000,57_000_000)` — **FROZEN / UNTOUCHED / NOT EXECUTED**
+- A9: `[108_000_000,109_000_000)` — **FROZEN / UNTOUCHED / UNINSPECTED / NOT EXECUTED**
+
+E009 freezes ordered basis A=(2,3,5,7), Q=210, exact deterministic factorization, exact odd-anchor unit-group exponent Lambda(x), exact multiplicative orders, all 15 nonempty basis subsets, and the inclusion-minimal cover antichain M(x). The four frozen discovery families are C1 minimum minimal-cover size, C2 minimal-cover size profile, C3 all-cover size profile, and C4 exact minimal-cover antichain shape. Raw factors, Lambda values, order vectors, and cover tables are non-promotable/non-serializable control objects.
+
+D9/H9/A9 were selected entirely from frozen range metadata and arithmetic. D1-25 generated none of them. Every historical reserve/holdout/guard retains its prior protected/non-target role. The full frozen specification is `experiments/E009_UNIT_ACTION_COVER_SHAPES.md`.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -226,7 +247,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-25 / SQ-009:** design-only blind novelty representation-family preflight. Choose and freeze exactly one qualitatively distinct target-agnostic novelty representation and a fresh metadata/provenance-only partition; freeze primitive/transform, descriptive allowlist, promotion grammar, one-shot holdout criteria, deterministic serialization, and fail-closed future-generation rules; generate no prime-derived output and preserve all protected ranges.
+**D1-26 / SQ-009:** implement and validate the frozen E009 evaluator and fail-closed generation planner, commit implementation/test bytes before any generation, execute D9 only twice for byte determinism, inspect only the frozen descriptive allowlist, mechanically apply C1-C4 promotion, and freeze unchanged H9 criteria for any promoted observations. Do not generate H9/A9 or perform candidate/mechanism/proof/adversarial/prior-art/literature work.
 
 ## Research inventory
 
@@ -251,8 +272,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-24 / SQ-008 is complete. E008 D8 was executed under the unchanged frozen grammar and produced NO ELIGIBLE OBSERVATION; SQ-008 is closed without retuning. No observation or candidate was allocated, and the observation, conjecture, and failure ledgers remain unchanged.
+DISCOVERY-1 remains in the blind novelty lane. D1-25 / SQ-009 preflight is complete. E009 is frozen before any E009 output as the exact unit-action cover-shape family defined in `experiments/E009_UNIT_ACTION_COVER_SHAPES.md`. No observation or candidate was allocated, and the observation, conjecture, and failure ledgers remain unchanged.
 
-The E008 partition remains G8-pre=`[49_000_000,50_000_000)` ungenerated, D8=`[50_000_000,51_000_000)` discovery-consumed, G8-mid=`[51_000_000,52_000_000)` ungenerated, H8=`[52_000_000,53_000_000)` untouched, and A8=`[66_000_000,67_000_000)` untouched. A1, H3, H4, G6-mid, A3, A4, A6, G7-pre, G7-mid, A7, and every E003/E004 guard retain their frozen historical roles.
+The E009 partition is G9-pre=`[53_000_000,54_000_000)` ungenerated, D9=`[54_000_000,55_000_000)` untouched discovery, G9-mid=`[55_000_000,56_000_000)` ungenerated, H9=`[56_000_000,57_000_000)` untouched one-shot holdout, and A9=`[108_000_000,109_000_000)` untouched adversarial reserve. H8=`[52_000_000,53_000_000)` and A8=`[66_000_000,67_000_000)` remain untouched in their E008 roles; A1, H3, H4, G6-mid, A3, A4, A6, G7-pre, G7-mid, A7, G8-pre, G8-mid, and every E003/E004 guard remain frozen historical protected/non-target ranges.
 
-The next bounded unit is D1-25 / SQ-009 blind novelty representation-family preflight. Using only novelty-lane authority and target-agnostic methodology, choose and freeze exactly one qualitatively distinct representation family and a fresh metadata/provenance-only discovery/guard/holdout/adversarial partition before any SQ-009 prime-derived output. Freeze exact primitive/transform, descriptive allowlist, promotion grammar, one-shot holdout criteria, deterministic ordering/serialization, and a fail-closed future-generation guard. Preserve H8/A8, A7, and every historical reserve/holdout/guard; generate no primes or other prime-derived data; allocate no OBS/CAND ID; and perform no mechanism/proof, adversarial, prior-art/collision, literature, novelty, or calibration-transfer work.
+The next bounded unit is D1-26 / SQ-009 E009 D9 discovery execution. Implement the exact frozen unit-action cover semantics and focused validation obligations, checkpoint implementation/test bytes before generation, validate the exact `[0,7417)` plus segmented-D9 plan and fail-closed rejection matrix, execute only D9 twice before inspection for byte determinism, inspect only the frozen allowlist, and apply only C1-C4 promotion. Any promoted observation must freeze its exact unchanged H9 criterion before future H9 generation. If no family qualifies, record NO ELIGIBLE OBSERVATION and close SQ-009 without relaxing the grammar. Do not generate H9/A9, inspect protected ranges, create a candidate, or perform mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
