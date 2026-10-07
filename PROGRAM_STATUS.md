@@ -4,16 +4,16 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-30 / SQ-010 D10 discovery complete; OBS-014 OBSERVED; H10/A10 untouched; D1-31 H10 replication next**
+**DISCOVERY-1 — D1-31 / SQ-010 H10 replication complete; OBS-014 REFUTED; SQ-010 closed; D1-32 / SQ-011 blind novelty preflight next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / E010 D10 COMPLETE; H10 NEXT | D1-30 consumed D10 under the frozen grammar and promoted OBS-014; H10/A10 remain untouched |
-| Observation promotion | OPEN / 8 REPLICATED; 1 OBSERVED; 5 REFUTED | OBS-014 now awaits its frozen one-shot H10 replication |
-| Candidate conjecture | OPEN / NONE PROMOTED; OBS-014 HOLDOUT PENDING | No candidate exists; OBS-014 cannot seed synthesis unless it survives untouched H10 replication |
+| Pattern discovery | OPEN / SQ-010 CLOSED; SQ-011 PREFLIGHT NEXT | D1-31 consumed H10 under the frozen OBS-014 criterion; E010 closed after refutation and A10 remains untouched |
+| Observation promotion | OPEN / 8 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-014 failed its frozen H10 criterion; no E010 observation remains holdout-pending |
+| Candidate conjecture | OPEN / NONE PROMOTED | No candidate exists; OBS-014 is REFUTED and cannot seed synthesis; blind discovery continues |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -259,6 +259,13 @@ The identical complete D10 command ran twice on that same checkpoint and output 
 
 The frozen L1-L4 grammar promoted exactly one observation. L1 target `1331` has 16 prime occurrences versus runner-up 15 and positive enrichment, but fails the frozen 32-occurrence floor. L2 target `1487` has 44 prime occurrences versus runner-up 40, 53 composite occurrences, and exact enrichment `4,626,686 > 0`, so **OBS-014** is promoted at status OBSERVED. L3 target `8` has negative enrichment `-141,186,550`; L4 target `[2,2]` has only 10 prime occurrences and negative enrichment `-3,704,066`. OBS-014's exact unchanged L2/1487 H10 criterion is frozen in the observation ledger before any H10 generation. H10 and A10 remain untouched/uninspected/unexecuted; A9 and every historical protected range remain unchanged. Compact evidence is `research/evidence/E010_D10_discovery.json`; execution record is `experiments/E010_D10_DISCOVERY_2026-10-07.md`.
 
+- D1-31 checkpointed the H10 phase-control/test path at `9f9e6223ee0f05d64485cf713e75bd2160d19c92`; the frozen Python recurrence runtime blob `eceada46539b7e3a4076cc7507041dd300656d7b`, native helper blob `6a7c160711bef1e5e4c802fd210605ba57fcfeb5`, runtime-test blob `31108c79580432ce7b81011e909ed011dbf26705`, core, and config remained unchanged from D1-30;
+- the H10 phase gate authorizes only whole-prefix low support `[0,7811)` plus segmented H10=`[60_000_000,61_000_000)` and rejects malformed H10, D10, G10-pre/G10-mid/A10, historical generated/protected/guard ranges, all E005 calibration segments, and arbitrary other non-target high intervals before prime generation;
+- the criterion-only H10 artifact repeated byte-identically at 1,003 bytes with SHA-256 `8730125952a015951d4e2fa698e3e354ba59b03b0d5d1d3f29fb93c2f5d88ad9` before criterion inspection; compact evidence is `research/evidence/E010_H10_replication.json`;
+- frozen OBS-014 H10 fields: `N_P=55,930`, `N_C=172,626`, target-1487 prime count `20`, highest competing L2 prime count `41`, target composite count `50`, exact enrichment `656,020 > 0`; population floors and enrichment pass, but the 32-occurrence floor and strict-unique-mode criterion fail;
+- **OBS-014 is REFUTED mechanically**. No fallback, retargeting, new OBS ID, candidate synthesis, mechanism/proof work, adversarial execution, prior-art/collision/literature search, or A10 generation occurred. H10 is consumed replication evidence; A10 remains untouched/uninspected/unexecuted/un-generated; G10-pre/G10-mid remain ungenerated non-target guards. Execution record: `experiments/E010_H10_REPLICATION_2026-10-07.md`.
+
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -285,11 +292,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-31 / SQ-010:** perform the one-shot H10 replication of OBS-014 only under unchanged E010 semantics. Minimally enable/validate the frozen H10 execution mode, checkpoint exact bytes before generation, authorize only low support [0,7811) plus segmented H10=[60_000_000,61_000_000), run the identical H10 command twice before criterion inspection, inspect only the frozen L2 target-1487 replication fields, and stop without H10 mining, A10 generation, candidate synthesis, mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
+**D1-32 / SQ-011:** design-only blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct family using only novelty-lane authority and generic target-agnostic protocol rules; choose fresh metadata-only ranges by deterministic provenance/arithmetic rules; freeze exact primitives/transforms, controls, descriptive allowlist, promotion/holdout criteria, deterministic serialization, and fail-closed future-generation rules. Generate no prime-derived output and preserve A10/A9 plus every historical reserve/holdout/guard.
 
 ## Research inventory
 
-- Active observations: 9
+- Active observations: 8
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -312,8 +319,6 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 DISCOVERY-1 remains in the blind novelty lane. SQ-009 stays closed historical novelty work: D9/H9 remain consumed, OBS-012/013 remain REPLICATED with no candidate link, and A9=[108_000_000,109_000_000) remains frozen untouched/uninspected/unexecuted.
 
-D1-30 has completed the D10 discovery execution for frozen E010. The exact D10 command repeated byte-identically at 52,653,877 bytes, SHA-256 `52c7be1bd4ba53eb78596fa7a0738a412742d10d31583a574901d47f1915ce74`. The mechanical L1-L4 grammar produced exactly OBS-014, the L2 distinct-denominator-count target `1487`, with D10 prime count 44 versus runner-up 40 and exact positive composite-control enrichment `4,626,686`. L1/L3/L4 are ineligible under the frozen gates and no fallback is permitted.
+SQ-010 is now closed. D10 remains consumed discovery evidence and H10 is consumed replication evidence. Under the frozen OBS-014 criterion, H10 has 55,930 prime anchors and 172,626 Q-admissible nonsquare composite controls; target L2 signature `1487` occurs 20 times among prime anchors versus a highest competing count of 41, occurs 50 times among composite controls, and has exact positive enrichment `656,020`. Because the target misses the frozen 32-occurrence floor and is not the strict unique H10 L2 prime mode, **OBS-014 is REFUTED**. No E010 candidate exists and A10=[116_000_000,117_000_000) remains untouched/uninspected/unexecuted/un-generated.
 
-OBS-014 is OBSERVED with its exact unchanged one-shot H10 criterion frozen. H10=[60M,61M) remains untouched/uninspected and A10=[116M,117M) remains untouched/uninspected/unexecuted. G10-pre/G10-mid remain ungenerated non-target guards; A9 and all historical reserves/holdouts/guards retain their prior roles.
-
-The next bounded unit is D1-31 / SQ-010 one-shot H10 replication of OBS-014 only. Preserve the frozen recurrence, domain, L2 family, target `1487`, floors, exact enrichment rule, and no-fallback criterion; minimally enable/validate the frozen H10 execution mode, checkpoint exact implementation/test bytes before generation, authorize exactly low support `[0,7811)` plus segmented H10, execute H10 twice before criterion inspection, inspect only the precommitted target criterion, and stop without mining H10, generating A10, creating/synthesizing a candidate, or performing mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
+The next bounded unit is D1-32 / SQ-011 blind novelty representation-family preflight. It is design-only: select exactly one qualitatively distinct family without using calibration objects, historical-unblinding mechanisms, hidden targets, or inspected protected-range output; freeze a deterministic metadata-only discovery/guard/holdout/adversarial partition and all exact semantics, controls, serialization, promotion, holdout, and fail-closed generation rules before execution; generate no prime-derived output, allocate no OBS/CAND ID, and preserve A10/A9 and every historical reserve/holdout/guard.
