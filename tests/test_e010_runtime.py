@@ -145,3 +145,8 @@ def test_duplicate_suppression_family_order_and_cap() -> None:
     assert rows[0]["mechanically_eligible"] is True
     assert rows[1]["mechanically_eligible"] is False
     assert len(promotions) <= PROMOTION_CAP == 4
+
+
+def test_native_runtime_matches_python_reference_exactly() -> None:
+    for value in (2, 3, 7, 13, 23, 94, 991, 1009, 10007):
+        assert cycle_signatures(value) == cycle_signatures_from_denominators(denominator_cycle(value))
