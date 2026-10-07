@@ -477,9 +477,9 @@ Next bounded action: **D1-32 / SQ-011 blind novelty representation-family prefli
 
 ## SQ-011 — Finite-field polynomial factor-degree shapes
 
-Stage: discovery / replication complete
+Stage: discovery / replication / synthesis complete
 
-Status: **D1-34 H11 REPLICATION COMPLETE — OBS-015 / OBS-016 / OBS-017 REPLICATED; A11 UNTOUCHED; D1-35 SYNTHESIS-ONLY TRIAGE NEXT**
+Status: **CLOSED — D1-35 NO CANDIDATE CREATED; OBS-015 / OBS-016 / OBS-017 RETAINED REPLICATED; A11 UNTOUCHED**
 
 Frozen specification: `experiments/E011_FINITE_FIELD_FACTOR_DEGREE_SHAPES.md`
 
@@ -514,4 +514,22 @@ After byte identity, inspection was limited to the three frozen criterion record
 
 Preserved state: G11-pre and G11-mid remain ungenerated non-target guards. H11 is now replication-consumed. A11=`[124_000_000,125_000_000)` remains frozen, untouched, uninspected, unexecuted, and ungenerated. A10, A9, H8/A8, and every historical protected range retain their prior frozen roles. No new OBS ID or CAND ID was allocated; no candidate synthesis, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, historical-output mining, calibration transfer, or protected-range inspection occurred.
 
-Next bounded action: **D1-35 / SQ-011 synthesis-only candidate triage over OBS-015, OBS-016, and OBS-017 only.** Use only their committed D11+H11 evidence and exact frozen definitions. Decide whether any single observation or exact conjunction supports a non-arbitrary falsifiable mathematical candidate under the project promotion rules. Do not generate A11 or any new prime-derived data, mine D11/H11, invent a new feature/target/quantifier, perform mechanism/proof/adversarial work, or run prior-art/collision/literature/novelty search in that triage unit.
+D1-35 then performed synthesis-only triage over exactly OBS-015, OBS-016, and OBS-017 plus exact conjunctions of their already-committed aggregate facts. No `CAND-###` was allocated. Each individual target is a replicated strict unique mode in D11 and H11, but a statement restricted to those bands is only a finite restatement, while every stronger persistence, eventuality, universality, density, distributional, polynomial-family, degree-family, or scale statement would require a quantifier not supplied by the frozen E011 representation or evidence. Exact conjunctions likewise only package the finite facts; any stronger common coupling, simultaneous persistence, shared distribution, or factorization-law claim would introduce unsupported structure. No anchor-level overlap or new statistic was inspected.
+
+**D1-35 conclusion: NO CANDIDATE CREATED.** OBS-015, OBS-016, and OBS-017 remain REPLICATED with no candidate link; active candidates remain zero and no novelty status was allocated. SQ-011 is closed without A11 execution. A11=`[124_000_000,125_000_000)` remains frozen, untouched, uninspected, unexecuted, and ungenerated. No new prime-derived computation, D11/H11 mining, retargeting, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, historical-output mining, calibration transfer, protected-range inspection, or post-result feature invention occurred.
+
+Next bounded action: **D1-36 / SQ-012 blind novelty representation-family preflight.** Select and freeze exactly one qualitatively distinct, exact, target-agnostic representation family using only novelty-lane authority and generic target-agnostic protocol rules. This is design-only: generate no prime-derived output, preserve A11 and every historical protected/non-target range, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
+
+## SQ-012 — Blind novelty representation-family preflight
+
+Stage: discovery / design-only preflight
+
+Status: **OPEN — D1-36 REPRESENTATION-FAMILY PREFLIGHT NEXT; NO PRIME-DERIVED OUTPUT AUTHORIZED**
+
+SQ-012 begins only after SQ-011 closes with NO CANDIDATE CREATED. Its purpose is to select and freeze exactly one qualitatively distinct exact blind-novelty representation family before any output exists. The choice must be target-agnostic, must not retune or recombine E001-E011, and must not import any quarantined SQ-005 calibration object, hidden historical target, historical-unblinding mechanism, source-derived mechanism, or prior observation value.
+
+D1-36 is design-only. It must choose any fresh discovery/guard/holdout/adversarial partition solely from committed generation/protection provenance and deterministic arithmetic/metadata rules; preserve A11, A10, A9, H8/A8, A1/H3/H4/A3/A4/A6/A7, every historical guard, and every other generated/protected/non-target range; freeze exact primitives, transforms, triviality/artifact controls, descriptive allowlist, mechanical promotion grammar/cap, unchanged one-shot holdout criterion template, deterministic serialization, and fail-closed future-generation rules; and justify qualitative distinctness from all executed novelty families.
+
+No prime generation, evaluator execution, protected-range inspection, historical-output mining, OBS/CAND allocation, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, or calibration-object transfer is authorized in D1-36.
+
+Next bounded action: **D1-36 / SQ-012 design-only blind novelty representation-family preflight.**
