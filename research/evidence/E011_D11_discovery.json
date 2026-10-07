@@ -1,0 +1,141 @@
+{
+  "anchor_summary": {
+    "first_prime": 62000009,
+    "last_prime": 62999999,
+    "prime_count": 55706
+  },
+  "artifact": {
+    "byte_identical_repeat": true,
+    "bytes": 4861,
+    "sha256": "8fa8aab43d0a7a452fdb7465f8ae42d4d2c7f8911b224d9d88a55e21ebd47d25"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D11",
+    "range": [
+      62000000,
+      63000000
+    ]
+  },
+  "experiment": "E011",
+  "families": [
+    {
+      "family": "K1",
+      "highest_competing_count": 13868,
+      "maximizer_count": 1,
+      "mechanically_eligible": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 18575,
+      "residue_control_passed": true,
+      "strict_unique_prime_mode": true,
+      "unique_mode_mixed_residue_count": 48,
+      "unique_mode_signature": [
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "family": "K2",
+      "highest_competing_count": 18575,
+      "maximizer_count": 1,
+      "mechanically_eligible": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 23152,
+      "residue_control_passed": true,
+      "strict_unique_prime_mode": true,
+      "unique_mode_mixed_residue_count": 48,
+      "unique_mode_signature": 3
+    },
+    {
+      "family": "K3",
+      "highest_competing_count": 13868,
+      "maximizer_count": 1,
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 18575,
+      "residue_control_passed": true,
+      "strict_unique_prime_mode": true,
+      "unique_mode_mixed_residue_count": 48,
+      "unique_mode_signature": 3
+    },
+    {
+      "family": "K4",
+      "highest_competing_count": 18571,
+      "maximizer_count": 1,
+      "mechanically_eligible": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 32443,
+      "residue_control_passed": true,
+      "strict_unique_prime_mode": true,
+      "unique_mode_mixed_residue_count": 48,
+      "unique_mode_signature": 2
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 7938,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 62000000,
+      "stop": 63000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "f9cfec77b4da93a714df00fc7513617a561c1f3c",
+  "promotion_result": {
+    "eligible_pattern_count": 3,
+    "promoted_observation_ids": [
+      "OBS-015",
+      "OBS-016",
+      "OBS-017"
+    ],
+    "records": [
+      {
+        "family": "K1",
+        "observation_id": "OBS-015",
+        "target_mixed_residue_count": 48,
+        "target_prime_count": 18575,
+        "target_signature": [
+          2,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "family": "K2",
+        "observation_id": "OBS-016",
+        "target_mixed_residue_count": 48,
+        "target_prime_count": 23152,
+        "target_signature": 3
+      },
+      {
+        "family": "K4",
+        "observation_id": "OBS-017",
+        "target_mixed_residue_count": 48,
+        "target_prime_count": 32443,
+        "target_signature": 2
+      }
+    ],
+    "result": "PROMOTED_OBSERVATIONS"
+  },
+  "validation": {
+    "divisor_sum_reconstruction_failure_count": 0,
+    "factor_count_integrality_or_nonnegativity_failure_count": 0,
+    "family_frequency_total_failure_count": 0,
+    "finite_field_squarefree_failure_count": 0,
+    "gcd_degree_range_failure_count": 0,
+    "polynomial_metadata_or_discriminant_failure_count": 0,
+    "total_degree_or_partition_failure_count": 0
+  }
+}
