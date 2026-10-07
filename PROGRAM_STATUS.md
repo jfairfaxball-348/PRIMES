@@ -4,16 +4,16 @@ Status date: 2026-10-07
 
 ## Current stage
 
-**DISCOVERY-1 — D1-27 / SQ-009 H9 replication complete; OBS-012/OBS-013 REPLICATED; A9 untouched; D1-28 / SQ-009 synthesis-only candidate triage next**
+**DISCOVERY-1 — D1-28 / SQ-009 synthesis complete; NO CANDIDATE; SQ-009 closed; A9 untouched; D1-29 / SQ-010 blind novelty preflight next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / E009 D9+H9 COMPLETE; SYNTHESIS NEXT | D1-26 completed frozen D9 discovery and D1-27 completed one-shot H9 replication; A9 remains untouched |
+| Pattern discovery | OPEN / E009 CLOSED; FRESH PREFLIGHT NEXT | D1-28 closed SQ-009 with no candidate; A9 remains untouched and D1-29 begins a fresh blind representation-family preflight |
 | Observation promotion | OPEN / 8 REPLICATED; 0 OBSERVED; 5 REFUTED | Exact reproducible observation |
-| Candidate conjecture | OPEN / NONE PROMOTED; D1-28 TRIAGE NEXT | OBS-012 and OBS-013 now survive untouched H9 replication; D1-28 must test whether their finite D9+H9 evidence supports any exact non-arbitrary candidate without adding untested quantifiers |
+| Candidate conjecture | OPEN / NONE PROMOTED; SQ-009 CLOSED | D1-28 found no exact non-arbitrary candidate beyond the finite D9+H9 evidence; future candidate promotion requires new replicated evidence under a separately frozen blind family |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -227,6 +227,10 @@ The frozen grammar promoted exactly OBS-012 (C2 target `[2,0,0,0]`, enrichment n
 
 D1-27 then performed the one-shot H9 replication only. Exact committed evaluator/runtime/test blobs were verified; focused validation passed 22/22 tests plus compilation. The canonical H9 generation plan was exactly low support `[0,7550)` plus segmented H9=`[56_000_000,57_000_000)`, and 53 deliberate invalid plans were rejected before the prime generator was called. The identical complete H9 command ran twice before criterion inspection and produced byte-identical 85,386-byte artifacts, SHA-256 `9fccccd71c49983870e226f6f03ab80bff60820874edc2fe09cfbc6fdd361126`. H9 contains 56,105 prime anchors and 172,466 composite controls; all eight frozen validation aggregates are zero. OBS-012 REPLICATED with target count 13,900 versus highest competitor 11,411, composite count 35,726, and enrichment 392,870,170 > 0. OBS-013 REPLICATED with target count 3,869 versus highest competitor 3,089, composite count 5,075, and enrichment 382,538,079 > 0. No new H9 observation was allocated, no non-target signature was promoted, and A9 remains untouched. Compact evidence is `research/evidence/E009_H9_replication.json`; replication record is `experiments/E009_H9_REPLICATION_2026-10-07.md`.
 
+D1-28 then performed synthesis-only candidate triage over OBS-012 and OBS-013, separately and through the one permitted exact conjunction. **NO CANDIDATE CREATED.** For OBS-012, the exact C2 target `[2,0,0,0]` is established only as the strict unique prime-anchor mode with positive exact composite-control enrichment on D9 and H9; a statement confined to those two bands is a finite restatement, while any stronger wording adds an unsupported quantifier over origin, width, scale, basis, wheel, anchor population, representation family, or infinitely many values. OBS-013 has the same outcome for C4 target `[]`; persistence, eventuality, universality, broader-family or infinite-occurrence claims are unsupported. The exact conjunction merely packages the two finite replicated facts and supplies no justified common mechanism, coupling or scale law. No anchor-level overlap or unlisted statistic was inspected.
+
+Both observations remain REPLICATED with no candidate link; active candidates remain zero and no novelty status was allocated. SQ-009 is closed without A9 execution. A9 remains frozen, untouched, uninspected, and unexecuted; G9-pre/G9-mid and every historical protected/non-target range retain their frozen roles. No new prime-derived data, D9/H9 mining, retargeting, representation change, mechanism/proof/adversarial work, prior-art/collision/literature search, novelty claim, calibration transfer, or protected-range inspection occurred.
+
 ## Frozen E005 calibration benchmark
 
 - Development anchors: 128,000,000; 256,000,000; 512,000,000.
@@ -253,7 +257,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-28 / SQ-009:** perform synthesis-only candidate triage over REPLICATED OBS-012 and OBS-013 using only committed D9+H9 evidence. Evaluate each observation separately and then at most their exact conjunction for whether any exact non-arbitrary candidate is supported without adding untested quantifiers. Generate no new prime-derived data, leave A9 and every protected range untouched, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty work in this unit.
+**D1-29 / SQ-010:** perform a design-only blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct family using only novelty-lane authority and target-agnostic methodology; choose a fresh metadata-only partition by deterministic provenance/arithmetic rules; freeze primitives/transforms, controls, descriptive allowlist, promotion grammar/cap, one-shot holdout criteria, deterministic serialization, adversarial-reserve metadata, and fail-closed future-generation rules. Generate no prime-derived data, preserve A9 and every historical protected range, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty work.
 
 ## Research inventory
 
@@ -278,9 +282,9 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. D1-26 / SQ-009 D9 discovery and D1-27 one-shot H9 replication are complete. D9 is discovery-consumed and H9 is replication-consumed; G9-pre/G9-mid remain ungenerated non-target guards; A9=`[108_000_000,109_000_000)` remains frozen, untouched, uninspected, and unexecuted. H8/A8 and every historical reserve/holdout/guard retain their prior protected roles.
+DISCOVERY-1 remains in the blind novelty lane. SQ-009 is closed after D1-26 D9 discovery, D1-27 one-shot H9 replication, and D1-28 synthesis-only candidate triage. D9 is discovery-consumed and H9 is replication-consumed; G9-pre/G9-mid remain ungenerated non-target guards; A9=`[108_000_000,109_000_000)` remains frozen, untouched, uninspected, and unexecuted. H8/A8 and every historical reserve/holdout/guard retain their prior protected roles.
 
-OBS-012 and OBS-013 are both REPLICATED under their exact criteria frozen before H9 generation. OBS-012's C2 target `[2,0,0,0]` has H9 prime count 13,900 versus highest competitor count 11,411 and exact enrichment 392,870,170 > 0. OBS-013's C4 target `[]` has H9 prime count 3,869 versus highest competitor count 3,089 and exact enrichment 382,538,079 > 0. Population and occurrence floors pass for both. No H9 fallback, retargeting, new observation, or non-target discovery was allowed.
+OBS-012 and OBS-013 remain REPLICATED under their exact unchanged E009 definitions, but D1-28 created no candidate. For each observation separately, an exact statement confined to D9 and H9 only restates finite committed computation; every stronger persistence, scale, basis, wheel, family or infinite-value statement requires an unsupported quantifier. Their exact conjunction likewise only packages the two finite facts and supplies no justified common coupling or mechanism. Active candidates remain zero.
 
-The next bounded unit is D1-28 / SQ-009 synthesis-only candidate triage over OBS-012 and OBS-013. Use only their committed D9+H9 evidence; evaluate each separately and then at most the exact joint conjunction for an exact non-arbitrary statement. Do not generate or inspect A9, do not create unsupported scale/base/wheel/family/infinite quantifiers, and do not perform mechanism/proof/adversarial/prior-art/collision/literature/novelty work in the same unit. If no candidate survives, close SQ-009 without A9 and return to a fresh blind novelty preflight.
+The next bounded unit is D1-29 / SQ-010, a design-only fresh blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct family from target-agnostic primitives, choose a fresh metadata-only partition without prime-derived inspection, and freeze its controls, promotion/replication grammar, determinism and fail-closed future-generation rules. Generate no prime-derived data, preserve A9 and every historical protected range, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty work in that unit.
 
