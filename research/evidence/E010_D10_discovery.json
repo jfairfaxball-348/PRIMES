@@ -1,0 +1,119 @@
+{
+  "anchor_summary": {
+    "admissible_count": 228558,
+    "composite_count": 172580,
+    "first_prime": 58000003,
+    "last_prime": 58999973,
+    "prime_count": 55978,
+    "q_admissible_perfect_squares_excluded": 15
+  },
+  "artifact": {
+    "byte_identical_repeat": true,
+    "bytes": 52653877,
+    "sha256": "52c7be1bd4ba53eb78596fa7a0738a412742d10d31583a574901d47f1915ce74"
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D10",
+    "range": [
+      58000000,
+      59000000
+    ]
+  },
+  "experiment": "E010",
+  "families": [
+    {
+      "enrichment_passed": true,
+      "family": "L1",
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": false,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        1331
+      ],
+      "prime_mode_count": 16,
+      "runner_up_count": 15,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 13,
+      "unique_mode_enrichment_numerator": 2033566
+    },
+    {
+      "enrichment_passed": true,
+      "family": "L2",
+      "mechanically_eligible": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        1487
+      ],
+      "prime_mode_count": 44,
+      "runner_up_count": 40,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 53,
+      "unique_mode_enrichment_numerator": 4626686
+    },
+    {
+      "enrichment_passed": false,
+      "family": "L3",
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        8
+      ],
+      "prime_mode_count": 20348,
+      "runner_up_count": 20232,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 65255,
+      "unique_mode_enrichment_numerator": -141186550
+    },
+    {
+      "enrichment_passed": false,
+      "family": "L4",
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": false,
+      "population_floor_passed": true,
+      "prime_maximizing_signatures": [
+        [
+          2,
+          2
+        ]
+      ],
+      "prime_mode_count": 10,
+      "runner_up_count": 9,
+      "strict_unique_prime_mode": true,
+      "unique_mode_composite_count": 97,
+      "unique_mode_enrichment_numerator": -3704066
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 7682,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 58000000,
+      "stop": 59000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "e9ab511a06e612792cbf95953d2e1b71307fb40f",
+  "promotion_result": {
+    "eligible_pattern_count": 1,
+    "promoted_observation_ids": [
+      "OBS-014"
+    ],
+    "result": "PROMOTED_OBSERVATION"
+  },
+  "validation": {
+    "denominator_multiplicity_or_profile_identity_failure_count": 0,
+    "integer_root_or_domain_failure_count": 0,
+    "premature_nonterminal_state_repeat_failure_count": 0,
+    "recurrence_positivity_or_divisibility_failure_count": 0,
+    "recurrence_quotient_bound_failure_count": 0,
+    "terminal_state_failure_count": 0
+  }
+}
