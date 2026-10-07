@@ -73,6 +73,20 @@ No `CAND-###` was allocated. D1-28 considered only `OBS-012` and `OBS-013`, the 
 **Triage conclusion: NO CANDIDATE CREATED.** Both observations remain REPLICATED with no candidate link. Active candidates remain zero; no candidate ID or novelty status was allocated. SQ-009 closes without A9 execution. A9 remains frozen, untouched, uninspected, and unexecuted. No new prime-derived computation, D9/H9 mining, retargeting, representation change, mechanism/proof work, adversarial execution, prior-art/collision search, literature search, novelty claim, calibration-object transfer, or protected-range inspection occurred.
 
 
+## D1-35 / SQ-011 candidate-synthesis triage — 2026-10-07
+
+No `CAND-###` was allocated. D1-35 considered exactly `OBS-015`, `OBS-016`, and `OBS-017`, plus exact pairwise or three-way conjunctions that use only their already-committed D11+H11 aggregate facts. Duplicate-suppressed K3, earlier observations, anchor-level overlaps, competing-signature identities, complete frequency tables, and every unlisted E011 statistic remained outside the synthesis pool.
+
+| Observation | Triage outcome | Reason |
+|---|---|---|
+| `OBS-015` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E011 K1 semantics, exact target `[2,1,1,1]` is the strict unique K1 mode in both D11 and H11 and passes the frozen occurrence, mixed-residue, population, and validation gates. A statement restricted to those two bands is only a finite restatement. Extending it requires an unsupported quantifier over untested bands, origins, widths, later scales, primes, polynomial/degree families, persistence, eventuality, universality, density, or distribution. The frozen K1 representation supplies no principled invariant selecting such a quantifier. |
+| `OBS-016` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E011 K2 semantics, exact target `3` is the strict unique irreducible-factor-count mode in both D11 and H11 and passes every frozen gate. K2 being an exact coarsening of the same finite-field factor-degree object does not itself justify extrapolation beyond the two tested bands. Restricting the claim to D11+H11 restates computation; any persistence, eventual, universal, distributional, degree-family, polynomial-family, or scale claim would add unsupported structure. |
+| `OBS-017` | RETAIN AS REPLICATED OBSERVATION | Under unchanged E011 K4 semantics, exact target `2` is the strict unique largest-factor-degree mode in both D11 and H11 and passes every frozen gate. The committed representation provides no non-arbitrary rule turning this two-band modal fact into a statement about untested ranges or a broader polynomial/degree/scale family. A D11+H11-only statement is finite evidence, not a candidate. |
+| Any exact conjunction of `OBS-015`, `OBS-016`, and `OBS-017` | NO JOINT CANDIDATE | The exact conjunction that the frozen targets satisfy their committed criteria in D11 and H11 merely packages already-recorded finite facts. Any stronger claim of common persistence, simultaneous universality, coupling, shared distribution, factorization law, or scale behaviour would introduce a new quantifier or structure not justified by the frozen aggregate evidence. No anchor-level overlap, support-coupling statistic, or other post-result feature was inspected or introduced. |
+
+**Triage conclusion: NO CANDIDATE CREATED.** `OBS-015`, `OBS-016`, and `OBS-017` remain REPLICATED with no candidate link. Active candidates remain zero; no candidate ID or novelty status was allocated. SQ-011 closes without A11 execution. A11=`[124_000_000,125_000_000)` remains frozen, untouched, uninspected, unexecuted, and ungenerated. No new prime-derived computation, D11/H11 mining, retargeting, new statistic, mechanism/proof work, adversarial execution, prior-art/collision/literature search, novelty claim, historical-output mining, calibration-object transfer, or protected-range inspection occurred.
+
+
 Do not create a candidate merely because a pattern is visually interesting. See `docs/DISCOVERY_PROTOCOL.md`.
 
 ## Template
