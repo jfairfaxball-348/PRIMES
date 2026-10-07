@@ -201,7 +201,7 @@ Permanent append-only register of reproducible phenomena.
 ## OBS-012
 
 **Title:** `[2,0,0,0]` is the unique C2 minimal-cover-size-profile mode on D9  
-**Status:** OBSERVED / H9 CRITERION FROZEN  
+**Status:** REPLICATED  
 **Date:** 2026-10-07  
 **Experiment:** E009 / SQ-009  
 **Exact definition:** Under frozen E009, for each Q=210-admissible prime anchor `x` in D9, compute the exact odd-anchor unit-group exponent Lambda(x), exact multiplicative orders of the ordered basis A=(2,3,5,7), all 15 nonempty basis-subset order-lcms, and the inclusion-minimal cover antichain M(x). Let C2(x)=(m1,m2,m3,m4), where mk is the number of members of M(x) of cardinality k. The observation is that exact C2 signature `[2,0,0,0]` is the strict unique D9 prime-anchor mode, occurs at least 32 times, and has strictly positive exact relative-frequency enrichment against Q-admissible composite controls.  
@@ -210,14 +210,16 @@ Permanent append-only register of reproducible phenomena.
 **Observation:** D9 has 55,997 prime anchors and 172,574 composite controls. C2 target `[2,0,0,0]` occurs 13,849 times among prime anchors; the deterministic runner-up count is 11,341. The same target occurs 35,767 times among composite controls. Its exact enrichment numerator is `13,849*172,574 - 35,767*55,997 = 387,132,627 > 0`.  
 **Triviality checks:** The claim is not factorization reconstruction, Lambda construction, a basis-unit gcd fact, an order-divides-Lambda/minimality witness, upward cover monotonicity, minimal-antichain construction, a serialization/ranking consequence, a population/floor consequence, or a composite-control fact by itself. C2 is a frozen predeclared promotable family. C3 selected the identical D9 prime-anchor subset and was therefore suppressed mechanically in favour of lower-numbered C2; there is no fallback.  
 **Frozen one-shot H9 replication criterion:** With unchanged E009 definitions and C2 semantics, H9 must have at least 1,000 prime anchors and 1,000 composite controls; exact C2 signature `[2,0,0,0]` must occur at least 32 times among H9 prime anchors and have strictly greater frequency than every competing C2 signature; and its exact H9 enrichment numerator `n_P*N_C - n_C*N_P` must be strictly positive. A tie, any higher-frequency competitor, either population-floor failure, target count below 32, or nonpositive enrichment is a mechanical failure. No fallback, retargeting, or changed semantics is permitted.  
+**H9 replication result:** REPLICATED. H9 has 56,105 prime anchors and 172,466 composite controls. Frozen C2 target `[2,0,0,0]` occurs 13,900 times among H9 prime anchors, strictly above the highest competing C2 count 11,411; it occurs 35,726 times among H9 composite controls. Exact enrichment numerator: `13,900*172,466 - 35,726*56,105 = 392,870,170 > 0`. Both population floors and the 32-occurrence floor pass. No fallback or retargeting was used.  
+
 **Possible mechanism:** Unknown; no mechanism work performed.  
 **Candidate link:** none  
-**Notes:** D9 artifact: 82,398 bytes, SHA-256 `a157a7b62667a76fee741db33e1cbf60594cb83aa17c54c4cbf57eb399b7cde9`; compact discovery evidence in `research/evidence/E009_D9_discovery.json`. H9 and A9 remain untouched.
+**Notes:** D9 artifact: 82,398 bytes, SHA-256 `a157a7b62667a76fee741db33e1cbf60594cb83aa17c54c4cbf57eb399b7cde9`; compact discovery evidence in `research/evidence/E009_D9_discovery.json`. H9 artifact: 85,386 bytes, SHA-256 `9fccccd71c49983870e226f6f03ab80bff60820874edc2fe09cfbc6fdd361126`; compact replication evidence in `research/evidence/E009_H9_replication.json`. H9 was inspected only for the frozen criterion; A9 remains ungenerated and untouched.
 
 ## OBS-013
 
 **Title:** the empty minimal-cover antichain is the unique C4 mode on D9  
-**Status:** OBSERVED / H9 CRITERION FROZEN  
+**Status:** REPLICATED  
 **Date:** 2026-10-07  
 **Experiment:** E009 / SQ-009  
 **Exact definition:** Under frozen E009, for each Q=210-admissible prime anchor `x` in D9, compute the exact odd-anchor unit-group exponent Lambda(x), exact multiplicative orders of A=(2,3,5,7), and the exact canonical inclusion-minimal cover antichain M(x). C4(x) is M(x) itself. The observation is that the empty antichain signature `[]`—meaning no nonempty subset of the frozen basis has order-lcm equal to Lambda(x)—is the strict unique D9 prime-anchor C4 mode, occurs at least 32 times, and has strictly positive exact relative-frequency enrichment against Q-admissible composite controls.  
@@ -226,7 +228,9 @@ Permanent append-only register of reproducible phenomena.
 **Observation:** D9 has 55,997 prime anchors and 172,574 composite controls. C4 target `[]` occurs 3,797 times among prime anchors; the deterministic runner-up count is 3,078. The same target occurs 5,003 times among composite controls. Its exact enrichment numerator is `3,797*172,574 - 5,003*55,997 = 375,110,487 > 0`.  
 **Triviality checks:** The claim is not factorization reconstruction, Lambda construction, a basis-unit gcd fact, an order-divides-Lambda/minimality witness, upward cover monotonicity, minimal-antichain construction, a combinatorial bound, a serialization/ranking consequence, a population/floor consequence, or a composite-control fact by itself. The empty antichain is an allowed predeclared C4 signature, not a post-result exception, and the target survives exact cross-family duplicate suppression.  
 **Frozen one-shot H9 replication criterion:** With unchanged E009 definitions and C4 semantics, H9 must have at least 1,000 prime anchors and 1,000 composite controls; exact C4 signature `[]` must occur at least 32 times among H9 prime anchors and have strictly greater frequency than every competing C4 signature; and its exact H9 enrichment numerator `n_P*N_C - n_C*N_P` must be strictly positive. A tie, any higher-frequency competitor, either population-floor failure, target count below 32, or nonpositive enrichment is a mechanical failure. No fallback, retargeting, or changed semantics is permitted.  
+**H9 replication result:** REPLICATED. H9 has 56,105 prime anchors and 172,466 composite controls. Frozen C4 target `[]` occurs 3,869 times among H9 prime anchors, strictly above the highest competing C4 count 3,089; it occurs 5,075 times among H9 composite controls. Exact enrichment numerator: `3,869*172,466 - 5,075*56,105 = 382,538,079 > 0`. Both population floors and the 32-occurrence floor pass. No fallback or retargeting was used.  
+
 **Possible mechanism:** Unknown; no mechanism work performed.  
 **Candidate link:** none  
-**Notes:** D9 artifact: 82,398 bytes, SHA-256 `a157a7b62667a76fee741db33e1cbf60594cb83aa17c54c4cbf57eb399b7cde9`; compact discovery evidence in `research/evidence/E009_D9_discovery.json`. H9 and A9 remain untouched.
+**Notes:** D9 artifact: 82,398 bytes, SHA-256 `a157a7b62667a76fee741db33e1cbf60594cb83aa17c54c4cbf57eb399b7cde9`; compact discovery evidence in `research/evidence/E009_D9_discovery.json`. H9 artifact: 85,386 bytes, SHA-256 `9fccccd71c49983870e226f6f03ab80bff60820874edc2fe09cfbc6fdd361126`; compact replication evidence in `research/evidence/E009_H9_replication.json`. H9 was inspected only for the frozen criterion; A9 remains ungenerated and untouched.
 
