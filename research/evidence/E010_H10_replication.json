@@ -1,0 +1,42 @@
+{
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H10",
+    "range": [
+      60000000,
+      61000000
+    ]
+  },
+  "experiment": "E010",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 7811,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 60000000,
+      "stop": 61000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "9f9e6223ee0f05d64485cf713e75bd2160d19c92",
+  "replication": {
+    "composite_population": 172626,
+    "enrichment_passed": true,
+    "family": "L2",
+    "highest_competing_prime_count": 41,
+    "observation_id": "OBS-014",
+    "occurrence_floor_passed": false,
+    "population_floor_passed": true,
+    "prime_population": 55930,
+    "replication_passed": false,
+    "strict_unique_prime_mode": false,
+    "target_composite_count": 50,
+    "target_enrichment_numerator": 656020,
+    "target_prime_count": 20,
+    "target_signature": 1487
+  }
+}
