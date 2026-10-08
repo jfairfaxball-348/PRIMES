@@ -660,7 +660,7 @@ Never reuse or renumber a completed session.
 **Decision blocker:** none  
 **Outgoing state:** DISCOVERY-1; D1-38 complete; E013 frozen/unexecuted; D13/H13/A13 ungenerated; G13-pre/G13-mid ungenerated guards; H12/A12/A8/A3, all E001-E012 historical regions and E005 calibration segments remain protected; SQ-013 open for exact D1-39 D13 execution only.  
 **Next session:** D1-39 / SQ-013 — implement exact frozen E013 evaluator/guard/serializer and focused tests; commit and verify code/test checkpoint **before any primes**; run targeted tests/lint/compile; permit only [0,8545)+segmented D13; repeat identical D13 command byte-identically before allowlisted inspection; mechanically apply only O1–O4 promotion or close with NO ELIGIBLE OBSERVATION; leave H13/A13 and all protected bands untouched; no candidate or downstream work.  
-**Commit:** design spec `8706fe7f0d23667419c5773acdf08dd21fe3ce67`; programme `bf3e18713c0e00614b31b162cbb2232b6d6dc51b`; queue `df47ceeabcccc7a7f435e741f553163116ea2ae5`; handoff `3b971f5c6e83d024183a3b529f0b76ac5fc4661b`; session checkpoint is this entry's containing commit.
+**Commit:** initial design spec `8706fe7f0d23667419c5773acdf08dd21fe3ce67`; pre-execution JSON-newline escape correction `c44c17ec7b4868860ebfca4a6bc70805f68cc7fa` (no semantic or empirical design change); programme `bf3e18713c0e00614b31b162cbb2232b6d6dc51b`; queue `df47ceeabcccc7a7f435e741f553163116ea2ae5`; handoff `3b971f5c6e83d024183a3b529f0b76ac5fc4661b`; session checkpoint is this entry's containing commit.
 
 ## Entry template
 
