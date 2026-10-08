@@ -1,0 +1,246 @@
+{
+  "anchor_summary": {
+    "anchor_count": 228113,
+    "composite_count": 172648,
+    "composite_counts_by_mod8": [
+      43243,
+      43171,
+      43083,
+      43151
+    ],
+    "first_prime": 67001017,
+    "last_prime": 67998977,
+    "prime_count": 55465,
+    "prime_counts_by_mod8": [
+      13786,
+      13857,
+      13945,
+      13877
+    ]
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D12",
+    "range": [
+      67000000,
+      68000000
+    ]
+  },
+  "experiment": "E012",
+  "families": [
+    {
+      "all_stratum_enrichments_positive": false,
+      "family": "N1",
+      "highest_competing_count": 13525,
+      "maximizer_count": 1,
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 15850,
+      "stratum_population_floor_passed": true,
+      "strict_unique_prime_mode": true,
+      "target_composite_counts_by_mod8": [
+        18497,
+        18171,
+        6573,
+        6887
+      ],
+      "target_enrichment_numerators_by_mod8": [
+        -4233485,
+        -2137654,
+        -1401600,
+        -1803776
+      ],
+      "target_prime_counts_by_mod8": [
+        5799,
+        5783,
+        2095,
+        2173
+      ],
+      "unique_mode_is_bracketed": true,
+      "unique_mode_signature": 1
+    },
+    {
+      "all_stratum_enrichments_positive": false,
+      "family": "N2",
+      "highest_competing_count": 5924,
+      "maximizer_count": 1,
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 7411,
+      "stratum_population_floor_passed": true,
+      "strict_unique_prime_mode": true,
+      "target_composite_counts_by_mod8": [
+        0,
+        12138,
+        0,
+        10929
+      ],
+      "target_enrichment_numerators_by_mod8": [
+        0,
+        2372355,
+        0,
+        -2359273
+      ],
+      "target_prime_counts_by_mod8": [
+        0,
+        3951,
+        0,
+        3460
+      ],
+      "unique_mode_is_bracketed": true,
+      "unique_mode_signature": 6
+    },
+    {
+      "all_stratum_enrichments_positive": false,
+      "family": "N3",
+      "highest_competing_count": 5305,
+      "maximizer_count": 1,
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 6130,
+      "stratum_population_floor_passed": true,
+      "strict_unique_prime_mode": true,
+      "target_composite_counts_by_mod8": [
+        3315,
+        5645,
+        4160,
+        6305
+      ],
+      "target_enrichment_numerators_by_mod8": [
+        -2630562,
+        4190674,
+        -926225,
+        -5507585
+      ],
+      "target_prime_counts_by_mod8": [
+        996,
+        1909,
+        1325,
+        1900
+      ],
+      "unique_mode_is_bracketed": true,
+      "unique_mode_signature": 8
+    },
+    {
+      "all_stratum_enrichments_positive": false,
+      "family": "N4",
+      "highest_competing_count": 2657,
+      "maximizer_count": 1,
+      "mechanically_eligible": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 2753,
+      "stratum_population_floor_passed": true,
+      "strict_unique_prime_mode": true,
+      "target_composite_counts_by_mod8": [
+        0,
+        4338,
+        0,
+        4300
+      ],
+      "target_enrichment_numerators_by_mod8": [
+        0,
+        3867756,
+        0,
+        -4826179
+      ],
+      "target_prime_counts_by_mod8": [
+        0,
+        1482,
+        0,
+        1271
+      ],
+      "unique_mode_is_bracketed": true,
+      "unique_mode_signature": [
+        2,
+        6
+      ]
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 8247,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 67000000,
+      "stop": 68000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "373a1e3db30a6eedf4385abbd7aa12d11e7ab8cf",
+  "parameters": {
+    "horizon": 1000,
+    "norm": "a^2+b^2",
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "residues": [
+      1,
+      3,
+      5,
+      7
+    ],
+    "stratum_floor": 100,
+    "wheel": 210,
+    "width": 1000000
+  },
+  "partition": [
+    {
+      "name": "G12-pre",
+      "range": [
+        65000000,
+        66000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D12",
+      "range": [
+        67000000,
+        68000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G12-mid",
+      "range": [
+        68000000,
+        69000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H12",
+      "range": [
+        69000000,
+        70000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A12",
+      "range": [
+        134000000,
+        135000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [],
+  "validation": {
+    "anchor_domain_or_partition_failure_count": 0,
+    "bracket_strictness_or_horizon_failure_count": 0,
+    "family_frequency_total_failure_count": 0,
+    "family_identity_failure_count": 0,
+    "generation_plan_failure_count": 0,
+    "lattice_support_duplicate_failure_count": 0,
+    "lattice_support_range_failure_count": 0,
+    "mod8_partition_failure_count": 0
+  }
+}
