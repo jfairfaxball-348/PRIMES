@@ -1,0 +1,89 @@
+name: E019 H19 single authorized execution
+on:
+  push:
+    paths:
+      - research/checkpoints/E019_D1_58_H19_AUTHORIZE_ONESHOT.md
+permissions:
+  contents: write
+jobs:
+  fixed-h19-one-shot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify frozen pre-generator remote-derived blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object experiments/E019_H19_fixed_two_row_ladder_spanning_forest.py)" = "522dd279806c1e5ebdb6b5f8dd017bc339e6f655"
+          test "$(git hash-object tests/test_e019_h19.py)" = "c014484a996a489be9310d2a6589820b57007925"
+          test "$(git hash-object research/checkpoints/E019_D1_58_H19_RUN_COMMAND.md)" = "be5301a04dfabfcf39cb217db51b981f0fe4372b"
+          grep -Fx 'PYTHONPATH=.:src python experiments/E019_H19_fixed_two_row_ladder_spanning_forest.py --band H19 --code-commit 3f0b8c0ec83a28aed426ace73298bdb19ddc5c2e --output /tmp/e019-h19.json' research/checkpoints/E019_D1_58_H19_RUN_COMMAND.md
+      - name: Synthetic-only validation BEFORE any prime generator
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pytest
+          python -m compileall -q experiments/E019_H19_fixed_two_row_ladder_spanning_forest.py tests/test_e019_h19.py
+          PYTHONPATH=.:src python -m pytest -q tests/test_e019_h19.py
+          PYTHONPATH=.:src python - <<'PY'
+          from experiments import E019_H19_fixed_two_row_ladder_spanning_forest as e
+          assert e.audit_intervals() == dict(old_pairs=3916, old_new=445, new_pairs=10, nested_contained=30, new_nested=150)
+          assert e.validate_plan(e.positive_plan(), "H19")
+          assert e.PLAN == (
+              dict(purpose="base_sieve_support", start=0, stop=10100, strategy="whole_prefix"),
+              dict(purpose="segmented_target", start=101_000_000, stop=102_000_000, strategy="direct_segmented"),
+          )
+          assert e.fixed_target_mode({0:40,1:50,2:50,3:10}) == (50,50,False)
+          print("PREGEN PASS: 89 historical + 30 nested exclusions, five E019 roles, 3916/445/10/30/150, positive whole plan, poison tests, fixed target 2")
+          PY
+      - name: Exactly two identical H19 invocations and sealed raw-file comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e /tmp/e019-h19.json
+          PYTHONPATH=.:src python experiments/E019_H19_fixed_two_row_ladder_spanning_forest.py --band H19 --code-commit 3f0b8c0ec83a28aed426ace73298bdb19ddc5c2e --output /tmp/e019-h19.json
+          cp /tmp/e019-h19.json /tmp/e019-h19.sealed-first
+          sha256sum /tmp/e019-h19.sealed-first > /tmp/e019-h19.first.sha256
+          PYTHONPATH=.:src python experiments/E019_H19_fixed_two_row_ladder_spanning_forest.py --band H19 --code-commit 3f0b8c0ec83a28aed426ace73298bdb19ddc5c2e --output /tmp/e019-h19.json
+          cmp /tmp/e019-h19.sealed-first /tmp/e019-h19.json
+          sha256sum /tmp/e019-h19.json > /tmp/e019-h19.second.sha256
+          test "$(cut -d' ' -f1 /tmp/e019-h19.first.sha256)" = "$(cut -d' ' -f1 /tmp/e019-h19.second.sha256)"
+          echo "RAW COMPARISON PASS; bytes $(wc -c </tmp/e019-h19.json); both SHA256 $(cut -d' ' -f1 /tmp/e019-h19.first.sha256)"
+      - name: Interpret ONLY canonical narrow fixed-target aggregate AFTER equality
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=.:src python - <<'PY'
+          import json
+          from pathlib import Path
+          from experiments import E019_H19_fixed_two_row_ladder_spanning_forest as e
+          raw = Path("/tmp/e019-h19.json").read_bytes()
+          obj = json.loads(raw.decode("ascii"))
+          assert e.validate_payload(obj)
+          assert e.canonical(obj) == raw
+          assert obj["implementation_commit"] == "3f0b8c0ec83a28aed426ace73298bdb19ddc5c2e"
+          assert obj["band"]["name"] == "H19"
+          assert all(type(v) is int and v == 0 for v in obj["validation"].values())
+          family = obj["families"][0]
+          passed = bool(family["mechanically_eligible"] and
+                        family["strict_unique_prime_mode"] and
+                        family["unique_mode_signature"] == 2 and
+                        len(obj["promotions"]) == 1 and
+                        obj["promotions"][0]["target_signature"] == 2)
+          Path("research/evidence/E019_H19_replication.json").write_bytes(raw)
+          print("H19 OUTCOME:", "REPLICATED" if passed else "REFUTED")
+          print("H19 CANONICAL AGGREGATE:", raw.decode("ascii"))
+          PY
+      - name: Commit canonical evidence only after all gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/evidence/E019_H19_replication.json
+          git commit -m "D1-58 checkpoint canonical H19 one-shot aggregate after byte replay"
+          git push
