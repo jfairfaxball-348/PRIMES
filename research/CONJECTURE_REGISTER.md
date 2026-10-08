@@ -99,6 +99,19 @@ No `CAND-###` was allocated. D1-35 considered exactly `OBS-015`, `OBS-016`, and 
 
 **Closure:** SQ-013 CLOSED with no CAND ID allocated; both observations remain REPLICATED, with no candidate links; active candidates zero. H13 remains one-shot replication-consumed, A13 and both G13 guards plus H12/A12/A8/A3 and all historical protected/calibration roles ungenerated/uninspected by D1-41. Original E013 representation, criteria, JSON/report/source bytes, evidence provenance and observation statuses preserved. No prime generation/primality query, mining, rerun, retuning, mechanism, proof, adversarial, literature/collision/novelty or calibration work. Full synthesis: `experiments/E013_D1_41_SYNTHESIS_2026-10-08.md`.
 
+
+## D1-55 / S057 / SQ-019 — E018 synthesis-only triage — 2026-10-08
+
+**NO CANDIDATE CREATED.** Only the frozen, exact *aggregate* D18/H18 evidence and unchanged definitions/criteria of replicated OBS-022 and OBS-023 were considered. D18=[95_000_000,96_000_000) and H18=[97_000_000,98_000_000) are fully consumed; no further E018 computation or target choice was made.
+
+| Input | Candidate disposition | Quantifier / exactness audit |
+|---|---|---|
+| `OBS-022` (L1 quartile integer target 0) | **RETAIN REPLICATED; NO CANDIDATE** | Exact four-domain strict unique prime mode, all original frozen floors, 48/48 mixing and 48/48 positive class signs, positive exact global enrichment and ten zero validators repeat in the two specific fixed million-wide bands. Restriction to D18+H18 merely restates a completed computation. No unchanged tiling definition or aggregate result licenses all-band, eventual, scale, infinite-prime, untested-wheel, arbitrary-width or asymptotic claims. |
+| `OBS-023` (L2 octile integer target 0) | **RETAIN REPLICATED; NO CANDIDATE** | The exact eight-domain zero mode independently passes the same finite gates in D18+H18, without establishing any origin/width/scale-independent invariant. A finite two-band statement is not a new candidate; further quantifiers, density/prime infinity or persistence statements are unsupported. |
+| `OBS-022` **AND** `OBS-023` | **NO JOINT CANDIDATE** | Their exact supported conjunction is solely two fixed-target successes in each of D18/H18. Both signatures are coarsenings of the same tiling remainder and the frozen b4=floor(b8/2) identity is control-only; neither simultaneous occurrence nor support inequality supplies an additional mathematical law or an untested quantifier. No joint supports, frequencies or coupling were mined. |
+
+**Disposition:** **SQ-019 CLOSED; NO CANDIDATE CREATED; no CAND ID allocated; zero active candidates.** Both OBS retain REPLICATED and unchanged H18 criteria. The detailed finite-fact, conjunction and quantifier audit is `experiments/E018_D1_55_SYNTHESIS_2026-10-08.md`. Provenance: frozen E018 specification, `experiments/E018_D18_DISCOVERY_2026-10-08.md`, `research/evidence/E018_D18_discovery.json` (5,871 bytes, SHA-256 `d08617ca7d32274f00854f727421d42b1f5d69d9d7e1a334c45b7ec96b8c47b2`), `experiments/E018_H18_REPLICATION_2026-10-08.md`, `research/evidence/E018_H18_replication.json` (5,871 bytes, SHA-256 `b75b4d5b44b9930e9725080a791e21657f1033b1eeedbafe60e9f0a190f721c9`), H18 source/test checkpoint `7a7b265216506c7eadace5a6e9c92c417fce2741` and precommitted command checkpoint `6cc9a22f9d689ce8de2ffb9d4d12fd2a3f884efd` (provenance only, not run). **15 REPLICATED / 0 OBSERVED / 8 REFUTED.** A18 and both E018 guards remain barred; no prime-generation, new statistic, prior-family mining, calibration unblinding, mechanism/proof, adversarial or prior-art/collision/novelty work. No new failure or candidate lifecycle transition.
+
 Do not create a candidate merely because a pattern is visually interesting. See `docs/DISCOVERY_PROTOCOL.md`.
 
 ## Template
