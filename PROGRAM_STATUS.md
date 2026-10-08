@@ -4,16 +4,16 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-40 / SQ-013 H13 ONE-SHOT COMPLETE; OBS-018/019 REPLICATED; D1-41 SYNTHESIS-ONLY TRIAGE NEXT; A13 UNTOUCHED; SQ-012 CLOSED**
+**DISCOVERY-1 — D1-41 / SQ-013 CLOSED: NO CANDIDATE CREATED; OBS-018/019 REPLICATED; D1-42 / SQ-014 DESIGN-ONLY NEXT; A13 UNTOUCHED**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-012 CLOSED; SQ-013 D13+H13 COMPLETE; A13 UNTOUCHED | D1-41 next: bounded synthesis-only candidate triage over OBS-018/019; no additional prime generation |
+| Pattern discovery | OPEN / SQ-012 AND SQ-013 CLOSED; SQ-014 DESIGN-ONLY QUEUED; A13 UNTOUCHED | D1-42 independently freezes a new blind novelty representation; no prime generation |
 | Observation promotion | OPEN / 13 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-018 and OBS-019 both passed the immutable H13 criteria; no candidate promoted |
-| Candidate conjecture | OPEN / NONE PROMOTED | D1-40 did not synthesize candidates; D1-41 synthesis-only triage is next |
+| Candidate conjecture | OPEN / NONE PROMOTED | D1-41 concluded NO CANDIDATE CREATED; design-only SQ-014 is next |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -354,11 +354,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-39 / SQ-013:** separately bounded frozen E013 D13 execution. Implement exact `experiments/E013_MODULAR_QUADRATIC_ORBIT_SHAPES.md` without changing the grammar; checkpoint exact evaluator/tests before generation; validate the complete phase-specific planner, semantics, duplicate and serialization controls; authorize only [0,8545) low support plus segmented D13=[72_000_000,73_000_000). Repeat identical D13 command byte-identically before aggregate inspection. Promote at most four mechanical O1–O4 observations (or record NO ELIGIBLE OBSERVATION), never generate H13/A13 or protected ranges. No candidate, mechanism, proof, adversarial or prior-art work.
+**D1-42 / SQ-014:** design-only independent blind novelty representation-family preflight. Freeze exactly one genuinely different exact target-agnostic representation, complete controls/criteria, strict future generator allowlists, and disjoint new D/H/A metadata partition. **No prime generation, primality queries, implementation/tests, observation/candidate creation, or protected-region consumption in D1-42.** SQ-013 is closed with NO CANDIDATE CREATED; D13/H13 remain consumed and A13 untouched.
 
 ## Research inventory
 
-- Active observations: 11
+- Active observations: 13 (all REPLICATED; 0 OBSERVED; 6 REFUTED)
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -379,11 +379,8 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 remains in the blind novelty lane. SQ-010 stays closed historical novelty work: D10/H10 are consumed, OBS-014 remains REFUTED, and A10=[116_000_000,117_000_000) remains untouched. SQ-009 remains closed with A9=[108_000_000,109_000_000) untouched.
+DISCOVERY-1 blind novelty remains active. SQ-011/SQ-012/SQ-013 are closed historical work; OBS-018 and OBS-019 retain their replicated finite-band status without candidates. The next bounded unit is **D1-42 / SQ-014 design-only independent representation preflight**; not an E013 rerun, E013 expansion, or new prime-generation authorization. All protected range and quarantined calibration roles remain unchanged.
 
-D1-35 / SQ-011 is complete. Synthesis used only the committed D11+H11 aggregate evidence and frozen definitions for OBS-015, OBS-016, and OBS-017. No individual observation or exact conjunction supplied a representation-derived non-arbitrary quantifier beyond the two tested bands, so **NO CANDIDATE CREATED**. All three observations remain REPLICATED with no candidate link; active candidates remain zero. SQ-011 is closed. G11-pre/G11-mid remain ungenerated guards and A11=[124_000_000,125_000_000) remains untouched/uninspected/unexecuted/ungenerated.
-
-That historical D1-35 handoff was completed as D1-36. D1-37 subsequently executed frozen E012 D12 and closed SQ-012 with NO ELIGIBLE OBSERVATION. The current next bounded unit is D1-38 / SQ-013 design-only preflight; see the appended D1-37 result and live prompt.
 
 ## D1-37 / SQ-012 closed discovery checkpoint — 2026-10-08
 
@@ -435,3 +432,15 @@ H13 Q=30 common domain has **266,666** anchors: **55,050 primes** and **211,616 
 **D1-40 result: TWO REPLICATED, zero candidates.** The observation ledger records both mechanical status transitions; active candidate count remains zero. E012/SQ-012 remains CLOSED, SQ-005 historically quarantined, and E013 D13 unaltered. H13 is now replication-consumed. A13=[144_000_000,145_000_000), G13-pre=[71_000_000,72_000_000), G13-mid=[73_000_000,74_000_000), H12/A12/A8/A3, and every other historical protected/guard/calibration interval remain ungenerated/uninspected in D1-40. No candidate synthesis, mechanism, proof, adversarial, prior-art/collision/literature/novelty work was done.
 
 **Next bounded unit:** D1-41 / SQ-013 **synthesis-only candidate triage of OBS-018 and OBS-019** using only their already committed D13/H13 narrow evidence. Create a candidate only if an exact non-arbitrary falsifiable mathematical statement is justified; otherwise record NO CANDIDATE CREATED and close SQ-013. No A13 or other prime generation or H13 mining. No owner decision blocker.
+
+## D1-41 / SQ-013 synthesis-only closure — 2026-10-08
+
+**NO CANDIDATE CREATED; SQ-013 CLOSED.** Separately examined the exact committed OBS-018 (O1=3) and OBS-019 (O2=2) D13/H13 replication facts, then only their supported conjunction. The frozen modular quadratic seven-entry tail supplies precise ordinal counts and two finite modal replications, but no invariant selecting a non-arbitrary conjectural quantifier over untested bands, origins, widths or later scales. A statement restricted to D13/H13 merely restates observed facts. Their conjunction is only two separate finite successes; no same-anchor joint support/coupling was reported or inspected. Neither universal, eventual, density, persistence nor infinite extrapolation is warranted.
+
+Both OBS-018 and OBS-019 remain **REPLICATED**, exact targets/criteria/status unchanged and candidate links none. Total observation statuses: **13 REPLICATED / 0 OBSERVED / 6 REFUTED**. Active candidates remain 0; no CAND ID assigned. Detailed bounded record: `experiments/E013_D1_41_SYNTHESIS_2026-10-08.md`; `research/CONJECTURE_REGISTER.md`, `research/OBSERVATION_LEDGER.md` and `research/SEARCH_QUEUE.md` cross-link this closure.
+
+Frozen E013 D1-38 specification, D13/H13 source/reports and narrow evidence byte identity are preserved; evidence Git blobs D13 `88f663084dbe51519627711304d122cc9c223477`, H13 `d09ef554b0cd59d3d730a3a44aa989bbc2955402`. D13=[72_000_000,73_000_000) remains discovery-consumed, H13=[74_000_000,75_000_000) one-shot replication-consumed; A13=[144_000_000,145_000_000), G13-pre=[71_000_000,72_000_000), G13-mid=[73_000_000,74_000_000), H12/A12/A8/A3 and all historical holdout/reserved/guard/calibration ranges remain untouched/uninspected by D1-41. Frozen historical metadata-only disjointness/provenance remain unchanged. SQ-012 closed; SQ-005 closed/quarantined.
+
+No prime generation or primality queries, E013 reruns, D13/H13/D12 per-anchor mining, new features, statistical reinterpretation, mechanism, proof, adversarial test, prior-art/collision/literature/novelty or calibration transfer. Documentation and exact Git blob consistency checks only; code lint/tests/generation not applicable. No operational failure; `research/FAILURE_LEDGER.md` unchanged. Owner decision blocker: none.
+
+**Next materially different unit:** D1-42 / SQ-014 independently freeze one new exact blind novelty family and safe disjoint partition, **design only**. The single runnable prompt is `NEXT_SESSION_PROMPT.md`.
