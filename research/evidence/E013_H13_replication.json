@@ -1,0 +1,162 @@
+{
+  "anchor_summary": {
+    "anchor_count": 266666,
+    "composite_count": 211616,
+    "composite_counts_by_R30": [
+      26446,
+      26383,
+      26472,
+      26417,
+      26465,
+      26451,
+      26513,
+      26469
+    ],
+    "prime_count": 55050,
+    "prime_counts_by_R30": [
+      6887,
+      6950,
+      6861,
+      6916,
+      6868,
+      6882,
+      6821,
+      6865
+    ]
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H13",
+    "range": [
+      74000000,
+      75000000
+    ]
+  },
+  "experiment": "E013",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 8661,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 74000000,
+      "stop": 75000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "153c2bc814b847b195237a80608f29911daa8bd0",
+  "parameters": {
+    "class_floor": 100,
+    "mixed_class_floor": 6,
+    "occurrence_floor": 32,
+    "polynomial_map": "y^2+1 mod x",
+    "population_floor": 1000,
+    "reduced_residues": [
+      1,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "seed": 2,
+    "steps": 10,
+    "tail_length": 7,
+    "tail_start": 4,
+    "wheel": 30,
+    "width": 1000000
+  },
+  "partition": [
+    {
+      "name": "G13-pre",
+      "range": [
+        71000000,
+        72000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D13",
+      "range": [
+        72000000,
+        73000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G13-mid",
+      "range": [
+        73000000,
+        74000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H13",
+      "range": [
+        74000000,
+        75000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A13",
+      "range": [
+        144000000,
+        145000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "replications": [
+    {
+      "aggregate_enrichment_numerator": 51261152,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "O1",
+      "frozen_target": 3,
+      "highest_competing_prime_count": 22889,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "observation": "OBS-018",
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "status": "REPLICATED",
+      "strict_unique_target_mode": true,
+      "target_composite_count": 88528,
+      "target_prime_count": 23272
+    },
+    {
+      "aggregate_enrichment_numerator": 28777650,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "O2",
+      "frozen_target": 2,
+      "highest_competing_prime_count": 17244,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "observation": "OBS-019",
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "status": "REPLICATED",
+      "strict_unique_target_mode": true,
+      "target_composite_count": 80491,
+      "target_prime_count": 21075
+    }
+  ],
+  "validation": {
+    "R30_partition_failure_count": 0,
+    "collision_or_shape_failure_count": 0,
+    "family_identity_failure_count": 0,
+    "fixed_prefix_or_tail_failure_count": 0,
+    "frequency_or_population_failure_count": 0,
+    "orbit_recurrence_or_bound_failure_count": 0,
+    "plan_failure_count": 0,
+    "range_or_anchor_failure_count": 0
+  }
+}
