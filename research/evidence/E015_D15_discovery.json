@@ -1,0 +1,220 @@
+{
+  "anchor_summary": {
+    "composite_count": 211595,
+    "composite_counts_by_R30": [
+      26433,
+      26491,
+      26505,
+      26426,
+      26494,
+      26438,
+      26473,
+      26335
+    ],
+    "conditioned_anchor_count": 266616,
+    "excluded_zero_remainder_count": 50,
+    "prime_count": 55021,
+    "prime_counts_by_R30": [
+      6890,
+      6836,
+      6822,
+      6907,
+      6835,
+      6887,
+      6853,
+      6991
+    ],
+    "wheel_anchor_count": 266666
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D15",
+    "range": [
+      81000000,
+      82000000
+    ]
+  },
+  "experiment": "E015",
+  "families": [
+    {
+      "aggregate_enrichment_numerator": -8286767,
+      "aggregate_enrichment_positive": false,
+      "class_floor_passed": true,
+      "family": "R1",
+      "highest_competing_count": 172,
+      "mechanically_eligible": false,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 54487,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 209692,
+      "unique_mode_signature": 9
+    },
+    {
+      "aggregate_enrichment_numerator": -8286767,
+      "aggregate_enrichment_positive": false,
+      "class_floor_passed": true,
+      "family": "R2",
+      "highest_competing_count": 172,
+      "mechanically_eligible": false,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 54487,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 209692,
+      "unique_mode_signature": [
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "aggregate_enrichment_numerator": 30359329,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "R3",
+      "highest_competing_count": 13608,
+      "mechanically_eligible": true,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 13781,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 52446,
+      "unique_mode_signature": [
+        9,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 9056,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 81000000,
+      "stop": 82000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "344b237bde1427b287a7fb8dd10cd3f56d327574",
+  "parameters": {
+    "class_floor": 100,
+    "denominator_offsets": [
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "mixed_class_floor": 6,
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "quartile_denominator": 4,
+    "quartile_edges_num": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "residues_R30": [
+      1,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "wheel": 30,
+    "width": 1000000,
+    "zero_remainder_excluded": true
+  },
+  "partition": [
+    {
+      "name": "G15-pre",
+      "range": [
+        80000000,
+        81000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D15",
+      "range": [
+        81000000,
+        82000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G15-mid",
+      "range": [
+        82000000,
+        83000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H15",
+      "range": [
+        83000000,
+        84000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A15",
+      "range": [
+        162000000,
+        163000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [
+    {
+      "aggregate_enrichment_numerator": 30359329,
+      "family": "R3",
+      "mixed_class_count": 8,
+      "target_composite_count": 52446,
+      "target_prime_count": 13781,
+      "target_signature": [
+        9,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "validation": {
+    "R30_population_failure_count": 0,
+    "anchor_or_label_failure_count": 0,
+    "frequency_or_mode_failure_count": 0,
+    "histogram_identity_failure_count": 0,
+    "plan_failure_count": 0,
+    "quartile_boundary_failure_count": 0,
+    "serializer_or_duplicate_failure_count": 0,
+    "shell_or_division_failure_count": 0,
+    "signature_domain_failure_count": 0,
+    "zero_condition_failure_count": 0
+  }
+}
