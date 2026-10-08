@@ -644,8 +644,20 @@ E013 design, D13/H13 narrow output, code, reports and criteria remain immutable.
 
 Stage: discovery / design-only planned.
 
-Status: **QUEUED FOR D1-42; NO FROZEN REPRESENTATION OR NEW D/H/A RANGES; NO PRIME GENERATION AUTHORIZED.**
+Status: **FROZEN AT D1-42 / E014; D14 UNEXECUTED; ONLY D1-43 D14 RUN NEXT.**
 
 Choose and freeze exactly one independently selected, exact, genuinely different target-agnostic representation family with a complete finite transform grammar, controls, promotion and one-shot replication gates, deterministic narrow serialization and fail-closed future segmented-generation specification. Freeze new half-open D/H/A/guard roles using only historical exclusion/provenance metadata, including consumed E013 D13/H13, untouched A13 and all other historic protected/calibration ranges. No mining of E013/D12 or SQ-005 outputs to choose the design.
 
 **D1-42 is DESIGN ONLY:** no implementation/tests, new prime data or primality query, observation/candidate promotion, A13 or protected-range execution, mechanism, proof, adversarial, or prior-art/collision work. See `NEXT_SESSION_PROMPT.md`.
+
+### D1-42 / SQ-014 exact design freeze — 2026-10-08
+
+**Frozen sole E014:** `experiments/E014_PRIMITIVE_THREE_CUBE_INCIDENCE_SHAPES.md`. Positive unordered primitive three-cube representations a³+b³+c³=x on common represented Q=30-admissible prime/composite anchors; shared-summand representation incidence graph. Exactly two fixed capped integer shapes: I1 representation multiplicity, I2 largest connected component size. Nonpromotable forced controls: gcd-one primitive normalization, unordered permutation collapse, congruence feasibility mod9, fixed R90* 16-cell label artefacts, representation conditioning, I2<=I1, canonical frequency conservation. Theory-informed generic additive-cubic/congruence conventions explicitly labelled. Not a retune of E013 and not E012 quadratic norm brackets; no E012/E013 outcome, SQ-005 calibration object or hidden source informed selection.
+
+**New half-open roles:** G14-pre=[75M,76M), D14=[76M,77M), G14-mid=[77M,78M), H14=[79M,80M), A14=[152M,153M). A4=[78M,79M) skipped as protected, not reallocated. First three unused aligned bands after consumed H13; next free H14 after A4; A14=2 L_D14. 53 historical named intervals + E013 five roles + six E005 maximum calibration segments = 64 exclusions; five new roles checked against each exclusion and pairwise: **330 exact integer tests; zero intersections**. H12/A12/A8/A3, D13/H13, A13, G13-pre/G13-mid and every historical guard/adversarial/held-back/calibration region protected.
+
+**Predeclared promotion:** per-label represented floor 1000, per-R90* class each-label floor 10, target strict unique prime mode (ties fail), occurrence >=32, mixed-cell floor 12/16, exact positive class enrichment in >=10/16, positive aggregate integer enrichment and zero validation failures. Full exact set-based duplicate suppression in I1<I2 order, max two, no fallback. H14 only on OBS and committed unchanged I-family/signature criteria; A14 separate authorization. Canonical narrow JSON allowlist, two-call per-phase positive-allowlist supports D14=[0,8775)+segmented [76M,77M), H14=[0,8945)+[79M,80M), A14=[0,12370)+[152M,153M). D1-43 must separately checkpoint source/test and exact command, pass mandatory synthetic semantic/poison tests, repeat identical D14 output bytes/hash before allowlisted inspection, and stop after promotion/closure.
+
+**D1-42 was design-only**: no code/tests or prime generator implemented or run, no prime query, D14 output, OBS/CAND, H14/A14 inspection, E012/E013 mining, literature/collision/novelty work, mechanism/proof/adversarial or calibration transfer. SQ-013 stays CLOSED/NO CANDIDATE and OBS-018/019 REPLICATED; no owner blocker.
+
+**Next bounded action:** D1-43 / SQ-014 D14-only exact frozen evaluator/test implementation and discovery execution. H14/A14 remain untouched.

@@ -4,14 +4,14 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-41 / SQ-013 CLOSED: NO CANDIDATE CREATED; OBS-018/019 REPLICATED; D1-42 / SQ-014 DESIGN-ONLY NEXT; A13 UNTOUCHED**
+**DISCOVERY-1 — D1-42 / SQ-014 DESIGN FROZEN; D1-43 D14 EXECUTION NEXT; SQ-013 CLOSED / NO CANDIDATE; OBS-018/019 REPLICATED; A13/H14/A14 UNTOUCHED**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-012 AND SQ-013 CLOSED; SQ-014 DESIGN-ONLY QUEUED; A13 UNTOUCHED | D1-42 independently freezes a new blind novelty representation; no prime generation |
+| Pattern discovery | OPEN / SQ-012 AND SQ-013 CLOSED; SQ-014 FROZEN / D14 UNEXECUTED; A13/H14/A14 UNTOUCHED | D1-43 may execute only frozen E014 D14 after source/test/command checkpoint and validation |
 | Observation promotion | OPEN / 13 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-018 and OBS-019 both passed the immutable H13 criteria; no candidate promoted |
 | Candidate conjecture | OPEN / NONE PROMOTED | D1-41 concluded NO CANDIDATE CREATED; design-only SQ-014 is next |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -444,3 +444,17 @@ Frozen E013 D1-38 specification, D13/H13 source/reports and narrow evidence byte
 No prime generation or primality queries, E013 reruns, D13/H13/D12 per-anchor mining, new features, statistical reinterpretation, mechanism, proof, adversarial test, prior-art/collision/literature/novelty or calibration transfer. Documentation and exact Git blob consistency checks only; code lint/tests/generation not applicable. No operational failure; `research/FAILURE_LEDGER.md` unchanged. Owner decision blocker: none.
 
 **Next materially different unit:** D1-42 / SQ-014 independently freeze one new exact blind novelty family and safe disjoint partition, **design only**. The single runnable prompt is `NEXT_SESSION_PROMPT.md`.
+
+## D1-42 / SQ-014 E014 independent design-only freeze — 2026-10-08
+
+**FROZEN / NO E014 DATA GENERATED.** Exactly one separate family, **E014 primitive positive three-cube additive-incidence shapes**, is frozen in `experiments/E014_PRIMITIVE_THREE_CUBE_INCIDENCE_SHAPES.md`. Primitive unordered positive gcd-one triples a<=b<=c, a³+b³+c³=x, give one finite representation graph per Q=30 admissible represented anchor, with edges for shared summand values. Exactly two promotable capped integer signatures are I1 number of primitive representations and I2 size of largest shared-summand graph component. Mod9 feasibility, primitive normalization, graph identities, representation conditioning and R90* 16-class controls are validation/artefact controls only. The additive cubic incidence primitive is qualitatively distinct from every E001–E013 family; the cubes, normalization, wheel and modular conventions are **explicitly generic theory-informed**, not inferred from E012/E013 outcomes, E005/SQ-005 objects, hidden targets or literature.
+
+Provenance-only frozen half-open bands: G14-pre=[75_000_000,76_000_000), D14=[76_000_000,77_000_000), G14-mid=[77_000_000,78_000_000), H14=[79_000_000,80_000_000), A14=[152_000_000,153_000_000). H14 skips **already-protected A4=[78_000_000,79_000_000)**; A14=2*L_D14. Metadata-only full 53 older named intervals + five E013 roles (including consumed D13/H13 and untouched A13/guards) + six E005 maximum segments = 64 exclusions: **330 exact half-open comparisons, zero overlaps** including ten internal E014 pairs. No reserved/held-back interval was treated as available. D13/H13 remain consumed; A13=[144M,145M), G13-pre=[71M,72M), G13-mid=[73M,74M), H12/A12/A8/A3 and every historical protected/guard/calibration range remain untouched and unchanged.
+
+Frozen mandatory gates: same represented prime/composite anchor domain; both labels >=1000, >=10 of both labels in **each** of 16 R90* controls, strict unique prime mode (no tied fallback) among signatures {1,2,3,4}, target occurrences >=32, >=12 fully mixed classes, >=10 strictly positive per-class exact enrichment numerators, positive whole-domain exact enrichment, zero validation failures. Strict exact prime-anchor support-set duplicate suppression retains I1 before I2, hard cap two. The unchanged same-family/same-target H14 one-shot criterion must be committed **before** any H14 generation; no eligible D14 observation means H14 untouched. Narrow deterministic aggregate-only JSON excludes per-anchor/triple/graph/support/frequency-table output.
+
+Only **future** phase-specific positive-allowlist low whole-prefix + segmented high targets: D14 [0,8775)+[76M,77M), later H14 [0,8945)+[79M,80M), later A14 [0,12370)+[152M,153M). Exact isqrt(U−1) and integer cube bounds, malformed/off-phase/historical/calibration poison plans, hand-checkable synthetic examples, committed byte-verified evaluator/tests and exact command, followed by twice-byte-identical D14 execution before inspection, are mandatory in D1-43; **none was executed or implemented in D1-42**.
+
+D1-42 performed only exact interval/definition arithmetic and document consistency checks; no prime generation, primality calls, test/lint, new output, OBS/CAND ID, protected-band use, E012/E013 output mining, calibration transfer, mechanism, proof, adversarial or prior-art/collision/literature/novelty search. Existing E013 evidence/code/criteria and all observation/conjecture/failure statuses remain unchanged. SQ-013 CLOSED / NO CANDIDATE; OBS-018/019 remain REPLICATED; active candidates 0; SQ-005 CLOSED/QUARANTINED. No owner blocker.
+
+**Next distinct unit:** D1-43 / SQ-014 frozen **D14-only execution** with independently checkpointed source/tests/complete command, pre-generation tests and exact guarded plan, identical-command byte replay, mechanical I1/I2 precursor gates and H14 criterion freezing only if eligible. Stop before H14/A14 or any downstream work.
