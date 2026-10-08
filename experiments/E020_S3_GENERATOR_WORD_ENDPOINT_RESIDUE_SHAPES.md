@@ -1,0 +1,109 @@
+# E020 — Frozen Noncommutative S3 Generator-Word Endpoint Residue Shapes
+
+**Unit:** DISCOVERY-1 / D1-60 / S062 / SQ-024 / 2026-10-08  
+**Disposition:** Exactly ONE independent, source-free, prime-label-blind family **FROZEN AS DESIGN ONLY**. E020 has no source, test, run command, prime computation, result, OBS or CAND.  
+**Epistemic status:** UNAUDITED representation, not historical novelty, a number-theoretic assertion, an observation, a mechanism or a proof. Future numerical phases require separate authorisation.
+
+## 1. Prime-independent combinatorial primitive — all definitions frozen before data
+
+Let S3 be the six permutations of {1,2,3}. Encode a permutation by its three images and fix the complete **ordered state list** P=(123,132,213,231,312,321) in lexicographic image order. Composition is `(g h)(i)=g(h(i))` (right-hand permutation applied first); the identity is `e=123`. Freeze exactly two distinct generator letters:
+- `a=213`, the transposition (1 2);
+- `b=231`, the 3-cycle (1 2 3).
+
+A word `w=(w_1,...,w_n)` of length n over the ordered alphabet `(a,b)` has the ordered group product `w_1 w_2 ... w_n` by the fixed composition rule. The empty product is e. Let `N_n(g)` be the exact number of the `2^n` words whose product is g, for every g in P. Thus `N_0(e)=1`, all other `N_0(g)=0`, `N_1(a)=N_1(b)=1`, and all other `N_1(g)=0`.
+
+The *sole* recurrence and evaluation semantics are
+`N_(n+1)(h)=N_n(h a^(-1))+N_n(h b^(-1))` for each h in P, n>=0.
+Equivalently, the group ring of S3 has basis P, unit [e], ordered noncommutative product `[g][h]=[g h]`, and `F=[a]+[b]`; its six coefficients in `F^n` are precisely `N_n(g)`. Exact convolution is `(u*v)(h)=sum_(g,k in P:gk=h)u(g)v(k)`. This is not a random walk sample or a count of prime-related objects.
+
+For integer anchor x>=1, compute `F^x` in `(Z/xZ)[S3]` by ordinary **binary exponentiation**, with six modular coefficients and the fixed 6x6 multiplication table implied by the permutation definition. Use only nonnegative canonical remainders `A_x=N_x(a) mod x` and `B_x=N_x(b) mod x` in `[0,x)`. For x=1 both residues are zero. Whole-vector convolution requires at most 36 products per multiplication and O(log x) multiplications, not 2^x word enumeration or an x-step high-anchor loop. Neither primality nor prior experiments enter this evaluator. The endpoint pair is fixed by the **two alphabet letters themselves**, not by any observed output or chosen exceptional group state. No other group, generators, word length rule, endpoint, character, class aggregate, eigenvalue, inverse, trace, group-order invariant, or derived family is permitted.
+
+**Independent-representation check:** This is noncommutative finite-group **word-product enumeration** under repeated independent ordered generator choices. It is not E019's acyclic spanning-subgraph/boundary-connectivity enumeration, E018's full-row tile compositions, E017's circular deletion survivor, E016's factorial valuation/carry, E015's shell division, E014's three-cube incidence, E013's short deterministic nonlinear polynomial residue orbit, E012's norm bracketing, E011's finite-field factor-degree partition, E010's quadratic-surd continued-fraction cycle, E009's multiplicative orders in the anchor-dependent unit group and covering antichains, E008's anchor digit-word reading, E007's x±1 factorization, or E001–E006's prime-index/gap/residue/occupancy/prime-pair/refinement objects. In particular the group and its fixed generators do **not** depend on x, and the represented object is the *number of all words with each prescribed product*, not an orbit period/order or a relabelled graph spanning forest. Generic modular fast powering is an evaluator, not a shared represented primitive. Independence does not assert mathematical or historical originality. There was **no selection from prior-family per-anchor output, target, support, frequency, comparator margin, failure shape, SQ-005 calibration object/source or prime labels**.
+
+## 2. Frozen five-role numerical partition and complete exclusions — metadata only
+
+All roles are half-open. Width `W=1_000_000`. Take the first four consecutive million-aligned units **at or beyond the exclusive end of already-consumed H19=[101M,102M)**, after checking *named roles alone*, in the order G20-pre, D20, G20-mid, H20. Use the inherited independent convention `lower(A20)=2*lower(D20)` subject to separate disjointness. None of these role assignments authorises traversal, primality checks or generation.
+
+| Role | Exact interval | Permission in this unit |
+|---|---|---|
+| G20-pre | [102_000_000,103_000_000) | permanent untouched, non-target guard |
+| D20 | [103_000_000,104_000_000) | metadata discovery role only; future SQ-025 may independently authorise |
+| G20-mid | [104_000_000,105_000_000) | permanent untouched, non-target guard |
+| H20 | [105_000_000,106_000_000) | untouched one-shot holdout; only future committed OBS may separately authorise |
+| A20 | [206_000_000,207_000_000) | untouched independent adversarial reserve; never automatic |
+
+**Named provenance inventory, not empirical mining:** 53 individually named E013 historical early intervals (22 previously generated/consumed/contaminated, including retired A0; 14 held-back/reserved; 17 non-target guards), plus all seven five-role G/D/G/H/A families E013–E019 (35 intervals), plus six E005 quarantined maximum calibration segments = **94 historical named exclusions**. The E005 maximum segments are [128_000_000,129_048_576), [256_000_000,257_048_576), [512_000_000,513_048_576), [1_024_000_000,1_025_048_576), [2_048_000_000,2_049_048_576), [4_096_000_000,4_097_048_576); each contains the five independent same-start widths 4_096,16_384,65_536,262_144,1_048_576 (all **30 nested** protected intervals). The full 53 named roles are enumerated as pure interval metadata in the provenance-only section of `experiments/E013_MODULAR_QUADRATIC_ORBIT_SHAPES.md`; the five-role E013–E019 ranges occur in their **frozen designs**, not empirical reports. Historical H12/A12/A8/A3, A18/G18, D19/H19 (permanently consumed), G19-pre/G19-mid, A19=[198M,199M), and all others retain their exact original roles and permissions.
+
+For half-open intervals `[a,b)` and `[c,d)`, overlap iff `a<d && c<b`. Independent literal integer-role audit: **94*93/2=4,371/4,371** old/old pairs; **5*94=470/470** new/old pairs; **5*4/2=10/10** new/new pairs, each with *zero* intersections. **30/30** nested E005 intervals are contained in their respective listed maxima; **5*30=150/150** explicit new/nested comparisons yield no intersection. New W-alignment, strict sequence and `2*103_000_000=206_000_000` checked. New historical exclusions found later MUST halt before a generator, not silently relocate a frozen interval. These checks involve only explicitly named integer endpoints: **no interval was entered or measured**.
+
+The **prospective, unexecuted** allowed direct-segment plans below follow only exact integer square roots. For U exclusive, low base support is `[0,isqrt(U-1)+1)`; verify `s^2<=U-1<(s+1)^2` with integers:
+- D20 U=104_000_000: isqrt(103_999_999)=10_198; prospective low `[0,10_199)` then **only** direct segmented D20.
+- H20 U=106_000_000: isqrt(105_999_999)=10_295; prospective low `[0,10_296)` then **only** direct segmented H20, in a distinct later one-shot unit if target/criterion already committed.
+- A20 U=207_000_000: isqrt(206_999_999)=14_387; prospective low `[0,14_388)` then **only** direct segmented A20, requiring independent adversarial authority.
+
+All three plans and the off-phase/guards are **definitions of future allowlists**, not runnable commands, generator permissions or observations in S062.
+
+## 3. Label-blind anchor universe and exactly one four-state signature
+
+Let the ordered Q210 reduced residues be frozen as
+`R210=(1,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,121,127,131,137,139,143,149,151,157,163,167,169,173,179,181,187,191,193,197,199,209)`.
+
+For any **separately authorised** B=[L,U), define `X_B={integer x: L<=x<U and gcd(x,210)=1}` **before** looking at any prime labels or at A_x/B_x. There are 48 complete ordered classes, one for each r in R210, no feature-conditioned sampling, subgroup, synthetic balancing, anchor drop or reweighting. Only after the exact same representation is computed for **all** wheel anchors may the label oracle from the **single directly segmented target band** partition X_B into `P_B={x in X_B:x prime}` and `C_B=X_B\P_B`. No other new high prime/primality operation is allowed.
+
+The one **and only** promotable family is `W1`. Compute canonical group-word residues `A_x` and `B_x` first, set `u_x=(2*A_x)//x` and `v_x=(2*B_x)//x`, both in {0,1}, and set the **joint** signature `t_x=2*u_x+v_x`. Its **entire ordered domain** is (0,1,2,3), including zero-count comparator states. Bin midpoint equality is assigned to upper half by integer division. No alternative bins, group endpoint, independent marginal, differential count, condition on prime label, rank/ratio, entropy, wider palette or new feature is permitted. Both residues are evaluated identically on prime and composite anchors. The inherited wheel, widths, gates and half-bin notation are **generic source-free protocol conventions**, not chosen by any older empirical target/margin.
+
+Nonpromotable mathematical and artifact controls: uniqueness/closure/associativity of the six permutation states and exact generator entries; word-product convention; `N_0` and `N_1`; complete recurrence/convolution equivalence and coefficient nonnegativity in tiny direct checks; `sum_(g in P)N_n(g)=2^n` for ordinary integer counts and corresponding modular sum for the high evaluator; canonical residue limits; two complete half-bins and the four-state encoding; label-blind Q210, both label totals and all residue-class/signature conservation; any forced parity, group-symmetry, conjugacy, fixed-generator, cyclic-word, modulus, wheel, mode-ranking or tautological artifact. These **cannot** be promoted; their verification does not establish significance or a prime law. No symmetry/prime theorem is claimed or explored in S062.
+
+## 4. Objective one-family promotion, exact controls and frozen one-shot holdout refutation grammar
+
+For all four t and all 48 r, store internal whole-population integers `nP(t), nC(t), NP, NC, NP_r, NC_r, nP_r(t), nC_r(t)`; keep complete zero-inclusive comparator frequencies. Define exact signed numerators
+`E(t)=nP(t)*NC-nC(t)*NP` and `E_r(t)=nP_r(t)*NC_r-nC_r(t)*NP_r`.
+A class r is fully mixed for t exactly when each of `nP_r(t)`, `NP_r-nP_r(t)`, `nC_r(t)`, `NC_r-nC_r(t)` is **strictly positive**. Zero E or E_r is not positive.
+
+Only the strict unique maximal **prime-frequency** W1 signature t* among the entire fixed (0,1,2,3) may be promoted after future discovery, and ONLY if all conditions hold:
+1. `NP>=1000` and `NC>=1000`; every ordered r has `NP_r>=10` and `NC_r>=10`.
+2. One and only one t has prime count strictly greater than *every* other signature; any tie means **NO TARGET** and no tie-breaking promotion.
+3. `nP(t*)>=32` (fixed protocol floor `ceil(sqrt(1000))`).
+4. At least 36/48 residue classes fully mixed for the **same** t*.
+5. `E(t*)>0`, with at least 30/48 `E_r(t*)>0` exactly.
+6. All **ten** mandatory independent validation counters are integer zero; all positive generator and canonical evidence checks pass.
+7. No proved definitional, group, symmetry, wheel or encoding tautology is promoted. A mechanical pass alone is neither a mechanism nor CAND.
+
+For nonpromotable display diagnostics only, sort by descending exact prime frequency, then ascending signature integer; a tied maximum nevertheless fails. Internally retain the exact integer prime-anchor support `S={(x in P_D20):t_x=t*}` solely for **exact equality** duplicate suppression, never serialize support, hashed membership, per-anchor objects or a full histogram. Hard cap **ONE** eligible W1 observation. A duplicate within W1 is suppressed by exact set equality (not hashes, size or count), first W1 only, no replacement, fallback or second candidate. If no eligible nontrivial W1 signature, close future discovery **NO ELIGIBLE OBSERVATION** with H20/A20/guards untouched and no OBS/CAND.
+
+If and only if a future **separately authorised** D20 establishes an eligible signature, permanently commit its **exact integer t*** and this entire pre-existing **unchanged** H20 criterion into an OBS record **BEFORE ANY H20 GENERATION**:
+
+> Evaluate the identical group S3, image-ordered P, e=123, a=213 and b=231, right-appended word product, recurrence/convolution, `F^x` mod x, exact ordered pair `(N_x(a) mod x,N_x(b) mod x)`, the *same* four-state joint W1 half-bin, and the *same frozen target integer* t* on **all** wheel anchors of H20=[105_000_000,106_000_000), with identical Q210 and all 48 R210 classes. t* must be the **strict unique** prime-count mode versus all other 3 states; any tie, absent t*, stronger competitor or fallback **REFUTES**. Require both total label counts >=1000, every class both label counts >=10, target prime occurrence >=32, >=36/48 fully mixed classes, exact E(t*)>0, >=30/48 positive E_r(t*), all ten zero validators, identical exact integer support equality and cap-one grammar, strictly typed canonical evidence, authorised exact complete generator plan and entire twice-identical-command whole-file/raw-SHA replay checks. Any failed gate, output/type/serializer/plan mismatch, forbidden generator boundary, raw replay mismatch, missing target or changed definition **REFUTES in ONE attempt**; no H20 rediscovery, new target, feature/bin/wheel/group/generator/endpoint/threshold/criterion repair, alternate interval or second attempt. A20 remains separately prohibited regardless of H20 result.
+
+This frozen criterion is a **conditional future falsification rule** only: **no target** has been observed or preselected in S062.
+
+## 5. Future aggregate-only canonical evidence grammar — no artifact now
+
+Future authorised D20 or H20 output is strictly ASCII UTF-8 canonical JSON with sorted keys, indent=2, `ensure_ascii=True`, precisely one final LF; no timestamps/floats/NaN/host data. Exactly ten top-level keys: `experiment, implementation_commit, band, partition, parameters, generation_plan, anchor_summary, validation, families, promotions`. Reject any extra/missing key.
+
+- `experiment`: literal `"E020"`; `implementation_commit`: **actual** independently precommitted/remote-verified source/test SHA, never a guessed design-time SHA.
+- `band`: only `name`, `range` (two exact integer endpoints), `interval_semantics="half-open"`. `partition`: exactly five table-ordered entries, each with only `name,range,role`, matching section 2.
+- `parameters`: **exactly** `width=1000000`, `wheel=210`, ordered array `residues_R210` (all 48 above), ordered permutation strings `group_states=["123","132","213","231","312","321"]`, `composition="(g h)(i)=g(h(i))"`, `identity="123"`, `generators=["213","231"]`, `word_length="anchor"`, `endpoint_states=["213","231"]`, `convolution="noncommutative-group-ring"`, `remainder_modulus="anchor"`, `joint_half_bins=2`, `population_floor=1000`, `class_floor=10`, `occurrence_floor=32`, `mixed_class_floor=36`, `positive_class_floor=30`, `strict_global_enrichment=true`. No other parameter key.
+- `generation_plan`: exactly two **ordered** objects with only `purpose,start,stop,strategy`; literal positive allowlist for the independently authorised phase (section 6).
+- `anchor_summary`: only `wheel_anchor_count`, `prime_count`, `composite_count`, `prime_counts_by_R210`, `composite_counts_by_R210`; last two arrays each have 48 nonnegative integers in R210 order.
+- `validation`: exactly these ten mandatory integer nonnegative zero counters: `plan_failure_count`, `interval_exclusion_failure_count`, `group_definition_failure_count`, `word_convolution_failure_count`, `remainder_bin_failure_count`, `wheel_label_partition_failure_count`, `frequency_conservation_failure_count`, `signed_control_failure_count`, `mode_duplicate_gate_failure_count`, `serializer_failure_count`.
+- `families`: exactly one W1 object with only `family="W1"`, `prime_mode_count`, `highest_competing_count`, `strict_unique_prime_mode`, `unique_mode_signature` (0..3 or null on tie), `target_composite_count` (integer or null on tie), `population_floor_passed`, `class_floor_passed`, `occurrence_floor_passed`, `mixed_class_count` (integer or null), `mixed_class_floor_passed`, `positive_class_count` (integer or null), `positive_class_floor_passed`, `aggregate_enrichment_numerator` (integer or null), `aggregate_enrichment_positive`, `mechanically_eligible`. Any tie forces target-dependent integers to null and target-dependent booleans false; no alternative state.
+- `promotions`: empty array or exactly one W1 object with only `family`, `target_signature`, `target_prime_count`, `target_composite_count`, `mixed_class_count`, `positive_class_count`, `aggregate_enrichment_numerator`; nonempty only after every frozen criterion passes and exact no-duplicate/cap. No OBS ID in the pre-freeze evidence.
+
+All maps have exact key sets; bools must not masquerade as integers; integers have no bool/float substitutes; arrays must have exact declared shape/order; null appears only where explicitly allowed. The serializer strictly **forbids prime lists, per-anchor x values, full signature count tables, group-vector states, modular group-word residues, per-class target histograms, equality supports or hashes, high-band reconstruction and any extra data**. Internally discard all per-anchor state once its aggregate and exact duplicate check are finished. The only allowable evidence is narrow aggregate-only and provenance metadata.
+
+Ten independently checked zero validators, respectively: (1) complete ordered phase-positive plan plus poison-call fail-closed checks, (2) 94 original named exclusions, five new roles, 30 E005 nested containments, (3) all six group permutations, exact noncommutative composition, alphabet and identity, (4) tiny n=0..4 direct word enumeration vs recurrence, convolution and binary powering plus sum=2^n, with **synthetic n only**, (5) exact canonical mod-x residues/two half-bins, (6) all Q210/48 class wheel labels and complete partition, (7) all four signatures/48 classes summed for each label, (8) signed whole/per-class and fully mixed arithmetic, (9) strict unique/tie/refutation and exact integer support/cap, (10) canonical strict schema/type/no-extra-field/raw-byte rules. Fail before interpreting any aggregate on any validator, schema, complete-plan or raw equality violation.
+
+## 6. Never-executed positive-plan and phase firewall
+
+Before ANY separate future generator, source plus focused synthetic/poison tests must be committed and remotely verified byte-for-byte; the complete exact executable command must also be separately committed and remotely verified. Inspect and validate the **entire positive plan and all named/nested/off-phase exclusions BEFORE the first low generator** and at both generator boundaries. For one separately authorised phase only, ordered generator entries must be exactly:
+`(base_sieve_support,0,isqrt(U-1)+1,whole_prefix)` THEN `(segmented_target,L,U,direct_segmented)`.
+Thus D20 permits ONLY [0,10199) then [103M,104M) in a separate D1-61 unit; H20 ONLY [0,10296) then [105M,106M) *if committed OBS* in a different one-shot unit; A20 ONLY [0,14388) then [206M,207M) if independently authorised later. High whole prefixes, helper-induced high generation, every historical D/H/guard/held-back/A/E005 maximum or nested range, split/shortened/expanded/shifted/reordered/extra/indirect calls, and per-anchor primality checks are prohibited before any generator enters. Full command must be executed identically **twice on one output path**; seal the first complete raw bytes uninterpreted and require full-byte `cmp` and independent complete SHA-256 equality **BEFORE** any narrow-descriptive inspection. Failure means stop without mining output. **This section is prospective design, NOT a command or execution permit from S062.**
+
+## 7. D1-60 design-only validation, limitations and handoff
+
+Non-generative checks performed: six lexicographically ordered S3 image permutations distinct, a=213 and b=231 distinct, fixed right-appending convolution/recurrence and formal 2^n conservation; two generator endpoints uniquely defined and four bins complete by elementary integer bounds; 53+35+6=94 preserved historical named exclusions, old/old 4,371, new/old 470, new/new 10 all nonoverlapping, nested E005 30/30 contained and new/nested 150/150 disjoint, exact low-support integer isqrt 10_198 / 10_295 / 14_387 and doubling A20 rule. No group-word statistic was computed for high or prime-labelled anchors. These validate **definitions and metadata only**, not a future prime claim or theorem.
+
+**SQ-024 closure:** FROZEN exactly one independent family E020, without a code file, test, runner, command, high-range statistic, prime/primality query, D19/H19 replay, protected-band access, OBS/CAND, altered OBS-024 criterion, new FAIL, SQ-005 unblinding, mechanism/proof, adversarial or prior-art/literature/collision/novelty activity. Incoming and outgoing programme totals remain **16 REPLICATED / 0 OBSERVED / 8 REFUTED; ZERO CAND**. D19/H19 remain consumed; A19/G19, A18/G18, all earlier roles and E005 nested intervals remain protected.
+
+Only a **new, independently bounded and authorised D1-61 / S063 / SQ-025** may implement/pin source/tests/full run command and execute D20 discovery **strictly under this unchanged family**. If mechanical D20 gating yields no eligible non-tautological observation, close without H20. No H20, A20, guards, historical interval, synthesis, mechanism, adversarial or literature operation is authorised by D1-60. No owner decision blocker.
