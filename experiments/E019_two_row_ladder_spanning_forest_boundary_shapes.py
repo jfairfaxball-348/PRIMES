@@ -331,6 +331,17 @@ def check_keys(value, fields):
         raise ValueError("unknown or missing evidence keys")
 
 
+def typed_equal(a, b):
+    """Nested strict JSON value/type equality: 1 never stands for true."""
+    if type(a) is not type(b):
+        return False
+    if type(b) is dict:
+        return set(a) == set(b) and all(typed_equal(a[k], v) for k, v in b.items())
+    if type(b) is list:
+        return len(a) == len(b) and all(typed_equal(x, y) for x, y in zip(a, b))
+    return a == b
+
+
 def exact_int(value, *, low=None, high=None):
     if type(value) is not int or (low is not None and value < low) or (high is not None and value > high):
         raise ValueError("noncanonical integer or range")
@@ -348,14 +359,13 @@ def validate_payload(o):
     if o["experiment"] != "E019" or type(o["implementation_commit"]) is not str or len(o["implementation_commit"]) != 40 or any(c not in "0123456789abcdef" for c in o["implementation_commit"]):
         raise ValueError("experiment/commit")
     check_keys(o["band"], ("name", "range", "interval_semantics"))
-    if o["band"] != {"name": "D19", "range": [99_000_000, 100_000_000], "interval_semantics": "half-open"}:
+    if not typed_equal(o["band"], {"name": "D19", "range": [99_000_000, 100_000_000], "interval_semantics": "half-open"}):
         raise ValueError("band")
-    if type(o["partition"]) is not list or o["partition"] != [{"name": n, "range": [a,b], "role": r} for n,a,b,r in ROLES]:
+    if not typed_equal(o["partition"], [{"name": n, "range": [a,b], "role": r} for n,a,b,r in ROLES]):
         raise ValueError("partition")
     check_keys(o["parameters"], PARAMETERS)
-    for k,v in PARAMETERS.items():
-        if type(o["parameters"][k]) is not type(v) or o["parameters"][k] != v:
-            raise ValueError("parameters")
+    if not typed_equal(o["parameters"], PARAMETERS):
+        raise ValueError("parameters")
     validate_plan(o["generation_plan"])
     a = o["anchor_summary"]
     check_keys(a, ("wheel_anchor_count", "prime_count", "composite_count", "prime_counts_by_R210", "composite_counts_by_R210"))
@@ -425,6 +435,8 @@ def run(output, code_commit, plan=None, *, phase="D19", entry="direct",
     if type(code_commit) is not str or len(code_commit) != 40 or any(c not in "0123456789abcdef" for c in code_commit):
         raise ValueError("invalid pinned commit")
     validate_plan(plan, phase, entry=entry)
+    if low_generator is not base_sieve or high_generator is not segment_flags:
+        raise ValueError("indirect prime helper forbidden")
     small = low_generator(plan[0]["stop"])
     validate_plan(plan, phase, entry=entry)
     flags = high_generator(plan[1]["start"], plan[1]["stop"], small)

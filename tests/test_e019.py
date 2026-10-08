@@ -163,6 +163,12 @@ def test_payload_strict_types_and_forbidden_fields():
     with pytest.raises(ValueError): e.canonical(q)
     q=copy.deepcopy(o);q['validation']['serializer_failure_count']=True
     with pytest.raises(ValueError): e.canonical(q)
+    q=copy.deepcopy(o);q['parameters']['residues_R210'][0]=True
+    with pytest.raises(ValueError): e.canonical(q)
+    q=copy.deepcopy(o);q['band']['range'][0]=True
+    with pytest.raises(ValueError): e.canonical(q)
+    q=copy.deepcopy(o);q['partition'][0]['range'][0]=True
+    with pytest.raises(ValueError): e.canonical(q)
     q=copy.deepcopy(o);q['promotions']=[{'family':'B1'}]
     with pytest.raises(ValueError): e.canonical(q)
 
