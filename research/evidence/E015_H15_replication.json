@@ -1,0 +1,166 @@
+{
+  "anchor_summary": {
+    "composite_count": 211796,
+    "composite_counts_by_R30": [
+      26482,
+      26469,
+      26471,
+      26497,
+      26460,
+      26447,
+      26493,
+      26477
+    ],
+    "conditioned_anchor_count": 266618,
+    "excluded_zero_remainder_count": 48,
+    "prime_count": 54822,
+    "prime_counts_by_R30": [
+      6841,
+      6857,
+      6856,
+      6836,
+      6869,
+      6879,
+      6834,
+      6850
+    ],
+    "wheel_anchor_count": 266666
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H15",
+    "range": [
+      83000000,
+      84000000
+    ]
+  },
+  "experiment": "E015",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 9166,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 83000000,
+      "stop": 84000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "fe98ec9c931ad153fd4cb6912c4fc6d91c235b89",
+  "parameters": {
+    "class_floor": 100,
+    "denominator_offsets": [
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "mixed_class_floor": 6,
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "quartile_denominator": 4,
+    "quartile_edges_num": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "residues_R30": [
+      1,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "wheel": 30,
+    "width": 1000000,
+    "zero_remainder_excluded": true
+  },
+  "partition": [
+    {
+      "name": "G15-pre",
+      "range": [
+        80000000,
+        81000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D15",
+      "range": [
+        81000000,
+        82000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G15-mid",
+      "range": [
+        82000000,
+        83000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H15",
+      "range": [
+        83000000,
+        84000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A15",
+      "range": [
+        162000000,
+        163000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "target": {
+    "aggregate_enrichment_numerator": -10181844,
+    "aggregate_enrichment_positive": false,
+    "class_floor_passed": true,
+    "composite_count": 52816,
+    "criterion_passed": false,
+    "family": "R3",
+    "highest_competing_prime_count": 13653,
+    "mixed_class_count": 8,
+    "mixed_class_floor_passed": true,
+    "occurrence_floor_passed": true,
+    "population_floor_passed": true,
+    "prime_count": 13623,
+    "signature": [
+      9,
+      0,
+      0,
+      0
+    ],
+    "strict_unique_prime_mode": false
+  },
+  "validation": {
+    "R30_population_failure_count": 0,
+    "anchor_or_label_failure_count": 0,
+    "frequency_or_mode_failure_count": 0,
+    "histogram_identity_failure_count": 0,
+    "plan_failure_count": 0,
+    "quartile_boundary_failure_count": 0,
+    "serializer_or_duplicate_failure_count": 0,
+    "shell_or_division_failure_count": 0,
+    "signature_domain_failure_count": 0,
+    "zero_condition_failure_count": 0
+  }
+}
