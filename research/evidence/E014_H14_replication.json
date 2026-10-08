@@ -1,0 +1,174 @@
+{
+  "anchor_summary": {
+    "composite_count": 21738,
+    "composite_counts_by_R90": [
+      1761,
+      927,
+      955,
+      1800,
+      1779,
+      982,
+      1798,
+      941,
+      991,
+      1744,
+      914,
+      1720,
+      1763,
+      957,
+      941,
+      1765
+    ],
+    "prime_count": 5529,
+    "prime_counts_by_R90": [
+      455,
+      246,
+      246,
+      445,
+      439,
+      243,
+      445,
+      271,
+      233,
+      462,
+      270,
+      443,
+      418,
+      236,
+      261,
+      416
+    ],
+    "represented_anchor_count": 27267,
+    "unrepresented_anchor_count": 239401,
+    "wheel_anchor_count": 266668
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H14",
+    "range": [
+      79000000,
+      80000000
+    ]
+  },
+  "experiment": "E014-H14-OBS020",
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 8945,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 79000000,
+      "stop": 80000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "6d5bd2d374d98fb0751b69b15bcb2a005b7f0dea",
+  "parameters": {
+    "class_floor": 10,
+    "control_modulus": 90,
+    "control_residues": [
+      1,
+      7,
+      11,
+      17,
+      19,
+      29,
+      37,
+      43,
+      47,
+      53,
+      61,
+      71,
+      73,
+      79,
+      83,
+      89
+    ],
+    "exponent": 3,
+    "mixed_class_floor": 12,
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "positive_class_floor": 10,
+    "primitive_gcd": 1,
+    "signature_cap": 4,
+    "sorted_positive": true,
+    "summands": 3,
+    "wheel": 30,
+    "width": 1000000
+  },
+  "partition": [
+    {
+      "name": "G14-pre",
+      "range": [
+        75000000,
+        76000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D14",
+      "range": [
+        76000000,
+        77000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G14-mid",
+      "range": [
+        77000000,
+        78000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H14",
+      "range": [
+        79000000,
+        80000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A14",
+      "range": [
+        152000000,
+        153000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "target": {
+    "aggregate_enrichment_numerator": 6990,
+    "aggregate_enrichment_positive": true,
+    "class_floor_passed": true,
+    "composite_target_count": 21434,
+    "family": "I2",
+    "highest_competing_prime_count": 75,
+    "mixed_class_count": 16,
+    "mixed_class_floor_passed": true,
+    "observation": "OBS-020",
+    "occurrence_floor_passed": true,
+    "population_floor_passed": true,
+    "positive_class_count": 7,
+    "positive_class_floor_passed": false,
+    "prime_target_count": 5452,
+    "replicated": false,
+    "signature": 1,
+    "strict_unique_prime_mode": true
+  },
+  "validation": {
+    "anchor_domain_failure_count": 0,
+    "cubic_sum_or_bound_failure_count": 0,
+    "incidence_graph_failure_count": 0,
+    "modulo9_feasibility_failure_count": 0,
+    "plan_failure_count": 0,
+    "population_or_frequency_failure_count": 0,
+    "serializer_or_duplicate_failure_count": 0,
+    "signature_identity_failure_count": 0,
+    "triple_normalization_failure_count": 0
+  }
+}
