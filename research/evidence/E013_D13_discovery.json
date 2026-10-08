@@ -1,0 +1,229 @@
+{
+  "anchor_summary": {
+    "anchor_count": 266666,
+    "collision_composite_count": 61,
+    "collision_prime_count": 0,
+    "composite_count": 211235,
+    "composite_counts_by_R30": [
+      26412,
+      26487,
+      26454,
+      26366,
+      26317,
+      26424,
+      26401,
+      26374
+    ],
+    "first_prime": 72000007,
+    "last_prime": 72999991,
+    "prime_count": 55431,
+    "prime_counts_by_R30": [
+      6922,
+      6847,
+      6879,
+      6967,
+      7016,
+      6909,
+      6932,
+      6959
+    ]
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D13",
+    "range": [
+      72000000,
+      73000000
+    ]
+  },
+  "experiment": "E013",
+  "families": [
+    {
+      "aggregate_enrichment_numerator": 4539190,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "O1",
+      "highest_competing_count": 23141,
+      "maximizer_count": 1,
+      "mechanically_eligible": true,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 23417,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 89155,
+      "unique_mode_is_noncollision": true,
+      "unique_mode_signature": 3
+    },
+    {
+      "aggregate_enrichment_numerator": 53422947,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "O2",
+      "highest_competing_count": 17007,
+      "maximizer_count": 1,
+      "mechanically_eligible": true,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 21420,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 80663,
+      "unique_mode_is_noncollision": true,
+      "unique_mode_signature": 2
+    },
+    {
+      "aggregate_enrichment_numerator": -16514463,
+      "aggregate_enrichment_positive": false,
+      "class_floor_passed": true,
+      "family": "O3",
+      "highest_competing_count": 4594,
+      "maximizer_count": 1,
+      "mechanically_eligible": false,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 4629,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 17938,
+      "unique_mode_is_noncollision": true,
+      "unique_mode_signature": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "aggregate_enrichment_numerator": -5411830,
+      "aggregate_enrichment_positive": false,
+      "class_floor_passed": true,
+      "family": "O4",
+      "highest_competing_count": 14654,
+      "maximizer_count": 1,
+      "mechanically_eligible": false,
+      "mixed_class_count": 8,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "prime_mode_count": 27991,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 106765,
+      "unique_mode_is_noncollision": true,
+      "unique_mode_signature": 3
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 8545,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 72000000,
+      "stop": 73000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "b9e1c7a9186cc066328022869d85793ecbdb02a5",
+  "parameters": {
+    "class_floor": 100,
+    "mixed_class_floor": 6,
+    "occurrence_floor": 32,
+    "polynomial_map": "y^2+1 mod x",
+    "population_floor": 1000,
+    "reduced_residues": [
+      1,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "seed": 2,
+    "steps": 10,
+    "tail_length": 7,
+    "tail_start": 4,
+    "wheel": 30,
+    "width": 1000000
+  },
+  "partition": [
+    {
+      "name": "G13-pre",
+      "range": [
+        71000000,
+        72000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D13",
+      "range": [
+        72000000,
+        73000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G13-mid",
+      "range": [
+        73000000,
+        74000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H13",
+      "range": [
+        74000000,
+        75000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A13",
+      "range": [
+        144000000,
+        145000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [
+    {
+      "aggregate_enrichment_numerator": 4539190,
+      "family": "O1",
+      "mixed_class_count": 8,
+      "target_composite_count": 89155,
+      "target_prime_count": 23417,
+      "target_signature": 3
+    },
+    {
+      "aggregate_enrichment_numerator": 53422947,
+      "family": "O2",
+      "mixed_class_count": 8,
+      "target_composite_count": 80663,
+      "target_prime_count": 21420,
+      "target_signature": 2
+    }
+  ],
+  "validation": {
+    "R30_partition_failure_count": 0,
+    "collision_or_shape_failure_count": 0,
+    "family_identity_failure_count": 0,
+    "fixed_prefix_or_tail_failure_count": 0,
+    "frequency_or_population_failure_count": 0,
+    "orbit_recurrence_or_bound_failure_count": 0,
+    "plan_failure_count": 0,
+    "range_or_anchor_failure_count": 0
+  }
+}
