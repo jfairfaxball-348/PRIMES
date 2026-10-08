@@ -1,0 +1,335 @@
+{
+  "anchor_summary": {
+    "composite_count": 174118,
+    "composite_counts_by_R210": [
+      3615,
+      3620,
+      3674,
+      3625,
+      3631,
+      3607,
+      3647,
+      3598,
+      3636,
+      3634,
+      3618,
+      3637,
+      3621,
+      3665,
+      3595,
+      3632,
+      3599,
+      3582,
+      3646,
+      3570,
+      3651,
+      3590,
+      3631,
+      3666,
+      3641,
+      3614,
+      3654,
+      3603,
+      3654,
+      3633,
+      3633,
+      3662,
+      3632,
+      3608,
+      3647,
+      3662,
+      3613,
+      3605,
+      3635,
+      3662,
+      3599,
+      3614,
+      3627,
+      3649,
+      3602,
+      3605,
+      3644,
+      3630
+    ],
+    "prime_count": 54452,
+    "prime_counts_by_R210": [
+      1147,
+      1142,
+      1088,
+      1137,
+      1131,
+      1155,
+      1115,
+      1164,
+      1126,
+      1128,
+      1144,
+      1125,
+      1141,
+      1097,
+      1167,
+      1130,
+      1163,
+      1180,
+      1116,
+      1192,
+      1111,
+      1172,
+      1131,
+      1096,
+      1121,
+      1148,
+      1108,
+      1159,
+      1108,
+      1129,
+      1129,
+      1100,
+      1130,
+      1154,
+      1115,
+      1100,
+      1149,
+      1157,
+      1127,
+      1100,
+      1163,
+      1147,
+      1134,
+      1112,
+      1159,
+      1156,
+      1117,
+      1132
+    ],
+    "wheel_anchor_count": 228570
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D18",
+    "range": [
+      95000000,
+      96000000
+    ]
+  },
+  "experiment": "E018",
+  "families": [
+    {
+      "aggregate_enrichment_numerator": 1162039516,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "L1",
+      "highest_competing_count": 11509,
+      "mechanically_eligible": true,
+      "mixed_class_count": 48,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 48,
+      "positive_class_floor_passed": true,
+      "prime_mode_count": 20262,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 43450,
+      "unique_mode_signature": 0
+    },
+    {
+      "aggregate_enrichment_numerator": 1351638082,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "L2",
+      "highest_competing_count": 5863,
+      "mechanically_eligible": true,
+      "mixed_class_count": 48,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 48,
+      "positive_class_floor_passed": true,
+      "prime_mode_count": 14605,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 21879,
+      "unique_mode_signature": 0
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 9798,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 95000000,
+      "stop": 96000000,
+      "strategy": "direct_segmented"
+    }
+  ],
+  "implementation_commit": "94ccd5472c54358d22cd881ba0cf04dc3248d294",
+  "parameters": {
+    "class_floor": 10,
+    "mixed_class_floor": 36,
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "positive_class_floor": 30,
+    "remainder_modulus": "anchor",
+    "residue_bin_counts": [
+      4,
+      8
+    ],
+    "residues_R210": [
+      1,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      127,
+      131,
+      137,
+      139,
+      143,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      187,
+      191,
+      193,
+      197,
+      199,
+      209
+    ],
+    "strict_global_enrichment": true,
+    "tile_lengths": [
+      1,
+      2,
+      3
+    ],
+    "tiling_seed": [
+      2,
+      1,
+      1
+    ],
+    "transfer_matrix": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "wheel": 210,
+    "width": 1000000
+  },
+  "partition": [
+    {
+      "name": "G18-pre",
+      "range": [
+        94000000,
+        95000000
+      ],
+      "role": "non-target guard"
+    },
+    {
+      "name": "D18",
+      "range": [
+        95000000,
+        96000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G18-mid",
+      "range": [
+        96000000,
+        97000000
+      ],
+      "role": "non-target guard"
+    },
+    {
+      "name": "H18",
+      "range": [
+        97000000,
+        98000000
+      ],
+      "role": "one-shot holdout"
+    },
+    {
+      "name": "A18",
+      "range": [
+        190000000,
+        191000000
+      ],
+      "role": "independently locked adversarial reserve"
+    }
+  ],
+  "promotions": [
+    {
+      "aggregate_enrichment_numerator": 1162039516,
+      "family": "L1",
+      "mixed_class_count": 48,
+      "positive_class_count": 48,
+      "target_composite_count": 43450,
+      "target_prime_count": 20262,
+      "target_signature": 0
+    },
+    {
+      "aggregate_enrichment_numerator": 1351638082,
+      "family": "L2",
+      "mixed_class_count": 48,
+      "positive_class_count": 48,
+      "target_composite_count": 21879,
+      "target_prime_count": 14605,
+      "target_signature": 0
+    }
+  ],
+  "validation": {
+    "class_label_failure_count": 0,
+    "domain_partition_failure_count": 0,
+    "frequency_mode_failure_count": 0,
+    "gate_duplicate_failure_count": 0,
+    "plan_failure_count": 0,
+    "residue_bin_failure_count": 0,
+    "serializer_failure_count": 0,
+    "support_identity_failure_count": 0,
+    "tiling_recurrence_failure_count": 0,
+    "transfer_matrix_failure_count": 0
+  }
+}
