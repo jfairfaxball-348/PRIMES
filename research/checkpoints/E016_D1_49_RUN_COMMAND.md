@@ -9,5 +9,3 @@ python experiments/E016_central_binomial_odd_valuation_carry_shapes.py --phase D
 ```
 
 **Strict generator allowlist per entire run, in order:** (1) `base_sieve_support`, `whole_prefix`, `[0,9328)`; (2) `segmented_target`, `segmented`, `[86_000_000,87_000_000)`. Full plan checked before first generator entry and at both boundaries, all 380/30/150 metadata checks zero violations. H16/A16/G16 and all historical protected/calibration intervals are inaccessible. Do not run any alternate command, added pass, other target, helper, per-anchor oracle, or high whole-prefix. D16 discovery only; STOP before H16.
-
-
