@@ -354,12 +354,12 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-52 / S054 / SQ-018 COMPLETE (DESIGN ONLY).** One independent source-free monomer–domino–tromino tiling-count residue representation, finite transforms, controls, gates, roles and future generation allowlists are frozen in `experiments/E018_MONOMER_DOMINO_TROMINO_TILING_RESIDUE_SHAPES.md`. **Next only:** separately execute D1-53 D18 implementation/checkpoint/strict discovery; no current prime generation and no H18/A18/guards or historical bands.
+**D1-56 / S058 / SQ-020 CLOSED — independent E019 design-only source-free preflight.** Exactly one frozen two-row ladder spanning-forest boundary-state family is specified in `experiments/E019_TWO_ROW_LADDER_SPANNING_FOREST_BOUNDARY_SHAPES.md`. D19/H19/A19 have NOT been executed; both G19 guards remain untouched. **Next only:** separate D1-57 / S059 / SQ-021 precommit and validate the unchanged E019 evaluator/tests/pinned full command, then execute D19=[99M,100M) alone under its frozen two-entry positive plan. No H19/A19/guard/historical reserve access.
 
 ## Research inventory
 
-- Active observations: 13 REPLICATED; 0 OBSERVED; 8 REFUTED (21 allocated historical OBS IDs; none created by D1-52)
-- Active candidates: 0
+- Current observations: **15 REPLICATED; 0 OBSERVED; 8 REFUTED** (23 allocated historical OBS IDs; none created by D1-56)
+- Active candidates: **0**
 - Refuted candidates: 0
 - Prior-art collisions: 0
 - Graduated theorem projects: 0
@@ -379,7 +379,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 blind novelty remains active. SQ-014/015/016/017 are CLOSED, with D17 consumed and H17/A17/guards untouched. E018/SQ-018 is frozen at **DESIGN ONLY**, so the next and only bounded runnable unit is **D1-53 / SQ-018 exact implementation/checkpoint and D18-only discovery**, not E017 retuning or any H18/A18 generation. OBS-018/019 remain REPLICATED, OBS-020/021 REFUTED, all prior evidence and calibration quarantine immutable.
+DISCOVERY-1 blind novelty remains active. SQ-020 E019 independent family DESIGN ONLY is now CLOSED; SQ-021 is the **sole** next D1-57/S059 D19 discovery-only unit. E018 SQ-018 and synthesis SQ-019 are CLOSED; D18/H18 permanently consumed; OBS-022/023 REPLICATED unchanged and zero CAND. No retuning or empirical transfer. Protect G19-pre=[98M,99M), G19-mid=[100M,101M), H19=[101M,102M), A19=[198M,199M), A18=[190M,191M), G18-pre/mid, H17/A17/G17 and every historical reserve, held-back band, guard and E005 calibration/nested exclusion. H19 and A19 have no automatic authorisation.
 
 
 ## D1-37 / SQ-012 closed discovery checkpoint — 2026-10-08
