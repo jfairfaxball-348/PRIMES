@@ -614,6 +614,22 @@ Never reuse or renumber a completed session.
 **Commit:** conjecture triage `f7d2c5e9c2be511d5279aa1e1a7d6cbbaf0ff21f`; observation links `79ac83538296fa9b65a12813a52cc4c13aaca042`; queue closure/SQ-012 opening `906a5615a117bbc58aaae3b6ff97f7aa34077e4c`; programme advance `77ccd162813f3c7db92995305920c474a9e792a9`; live D1-36 handoff `c7486db91067a59315d61e8ab9e08d8e0c0d8907`; session checkpoint is this entry's containing commit.
 
 
+### S038
+
+**Date:** 2026-10-08  
+**Stage:** discovery  
+**Bounded objective:** D1-36 / SQ-012 — design-only blind novelty representation-family preflight.  
+**Incoming state:** DISCOVERY-1 after D1-35; SQ-011 closed with NO CANDIDATE CREATED; OBS-015/016/017 REPLICATED with no candidate link; A11 untouched; active candidates 0; SQ-012 open design-only; SQ-005 closed/quarantined.  
+**Work performed:** Re-read the required authority/protocol/ledger/E011 records and frozen novelty-family history. Selected and froze exactly one new per-anchor geometric-arithmetic family: strict two-sided bracketing distances to support values of the canonical integer-lattice squared Euclidean norm `a^2+b^2`. The choice is explicitly labelled theory-informed generic geometry, not a calibration/literature/historical target. Froze metadata-only ranges, exact primitives, N1-N4 transforms, triviality controls, per-mod-8 enrichment artifact gate, support floors, narrow allowlist, deterministic serialization, four-observation cap, unchanged H12 criteria, and fail-closed future generation.  
+**Result:** E012 is FROZEN / NOT YET EXECUTED in `experiments/E012_LATTICE_NORM_BRACKETING_SHAPES.md`. Partition: G12-pre=`[65M,66M)`; A8=`[66M,67M)` preserved; D12=`[67M,68M)`; G12-mid=`[68M,69M)`; H12=`[69M,70M)`; A3=`[70M,71M)` preserved; A12=`[134M,135M)`. Frozen controls: W=1,000,000, H=1,000, Q=210. Families: N1 nearest distance, N2 farther distance, N3 span, N4 unordered distance pair. UNBRACKETED cannot promote. Promotion requires strict unique mode, count>=32, total populations>=1000, per-residue populations>=100 in each odd mod-8 class, positive exact prime/composite enrichment separately in residues 1/3/5/7, zero validation failures, and duplicate suppression. No fallback.  
+**Observations/candidates affected:** none. No OBS/CAND ID allocated. OBS-015/016/017 remain REPLICATED; active candidates remain 0. Observation register `f2645f94e7d3412d35df4af274e13b05936bcb5f`, conjecture register `82ccf267d2d729cd829004549a443b57b56cc826`, and failure ledger `6bb7c51a27b07344a6b1591707c1c41e6b45a053` remain unchanged.  
+**Validation:** Metadata/documentation consistency only. Exact interval arithmetic found no overlap between G12-pre/D12/G12-mid/H12/A12 and the enumerated historical generated/protected/guard/calibration intervals; A8/A3 retain their roles. Frozen prime-support endpoints are D12 `[0,8247)`, H12 `[0,8367)`, A12 `[0,11619)`. Specification, queue, programme status, and live prompt agree. No code or prime-derived computation changed, so pytest/Ruff/experiment runs were not authorized.  
+**Failures/limitations:** no new failure ID; no claim that E012 will yield an observation or candidate.  
+**Decision blocker:** none  
+**Outgoing state:** DISCOVERY-1; D1-36 complete; E012 frozen/not executed; D12/H12/A12 ungenerated; historical protected ranges preserved; D1-37 runnable.  
+**Next session:** D1-37 / SQ-012 — implement and execute frozen E012 D12 discovery only; exact low support `[0,8247)` plus segmented D12; validate first, checkpoint implementation/test bytes before generation, repeat D12 byte-identically before allowlisted inspection, apply only N1-N4 promotion, and leave H12/A12/A8/A3 untouched.  
+**Commit:** E012 spec `77e31eadd3e3cdc80c934096e239d198fde2bac4`; queue `80b7b7e77f39078f5007a4424a3ef7eb4c0ab4a9`; programme status `5fd62d5a22a50db4bbf12e90b06d09802aed847e`; live prompt `31e61aa62fa4fa5722694f32cb0f4e2e5a684f60`; session checkpoint is this entry's containing commit.
+
 ## Entry template
 
 ### S###
