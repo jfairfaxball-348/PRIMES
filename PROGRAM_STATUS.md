@@ -4,14 +4,14 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-48 / SQ-016 E016 DESIGN FROZEN; D16/H16/A16/G16 UNEXECUTED; SQ-015 CLOSED, D15/H15 CONSUMED; 13 REPLICATED / 0 OBSERVED / 8 REFUTED; ZERO ACTIVE CANDIDATES**
+**DISCOVERY-1 — D1-49 / SQ-016 E016 D16 DISCOVERY CONSUMED, NO ELIGIBLE OBSERVATION; SQ-016 CLOSED; H16/A16/G16 PROTECTED; 13 REPLICATED / 0 OBSERVED / 8 REFUTED; ZERO ACTIVE CANDIDATES**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-016 E016 DESIGN FROZEN, D16 UNEXECUTED; SQ-012/013/014/015 CLOSED; D15/H15 CONSUMED | Next bounded D1-49: source/tests/command checkpoints and D16-only discovery under frozen positive allowlist; H16/A16/guards protected |
+| Pattern discovery | OPEN / SQ-016 CLOSED after E016 D16 NO ELIGIBLE OBSERVATION; D16 consumed; SQ-012/013/014/015 CLOSED | A materially distinct, independent *design-only* blind representation preflight may be undertaken separately; H16/A16/guards and every historical reserve stay protected |
 | Observation promotion | OPEN / 13 REPLICATED; 0 OBSERVED; 8 REFUTED | OBS-021 REFUTED at frozen H15 strict-mode and signed-enrichment gates; OBS-020 REFUTED at H14; no active candidate |
 | Candidate conjecture | OPEN / NONE PROMOTED | E015 OBS-021 REFUTED on H15; zero active CAND; no candidate synthesis |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -515,3 +515,15 @@ Programme now **13 REPLICATED / 0 OBSERVED / 8 REFUTED**, 0 active CAND. OBS-018
 **D1-48 scope and preservation:** Exact mathematical definitions, metadata arithmetic and documentary updates **only**. No E016 evaluator, code/test implementation or test execution; no primes, primality queries or high-range traversal; no D12/D13/H13, D14/H14, D15/H15 output mining, H15 retarget, calibration transfer/unblinding, mechanism, proof, candidate synthesis, adversarial, prior-art/collision/literature/novelty work. SQ-005 CLOSED/QUARANTINED, SQ-014 and SQ-015 CLOSED. OBS-018/019 remain REPLICATED, OBS-020/021 REFUTED; **13 REPLICATED / 0 OBSERVED / 8 REFUTED, zero active CAND**. Observation, conjecture, failure and all historical evidence/source bytes unchanged. No blocker or owner decision.
 
 **Exactly one next independent bounded unit:** D1-49 / SQ-016 implement/checkpoint exact frozen D16-only evaluator, tests and fixed complete command (each remotely byte-verified before first prime call), synthetic and poison-generator validation including all 74 exclusions, nested E005 and 380+150 metadata checks; then solely the positive D16 two-call plan, full identical command twice and complete raw-byte/SHA equality *before* narrow aggregate inspection; mechanically promote at most three OBS with unchanged future H16 criteria or close no eligible observation. **Stop before H16/A16/guards and all downstream work.**
+
+## D1-49 / SQ-016 E016 D16-only discovery closure — 2026-10-08
+
+**SQ-016 CLOSED — NO ELIGIBLE OBSERVATION.** Immutable E016 family was executed on D16=[86_000_000,87_000_000) only, with T1/T2/T3, Q210/R210, full 13/4/125 signatures and all gates unchanged. No OBS allocated; 13 REPLICATED / 0 OBSERVED / 8 REFUTED, zero active CAND. H16=[88M,89M), A16=[172M,173M), G16-pre=[85M,86M), G16-mid=[87M,88M) all untouched; historical A15/A14/A13, A6/A7, H12/A12/A8/A3 and protected/calibration bands preserved.
+
+**Pre-generation checkpoint:** evaluator `experiments/E016_central_binomial_odd_valuation_carry_shapes.py` and tests `tests/test_e016.py` committed before primes at `5d780fc0d5baaa6bd1ef99bb666e0d395a00afb5` then full source/test commit `01f9c3eb63ced60eebda4f590338ebda57ce5910`; independent exact local and remote Git blobs `6da57860b3279fc646549092b8129f1a592de2fe` / `1babe24a3f8ec4ee0b5e2a6a0dbe6c5d75569d9f` matched. 10/10 focused synthetic and poison-generator pytest passed; Python compilation passed; Ruff unavailable locally. Metadata protection: 380/380 historical/new plus internal half-open overlap comparisons zero collisions, 30/30 E005 nested containments, 150/150 explicit new/nested overlaps zero. Poison denials include all 74 exclusions, six maxima, 30 nested calibration intervals, protected/guard/off-phase/high-whole-prefix and malformed plans, all before generator entry.
+
+**Command:** independently complete precommitted pinned run-command `research/checkpoints/E016_D1_49_RUN_COMMAND.md`, final commit `fd06a3f31c5724d0d257dc00528c82530859bf04`, exact independently verified blob `20be5ba22011f96ff713ded3cbb4c4a5af8eb75c` after pre-generation byte correction. Entire identical command executed twice, each with only base low whole-prefix [0,9328) then direct segmented D16 [86M,87M), positive plan validated before generator and at both boundaries. First raw output sealed before second; **5,663 complete bytes identical**, SHA-256 `7fd426b4805c86bc7756502a8572e8c35902c2b91ca5c8544ad1e84a9b17c652` both, `cmp` PASS before descriptive inspection. Narrow canonical allowlist PASS, ten zero validators. Evidence `research/evidence/E016_D16_discovery.json`, exact Git blob `d8eebfd75d08b836b6f4b3413064380e625f3092`. Report `experiments/E016_D16_DISCOVERY_2026-10-08.md`, exact blob `41c8fc6cf6e2f0531bf72d094ef057499d069022`.
+
+**Mechanical result:** Q210 wheel anchors 228,571 (54,710 prime / 173,861 composite); both global and all 48 per-label floors pass; each T-family is a strict unique prime mode and has positive global exact signed enrichment. T1 mode 12 has 48 mixed classes, **24 positive-sign classes (<30)**; T2 mode 3 has **24 mixed (<36)** and **12 positive (<30)** classes; T3 mode [4,4,4] has 48 mixed, **24 positive (<30)** classes. All three mechanically ineligible, so zero preduplicate candidates, no OBS, and an empty promotion list. Neither globally positive enrichment nor strict modes overrule the class-level failures. SQ-016 CLOSED, H16 is not authorized.
+
+**Stop:** No extra D16 attempt, H16/A16/guard/protected/calibration generation, retarget, candidate synthesis, E017 selection, SQ-005 unblinding, mechanism/proof/adversarial/literature/prior-art/collision/novelty or prior-result mining. OBS-018/019 remain REPLICATED, OBS-020/021 REFUTED; observation/conjecture/failure ledgers unchanged. No owner blocker. Only a *future separate design-only* independent family preflight is a distinct unblocked potential unit; none was selected here.
