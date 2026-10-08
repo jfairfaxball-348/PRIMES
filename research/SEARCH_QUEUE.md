@@ -524,7 +524,7 @@ Next bounded action: **D1-36 / SQ-012 blind novelty representation-family prefli
 
 Stage: discovery
 
-Status: **D1-36 PREFLIGHT COMPLETE — E012 FROZEN / NOT YET EXECUTED; D12/H12/A12 UNGENERATED**
+Status: **D1-37 D12 EXECUTION COMPLETE — NO ELIGIBLE OBSERVATION; SQ-012 CLOSED; H12/A12 UNGENERATED**
 
 Frozen specification: `experiments/E012_LATTICE_NORM_BRACKETING_SHAPES.md`
 
@@ -572,5 +572,19 @@ Fail-closed D12 prime generation is frozen as exactly whole-prefix low support `
 
 D1-36 generated no primes, executed no evaluator, inspected no protected range, reran/mined no historical output, allocated no OBS/CAND ID, and performed no candidate/mechanism/proof/adversarial/prior-art/collision/literature/novelty work. Observation, conjecture, and failure ledgers remain unchanged.
 
-Next bounded action: **D1-37 / SQ-012 — implement and execute frozen E012 D12 discovery only.** Validate the exact semantics and fail-closed plan, checkpoint implementation/test bytes before generation, run the identical D12 command twice before inspecting only the frozen allowlist, mechanically apply N1-N4 promotion, and leave H12/A12/A8/A3 and every historical protected/non-target range untouched.
+D1-37 D12 was executed only after the exact evaluator/tests were frozen and Git-byte-checkpointed at `373a1e3db30a6eedf4385abbd7aa12d11e7ab8cf` in `research/checkpoints/E012_D1_37_source_tests.tar.gz.b64`. Nine focused tests and compilation passed before generation; deterministic plan authorization was exactly whole-prefix `[0,8247)` plus segmented D12=`[67_000_000,68_000_000)`, with norm enumeration confined to D12. The complete D12 command was run twice on one output path, byte-identical before field inspection: 5,325 bytes; SHA-256 `15d5f399a4cc2adeab1574d12f87049440d21eaf5a233752761986a52d3cbda0`. Exact evidence `research/evidence/E012_D12_discovery.json`, detailed execution `experiments/E012_D12_DISCOVERY_2026-10-08.md`.
 
+All eight mandatory validation aggregates were zero. The 228,113 admissible anchors include 55,465 primes and 172,648 composites. N1 (mode 1, count 15,850), N2 (mode 6, count 7,411), N3 (mode 8, count 6,130), N4 (mode [2,6], count 2,753) each passed strict uniqueness, bracketed status and all population/occurrence floors, but each failed strictly positive enrichment separately in all mod-8 strata. Thus promotions=[] under the exact frozen grammar. **NO ELIGIBLE OBSERVATION**; no OBS ID, no H12 criterion, no candidate. SQ-012 is **CLOSED**, with no retuning, replacement, extension, rescan or mining. H12/A12 remain untouched/uninspected/ungenerated; G12-pre/G12-mid are ungenerated guards; A8/A3 and every previous protected/guard/calibration interval retain prior roles. Unrelated observation, conjecture and failure ledgers remain unchanged.
+
+Next bounded action: **D1-38 / SQ-013 — blind novelty representation-family DESIGN-ONLY preflight**, not an E012 rerun and not based on D12 failure signatures.
+
+
+## SQ-013 — Blind novelty representation-family preflight after E012 closure
+
+Stage: discovery
+
+Status: **OPEN / D1-38 DESIGN-ONLY PREFLIGHT NEXT; NO EXPERIMENT FROZEN OR PRIME-DERIVED OUTPUT GENERATED**
+
+Objective: choose and freeze exactly one qualitatively distinct exact target-agnostic discovery representation family in the blind novelty lane, without deriving its feature choice from an observed E012 or historical output/signature, without retuning/recombining any E001–E012 family, and without importing any SQ-005 calibration object, historical hidden target, or source-derived mechanism. Use only the committed generated/protected/guard/calibration range provenance and metadata arithmetic to freeze disjoint discovery/holdout/adversarial ranges and non-target guards. Freeze primitive objects, finite transform grammar, triviality/congruence controls, mechanical promotion and one-shot unchanged holdout grammar, cap, duplicate suppression, narrow descriptive serialization allowlist, byte-deterministic artifact definition, and a fail-closed generation plan with exact pre-generation guard tests.
+
+D1-38 is design and documentation only: do not execute any evaluator, generate new high primes or any prime-derived evidence, inspect H12/A12/A8/A3 or any historical protected/guard/calibration interval, inspect or mine D12 beyond its committed closure state, rerun E012, allocate OBS/CAND IDs, perform candidate synthesis, mechanism/proof/adversarial/prior-art/collision/literature/novelty work, or reopen a closed queue item. Close the session once one exact design is frozen and authoritative state and a single runnable D1-39 prompt are committed, unless a genuine owner blocker arises.
