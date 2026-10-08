@@ -87,6 +87,18 @@ No `CAND-###` was allocated. D1-35 considered exactly `OBS-015`, `OBS-016`, and 
 **Triage conclusion: NO CANDIDATE CREATED.** `OBS-015`, `OBS-016`, and `OBS-017` remain REPLICATED with no candidate link. Active candidates remain zero; no candidate ID or novelty status was allocated. SQ-011 closes without A11 execution. A11=`[124_000_000,125_000_000)` remains frozen, untouched, uninspected, unexecuted, and ungenerated. No new prime-derived computation, D11/H11 mining, retargeting, new statistic, mechanism/proof work, adversarial execution, prior-art/collision/literature search, novelty claim, historical-output mining, calibration-object transfer, or protected-range inspection occurred.
 
 
+## D1-41 / SQ-013 synthesis-only candidate triage — 2026-10-08
+
+**NO CANDIDATE CREATED.** The only inputs were immutable replicated OBS-018 O1 target `3` and OBS-019 O2 target `2`, each evaluated separately and then only as the conjunction of their already-committed D13/H13 narrow aggregate facts.
+
+| Input | Triage outcome and reason |
+|---|---|
+| `OBS-018` | RETAIN REPLICATED / NO CANDIDATE. O1=3 is strict unique non-COLLISION prime mode with every frozen mixing, label, occurrence, enrichment and zero-validation gate passing on D13 and H13. Its exact descent-count definition and comparison-word coarsening do not imply prime mode 3 over a non-arbitrarily selected larger family of bands, widths or scales. Restricting the statement to those two bands merely restates finite evidence; broader all-band, eventual, universal, infinite or persistent assertions add unsupported quantifiers. |
+| `OBS-019` | RETAIN REPLICATED / NO CANDIDATE. O2=2 is strict unique non-COLLISION prime record-high mode with all unchanged D13/H13 gates passing. The fixed ordinal record-high transform does not force target mode 2 outside the two tested bands. Two-band wording is finite restatement; other origins, widths, scales, universality, eventuality or density are unsupported. |
+| `OBS-018` + `OBS-019` | NO JOINT CANDIDATE. The supported conjunction is only that the two fixed targets **separately** pass their complete gates in D13 and H13. The narrow evidence has no same-anchor intersection, joint frequency, coupling, conditional enrichment or common invariant; none was computed or inferred. A two-band conjunction repeats two finite facts, and a stronger simultaneous persistence/scale/universal quantifier is not warranted. |
+
+**Closure:** SQ-013 CLOSED with no CAND ID allocated; both observations remain REPLICATED, with no candidate links; active candidates zero. H13 remains one-shot replication-consumed, A13 and both G13 guards plus H12/A12/A8/A3 and all historical protected/calibration roles ungenerated/uninspected by D1-41. Original E013 representation, criteria, JSON/report/source bytes, evidence provenance and observation statuses preserved. No prime generation/primality query, mining, rerun, retuning, mechanism, proof, adversarial, literature/collision/novelty or calibration work. Full synthesis: `experiments/E013_D1_41_SYNTHESIS_2026-10-08.md`.
+
 Do not create a candidate merely because a pattern is visually interesting. See `docs/DISCOVERY_PROTOCOL.md`.
 
 ## Template
