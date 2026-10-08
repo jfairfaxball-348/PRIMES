@@ -1,17 +1,17 @@
 # PRIMES Programme Status
 
-Status date: 2026-10-07
+Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-35 / SQ-011 synthesis complete; NO CANDIDATE CREATED; SQ-011 closed; D1-36 / SQ-012 blind novelty representation-family preflight next**
+**DISCOVERY-1 — D1-36 / SQ-012 design-only preflight complete; E012 frozen/not executed; D1-37 D12 discovery execution next**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-011 CLOSED; SQ-012 PREFLIGHT NEXT | D1-35 closed E011 with no candidate; A11 remains untouched |
+| Pattern discovery | OPEN / SQ-012 E012 FROZEN; D12 EXECUTION NEXT | D1-36 froze E012 before output; D12/H12/A12 ungenerated |
 | Observation promotion | OPEN / 11 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-015/016/017 all passed their unchanged H11 criteria mechanically |
 | Candidate conjecture | OPEN / NONE PROMOTED | D1-35 created no candidate; OBS-015/016/017 remain REPLICATED with no candidate link |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -265,6 +265,42 @@ The frozen L1-L4 grammar promoted exactly one observation. L1 target `1331` has 
 - frozen OBS-014 H10 fields: `N_P=55,930`, `N_C=172,626`, target-1487 prime count `20`, highest competing L2 prime count `41`, target composite count `50`, exact enrichment `656,020 > 0`; population floors and enrichment pass, but the 32-occurrence floor and strict-unique-mode criterion fail;
 - **OBS-014 is REFUTED mechanically**. No fallback, retargeting, new OBS ID, candidate synthesis, mechanism/proof work, adversarial execution, prior-art/collision/literature search, or A10 generation occurred. H10 is consumed replication evidence; A10 remains untouched/uninspected/unexecuted/un-generated; G10-pre/G10-mid remain ungenerated non-target guards. Execution record: `experiments/E010_H10_REPLICATION_2026-10-07.md`.
 
+
+## Frozen E012 partition and representation
+
+D1-36 / SQ-012 is complete as a design-only preflight. Exactly one new family is frozen in `experiments/E012_LATTICE_NORM_BRACKETING_SHAPES.md`; no E012 evaluator was implemented or executed and no prime-derived E012 output exists.
+
+E012 is the **lattice-norm bracketing-shape** family. For each admissible integer anchor it uses the nearest strictly lower and strictly higher support values, within a fixed horizon, of the canonical integer-lattice squared Euclidean norm `a^2+b^2`. The norm choice is explicitly labelled a theory-informed generic geometric primitive, not a target imported from calibration, literature, historical unblinding, or a prior observation. Direct centre representability is excluded.
+
+Qualitative distinction is frozen: E012 uses an independently defined lattice support set around individual anchors rather than prime-sequence adjacency/gaps/differences, occupancy or selected events, residue-transition/refinement objects, additive prime-pair overlaps, neighbouring factorization, digital words, modular-order/action-cover objects, quadratic-surd recurrences, or finite-field polynomial factorization.
+
+Metadata-only partition:
+
+- G12-pre = `[65_000_000,66_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**;
+- historical A8 = `[66_000_000,67_000_000)` — **PRESERVED / UNTOUCHED**;
+- D12 = `[67_000_000,68_000_000)` — **FROZEN DISCOVERY / NOT EXECUTED**;
+- G12-mid = `[68_000_000,69_000_000)` — **FROZEN / NON-TARGET / UNGENERATED**;
+- H12 = `[69_000_000,70_000_000)` — **FROZEN / UNTOUCHED ONE-SHOT HOLDOUT**;
+- historical A3 = `[70_000_000,71_000_000)` — **PRESERVED / UNTOUCHED**;
+- A12 = `[134_000_000,135_000_000)` — **FROZEN / UNTOUCHED ADVERSARIAL RESERVE**.
+
+Placement uses only committed generation/protection provenance and deterministic arithmetic. Starting at consumed H11's exclusive endpoint 65,000,000, the first free million band becomes G12-pre, A8 is skipped without repurposing, then the next free bands become D12/G12-mid/H12. A3 is preserved. The adversarial rule is `L_A12=2*L_D12=134_000_000`. A12 is disjoint from A11/A10/A9 and from the quarantined E005 calibration segments.
+
+Frozen primitive/control parameters are `W=1_000_000`, `H=floor(sqrt(W))=1000`, and non-promotable admissibility wheel `Q=210`. Anchors lie in the interior `[L+H,U-H)`, satisfy `gcd(x,210)=1`, and are then partitioned into prime/composite populations. Lattice support is exact support of `a^2+b^2` inside the current target band only; multiplicities and lattice coordinates are excluded.
+
+Exactly four promotable families are frozen: N1 nearest bracket distance, N2 farther bracket distance, N3 bracket span, and N4 unordered bracket-distance pair. Missing either strict side within H yields the literal UNBRACKETED signature in every family; UNBRACKETED can never be promoted. N1-N3 coarsening identities, lattice symmetries, direct centre membership, residue identities, and serialization/floor consequences are non-promotable controls.
+
+Promotion is mechanical only. Total prime/composite populations must each be at least 1,000; each odd mod-8 stratum 1/3/5/7 must contain at least 100 prime and 100 composite anchors; only a strict unique complete-prime-table mode can be considered; the target must be bracketed and occur at least 32 times; and its exact prime-vs-composite enrichment numerator must be positive **separately in all four odd mod-8 strata**. Any failed stratum fails the target. Exact support-set duplicate suppression retains the lowest family N1<N2<N3<N4. Hard cap is four observations with no fallback.
+
+The unchanged H12 one-shot template uses the same family/signature and the same total/per-stratum population floors, strict unique mode, bracketed requirement, 32-occurrence floor, positive enrichment in every odd mod-8 stratum, and zero validation failures. H12 cannot be mined or used for retargeting/threshold/control/norm changes.
+
+Serialization is narrowly frozen to metadata, aggregate anchor/mod-8 populations, validation aggregates, family modal summaries/gates, and promotion precursors. Per-anchor data, complete frequency tables, raw lattice support, lattice coordinates/multiplicities, centre representability, ordered bracket values/identities, non-mode signatures, alternate forms, and exploratory fields are forbidden.
+
+Fail-closed future prime generation is frozen. D1-37 may authorize only whole-prefix low support `[0,8247)` plus segmented D12=`[67_000_000,68_000_000)`; lattice-norm enumeration may contain norm values only inside D12. Later H12/A12 phases would use exactly `[0,8367)+H12` and `[0,11619)+A12` respectively. Every historical generated/protected/guard/calibration interval, A8/A3, G12-pre/G12-mid, out-of-phase H12/A12, wrong support, high whole-prefix generation, malformed target, or arbitrary non-target interval must fail before prime generation.
+
+D1-36 generated no primes, executed no evaluator, inspected no protected range, reran/mined no historical output, allocated no OBS/CAND ID, and performed no candidate/mechanism/proof/adversarial/prior-art/collision/literature/novelty work. OBS-015/016/017 remain REPLICATED with no candidate link; A11 remains untouched; observation, conjecture, and failure records are unchanged.
+
+**Next bounded action:** D1-37 / SQ-012 — implement and execute frozen E012 D12 discovery only, checkpoint implementation/test bytes before generation, validate the exact planner/semantics, execute the identical D12 command twice before allowlisted inspection, apply only N1-N4 promotion, and leave H12/A12/A8/A3 and all historical protected/non-target ranges untouched.
 
 ## Frozen E011 partition and representation
 
