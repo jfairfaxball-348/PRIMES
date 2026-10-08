@@ -4,14 +4,14 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-51 / SQ-017 E017 D17 DISCOVERY CONSUMED, NO ELIGIBLE OBSERVATION; SQ-014/015/016/017 CLOSED; 13 REPLICATED / 0 OBSERVED / 8 REFUTED; ZERO ACTIVE CANDIDATES**
+**DISCOVERY-1 — D1-52 / S054 / SQ-018 E018 DESIGN FROZEN ONLY; D18 UNEXECUTED; SQ-014/015/016/017 CLOSED; 13 REPLICATED / 0 OBSERVED / 8 REFUTED; ZERO ACTIVE CANDIDATES**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-017 CLOSED after D17 with NO ELIGIBLE OBSERVATION; SQ-012/013/014/015/016 CLOSED | D17 discovery-consumed; H17 not authorized, A17/G17 and historical reserves protected; next new-family design preflight must be independent/source-free |
+| Pattern discovery | OPEN / SQ-018 DESIGN FROZEN ONLY; SQ-012/013/014/015/016/017 CLOSED | Only separately checkpointed D1-53 D18 implementation/discovery permitted next; E018 H18/A18/G18 and all historical reserves barred |
 | Observation promotion | OPEN / 13 REPLICATED; 0 OBSERVED; 8 REFUTED | OBS-021 REFUTED at frozen H15 strict-mode and signed-enrichment gates; OBS-020 REFUTED at H14; no active candidate |
 | Candidate conjecture | OPEN / NONE PROMOTED | E015 OBS-021 REFUTED on H15; zero active CAND; no candidate synthesis |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -354,11 +354,11 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-42 / SQ-014:** design-only independent blind novelty representation-family preflight. Freeze exactly one genuinely different exact target-agnostic representation, complete controls/criteria, strict future generator allowlists, and disjoint new D/H/A metadata partition. **No prime generation, primality queries, implementation/tests, observation/candidate creation, or protected-region consumption in D1-42.** SQ-013 is closed with NO CANDIDATE CREATED; D13/H13 remain consumed and A13 untouched.
+**D1-52 / S054 / SQ-018 COMPLETE (DESIGN ONLY).** One independent source-free monomer–domino–tromino tiling-count residue representation, finite transforms, controls, gates, roles and future generation allowlists are frozen in `experiments/E018_MONOMER_DOMINO_TROMINO_TILING_RESIDUE_SHAPES.md`. **Next only:** separately execute D1-53 D18 implementation/checkpoint/strict discovery; no current prime generation and no H18/A18/guards or historical bands.
 
 ## Research inventory
 
-- Active observations: 13 (all REPLICATED; 0 OBSERVED; 6 REFUTED)
+- Active observations: 13 REPLICATED; 0 OBSERVED; 8 REFUTED (21 allocated historical OBS IDs; none created by D1-52)
 - Active candidates: 0
 - Refuted candidates: 0
 - Prior-art collisions: 0
@@ -379,7 +379,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Next stage
 
-DISCOVERY-1 blind novelty remains active. SQ-011/SQ-012/SQ-013 are closed historical work; OBS-018 and OBS-019 retain their replicated finite-band status without candidates. The next bounded unit is **D1-42 / SQ-014 design-only independent representation preflight**; not an E013 rerun, E013 expansion, or new prime-generation authorization. All protected range and quarantined calibration roles remain unchanged.
+DISCOVERY-1 blind novelty remains active. SQ-014/015/016/017 are CLOSED, with D17 consumed and H17/A17/guards untouched. E018/SQ-018 is frozen at **DESIGN ONLY**, so the next and only bounded runnable unit is **D1-53 / SQ-018 exact implementation/checkpoint and D18-only discovery**, not E017 retuning or any H18/A18 generation. OBS-018/019 remain REPLICATED, OBS-020/021 REFUTED, all prior evidence and calibration quarantine immutable.
 
 
 ## D1-37 / SQ-012 closed discovery checkpoint — 2026-10-08
@@ -547,3 +547,14 @@ Programme now **13 REPLICATED / 0 OBSERVED / 8 REFUTED**, 0 active CAND. OBS-018
 The complete actual fixed D17 command was independently precommitted and verified at `4cd4103f0643ced1462c0b5aebc4feea0d780330` (command blob `c3f1858955a3e777d75f60d2e50e6c36b3de66f0`) **before first generation**. Entire exact command executed twice, with only `base_sieve_support,0,9540,whole_prefix` and `segmented_target,90000000,91000000,direct_segmented`, full positive plan verified before generation and at both boundaries. First complete raw output sealed, then full `cmp` equality and both SHA-256 hashes verified before aggregate inspection: **5,043 bytes each**, SHA-256 `5f5f0aa5a9e549fa9dde08103d49618503b62702904ddcaaed09f49a92812cfd`. Evidence `research/evidence/E017_D17_discovery.json`, Git blob `7a89943186e758a7cb6f958f4b7dc9689a3ce5ab`. Canonical exact aggregate-only schema PASS, all ten zero validators. Full report `experiments/E017_D17_DISCOVERY_2026-10-08.md` (blob `931b3b96fe2af1f5e6f023542e0e341adcb7de59`).
 
 **Fixed D17 gates:** 228,571 Q210 wheel anchors, 54,705 prime and 173,866 composite. J1 unique mode 2 and J2 unique mode 5, each 44,392 primes vs 10,313 highest other; 140,990 composite targets, 48/48 fully mixed classes, exact aggregate enrichment +5,401,522. Both have **24/48** strictly positive class enrichments (<30) and are mechanically **INELIGIBLE**. `promotions=[]`; no OBS ID, no H17 criterion, no candidate. D17 now discovery-consumed; H17/A17/G17, A7, H16/A16/G16 and all older protected/consumed/guard/calibration/nested ranges remain ungenerated and uninspected in this session. SQ-005 permanently CLOSED/QUARANTINED; SQ-014/015/016/017 CLOSED. **DISCOVERY-1: 13 REPLICATED / 0 OBSERVED / 8 REFUTED, ZERO ACTIVE CAND.** Observation/conjecture/failure history unchanged. No retune, repeat discovery selection, H17/adversarial, family redesign/preflight, synthesis, proof/mechanism, or novelty/literature work. Natural stop at D17 disposition; next distinct potential unit is independent source-free family design preflight in a new session only.
+
+
+## D1-52 / S054 / SQ-018 independent E018 DESIGN-ONLY freeze — 2026-10-08
+
+**Decision:** Exactly one defensibly distinct label-blind combinatorial family is now **FROZEN BEFORE E018 DATA** at `experiments/E018_MONOMER_DOMINO_TROMINO_TILING_RESIDUE_SHAPES.md`. The primitive T(x) is the exact number of length-x ordered row tilings by tiles {1,2,3}, with T(0)=1 and T(n)=T(n-1)+T(n-2)+T(n-3), canonically reduced modulo its anchor x using exact logarithmic-depth 3x3 transfer-matrix powering. Only L1=floor(4*(T(x) mod x)/x) and L2=floor(8*(T(x) mod x)/x) over full four/eight-state domains are promotable. Counting entire row tilings is distinct from E001–E017's prime gap/pair/occupancy, neighbouring factorization, digit word, unit group/order, surd cycle, finite-field polynomial degree, lattice/cubic representation, near-square division, modular quadratic short orbit, factorial valuation and circular elimination primitives. Generic combinatorial/wheel/bin conventions are declared theory-informed, not historically novel. No prime theorem or mathematical novelty claimed.
+
+**Frozen exact provenance-only roles:** G18-pre=[94M,95M), D18=[95M,96M), G18-mid=[96M,97M), H18=[97M,98M), A18=[190M,191M), with A18=2*lower(D18). Historical inventory is 53 named early E013 roles + 25 E013–E017 role bands + six E005 maximum calibration segments = **84 named exclusions**. Using named intervals and the exact half-open overlap predicate, **3,486/3,486** history/history and **420+10=430/430** new/history-or-new comparisons are disjoint; **30/30** E005 nested ranges are contained in the six maxima and **150/150** new/nested comparisons are disjoint. No range was visited or inspected; this is exact metadata arithmetic only.
+
+**Frozen rules:** Exact Q210 label-blind common anchor set, all 48 ordered reduced residue classes, both global label populations >=1000 and both class populations >=10 in every class, one strict unique complete-domain mode per family with no fallback, target prime count >=32, >=36/48 fully mixed classes, positive exact signed aggregate E and >=30/48 positive signed per-class numerators, ten zero validation counters, exact integer prime-anchor support-set equality duplicate suppression L1 before L2, promotion cap two. Future H18 requires identical precommitted family/target and **all unchanged gates** in a single one-shot pass; no OBS means H18 stays sealed. A18 is independently locked. Strict narrowly typed canonical aggregate-only JSON excludes per-anchor data, raw tiling values, full histograms and supports. Future full generation plans are positive-only, validated before any generator: D18 low [0,9798) + direct segment [95M,96M); H18 low [0,9900) + [97M,98M); A18 low [0,13821) + [190M,191M). D18/H18/A18 were **not** executed in this unit; all H17/A17/G17 and older historical/guard/consumed/held-back/adversarial/calibration roles remain protected.
+
+**Strict design stop and evidence:** No E018 source code, tests, run command, prime/primality computation, high-anchor traversal, empirical E017 or earlier outcome mining, SQ-005 unblinding, prior-art/literature/collision/novelty analysis, candidate synthesis, mechanism/proof or adversarial work. Original observation/conjecture/failure/evidence unchanged; still **13 REPLICATED / 0 OBSERVED / 8 REFUTED, zero active CAND**. No owner blocker; observation eligibility, replication, mathematical significance and novelty remain unknown. **Exactly one next unit:** D1-53 / SQ-018 immutable D18 implementation/strict pre-generation checkpoint and two byte-identical D18 runs under the frozen allowlist; then mechanical <=2 OBS or closure, **no H18/A18**.
