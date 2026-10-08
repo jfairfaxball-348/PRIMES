@@ -4,16 +4,16 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-46 / SQ-015 D15 DISCOVERY-CONSUMED; OBS-021 R3 [9,0,0,0] OBSERVED; H15 ONE-SHOT PENDING; SQ-014 CLOSED; OBS-018/019 REPLICATED, OBS-020 REFUTED; A13/A14/A15/GUARDS PROTECTED; ZERO ACTIVE CANDIDATES**
+**DISCOVERY-1 — D1-47 / SQ-015 CLOSED; D15 DISCOVERY-CONSUMED, H15 ONE-SHOT REPLICATION-CONSUMED; OBS-021 REFUTED; OBS-018/019 REPLICATED, OBS-020 REFUTED; A13/A14/A15/GUARDS PROTECTED; ZERO ACTIVE CANDIDATES**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-015 D15 COMPLETE, H15 ONE-SHOT PENDING; SQ-012/013/014 CLOSED; D14/H14 CONSUMED | D1-47 immutable OBS-021 R3 target [9,0,0,0] H15-only replication; A15/guards protected |
-| Observation promotion | OPEN / 13 REPLICATED; 1 OBSERVED; 7 REFUTED | OBS-021 OBSERVED in D15; OBS-020 REFUTED at frozen H14 gate; no active candidate |
-| Candidate conjecture | OPEN / NONE PROMOTED | E015 D15 generated one OBSERVED (OBS-021); zero active CAND; no candidate synthesis |
+| Pattern discovery | OPEN / SQ-015 CLOSED; D15/H15 CONSUMED; SQ-012/013/014 CLOSED; D14/H14 CONSUMED | Next separate design-only blind novelty-family preflight, if justified; A15/guards protected |
+| Observation promotion | OPEN / 13 REPLICATED; 0 OBSERVED; 8 REFUTED | OBS-021 REFUTED at frozen H15 strict-mode and signed-enrichment gates; OBS-020 REFUTED at H14; no active candidate |
+| Candidate conjecture | OPEN / NONE PROMOTED | E015 OBS-021 REFUTED on H15; zero active CAND; no candidate synthesis |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -493,3 +493,11 @@ D1-45 performed metadata arithmetic and documentation consistency only. **No eva
 **Stop / protected:** D15 now discovery-consumed. **H15 [83M,84M), A15 [162M,163M), G15-pre [80M,81M), G15-mid [82M,83M) all untouched/uninspected/ungenerated**; A14/A13, H12/A12/A8/A3 and all historical adversarial, guards, held-back and six E005 calibration maxima remain protected and unchanged. No H15/A15 execution, candidate creation/synthesis, mechanism, proof, adversarial/collision/prior-art/literature/novelty or unblinding.
 
 **Next bounded unit:** D1-47 / SQ-015 one-shot unchanged **OBS-021 R3 [9,0,0,0] H15 replication**, with separate exact H15 evaluator/tests/command committed and independently byte-verified before generation, only low [0,9166) whole-prefix plus directly segmented H15 [83M,84M), identical full command twice with bytes/SHA checked before target-only interpretation; mechanically REPLICATE or REFUTE and close SQ-015. No owner blocker. One runnable next-session prompt is `NEXT_SESSION_PROMPT.md`.
+
+## D1-47 / SQ-015 H15 one-shot replication closure — 2026-10-08
+
+**OBS-021 REFUTED; SQ-015 CLOSED.** The immutable exact R3 target [9,0,0,0] discovered on D15 was tested only once on H15=[83_000_000,84_000_000) under its previously committed 220-competitor/label-floor/R30-mixing/signed-enrichment/ten-zero-validation criterion. Before generation, the H15-only evaluator and 9 synthetic/poison tests were committed at `fe98ec9c931ad153fd4cb6912c4fc6d91c235b89`; source/test blobs `aa989185153fc979eb9349c051661ad6b19e8311`/`530aff578f0d37fa3a3462fd7dfbdf1e705904e0` byte-verified independently, frozen original source blob `8f4e4dfc7ddfc771ea6fba4e48a264c454cd25a1` unchanged. Pre-generation 9/9 focused tests, compilation, 355/355 metadata-only overlap controls and all 69 historical + E005 nested/guards/off-phase poison denials PASS; Ruff unavailable. A separately committed complete fixed command `research/checkpoints/E015_D1_47_RUN_COMMAND.md` at `7c60e48e0e82701e2e3d07991a0727dc26169862`, verified blob `98cfda4c9b084f50b2fa0d888537b7546fc52e02`, preceded any prime call.
+
+The sole authorized two calls **per execution** were low whole-prefix [0,9166) then direct segmented H15 [83M,84M). Executed the entire same pinned command twice; complete output **3,109 byte-identical bytes**, SHA-256 `782c4df2ec8c27c1f420935154cdd4ef287c7d05f1338d2e93867745d5666698`, compared before field inspection. Strict narrow canonical schema PASS, all ten validation counters zero. Conditioned H15 prime/composite counts 54,822/211,796; target prime 13,623 versus highest R3 competitor 13,653 (**strict unique mode fails by 30**), target composite 52,816, 8/8 classes fully mixed, exact signed enrichment **−10,181,844 (required >0)**. Both failed gates independently refute; no retarget, second H15 pass, alternate criterion, candidate or new experiment. Independent recomputation from target-only aggregate agrees. Evidence `research/evidence/E015_H15_replication.json` (Git blob `fca5f7f5dc6b82fe38d0dda7e41b25d2fbaf57d4`); report `experiments/E015_H15_REPLICATION_2026-10-08.md`.
+
+Programme now **13 REPLICATED / 0 OBSERVED / 8 REFUTED**, 0 active CAND. OBS-018/019 REPLICATED, OBS-020 REFUTED, SQ-014 CLOSED, SQ-005 CLOSED/QUARANTINED. E015 D15 discovery and H15 replication consumed, A15=[162M,163M), both G15 guards, A14/A13, H12/A12/A8/A3 and all historical reserve/held-back/calibration bands remain untouched. No synthesis, adversarial, mechanism, proof, prior-art/collision/literature/novelty, SQ-005 unblinding or new representation. Natural D1-47 stop; no owner blocker. A next unit, if undertaken, must be materially distinct, blind, and design-only before fresh data.
