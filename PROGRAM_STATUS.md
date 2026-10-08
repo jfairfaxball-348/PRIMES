@@ -4,16 +4,16 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-39 / SQ-013 E013 D13 EXECUTED; OBS-018/019 OBSERVED WITH FROZEN H13 CRITERIA; D1-40 ONE-SHOT H13 REPLICATION NEXT; SQ-012 CLOSED**
+**DISCOVERY-1 — D1-40 / SQ-013 H13 ONE-SHOT COMPLETE; OBS-018/019 REPLICATED; D1-41 SYNTHESIS-ONLY TRIAGE NEXT; A13 UNTOUCHED; SQ-012 CLOSED**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-012 CLOSED; SQ-013 D13 COMPLETE / OBS-018/019 ELIGIBLE; H13 UNTOUCHED | D1-40 next: preserve OBS-018/019 unchanged H13 criteria, checkpoint phase-specific guard/code before generation; one-shot H13 replication only |
-| Observation promotion | OPEN / 11 REPLICATED; 2 OBSERVED (OBS-018/019); 6 REFUTED | OBS-015/016/017 all passed their unchanged H11 criteria mechanically |
-| Candidate conjecture | OPEN / NONE PROMOTED | D1-35 created no candidate; OBS-015/016/017 remain REPLICATED with no candidate link |
+| Pattern discovery | OPEN / SQ-012 CLOSED; SQ-013 D13+H13 COMPLETE; A13 UNTOUCHED | D1-41 next: bounded synthesis-only candidate triage over OBS-018/019; no additional prime generation |
+| Observation promotion | OPEN / 13 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-018 and OBS-019 both passed the immutable H13 criteria; no candidate promoted |
+| Candidate conjecture | OPEN / NONE PROMOTED | D1-40 did not synthesize candidates; D1-41 synthesis-only triage is next |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -423,3 +423,15 @@ All eight mandatory validation-failure aggregates are exactly zero. The common Q
 **Protection state:** D13 alone has been consumed. H13=[74_000_000,75_000_000), A13=[144_000_000,145_000_000), G13-pre=[71_000_000,72_000_000), G13-mid=[73_000_000,74_000_000), H12=[69_000_000,70_000_000), A12=[134_000_000,135_000_000), A8=[66_000_000,67_000_000), A3=[70_000_000,71_000_000), every other historical reserved/holdout/guard range and all six E005 calibration segments remain ungenerated/uninspected. Only separately authorized D1-40 may generate H13, with exact small support `[0,8661)` plus segmented H13, and must first commit/checkpoint H13-specific evaluator/guard/tests. A13 remains untouched.
 
 **Next bounded unit:** D1-40 / SQ-013 **one-shot H13 replication only**, applying exactly the already-committed OBS-018/OBS-019 criteria without reusing D13 discovery to retune any part of E013. No owner decision blocker.
+
+## D1-40 / SQ-013 frozen one-shot H13 replication checkpoint — 2026-10-08
+
+D1-38 E013 definition and D1-39 D13 output remained frozen; OBS-018 O1 target `3` and OBS-019 O2 target `2` were evaluated under their already-committed, unchanged H13 criteria. Local H13-specific implementation and focused poison-generator/semantic tests passed 5/5; Python compilation passed. Targeted Ruff was unavailable under existing FAIL-001/002 tooling limitations. The byte-exact tested source/test files were Git-verified at pre-generation code checkpoint **`153c2bc814b847b195237a80608f29911daa8bd0`** (blobs `bb77515e90bec124a94f17c75f6cfa614cf9c689`, `4ff8d7116c5b3400e197ea52b9411bd65cd655e3`). The exact complete command was committed **before any H13 generation** at `1c7bf186c3d0db177a7da2b84ba93f77d8b4bfeb` in `research/checkpoints/E013_D1_40_RUN_COMMAND.md`.
+
+The only generated ranges in D1-40 were whole-prefix low support **`[0,8661)`**, followed by directly segmented **H13=`[74_000_000,75_000_000)`**. Complete ordered plan and H13 phase checked before either generator; negative poison-generator cases rejected historical/guard/adversarial/calibration/off-phase/arbitrary non-target intervals. The complete identical H13 command ran twice on the same file path. Byte identity was proven **before** narrow criterion-field inspection: **3,409 bytes**, SHA-256 **`79790288e12f692a065af4a59eee584066e0a95c8775b6a89662deeccc226ef0`**. Evidence `research/evidence/E013_H13_replication.json` verified as exact Git blob `d09ef554b0cd59d3d730a3a44aa989bbc2955402` (commit `971839a17e0d7733d2d3c22992d02233de2edffa`); full report `experiments/E013_H13_REPLICATION_2026-10-08.md`.
+
+H13 Q=30 common domain has **266,666** anchors: **55,050 primes** and **211,616 composite controls**. All eight mandatory validation-failure aggregates zero; every population/class floor passes. Under unchanged O1 target `3`, **OBS-018 REPLICATED**: prime target count **23,272**, highest competitor **22,889** (including COLLISION), composite target count **88,528**, **8/8** mixed R30 classes, exact aggregate enrichment **+51,261,152**. Under unchanged O2 target `2`, **OBS-019 REPLICATED**: prime target count **21,075**, highest competitor **17,244**, composite target count **80,491**, **8/8** mixed classes, exact enrichment **+28,777,650**. Each target was the strict unique H13 prime mode and passed every frozen gate, without target/family replacement or post-result tuning.
+
+**D1-40 result: TWO REPLICATED, zero candidates.** The observation ledger records both mechanical status transitions; active candidate count remains zero. E012/SQ-012 remains CLOSED, SQ-005 historically quarantined, and E013 D13 unaltered. H13 is now replication-consumed. A13=[144_000_000,145_000_000), G13-pre=[71_000_000,72_000_000), G13-mid=[73_000_000,74_000_000), H12/A12/A8/A3, and every other historical protected/guard/calibration interval remain ungenerated/uninspected in D1-40. No candidate synthesis, mechanism, proof, adversarial, prior-art/collision/literature/novelty work was done.
+
+**Next bounded unit:** D1-41 / SQ-013 **synthesis-only candidate triage of OBS-018 and OBS-019** using only their already committed D13/H13 narrow evidence. Create a candidate only if an exact non-arbitrary falsifiable mathematical statement is justified; otherwise record NO CANDIDATE CREATED and close SQ-013. No A13 or other prime generation or H13 mining. No owner decision blocker.
