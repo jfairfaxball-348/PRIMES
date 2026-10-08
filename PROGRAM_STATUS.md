@@ -4,15 +4,15 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-38 / SQ-013 E013 modular quadratic short-orbit design FROZEN / NOT EXECUTED; D1-39 D13 execution NEXT; SQ-012 CLOSED (NO ELIGIBLE OBSERVATION)**
+**DISCOVERY-1 — D1-39 / SQ-013 E013 D13 EXECUTED; OBS-018/019 OBSERVED WITH FROZEN H13 CRITERIA; D1-40 ONE-SHOT H13 REPLICATION NEXT; SQ-012 CLOSED**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-012 CLOSED (NO ELIGIBLE OBSERVATION); SQ-013 E013 FROZEN / D13 UNEXECUTED | D1-39 only: checkpoint evaluator/tests before prime generation; validate guard/semantics; D13 only, deterministic repeat, mechanical O1–O4 promotion |
-| Observation promotion | OPEN / 11 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-015/016/017 all passed their unchanged H11 criteria mechanically |
+| Pattern discovery | OPEN / SQ-012 CLOSED; SQ-013 D13 COMPLETE / OBS-018/019 ELIGIBLE; H13 UNTOUCHED | D1-40 next: preserve OBS-018/019 unchanged H13 criteria, checkpoint phase-specific guard/code before generation; one-shot H13 replication only |
+| Observation promotion | OPEN / 11 REPLICATED; 2 OBSERVED (OBS-018/019); 6 REFUTED | OBS-015/016/017 all passed their unchanged H11 criteria mechanically |
 | Candidate conjecture | OPEN / NONE PROMOTED | D1-35 created no candidate; OBS-015/016/017 remain REPLICATED with no candidate link |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
@@ -409,3 +409,17 @@ The new Q=30 small-prime-admissible anchor control is generic, not a residue-con
 **D1-38 was design-only.** No E013 evaluator/test was implemented or executed, no prime-derived output or protected interval was generated or inspected, no E012 signature or result mined, no OBS/CAND allocated, and no candidate/mechanism/proof/adversarial/literature/collision/novelty work performed. Existing observation, conjecture and failure ledgers were not edited. Active candidates remain 0; SQ-012 remains CLOSED with NO ELIGIBLE OBSERVATION; SQ-013 is **FROZEN / D13 UNEXECUTED**. Metadata interval/disjointness arithmetic and documentation consistency were the appropriate validation; pytest/Ruff and prime-generation tests belong to D1-39.
 
 **Next bounded unit:** D1-39 / SQ-013 frozen E013 D13-only discovery execution, with checkpointed exact evaluator/tests and pre-generation tests first; frozen mechanical observations/unchanged H13 criteria or a no-observation closure next. No owner decision blocker.
+
+## D1-39 / SQ-013 frozen D13 execution checkpoint — 2026-10-08
+
+D1-38's E013 definition remained unchanged. Full 53 historical novelty+six E005 range comparison set and five new partition disjointness checks passed (305 exact checks). Implemented only the frozen modular-orbit D13 evaluator, strict allowlist serializer, fail-closed exact ordered plan and focused semantic/poison-generator tests. Focused pytest 9/9 and Python compilation passed **before prime generation**. Ruff remained unavailable in the detached runner under existing FAIL-001/002. Initial Git transfer trailing-newline mismatch was repaired before generation; the byte-exact validated source and tests were independently verified in Git at **`b9e1c7a9186cc066328022869d85793ecbdb02a5`** (blobs `1ecc6f60b0c3527694123e39c740e8d128a223e8`, `fba632a16b820e311467aafe29389aef929c817d`). Fixed complete D13 command committed beforehand in `research/checkpoints/E013_D1_39_RUN_COMMAND.md` (`ec92b8c258f93a08aab57f5e38c4a4240ff6ec4d`).
+
+Validated sole prime-generation regions: whole-prefix low support `[0,8545)`, then directly segmented **D13=[72_000_000,73_000_000)**. The identical complete D13 command ran twice using the identical exact code checkpoint and output path. Byte identity and SHA-256 were established **before descriptive-field inspection**: 5,362 bytes, SHA-256 **`32fac73471ac3602995a1c2ffaed6b39f13bd11a2c3be47e6221a46b970eb0e1`**. Evidence `research/evidence/E013_D13_discovery.json` was Git-byte-verified (blob `88f663084dbe51519627711304d122cc9c223477`); report `experiments/E013_D13_DISCOVERY_2026-10-08.md`.
+
+All eight mandatory validation-failure aggregates are exactly zero. The common Q=30 domain has **266,666** admissible anchors: **55,431** prime anchors and **211,235** composite controls. All overall/per-class floors pass. Frozen O1 strict unique non-COLLISION mode `3` occurs **23,417** times versus **23,141** highest competitor, has eight mixed classes and exact aggregate enrichment **+4,539,190**; it promotes **OBS-018**. Frozen O2 mode `2` occurs **21,420** times versus **17,007** competitor, eight mixed classes and enrichment **+53,422,947**; it promotes **OBS-019**. Distinct target prime-anchor support cardinalities guarantee no exact support-set duplicate. O3 mode `[0,1,0,1,0,1]` has enrichment **−16,514,463**, and O4 mode `3` **−5,411,830**; both mechanically fail the positive-enrichment gate. No fallback, new feature, reweighting or altered target.
+
+**D1-39 result: TWO OBSERVED, zero candidates.** `OBS-018` (O1=3) and `OBS-019` (O2=2) now contain their complete immutable same-family/same-signature one-shot H13 criteria, committed at `eb85a316775ad5f8c67cd256b1c0766550a5c277` **before any H13 generation**. All former observation, candidate and failure statuses remain unchanged; active candidates remain zero. E012/SQ-012 stays CLOSED with NO ELIGIBLE OBSERVATION; calibration SQ-005 is quarantined. No mechanism/proof/adversarial/prior-art/collision/literature/novelty/candidate-triage work occurred.
+
+**Protection state:** D13 alone has been consumed. H13=[74_000_000,75_000_000), A13=[144_000_000,145_000_000), G13-pre=[71_000_000,72_000_000), G13-mid=[73_000_000,74_000_000), H12=[69_000_000,70_000_000), A12=[134_000_000,135_000_000), A8=[66_000_000,67_000_000), A3=[70_000_000,71_000_000), every other historical reserved/holdout/guard range and all six E005 calibration segments remain ungenerated/uninspected. Only separately authorized D1-40 may generate H13, with exact small support `[0,8661)` plus segmented H13, and must first commit/checkpoint H13-specific evaluator/guard/tests. A13 remains untouched.
+
+**Next bounded unit:** D1-40 / SQ-013 **one-shot H13 replication only**, applying exactly the already-committed OBS-018/OBS-019 criteria without reusing D13 discovery to retune any part of E013. No owner decision blocker.
