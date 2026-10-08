@@ -189,3 +189,9 @@ Then:
 - **if naturally complete:** state completion and do not manufacture a prompt.
 
 This is a conversational handover protocol, not a background automation. The next research session begins when the owner opens or pastes the emitted prompt.
+
+## 11. Observation-to-synthesis disposition links
+
+When a bounded synthesis-only triage ends, keep the frozen representation, observation definition, holdout target and criterion unchanged. Record the candidate disposition in the conjecture register (including **NO CANDIDATE CREATED** when appropriate) and link each considered observation's **Candidate link** field to that synthesis result without changing its REPLICATED status unless a separately justified lifecycle transition has actually occurred. Documentation links are not new evidence or permission to reuse a consumed holdout.
+
+The D1-41 / SQ-013 example is `OBS-018` and `OBS-019` in `research/OBSERVATION_LEDGER.md`, both retaining REPLICATED and linking to `experiments/E013_D1_41_SYNTHESIS_2026-10-08.md` and `research/CONJECTURE_REGISTER.md`. This cross-reference does not authorize further D13/H13 analysis, A13 execution or an E013 criterion change.
