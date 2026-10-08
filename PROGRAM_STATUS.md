@@ -4,14 +4,14 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-37 / SQ-012 frozen E012 D12 discovery COMPLETE; NO ELIGIBLE OBSERVATION; SQ-012 CLOSED; D1-38 / SQ-013 design-only preflight NEXT**
+**DISCOVERY-1 — D1-38 / SQ-013 E013 modular quadratic short-orbit design FROZEN / NOT EXECUTED; D1-39 D13 execution NEXT; SQ-012 CLOSED (NO ELIGIBLE OBSERVATION)**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-012 CLOSED (NO ELIGIBLE OBSERVATION); SQ-013 DESIGN PREFLIGHT NEXT | D12 consumed exactly; H12/A12 untouched; E012 frozen grammar not to be rerun or relaxed |
+| Pattern discovery | OPEN / SQ-012 CLOSED (NO ELIGIBLE OBSERVATION); SQ-013 E013 FROZEN / D13 UNEXECUTED | D1-39 only: checkpoint evaluator/tests before prime generation; validate guard/semantics; D13 only, deterministic repeat, mechanical O1–O4 promotion |
 | Observation promotion | OPEN / 11 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-015/016/017 all passed their unchanged H11 criteria mechanically |
 | Candidate conjecture | OPEN / NONE PROMOTED | D1-35 created no candidate; OBS-015/016/017 remain REPLICATED with no candidate link |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -354,7 +354,7 @@ D1-13 then unblinded only after the required source-free checkpoint. The pre-unb
 
 ## Active task
 
-**D1-36 / SQ-012:** design-only blind novelty representation-family preflight. Select and freeze exactly one qualitatively distinct exact target-agnostic representation family using only novelty-lane authority and generic target-agnostic protocol rules. Generate no prime-derived output; preserve A11 and every historical generated/protected/non-target range; allocate no OBS/CAND ID; and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
+**D1-39 / SQ-013:** separately bounded frozen E013 D13 execution. Implement exact `experiments/E013_MODULAR_QUADRATIC_ORBIT_SHAPES.md` without changing the grammar; checkpoint exact evaluator/tests before generation; validate the complete phase-specific planner, semantics, duplicate and serialization controls; authorize only [0,8545) low support plus segmented D13=[72_000_000,73_000_000). Repeat identical D13 command byte-identically before aggregate inspection. Promote at most four mechanical O1–O4 observations (or record NO ELIGIBLE OBSERVATION), never generate H13/A13 or protected ranges. No candidate, mechanism, proof, adversarial or prior-art work.
 
 ## Research inventory
 
@@ -396,3 +396,16 @@ Exactly 228,113 common admissible anchors were evaluated (55,465 prime; 172,648 
 **D1-37 mechanical outcome: NO ELIGIBLE OBSERVATION; SQ-012 CLOSED.** No OBS/CAND ID or H12 criterion is created. H12=`[69_000_000,70_000_000)` and A12=`[134_000_000,135_000_000)` remain untouched/uninspected/ungenerated. G12-pre/G12-mid remain ungenerated guards; A8/A3 and all historical protected/guard/calibration ranges retain their provenance. OBS-015/016/017 remain REPLICATED without candidates, all other observation/conjecture/failure records remain unchanged, active candidates remain 0. No H12/A12 generation, candidate synthesis, mechanism/proof/adversarial/prior-art/collision/literature/novelty work, or calibration transfer occurred.
 
 **Next bounded unit:** D1-38 / SQ-013, design-only blind novelty representation-family preflight. Freeze a genuinely distinct exact target-agnostic family with provenance-only disjoint ranges and frozen controls/selection/serialization/generation semantics; generate no new prime-derived output in that unit. The D12 negative result is historical closure only, not a seed for retuning or selecting E013 features.
+
+
+## D1-38 / SQ-013 E013 design-only freeze — 2026-10-08
+
+D1-38 independently froze **exactly one** qualitatively distinct target-agnostic family, **E013 modular quadratic short-orbit order shapes**, in `experiments/E013_MODULAR_QUADRATIC_ORBIT_SHAPES.md`. This is a prime-independent finite nonlinear residue-ring dynamical orbit `y_(i+1)=(y_i^2+1) mod x` from `y_0=2`, with K=10 fixed iterations, a seven-entry fixed tail `(y_4,...,y_10)`, exact COLLISION control and precisely four ordinal-shape signatures O1–O4. The generic nonlinear-map choice is explicitly theory-informed; it was not imported from any old result, E012 norm/bracket outcome, literature mechanism, hidden historical target, or SQ-005 calibration object. This is neither E009 unit-order analysis, E010 surd continued fractions, E011 finite-field polynomial factor degrees, nor E012 lattice-norm bracketing.
+
+Provenance-only width-1M partition: **G13-pre=[71_000_000,72_000_000)** (guard), **D13=[72_000_000,73_000_000)** (discovery), **G13-mid=[73_000_000,74_000_000)** (guard), **H13=[74_000_000,75_000_000)** (untouched one-shot holdout), and **A13=[144_000_000,145_000_000)** (untouched adversarial reserve). A13 follows `L_A13=2L_D13`. Exact integer half-open comparisons against **53** named historical generated/protected/guard intervals, all **six** quarantined maximum E005 calibration segments and all five pairwise new-band pairs gave **zero overlaps in 305 comparisons**. H12=[69_000_000,70_000_000), A12=[134_000_000,135_000_000), A8=[66_000_000,67_000_000), A3=[70_000_000,71_000_000) and every other historical held-back/guard range retain their protected status, with no range probed or consumed.
+
+The new Q=30 small-prime-admissible anchor control is generic, not a residue-conditioned selection of E012. Frozen floors are 1000 total prime/composite anchors, 100 in each of eight reduced residue classes for both labels, 32 target occurrences, at least six *mixed-configuration* Q classes, and positive exact **aggregate** prime/composite enrichment. A target must be the strict unique prime mode, not COLLISION. Exact prime-support-set duplicate suppression retains only earliest O1<O2<O3<O4; hard cap four. Frozen same-family/same-signature one-shot H13 criteria have identical gates. Narrow allowlist serialization excludes per-anchor or orbit-level material, complete tables and non-modes. Future D13 prime generation is fail-closed: exact [0,8545) whole-prefix low support and one segmented high target D13 only; later H13/A13 plans require explicit separate phase and are not authorized by this design.
+
+**D1-38 was design-only.** No E013 evaluator/test was implemented or executed, no prime-derived output or protected interval was generated or inspected, no E012 signature or result mined, no OBS/CAND allocated, and no candidate/mechanism/proof/adversarial/literature/collision/novelty work performed. Existing observation, conjecture and failure ledgers were not edited. Active candidates remain 0; SQ-012 remains CLOSED with NO ELIGIBLE OBSERVATION; SQ-013 is **FROZEN / D13 UNEXECUTED**. Metadata interval/disjointness arithmetic and documentation consistency were the appropriate validation; pytest/Ruff and prime-generation tests belong to D1-39.
+
+**Next bounded unit:** D1-39 / SQ-013 frozen E013 D13-only discovery execution, with checkpointed exact evaluator/tests and pre-generation tests first; frozen mechanical observations/unchanged H13 criteria or a no-observation closure next. No owner decision blocker.
