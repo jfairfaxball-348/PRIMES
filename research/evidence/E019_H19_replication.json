@@ -1,0 +1,298 @@
+{
+  "anchor_summary": {
+    "composite_count": 174255,
+    "composite_counts_by_R210": [
+      3614,
+      3603,
+      3621,
+      3627,
+      3636,
+      3621,
+      3651,
+      3613,
+      3636,
+      3657,
+      3636,
+      3661,
+      3634,
+      3624,
+      3626,
+      3666,
+      3642,
+      3641,
+      3643,
+      3620,
+      3621,
+      3620,
+      3635,
+      3620,
+      3658,
+      3626,
+      3660,
+      3631,
+      3602,
+      3643,
+      3618,
+      3624,
+      3623,
+      3636,
+      3636,
+      3661,
+      3636,
+      3637,
+      3657,
+      3628,
+      3622,
+      3646,
+      3631,
+      3604,
+      3619,
+      3598,
+      3592,
+      3599
+    ],
+    "prime_count": 54316,
+    "prime_counts_by_R210": [
+      1148,
+      1159,
+      1141,
+      1135,
+      1126,
+      1141,
+      1111,
+      1149,
+      1126,
+      1105,
+      1126,
+      1101,
+      1128,
+      1138,
+      1135,
+      1095,
+      1119,
+      1120,
+      1118,
+      1142,
+      1141,
+      1142,
+      1127,
+      1142,
+      1104,
+      1136,
+      1102,
+      1131,
+      1160,
+      1119,
+      1144,
+      1138,
+      1139,
+      1126,
+      1126,
+      1101,
+      1126,
+      1125,
+      1105,
+      1134,
+      1140,
+      1116,
+      1131,
+      1158,
+      1143,
+      1164,
+      1170,
+      1163
+    ],
+    "wheel_anchor_count": 228571
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "H19",
+    "range": [
+      101000000,
+      102000000
+    ]
+  },
+  "experiment": "E019",
+  "families": [
+    {
+      "aggregate_enrichment_numerator": 2319329234,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "B1",
+      "highest_competing_count": 27138,
+      "mechanically_eligible": true,
+      "mixed_class_count": 48,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 48,
+      "positive_class_floor_passed": true,
+      "prime_mode_count": 27178,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 44491,
+      "unique_mode_signature": 2
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 10100,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 101000000,
+      "stop": 102000000,
+      "strategy": "direct_segmented"
+    }
+  ],
+  "implementation_commit": "3f0b8c0ec83a28aed426ace73298bdb19ddc5c2e",
+  "parameters": {
+    "boundary_state_order": [
+      "C",
+      "D"
+    ],
+    "class_floor": 10,
+    "exponent": "x-1",
+    "graph_rows": 2,
+    "initial_state": [
+      1,
+      1
+    ],
+    "joint_half_bins": 2,
+    "mixed_class_floor": 36,
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "positive_class_floor": 30,
+    "remainder_modulus": "anchor",
+    "residues_R210": [
+      1,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      127,
+      131,
+      137,
+      139,
+      143,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      187,
+      191,
+      193,
+      197,
+      199,
+      209
+    ],
+    "strict_global_enrichment": true,
+    "transfer_matrix": [
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "wheel": 210,
+    "width": 1000000
+  },
+  "partition": [
+    {
+      "name": "G19-pre",
+      "range": [
+        98000000,
+        99000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D19",
+      "range": [
+        99000000,
+        100000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G19-mid",
+      "range": [
+        100000000,
+        101000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H19",
+      "range": [
+        101000000,
+        102000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A19",
+      "range": [
+        198000000,
+        199000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [
+    {
+      "aggregate_enrichment_numerator": 2319329234,
+      "family": "B1",
+      "mixed_class_count": 48,
+      "positive_class_count": 48,
+      "target_composite_count": 44491,
+      "target_prime_count": 27178,
+      "target_signature": 2
+    }
+  ],
+  "validation": {
+    "frequency_conservation_failure_count": 0,
+    "graph_state_semantics_failure_count": 0,
+    "interval_exclusion_failure_count": 0,
+    "mode_duplicate_gate_failure_count": 0,
+    "plan_failure_count": 0,
+    "remainder_bin_failure_count": 0,
+    "serializer_failure_count": 0,
+    "signed_control_failure_count": 0,
+    "transfer_matrix_failure_count": 0,
+    "wheel_label_partition_failure_count": 0
+  }
+}
