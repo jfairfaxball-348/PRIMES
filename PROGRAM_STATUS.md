@@ -4,14 +4,14 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-36 / SQ-012 design-only preflight complete; E012 frozen/not executed; D1-37 D12 discovery execution next**
+**DISCOVERY-1 — D1-37 / SQ-012 frozen E012 D12 discovery COMPLETE; NO ELIGIBLE OBSERVATION; SQ-012 CLOSED; D1-38 / SQ-013 design-only preflight NEXT**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-012 E012 FROZEN; D12 EXECUTION NEXT | D1-36 froze E012 before output; D12/H12/A12 ungenerated |
+| Pattern discovery | OPEN / SQ-012 CLOSED (NO ELIGIBLE OBSERVATION); SQ-013 DESIGN PREFLIGHT NEXT | D12 consumed exactly; H12/A12 untouched; E012 frozen grammar not to be rerun or relaxed |
 | Observation promotion | OPEN / 11 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-015/016/017 all passed their unchanged H11 criteria mechanically |
 | Candidate conjecture | OPEN / NONE PROMOTED | D1-35 created no candidate; OBS-015/016/017 remain REPLICATED with no candidate link |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -383,4 +383,16 @@ DISCOVERY-1 remains in the blind novelty lane. SQ-010 stays closed historical no
 
 D1-35 / SQ-011 is complete. Synthesis used only the committed D11+H11 aggregate evidence and frozen definitions for OBS-015, OBS-016, and OBS-017. No individual observation or exact conjunction supplied a representation-derived non-arbitrary quantifier beyond the two tested bands, so **NO CANDIDATE CREATED**. All three observations remain REPLICATED with no candidate link; active candidates remain zero. SQ-011 is closed. G11-pre/G11-mid remain ungenerated guards and A11=[124_000_000,125_000_000) remains untouched/uninspected/unexecuted/ungenerated.
 
-The next bounded unit is D1-36 / SQ-012 design-only blind novelty representation-family preflight. It must select and freeze exactly one qualitatively distinct exact target-agnostic representation family, choose any fresh numerical partition only from committed provenance and deterministic metadata/arithmetic rules, freeze exact transforms/controls/allowlist/promotion/holdout/serialization/fail-closed-generation semantics before output, and generate no prime-derived data. It must preserve A11 and all historical protected/non-target ranges, allocate no OBS/CAND ID, and perform no mechanism/proof/adversarial/prior-art/collision/literature/novelty/calibration-transfer work.
+That historical D1-35 handoff was completed as D1-36. D1-37 subsequently executed frozen E012 D12 and closed SQ-012 with NO ELIGIBLE OBSERVATION. The current next bounded unit is D1-38 / SQ-013 design-only preflight; see the appended D1-37 result and live prompt.
+
+## D1-37 / SQ-012 closed discovery checkpoint — 2026-10-08
+
+The E012 evaluator, fail-closed generation planner, deterministic serializer and focused tests were frozen and Git-byte-checkpointed before D12 prime generation: `research/checkpoints/E012_D1_37_source_tests.tar.gz.b64`, commit `373a1e3db30a6eedf4385abbd7aa12d11e7ab8cf`, Git blob `dec6e0821b16a8ad7c76f4f68ddc2ebc4e0f1461`. The bundle preserves the two exact source/test files. Focused tests 9/9 and compile passed; local Ruff remained unavailable under historical tooling limitations. Guard authorization was exactly low whole-prefix `[0,8247)` and segmented D12=`[67_000_000,68_000_000)`; lattice support was integer-only and target-restricted. No forbidden range was generated.
+
+The identical full D12 command ran twice on the identical checkpoint and output path, proving byte identity before allowlist inspection. The D12 artifact is 5,325 bytes, SHA-256 `15d5f399a4cc2adeab1574d12f87049440d21eaf5a233752761986a52d3cbda0`, exact Git blob `46aee086dd053bd0e76e6033e75f28f1e73a994d` at `research/evidence/E012_D12_discovery.json`. Report: `experiments/E012_D12_DISCOVERY_2026-10-08.md`.
+
+Exactly 228,113 common admissible anchors were evaluated (55,465 prime; 172,648 composite), with all eight mandatory validation-failure counts zero. Frozen strict unique bracketed prime modes: N1=`1` (15,850), N2=`6` (7,411), N3=`8` (6,130), N4=`[2,6]` (2,753). All passed overall, per-stratum and occurrence floors. **None** passed the frozen strictly positive exact enrichment requirement in all four odd mod-8 strata: N1 has four negative numerators; N2 has two zeros and one negative; N3 has three negatives; N4 has two zeros and one negative. No fallback, duplicate replacement, threshold change or post-result mining is authorized.
+
+**D1-37 mechanical outcome: NO ELIGIBLE OBSERVATION; SQ-012 CLOSED.** No OBS/CAND ID or H12 criterion is created. H12=`[69_000_000,70_000_000)` and A12=`[134_000_000,135_000_000)` remain untouched/uninspected/ungenerated. G12-pre/G12-mid remain ungenerated guards; A8/A3 and all historical protected/guard/calibration ranges retain their provenance. OBS-015/016/017 remain REPLICATED without candidates, all other observation/conjecture/failure records remain unchanged, active candidates remain 0. No H12/A12 generation, candidate synthesis, mechanism/proof/adversarial/prior-art/collision/literature/novelty work, or calibration transfer occurred.
+
+**Next bounded unit:** D1-38 / SQ-013, design-only blind novelty representation-family preflight. Freeze a genuinely distinct exact target-agnostic family with provenance-only disjoint ranges and frozen controls/selection/serialization/generation semantics; generate no new prime-derived output in that unit. The D12 negative result is historical closure only, not a seed for retuning or selecting E013 features.
