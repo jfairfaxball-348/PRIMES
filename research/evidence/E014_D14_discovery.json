@@ -1,0 +1,204 @@
+{
+  "anchor_summary": {
+    "composite_count": 21612,
+    "composite_counts_by_R90": [
+      1740,
+      953,
+      968,
+      1710,
+      1799,
+      963,
+      1735,
+      924,
+      981,
+      1706,
+      970,
+      1728,
+      1779,
+      937,
+      964,
+      1755
+    ],
+    "prime_count": 5659,
+    "prime_counts_by_R90": [
+      462,
+      238,
+      252,
+      448,
+      452,
+      265,
+      465,
+      271,
+      241,
+      440,
+      232,
+      476,
+      457,
+      248,
+      250,
+      462
+    ],
+    "represented_anchor_count": 27271,
+    "unrepresented_anchor_count": 239397,
+    "wheel_anchor_count": 266668
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D14",
+    "range": [
+      76000000,
+      77000000
+    ]
+  },
+  "experiment": "E014",
+  "families": [
+    {
+      "aggregate_enrichment_numerator": -1005639,
+      "aggregate_enrichment_positive": false,
+      "class_floor_passed": true,
+      "family": "I1",
+      "highest_competing_count": 705,
+      "mechanically_eligible": false,
+      "mixed_class_count": 16,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 7,
+      "positive_class_floor_passed": false,
+      "prime_mode_count": 4845,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 18681,
+      "unique_mode_signature": 1
+    },
+    {
+      "aggregate_enrichment_numerator": 259990,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "I2",
+      "highest_competing_count": 66,
+      "mechanically_eligible": true,
+      "mixed_class_count": 13,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 11,
+      "positive_class_floor_passed": true,
+      "prime_mode_count": 5593,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 21314,
+      "unique_mode_signature": 1
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 8775,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 76000000,
+      "stop": 77000000,
+      "strategy": "segmented"
+    }
+  ],
+  "implementation_commit": "a6a9d0f8066e5460fee9cac2c5e0dc700a62f1a1",
+  "parameters": {
+    "class_floor": 10,
+    "control_modulus": 90,
+    "control_residues": [
+      1,
+      7,
+      11,
+      17,
+      19,
+      29,
+      37,
+      43,
+      47,
+      53,
+      61,
+      71,
+      73,
+      79,
+      83,
+      89
+    ],
+    "exponent": 3,
+    "mixed_class_floor": 12,
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "positive_class_floor": 10,
+    "primitive_gcd": 1,
+    "signature_cap": 4,
+    "sorted_positive": true,
+    "summands": 3,
+    "wheel": 30,
+    "width": 1000000
+  },
+  "partition": [
+    {
+      "name": "G14-pre",
+      "range": [
+        75000000,
+        76000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D14",
+      "range": [
+        76000000,
+        77000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G14-mid",
+      "range": [
+        77000000,
+        78000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H14",
+      "range": [
+        79000000,
+        80000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A14",
+      "range": [
+        152000000,
+        153000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [
+    {
+      "aggregate_enrichment_numerator": 259990,
+      "family": "I2",
+      "mixed_class_count": 13,
+      "positive_class_count": 11,
+      "target_composite_count": 21314,
+      "target_prime_count": 5593,
+      "target_signature": 1
+    }
+  ],
+  "validation": {
+    "anchor_domain_failure_count": 0,
+    "cubic_sum_or_bound_failure_count": 0,
+    "incidence_graph_failure_count": 0,
+    "modulo9_feasibility_failure_count": 0,
+    "plan_failure_count": 0,
+    "population_or_frequency_failure_count": 0,
+    "serializer_or_duplicate_failure_count": 0,
+    "signature_identity_failure_count": 0,
+    "triple_normalization_failure_count": 0
+  }
+}

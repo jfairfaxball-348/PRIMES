@@ -642,9 +642,9 @@ E013 design, D13/H13 narrow output, code, reports and criteria remain immutable.
 
 ## SQ-014 — Independent blind novelty representation-family design
 
-Stage: discovery / design-only planned.
+Stage: discovery / D14 consumed; one-shot holdout replication pending.
 
-Status: **FROZEN AT D1-42 / E014; D14 UNEXECUTED; ONLY D1-43 D14 RUN NEXT.**
+Status: **D1-43 D14 COMPLETE — OBS-020 OBSERVED, I2 target 1; I1 INELIGIBLE; D1-44 ONE-SHOT H14 NEXT; H14/A14 UNTOUCHED.**
 
 Choose and freeze exactly one independently selected, exact, genuinely different target-agnostic representation family with a complete finite transform grammar, controls, promotion and one-shot replication gates, deterministic narrow serialization and fail-closed future segmented-generation specification. Freeze new half-open D/H/A/guard roles using only historical exclusion/provenance metadata, including consumed E013 D13/H13, untouched A13 and all other historic protected/calibration ranges. No mining of E013/D12 or SQ-005 outputs to choose the design.
 
@@ -661,3 +661,11 @@ Choose and freeze exactly one independently selected, exact, genuinely different
 **D1-42 was design-only**: no code/tests or prime generator implemented or run, no prime query, D14 output, OBS/CAND, H14/A14 inspection, E012/E013 mining, literature/collision/novelty work, mechanism/proof/adversarial or calibration transfer. SQ-013 stays CLOSED/NO CANDIDATE and OBS-018/019 REPLICATED; no owner blocker.
 
 **Next bounded action:** D1-43 / SQ-014 D14-only exact frozen evaluator/test implementation and discovery execution. H14/A14 remain untouched.
+
+### D1-43 / SQ-014 D14 discovery outcome — 2026-10-08
+
+**D14 discovery-consumed** under unchanged frozen E014. Independently committed and byte-verified exact D14 source/tests at `a6a9d0f8066e5460fee9cac2c5e0dc700a62f1a1`, then the separate pinned full command checkpoint `4695fec2a8e462cc3ff200a9b76b09c00b7b4fe6` before prime generation. Seven focused synthetic tests PASS, compilation PASS, metadata 330 exclusion comparisons and generator-poison denials PASS; Ruff locally unavailable. Only allowed low `[0,8775)` and segmented D14 `[76M,77M)` generated. Full command twice byte-identical (4,205 bytes, SHA-256 `f988dd1ed944d2216cd364e056d1270e1c0d12445bbdd26c2ba938e4acbaeb0b`) before allowed aggregate inspection; nine validation failures zero, narrow canonical schema PASS.
+
+**I1 strict unique prime t=1 INELIGIBLE:** 4,845 prime target occurrences, 7/16 positive class enrichments <10 and exact aggregate enrichment −1,005,639. **I2 strict unique prime t=1 ELIGIBLE:** 5,593 prime target occurrences (runner 66), 21,314 composite occurrences, 13/16 mixed, 11/16 positive exact enrichment classes, +259,990 exact total numerator, all floors passed and no duplicate. **OBS-020 OBSERVED**, one promoted family; fixed unchanged same-family/same-signature H14 one-shot criteria in `research/OBSERVATION_LEDGER.md`. SQ-014 stays open only for D1-44 one-shot replication. `experiments/E014_D14_DISCOVERY_2026-10-08.md` and `research/evidence/E014_D14_discovery.json` give bounded evidence. No CAND; OBS-018/019 continue REPLICATED. H14=[79M,80M), A14=[152M,153M), guards/A13/all historical protected ranges untouched.
+
+**Next bounded action:** D1-44 / SQ-014 immutable one-shot target-only **OBS-020 I2=1 H14**, with new pre-generation source/test and full-command checkpoints, only low `[0,8945)` and directly segmented `[79M,80M)`, twice byte-identical output before criteria, then REPLICATED or REFUTED. Do not mine D14/H14 or run A14 or candidate work.

@@ -4,16 +4,16 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-42 / SQ-014 DESIGN FROZEN; D1-43 D14 EXECUTION NEXT; SQ-013 CLOSED / NO CANDIDATE; OBS-018/019 REPLICATED; A13/H14/A14 UNTOUCHED**
+**DISCOVERY-1 — D1-43 / SQ-014 D14 DISCOVERY-CONSUMED; OBS-020 OBSERVED (I2=1), D1-44 ONE-SHOT H14 NEXT; OBS-018/019 REPLICATED; A13/H14/A14 UNTOUCHED; ZERO ACTIVE CANDIDATES**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-012 AND SQ-013 CLOSED; SQ-014 FROZEN / D14 UNEXECUTED; A13/H14/A14 UNTOUCHED | D1-43 may execute only frozen E014 D14 after source/test/command checkpoint and validation |
-| Observation promotion | OPEN / 13 REPLICATED; 0 OBSERVED; 6 REFUTED | OBS-018 and OBS-019 both passed the immutable H13 criteria; no candidate promoted |
-| Candidate conjecture | OPEN / NONE PROMOTED | D1-41 concluded NO CANDIDATE CREATED; design-only SQ-014 is next |
+| Pattern discovery | OPEN / SQ-012 AND SQ-013 CLOSED; SQ-014 D14 CONSUMED / H14 UNTOUCHED; A13/A14 UNTOUCHED | D1-44 may run only immutable OBS-020 I2=1 one-shot H14 after new source/test/command checkpoint |
+| Observation promotion | OPEN / 13 REPLICATED; 1 OBSERVED; 6 REFUTED | OBS-020 I2=1 discovery eligible; unchanged target-specific H14 criterion committed before any H14 generation |
+| Candidate conjecture | OPEN / NONE PROMOTED | D1-43 is discovery-only OBS-020 promotion; no CAND created or synthesis performed |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -458,3 +458,9 @@ Only **future** phase-specific positive-allowlist low whole-prefix + segmented h
 D1-42 performed only exact interval/definition arithmetic and document consistency checks; no prime generation, primality calls, test/lint, new output, OBS/CAND ID, protected-band use, E012/E013 output mining, calibration transfer, mechanism, proof, adversarial or prior-art/collision/literature/novelty search. Existing E013 evidence/code/criteria and all observation/conjecture/failure statuses remain unchanged. SQ-013 CLOSED / NO CANDIDATE; OBS-018/019 remain REPLICATED; active candidates 0; SQ-005 CLOSED/QUARANTINED. No owner blocker.
 
 **Next distinct unit:** D1-43 / SQ-014 frozen **D14-only execution** with independently checkpointed source/tests/complete command, pre-generation tests and exact guarded plan, identical-command byte replay, mechanical I1/I2 precursor gates and H14 criterion freezing only if eligible. Stop before H14/A14 or any downstream work.
+
+## D1-43 / SQ-014 D14 discovery closure — 2026-10-08
+
+Frozen E014 D14 **DISCOVERY-CONSUMED**, no redesign. Exact implementation/tests committed and remotely byte-verified at `a6a9d0f8066e5460fee9cac2c5e0dc700a62f1a1` after focused synthetic test **7/7 PASS**, Python compilation PASS, 330/330 metadata-only exclusion checks and poison-generator denials. Ruff unavailable locally (not claimed passed). The separately frozen complete D14 command was committed and remote-byte-verified at `4695fec2a8e462cc3ff200a9b76b09c00b7b4fe6` **before any D14 generation**. The only prime calls were low whole-prefix `[0,8775)` then directly segmented D14=`[76_000_000,77_000_000)`; two identical full executions yielded 4,205 byte-identical bytes, SHA-256 `f988dd1ed944d2216cd364e056d1270e1c0d12445bbdd26c2ba938e4acbaeb0b`, before narrow allowed aggregate inspection. All nine mandatory validation counts are zero; exact schema and generation-plan validation passed. Evidence: `research/evidence/E014_D14_discovery.json`; report: `experiments/E014_D14_DISCOVERY_2026-10-08.md`.
+
+Y_D14 contains 27,271 represented Q30 anchors (5,659 primes, 21,612 composites), among 266,668 Q30 wheel anchors. I1 target t=1 is strict unique mode (4,845 prime occurrences), but **INELIGIBLE**: 7/16 positive-enrichment classes and exact aggregate enrichment −1,005,639. I2 target **t=1** is strict unique prime mode (5,593 vs highest competitor 66), with 21,314 composite-target occurrences, 13/16 mixed classes, 11/16 positive-enrichment classes, exact aggregate enrichment **+259,990** and all frozen floors passed. Exact support-set duplicate and at-most-two controls applied; **one OBS promoted: OBS-020 / I2=1, status OBSERVED**. Its *identical same-family/same-signature one-shot H14 criterion* is committed in the observation ledger BEFORE any later H14 call. Total 13 REPLICATED, 1 OBSERVED, 6 REFUTED; 0 active CAND. H14=`[79_000_000,80_000_000)`, A14=`[152_000_000,153_000_000)`, both G14 guards, A13, H12/A12/A8/A3 and all historical protected/calibration regions remain untouched, ungenerated and uninspected. No H14/adversarial/candidate/mechanism/proof/prior-art/collision/literature/novelty/SQ-005 transfer performed. **Next bounded unit D1-44:** separate immutable OBS-020 I2 t=1 one-shot H14 replication; no owner blocker.
