@@ -4,16 +4,16 @@ Status date: 2026-10-08
 
 ## Current stage
 
-**DISCOVERY-1 — D1-55 / S057 / SQ-019 SYNTHESIS CLOSED — NO CANDIDATE CREATED; OBS-022/023 RETAIN REPLICATED; 15 REPLICATED / 0 OBSERVED / 8 REFUTED; ZERO ACTIVE CANDIDATES; NEXT DISTINCT D1-56 / SQ-020 DESIGN ONLY**
+**DISCOVERY-1 — D1-56 / S058 / SQ-020 DESIGN-ONLY PREFLIGHT CLOSED; ONE SOURCE-FREE E019 FAMILY FROZEN; D19 UNEXECUTED; 15 REPLICATED / 0 OBSERVED / 8 REFUTED; ZERO ACTIVE CANDIDATES; NEXT D1-57 / SQ-021 D19 ONLY**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-019 CLOSED AFTER SYNTHESIS; SQ-018 AND SQ-012/013/014/015/016/017 CLOSED | Only future separately authorised distinct work; H18 is replication-consumed and A18/guards/historical reserves barred |
+| Pattern discovery | OPEN / SQ-020 DESIGN CLOSED; SQ-021 FROZEN D19-ONLY NEXT; SQ-019/018 AND SQ-012/013/014/015/016/017 CLOSED | Only future separately authorised distinct work; H18 is replication-consumed and A18/guards/historical reserves barred |
 | Observation promotion | OPEN / 15 REPLICATED; 0 OBSERVED; 8 REFUTED | OBS-022 L1 target 0 and OBS-023 L2 target 0 both REPLICATED on one-shot untouched H18 with every gate; zero candidate |
-| Candidate conjecture | OPEN / NONE PROMOTED | Zero active CAND; D1-55/SQ-019 synthesis produced NO CANDIDATE. Only next separate D1-56/SQ-020 source-free distinct-family DESIGN preflight is queued; no E018 extension |
+| Candidate conjecture | OPEN / NONE PROMOTED | Zero active CAND; D1-55/SQ-019 synthesis produced NO CANDIDATE. Separate E019 DESIGN freeze D1-56/SQ-020 completed; next D1-57/SQ-021 D19-only discovery is queued; no E018 extension |
 | Prior-art collision audit | CLOSED | Candidate status reached |
 | Proof programme | CLOSED | Candidate survives collision/falsification |
 | Publication | CLOSED | Separate theorem project reaches proof maturity |
@@ -593,3 +593,13 @@ The complete actual fixed D17 command was independently precommitted and verifie
 **Limitations/strict stop:** No prime generation, primality query, high anchor evaluation, new derived statistic/support inspection, second D18/H18, mechanism, proof, stress, new E018 family/retarget, literature/prior-art/novelty/collision, or SQ-005 unblinding. A18=[190M,191M), G18-pre=[94M,95M), G18-mid=[96M,97M), H17/A17/G17 and all earlier historical protected/adversarial/held-back/consumed/calibration/nested roles remain barred. Prior mathematical specifications, OBS/CAND/FAIL histories and D18/H18 JSON/report/source bytes preserved.
 
 **Exactly one unblocked, genuinely distinct future bounded unit:** D1-56 / SQ-020 / S058 is **source-free independent new representation DESIGN ONLY**, not an E018 continuation, not an adversarial execution and not started in D1-55. Freeze at most one mathematically independent prime-label-blind family and its exact gates/exclusion metadata *before any code/data*, avoiding any E018 or earlier empirical outcome-driven selection; if no defensible distinct family exists, close honestly without forcing work. Next prompt frozen in `NEXT_SESSION_PROMPT.md`. No owner decision blocker.
+
+## D1-56 / S058 — SQ-020 independent E019 design-only preflight CLOSED — 2026-10-08
+
+**Disposition: exactly one E019 independent mathematical family FROZEN, NO prime computation and NO new OBS/CAND.** The new primitive is the connected-versus-separated two-vertex boundary spanning-forest counts on an unweighted two-row ladder L_x. Its exact state recurrence is (C_(n+1),D_(n+1))=(3*C_n+D_n,2*C_n+D_n), C_1=D_1=1, computable by M^(x-1) mod x with M=[[3,1],[2,1]]. One complete four-state B1 signature records the joint high/low halves of C_x mod x and D_x mod x for the same Q210/48-class prime-label-blind anchor domain. Complete frozen specification: `experiments/E019_TWO_ROW_LADDER_SPANNING_FOREST_BOUNDARY_SHAPES.md`. This graph boundary-connectivity/acyclicity count is distinct at the primitive level from E001–E018, including E018's one-dimensional row tilings; no historical-mathematical originality is asserted. No previous per-anchor results/outcomes, prior-source target or SQ-005 calibration mechanism influenced the choice.
+
+**Exact metadata-only roles (no entry):** G19-pre=[98M,99M), D19=[99M,100M), G19-mid=[100M,101M), H19=[101M,102M), A19=[198M,199M) with A19=2*lower(D19). All **89** previous named exclusions (53 E013 early, 30 E013–E018, six E005 maxima) are preserved. Audit: **3,916/3,916** historical pairs, **445/445** new/history, **10/10** new/new, **30/30** E005 nested containments, **150/150** new/nested disjoint comparisons; no overlaps. Future exclusive low-prefix boundaries D19=10000, H19=10100 and A19=14107 are derived from exact integer isqrt. H17/A17/G17, G18-pre/G18-mid, D18/H18 (consumed), A18 (untouched), all older adversarial/held-back/guard bands and quarantined E005 intervals retain full original protections.
+
+**Frozen pre-generation rules:** Only one four-state B1 strict prime mode may be promoted, with precommitted 1000/10 label floors, 32 occurrence, 36/48 fully mixed classes, exact strictly positive total enrichment, 30/48 positive signed class enrichments, ten zero validators, exact-support deduplication and cap ONE. One-shot unchanged same-target H19 refutation is locked before any possible H19 generation; H19 and A19 are NOT authorised now. The future narrow canonical artifact and positive generator allowlists are source-independent. The next **single** separately bounded D1-57/SQ-021 unit may implement/checkpoint and execute **only D19** under the frozen controls, or close no observation; no H19, A19, guard or earlier reserve access.
+
+**Strict D1-56 stop:** Source-free design and provenance only; no new E019 code/tests/command, primality/prime generation, high-anchor numerical exploration, D18/H18 replay, holdout/adversarial execution, new statistic, retuning, proof/mechanism, candidate, literature/collision/prior-art/novelty search, calibration or SQ-005 unblinding. No OBS/CAND/FAIL/evidence/old-spec status or content altered. **SQ-020 CLOSED, SQ-021 FROZEN NEXT; 15 REPLICATED / 0 OBSERVED / 8 REFUTED, ZERO CAND.** No owner decision blocker.
