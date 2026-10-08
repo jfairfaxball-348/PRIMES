@@ -583,7 +583,7 @@ Next bounded action: **D1-38 / SQ-013 — blind novelty representation-family DE
 
 Stage: discovery
 
-Status: **D1-39 D13 DISCOVERY EXECUTED / OBS-018 AND OBS-019 OBSERVED / ONE-SHOT H13 REPLICATION NEXT; A13 UNTOUCHED**
+Status: **CLOSED — D1-41 NO CANDIDATE CREATED; OBS-018/019 REPLICATED; D13/H13 CONSUMED; A13 UNTOUCHED**
 
 Frozen authoritative specification: `experiments/E013_MODULAR_QUADRATIC_ORBIT_SHAPES.md`.
 
@@ -631,3 +631,21 @@ H13 common population is 55,050 primes and 211,616 composite controls (266,666 a
 **Protected provenance:** H13 is now replication-consumed. A13=`[144_000_000,145_000_000)`, G13-pre=`[71_000_000,72_000_000)`, G13-mid=`[73_000_000,74_000_000)`, H12/A12/A8/A3, all historical reserve/guards, and all calibration segments remain ungenerated and uninspected; D13 is immutable. No candidate ID, synthesis, mechanism/proof/adversarial/prior-art/collision/literature/novelty work. SQ-005 remains quarantined and SQ-012 closed.
 
 **Next bounded action: D1-41 / SQ-013 synthesis-only candidate triage of exactly OBS-018 and OBS-019**, separately and as exact conjunctions, using only committed D13/H13 narrow aggregate records. If no non-arbitrary falsifiable generalization is justified, record NO CANDIDATE CREATED and close SQ-013 without A13. No further prime generation, H13 mining, candidate proof, or literature/novelty work in this triage.
+
+### D1-41 / SQ-013 completed synthesis-only triage — 2026-10-08
+
+**SQ-013 CLOSED; NO CANDIDATE CREATED.** OBS-018 (O1=3) and OBS-019 (O2=2) each remain REPLICATED, with all unchanged D13/H13 strict-mode, floor, mixed-R30, enrichment and validation gates passed. Each separately defines an exact finite-band modal fact. Neither exact ordinal short-orbit representation supplies an invariant or principled quantifier over untested origins, widths, scales, universal/eventual bands or infinite occurrences. The conjunction is only the two separately replicated finite facts: no same-anchor joint statistic or common invariant is in the permitted evidence. No CAND allocated; both OBS candidate links remain none. Permanent triage: `experiments/E013_D1_41_SYNTHESIS_2026-10-08.md` and `research/CONJECTURE_REGISTER.md`.
+
+E013 design, D13/H13 narrow output, code, reports and criteria remain immutable. D13/H13 are consumed in their prior roles; A13=[144_000_000,145_000_000), G13-pre=[71_000_000,72_000_000), G13-mid=[73_000_000,74_000_000), H12/A12/A8/A3 and every historical protected/holdout/guard/adversarial/calibration region are unchanged and uninspected in D1-41. SQ-012 closed and SQ-005 quarantined. No prime generation/primality queries, data mining, new modes, thresholds, strata, mechanism/proof/adversarial/literature/collision/novelty/calibration work, or new failure.
+
+**Next bounded action:** D1-42 / SQ-014 design-only independent blind novelty representation preflight, not an extension of SQ-013.
+
+## SQ-014 — Independent blind novelty representation-family design
+
+Stage: discovery / design-only planned.
+
+Status: **QUEUED FOR D1-42; NO FROZEN REPRESENTATION OR NEW D/H/A RANGES; NO PRIME GENERATION AUTHORIZED.**
+
+Choose and freeze exactly one independently selected, exact, genuinely different target-agnostic representation family with a complete finite transform grammar, controls, promotion and one-shot replication gates, deterministic narrow serialization and fail-closed future segmented-generation specification. Freeze new half-open D/H/A/guard roles using only historical exclusion/provenance metadata, including consumed E013 D13/H13, untouched A13 and all other historic protected/calibration ranges. No mining of E013/D12 or SQ-005 outputs to choose the design.
+
+**D1-42 is DESIGN ONLY:** no implementation/tests, new prime data or primality query, observation/candidate promotion, A13 or protected-range execution, mechanism, proof, adversarial, or prior-art/collision work. See `NEXT_SESSION_PROMPT.md`.
