@@ -1,0 +1,25 @@
+name: E025 D25 generator-free precommit checks
+on:
+  push:
+    paths:
+      - .github/workflows/e025-preflight.yml
+      - experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py
+      - tests/test_e025.py
+  workflow_dispatch:
+jobs:
+  generator-free:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused preflight
+        run: python -m pip install --disable-pip-version-check pytest ruff
+      - name: Compile source and independent synthetic tests
+        run: python -m py_compile experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py tests/test_e025.py
+      - name: Focused immutable implementation lint
+        run: ruff check experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py tests/test_e025.py
+      - name: All generator-free E025 synthetic, scope and poison tests
+        run: python -m pytest tests/test_e025.py -q
