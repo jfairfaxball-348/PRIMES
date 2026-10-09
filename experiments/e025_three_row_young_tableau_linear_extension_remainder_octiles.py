@@ -448,7 +448,9 @@ def run(implementation_commit: str, output: Path) -> bytes:
     np_a = [sum(row) for row in prime]
     nc_a = [sum(row) for row in comp]
     np, nc = sum(np_a), sum(nc_a)
-    if np + nc != len(anchors) or any(sum(prime[i]) + sum(comp[i]) == sum(1 for p in positions if p == i) is False for i in range(48)):
+    if np + nc != len(anchors) or any(
+        sum(prime[i]) + sum(comp[i]) != positions.count(i) for i in range(48)
+    ):
         raise ArithmeticError("frequency conservation")
     parameters = {"width": 2_000_000, "wheel": 210, "residues_R210": list(RESIDUES),
                   "rows": 3, "index_rule": "isqrt_x",
