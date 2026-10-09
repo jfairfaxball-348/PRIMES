@@ -1,0 +1,43 @@
+name: E025 H25 generator-free preflight
+on:
+  push:
+    paths:
+      - research/checkpoints/E025_D1_72_H25_PREFLIGHT_MARKER.md
+permissions:
+  contents: read
+jobs:
+  h25-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Frozen H25 source and tests byte check (NO generator)
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object experiments/e025_h25_three_row_young_tableau_linear_extension_remainder_octiles.py)" = e4969458dbcbd202b24c141016859fd94bd00464
+          test "$(git hash-object tests/test_e025_h25.py)" = 1d82eb2d0ecb4ccb6febf108de69c48a8b318d66
+          python -m pip install --disable-pip-version-check pytest ruff
+          ruff check experiments/e025_h25_three_row_young_tableau_linear_extension_remainder_octiles.py tests/test_e025_h25.py
+          python -m py_compile experiments/e025_h25_three_row_young_tableau_linear_extension_remainder_octiles.py tests/test_e025_h25.py
+          python -m pytest tests/test_e025_h25.py -q
+          python - <<'PY'
+          from experiments.e025_h25_three_row_young_tableau_linear_extension_remainder_octiles import (
+              independent_small_checks, independent_triviality_veto,
+              audit_named_intervals, assert_plan, PLAN, PARTITION, BASE_STOP, LOW, HIGH
+          )
+          from pathlib import Path
+          from math import isqrt
+          spec=Path("experiments/E025_THREE_ROW_YOUNG_TABLEAU_LINEAR_EXTENSION_REMAINDER_OCTILES.md").read_text()
+          assert len(audit_named_intervals(spec)) == 149
+          assert (BASE_STOP, LOW, HIGH) == (14697, 214000000, 216000000)
+          assert isqrt(HIGH-1) == 14696
+          assert PARTITION[1] == ("D25",210000000,212000000,"discovery")
+          assert PARTITION[3] == ("H25",LOW,HIGH,"holdout")
+          assert_plan(PLAN,spec,"H25")
+          independent_small_checks()
+          assert independent_triviality_veto()
+          PY
