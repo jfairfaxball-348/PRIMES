@@ -435,7 +435,7 @@ def payload_schema(value: object) -> None:
             f["class_floor_passed"] != all(a >= 20 and b >= 20 for a, b in zip(ap, ac, strict=True)):
         raise ValueError("class/population flags")
     if type(value["promotions"]) is not list or value["promotions"] != []:
-        raise ValueError("H25 promotions always empty")\n
+        raise ValueError("H25 promotions always empty")
 
 def run(implementation_commit: str, output: Path) -> bytes:
     design = Path("experiments/E025_THREE_ROW_YOUNG_TABLEAU_LINEAR_EXTENSION_REMAINDER_OCTILES.md").read_text()
