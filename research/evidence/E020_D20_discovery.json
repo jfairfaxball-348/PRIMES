@@ -1,0 +1,288 @@
+{
+  "anchor_summary": {
+    "composite_count": 174366,
+    "composite_counts_by_R210": [
+      3646,
+      3613,
+      3648,
+      3617,
+      3652,
+      3644,
+      3622,
+      3624,
+      3653,
+      3674,
+      3620,
+      3608,
+      3638,
+      3648,
+      3672,
+      3645,
+      3623,
+      3640,
+      3618,
+      3601,
+      3634,
+      3645,
+      3653,
+      3635,
+      3650,
+      3603,
+      3636,
+      3631,
+      3610,
+      3630,
+      3639,
+      3649,
+      3614,
+      3622,
+      3621,
+      3642,
+      3604,
+      3637,
+      3650,
+      3682,
+      3647,
+      3611,
+      3603,
+      3642,
+      3630,
+      3609,
+      3621,
+      3610
+    ],
+    "prime_count": 54206,
+    "prime_counts_by_R210": [
+      1116,
+      1149,
+      1114,
+      1145,
+      1110,
+      1117,
+      1139,
+      1137,
+      1108,
+      1088,
+      1142,
+      1154,
+      1124,
+      1114,
+      1090,
+      1117,
+      1139,
+      1122,
+      1144,
+      1161,
+      1128,
+      1117,
+      1109,
+      1127,
+      1112,
+      1159,
+      1126,
+      1131,
+      1152,
+      1132,
+      1123,
+      1113,
+      1148,
+      1140,
+      1141,
+      1120,
+      1158,
+      1125,
+      1112,
+      1080,
+      1115,
+      1151,
+      1159,
+      1120,
+      1132,
+      1153,
+      1141,
+      1152
+    ],
+    "wheel_anchor_count": 228572
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D20",
+    "range": [
+      103000000,
+      104000000
+    ]
+  },
+  "experiment": "E020",
+  "families": [
+    {
+      "aggregate_enrichment_numerator": 4590380904,
+      "aggregate_enrichment_positive": true,
+      "class_floor_passed": true,
+      "family": "W1",
+      "highest_competing_count": 0,
+      "mechanically_eligible": false,
+      "mixed_class_count": 0,
+      "mixed_class_floor_passed": false,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 48,
+      "positive_class_floor_passed": true,
+      "prime_mode_count": 54206,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 89682,
+      "unique_mode_signature": 0
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 10199,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 103000000,
+      "stop": 104000000,
+      "strategy": "direct_segmented"
+    }
+  ],
+  "implementation_commit": "ff17721ddebdc309e9927e619786bc163cfed3f1",
+  "parameters": {
+    "class_floor": 10,
+    "composition": "(g h)(i)=g(h(i))",
+    "convolution": "noncommutative-group-ring",
+    "endpoint_states": [
+      "213",
+      "231"
+    ],
+    "generators": [
+      "213",
+      "231"
+    ],
+    "group_states": [
+      "123",
+      "132",
+      "213",
+      "231",
+      "312",
+      "321"
+    ],
+    "identity": "123",
+    "joint_half_bins": 2,
+    "mixed_class_floor": 36,
+    "occurrence_floor": 32,
+    "population_floor": 1000,
+    "positive_class_floor": 30,
+    "remainder_modulus": "anchor",
+    "residues_R210": [
+      1,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      127,
+      131,
+      137,
+      139,
+      143,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      187,
+      191,
+      193,
+      197,
+      199,
+      209
+    ],
+    "strict_global_enrichment": true,
+    "wheel": 210,
+    "width": 1000000,
+    "word_length": "anchor"
+  },
+  "partition": [
+    {
+      "name": "G20-pre",
+      "range": [
+        102000000,
+        103000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D20",
+      "range": [
+        103000000,
+        104000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G20-mid",
+      "range": [
+        104000000,
+        105000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H20",
+      "range": [
+        105000000,
+        106000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A20",
+      "range": [
+        206000000,
+        207000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [],
+  "validation": {
+    "frequency_conservation_failure_count": 0,
+    "group_definition_failure_count": 0,
+    "interval_exclusion_failure_count": 0,
+    "mode_duplicate_gate_failure_count": 0,
+    "plan_failure_count": 0,
+    "remainder_bin_failure_count": 0,
+    "serializer_failure_count": 0,
+    "signed_control_failure_count": 0,
+    "wheel_label_partition_failure_count": 0,
+    "word_convolution_failure_count": 0
+  }
+}
