@@ -2,7 +2,7 @@ name: E025 H25 generator-free preflight
 on:
   push:
     paths:
-      - research/checkpoints/E025_D1_72_H25_PREFLIGHT_MARKER.md
+      - research/checkpoints/E025_D1_72_H25_PREFLIGHT_*.md
 permissions:
   contents: read
 jobs:
@@ -18,7 +18,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git hash-object experiments/e025_h25_three_row_young_tableau_linear_extension_remainder_octiles.py)" = e4969458dbcbd202b24c141016859fd94bd00464
+          test "$(git hash-object experiments/e025_h25_three_row_young_tableau_linear_extension_remainder_octiles.py)" = 41b1973331e28b40b1ab76f00eac154b099cb9d5
           test "$(git hash-object tests/test_e025_h25.py)" = 1d82eb2d0ecb4ccb6febf108de69c48a8b318d66
           python -m pip install --disable-pip-version-check pytest ruff
           ruff check experiments/e025_h25_three_row_young_tableau_linear_extension_remainder_octiles.py tests/test_e025_h25.py
