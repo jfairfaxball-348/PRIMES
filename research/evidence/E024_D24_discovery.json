@@ -1,0 +1,287 @@
+{
+  "anchor_summary": {
+    "composite_count": 351829,
+    "composite_counts_by_R210": [
+      7334,
+      7358,
+      7291,
+      7280,
+      7322,
+      7340,
+      7345,
+      7324,
+      7326,
+      7369,
+      7339,
+      7299,
+      7252,
+      7307,
+      7343,
+      7337,
+      7315,
+      7341,
+      7315,
+      7316,
+      7375,
+      7346,
+      7313,
+      7335,
+      7331,
+      7357,
+      7380,
+      7335,
+      7370,
+      7342,
+      7353,
+      7336,
+      7325,
+      7318,
+      7382,
+      7308,
+      7340,
+      7341,
+      7357,
+      7328,
+      7331,
+      7321,
+      7299,
+      7308,
+      7326,
+      7317,
+      7338,
+      7264
+    ],
+    "prime_count": 105315,
+    "prime_counts_by_R210": [
+      2190,
+      2166,
+      2233,
+      2244,
+      2202,
+      2184,
+      2179,
+      2200,
+      2198,
+      2155,
+      2185,
+      2225,
+      2272,
+      2217,
+      2180,
+      2186,
+      2208,
+      2182,
+      2208,
+      2207,
+      2148,
+      2177,
+      2211,
+      2189,
+      2193,
+      2167,
+      2144,
+      2189,
+      2154,
+      2182,
+      2171,
+      2188,
+      2199,
+      2206,
+      2142,
+      2216,
+      2184,
+      2183,
+      2167,
+      2196,
+      2193,
+      2203,
+      2225,
+      2216,
+      2198,
+      2207,
+      2186,
+      2260
+    ],
+    "wheel_anchor_count": 457144
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D24",
+    "range": [
+      184000000,
+      186000000
+    ]
+  },
+  "experiment": "E024",
+  "families": [
+    {
+      "candidate_signature": 0,
+      "class_floor_passed": true,
+      "evaluated_signature": 0,
+      "family": "F1",
+      "highest_competing_prime_count": 46252,
+      "mechanically_eligible": false,
+      "mixed_class_count": 48,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 27,
+      "positive_class_floor_passed": false,
+      "prime_mode_count": 52559,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 174668,
+      "target_enrichment_numerator": 96619991,
+      "target_enrichment_positive": true,
+      "target_prime_count": 52559,
+      "triviality_veto_passed": true
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 13639,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 184000000,
+      "stop": 186000000,
+      "strategy": "direct_segmented"
+    }
+  ],
+  "implementation_commit": "23a4ef9c170b169d1662f4b770b1cbf50e9ff693",
+  "parameters": {
+    "class_floor": 20,
+    "denominators": [
+      3,
+      21
+    ],
+    "feature": "subspace_rank_two_three_remainder_strict_order",
+    "field": "F2",
+    "full_mixed_required": true,
+    "mixed_class_floor": 36,
+    "modulus": "anchor_plus_one",
+    "occurrence_floor": 64,
+    "population_floor": 2000,
+    "positive_class_floor": 36,
+    "residues_R210": [
+      1,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      127,
+      131,
+      137,
+      139,
+      143,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      187,
+      191,
+      193,
+      197,
+      199,
+      209
+    ],
+    "selector": "strict_unique_prime_frequency_mode",
+    "signature_domain": [
+      0,
+      1,
+      2
+    ],
+    "subspace_ranks": [
+      2,
+      3
+    ],
+    "support_cap": 1,
+    "wheel": 210,
+    "width": 2000000
+  },
+  "partition": [
+    {
+      "name": "G24-pre",
+      "range": [
+        182000000,
+        184000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D24",
+      "range": [
+        184000000,
+        186000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G24-mid",
+      "range": [
+        186000000,
+        188000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H24",
+      "range": [
+        188000000,
+        190000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A24",
+      "range": [
+        368000000,
+        370000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [],
+  "validation": {
+    "frequency_conservation_failure_count": 0,
+    "interval_exclusion_failure_count": 0,
+    "mode_support_failure_count": 0,
+    "modular_quotient_failure_count": 0,
+    "plan_failure_count": 0,
+    "rank_order_failure_count": 0,
+    "serializer_replay_failure_count": 0,
+    "signed_mixing_failure_count": 0,
+    "subspace_enumerator_failure_count": 0,
+    "wheel_label_failure_count": 0
+  }
+}
