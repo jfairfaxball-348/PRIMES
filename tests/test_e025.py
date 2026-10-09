@@ -1,7 +1,7 @@
 """Generator-free independent E025 synthetic, algebraic and poison tests."""
 from __future__ import annotations
 
-from functools import lru_cache
+from functools import cache
 from math import factorial, gcd, isqrt
 from pathlib import Path
 
@@ -23,7 +23,7 @@ def independent_poset_extensions(k: int) -> int:
             pred |= 1 << ix[(i - 1, j)]
         before.append(pred)
 
-    @lru_cache(maxsize=None)
+    @cache
     def extensions(mask: int) -> int:
         if mask == (1 << len(boxes)) - 1:
             return 1
@@ -89,7 +89,7 @@ def test_integer_named_exclusion_full_counts() -> None:
     assert 5 * len(nested) == 150
     assert (len(prior) - 6) * len(nested) == 3390
     assert len(e.PARTITION) * (len(e.PARTITION) - 1) // 2 == 10
-    overlap = lambda a, b: a[0] < b[1] and b[0] < a[1]
+    overlap = e.overlaps
     assert all(not overlap(a, b) for i, a in enumerate(prior.values())
                for b in list(prior.values())[i + 1:])
     assert all(not overlap((a, b), ob) for _, a, b, _ in e.PARTITION for ob in old.values())
