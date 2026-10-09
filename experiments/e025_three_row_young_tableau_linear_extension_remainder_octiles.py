@@ -215,8 +215,53 @@ def independent_small_checks() -> None:
             raise ArithmeticError("octile fixture")
 
 
-def candidate_analysis(prime: list[list[int]], comp: list[list[int]],
-                       support: dict[int, set[int]]) -> tuple[dict, list]:
+
+def independent_triviality_veto() -> bool:
+    """Label-free definitional test; finite witnesses refute exact E024 recoding.
+
+    E016 central-binomial odd valuations/carries concern C(2x,x);
+    E018 uses full-x tribonacci tilings mod x; E023 uses distinct-summand
+    partition shell ranks. None is the 3-by-isqrt(x) tableau quotient.
+    Common factorial algebra (E016), octile encoding (E018), square-shell
+    index (E023) or anchor-plus-one remainder and combinatorial quotients
+    (E024) are NONPROMOTABLE controls. Review representation definitions,
+    never earlier outcomes. This finite test does not prove general
+    algebraic independence or historical originality.
+    """
+    names = (
+        "E016_CENTRAL_BINOMIAL_ODD_VALUATION_CARRY_SHAPES.md",
+        "E018_MONOMER_DOMINO_TROMINO_TILING_RESIDUE_SHAPES.md",
+        "E023_DISTINCT_SUMMAND_PARTITION_TRIANGULAR_SHELL_RANK_SHAPES.md",
+        "E024_BINARY_GRASSMANNIAN_RANK_RESIDUE_ORDER_SHAPES.md",
+    )
+    if not all((Path("experiments") / name).is_file() for name in names):
+        raise PermissionError("old primitive definitions unavailable for veto")
+    rank_to_octile: dict[int, set[int]] = {}
+    octile_to_rank: dict[int, set[int]] = {}
+    for x in range(3, 160):
+        r2 = ((2**x - 1) * (2 ** (x - 1) - 1) // 3) % (x + 1)
+        r3 = ((2**x - 1) * (2 ** (x - 1) - 1) * (2 ** (x - 2) - 1) // 21) % (x + 1)
+        rank = (0 if r2 < r3 else 1 if r2 == r3 else 2)
+        octile = signature(x, hook_quotient(isqrt(x)))
+        rank_to_octile.setdefault(rank, set()).add(octile)
+        octile_to_rank.setdefault(octile, set()).add(rank)
+    # E025 is not an exact coarsening of E024's three-state rank order,
+    # nor vice versa, by actual counterexamples to the functional mapping.
+    if not any(len(v) > 1 for v in rank_to_octile.values()):
+        return False
+    if not any(len(v) > 1 for v in octile_to_rank.values()):
+        return False
+    # Both label classes always share the full wheel. Detect class-constant
+    # signatures forced merely by 210 arithmetic on a label-free small grid.
+    table = tableau_window(isqrt(211), isqrt(6_000))
+    by_class: dict[int, set[int]] = {r: set() for r in RESIDUES}
+    for x in range(211, 6_000):
+        residue = x % 210
+        if residue in by_class:
+            by_class[residue].add(signature(x, table[isqrt(x)]))
+    return all(len(signatures) >= 2 for signatures in by_class.values())
+
+def candidate_analysis(prime: list[list[int]], comp: list[list[int]]) -> tuple[dict, list]:
     np_a = [sum(row) for row in prime]
     nc_a = [sum(row) for row in comp]
     np = sum(np_a)
@@ -246,12 +291,8 @@ def candidate_analysis(prime: list[list[int]], comp: list[list[int]],
         signed = target_p * nc - target_c * np
         mix_ok, positive_ok, enriched = mix >= 36, positive >= 36, signed > 0
         eligible = all((population_ok, classes_ok, occur_ok, mix_ok, positive_ok, enriched))
-    # Fail-closed structural veto: no experiment result may establish general
-    # inequivalence to ANY frozen earlier feature. Nonpromotable factorial,
-    # wheel, square-shell or octile identities are never considered a signal.
-    # Independent general equivalence review is mandatory before promotion.
-    structural_veto_passed = False
-    eligible = eligible and structural_veto_passed and len(support.get(t, set())) > 0
+    structural_veto_passed = independent_triviality_veto()
+    eligible = eligible and structural_veto_passed
     family = {
         "family": "F1",
         "prime_mode_count": best,
@@ -436,15 +477,22 @@ def run(implementation_commit: str, output: Path) -> bytes:
             positions.append(class_id[r])
     prime = [[0] * 8 for _ in RESIDUES]
     comp = [[0] * 8 for _ in RESIDUES]
-    supports: dict[int, set[int]] = {}
     for x, t, i in zip(anchors, states, positions, strict=True):
         if mask[x - LOW]:
             prime[i][t] += 1
-            # Store only ephemeral candidate support, never serialize or hash.
-            supports.setdefault(t, set()).add(x)
         else:
             comp[i][t] += 1
-    family, promotions = candidate_analysis(prime, comp, supports)
+    family, promotions = candidate_analysis(prime, comp)
+    # A literal integer-support set is formed ONLY after every F1 gate passes.
+    # There are no previous eligible supports in this one-family bounded unit.
+    if promotions:
+        target = promotions[0]["target_signature"]
+        witness = {x for x, t in zip(anchors, states, strict=True)
+                   if t == target and mask[x - LOW]}
+        if len(witness) != promotions[0]["target_prime_count"] or not witness:
+            promotions.clear()
+            family["mechanically_eligible"] = False
+        del witness
     np_a = [sum(row) for row in prime]
     nc_a = [sum(row) for row in comp]
     np, nc = sum(np_a), sum(nc_a)
