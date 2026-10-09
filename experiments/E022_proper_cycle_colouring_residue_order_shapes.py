@@ -138,7 +138,7 @@ def old_intervals():
         early.append((name, int(a) * 1000000, int(b) * 1000000))
     blocks = [(f"{exp}-{role}", a * 1000000, b * 1000000)
               for exp, rows in FIVE_ROLE
-              for role, (a, b) in zip(("G-pre", "D", "G-mid", "H", "A"), rows)]
+              for role, (a, b) in zip(("G-pre", "D", "G-mid", "H", "A"), rows, strict=True)]
     maximums = [(f"E005-{i}", s, s + E005_WIDTHS[-1])
                 for i, s in enumerate(E005_STARTS)]
     return early + blocks + maximums
@@ -333,9 +333,9 @@ class GeneratorGate:
             raise ValueError("unauthorised phase or indirect prime generator")
         if type(plan) is not tuple or len(plan) != 2 or any(type(e) is not tuple for e in plan):
             raise ValueError("generator call list must be exact")
-        for got, expected in zip(plan, PLAN):
+        for got, expected in zip(plan, PLAN, strict=True):
             if len(got) != 4 or any(type(a) is not type(b) or a != b
-                                    for a, b in zip(got, expected)):
+                                    for a, b in zip(got, expected, strict=True)):
                 raise ValueError("invalid complete generator plan")
         audit_intervals()
         self.plan = plan
@@ -417,7 +417,7 @@ def aggregate(p, c, supports, wheel_total, marks, commit):
     candidate, highest, competing = mode(np_t)
     evaluated = candidate  # D22 only. H22 never runs in this module.
     population_ok = np >= 2000 and nc >= 2000
-    class_ok = all(a >= 20 and b >= 20 for a, b in zip(p_r, c_r))
+    class_ok = all(a >= 20 and b >= 20 for a, b in zip(p_r, c_r, strict=True))
     t_prime = sum(p[evaluated]) if evaluated is not None else None
     t_comp = sum(c[evaluated]) if evaluated is not None else None
     occurs = evaluated is not None and t_prime >= 64
@@ -475,16 +475,20 @@ def aggregate(p, c, supports, wheel_total, marks, commit):
     mode_errors += int(dedup_support({3, 7}, checked))
     mode_errors += int(len(checked) != 1)
     mode_errors += int(candidate is not None and len(supports[candidate]) != t_prime)
-    gate_errors = 0
+    exclusion_errors = 0
     try:
         audit_intervals()
+    except ValueError:
+        exclusion_errors += 1
+    gate_errors = 0
+    try:
         GeneratorGate()
     except ValueError:
         gate_errors += 1
     validation = dict(zip(VALIDATORS, (
-        gate_errors, 0, cycle_errors, chromatic_errors, order_errors,
+        gate_errors, exclusion_errors, cycle_errors, chromatic_errors, order_errors,
         wheel_errors, frequency_errors, signed_errors, mode_errors, 0
-    )))
+    ), strict=True))
     trivial = triviality_clear()
     eligible = bool(
         evaluated is not None and population_ok and class_ok and occurs
@@ -546,6 +550,17 @@ def canonical(payload):
             + "\n").encode("ascii")
 
 
+def _strict_equal(a, b):
+    if type(a) is not type(b):
+        return False
+    if type(a) is dict:
+        return set(a) == set(b) and all(_strict_equal(a[k], b[k]) for k in b)
+    if type(a) is list:
+        return len(a) == len(b) and all(_strict_equal(x, y)
+                                        for x, y in zip(a, b, strict=True))
+    return a == b
+
+
 def _is_int(v, nonnegative=False):
     return type(v) is int and (not nonnegative or v >= 0)
 
@@ -568,28 +583,27 @@ def validate_payload(obj):
     band = obj["band"]
     if type(band) is not dict or set(band) != {"name", "range", "interval_semantics"}:
         return False
-    if band != dict(name="D22", range=[156000000, 158000000],
-                    interval_semantics="half-open"):
+    if not _strict_equal(band, dict(name="D22", range=[156000000, 158000000],
+                                      interval_semantics="half-open")):
         return False
     partition = obj["partition"]
     if type(partition) is not list or len(partition) != 5:
         return False
     if any(type(item) is not dict or set(item) != {"name", "range", "role"}
-           or item != dict(name=n, range=[a, b], role=role)
-           for item, (n, a, b, role) in zip(partition, ROLES)):
+           or not _strict_equal(item, dict(name=n, range=[a, b], role=role))
+           for item, (n, a, b, role) in zip(partition, ROLES, strict=True)):
         return False
     params = obj["parameters"]
     if type(params) is not dict or set(params) != set(PARAMETERS):
         return False
-    if any(type(params[k]) is not type(v) or params[k] != v
-           for k, v in PARAMETERS.items()):
+    if any(not _strict_equal(params[k], v) for k, v in PARAMETERS.items()):
         return False
     plan = obj["generation_plan"]
     if type(plan) is not list or len(plan) != 2 or any(
         type(item) is not dict or set(item) != {"purpose", "start", "stop", "strategy"}
-        or item != expected
+        or not _strict_equal(item, expected)
         or any(type(item[k]) is not type(expected[k]) for k in expected)
-        for item, expected in zip(plan, plan_dicts())
+        for item, expected in zip(plan, plan_dicts(), strict=True)
     ):
         return False
     a = obj["anchor_summary"]
@@ -676,7 +690,7 @@ def validate_payload(obj):
         return False
     if f["class_floor_passed"] != all(
         p >= 20 and c >= 20 for p, c in zip(
-            a["prime_counts_by_R210"], a["composite_counts_by_R210"]
+            a["prime_counts_by_R210"], a["composite_counts_by_R210"], strict=True
         )
     ):
         return False

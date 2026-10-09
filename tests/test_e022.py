@@ -138,7 +138,7 @@ def test_synthetic_direct_segmented_equivalence_unprotected_toy_only():
     # Verify the arithmetical sieve formula with independent trial division;
     # none of these integers is in or near a protected high role.
     from primes_lab.core import sieve
-    low = sieve(11)
+    low = sieve(14)
     a, b = 103, 201
     marks = e.target_segment(a, b, low)
     expected = [n >= 2 and all(n % p for p in range(2, int(n**0.5)+1))
@@ -148,8 +148,6 @@ def test_synthetic_direct_segmented_equivalence_unprotected_toy_only():
 
 def test_typed_schema_and_canonical_rejection_without_prime_labels():
     # Synthetic small count cells only, not a D22 or historical result.
-    cells = [[1] * 48, [2] * 48, [3] * 48]
-    comp = [[4] * 48, [5] * 48, [6] * 48]
     f = dict(
         family="R1", prime_mode_count=144, highest_competing_prime_count=96,
         strict_unique_prime_mode=True, candidate_signature=2,
@@ -186,6 +184,12 @@ def test_typed_schema_and_canonical_rejection_without_prime_labels():
     assert not e.validate_payload(bad)
     bad = copy.deepcopy(data)
     bad["parameters"]["population_floor"] = True
+    assert not e.validate_payload(bad)
+    bad = copy.deepcopy(data)
+    bad["parameters"]["residues_R210"][0] = True
+    assert not e.validate_payload(bad)
+    bad = copy.deepcopy(data)
+    bad["band"]["range"][0] = True
     assert not e.validate_payload(bad)
     bad = copy.deepcopy(data)
     bad["anchor_summary"]["prime_count"] = 288.0
