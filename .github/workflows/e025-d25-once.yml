@@ -1,0 +1,98 @@
+name: E025 D25 exact one-shot two-run discovery
+on:
+  push:
+    paths:
+      - research/checkpoints/E025_D1_71_D25_AUTHORIZE.md
+
+permissions:
+  contents: read
+
+jobs:
+  d25-once:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused preflight tooling
+        run: python -m pip install --disable-pip-version-check pytest ruff
+      - name: Immutable source tests and entire-command remote gate BEFORE generation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py)" = ca4953d468959f6c40faf6d03694e02300fcd661
+          test "$(git hash-object tests/test_e025.py)" = e0da9c4b229bdab568dbdf70fa150c9bf4c1b2ae
+          test "$(git hash-object research/checkpoints/E025_D1_71_D25_RUN_COMMAND.md)" = d89836d140e74b067d85305b5caf9aa7e15a562f
+          ruff check experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py tests/test_e025.py
+          python -m py_compile experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py tests/test_e025.py
+          python -m pytest tests/test_e025.py -q
+          python - <<'PY'
+          from pathlib import Path
+          from experiments.e025_three_row_young_tableau_linear_extension_remainder_octiles import assert_plan, PLAN, independent_small_checks, independent_triviality_veto
+          pinned = "python experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py --phase D25 --implementation-commit 3601c733be8c296bae6d35552c37696264717126 --output /tmp/e025_d25_raw.json"
+          exact = Path("research/checkpoints/E025_D1_71_D25_RUN_COMMAND.md").read_bytes()
+          if exact != (pinned + "\n").encode("ascii"):
+              raise PermissionError("entire actual command does not match remotely pinned complete command bytes")
+          workflow = Path(".github/workflows/e025-d25-once.yml").read_text()
+          if [line.strip() for line in workflow.splitlines()].count(pinned) != 2:
+              raise PermissionError("workflow does not execute EXACTLY twice the ENTIRE literal command")
+          spec = Path("experiments/E025_THREE_ROW_YOUNG_TABLEAU_LINEAR_EXTENSION_REMAINDER_OCTILES.md").read_text()
+          independent_small_checks()
+          assert_plan(PLAN, spec, "D25")
+          if not independent_triviality_veto():
+              raise PermissionError("label-blind triviality veto failed before generator")
+          PY
+      - name: Exact command twice, first raw sealed and full replay before interpretation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py --phase D25 --implementation-commit 3601c733be8c296bae6d35552c37696264717126 --output /tmp/e025_d25_raw.json
+          cp -- /tmp/e025_d25_raw.json /tmp/e025_d25_raw_first.sealed
+          sha256sum /tmp/e025_d25_raw_first.sealed > /tmp/e025_d25_first.digest_only
+          python experiments/e025_three_row_young_tableau_linear_extension_remainder_octiles.py --phase D25 --implementation-commit 3601c733be8c296bae6d35552c37696264717126 --output /tmp/e025_d25_raw.json
+          cmp -- /tmp/e025_d25_raw_first.sealed /tmp/e025_d25_raw.json
+          EXTERNAL_FIRST="$(sha256sum /tmp/e025_d25_raw_first.sealed | cut -d ' ' -f1)"
+          EXTERNAL_SECOND="$(sha256sum /tmp/e025_d25_raw.json | cut -d ' ' -f1)"
+          test "$EXTERNAL_FIRST" = "$EXTERNAL_SECOND"
+          python - <<'PY'
+          from pathlib import Path
+          from hashlib import sha256
+          first = Path("/tmp/e025_d25_raw_first.sealed").read_bytes()
+          second = Path("/tmp/e025_d25_raw.json").read_bytes()
+          if first != second or sha256(first).digest() != sha256(second).digest():
+              raise ArithmeticError("whole raw file bytes and independent SHA256 differ")
+          print("E025_FULL_REPLAY_EQUAL_BYTES", len(first))
+          print("E025_FULL_REPLAY_SHA256", sha256(first).hexdigest())
+          PY
+      - name: Interpret ONLY narrow strict typed aggregate AFTER full replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          from experiments.e025_three_row_young_tableau_linear_extension_remainder_octiles import canonical, payload_schema
+          raw = Path("/tmp/e025_d25_raw.json").read_bytes()
+          def unique_pairs(pairs):
+              out = {}
+              for k,v in pairs:
+                  if k in out: raise ValueError("duplicate JSON key")
+                  out[k]=v
+              return out
+          obj = json.loads(raw, object_pairs_hook=unique_pairs,
+                           parse_constant=lambda _: (_ for _ in ()).throw(ValueError("nonfinite")))
+          payload_schema(obj)
+          if canonical(obj) != raw:
+              raise ValueError("strict complete recursive canonical ASCII mismatch")
+          print("E025_CANONICAL_AGGREGATE_BEGIN")
+          print(raw.decode("ascii"), end="")
+          print("E025_CANONICAL_AGGREGATE_END")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e025-d25-once-raw-verified
+          path: /tmp/e025_d25_raw.json
+          if-no-files-found: error
+          retention-days: 30
