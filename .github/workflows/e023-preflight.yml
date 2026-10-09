@@ -5,6 +5,8 @@ on:
       - experiments/E023_distinct_summand_partition_triangular_shell_rank_shapes.py
       - tests/test_e023.py
       - .github/workflows/e023-preflight.yml
+permissions:
+  contents: write
 jobs:
   synthetic:
     runs-on: ubuntu-latest
@@ -22,3 +24,16 @@ jobs:
         run: |
           python -m compileall -q experiments/E023_distinct_summand_partition_triangular_shell_rank_shapes.py tests/test_e023.py
           PYTHONPATH=.:src python -m pytest -q tests/test_e023.py
+      - name: Independently checkpoint generator-free pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object experiments/E023_distinct_summand_partition_triangular_shell_rank_shapes.py)" = "7717c6a05444263b497a71d50196c3886dd04b80"
+          test "$(git hash-object tests/test_e023.py)" = "e67621afbdf8d0ca3c47afe4c3a8ffe7af2d05fe"
+          mkdir -p research/checkpoints
+          printf '%s\n' 'E023 D1-67 GENERATOR-FREE PREFLIGHT PASS' 'Full source blob 7717c6a05444263b497a71d50196c3886dd04b80' 'Full test blob e67621afbdf8d0ca3c47afe4c3a8ffe7af2d05fe' 'ruff focused PASS; compileall PASS; pytest tests/test_e023.py PASS' 'No prime generation command was executed in this workflow.' > research/checkpoints/E023_D1_67_PREFLIGHT_PASS.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/checkpoints/E023_D1_67_PREFLIGHT_PASS.md
+          git commit -m "D1-67 independently seal E023 generator-free preflight PASS"
+          git push origin HEAD:main
