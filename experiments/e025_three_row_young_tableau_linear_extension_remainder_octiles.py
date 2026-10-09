@@ -6,12 +6,12 @@ Neither holdout nor guard nor adversarial primes are generated here.
 from __future__ import annotations
 
 import argparse
-from functools import lru_cache
+import json
+import re
+from functools import cache
 from hashlib import sha256
 from math import factorial, gcd, isqrt
-import json
 from pathlib import Path
-import re
 
 LOW, HIGH = 210_000_000, 212_000_000
 BASE_STOP = 14_561
@@ -47,12 +47,12 @@ def strict_int(value: object) -> bool:
     return type(value) is int
 
 
-@lru_cache(maxsize=None)
+@cache
 def ballot_reference(k: int) -> int:
     """Independent constrained-word DP, intentionally only for k <= 4."""
     if type(k) is not int or not 0 <= k <= 4:
         raise ValueError("finite reference only")
-    @lru_cache(maxsize=None)
+    @cache
     def walk(a: int, b: int, c: int) -> int:
         if (a, b, c) == (k, k, k):
             return 1
@@ -229,7 +229,7 @@ def candidate_analysis(prime: list[list[int]], comp: list[list[int]],
     t = top[0] if unique else None
     competitor = max((cp[j] for j in STATES if j != t), default=best) if unique else best
     population_ok = np >= 2000 and nc >= 2000
-    classes_ok = all(a >= 20 and b >= 20 for a, b in zip(np_a, nc_a))
+    classes_ok = all(a >= 20 and b >= 20 for a, b in zip(np_a, nc_a, strict=True))
     if t is None:
         target_p = target_c = mix = positive = signed = None
         occur_ok = mix_ok = positive_ok = enriched = eligible = False
@@ -397,7 +397,7 @@ def payload_schema(value: object) -> None:
         if f["target_enrichment_positive"] != (f["target_enrichment_numerator"] > 0):
             raise ValueError("signed bool")
     if f["population_floor_passed"] != (np >= 2000 and nc >= 2000) or \
-            f["class_floor_passed"] != all(a >= 20 and b >= 20 for a, b in zip(ap, ac)):
+            f["class_floor_passed"] != all(a >= 20 and b >= 20 for a, b in zip(ap, ac, strict=True)):
         raise ValueError("class/population flags")
     if type(value["promotions"]) is not list or len(value["promotions"]) > 1 or \
             bool(value["promotions"]) != f["mechanically_eligible"]:
@@ -437,7 +437,7 @@ def run(implementation_commit: str, output: Path) -> bytes:
     prime = [[0] * 8 for _ in RESIDUES]
     comp = [[0] * 8 for _ in RESIDUES]
     supports: dict[int, set[int]] = {}
-    for x, t, i in zip(anchors, states, positions):
+    for x, t, i in zip(anchors, states, positions, strict=True):
         if mask[x - LOW]:
             prime[i][t] += 1
             # Store only ephemeral candidate support, never serialize or hash.
