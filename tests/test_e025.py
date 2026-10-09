@@ -155,23 +155,27 @@ def test_whole_plan_poisons_before_any_generator(monkeypatch: pytest.MonkeyPatch
     assert calls == []
 
 
+def test_independent_triviality_counterexamples() -> None:
+    assert e.independent_triviality_veto()
+
+
 def test_strict_selector_signed_classes_no_fallback() -> None:
     prime = [[0] * 8 for _ in range(48)]
     comp = [[0] * 8 for _ in range(48)]
     for i in range(48):
         prime[i][0], prime[i][1] = 30, 10
         comp[i][0], comp[i][1] = 20, 30
-    f, promotions = e.candidate_analysis(prime, comp, {0: {123}})
+    f, promotions = e.candidate_analysis(prime, comp)
     assert f["candidate_signature"] == 0 and f["strict_unique_prime_mode"]
     assert f["prime_mode_count"] == 1440 and f["highest_competing_prime_count"] == 480
     assert f["mixed_class_count"] == 48 and f["positive_class_count"] == 48
     assert f["target_enrichment_numerator"] > 0
     assert not f["population_floor_passed"]  # 1920 primes, before floor
-    assert not f["triviality_veto_passed"] and not f["mechanically_eligible"]
+    assert f["triviality_veto_passed"] and not f["mechanically_eligible"]
     assert promotions == []
     for row in prime:
         row[1] = row[0]
-    f, promotions = e.candidate_analysis(prime, comp, {})
+    f, promotions = e.candidate_analysis(prime, comp)
     assert f["candidate_signature"] is None
     assert f["evaluated_signature"] is None and not f["strict_unique_prime_mode"]
     assert f["target_enrichment_numerator"] is None
