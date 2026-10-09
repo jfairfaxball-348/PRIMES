@@ -1,0 +1,108 @@
+name: E022 D22 single-authorized exact replay
+on:
+  push:
+    paths:
+      - research/checkpoints/E022_D1_65_D22_AUTHORIZE_ONESHOT.md
+permissions:
+  contents: write
+jobs:
+  d22-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check remote precommitted entire source tests and command
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object experiments/E022_proper_cycle_colouring_residue_order_shapes.py)" = "4c7ca115e51648d1857dd2a3f1d180328405610f"
+          test "$(git hash-object tests/test_e022.py)" = "6da88842314ae2a9cf8b8873ecbbd1bee7fecf90"
+          test "$(git hash-object research/checkpoints/E022_D1_65_D22_RUN_COMMAND.md)" = "bb8e7a1595e3771b45153f342976edd310a905f1"
+          printf '%s\n' 'PYTHONPATH=.:src python experiments/E022_proper_cycle_colouring_residue_order_shapes.py --band D22 --code-commit ff4298fe044dd8e66c8c8f6971a0d0c436fc3976 --output /tmp/e022-d22.json' | cmp - research/checkpoints/E022_D1_65_D22_RUN_COMMAND.md
+          test "$(git rev-parse HEAD:experiments/E022_proper_cycle_colouring_residue_order_shapes.py)" = "4c7ca115e51648d1857dd2a3f1d180328405610f"
+      - name: Complete generator-free synthetic and negative-plan checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet -e ".[dev]"
+          ruff check experiments/E022_proper_cycle_colouring_residue_order_shapes.py tests/test_e022.py
+          python -m compileall -q experiments/E022_proper_cycle_colouring_residue_order_shapes.py tests/test_e022.py
+          PYTHONPATH=.:src python -m pytest -q tests/test_e022.py
+          PYTHONPATH=.:src python - <<'PY'
+          from experiments import E022_proper_cycle_colouring_residue_order_shapes as e
+          assert e.audit_intervals() == dict(old_old=5356,new_old=520,new_new=10,new_nested=150,old_non_e005_nested=2940,nested_contained=30,nested_within=60,nested_across=375)
+          assert e.PLAN == (("base_sieve_support",0,12570,"whole_prefix"),("segmented_target",156000000,158000000,"direct_segmented"))
+          assert e.synthetic_failures() == (0,0,0)
+          assert e.triviality_clear()
+          gate=e.GeneratorGate()
+          gate.enter(0,*e.PLAN[0])
+          gate.enter(1,*e.PLAN[1])
+          gate.finished()
+          for phase in ("H22","A22","G22-pre","D21","D20","H19"):
+              try:
+                  e.GeneratorGate(phase=phase)
+              except ValueError:
+                  pass
+              else:
+                  raise AssertionError("off-phase poison escaped")
+          print("PREGEN PASS: 104 named, 30 nested, five E022 roles, ordered exact two-entry positive plan, forbidden off-phases, independent cycle tests")
+          PY
+      - name: Run identical whole pinned command twice with first raw sealed uninterpreted
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e /tmp/e022-d22.json
+          PYTHONPATH=.:src python experiments/E022_proper_cycle_colouring_residue_order_shapes.py --band D22 --code-commit ff4298fe044dd8e66c8c8f6971a0d0c436fc3976 --output /tmp/e022-d22.json
+          cp /tmp/e022-d22.json /tmp/e022-d22.first.sealed.raw
+          sha256sum /tmp/e022-d22.first.sealed.raw > /tmp/e022-d22.first.sha256
+          PYTHONPATH=.:src python experiments/E022_proper_cycle_colouring_residue_order_shapes.py --band D22 --code-commit ff4298fe044dd8e66c8c8f6971a0d0c436fc3976 --output /tmp/e022-d22.json
+          cmp /tmp/e022-d22.first.sealed.raw /tmp/e022-d22.json
+          sha256sum /tmp/e022-d22.json > /tmp/e022-d22.second.sha256
+          test "$(cut -d' ' -f1 /tmp/e022-d22.first.sha256)" = "$(cut -d' ' -f1 /tmp/e022-d22.second.sha256)"
+          python - <<'PY'
+          from hashlib import sha256
+          from pathlib import Path
+          first=Path("/tmp/e022-d22.first.sealed.raw").read_bytes()
+          second=Path("/tmp/e022-d22.json").read_bytes()
+          assert first == second
+          h1=sha256(first).hexdigest()
+          h2=sha256(second).hexdigest()
+          assert h1 == h2
+          assert h1 == Path("/tmp/e022-d22.first.sha256").read_text().split()[0]
+          assert h2 == Path("/tmp/e022-d22.second.sha256").read_text().split()[0]
+          print("FULL RAW REPLAY VERIFIED",len(first),"bytes; independent SHA-256",h1)
+          PY
+      - name: Strict canonical ten-key aggregate interpretation only AFTER replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=.:src python - <<'PY'
+          import json
+          from pathlib import Path
+          from experiments import E022_proper_cycle_colouring_residue_order_shapes as e
+          raw=Path("/tmp/e022-d22.json").read_bytes()
+          obj=json.loads(raw.decode("ascii"))
+          assert e.canonical(obj) == raw
+          assert e.validate_payload(obj)
+          assert obj["implementation_commit"] == "ff4298fe044dd8e66c8c8f6971a0d0c436fc3976"
+          assert obj["band"]["name"] == "D22"
+          assert len(obj) == 10
+          assert all(type(v) is int and v == 0 for v in obj["validation"].values())
+          f=obj["families"][0]
+          assert f["mechanically_eligible"] == bool(obj["promotions"])
+          Path("research/evidence/E022_D22_discovery.json").write_bytes(raw)
+          print("D22 FINITE GATE", "R1 ELIGIBLE" if f["mechanically_eligible"] else "NO ELIGIBLE OBSERVATION")
+          print("D22 canonical narrow aggregate:",raw.decode("ascii"))
+          PY
+      - name: Commit narrow canonical evidence only after all mandatory checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/evidence/E022_D22_discovery.json
+          git commit -m "D1-65 seal D22 canonical aggregate after whole-file replay"
+          git push origin HEAD:main
