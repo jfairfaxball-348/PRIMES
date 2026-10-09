@@ -19,20 +19,20 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git hash-object experiments/E024_binary_grassmannian_rank_residue_order_shapes.py)" = "7ab7e5c7ce24db42296dc9dc06695dd575335d43"
-          test "$(git hash-object tests/test_e023.py)" = "2afafa485c7ec38217ab2051c1da8d761242420c"
+          test "$(git hash-object tests/test_e024.py)" = "2afafa485c7ec38217ab2051c1da8d761242420c"
           test "$(git hash-object research/checkpoints/E024_D1_69_D24_RUN_COMMAND.md)" = "ab78728b50014a00cadd747aede3f8b64c98e87b"
           test "$(git hash-object research/checkpoints/E024_D1_69_PREFLIGHT_PASS.md)" = "9315562f88b74859b5a02d000c0c2aab598edf8c"
           printf '%s\n' 'PYTHONPATH=.:src python experiments/E024_binary_grassmannian_rank_residue_order_shapes.py --band D24 --code-commit 23a4ef9c170b169d1662f4b770b1cbf50e9ff693 --output /tmp/e024-d24.json' | cmp - research/checkpoints/E024_D1_69_D24_RUN_COMMAND.md
           test "$(git rev-parse HEAD:experiments/E024_binary_grassmannian_rank_residue_order_shapes.py)" = "7ab7e5c7ce24db42296dc9dc06695dd575335d43"
-          test "$(git rev-parse HEAD:tests/test_e023.py)" = "2afafa485c7ec38217ab2051c1da8d761242420c"
+          test "$(git rev-parse HEAD:tests/test_e024.py)" = "2afafa485c7ec38217ab2051c1da8d761242420c"
       - name: Complete independent synthetic, provenance and exhaustive generator poisons before any generator
         shell: bash
         run: |
           set -euo pipefail
           python -m pip install --quiet -e ".[dev]"
-          ruff check experiments/E024_binary_grassmannian_rank_residue_order_shapes.py tests/test_e023.py
-          python -m compileall -q experiments/E024_binary_grassmannian_rank_residue_order_shapes.py tests/test_e023.py
-          PYTHONPATH=.:src python -m pytest -q tests/test_e023.py
+          ruff check experiments/E024_binary_grassmannian_rank_residue_order_shapes.py tests/test_e024.py
+          python -m compileall -q experiments/E024_binary_grassmannian_rank_residue_order_shapes.py tests/test_e024.py
+          PYTHONPATH=.:src python -m pytest -q tests/test_e024.py
           PYTHONPATH=.:src python - <<'PY'
           from experiments import E024_binary_grassmannian_rank_residue_order_shapes as e
           from math import isqrt
