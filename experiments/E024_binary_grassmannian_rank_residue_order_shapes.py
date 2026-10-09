@@ -135,7 +135,7 @@ FIVE_ROLE = (
     ("E020", ((102, 103), (103, 104), (104, 105), (105, 106), (206, 207))),
     ("E021", ((136, 138), (138, 140), (140, 142), (142, 144), (276, 278))),
     ("E022", ((154, 156), (156, 158), (158, 160), (160, 162), (312, 314))),
-    ("E024", ((164, 166), (166, 168), (168, 170), (170, 172), (332, 334))),
+    ("E023", ((164, 166), (166, 168), (168, 170), (170, 172), (332, 334))),
 )
 
 
@@ -637,7 +637,7 @@ def validate_payload(obj):
     ):
         return False
     if not _typed_equal(obj["band"], dict(
-        name="D24", range=[166000000, 168000000],
+        name="D24", range=[184000000, 186000000],
         interval_semantics="half-open"
     )):
         return False
@@ -761,7 +761,7 @@ def validate_payload(obj):
     return True
 
 
-def evaluate_h23_refutation(frozen, target, validations_zero=True):
+def evaluate_h24_refutation(frozen, target, validations_zero=True):
     """Pure one-shot H24 gate grammar. NO H24 generator or computation allowed.
 
     frozen: full 13-state counts (global and per 48 classes) and target stats
@@ -794,9 +794,9 @@ def run(commit, output):
     # Finite combinatorics is label-blind and before the label partition.
     signatures, expected_wheel = precompute_features()
     gate.enter(0, *PLAN[0])
-    support_primes = base_sieve(12962)
+    support_primes = base_sieve(13639)
     gate.enter(1, *PLAN[1])
-    flags = segmented_target(166000000, 168000000, support_primes)
+    flags = segmented_target(184000000, 186000000, support_primes)
     gate.finished()
     p, c, supports, wheel = full_tables(flags, signatures)
     family, promotions, validation, populations = gates(
@@ -804,7 +804,7 @@ def run(commit, output):
     np, nc, pr, cr = populations
     payload = dict(
         experiment="E024", implementation_commit=commit,
-        band=dict(name="D24", range=[166000000, 168000000],
+        band=dict(name="D24", range=[184000000, 186000000],
                   interval_semantics="half-open"),
         partition=[dict(name=n, range=[a, b], role=role)
                    for n, a, b, role in ROLES],
