@@ -11,7 +11,7 @@ Status date: 2026-10-09
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-026 E021 source-free design FROZEN; D20 consumed; future SQ-027 D21 only under immutable new family; H21/A21/G21 barred | H20 not unlocked; D19/H19 consumed; A20/G20, A19/G19 and historical roles excluded |
+| Pattern discovery | OPEN / SQ-027 E021 D21 CLOSED NO ELIGIBLE OBSERVATION; D21, D20, D19/H19 consumed; SQ-028 source-free distinct DESIGN ONLY next | No H21 target; H21/A21/G21, H20/A20/G20, A19/G19 and all historical protected/calibration roles barred |
 | Observation promotion | OPEN / 16 REPLICATED; 0 OBSERVED; 8 REFUTED | OBS-024 B1 integer 2 met entire originally frozen one-shot H19 refutation criterion with two complete byte-identical fixed-command executions; immutable target and criterion retained |
 | Candidate conjecture | OPEN / NONE PROMOTED; SQ-023 NO CANDIDATE CREATED; SQ-024 DESIGN-ONLY NO CANDIDATE | OBS-024 remains REPLICATED; the two finite Q210 million-wide bands do not justify non-arbitrary arbitrary/future-band, scale, wheel, width, infinite-prime or graph-extension quantifiers |
 | Prior-art collision audit | CLOSED | Candidate status reached |
