@@ -1,0 +1,43 @@
+name: E024 D24 generator-free synthetic preflight
+on:
+  push:
+    paths:
+      - experiments/E024_binary_grassmannian_rank_residue_order_shapes.py
+      - tests/test_e024.py
+      - .github/workflows/e024-preflight.yml
+permissions:
+  contents: write
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused tooling
+        run: python -m pip install -e ".[dev]"
+      - name: Verify entire precommitted evaluator and test blobs before checks
+        run: |
+          test "$(git hash-object experiments/E024_binary_grassmannian_rank_residue_order_shapes.py)" = "7ab7e5c7ce24db42296dc9dc06695dd575335d43"
+          test "$(git hash-object tests/test_e024.py)" = "2afafa485c7ec38217ab2051c1da8d761242420c"
+      - name: Lint E024 source and tests
+        run: ruff check experiments/E024_binary_grassmannian_rank_residue_order_shapes.py tests/test_e024.py
+      - name: Compile and test WITHOUT generator
+        run: |
+          python -m compileall -q experiments/E024_binary_grassmannian_rank_residue_order_shapes.py tests/test_e024.py
+          PYTHONPATH=.:src python -m pytest -q tests/test_e024.py
+      - name: Seal independently reproduced generator-free preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object experiments/E024_binary_grassmannian_rank_residue_order_shapes.py)" = "7ab7e5c7ce24db42296dc9dc06695dd575335d43"
+          test "$(git hash-object tests/test_e024.py)" = "2afafa485c7ec38217ab2051c1da8d761242420c"
+          mkdir -p research/checkpoints
+          printf '%s\n' 'E024 D1-69 GENERATOR-FREE PREFLIGHT PASS' 'Source 7ab7e5c7ce24db42296dc9dc06695dd575335d43' 'Tests 2afafa485c7ec38217ab2051c1da8d761242420c' 'focused Ruff, compileall, pytest PASS; no generator in workflow' > research/checkpoints/E024_D1_69_PREFLIGHT_PASS.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/checkpoints/E024_D1_69_PREFLIGHT_PASS.md
+          git commit -m "D1-69 independently seal E024 generator-free preflight PASS"
+          git push origin HEAD:main
