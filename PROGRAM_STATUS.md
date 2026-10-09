@@ -1,17 +1,17 @@
 # PRIMES Programme Status
 
-Status date: 2026-10-08
+Status date: 2026-10-09
 
 ## Current stage
 
-**DISCOVERY-1 — D1-60 / S062 / SQ-024 SOURCE-FREE E020 DESIGN-ONLY FROZEN; 16 REPLICATED / 0 OBSERVED / 8 REFUTED, ZERO CAND; NEXT DISTINCT D1-61 / SQ-025 D20 DISCOVERY ONLY**
+**DISCOVERY-1 — D1-61 / S063 / SQ-025 E020 D20-ONLY EXECUTED AND CLOSED NO ELIGIBLE OBSERVATION; 16 REPLICATED / 0 OBSERVED / 8 REFUTED, ZERO CAND; NEXT DISTINCT D1-62 / SQ-026 SOURCE-FREE DESIGN ONLY**
 
 ## Gates
 
 | Gate | Status | Requirement to open |
 |---|---|---|
 | Exact data pipeline | OPEN / VALIDATED | Core implementation, lint, tests, E000 smoke |
-| Pattern discovery | OPEN / SQ-024 DESIGN CLOSED WITH E020 SOURCE-FREE FAMILY; SQ-025 D20-ONLY SEPARATE EXECUTION NEXT | D19/H19 permanently consumed; no generator authorised by SQ-024; A19/G19 and historical roles remain excluded |
+| Pattern discovery | OPEN / SQ-025 E020 D20 CLOSED NO ELIGIBLE OBSERVATION; D20 CONSUMED; NEXT SQ-026 DISTINCT SOURCE-FREE DESIGN ONLY | H20 not unlocked; D19/H19 consumed; A20/G20, A19/G19 and historical roles excluded |
 | Observation promotion | OPEN / 16 REPLICATED; 0 OBSERVED; 8 REFUTED | OBS-024 B1 integer 2 met entire originally frozen one-shot H19 refutation criterion with two complete byte-identical fixed-command executions; immutable target and criterion retained |
 | Candidate conjecture | OPEN / NONE PROMOTED; SQ-023 NO CANDIDATE CREATED; SQ-024 DESIGN-ONLY NO CANDIDATE | OBS-024 remains REPLICATED; the two finite Q210 million-wide bands do not justify non-arbitrary arbitrary/future-band, scale, wheel, width, infinite-prime or graph-extension quantifiers |
 | Prior-art collision audit | CLOSED | Candidate status reached |
@@ -646,3 +646,17 @@ The complete actual fixed D17 command was independently precommitted and verifie
 **STRICT STOP / preservation:** Source-free DESIGN ONLY. No E020 evaluator code/test/runner/command, prime generation, primality query, per-anchor high evaluation, new statistic, D19/H19 or earlier replay, reserve/guard/calibration traversal, retuning or new OBS/CAND/FAIL; no alteration of OBS-024's unchanged original H19 criterion or any other frozen evidence/criteria/status. No SQ-005 unblinding, earlier-family result/failure-shape mining, mechanism/proof, adversarial, literature/prior-art/collision/novelty work. Relevant validations were symbolic S3 group/recurrence/domain checks and **exact integer-role disjointness/isqrt only**. **16 REPLICATED / 0 OBSERVED / 8 REFUTED, ZERO CAND** remain unchanged.
 
 **SQ-024 CLOSED; no owner blocker.** The only genuinely separate unblocked next unit is **D1-61 / S063 / SQ-025**: independently source/test/complete-command precommit, remote-byte verification, protective plan tests, then (only if validated) exactly one D20 [103M,104M) discovery using unchanged E020 and the prospective low [0,10199) + directly segmented D20 positive allowlist; complete identical-command twice / raw replay before narrow inspection. Freeze an eligible exact target and the already defined full H20 one-shot criterion before any future H20, or close no eligible observation. **D1-60 authorises none of D20, H20, A20 or any protected generator entry.**
+
+## D1-61 / S063 / SQ-025 — E020 D20-only discovery CLOSED NO ELIGIBLE OBSERVATION — 2026-10-09
+
+**Single fixed E020 W1 family; no retuning:** All S3 generators, right-hand composition, six-state noncommutative group convolution F^x modulo x, exact a/b endpoint residues, complete Q210/48-class anchors, four integer half-bin signatures, strict unique prime-mode/floors/mixed-class/signed controls, singleton exact integer-support duplicate check and ten mandatory validator counters remained as frozen in E020 DESIGN ONLY.
+
+**Source/test before generator:** Complete evaluator `experiments/E020_s3_generator_word_endpoint_residue_shapes.py`, Git blob `52683c8fe61b4b6f2065d9c2e8cca6a53b0a992c` (24,763 bytes) and focused synthetic/poison tests `tests/test_e020.py`, blob `1da6e9b8fb4387f4ecd3109abb7aab8e2e30339c` (8,307 bytes), independently remote-byte verified at pre-generation source/test commit `ff17721ddebdc309e9927e619786bc163cfed3f1`. **8/8** synthetic tests PASS and compilation PASS; Ruff was not available locally, no Ruff pass claimed. All **143** poisoned plans/phase attempts rejected before generator; independent role audit **94** old named bands = 53 E013 early + 35 E013–E019 named + six E005 maxima; **4,371/4,371 old-old**, **470/470 new-old**, **10/10 new-new** zero-overlap checks; **30/30 nested** E005 within maxima, **150/150** new/nested disjoint. Exact isqrt(103,999,999)=10,198 and low exclusive stop 10,199.
+
+**Separate command precommit:** The entire actual executable exact D20-only command `research/checkpoints/E020_D1_61_D20_RUN_COMMAND.sh` was committed and remotely byte-verified at `6ee8e9d418938ed5e4a0e895ed4a56c0e2349b2b`, blob `b1344ba4c7eb3e6f2a35333ba73d98211a5eaf1f` (361 bytes), before any prime generator. Its sole ordered allowed entries in **each identical invocation**: whole-prefix low `[0,10199)` followed by direct segmented `D20=[103000000,104000000)`. Complete allowlist checked before first generator and at every entry; neither H20, A20, G20 guard, old consumed/protected/nested nor off-phase target was entered.
+
+**Two-run seal then narrow inspection:** Exactly two identical complete pinned D20 invocations to `/tmp/e020-d20-discovery.json`; sealed first raw full file uninterpreted, whole-file `cmp` IDENTICAL; independently computed SHA-256 equal on both complete **4,764-byte** artifacts **before** any descriptive reading: `52bd0ed59e091c708c0d50a98ee55e9683665300b87bb59e979783eb6185682f`. Strict canonical ASCII UTF-8 sorted/two-space/one-LF ten-top-key aggregate-only evidence `research/evidence/E020_D20_discovery.json`, Git blob `95214167abe4b3c19e9f917bc32df562d7475375`; entire frozen nested JSON keys and types verified, all **ten independent mandatory validator counters integer zero**, with no per-anchor serialisation. Full report `experiments/E020_D20_DISCOVERY_2026-10-09.md`.
+
+**Mechanical W1 result:** 228,572 complete wheel anchors, 54,206 prime and 174,366 composite; fixed four-state strict prime mode signature integer **0**, prime mode 54,206 vs highest competitor **0**, composite target 89,682. Global and all 48 class population floors and occurrence threshold PASS; whole exact E=**+4,590,380,904**, signed E_r positive **48/48**. However mandatory fully mixed class count is **0/48**, below immutable **36/48**, hence **mechanically_eligible=false; promotions=[]; NO ELIGIBLE OBSERVATION**. No OBS ID, no H20 target or criterion freeze needed, no CAND ID, no new FAIL. D20 **consumed**; H20=[105M,106M), A20=[206M,207M), G20-pre=[102M,103M), G20-mid=[104M,105M) remain untouched and barred, along with A19/G19, A18/G18, all earlier protected roles and E005 nested intervals. All older evidence and OBS-024's original H19 criterion unchanged. **16 REPLICATED / 0 OBSERVED / 8 REFUTED, ZERO CAND** remain; SQ-005 quarantined.
+
+**Strict stop:** No third D20 run, H20/A20/guards, earlier D19/H19 replay, per-anchor prime supports in evidence, old-family outcome mining, alternate E020 group/feature/bin/threshold, source-derived calibration, new mechanism/proof/theorem, adversarial/candidate synthesis or prior-art/literature/collision/novelty investigation. No owner blocker. Exactly one independent next possible bounded unit is **D1-62 / S064 / SQ-026: new first-principles SOURCE-FREE DISTINCT FAMILY DESIGN ONLY**, without empirical mining or generation. No future result is assumed.
