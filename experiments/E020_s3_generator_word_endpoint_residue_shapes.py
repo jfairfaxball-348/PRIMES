@@ -168,6 +168,36 @@ def audit_intervals():
     return True
 
 
+def poison_validate():
+    """Negative entire-plan firewall tests, including every old/nested named role."""
+    poisons = [(PLAN[0], ("segmented_target", lo, hi, "direct_segmented"))
+               for name, lo, hi in old_roles()+list(NEW)
+               if name != "D20"]
+    poisons += [(PLAN[0], ("segmented_target", s*M, s*M+w, "direct_segmented"))
+                for s in MAX_STARTS for w in WIDTHS]
+    poisons += [PLAN[::-1], PLAN[:1], PLAN+(PLAN[1],),
+                (("base_sieve_support",0,104*M,"whole_prefix"),PLAN[1]),
+                (("base_sieve_support",0,10198,"whole_prefix"),PLAN[1]),
+                (("base_sieve_support",0,10200,"whole_prefix"),PLAN[1]),
+                (PLAN[0],("segmented_target",103*M,104*M,"whole_prefix")),
+                (PLAN[0],("segmented_target",103*M,104*M-1,"direct_segmented")),
+                (PLAN[0],("segmented_target",103*M+1,104*M,"direct_segmented")),
+                (PLAN[0],("per_anchor_primality_helper",103*M,104*M,"indirect"))]
+    for candidate in poisons:
+        try:
+            validate_plan(candidate)
+        except ValueError:
+            continue
+        raise AssertionError("poison plan admitted")
+    for phase in ("H20","A20","G20-pre","G20-mid","D19"):
+        try:
+            validate_plan(PLAN,phase)
+        except ValueError:
+            continue
+        raise AssertionError("off-phase poison admitted")
+    return len(poisons)+5
+
+
 def validate_plan(requested, phase="D20"):
     audit_intervals()
     if phase != "D20" or type(requested) not in (tuple, list) or len(requested) != 2:
@@ -270,6 +300,17 @@ def select_w1(pc, cc, pr, cr, pclass, cclass, support):
     return row, promotions
 
 
+def exact_equal_type(left, right):
+    """Recursively forbid bool-as-int, list/tuple, and other weak equality."""
+    if type(left) is not type(right):
+        return False
+    if type(left) is dict:
+        return set(left) == set(right) and all(exact_equal_type(left[k],right[k]) for k in left)
+    if type(left) is list:
+        return len(left)==len(right) and all(exact_equal_type(a,b) for a,b in zip(left,right))
+    return left == right
+
+
 def ensure_keys(o, keys):
     if type(o) is not dict or set(o) != set(keys):
         raise ValueError("unknown or missing JSON key")
@@ -291,18 +332,18 @@ def validate_payload(d):
     if d["experiment"] != "E020" or type(d["implementation_commit"]) is not str or len(d["implementation_commit"]) != 40 or any(c not in "0123456789abcdef" for c in d["implementation_commit"]):
         raise ValueError("invalid pinned implementation")
     ensure_keys(d["band"], ("name","range","interval_semantics"))
-    if d["band"] != {"name":"D20","range":[103*M,104*M],"interval_semantics":"half-open"}:
+    if not exact_equal_type(d["band"], {"name":"D20","range":[103*M,104*M],"interval_semantics":"half-open"}):
         raise ValueError("wrong phase band")
-    if type(d["partition"]) is not list or d["partition"] != [dict(name=n,range=[lo,hi],role=role) for n,lo,hi,role in PARTITION]:
+    if type(d["partition"]) is not list or not exact_equal_type(d["partition"], [dict(name=n,range=[lo,hi],role=role) for n,lo,hi,role in PARTITION]):
         raise ValueError("wrong five-role partition")
     param = d["parameters"]
     expected = parameters()
     ensure_keys(param,expected)
     for k,v in expected.items():
-        if type(param[k]) is not type(v) or param[k] != v:
+        if not exact_equal_type(param[k],v):
             raise ValueError("wrong frozen parameter")
     allowed = [dict(purpose=p,start=s,stop=e,strategy=t) for p,s,e,t in PLAN]
-    if type(d["generation_plan"]) is not list or d["generation_plan"] != allowed:
+    if type(d["generation_plan"]) is not list or not exact_equal_type(d["generation_plan"],allowed):
         raise ValueError("wrong generation plan")
     for row in d["generation_plan"]:
         ensure_keys(row,("purpose","start","stop","strategy"))
@@ -388,6 +429,7 @@ def canonical(d):
 
 def self_check():
     audit_intervals(); validate_plan(PLAN)
+    assert poison_validate() == 143
     assert STATES == tuple(sorted(STATES)) and len(INDEX) == 6
     assert compose(IDENTITY,A) == A == compose(A,IDENTITY)
     assert all(compose(g, h) in INDEX for g in STATES for h in STATES)
