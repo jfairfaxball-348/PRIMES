@@ -141,7 +141,7 @@ def test_whole_plan_poisons_before_any_generator(monkeypatch: pytest.MonkeyPatch
     for plan in bad:
         with pytest.raises(PermissionError):
             e.assert_plan(plan, source)
-    for phase in ("H25", "A25", "G25-pre", "D24", "D23", "D19", ""):
+    for phase in ("D25", "A25", "G25-pre", "D24", "D23", "D19", ""):
         with pytest.raises(PermissionError):
             e.assert_plan(e.PLAN, source, phase)
     for bad_index in (-1, 2, 3, 1.0, True):
