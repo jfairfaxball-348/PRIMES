@@ -259,3 +259,24 @@ def test_canonical_bytes_reject_noninteger_nonascii_and_nested_schema() -> None:
     sample["families"][0]["extra_key"] = 1
     with pytest.raises(ValueError):
         e.payload_schema(sample)
+
+def test_h25_runtime_phase_and_canonical_band_static_ast() -> None:
+    """No prime generation: inspect run's entire call structure and exact literals."""
+    import ast
+
+    source = Path(e.__file__).read_text()
+    module = ast.parse(source)
+    run_fn = next(node for node in module.body
+                  if isinstance(node, ast.FunctionDef) and node.name == "run")
+    entries = [node for node in ast.walk(run_fn)
+               if isinstance(node, ast.Call) and
+               isinstance(node.func, ast.Name) and node.func.id == "generation_entry"]
+    assert len(entries) == 2
+    assert [ast.literal_eval(node.args[0]) for node in entries] == [0, 1]
+    assert [ast.literal_eval(node.args[3]) for node in entries] == ["H25", "H25"]
+    assert 'assert_plan(PLAN, design)' in source
+    assert '"band": {"name": "H25", "range": [LOW, HIGH]' in source
+    assert '("D25", 210_000_000, 212_000_000, "discovery")' in source
+    assert '("H25", LOW, HIGH, "holdout")' in source
+    assert e.PLAN == (("base_sieve_support", 0, 14697, "whole_prefix"),
+                      ("segmented_target", 214000000, 216000000, "direct_segmented"))
