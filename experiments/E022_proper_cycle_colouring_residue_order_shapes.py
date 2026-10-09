@@ -407,6 +407,23 @@ def compute_tables(marks):
     return p, c, supports, wheel_total
 
 
+def signed_controls(p, c):
+    """Exact signed whole/48-class controls for all three states."""
+    npt = [sum(row) for row in p]
+    nct = [sum(row) for row in c]
+    np = sum(npt)
+    nc = sum(nct)
+    pr = [sum(p[t][r] for t in SIGNATURES) for r in range(48)]
+    cr = [sum(c[t][r] for t in SIGNATURES) for r in range(48)]
+    whole = [npt[t] * nc - nct[t] * np for t in SIGNATURES]
+    by_class = [[p[t][r] * cr[r] - c[t][r] * pr[r]
+                 for r in range(48)] for t in SIGNATURES]
+    mixed = [[min(p[t][r], c[t][r], pr[r] - p[t][r],
+                  cr[r] - c[t][r]) > 0 for r in range(48)]
+             for t in SIGNATURES]
+    return whole, by_class, mixed
+
+
 def aggregate(p, c, supports, wheel_total, marks, commit):
     np_t = [sum(row) for row in p]
     nc_t = [sum(row) for row in c]
@@ -449,7 +466,21 @@ def aggregate(p, c, supports, wheel_total, marks, commit):
     frequency_errors += int(sum(np_t) != np or sum(nc_t) != nc)
     # Independent re-derivation from cell loops, checking signed arithmetic
     # and all four strictly positive mixed-cell requirements.
+    whole_e, classes_e, mixed_cells = signed_controls(p, c)
     signed_errors = 0
+    for t in SIGNATURES:
+        signed_errors += int(whole_e[t] != sum(p[t]) * sum(nc_t)
+                             - sum(c[t]) * sum(np_t))
+        for r in range(48):
+            # Independent reference excludes the selected cell explicitly.
+            other_p = sum(p[k][r] for k in SIGNATURES if k != t)
+            other_c = sum(c[k][r] for k in SIGNATURES if k != t)
+            signed_errors += int(classes_e[t][r] != (
+                p[t][r] * other_c - c[t][r] * other_p
+            ))
+            signed_errors += int(mixed_cells[t][r] != (
+                min(p[t][r], c[t][r], other_p, other_c) > 0
+            ))
     if evaluated is not None:
         signed_errors += int(
             enrichment != np_t[evaluated] * sum(nc_t)
@@ -539,7 +570,14 @@ def aggregate(p, c, supports, wheel_total, marks, commit):
     # The first eight zero counters have independent mathematical derivations;
     # the ninth includes exact set equality. Check the tenth by an independent
     # strict typed tree inspection plus canonical whole-byte parse round trip.
+    preliminary = canonical(payload)
+    validation["serializer_failure_count"] = (
+        int(not validate_payload(payload))
+        + int(canonical(json.loads(preliminary)) != preliminary)
+    )
     wire = canonical(payload)
+    if validation["serializer_failure_count"] != 0:
+        raise ValueError("independent canonical serializer validator failed")
     if not validate_payload(payload) or canonical(json.loads(wire)) != wire:
         raise ValueError("serializer or aggregate validator failed")
     return wire
