@@ -443,7 +443,7 @@ def run(implementation_commit: str, output: Path) -> bytes:
     assert_plan(PLAN, design)
     generation_entry(0, PLAN, design, "H25")
     bases = low_base_sieve(BASE_STOP)
-    generation_entry(1, PLAN, design, "D25")
+    generation_entry(1, PLAN, design, "H25")
     mask = direct_target_mask(LOW, HIGH, bases)
     if len(mask) != HIGH - LOW:
         raise ArithmeticError("target length")
@@ -497,7 +497,7 @@ def run(implementation_commit: str, output: Path) -> bytes:
     value = {
         "experiment": "E025",
         "implementation_commit": implementation_commit,
-        "band": {"name": "D25", "range": [LOW, HIGH], "interval_semantics": "half-open"},
+        "band": {"name": "H25", "range": [LOW, HIGH], "interval_semantics": "half-open"},
         "partition": [
             {"name": n, "range": [a, b], "role": role} for n, a, b, role in PARTITION
         ],
