@@ -89,6 +89,7 @@ def test_full_wheel_and_metadata_disjointness():
     assert e.R210 == tuple(n for n in range(210) if __import__('math').gcd(n,210)==1)
     assert (len(e.EARLY),len(e.old_roles()),len(e.NEW))==(53,94,5)
     assert e.audit_intervals()
+    assert e.poison_validate() == 143
     old=e.old_roles(); new=e.NEW
     assert sum(e.overlap(a,b) for i,a in enumerate(old) for b in old[i+1:])==0
     assert sum(e.overlap(a,b) for a in new for b in old)==0
@@ -167,6 +168,7 @@ def test_strict_full_json_canonical_and_poison_types():
     x=copy.deepcopy(d);x["parameters"]["residues_R210"].append(211);mutants.append(x)
     x=copy.deepcopy(d);x["anchor_summary"]["prime_counts_by_R210"][0]=1.0;mutants.append(x)
     x=copy.deepcopy(d);x["partition"][1]["range"][0]=True;mutants.append(x)
+    x=copy.deepcopy(d);x["parameters"]["residues_R210"][0]=True;mutants.append(x)
     for x in mutants:
         with pytest.raises((ValueError,TypeError,AssertionError)):
             e.canonical(x)
