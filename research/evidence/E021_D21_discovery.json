@@ -1,0 +1,281 @@
+{
+  "anchor_summary": {
+    "composite_count": 350434,
+    "composite_counts_by_R210": [
+      7298,
+      7297,
+      7309,
+      7323,
+      7277,
+      7296,
+      7281,
+      7305,
+      7341,
+      7323,
+      7322,
+      7321,
+      7263,
+      7266,
+      7305,
+      7317,
+      7288,
+      7335,
+      7264,
+      7326,
+      7337,
+      7310,
+      7312,
+      7337,
+      7328,
+      7331,
+      7248,
+      7303,
+      7277,
+      7257,
+      7324,
+      7293,
+      7308,
+      7316,
+      7307,
+      7286,
+      7297,
+      7256,
+      7324,
+      7264,
+      7272,
+      7312,
+      7276,
+      7332,
+      7300,
+      7293,
+      7325,
+      7252
+    ],
+    "prime_count": 106709,
+    "prime_counts_by_R210": [
+      2226,
+      2227,
+      2215,
+      2201,
+      2247,
+      2228,
+      2243,
+      2219,
+      2183,
+      2201,
+      2202,
+      2203,
+      2261,
+      2258,
+      2219,
+      2207,
+      2236,
+      2189,
+      2260,
+      2198,
+      2187,
+      2214,
+      2212,
+      2187,
+      2196,
+      2193,
+      2276,
+      2221,
+      2247,
+      2267,
+      2200,
+      2231,
+      2215,
+      2207,
+      2216,
+      2237,
+      2226,
+      2267,
+      2199,
+      2259,
+      2251,
+      2212,
+      2248,
+      2192,
+      2224,
+      2231,
+      2199,
+      2272
+    ],
+    "wheel_anchor_count": 457143
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D21",
+    "range": [
+      138000000,
+      140000000
+    ]
+  },
+  "experiment": "E021",
+  "families": [
+    {
+      "candidate_signature": 15,
+      "class_floor_passed": true,
+      "evaluated_signature": 15,
+      "family": "F1",
+      "highest_competing_enrichment_numerator": 38073103,
+      "highest_enrichment_numerator": 38297120,
+      "mechanically_eligible": false,
+      "mixed_class_count": 48,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 28,
+      "positive_class_floor_passed": false,
+      "strict_unique_positive_enrichment_max": true,
+      "target_composite_count": 18626,
+      "target_enrichment_numerator": 38297120,
+      "target_enrichment_positive": true,
+      "target_prime_count": 5781
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 11833,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 138000000,
+      "stop": 140000000,
+      "strategy": "direct_segmented"
+    }
+  ],
+  "implementation_commit": "3272bb793cece4d5083e492e6abe9268129a5d70",
+  "parameters": {
+    "block_counts": [
+      3,
+      4
+    ],
+    "class_floor": 20,
+    "denominators": [
+      6,
+      24
+    ],
+    "full_mixed_required": true,
+    "mixed_class_floor": 36,
+    "modulus": "anchor_plus_one",
+    "occurrence_floor": 64,
+    "population_floor": 2000,
+    "positive_class_floor": 30,
+    "quartile_count": 4,
+    "residues_R210": [
+      1,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      127,
+      131,
+      137,
+      139,
+      143,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      187,
+      191,
+      193,
+      197,
+      199,
+      209
+    ],
+    "selector": "strict_unique_positive_signed_enrichment_max",
+    "signature_order": "4*q3+q4",
+    "surjection_numerator": "inclusion_exclusion",
+    "wheel": 210,
+    "width": 2000000
+  },
+  "partition": [
+    {
+      "name": "G21-pre",
+      "range": [
+        136000000,
+        138000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D21",
+      "range": [
+        138000000,
+        140000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G21-mid",
+      "range": [
+        140000000,
+        142000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H21",
+      "range": [
+        142000000,
+        144000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A21",
+      "range": [
+        276000000,
+        278000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [],
+  "validation": {
+    "frequency_conservation_failure_count": 0,
+    "interval_exclusion_failure_count": 0,
+    "modular_power_failure_count": 0,
+    "partition_quotient_failure_count": 0,
+    "plan_failure_count": 0,
+    "quartile_signature_failure_count": 0,
+    "selection_duplicate_failure_count": 0,
+    "serializer_failure_count": 0,
+    "signed_class_control_failure_count": 0,
+    "wheel_label_failure_count": 0
+  }
+}
