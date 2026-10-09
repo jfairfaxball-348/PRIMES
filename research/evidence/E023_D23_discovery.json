@@ -1,0 +1,356 @@
+{
+  "anchor_summary": {
+    "composite_count": 351343,
+    "composite_counts_by_R210": [
+      7354,
+      7335,
+      7310,
+      7254,
+      7384,
+      7345,
+      7316,
+      7324,
+      7367,
+      7335,
+      7338,
+      7314,
+      7285,
+      7310,
+      7308,
+      7335,
+      7304,
+      7317,
+      7289,
+      7333,
+      7329,
+      7306,
+      7370,
+      7328,
+      7275,
+      7363,
+      7359,
+      7290,
+      7282,
+      7345,
+      7320,
+      7320,
+      7320,
+      7266,
+      7285,
+      7342,
+      7236,
+      7346,
+      7292,
+      7331,
+      7318,
+      7327,
+      7310,
+      7349,
+      7282,
+      7325,
+      7323,
+      7347
+    ],
+    "prime_count": 105800,
+    "prime_counts_by_R210": [
+      2169,
+      2188,
+      2213,
+      2269,
+      2139,
+      2178,
+      2207,
+      2199,
+      2156,
+      2189,
+      2186,
+      2210,
+      2239,
+      2214,
+      2216,
+      2189,
+      2220,
+      2207,
+      2235,
+      2191,
+      2195,
+      2218,
+      2154,
+      2196,
+      2249,
+      2161,
+      2165,
+      2234,
+      2242,
+      2179,
+      2204,
+      2204,
+      2204,
+      2258,
+      2239,
+      2182,
+      2288,
+      2178,
+      2232,
+      2193,
+      2206,
+      2197,
+      2214,
+      2175,
+      2242,
+      2199,
+      2201,
+      2177
+    ],
+    "wheel_anchor_count": 457143
+  },
+  "band": {
+    "interval_semantics": "half-open",
+    "name": "D23",
+    "range": [
+      166000000,
+      168000000
+    ]
+  },
+  "experiment": "E023",
+  "families": [
+    {
+      "candidate_signature": [
+        0,
+        1,
+        2
+      ],
+      "class_floor_passed": true,
+      "evaluated_signature": [
+        0,
+        1,
+        2
+      ],
+      "family": "P1",
+      "highest_competing_prime_count": 17692,
+      "mechanically_eligible": false,
+      "mixed_class_count": 48,
+      "mixed_class_floor_passed": true,
+      "occurrence_floor_passed": true,
+      "population_floor_passed": true,
+      "positive_class_count": 21,
+      "positive_class_floor_passed": false,
+      "prime_mode_count": 18407,
+      "strict_unique_prime_mode": true,
+      "target_composite_count": 61499,
+      "target_enrichment_numerator": -39423599,
+      "target_enrichment_positive": false,
+      "target_prime_count": 18407,
+      "triviality_veto_passed": true
+    }
+  ],
+  "generation_plan": [
+    {
+      "purpose": "base_sieve_support",
+      "start": 0,
+      "stop": 12962,
+      "strategy": "whole_prefix"
+    },
+    {
+      "purpose": "segmented_target",
+      "start": 166000000,
+      "stop": 168000000,
+      "strategy": "direct_segmented"
+    }
+  ],
+  "implementation_commit": "476b92c322ff374ace6b0cd7e0787a5e26605776",
+  "parameters": {
+    "class_floor": 20,
+    "feature": "dense_weak_rank_three_partition_residues",
+    "full_mixed_required": true,
+    "mixed_class_floor": 36,
+    "modulus": "anchor_plus_one",
+    "occurrence_floor": 64,
+    "offsets": [
+      0,
+      1,
+      2
+    ],
+    "partition_count": "finite_product_one_plus_z_power_j",
+    "population_floor": 2000,
+    "positive_class_floor": 36,
+    "residues_R210": [
+      1,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107,
+      109,
+      113,
+      121,
+      127,
+      131,
+      137,
+      139,
+      143,
+      149,
+      151,
+      157,
+      163,
+      167,
+      169,
+      173,
+      179,
+      181,
+      187,
+      191,
+      193,
+      197,
+      199,
+      209
+    ],
+    "selector": "strict_unique_prime_frequency_mode",
+    "shell": "max_triangular_threshold",
+    "signature_domain": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        1,
+        0
+      ]
+    ],
+    "summands": "unordered_distinct_positive",
+    "support_cap": 1,
+    "wheel": 210,
+    "width": 2000000
+  },
+  "partition": [
+    {
+      "name": "G23-pre",
+      "range": [
+        164000000,
+        166000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "D23",
+      "range": [
+        166000000,
+        168000000
+      ],
+      "role": "discovery"
+    },
+    {
+      "name": "G23-mid",
+      "range": [
+        168000000,
+        170000000
+      ],
+      "role": "guard"
+    },
+    {
+      "name": "H23",
+      "range": [
+        170000000,
+        172000000
+      ],
+      "role": "holdout"
+    },
+    {
+      "name": "A23",
+      "range": [
+        332000000,
+        334000000
+      ],
+      "role": "adversarial"
+    }
+  ],
+  "promotions": [],
+  "validation": {
+    "distinct_partition_count_failure_count": 0,
+    "frequency_conservation_failure_count": 0,
+    "interval_exclusion_failure_count": 0,
+    "mode_support_failure_count": 0,
+    "plan_failure_count": 0,
+    "serializer_replay_failure_count": 0,
+    "signed_mixing_failure_count": 0,
+    "triangular_shell_failure_count": 0,
+    "weak_rank_failure_count": 0,
+    "wheel_label_failure_count": 0
+  }
+}
