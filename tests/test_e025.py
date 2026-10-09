@@ -92,8 +92,6 @@ def test_integer_named_exclusion_full_counts() -> None:
     overlap = lambda a, b: a[0] < b[1] and b[0] < a[1]
     assert all(not overlap(a, b) for i, a in enumerate(prior.values())
                for b in list(prior.values())[i + 1:])
-    assert all(not overlap(a, b) for _, a in e.PARTITION
-               for b in [])  # guarded by audit_named_intervals
     assert all(not overlap((a, b), ob) for _, a, b, _ in e.PARTITION for ob in old.values())
     assert all(not overlap((a, b), (c, d)) for i, (_, a, b, _) in enumerate(e.PARTITION)
                for _, c, d, _ in e.PARTITION[i + 1:])
@@ -112,6 +110,8 @@ def test_integer_named_exclusion_full_counts() -> None:
 
 def test_whole_plan_poisons_before_any_generator(monkeypatch: pytest.MonkeyPatch) -> None:
     calls = []
+    real_low = e.low_base_sieve
+    real_direct = e.direct_target_mask
     monkeypatch.setattr(e, "low_base_sieve", lambda *args: calls.append(args))
     monkeypatch.setattr(e, "direct_target_mask", lambda *args: calls.append(args))
     source = design()
@@ -149,9 +149,9 @@ def test_whole_plan_poisons_before_any_generator(monkeypatch: pytest.MonkeyPatch
             e.generation_entry(bad_index, e.PLAN, source, "D25")
     # Helpers cannot run on any nonexact range, even without plan callback.
     with pytest.raises(PermissionError):
-        e.low_base_sieve(14562)
+        real_low(14562)
     with pytest.raises(PermissionError):
-        e.direct_target_mask(e.LOW, e.HIGH + 1, [])
+        real_direct(e.LOW, e.HIGH + 1, [])
     assert calls == []
 
 
