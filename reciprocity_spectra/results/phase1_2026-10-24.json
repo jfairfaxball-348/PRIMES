@@ -61,7 +61,42 @@
           "outcome": "PASS"
         }
       ],
-      "arithmetic_seconds": 329.498966688
+      "arithmetic_seconds": 329.498966688,
+      "control_code_commit": "87d30a0ae959e7fb60800ff9749a3b0cc81902c9",
+      "control_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py run --x 320000 --resume",
+      "control_top12": [
+        331.9280188160086,
+        331.6861654011251,
+        331.5481556460575,
+        331.3372394128311,
+        331.2056194443526,
+        331.17189835939746,
+        330.9841583031555,
+        330.8142073726375,
+        330.7013636425896,
+        330.63605989131264,
+        330.42482810437343,
+        330.3305201556303
+      ],
+      "control_gram_relative_residuals": [
+        6.08766256774208e-15,
+        1.5346656289571686e-14,
+        6.347915952148883e-15,
+        5.374440031437154e-15,
+        3.484266110814754e-15,
+        3.2498284871924997e-15,
+        4.845006641320347e-15,
+        6.48597275107894e-15,
+        4.308548740170981e-15,
+        4.9425356132287896e-15,
+        1.413743340716482e-14,
+        3.114838490431234e-13
+      ],
+      "control_rng": "SplitMix64 rejection-sampled upper-pair counters; seed 0",
+      "total_seconds": 911.34271899,
+      "control_seconds": 581.8437735139998,
+      "matvec_calls": 1018,
+      "complete": true
     }
   ],
   "validation": {
