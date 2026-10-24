@@ -188,3 +188,20 @@ and untested. The exact dimension counts, projection formula and runtimes are in
 - Next dependency: Phase 1b, test the untested sextic boundary (RS-5) and one pre-registered
   local-spacing prediction (RS-6). These are the remaining empirical Phase-1 dependencies.
   Exactly one RS-S003 prompt is in `NEXT_SESSION_PROMPT.md`.
+
+
+### RS-S003 (2026-10-24): Phase 1b, sextic boundary and local gap ratios
+
+**Stage:** certification and falsification.
+
+**Bounded task:** the owner requested "Continue next session here" after RS-S002. Continue from
+committed handover `52d0854` on `rs-s003-phase1b`; authoritative main is still `9a038fa` and is not
+merged. Test the untested sextic case of RS-5 and one local gap-ratio prediction of RS-6.
+
+**Pre-registration:** before any sextic spectral computation or local statistic, the exact
+criteria, indices, character normalization, null model, deflation/window/tie rules, scales,
+solver parameters and seeds were written to CONJECTURES.md and
+`results/phase1b_2026-10-24.json` and committed/pushed. RS-5 has two criteria at each of
+X = 40000 and 160000; RS-6 has one criterion for each of cubic/quartic at X = 20000 and 40000.
+All applicable predictions must pass for promotion, with scope limited to the tests performed.
+No mechanism derivations, quintic family, or paused D1 work are included.

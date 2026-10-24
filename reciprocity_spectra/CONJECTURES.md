@@ -214,3 +214,38 @@ X = 640000 was **SKIPPED**, not passed or failed. Required-job runtime projectio
 87.86 (quadratic), exceeding the 45-minute limit on this two-CPU-quota container.
 These are planning estimates, not spectral measurements. The original predictions are unchanged.
 All STRESSED labels above refer to X = 320000 only.
+
+
+## RS-S003: pre-registered Phase-1b predictions (before test data)
+
+The owner requested continuation here from the committed RS-S002 handover. Main remains
+`9a038fa`; RS-S003 is based on `52d0854` on a separate branch, without merging main.
+The machine-readable registration is `results/phase1b_2026-10-24.json`.
+
+**RS-5, sextic at X = 40000 and 160000, both criteria at both scales:**
+
+- `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+Use the same primary Eisenstein indices as cubic. Define zeta6 = 1 + omega, and the sextic
+character by direct Euler exponentiation in the residue field: its square is the cubic character
+and its cube the field-quadratic character. The seed-0 control has independent uniform
+upper sextic exponents and the exact full pairwise reciprocity signs, with zero diagonal.
+These signs need not have the simpler rank-one parity form used for quadratic/quartic matrices.
+
+**RS-6, cubic and quartic at X = 20000 and 40000, all four comparisons:**
+
+- `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+
+Deflate every singular value strictly above 2 sqrt(D), separately for arithmetic and seed-0
+matched control. Sort the remaining m singular values ascending; take the half-open slice
+[ceil(0.2 m), floor(0.8 m)). For consecutive gaps in that slice, average
+min(delta_i, delta_(i+1))/max(delta_i, delta_(i+1)); a zero denominator contributes zero.
+There is no unfolding, dropped tie, adjusted window, fitted cutoff or change after seeing data.
+
+The tolerances are fixed finite-scale discrimination allowances, not calibrated confidence
+levels. Every applicable prediction must pass before promotion. RS-5 promotion covers only
+its tested sextic case; RS-6 promotion covers only this registered local statistic. Other
+universality claims are not certified. Any failure is retained and prevents promotion.
+No old Phase-1a prediction changes. No sextic spectrum or local statistic has been measured
+before this registration is committed and pushed.

@@ -1,0 +1,77 @@
+{
+  "session": "RS-S003",
+  "date": "2026-10-24T20:55:11.089504+00:00",
+  "base_commit": "52d0854c4b7bd61b33bdb4c5e5de89d7d568bd57",
+  "authoritative_main": "9a038fae69c3d4152c614d0ac46c3c27b34611cd",
+  "branch": "rs-s003-phase1b",
+  "classification": "PRE-REGISTERED; no test data yet",
+  "resources": {
+    "cpu_max": "200000 100000",
+    "memory_limit_bytes": 8589934592,
+    "openmp_threads": 4,
+    "blas_threads": 2,
+    "run_budget_seconds": 2700
+  },
+  "predictions": [
+    {
+      "id": "RS-S003-P5-E",
+      "conjecture": "RS-5",
+      "mode": "sextic",
+      "X": [
+        40000,
+        160000
+      ],
+      "prediction": "sextic sigma1/(2 sqrt(D)) <= 1.02",
+      "upper_bound": 1.02
+    },
+    {
+      "id": "RS-S003-P5-N",
+      "conjecture": "RS-5",
+      "mode": "sextic",
+      "X": [
+        40000,
+        160000
+      ],
+      "prediction": "sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02",
+      "upper_bound": 0.02
+    },
+    {
+      "id": "RS-S003-P6-R",
+      "conjecture": "RS-6",
+      "mode": [
+        "cubic",
+        "quartic"
+      ],
+      "X": [
+        20000,
+        40000
+      ],
+      "prediction": "abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03",
+      "upper_bound": 0.03
+    }
+  ],
+  "definition": {
+    "sextic_indices": "Same primary Eisenstein primes and ordering as cubic; coefficients refer to omega=exp(2pi*i/3).",
+    "sextic_symbol": "zeta6=1+omega=exp(pi*i/3); reduce alpha=a+b*omega in F_p and identify alpha^((p-1)/6) with zeta6^k. Its square is the cubic character and its cube is the field quadratic character.",
+    "sextic_null": "Uniform sextic exponents on i<j, seed 0, with Cji=sij*Cij. sij is the product of the two field-quadratic characters of the opposite prime, so the exact full pairwise sign mask is retained. Diagonal zero.",
+    "deflation": "For arithmetic and control separately, remove every singular value s>2*sqrt(D); D remains the original dimension for the threshold.",
+    "window": "Sort remaining m singular values ascending. Take s[ceil(0.2*m):floor(0.8*m)] with Python exclusive upper endpoint.",
+    "statistic": "For consecutive gaps delta in that window, average min(delta_i,delta_(i+1))/max(delta_i,delta_(i+1)). A zero denominator contributes zero; no discarded ties; no unfolding.",
+    "local_null": "Same-D symmetry-matched exponent control, seed 0, same deflation and window rules.",
+    "tolerances": "Fixed finite-scale discrimination allowances; not calibrated confidence levels or asymptotic theorems.",
+    "promotion": "All four sextic comparisons must pass to mark RS-5 STRESSED for its tested sextic case. All four local comparisons must pass to mark RS-6 STRESSED for this statistic only; other universality assertions remain unverified.",
+    "solver": {
+      "sextic": "matrix-free eigsh on C*C",
+      "top_k": 12,
+      "ncv": 64,
+      "tol": 1e-11,
+      "solver_seed": 2,
+      "full_singular_values": "scipy.linalg.svdvals (LAPACK gesdd)",
+      "control_seed": 0
+    },
+    "validation": "Exact pure-Python sextic symbols/normalization/reciprocity; unchanged quad/cubic/quartic matrices byte-identical at X=20000 and top8 against SciPy at X=40000; sextic small matrix byte-exact against Python and top8 against SciPy before stress tests."
+  },
+  "validation": null,
+  "sextic_runs": [],
+  "local_runs": []
+}
