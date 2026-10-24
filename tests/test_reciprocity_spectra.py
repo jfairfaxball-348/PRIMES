@@ -84,3 +84,61 @@ def test_cubic_matrix_is_symmetric_and_unimodular():
             if i != j:
                 assert mat[i][j] == mat[j][i]
                 assert abs(abs(zeta ** mat[i][j]) - 1) < 1e-12
+
+
+def test_native_byte_engine_against_exact_core(tmp_path):
+    """No numpy dependency: check symbols, complex adjoints and control signs."""
+    import ctypes as ct
+    import shutil
+    import struct
+    import subprocess
+    from array import array
+    from pathlib import Path
+
+    import pytest
+
+    if not shutil.which('cc'):
+        pytest.skip('C compiler unavailable')
+    source = Path(__file__).resolve().parents[1] / 'reciprocity_spectra/native/residue_engine.c'
+    exe, libpath = tmp_path / 'engine', tmp_path / 'engine.so'
+    for flags, target in [([], exe), (['-shared', '-fPIC'], libpath)]:
+        subprocess.run(['cc', '-O2', '-fopenmp', *flags, '-o', str(target),
+                        str(source), '-lm'], check=True)
+    lib = ct.CDLL(str(libpath))
+    lib.rs_apply.argtypes = [ct.c_void_p, ct.c_int, ct.c_int, ct.c_void_p,
+                            ct.c_void_p, ct.c_int]
+    lib.rs_random.argtypes = [ct.c_void_p, ct.c_int, ct.c_int, ct.c_void_p, ct.c_uint64]
+    for n, mode in [(2, 'quad'), (3, 'cubic'), (4, 'quartic')]:
+        path = tmp_path / f'{mode}.bin'
+        subprocess.run([str(exe), mode, '100', str(path)], check=True)
+        raw = path.read_bytes()
+        d = struct.unpack_from('=i', raw)[0]
+        meta = [struct.unpack_from('=qqq', raw, 4 + 24 * j) for j in range(d)]
+        index, expected = residue_matrix(n, 100)
+        lookup = {((p, p, 0) if n == 2 else (p.p, p.a, p.b)): i
+                  for i, p in enumerate(index)}
+        e = (ct.c_uint8 * (d*d)).from_buffer_copy(raw[4+24*d:])
+        for i in range(d):
+            for j in range(d):
+                want = expected[lookup[meta[i]]][lookup[meta[j]]]
+                assert e[i*d+j] == (255 if want is None else want)
+        z = [complex(i % 5 - 2, i % 7 - 3) for i in range(d)]
+        xv = array('d', [t for v in z for t in (v.real, v.imag)])
+        yv = array('d', [0.] * (2*d))
+        roots = [cmath.exp(2j * math.pi * k / n) for k in range(n)] + [0j] * (256-n)
+        for adjoint in [False, True]:
+            lib.rs_apply(e, d, n, xv.buffer_info()[0], yv.buffer_info()[0], adjoint)
+            for i in range(d):
+                want = sum((roots[e[j*d+i]].conjugate() if adjoint else roots[e[i*d+j]]) * z[j]
+                           for j in range(d))
+                assert abs(complex(yv[2*i], yv[2*i+1]) - want) < 1e-10
+        primes = array('q', [p for p, _, _ in meta])
+        lib.rs_random(e, d, n, primes.buffer_info()[0], 0)
+        first = bytes(e)
+        lib.rs_random(e, d, n, primes.buffer_info()[0], 0)
+        assert first == bytes(e)
+        for i in range(d):
+            assert e[i*d+i] == 255
+            for j in range(i+1, d):
+                s = reciprocity_sign(n, index[lookup[meta[i]]], index[lookup[meta[j]]])
+                assert e[j*d+i] == (e[i*d+j] + (n//2 if s == -1 else 0)) % n
