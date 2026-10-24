@@ -92,3 +92,31 @@ Phase 1 of `ROADMAP.md`. Store matrices as uint8 exponents with blockwise matrix
 reach X = 6.4·10⁵. Before running, pre-register the predictions: κ₃ ∈ [1.38, 1.47]; cubic overlap
 within 0.03 of the BBP value; quartic `θ_n ≈ 0.166·log X − 0.18`; quadratic `(2 − m₄)·log D` in
 [1.0, 1.4]. Then run the n = 6 test of RS-5.
+
+## Scalable byte engine (RS-S002)
+
+`native/residue_engine.c` builds the same byte format as the pilot builder, using four OpenMP
+threads for character tables, matrix construction, and normalized Gauss sums. Its ctypes ABI
+provides blocked complex forward and adjoint products directly from the bytes. The solver uses
+Lanczos on `C*C`; it never materializes a dense floating matrix at the scaling sizes.
+
+The quadratic fourth moment uses independent real Rademacher Hutchinson probes of `(C*C)^2`,
+with the individual estimates, probe count, seed and sample standard error retained in JSON.
+The matched controls use uniform upper-triangle exponents and the pilot reciprocity signs.
+Their seeded SplitMix64 counter stream differs from numpy's PCG64 stream; the distribution is
+matched, not the individual realization. Matrices and controls stay in ignored `data/`.
+
+From the repository root:
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py validate
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py run --x 320000
+```
+
+The validation command checks byte identity against the unchanged pilot C builder, singular
+values against dense SciPy `svds`, forward and adjoint products, Gauss sums, control symmetry,
+and the stochastic fourth moment against a dense Gram trace. The run command requires a passed
+validation record, limits each family and its control to about 45 minutes, and checkpoints and
+pushes arithmetic results and matched controls separately to the RS-S002 session branch.
+Do not reuse that branch or results filename for a later session without updating the runner's
+session-specific provenance and checkpoint destinations.

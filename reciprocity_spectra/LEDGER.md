@@ -79,3 +79,44 @@ failure modes of PRIMES D0–D1 and Pointed Order Zeta. Pilot it, and set up a p
 - The repository-wide ruff step was already failing on frozen D1 files. That is unchanged.
 
 **Outgoing state:** Phase 1 ready. One prompt has been written (RS-S002).
+
+
+### RS-S002 (2026-10-24): Phase 1a, scalable engine and registered scaling tests
+
+**Stage:** certification and falsification.
+
+**Bounded task:** build and validate a four-thread byte engine, then test the predictions committed
+at `0b77769` at X = 320000. No mechanism derivations or additional families.
+
+**Engine and validation:**
+
+- Added `native/residue_engine.c` and `scripts/phase1.py`: OpenMP character-table construction and
+  normalized Gauss sums, blocked complex forward/adjoint products, matrix-free Lanczos, and
+  seeded Hutchinson fourth moments. The pilot builder remains unchanged.
+- All three matrix files at X = 20000 are byte-identical to the pilot builder.
+- All top-eight singular values at X = 40000 agree with SciPy `svds` within 1e-8 relative.
+  The optimized engine's maximum discrepancy is 4.663e-15.
+- Quadratic m4 at X = 40000 passes the two-standard-error comparison with the dense Gram trace;
+  individual probe values and standard errors are retained in the results JSON.
+- Cubic Gauss sums at X = 20000 are byte-identical to the serial builder. Complex products,
+  adjoints and matched-control reciprocity signs are checked independently.
+- Ruff passes on touched Python files; the full pytest suite passes (343 tests).
+- The initial transpose adjoint was slow. Its unfinished control was stopped without reporting
+  a control value. A contiguous-row adjoint using the existing reciprocity signs was separately
+  validated before further scaling computation. The attempt and both validation records are
+  preserved; this is an implementation identity, not a mechanism derivation.
+
+**Incremental cubic result (completed; other families still running at this checkpoint):**
+
+X = 320000, D = 27554; sigma1 = 577.368785377, theta = 524.872196315,
+kappa3 = 1.422127145. Overlap = 0.941510961;
+BBP prediction = 0.948673890. Seed-0 matched-control sigma1 =
+331.928018816. All top-twelve values and residuals appear in
+`results/phase1_2026-10-24.json`. Completed arithmetic and control components took
+911.343 seconds, excluding the abandoned control attempt.
+
+- **PASS** — `kappa3 in [1.38, 1.47]`.
+- **PASS** — `cubic top-singular-vector overlap with conj(g~) within 0.03 of sqrt(1 - D/theta^2)`.
+
+RS-1 becomes **STRESSED at X = 320000**: both of its committed Phase-1 predictions pass.
+The pre-registered X = 640000 test has not been run.

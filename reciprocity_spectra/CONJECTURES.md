@@ -21,7 +21,7 @@ Notation:
 
 ---
 
-## RS-1: cubic spike law (PILOT)
+## RS-1: cubic spike law (STRESSED)
 
 For `C_X = ((π/ρ)₃)` over primary degree-one primes of `Z[ω]` with `N ≤ X`:
 
@@ -170,3 +170,18 @@ For n = 2 the theta function is supported on squares, so there is no spike at pr
 After deflating `O(1)` outliers, the singular-value distribution tends to the quarter circle with
 no `1/log D` correction. Local statistics remain to be tested: spacings, and Tracy–Widom
 fluctuations of the first non-outlier singular value.
+
+
+## RS-S002: Phase-1a outcomes at X = 320000
+
+Predictions remain exactly as committed at `0b77769`. Results and validation are in
+`results/phase1_2026-10-24.json`; no asymptotic assertion is proved by this computation.
+
+### RS-1: STRESSED
+
+- **PASS** — `kappa3 in [1.38, 1.47]`. Measured 1.422127145.
+- **PASS** — `cubic top-singular-vector overlap with conj(g~) within 0.03 of sqrt(1 - D/theta^2)`.
+  Measured overlap 0.941510961, BBP prediction 0.948673890.
+
+Both committed Phase-1 predictions pass at this scale, accompanied by the seed-0 matched control.
+The X = 640000 predictions remain untested at this checkpoint. Other families are still running.
