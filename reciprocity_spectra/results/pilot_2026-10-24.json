@@ -1,0 +1,58 @@
+{
+  "programme": "Reciprocity Spectra",
+  "date": "2026-10-24",
+  "machine": "4-core cloud container, 15 GB RAM; numpy 2.5.3, scipy 1.18.1; builder native/residue_matrix.c",
+  "conventions": "see reciprocity_spectra/arith.py; edge = 2*sqrt(D); BBP inversion sigma1 = theta + D/theta",
+  "symmetry_matched_random_controls": {
+    "cubic_D7796_top_sv_over_edge": [0.999, 0.997],
+    "quad_D4202_top_sv_over_edge": [0.999, 0.997],
+    "quad_D7836_top_sv_over_edge": 0.999,
+    "quartic_D4170_top_sv_over_edge": [0.997, 0.997],
+    "quartic_D7806_top_sv_over_edge": 0.998,
+    "quad_D2261_m4": 1.997,
+    "quad_D4202_m4": 1.998,
+    "cubic_D2248_m4": 1.996
+  },
+  "cubic_spike_law": [
+    {"X": 5000,   "D": 660,   "s1": 62.3,  "s1_over_edge": 1.212, "theta": 48.7,  "kappa3": 1.419, "overlap_conj_gauss": 0.896, "bbp_overlap": 0.850},
+    {"X": 10000,  "D": 1222,  "s1": 89.2,  "s1_over_edge": 1.275, "theta": 72.3,  "kappa3": 1.434, "overlap_conj_gauss": 0.895, "bbp_overlap": 0.875},
+    {"X": 20000,  "D": 2248,  "s1": 127.2, "s1_over_edge": 1.341, "theta": 106.0, "kappa3": 1.425, "overlap_conj_gauss": 0.910, "bbp_overlap": 0.894},
+    {"X": 40000,  "D": 4178,  "s1": 183.0, "s1_over_edge": 1.416, "theta": 156.3, "kappa3": 1.416, "overlap_conj_gauss": 0.924, "bbp_overlap": 0.910},
+    {"X": 80000,  "D": 7796,  "s1": 267.4, "s1_over_edge": 1.514, "theta": 234.1, "kappa3": 1.424, "overlap_conj_gauss": 0.931, "bbp_overlap": 0.926},
+    {"X": 160000, "D": 14640, "s1": 392.3, "s1_over_edge": 1.621, "theta": 350.5, "kappa3": 1.425, "overlap_conj_gauss": 0.936, "bbp_overlap": 0.939}
+  ],
+  "cubic_top_sv_X80000_over_edge": [1.514, 1.271, 1.195, 1.181, 1.167, 1.155, 1.150, 1.127],
+  "cubic_outlier_family_X40000": [
+    {"u": "1",            "twist": "+", "proj_top24": 0.924, "dominant_sigma_over_edge": 1.416},
+    {"u": "2 (inert)",    "twist": "+", "proj_top24": 0.875, "dominant_sigma_over_edge": 1.199},
+    {"u": "N=7 prime",    "twist": "+", "proj_top24": 0.840, "dominant_sigma_over_edge": 1.138},
+    {"u": "1-w ramified", "twist": "-", "proj_top24": 0.831, "dominant_sigma_over_edge": 1.104},
+    {"u": "N=13 prime",   "twist": "+", "proj_top24": 0.784, "dominant_sigma_over_edge": 1.078},
+    {"u": "N=19 prime",   "twist": "+", "proj_top24": 0.729, "dominant_sigma_over_edge": 1.055},
+    {"u": "N=31 prime",   "twist": "+", "proj_top24": 0.638, "dominant_sigma_over_edge": 1.018},
+    {"u": "N=37 prime",   "twist": "+", "proj_top24": 0.483, "dominant_sigma_over_edge": 1.022},
+    {"u": "N=43 prime",   "twist": "+", "proj_top24": 0.436, "dominant_sigma_over_edge": 0.992},
+    {"u": "w (control)",  "twist": "+", "proj_top24": 0.048, "dominant_sigma_over_edge": null}
+  ],
+  "quartic": [
+    {"X": 20000,  "D": 2250,  "s1_over_edge": 1.0728, "theta_n": 1.461, "overlap_conj_gauss": 0.030},
+    {"X": 40000,  "D": 4170,  "s1_over_edge": 1.1047, "theta_n": 1.574, "overlap_conj_gauss": 0.025, "best_twisted_gauss_proj_top16": 0.520},
+    {"X": 80000,  "D": 7806,  "s1_over_edge": 1.1408, "theta_n": 1.690, "overlap_conj_gauss": 0.012},
+    {"X": 160000, "D": 14642, "s1_over_edge": 1.1813, "theta_n": 1.810}
+  ],
+  "quadratic_legendre_matrix": [
+    {"X": 5000,   "D": 668,   "m4": 1.8081, "two_minus_m4_times_logD": 1.248, "s1_over_edge": 0.9082},
+    {"X": 10000,  "D": 1228,  "m4": 1.8273, "two_minus_m4_times_logD": 1.229, "s1_over_edge": 0.9206},
+    {"X": 20000,  "D": 2261,  "m4": 1.8430, "two_minus_m4_times_logD": 1.212, "s1_over_edge": 0.9231},
+    {"X": 40000,  "D": 4202,  "m4": 1.8549, "two_minus_m4_times_logD": 1.211, "s1_over_edge": 0.9310},
+    {"X": 80000,  "D": 7836,  "m4": 1.8663, "two_minus_m4_times_logD": 1.199, "s1_over_edge": 0.9369},
+    {"X": 160000, "D": 14682, "m4": 1.8753, "two_minus_m4_times_logD": 1.196, "s1_over_edge": 0.9397}
+  ],
+  "killed_candidate_consecutive_frobenius_S3": {
+    "field": "splitting field of x^3-2", "range": "all primes 5 <= p < 1e9",
+    "abelian_same_class_fraction_mod3": 0.4451,
+    "P_next_is_cube_given_prev": {"T": 0.333143, "I": 0.333319, "C": 0.333556},
+    "z_scores": {"T": -1.52, "I": -0.06, "C": 1.30},
+    "verdict": "null: correlations factor through the abelian quotient, as predicted"
+  }
+}

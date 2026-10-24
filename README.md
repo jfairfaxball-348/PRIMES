@@ -6,6 +6,28 @@ A long-horizon experimental mathematics programme for discovering, stress-testin
 
 Start every serious session at [START_HERE.md](START_HERE.md), then read [PROJECT_CHARTER.md](PROJECT_CHARTER.md), [AGENTS.md](AGENTS.md), and [docs/SESSION_PROTOCOL.md](docs/SESSION_PROTOCOL.md). Sessions close autonomously at a natural checkpoint and emit the next runnable session prompt unless a genuine owner decision blocks continuation.
 
+## New programme: Reciprocity Spectra (opened 2026-10-24)
+
+The blind-discovery chain (E001–E025) produced no candidate in 72 sessions. A separate programme now
+lives in [reciprocity_spectra/](reciprocity_spectra/README.md). It studies the spectra of
+power-residue matrices of primes, `((π/ρ)_n)` for n = 2, 3, 4, against a random-matrix null model
+that has the exact reciprocity symmetry.
+
+The pilot (dimension up to 14,682) found three regimes:
+
+- **n = 3:** metaplectic outliers that obey a spike law, `θ ≈ 1.42·X^{2/3}/log X`.
+- **n = 4:** quartic outliers whose singular vectors are not Gauss sums.
+- **n = 2:** a `1/log D` compression of the quadratic (Legendre) spectrum.
+
+Read these files first:
+
+- [reciprocity_spectra/LESSONS.md](reciprocity_spectra/LESSONS.md): why the D1 chain stalled and
+  the new design rules;
+- [reciprocity_spectra/PRIOR_ART.md](reciprocity_spectra/PRIOR_ART.md): the recorded collision
+  audit.
+
+The programme does not alter any D0/D1 ledger, observation, criterion or protected range.
+
 ## Mission
 
 The aim is not to make another catalogue of known facts about primes. The aim is to build a disciplined discovery system that can:
