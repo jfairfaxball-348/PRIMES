@@ -5,7 +5,65 @@
   "prediction_commit": "0b77769",
   "threads": 4,
   "command": "reciprocity_spectra/scripts/phase1.py validate",
-  "runs": [],
+  "runs": [
+    {
+      "mode": "cubic",
+      "X": 320000,
+      "code_commit": "3b36a83f8870960866c8e96698b4d82ba4702ac5",
+      "command": "reciprocity_spectra/scripts/phase1.py run --x 320000",
+      "seeds": {
+        "control": 0,
+        "probes": 1,
+        "solver": 2
+      },
+      "D": 27554,
+      "build_seconds": 78.39201353100003,
+      "top12": [
+        577.3687853771814,
+        476.10764362562503,
+        446.2897304478823,
+        442.74997157757684,
+        433.9880092877156,
+        429.95983848189303,
+        429.93189503400106,
+        417.561565379473,
+        410.5060783135686,
+        400.5937218268922,
+        393.47830673105136,
+        386.4069680752134
+      ],
+      "gram_relative_residuals": [
+        6.605759531190179e-15,
+        8.121543612562221e-15,
+        6.411981366384229e-15,
+        8.055287283396353e-15,
+        6.514611535681937e-15,
+        9.986856237120826e-15,
+        8.140204439122927e-15,
+        8.86741063301975e-15,
+        8.208663399654614e-15,
+        6.8845210356437625e-15,
+        7.229181955161867e-15,
+        6.796291206415528e-15
+      ],
+      "theta": 524.8721963152395,
+      "sigma1_over_edge": 1.7391257201184327,
+      "kappa3": 1.4221271446243826,
+      "overlap_conj_gauss": 0.9415109613608516,
+      "bbp_predicted_overlap": 0.9486738897641968,
+      "predictions": [
+        {
+          "prediction": "kappa3 in [1.38, 1.47]",
+          "outcome": "PASS"
+        },
+        {
+          "prediction": "cubic top-singular-vector overlap with conj(g~) within 0.03 of sqrt(1 - D/theta^2)",
+          "outcome": "PASS"
+        }
+      ],
+      "arithmetic_seconds": 329.498966688
+    }
+  ],
   "validation": {
     "matrix_20000": {
       "quad": {
