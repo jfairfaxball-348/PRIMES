@@ -1,11 +1,12 @@
 /*
  * residue_engine.c -- OpenMP byte engine, based on residue_matrix.c; build power-residue-symbol matrices of degree-one primes.
  *
- *   ./residue_matrix quad|cubic|quartic X matrix.bin [gauss.bin]
+ *   ./residue_matrix quad|cubic|quartic|sextic X matrix.bin [gauss.bin]
  *
  * quad    : odd rational primes p <= X;            E[i][j] = 0 if (p_i/p_j) = +1, 1 if -1.
  * cubic   : primary pi = a + b w in Z[w], N(pi) <= X; E[i][j] = k with (pi_i/pi_j)_3 = w^k.
  * quartic : primary pi = a + b i in Z[i], N(pi) <= X; E[i][j] = k with (pi_i/pi_j)_4 = i^k.
+ * sextic  : same Eisenstein indices; zeta6 = 1+w, exponents of exp(pi*i/3).
  * Diagonal (and any zero symbol) is stored as 255.  Conventions match reciprocity_spectra/arith.py.
  *
  * matrix.bin : int32 D, then D records of int64 (p, a, b), then D*D uint8 row-major E[i][j].
@@ -46,8 +47,8 @@ static int add_primary(prime_t *P, int D, int first, ll p, ll a, ll b) {
 }
 
 int main(int argc, char **argv) {
-    if (argc < 4) { fprintf(stderr, "usage: %s quad|cubic|quartic X matrix.bin [gauss.bin]\n", argv[0]); return 1; }
-    int n = !strcmp(argv[1], "cubic") ? 3 : !strcmp(argv[1], "quartic") ? 4 : !strcmp(argv[1], "quad") ? 2 : 0;
+    if (argc < 4) { fprintf(stderr, "usage: %s quad|cubic|quartic|sextic X matrix.bin [gauss.bin]\n", argv[0]); return 1; }
+    int n = !strcmp(argv[1], "sextic") ? 6 : !strcmp(argv[1], "cubic") ? 3 : !strcmp(argv[1], "quartic") ? 4 : !strcmp(argv[1], "quad") ? 2 : 0;
     if (!n) { fprintf(stderr, "unknown mode %s\n", argv[1]); return 1; }
     ll X = atoll(argv[2]);
     char *comp = sieve(X);
@@ -60,7 +61,7 @@ int main(int argc, char **argv) {
         int first = D;
         ll bmax = (ll)sqrt((double)(4 * p)) + 2;
         for (ll b = -bmax; b <= bmax; b++) {
-            if (n == 3) {
+            if (n == 3 || n == 6) {
                 if (mod(b, 3)) continue;
                 ll disc = 4 * p - 3 * b * b; if (disc < 0) continue;
                 ll s = llround(sqrt((double)disc)); if (s * s != disc) continue;
@@ -86,6 +87,7 @@ int main(int argc, char **argv) {
     #pragma omp parallel for schedule(dynamic, 1)
     for (int j = 0; j < D; j++) {
         ll p = P[j].p, r = P[j].r, e = (p - 1) / n;
+        ll unit = n == 6 ? mod(1 + r, p) : r;
         /* Build the character table in O(p), rather than D modular powers. */
         ll gen = 2;
         for (;; gen++) {
@@ -102,7 +104,7 @@ int main(int argc, char **argv) {
             ll ge = pw(gen, e, p), rr = 1;
             for (int k = 0; k < n; k++) {
                 if (rr == ge) { kg = k; break; }
-                rr = rr * r % p;
+                rr = rr * unit % p;
             }
         }
         uint8_t *table = malloc(p);
@@ -132,6 +134,7 @@ int main(int argc, char **argv) {
         #pragma omp parallel for schedule(dynamic, 1)
         for (int j = 0; j < D; j++) {
             ll p = P[j].p, r = P[j].r, e = (p - 1) / n, gen = 2;
+            ll unit = n == 6 ? mod(1 + r, p) : r;
             for (;; gen++) { /* primitive root mod p */
                 ll m = p - 1, ok = 1;
                 for (ll q = 2; q * q <= m; q++) if (m % q == 0) { if (pw(gen, (p - 1) / q, p) == 1) ok = 0; while (m % q == 0) m /= q; }
@@ -139,7 +142,7 @@ int main(int argc, char **argv) {
                 if (ok) break;
             }
             int kg = 1; /* chi(gen) = zeta_n^kg */
-            if (n > 2) { ll ge = pw(gen, e, p), rr = 1; for (int k = 0; k < n; k++) { if (rr == ge) { kg = k; break; } rr = (__int128)rr * r % p; } }
+            if (n > 2) { ll ge = pw(gen, e, p), rr = 1; for (int k = 0; k < n; k++) { if (rr == ge) { kg = k; break; } rr = (__int128)rr * unit % p; } }
             double re = 0, im = 0; ll x = 1;
             for (ll s = 0; s < p - 1; s++) {
                 double ang = 2 * M_PI * ((double)((s * kg) % n) / n + (double)x / p);
@@ -199,6 +202,7 @@ static uint64_t mix64(uint64_t x) {
     return x ^ (x >> 31);
 }
 void rs_random(uint8_t *E, int D, int n, const int64_t *primes, uint64_t seed) {
+    if (n == 6) abort(); /* Sextic controls require the full pairwise mask API below. */
     omp_set_num_threads(4);
     #pragma omp parallel for schedule(static)
     for (int i = 0; i < D; i++) {
@@ -242,6 +246,72 @@ void rs_apply_sym(const uint8_t *E, int D, int n, const uint8_t *odd,
                 } else {
                     for (int j = jb; j < je; j++) part += roots[row[j]] * x[j];
                 }
+                sum += part;
+            }
+            y[i] = sum;
+        }
+    }
+}
+
+/* Extract the full exact +/- reciprocity mask from exponents. Returns the
+ * number of invalid pairs (nonzero/half-turn phase, or off-diagonal zero).
+ * For sextic characters, cubic reciprocity makes this ratio a sign.
+ */
+uint64_t rs_pair_signs(const uint8_t *E, uint8_t *S, int D, int n) {
+    uint64_t errors = 0;
+    omp_set_num_threads(4);
+    #pragma omp parallel for schedule(static) reduction(+:errors)
+    for (int ib = 0; ib < D; ib += 64) {
+        int ie = ib + 64 < D ? ib + 64 : D;
+        for (int jb = 0; jb < D; jb += 256) {
+            int je = jb + 256 < D ? jb + 256 : D;
+            for (int i = ib; i < ie; i++) for (int j = jb; j < je; j++) {
+                size_t ij = (size_t)i * D + j, ji = (size_t)j * D + i;
+                if (i == j) { S[ij] = 0; continue; }
+                int a = E[ij], b = E[ji];
+                int shift = (b + n - a) % n;
+                if (a >= n || b >= n || (shift != 0 && shift != n/2)) errors++;
+                S[ij] = shift == n/2;
+            }
+        }
+    }
+    return errors;
+}
+
+void rs_random_signed(uint8_t *E, const uint8_t *S, int D, int n, uint64_t seed) {
+    omp_set_num_threads(4);
+    #pragma omp parallel for schedule(static)
+    for (int i = 0; i < D; i++) {
+        E[(size_t)i * D + i] = 255;
+        for (int j = i+1; j < D; j++) {
+            uint64_t state = seed + (uint64_t)i * D + j, u;
+            do { state += UINT64_C(0x9e3779b97f4a7c15); u = mix64(state); }
+            while (u < (uint64_t)(-((uint64_t)n)) % n);
+            int k = u % n;
+            E[(size_t)i * D + j] = k;
+            E[(size_t)j * D + i] = (k + S[(size_t)i * D + j] * (n/2)) % n;
+        }
+    }
+}
+
+/* Contiguous adjoint with a full pairwise sign mask, rather than odd[i]*odd[j]. */
+void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
+                     const double complex *x, double complex *y, int adjoint) {
+    if (!adjoint) { rs_apply(E, D, n, x, y, 0); return; }
+    double complex roots[256] = {0};
+    for (int k = 0; k < n; k++) roots[k] = conj(cexp(2 * M_PI * I * k / n));
+    omp_set_num_threads(4);
+    #pragma omp parallel for schedule(static)
+    for (int ib = 0; ib < D; ib += 64) {
+        int ie = ib + 64 < D ? ib + 64 : D;
+        for (int i = ib; i < ie; i++) {
+            double complex sum = 0;
+            const uint8_t *row = E + (size_t)i * D, *signs = S + (size_t)i * D;
+            for (int jb = 0; jb < D; jb += 256) {
+                int je = jb + 256 < D ? jb + 256 : D;
+                double complex part = 0;
+                for (int j = jb; j < je; j++)
+                    part += (signs[j] ? -roots[row[j]] : roots[row[j]]) * x[j];
                 sum += part;
             }
             y[i] = sum;
