@@ -56,6 +56,8 @@ A uniformly random matrix with *exactly the same reciprocity symmetry* shows non
 
 | File | Contents |
 |---|---|
+| `PROTOCOL.md` | **Session rules for this programme**: what is inherited from PRIMES, what is replaced, the pre-registration rule, and the compute budget for cloud sessions |
+| `LEDGER.md` | Append-only programme ledger with the current state and committed predictions |
 | `LESSONS.md` | Why PRIMES (0 candidates in 72 sessions) and Pointed Order Zeta (PILOT_KILL) failed, and the design rules this programme adopts |
 | `AREA_TRIAGE.md` | Eight candidate areas checked on 2026-10-24, with verdicts and sources, including one computed kill |
 | `PRIOR_ART.md` | Collision audit for this area: known, possible overlap, or no collision found |

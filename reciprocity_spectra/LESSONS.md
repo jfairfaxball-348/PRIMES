@@ -86,6 +86,13 @@ Study the residual index `I_a(p) = (p-1)/ord_p(a)` through the Euler product
    L² covariance. It already exists at the classical primitive-root endpoint, so it supplied no
    new leverage.
 3. **What went right:** an early prior-art gate and an honest kill after six sessions. Keep both.
+4. **Its exact missing lemma** (`notes/session6-go-no-go.md` §14) is a prime-side L² equidistribution
+   estimate for the full Kummer observable. It must hold uniformly up to a power-sized level and have
+   a controlled infinite tail. Session 6 checked the Frobenius large sieves (Zywina; Kowalski) and
+   found no match. Those sieves average over independent representations or geometric families.
+   The large sieves relevant to Reciprocity Spectra (Heath-Brown's quadratic and cubic, Gao–Zhao's
+   quartic) average over the *base* of the residue symbol. That is a different technology, and it
+   does not supply Pointed Order Zeta's missing lemma.
 
 ### Thematic link to the new programme
 

@@ -1,5 +1,17 @@
 # START HERE
 
+## Active programme (since 2026-10-24): Reciprocity Spectra
+
+The active line of work is **Reciprocity Spectra**: spectra of power-residue matrices of primes. To
+start a session on it, read `reciprocity_spectra/PROTOCOL.md`, then `NEXT_SESSION_PROMPT.md`. That
+protocol keeps PRIMES's epistemic rules and session mechanics. It replaces the blind-discovery
+machinery described in the rest of this file with model-first analysis and pre-registered
+predictions.
+
+The DISCOVERY-0/1 blind chain below is **paused** at D1-72 and is preserved unchanged.
+
+---
+
 PRIMES is currently in **DISCOVERY-0**.
 
 The immediate objective is to establish a trustworthy observation pipeline before making any mathematical claim.

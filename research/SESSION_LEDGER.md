@@ -1277,3 +1277,37 @@ Never reuse or renumber a completed session.
 **Failures/limitations:** One finite holdout refutes exactly its preregistered class-sign threshold, not mathematical tableau identity or a theorem; originality and prime mechanism unaudited. No new FAIL.  
 **Decision blocker:** none.  
 **Outgoing state:** D1-72/S074/SQ-036 CLOSED, OBS-025 REFUTED; next distinct D1-73/S075/SQ-037 SOURCE-FREE FIRST-PRINCIPLES DESIGN ONLY. One new prompt required. No permission for consumed, protected or H25 generator.
+
+### RS-S001 (2026-10-24): area triage, Reciprocity Spectra pilot, and programme switch
+
+**Stage:** collision-audit, discovery (model-first), and an owner-authorized programme decision.
+This is outside the D1 numbering.
+
+**Bounded task:** find an unsaturated, genuinely interesting research area in primes, given the
+D0–D1 and Pointed Order Zeta failure modes.
+
+**Result:**
+
+- Eight areas were checked; one candidate was killed computationally (to 10⁹).
+- Spectra of power-residue matrices were chosen.
+- The pilot found three regimes:
+  - cubic metaplectic outliers obeying a spike law, κ₃ = 1.42 ± 0.01;
+  - quartic outliers whose vectors are not Gauss sums;
+  - quadratic `1/log D` compression.
+
+  Details are in `reciprocity_spectra/LEDGER.md`.
+
+**Validation:**
+
+- 6 new exact tests;
+- the full pytest suite passes;
+- ruff is clean on the new files;
+- the C builder is byte-identical to the pilot builds.
+
+**Decision:** the owner opened Reciprocity Spectra as the active programme. D1 is paused at D1-72,
+and SQ-037 is deferred.
+
+**Observations and candidates:** the D1 registers are unchanged at 16 / 0 / 9 with zero candidates.
+No new OBS, CAND or FAIL was created.
+
+**Outgoing state:** RS-S002 / Phase 1a prompt in `NEXT_SESSION_PROMPT.md`.
