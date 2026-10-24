@@ -4,7 +4,7 @@
   "base_commit": "52d0854c4b7bd61b33bdb4c5e5de89d7d568bd57",
   "authoritative_main": "9a038fae69c3d4152c614d0ac46c3c27b34611cd",
   "branch": "rs-s003-phase1b",
-  "classification": "PRE-REGISTERED; no test data yet",
+  "classification": "PRE-REGISTERED TEST RESULTS; all eight finite comparisons FAIL",
   "resources": {
     "cpu_max": "200000 100000",
     "memory_limit_bytes": 8589934592,
@@ -490,7 +490,10 @@
       ],
       "total_seconds": 24.55362604000038,
       "matvec_calls": 1078,
-      "complete": true
+      "complete": true,
+      "matvec_calls_scope": "arithmetic and matched-control spectra",
+      "elapsed_scope": "complete arithmetic and matched-control job",
+      "native_source_sha256": "010040b0d87db4639ffac065a592a1762369c2f2265fb5a996b6fa7a1a208518"
     },
     {
       "X": 160000,
@@ -584,7 +587,10 @@
       ],
       "total_seconds": 258.8759475369998,
       "matvec_calls": 834,
-      "complete": true
+      "complete": true,
+      "matvec_calls_scope": "resumed control only",
+      "elapsed_scope": "completed arithmetic plus resumed control, excluding checkpoint incident overhead",
+      "native_source_sha256": "010040b0d87db4639ffac065a592a1762369c2f2265fb5a996b6fa7a1a208518"
     }
   ],
   "local_runs": [
@@ -26451,12 +26457,79 @@
       "complete": true
     }
   ],
-  "prediction_commit": "4ae9c7a",
+  "prediction_commit": "4ae9c7a58d3e986354b818a6e639534033fd97ba",
   "execution_incidents": [
     {
       "X": 160000,
       "phase": "checkpoint push after completed arithmetic spectrum",
       "reason": "Concurrent documentation and results pushes briefly raced on the same branch ref; rejected push was retried serially. Arithmetic result c693bad was preserved, pushed, and the missing control resumed. No prediction, matrix or numerical algorithm changed."
     }
-  ]
+  ],
+  "registration_classification": "PRE-REGISTERED; no test data yet",
+  "closed_at_utc": "2026-10-24T21:20:13.987543+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "cpu_max": "200000 100000",
+    "memory_limit_bytes": 8589934592,
+    "compiler": "cc (Debian 14.2.0-19) 14.2.0"
+  },
+  "checks": {
+    "ruff": {
+      "command": "ruff check reciprocity_spectra/arith.py reciprocity_spectra/scripts/phase1b.py tests/test_reciprocity_spectra.py",
+      "outcome": "PASS"
+    },
+    "pytest": {
+      "command": "python -m pytest",
+      "outcome": "345 passed"
+    },
+    "c_warnings": {
+      "command": "cc -O3 -fopenmp -Wall -Wextra -Werror -fsyntax-only reciprocity_spectra/native/residue_engine.c",
+      "outcome": "PASS"
+    },
+    "recorded_spectra_recompute_frozen_local_statistics": true,
+    "registration_predictions_and_definitions_unchanged": true,
+    "RS_S002_results_byte_unchanged": true,
+    "closeout": {
+      "ledger_append_only": true,
+      "frozen_D1_paths_unchanged": true,
+      "matrices_untracked": true,
+      "all_eight_outcomes_recorded": true,
+      "one_RS_S004_prompt": true
+    }
+  },
+  "outcome_counts": {
+    "PASS": 0,
+    "FAIL": 8,
+    "sextic_FAIL": 4,
+    "local_FAIL": 4
+  },
+  "conjecture_dispositions": {
+    "RS-1": "STRESSED at X=320000, unchanged from RS-S002",
+    "RS-2": "PILOT, unchanged",
+    "RS-3": "STRESSED at X=320000, unchanged from RS-S002",
+    "RS-4": "STRESSED at X=320000, unchanged from RS-S002",
+    "RS-5": {
+      "registered_finite_scale_sextic_form": "REFUTED",
+      "eventual_asymptotic_version": "UNRESOLVED"
+    },
+    "RS-6": {
+      "original_bulk_claim": "PILOT",
+      "registered_finite_scale_local_extension": "REFUTED"
+    }
+  },
+  "limitations": [
+    "Finite-scale failures do not disprove eventual asymptotic limits.",
+    "Controls match the pre-registered reciprocity constraints; completeness with respect to other exact identities was not certified.",
+    "Only the registered gap-ratio statistic was tested; no Tracy-Widom or mechanism claim is established."
+  ],
+  "next_unit": {
+    "session": "RS-S004",
+    "phase": "1c",
+    "objective": "Exact null-ensemble certification followed by qualified-model tests at fresh scales",
+    "proposed_local_X": 80000,
+    "proposed_sextic_X": 320000,
+    "classification": "PLANNING: predictions must be committed and pushed before those measurements"
+  }
 }

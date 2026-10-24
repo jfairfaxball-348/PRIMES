@@ -38,7 +38,13 @@ Exit: each of RS-1, RS-3, RS-4 becomes STRESSED or REFUTED.
 **RS-S002 checkpoint:** the scalable byte engine is validated, and the required X = 320000
 comparisons all PASS; RS-1, RS-3 and RS-4 are STRESSED at this scale. X = 640000 remains untested
 because measured runtime projections exceed the per-run budget (see LEDGER.md and the Phase-1
-results JSON). Phase 1b next tests RS-5 and one local-statistics prediction for RS-6.
+results JSON). The subsequent Phase 1b outcomes are recorded below.
+
+**RS-S003 checkpoint:** all eight registered finite sextic/local comparisons FAIL. The RS-5
+finite formulation and RS-6 finite local extension are REFUTED; eventual asymptotic limits
+remain unresolved and the original RS-6 bulk claim remains PILOT. Phase 1c next certifies
+additional exact identities required of the null ensemble, followed by qualified-model tests
+at fresh scales. Old outcomes and predictions stay unchanged. See the ledger and Phase-1b JSON.
 
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 

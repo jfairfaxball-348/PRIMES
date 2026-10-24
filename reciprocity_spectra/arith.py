@@ -2,6 +2,9 @@
 
 Conventions
 -----------
+* ``n = 6``: the same Eisenstein indices as n=3, with coefficients still in the omega
+  basis and ``prime.n == 3``. Use ``sextic_residue_exponent`` with ``zeta6 = 1 + omega``;
+  the metadata ring and the character order are deliberately distinct.
 * ``n = 2``: odd rational primes ``p``; the symbol is the Legendre symbol ``(p_i / p_j)``.
 * ``n = 3``: primary primes ``pi = a + b*w`` of ``Z[w]``, ``w = exp(2 pi i / 3)``, with
   ``a = 2 (mod 3)``, ``b = 0 (mod 3)`` and norm ``p = a^2 - a*b + b^2 = 1 (mod 3)``

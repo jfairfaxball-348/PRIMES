@@ -2,10 +2,11 @@
 
 **A new PRIMES research programme, opened 2026-10-24.**
 
-**Status: PHASE 1a COMPLETE at X = 320000.** RS-1, RS-3 and RS-4 are STRESSED against their
-committed scaling predictions; RS-2 and RS-6 remain PILOT, and RS-5 is UNTESTED. Live,
-model-discriminating structure has been found and the open
-questions are identified. Nothing is proved. No novelty claim is made beyond the search scope
+**Status: PHASE 1b COMPLETE; all registered RS-S003 finite comparisons FAIL.** The finite
+sextic formulation of RS-5 and local-statistic extension of RS-6 are REFUTED. Their eventual
+asymptotic versions remain unresolved; the original RS-6 bulk claim remains PILOT. RS-1,
+RS-3 and RS-4 remain STRESSED from Phase 1a, and RS-2 remains PILOT. The next dependency is
+exact null-ensemble certification. Nothing is proved. No novelty claim is made beyond the search scope
 recorded in `PRIOR_ART.md`.
 
 ## The idea in one paragraph
@@ -126,7 +127,7 @@ session-specific provenance and checkpoint destinations.
 The RS-S002 required scaling target is now complete; see `results/phase1_2026-10-24.json`
 and the ledger for every comparison, both engine validation records, the abandoned slow-control
 attempt, and the X = 640000 runtime-budget skip. STRESSED is finite numerical evidence, not proof.
-The next bounded unit is RS-S003 / Phase 1b, specified in the root `NEXT_SESSION_PROMPT.md`.
+The subsequent RS-S003 results and current handover are described below.
 
 The adjoint uses the existing reciprocity signs to read contiguous byte rows; the generic
 transpose kernel remains available and is checked independently. To reproduce the additional
@@ -135,3 +136,27 @@ exploratory quadratic matched-control moment after completing its spectra:
 ```bash
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py control-m4 --x 320000 --mode quad
 ```
+
+
+## Phase 1b: sextic and local-statistics tests (RS-S003)
+
+`arith.py` now defines the sextic character explicitly with zeta6 = 1 + omega on the existing
+Eisenstein indices. Metadata coefficients stay in the omega basis. The native engine supports
+`sextic` and a full pairwise reciprocity mask for blocked adjoints and seed-0 controls. The
+simpler parity-mask kernel remains unchanged for the previous families.
+
+`results/phase1b_2026-10-24.json` contains the registration committed before data, exact/numerical
+validation, both sextic top-twelve spectra and controls, all full local-statistics spectra,
+fixed-window summaries, eight FAIL outcomes, and the checkpoint incident. These finite failures
+do not disprove eventual limits. Only the registered gap-ratio extension was tested locally.
+
+```bash
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py validate
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py sextic
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py local
+```
+
+The runner is specific to RS-S003; preserve its evidence when starting another session. The
+next bounded unit, RS-S004 / Phase 1c, certifies whether additional exact matrix identities
+need matching in the null, then tests a qualified model at fresh scales. Its sole prompt is
+in the root `NEXT_SESSION_PROMPT.md`. No explanation of the failures is claimed here.

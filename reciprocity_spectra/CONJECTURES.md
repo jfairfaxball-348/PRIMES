@@ -165,7 +165,7 @@ For n = 2 the theta function is supported on squares, so there is no spike at pr
 
 **Test:** sextic residue matrices over `Z[ω]`, and quintic over `Z[ζ₅]`.
 
-## RS-6: bulk universality for n = 3, 4 after removing outliers (PILOT)
+## RS-6: bulk universality for n = 3, 4 after removing outliers (PILOT bulk; finite local extension REFUTED)
 
 After deflating `O(1)` outliers, the singular-value distribution tends to the quarter circle with
 no `1/log D` correction. Local statistics remain to be tested: spacings, and Tracy–Widom
@@ -263,5 +263,46 @@ control = 0.996124577, normalized excess = 0.033345457.
 
 The first registered scale fails both criteria, preventing STRESSED promotion. REFUTED here
 refers to the explicit finite-scale formulation; an eventual asymptotic claim is not disproved
-by this finite test. The pre-registered X = 160000 run continues without changed tolerances,
-character normalization, or control.
+by this finite test. At that checkpoint the pre-registered X = 160000 run continued without changed tolerances,
+character normalization, or control; its completed outcome follows below.
+
+**Second registered sextic result: X = 160000, D = 14640.**
+
+Sigma1/(2 sqrt(D)) = 1.041519910; matched control =
+0.998855152; normalized excess = 0.042664758.
+Completed arithmetic plus resumed control took 258.876 seconds.
+
+- **FAIL** — `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- **FAIL** — `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+Both criteria fail at both registered scales. The first registered failing scale is X = 40000;
+no assertion about the globally smallest failing X is made. The original character definition,
+normalization, control and tolerances were not changed after seeing either result.
+
+**Registered local-statistics results:**
+
+| mode | X | D | arithmetic mean ratio | control mean ratio | absolute difference | outcome |
+|---|---:|---:|---:|---:|---:|---|
+| cubic | 20000 | 2248 | 0.422538122 | 0.528322607 | 0.105784485 | FAIL |
+| cubic | 40000 | 4178 | 0.410355005 | 0.533655860 | 0.123300854 | FAIL |
+| quartic | 20000 | 2250 | 0.538972970 | 0.601537355 | 0.062564385 | FAIL |
+| quartic | 40000 | 4170 | 0.532925836 | 0.605604066 | 0.072678229 | FAIL |
+
+- **FAIL** (cubic, X = 20000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (cubic, X = 40000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (quartic, X = 20000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (quartic, X = 40000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+
+The RS-6 finite local-statistic extension is REFUTED; the original bulk quarter-circle and
+no-secondary-term claim remains PILOT. This scalar local test does not settle those bulk
+claims, eventual asymptotic limits, or Tracy-Widom fluctuations. Raw full singular spectra,
+window bounds, deflation and ratio counts, seeds, commands and code commits are in the JSON.
+
+### RS-S003 disposition and scope
+
+All eight finite comparisons FAIL. No STRESSED promotion follows from RS-S003. The REFUTED
+labels refer to the registered finite-scale sextic formulation and local-statistic extension;
+finite data do not disprove eventual asymptotic limits. The original RS-6 bulk claim remains
+PILOT, and RS-1, RS-2, RS-3 and RS-4 retain their RS-S002 statuses. No prediction was revised.
+Additional exact identities in a null ensemble require separate certification and fresh-scale
+predictions; they must not retroactively change these outcomes.

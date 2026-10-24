@@ -220,3 +220,72 @@ This is the first failing registered scale checked; no smaller registered sextic
 exists in this unit. RS-5 cannot be promoted. The registered finite-scale formulation is
 REFUTED; these finite calculations do not disprove an eventual asymptotic limit.
 The X = 160000 run remains scheduled unchanged, and no prediction or normalization is revised.
+
+**Second registered sextic result: X = 160000, D = 14640.**
+
+Sigma1/(2 sqrt(D)) = 1.041519910; matched control =
+0.998855152; normalized excess = 0.042664758.
+Completed arithmetic plus resumed control took 258.876 seconds.
+
+- **FAIL** — `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- **FAIL** — `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+Both criteria fail at both registered scales. The first registered failing scale is X = 40000;
+no assertion about the globally smallest failing X is made. The original character definition,
+normalization, control and tolerances were not changed after seeing either result.
+
+**Registered local-statistics results:**
+
+| mode | X | D | arithmetic mean ratio | control mean ratio | absolute difference | outcome |
+|---|---:|---:|---:|---:|---:|---|
+| cubic | 20000 | 2248 | 0.422538122 | 0.528322607 | 0.105784485 | FAIL |
+| cubic | 40000 | 4178 | 0.410355005 | 0.533655860 | 0.123300854 | FAIL |
+| quartic | 20000 | 2250 | 0.538972970 | 0.601537355 | 0.062564385 | FAIL |
+| quartic | 40000 | 4170 | 0.532925836 | 0.605604066 | 0.072678229 | FAIL |
+
+- **FAIL** (cubic, X = 20000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (cubic, X = 40000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (quartic, X = 20000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (quartic, X = 40000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+
+The RS-6 finite local-statistic extension is REFUTED; the original bulk quarter-circle and
+no-secondary-term claim remains PILOT. This scalar local test does not settle those bulk
+claims, eventual asymptotic limits, or Tracy-Widom fluctuations. Raw full singular spectra,
+window bounds, deflation and ratio counts, seeds, commands and code commits are in the JSON.
+
+**Certification, execution incident and limitations:**
+
+- Exact sextic normalization (square = cubic, cube = field quadratic), multiplicativity, and
+  pairwise reciprocity were tested in pure Python; native entries, signs and complex adjoints
+  agree. At X = 2000 the sextic matrix and full sign mask agree exactly with the independent
+  Python calculation, and top-eight singular values agree with SciPy within 1e-8 relative.
+- The quad/cubic/quartic overlap gate was rerun: matrices byte-identical at X = 20000, top-eight
+  singular values agree with SciPy at X = 40000, and stochastic m4 is within two standard
+  errors of its dense reference. The largest legacy relative discrepancy is 5.107e-15; sextic
+  discrepancy is 5.773e-15. The full-SVD top-eight checks also pass on both X = 40000 local jobs.
+- The registered window, strict deflation and tie conventions were checked on known arrays.
+  The recorded full spectra independently reproduce every saved gap-ratio statistic.
+- Targeted Ruff and strict native compiler checks pass; pytest passes 345 tests.
+- A documentation push overlapped the X = 160000 arithmetic checkpoint push and GitHub rejected
+  one ref update. The committed arithmetic result was pushed serially; only the missing
+  control was resumed. Push retry/resume handling and the incident are retained. No numerical
+  method, seed or prediction changed. All required jobs remained below 45 minutes.
+- The null matches the registered reciprocity constraints. Whether other exact identities
+  also need matching was not certified; no explanation of the failures is claimed.
+- No mechanism derivations, quintic computation, paused D1 work or main merge was performed.
+  RS-S002 evidence and all earlier predictions are unchanged; matrices remain uncommitted.
+
+**Commits:** `4ae9c7a` (registration, pushed before data), `a0c6e2c` (engine/tests/runner),
+`10dfba6` (validation), `31f2647`/`07ed9c2` (first sextic), `c693bad`/`80e2d66`
+(second sextic), `ce669a0` (checkpoint incident/resume), and local-statistics checkpoints through
+`bea27ab`. Final closeout follows on `rs-s003-phase1b`.
+
+**Outgoing state (supersedes earlier snapshots):** Phase 1b complete; eight finite comparisons
+FAIL, zero PASS. RS-5 registered finite-scale form REFUTED; its eventual asymptotic version
+remains unresolved. RS-6 finite local extension REFUTED, original bulk claim PILOT. RS-1,
+RS-3 and RS-4 remain STRESSED from RS-S002; RS-2 remains PILOT. X = 640000 is still untested.
+
+**Next dependency and justification:** before assigning a mechanism to these failures, certify
+the null ensemble against all exact matrix identities, then test a qualified model at fresh
+scales. That is one RS-S004 / Phase 1c unit, with a single prompt in NEXT_SESSION_PROMPT.md.
+No owner-decision blocker is active.
