@@ -133,3 +133,19 @@ Arithmetic plus control took 821.456 seconds.
 
 RS-3 becomes **STRESSED at X = 320000** for its committed Phase-1 growth prediction.
 The interpretation of its singular vectors remains unverified by this unit.
+
+**Quadratic result (completed, with matched control):**
+
+X = 320000, D = 27607; sigma1 = 313.743144015, sigma1/(2 sqrt(D)) =
+0.944136181. A real supercritical BBP strength is undefined below the bulk edge
+(`theta: null` in JSON). With 128 real Rademacher probes and seed 1,
+m4 estimate = 1.879653606, standard error = 0.002092727.
+The registered correction is 1.230641123, with standard error
+0.021399855. Seed-0 matched-control sigma1 =
+332.095659511. All top-twelve spectra and probe values are in the JSON.
+The required arithmetic-plus-control job took 1481.641 seconds.
+
+- **PASS** — `quadratic (2 - m4)*ln D in [1.0, 1.4]`.
+
+RS-4 becomes **STRESSED at X = 320000**. All four committed Phase-1a comparisons now pass.
+RS-2 and RS-6 remain PILOT; RS-5 remains UNTESTED.

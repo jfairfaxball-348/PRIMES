@@ -113,7 +113,7 @@ of the quartic theta function at primes. Those coefficients are *not known in cl
 - derive the `log X` growth from the X^{3/4} bias conjecture;
 - compare the outlier vectors with any available numerics for the quartic theta coefficients.
 
-## RS-4: compression of the quadratic Legendre matrix (PILOT)
+## RS-4: compression of the quadratic Legendre matrix (STRESSED)
 
 For `L_D = ((p_i/p_j))` over the first `D` odd primes:
 
@@ -184,7 +184,7 @@ Predictions remain exactly as committed at `0b77769`. Results and validation are
   Measured overlap 0.941510961, BBP prediction 0.948673890.
 
 Both committed Phase-1 predictions pass at this scale, accompanied by the seed-0 matched control.
-The X = 640000 predictions remain untested at this checkpoint. Other families are still running.
+The X = 640000 predictions remain untested; the final budget decision is recorded below.
 
 ### RS-3: STRESSED
 
@@ -193,3 +193,16 @@ The X = 640000 predictions remain untested at this checkpoint. Other families ar
 
 The committed Phase-1 growth prediction passes with its matched control at X = 320000.
 This unit does not validate the proposed interpretation of the outlier vectors.
+
+### RS-4: STRESSED
+
+- **PASS** — `quadratic (2 - m4)*ln D in [1.0, 1.4]`.
+  Measured correction 1.230641123, standard error
+  0.021399855. The m4 estimate is 1.879653606
+  with standard error 0.002092727, from 128 probes (seed 1).
+
+The registered band contains the estimate and its two-standard-error interval.
+Sigma1/(2 sqrt(D)) = 0.944136181; the matched control is recorded at the same D.
+
+RS-1, RS-3 and RS-4 are STRESSED at X = 320000 for their committed Phase-1 predictions.
+RS-2 and RS-6 remain PILOT; RS-5 remains UNTESTED.
