@@ -343,7 +343,11 @@
     "gauss_20000_byte_identical": true,
     "passed": true,
     "code_commit": "73717d9f9c8b545caabf580a2e350e71a3cf63cd",
-    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py validate"
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py validate",
+    "checks": {
+      "ruff_touched_python": "PASS",
+      "pytest": "343 passed"
+    }
   },
   "validation_history": [
     {
@@ -629,6 +633,19 @@
       "checks": {
         "ruff_touched_python": "PASS",
         "pytest": "343 passed"
+      }
+    }
+  ],
+  "abandoned_attempts": [
+    {
+      "mode": "cubic",
+      "X": 320000,
+      "code_commit": "3b36a83",
+      "reason": "Transpose adjoint throughput bottleneck; stopped control with no spectral result. Arithmetic checkpoint preserved. Replaced by separately revalidated contiguous reciprocity-aware adjoint.",
+      "partial_control_reported": false,
+      "throughput_benchmark_seconds_with_competing_control": {
+        "forward": 0.9656628879999971,
+        "adjoint": 3.9568743229999654
       }
     }
   ]
