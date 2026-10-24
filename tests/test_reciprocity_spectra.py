@@ -107,6 +107,8 @@ def test_native_byte_engine_against_exact_core(tmp_path):
     lib = ct.CDLL(str(libpath))
     lib.rs_apply.argtypes = [ct.c_void_p, ct.c_int, ct.c_int, ct.c_void_p,
                             ct.c_void_p, ct.c_int]
+    lib.rs_apply_sym.argtypes = [ct.c_void_p, ct.c_int, ct.c_int, ct.c_void_p,
+                                ct.c_void_p, ct.c_void_p, ct.c_int]
     lib.rs_random.argtypes = [ct.c_void_p, ct.c_int, ct.c_int, ct.c_void_p, ct.c_uint64]
     for n, mode in [(2, 'quad'), (3, 'cubic'), (4, 'quartic')]:
         path = tmp_path / f'{mode}.bin'
@@ -126,12 +128,19 @@ def test_native_byte_engine_against_exact_core(tmp_path):
         xv = array('d', [t for v in z for t in (v.real, v.imag)])
         yv = array('d', [0.] * (2*d))
         roots = [cmath.exp(2j * math.pi * k / n) for k in range(n)] + [0j] * (256-n)
+        odd = array('B', [int(p % 4 == 3 if n == 2 else p % 8 == 5 if n == 4 else False)
+                          for p, _, _ in meta])
         for adjoint in [False, True]:
-            lib.rs_apply(e, d, n, xv.buffer_info()[0], yv.buffer_info()[0], adjoint)
-            for i in range(d):
-                want = sum((roots[e[j*d+i]].conjugate() if adjoint else roots[e[i*d+j]]) * z[j]
-                           for j in range(d))
-                assert abs(complex(yv[2*i], yv[2*i+1]) - want) < 1e-10
+            for symmetric in [False, True]:
+                if symmetric:
+                    lib.rs_apply_sym(e, d, n, odd.buffer_info()[0], xv.buffer_info()[0],
+                                     yv.buffer_info()[0], adjoint)
+                else:
+                    lib.rs_apply(e, d, n, xv.buffer_info()[0], yv.buffer_info()[0], adjoint)
+                for i in range(d):
+                    want = sum((roots[e[j*d+i]].conjugate() if adjoint else roots[e[i*d+j]]) * z[j]
+                               for j in range(d))
+                    assert abs(complex(yv[2*i], yv[2*i+1]) - want) < 1e-10
         primes = array('q', [p for p, _, _ in meta])
         lib.rs_random(e, d, n, primes.buffer_info()[0], 0)
         first = bytes(e)
