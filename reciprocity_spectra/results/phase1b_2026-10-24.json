@@ -535,7 +535,56 @@
         4.814414081431992e-12
       ],
       "sigma1_over_edge": 1.0415199101218369,
-      "arithmetic_seconds": 105.56465294400004
+      "arithmetic_seconds": 105.56465294400004,
+      "control_code_commit": "ce669a03e9ba2fafcc82531684146b07c93f2807",
+      "control_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py sextic --resume",
+      "resumed_control": true,
+      "control_top12": [
+        241.71469162593863,
+        241.4001861115004,
+        241.3097694861031,
+        241.20812068078556,
+        240.95041727237032,
+        240.80191208176706,
+        240.70302818609662,
+        240.57342791414,
+        240.4548196892597,
+        240.34897787820404,
+        240.19758061092284,
+        240.13447106955365
+      ],
+      "control_gram_relative_residuals": [
+        1.2902778716028124e-14,
+        5.792432254424033e-15,
+        7.056461906112946e-15,
+        6.8441425903743906e-15,
+        2.9948740627989406e-15,
+        7.612246793303012e-15,
+        6.345423222580637e-15,
+        5.4724227597491834e-15,
+        4.154820773618691e-15,
+        5.074331127562133e-15,
+        1.3981800784113587e-13,
+        1.022467085582219e-12
+      ],
+      "control_sigma1_over_edge": 0.998855151934529,
+      "normalized_excess": 0.04266475818730786,
+      "control_sha256": "9ec03a23455b176c981da85d80ec3e326eba51c4dc4514652ec341086aebcbba",
+      "predictions": [
+        {
+          "id": "RS-S003-P5-E",
+          "prediction": "sextic sigma1/(2 sqrt(D)) <= 1.02",
+          "outcome": "FAIL"
+        },
+        {
+          "id": "RS-S003-P5-N",
+          "prediction": "sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02",
+          "outcome": "FAIL"
+        }
+      ],
+      "total_seconds": 258.8759475369998,
+      "matvec_calls": 834,
+      "complete": true
     }
   ],
   "local_runs": [],
