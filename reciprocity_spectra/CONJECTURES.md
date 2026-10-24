@@ -152,7 +152,7 @@ That is a secondary term of Montgomery–Hooley / Barban–Davenport–Halbersta
 **Contrast:** the cubic bulk shows no such deficit (`m₄ = 1.993` at D = 2248). A candidate reason
 is that `χ² = 1` only for real characters.
 
-## RS-5: no outliers for n ≥ 6 (UNTESTED)
+## RS-5: no outliers for n ≥ 6 (REFUTED: registered finite-scale form)
 
 **Heuristic:** an n-th order theta function with prime coefficients of size `N^{-(1/2 - 1/n)}`
 gives a spike of order `X^{2/n}` against a bulk of `√X`:
@@ -249,3 +249,19 @@ its tested sextic case; RS-6 promotion covers only this registered local statist
 universality claims are not certified. Any failure is retained and prevents promotion.
 No old Phase-1a prediction changes. No sextic spectrum or local statistic has been measured
 before this registration is committed and pushed.
+
+
+## RS-S003 incremental outcomes
+
+### RS-5: registered finite-scale sextic formulation REFUTED
+
+At X = 40000, D = 4178: sigma1/(2 sqrt(D)) = 1.029470034,
+control = 0.996124577, normalized excess = 0.033345457.
+
+- **FAIL** — `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- **FAIL** — `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+The first registered scale fails both criteria, preventing STRESSED promotion. REFUTED here
+refers to the explicit finite-scale formulation; an eventual asymptotic claim is not disproved
+by this finite test. The pre-registered X = 160000 run continues without changed tolerances,
+character normalization, or control.

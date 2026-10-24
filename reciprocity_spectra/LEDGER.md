@@ -205,3 +205,18 @@ solver parameters and seeds were written to CONJECTURES.md and
 X = 40000 and 160000; RS-6 has one criterion for each of cubic/quartic at X = 20000 and 40000.
 All applicable predictions must pass for promotion, with scope limited to the tests performed.
 No mechanism derivations, quintic family, or paused D1 work are included.
+
+**First registered sextic result: X = 40000, D = 4178.**
+
+Sigma1/(2 sqrt(D)) = 1.029470034; matched control =
+0.996124577; normalized excess = 0.033345457.
+The required job took 24.554 seconds. All top-twelve singular values,
+residuals, code commits, commands, seeds and file hashes are in the RS-S003 JSON.
+
+- **FAIL** — `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- **FAIL** — `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+This is the first failing registered scale checked; no smaller registered sextic scale
+exists in this unit. RS-5 cannot be promoted. The registered finite-scale formulation is
+REFUTED; these finite calculations do not disprove an eventual asymptotic limit.
+The X = 160000 run remains scheduled unchanged, and no prediction or normalization is revised.
