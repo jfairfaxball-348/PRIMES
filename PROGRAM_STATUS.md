@@ -1,10 +1,12 @@
 # PRIMES Programme Status
 
-Status date: 2026-10-09
+Status date: 2026-10-24
 
 ## Current stage
 
-**DISCOVERY-1 — D1-72 / S074 / SQ-036 E025 H25 ONE-SHOT CLOSED; OBS-025 REFUTED (25/48 POSITIVE SIGNED CLASSES < FROZEN 36/48); D25/H25 CONSUMED; 16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND; NEXT D1-73 / S075 / SQ-037 SOURCE-FREE DESIGN ONLY**
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1 (scaling with pre-registered predictions). The next unit is RS-S002 / Phase 1a. Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
+
+Previous stage line (D1-72, preserved): DISCOVERY-1 — D1-72 / S074 / SQ-036 E025 H25 ONE-SHOT CLOSED; OBS-025 REFUTED (25/48 POSITIVE SIGNED CLASSES < FROZEN 36/48); D25/H25 CONSUMED; 16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND; NEXT D1-73 / S075 / SQ-037 SOURCE-FREE DESIGN ONLY
 
 ## Gates
 
@@ -768,3 +770,33 @@ The complete actual fixed D17 command was independently precommitted and verifie
 Complete separate H25 source/tests remotely precommitted at `56bbdeb37d504ad429ab0095440aafddfadd15b7` (blobs `e6812c6ce274555d5deee0de7633b45a021f04d3`, `b3eeebd0844e394bad12f0726fcbc3e9cb6b294a`); generator-free focused Ruff/compile/independent test suite and all 119 old+30 nested+five E025 name/phase/poison/AST checks PASS in GitHub Actions run `37958408125`. Actual complete H25 command separately precommitted at `26ef96a2989bab4bc3d793b3173da9f60a30861d`, exact blob `b8d168dcc477c6db3c008aefb250088bd36a033a`; inert one-shot workflow verified blob `c8bc46b84649ba2ce8b0eb0b9ca7caf8d72378b4`, sole authorization `0495e488a9c4a4d6ef0628b967a8011a863d55a6`. Sole exact generator plan, prevalidated and revalidated before each generator, was low `(base_sieve_support,0,14697,whole_prefix)` then high `(segmented_target,214000000,216000000,direct_segmented)`. One workflow run `37958672179`/job `113915610874` SUCCESS, **exact complete literal command TWICE ONLY** on same raw pathname; first raw sealed uninterpreted; full external cmp/sha256sum and independent hashlib SHA256 equal for both whole files before any aggregate interpretation: **4824 bytes each**, SHA-256 `5274e8cfbaee720f807abe34fa11b172401ff1f35846730ebdab84f69233ce55`. Narrow canonical aggregate `research/evidence/E025_H25_replication.json` committed and separately verified Git blob `6d0c9032de54f5e7fba347c50875c565326d6ab5`, exactly ten integer-zero validators and `promotions=[]`. Detailed `experiments/E025_H25_REPLICATION_2026-10-09.md`.
 
 **Post-unit immutable position:** OBS-025 **REFUTED**, H25=[214M,216M) and earlier D25 permanently consumed, no repeat; G25-pre/G25-mid/A25 untouched. OBS-024 **REPLICATED** with its ENTIRE unchanged original H19 criterion; all earlier OBS/CAND/FAIL/evidence and OBS-025's entire originally frozen H25 criterion preserved. **16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND**, SQ-005 quarantined, SQ-023 NO CANDIDATE, SQ-036 CLOSED. No novel failure ID; no candidate, theorem, proof, mechanism, adversarial or prior-art search, retuning or historical outcome mining. No owner decision blocker; next separately bounded **D1-73 / S075 / SQ-037 first-principles SOURCE-FREE design only**, no prime generation and no transfer from H25 failure shape.
+
+## RS-S001: owner decision and opening of Reciprocity Spectra (2026-10-24)
+
+- **Owner decision**, given in the 2026-10-24 conversation: merge the Reciprocity Spectra work, and
+  start investigating under a new authoritative next-session prompt.
+- **Implementation:**
+  - Reciprocity Spectra (`reciprocity_spectra/`) becomes the active programme.
+  - The DISCOVERY-1 blind chain is **paused** at D1-72 / S074. Its state is 16 REPLICATED /
+    0 OBSERVED / 9 REFUTED with zero candidates; it is not refuted or deleted.
+  - SQ-037 (D1-73 source-free design) is **deferred, not started**. Its prompt is preserved at
+    `8bbaeee:NEXT_SESSION_PROMPT.md`.
+  - No D0/D1 experiment, evidence, observation, criterion, interval role or protected range was
+    read for data or modified.
+- **Rationale:** see `reciprocity_spectra/LESSONS.md`. Band-modal blind discovery cannot produce
+  quantified conjectures. Reciprocity Spectra compares power-residue matrices of primes with a
+  random-matrix null model fixed by reciprocity.
+- **Pilot result (dimension ≤ 14,682):**
+  - Cubic: spike law with κ₃ = 1.42 ± 0.01.
+  - Cubic: the singular vector is the Gauss-sum vector (overlap 0.936; BBP predicts 0.939).
+  - Cubic: an outlier family of twisted Gauss sums.
+  - Quartic: outliers whose vectors are not Gauss sums.
+  - Quadratic: a `1/log D` spectral compression, `(2 − m₄)·ln D ≈ 1.20`.
+  - Symmetry-matched random controls show none of these effects.
+- **Records:**
+  - `reciprocity_spectra/LEDGER.md` (programme ledger);
+  - `reciprocity_spectra/CONJECTURES.md` (RS-1 … RS-6 and the committed Phase-1 predictions);
+  - `reciprocity_spectra/PRIOR_ART.md` (collision audit; closest prior art is at operator-norm
+    level only).
+- **Session control:** one live prompt, RS-S002 / Phase 1a, in `NEXT_SESSION_PROMPT.md`. Owner
+  decision blocker: none.

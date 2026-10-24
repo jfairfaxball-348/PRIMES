@@ -2,6 +2,28 @@
 
 This file governs automated and human-assisted work in PRIMES.
 
+## Programme scope (since 2026-10-24)
+
+The active programme is **Reciprocity Spectra** (`reciprocity_spectra/`). Its sessions follow
+`reciprocity_spectra/PROTOCOL.md`.
+
+These rules in this file still apply to Reciprocity Spectra sessions:
+
+- the evidence rules;
+- the novelty rules;
+- the graduation rule;
+- autonomous session completion.
+
+These rules apply only to the paused DISCOVERY-1 blind chain:
+
+- the discovery firewall;
+- the candidate holdout requirements;
+- the pattern-mining order;
+- the first-action reading list below.
+
+Reciprocity Spectra replaces them with model-first analysis, pre-registered predictions and
+symmetry-matched null models.
+
 ## First action in every serious session
 
 Read, in order:

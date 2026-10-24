@@ -906,3 +906,15 @@ The five **metadata-only** roles G20-pre=[102M,103M), D20=[103M,104M), G20-mid=[
 ## SQ-037 — D1-73 / S075 separate first-principles source-free design only (NEXT)
 
 **Status: OPEN — NOT STARTED, absolutely NO numerical execution.** Freeze at most ONE qualitatively independent new mathematical primitive/feature family from first principles, prime-label blind, no D25/H25 failure-shape transfer or earlier per-anchor empirical mining. Read complete current programme, protocol, ledgers, new E025 design and H25 closure provenance, E024–E020 primitive/role metadata and E013 earlier 53 named-role metadata, entire NEXT_SESSION_PROMPT before change. All E025 H25/D25 and previous numerical ranges consumed, G25-pre/G25-mid/A25 and all older holdouts/guards/adversarial/E005 maximum+30 nested excluded. Independently reconstruct **124 existing named roles** (119 earlier + five E025) plus 30 distinct E005 nested roles using literal integer half-open metadata; choose fresh five protected roles with deterministic first-feasible audit, complete immutable feature/control/strict gates/evidence/validator/phase/holdout template, or honestly close with no family. **STRICT STOP**: no source/tests/command/workflow, high-anchor feature/primes/generators, any old consumed/protected/guard/calibration phase, prior empirical outcomes/strengths/failure shapes, SQ-005, candidate synthesis, proof/mechanism, adversarial/literature/novelty. Preserve OBS-024 H19 and OBS-025 H25 exact original criteria and all REPLICATED/REFUTED statuses, 16/0/9, zero CAND; update durable records and handoff only if justified. No owner decision blocker.
+
+## SQ-037: DEFERRED by owner decision (2026-10-24)
+
+**Status: DEFERRED, NOT STARTED.** The DISCOVERY-1 chain is paused at D1-72 while Reciprocity
+Spectra is active (see `PROGRAM_STATUS.md`, section RS-S001). The original D1-73 prompt is preserved
+at `8bbaeee:NEXT_SESSION_PROMPT.md`. No D1 range, role or record was touched.
+
+## RS-Q01: Reciprocity Spectra Phase 1a (NEXT)
+
+**Status: OPEN.** Build the scalable uint8 engine and test the committed predictions at X = 320000.
+See `NEXT_SESSION_PROMPT.md`, `reciprocity_spectra/ROADMAP.md` (Phase 1) and
+`reciprocity_spectra/PROTOCOL.md`.
