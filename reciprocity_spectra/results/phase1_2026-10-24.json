@@ -4,13 +4,13 @@
   "base_commit": "9a038fae69c3d4152c614d0ac46c3c27b34611cd",
   "prediction_commit": "0b77769",
   "threads": 4,
-  "command": "reciprocity_spectra/scripts/phase1.py validate",
+  "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py validate",
   "runs": [
     {
       "mode": "cubic",
       "X": 320000,
       "code_commit": "3b36a83f8870960866c8e96698b4d82ba4702ac5",
-      "command": "reciprocity_spectra/scripts/phase1.py run --x 320000",
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py run --x 320000",
       "seeds": {
         "control": 0,
         "probes": 1,
@@ -96,13 +96,23 @@
       "total_seconds": 911.34271899,
       "control_seconds": 581.8437735139998,
       "matvec_calls": 1018,
-      "complete": true
+      "complete": true,
+      "argv": "reciprocity_spectra/scripts/phase1.py run --x 320000",
+      "native_source_sha256": "2b73cc2922520736187481690af9b1ad43bdc8d45fe730a41d1f2f018ae14503",
+      "control_native_source_sha256": "561b410230913b37340ac1330f2ca3eaa98bdb80937f21f95c4e3a26995d8444",
+      "matvec_calls_scope": "Resumed matched-control spectrum only",
+      "elapsed_scope": "Completed arithmetic plus replacement control; abandoned attempt excluded and recorded separately",
+      "control_sigma1_over_edge": 0.9998194730492095,
+      "theta_status": "Supercritical real BBP inversion",
+      "matrix_file_sha256": "fe76b30ec3a05814b784bf18bc709d582fd21e3402ef8e700988f46bbbfcbd7c",
+      "control_exponents_sha256": "907626995dc37e34479c53626e73b96ddceabfc813832f711e0c66f42b1da851",
+      "gauss_file_sha256": "433449b78cfe74aaf941d3e963f69889d281d4748f70db2325bc257d0e57f050"
     },
     {
       "mode": "quartic",
       "X": 320000,
       "code_commit": "26c3971bce144362a952d8fd60811a61ca424822",
-      "command": "reciprocity_spectra/scripts/phase1.py run --x 320000 --resume",
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py run --x 320000 --resume",
       "seeds": {
         "control": 0,
         "probes": 1,
@@ -181,13 +191,21 @@
       "total_seconds": 821.4556798969998,
       "control_seconds": 601.0918156369999,
       "matvec_calls": 1376,
-      "complete": true
+      "complete": true,
+      "argv": "reciprocity_spectra/scripts/phase1.py run --x 320000 --resume",
+      "native_source_sha256": "561b410230913b37340ac1330f2ca3eaa98bdb80937f21f95c4e3a26995d8444",
+      "matvec_calls_scope": "Arithmetic spectrum, arithmetic moment if applicable, and matched-control spectrum",
+      "elapsed_scope": "Required arithmetic plus matched-control spectrum",
+      "control_sigma1_over_edge": 0.9988837913921885,
+      "theta_status": "Supercritical real BBP inversion",
+      "matrix_file_sha256": "950cd3638d6ff0c5d17fc6038b93c566d33b5025489b3bde11ff5fa10c32b1bf",
+      "control_exponents_sha256": "d870ad8a9a0436529e505fe9222561edcd13a26dae39de23e8c8f4bc0230d62f"
     },
     {
       "mode": "quad",
       "X": 320000,
       "code_commit": "d4020e5701dea2df9fd4766cf1a952480f96e04c",
-      "command": "reciprocity_spectra/scripts/phase1.py run --x 320000 --resume",
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py run --x 320000 --resume",
       "seeds": {
         "control": 0,
         "probes": 1,
@@ -543,8 +561,22 @@
         "code_commit": "a876cde3b3dbd6ae7b9b71b242068fd5fd0470e7",
         "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py control-m4 --x 320000 --mode quad",
         "elapsed_seconds": 147.19402071199966,
-        "role": "Matched null diagnostic; not a separate conjecture prediction"
-      }
+        "role": "Matched null diagnostic; not a separate conjecture prediction",
+        "classification": "EXPLORATORY matched-null diagnostic; no independent status change",
+        "control_seed": 0
+      },
+      "argv": "reciprocity_spectra/scripts/phase1.py run --x 320000 --resume",
+      "native_source_sha256": "561b410230913b37340ac1330f2ca3eaa98bdb80937f21f95c4e3a26995d8444",
+      "matvec_calls_scope": "Arithmetic spectrum, arithmetic moment if applicable, and matched-control spectrum",
+      "elapsed_scope": "Required arithmetic plus matched-control spectrum",
+      "control_sigma1_over_edge": 0.9993637590315667,
+      "theta_status": "Undefined real BBP strength: sigma1 < 2 sqrt(D)",
+      "matrix_file_sha256": "ba59b02478ff3966b79b7c52524c5cf849b9f30af758cbd21dc7ea1da650aeb1",
+      "control_exponents_sha256": "fff13ae50e47bdbe065215f52b41e02e7e3059d0514e98b11b0ba9f80d281c87",
+      "quadratic_correction_2se_interval": [
+        1.1878414140021256,
+        1.2734408324449569
+      ]
     }
   ],
   "validation": {
@@ -1131,5 +1163,100 @@
         "adjoint": 3.9568743229999654
       }
     }
-  ]
+  ],
+  "closed_at_utc": "2026-10-24T20:12:04.890849+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+    "available_affinity_cpus": 3,
+    "cpu_max": "200000 100000",
+    "cpu_quota_equivalents": 2,
+    "memory_limit_bytes": 8589934592
+  },
+  "engine_parameters": {
+    "threads": 4,
+    "row_block": 64,
+    "column_block": 256,
+    "storage": "uint8 exponents, 255 = zero symbol",
+    "solver": "scipy eigsh on matrix-free C*C",
+    "k": 12,
+    "ncv": 64,
+    "tol": 1e-11,
+    "solver_rng": "numpy default_rng(2), complex starting vector",
+    "control_rng": "SplitMix64 upper-pair counters with rejection sampling; seed 0",
+    "hutchinson_rng": "numpy default_rng(1), 128 independent real Rademacher probes",
+    "m4_normalization": "trace((C*C)^2)/D^3",
+    "probe_standard_error": "sample standard deviation / sqrt(probes)"
+  },
+  "scope": "Only the four committed Phase-1 prediction outcomes drive status changes. Remaining spectral summaries and control diagnostics are EXPLORATORY.",
+  "scale_640000": {
+    "classification": "PLANNING ONLY: index cardinalities and runtime projection; no X=640000 matrix or spectrum computed",
+    "X": 640000,
+    "status": "SKIPPED",
+    "single_run_budget_seconds": 2700,
+    "cpu_quota": "200000 100000",
+    "memory_limit_bytes": 8589934592,
+    "dimension_method": "primes_upto(640000): odd primes for quad; twice count p=1 mod n for cubic/quartic",
+    "projections": [
+      {
+        "mode": "cubic",
+        "planned_D": 52008,
+        "matrix_bytes": 2704832064,
+        "dimension_squared_ratio": 3.5626322743925187,
+        "measured_320000_seconds": 911.34271899,
+        "constant_iteration_projected_seconds": 3246.7789837064056
+      },
+      {
+        "mode": "quartic",
+        "planned_D": 52046,
+        "matrix_bytes": 2708786116,
+        "dimension_squared_ratio": 3.570949980020348,
+        "measured_320000_seconds": 821.4556798969998,
+        "constant_iteration_projected_seconds": 2933.377143715793
+      },
+      {
+        "mode": "quad",
+        "planned_D": 52073,
+        "matrix_bytes": 2711597329,
+        "dimension_squared_ratio": 3.5578428956243813,
+        "measured_320000_seconds": 1481.6411600370002,
+        "constant_iteration_projected_seconds": 5271.446475102308
+      }
+    ],
+    "reason": "Even the constant-iteration D-squared projection exceeds the 45-minute per-family budget for every family, particularly the quadratic job. Actual quota is 2 CPUs; RAM would fit byte storage and is not the deciding limit. No X=640000 matrix or spectral test was started."
+  },
+  "conjecture_statuses": {
+    "RS-1": "STRESSED",
+    "RS-2": "PILOT",
+    "RS-3": "STRESSED",
+    "RS-4": "STRESSED",
+    "RS-5": "UNTESTED",
+    "RS-6": "PILOT"
+  },
+  "status_scope": "STRESSED at X=320000 for committed Phase-1 predictions; X=640000 remains untested.",
+  "checks": {
+    "ruff": {
+      "command": "ruff check reciprocity_spectra/scripts/phase1.py tests/test_reciprocity_spectra.py",
+      "outcome": "PASS"
+    },
+    "pytest": {
+      "command": "python -m pytest",
+      "outcome": "343 passed",
+      "code_commit": "31a92f7"
+    },
+    "c_warnings": {
+      "command": "cc -O3 -fopenmp -Wall -Wextra -Werror -fsyntax-only reciprocity_spectra/native/residue_engine.c",
+      "outcome": "PASS"
+    },
+    "closeout": {
+      "ledger_append_only": true,
+      "committed_conjecture_text_preserved_except_status_headings": true,
+      "frozen_D1_paths_unchanged": true,
+      "matrices_untracked": true,
+      "four_prediction_outcomes_recorded_in_both_documents": true
+    }
+  },
+  "branch": "rs-s002-phase1a"
 }

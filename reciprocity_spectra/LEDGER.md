@@ -149,3 +149,42 @@ The required arithmetic-plus-control job took 1481.641 seconds.
 
 RS-4 becomes **STRESSED at X = 320000**. All four committed Phase-1a comparisons now pass.
 RS-2 and RS-6 remain PILOT; RS-5 remains UNTESTED.
+
+**Additional null diagnostic (EXPLORATORY, not a status driver):**
+
+The same quadratic seed-0 control has m4 estimate 2.002133525, standard error
+0.002261309, with 128 probes and probe seed 1. The command and code commit are
+recorded with the control probe values in JSON. This separate diagnostic took
+147.194 seconds.
+
+**X = 640000 skipped:**
+
+Steps 1–4 were complete, and all required X = 320000 family/control jobs finished below the
+45-minute cap. This container enforces two CPU-equivalents and 8 GiB RAM, despite four OpenMP
+threads being configured. Planning-only prime counts give dimensions 52008 (cubic),
+52046 (quartic), and 52073 (quadratic) at X = 640000. Scaling each measured required job by
+(D640000/D320000)^2 with the iteration count held fixed projects 54.11,
+48.89, and 87.86 minutes, respectively. These are forecasts,
+not measured larger-scale runtimes, and exclude the extra control-moment diagnostic. Every
+projection exceeds 45 minutes. RAM would fit byte storage; runtime is the deciding limit.
+No matrix or spectrum at X = 640000 was computed. Its committed predictions remain unchanged
+and untested. The exact dimension counts, projection formula and runtimes are in JSON.
+
+**Closeout and outgoing state (supersedes the opening current-state snapshot):**
+
+- Phase 1a is complete at its required X = 320000 target. All four registered comparisons PASS.
+- RS-1, RS-3 and RS-4: STRESSED at this scale. RS-2 and RS-6: PILOT. RS-5: UNTESTED.
+- No theorem or mechanism was established; no sextic or quintic computation was performed.
+- The paused DISCOVERY-1 records were not changed. Matrices remain uncommitted in ignored data/.
+- Engine, validation, arithmetic results, controls and prediction comparisons were committed and
+  pushed incrementally. Key checkpoints: `14782d3` (initial engine), `598dc22` (initial gate),
+  `2a9043d` (contiguous adjoint), `5f62af6` (replacement gate), `274c633`/`26c3971` (cubic),
+  `7ab6b47`/`d4020e5` (quartic), `44a6600`/`23d7e1a` (quadratic), `a876cde` (all comparisons),
+  and `bb6560c` (control m4). Final closeout commits follow these on `rs-s002-phase1a`.
+- Validation: byte equality, SciPy comparison, complex adjoints, dense-moment comparison,
+  strict C compiler checks, targeted Ruff, and 343 passing pytest tests. Repository-wide
+  frozen D1 Ruff findings were not repaired.
+- No owner-decision blocker. Main was not merged.
+- Next dependency: Phase 1b, test the untested sextic boundary (RS-5) and one pre-registered
+  local-spacing prediction (RS-6). These are the remaining empirical Phase-1 dependencies.
+  Exactly one RS-S003 prompt is in `NEXT_SESSION_PROMPT.md`.

@@ -206,3 +206,11 @@ Sigma1/(2 sqrt(D)) = 0.944136181; the matched control is recorded at the same D.
 
 RS-1, RS-3 and RS-4 are STRESSED at X = 320000 for their committed Phase-1 predictions.
 RS-2 and RS-6 remain PILOT; RS-5 remains UNTESTED.
+
+### Larger-scale limit of this session
+
+X = 640000 was **SKIPPED**, not passed or failed. Required-job runtime projections are
+54.11 minutes (cubic), 48.89 (quartic), and
+87.86 (quadratic), exceeding the 45-minute limit on this two-CPU-quota container.
+These are planning estimates, not spectral measurements. The original predictions are unchanged.
+All STRESSED labels above refer to X = 320000 only.

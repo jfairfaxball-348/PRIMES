@@ -2,7 +2,9 @@
 
 **A new PRIMES research programme, opened 2026-10-24.**
 
-**Status: PILOT POSITIVE.** Live, model-discriminating structure has been found and the open
+**Status: PHASE 1a COMPLETE at X = 320000.** RS-1, RS-3 and RS-4 are STRESSED against their
+committed scaling predictions; RS-2 and RS-6 remain PILOT, and RS-5 is UNTESTED. Live,
+model-discriminating structure has been found and the open
 questions are identified. Nothing is proved. No novelty claim is made beyond the search scope
 recorded in `PRIOR_ART.md`.
 
@@ -86,7 +88,7 @@ The exact core checks these identities on small cases:
 
 The C builder reproduces the pilot matrices byte for byte.
 
-## Immediate next step
+## Original scaling plan (RS-S001)
 
 Phase 1 of `ROADMAP.md`. Store matrices as uint8 exponents with blockwise matrix–vector products to
 reach X = 6.4·10⁵. Before running, pre-register the predictions: κ₃ ∈ [1.38, 1.47]; cubic overlap
@@ -120,3 +122,16 @@ validation record, limits each family and its control to about 45 minutes, and c
 pushes arithmetic results and matched controls separately to the RS-S002 session branch.
 Do not reuse that branch or results filename for a later session without updating the runner's
 session-specific provenance and checkpoint destinations.
+
+The RS-S002 required scaling target is now complete; see `results/phase1_2026-10-24.json`
+and the ledger for every comparison, both engine validation records, the abandoned slow-control
+attempt, and the X = 640000 runtime-budget skip. STRESSED is finite numerical evidence, not proof.
+The next bounded unit is RS-S003 / Phase 1b, specified in the root `NEXT_SESSION_PROMPT.md`.
+
+The adjoint uses the existing reciprocity signs to read contiguous byte rows; the generic
+transpose kernel remains available and is checked independently. To reproduce the additional
+exploratory quadratic matched-control moment after completing its spectra:
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py control-m4 --x 320000 --mode quad
+```

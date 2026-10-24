@@ -35,6 +35,11 @@ Kills are recorded, not hidden (`LESSONS.md` R6).
 
 Exit: each of RS-1, RS-3, RS-4 becomes STRESSED or REFUTED.
 
+**RS-S002 checkpoint:** the scalable byte engine is validated, and the required X = 320000
+comparisons all PASS; RS-1, RS-3 and RS-4 are STRESSED at this scale. X = 640000 remains untested
+because measured runtime projections exceed the per-run budget (see LEDGER.md and the Phase-1
+results JSON). Phase 1b next tests RS-5 and one local-statistics prediction for RS-6.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity
