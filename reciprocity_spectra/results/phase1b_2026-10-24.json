@@ -400,7 +400,53 @@
     "code_commit": "a0c6e2c1ce0285d482ec225d9b1ce31b32b1d3d3",
     "command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py validate"
   },
-  "sextic_runs": [],
+  "sextic_runs": [
+    {
+      "X": 40000,
+      "mode": "sextic",
+      "command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py sextic",
+      "code_commit": "10dfba617ffa98a4426364da095d3769ade71e08",
+      "seeds": {
+        "control": 0,
+        "solver": 2
+      },
+      "started_at": "2026-10-24T21:03:11.884433+00:00",
+      "D": 4178,
+      "matrix_sha256": "a17d607db5309b80d5331c7c8b0a14ca2c4feed463d07ad2313b68145a13248c",
+      "mask_sha256": "9d229ac651f679e4ec4d7207b84466eab1f4f04159eea14ed3fdc9c6770633c9",
+      "build_seconds": 0.35444903600000544,
+      "top12": [
+        133.08463658821196,
+        132.31925218292315,
+        131.64695855702647,
+        130.61644802262634,
+        130.05053256978988,
+        129.86453236401306,
+        129.34260312594893,
+        129.16031983144302,
+        128.92970620928736,
+        128.5523971418674,
+        128.49454915359468,
+        128.4332807645238
+      ],
+      "gram_relative_residuals": [
+        1.3646194321963009e-14,
+        7.926535578206119e-15,
+        1.596804374610786e-14,
+        1.0331646996491647e-14,
+        3.990510171405832e-15,
+        6.010231171816111e-15,
+        6.91599987140523e-15,
+        3.4724108755333976e-15,
+        7.30087094143133e-15,
+        4.936262774730727e-15,
+        4.225506860338795e-15,
+        4.120570689086472e-15
+      ],
+      "sigma1_over_edge": 1.0294700337997458,
+      "arithmetic_seconds": 10.974771659999533
+    }
+  ],
   "local_runs": [],
   "prediction_commit": "4ae9c7a"
 }
