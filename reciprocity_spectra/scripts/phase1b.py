@@ -50,7 +50,14 @@ def save(doc, message=None):
         assert legacy.shell('git', 'branch', '--show-current') == BRANCH
         legacy.shell('git', 'add', str(RESULT))
         legacy.shell('git', 'commit', '-m', message)
-        print(legacy.shell('git', 'push', '-u', 'origin', BRANCH), flush=True)
+        for attempt in range(3):
+            try:
+                print(legacy.shell('git', 'push', '-u', 'origin', BRANCH), flush=True)
+                break
+            except subprocess.CalledProcessError:
+                if attempt == 2:
+                    raise
+                time.sleep(1)
 
 
 class SexticEngine(legacy.Engine):
@@ -168,23 +175,34 @@ def validate():
     return out
 
 
-def sextic(doc, x):
+def sextic(doc, x, resume=False):
     signal.alarm(2700)
     started = time.monotonic()
-    row = {'X': x, 'mode': 'sextic', 'command': command(),
-           'code_commit': legacy.shell('git', 'rev-parse', 'HEAD'),
-           'seeds': {'control': 0, 'solver': 2}, 'started_at': datetime.now(UTC).isoformat()}
-    doc['sextic_runs'].append(row)
-    a = build_sextic(x)
-    row.update(D=a.d, matrix_sha256=digest(a.path), mask_sha256=digest(a.mask_path),
-               build_seconds=time.monotonic()-started)
-    save(doc)
-    s, _, residuals = a.top(12)
-    row.update(top12=s.tolist(), gram_relative_residuals=residuals,
-               sigma1_over_edge=float(s[0]/(2*math.sqrt(a.d))),
-               arithmetic_seconds=time.monotonic()-started)
-    save(doc, f'RS-S003: sextic X={x} arithmetic spectrum')
-    print('arithmetic sextic', x, row['sigma1_over_edge'], flush=True)
+    previous = next((r for r in doc['sextic_runs'] if r['X'] == x), None)
+    resumed = bool(resume and previous and 'arithmetic_seconds' in previous)
+    if resume and previous and previous.get('complete'):
+        signal.alarm(0)
+        return
+    if resumed:
+        row = previous
+        a = SexticEngine(x)
+        row.update(control_code_commit=legacy.shell('git', 'rev-parse', 'HEAD'),
+                   control_command=command(), resumed_control=True)
+    else:
+        row = {'X': x, 'mode': 'sextic', 'command': command(),
+               'code_commit': legacy.shell('git', 'rev-parse', 'HEAD'),
+               'seeds': {'control': 0, 'solver': 2}, 'started_at': datetime.now(UTC).isoformat()}
+        doc['sextic_runs'].append(row)
+        a = build_sextic(x)
+        row.update(D=a.d, matrix_sha256=digest(a.path), mask_sha256=digest(a.mask_path),
+                   build_seconds=time.monotonic()-started)
+        save(doc)
+        s, _, residuals = a.top(12)
+        row.update(top12=s.tolist(), gram_relative_residuals=residuals,
+                   sigma1_over_edge=float(s[0]/(2*math.sqrt(a.d))),
+                   arithmetic_seconds=time.monotonic()-started)
+        save(doc, f'RS-S003: sextic X={x} arithmetic spectrum')
+        print('arithmetic sextic', x, row['sigma1_over_edge'], flush=True)
     a.control(0)
     s, _, residuals = a.top(12)
     excess = row['sigma1_over_edge'] - s[0]/(2*math.sqrt(a.d))
@@ -195,7 +213,8 @@ def sextic(doc, x):
                              'outcome': 'PASS' if row['sigma1_over_edge'] <= 1.02 else 'FAIL'},
                             {'id': 'RS-S003-P5-N', 'prediction': doc['predictions'][1]['prediction'],
                              'outcome': 'PASS' if excess <= .02 else 'FAIL'}],
-               total_seconds=time.monotonic()-started, matvec_calls=a.calls, complete=True)
+               total_seconds=time.monotonic()-started + (row['arithmetic_seconds'] if resumed else 0),
+               matvec_calls=a.calls, complete=True)
     signal.alarm(0)
     save(doc, f'RS-S003: sextic X={x} matched control and prediction outcomes')
     print('complete sextic', x, row['normalized_excess'], row['total_seconds'], flush=True)
@@ -237,6 +256,7 @@ def local(doc, mode, x):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['validate', 'sextic', 'local'])
+    parser.add_argument('--resume', action='store_true')
     parser.add_argument('--x', type=int, nargs='+')
     parser.add_argument('--mode', choices=['cubic', 'quartic'], nargs='+', default=['cubic', 'quartic'])
     args = parser.parse_args()
@@ -252,7 +272,7 @@ def main():
         if args.action == 'sextic':
             for x in args.x or [40000, 160000]:
                 assert x in [40000, 160000], 'Only registered scales in this unit'
-                sextic(doc, x)
+                sextic(doc, x, args.resume)
         else:
             for mode in args.mode:
                 for x in args.x or [20000, 40000]:

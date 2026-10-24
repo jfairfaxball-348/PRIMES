@@ -539,5 +539,12 @@
     }
   ],
   "local_runs": [],
-  "prediction_commit": "4ae9c7a"
+  "prediction_commit": "4ae9c7a",
+  "execution_incidents": [
+    {
+      "X": 160000,
+      "phase": "checkpoint push after completed arithmetic spectrum",
+      "reason": "Concurrent documentation and results pushes briefly raced on the same branch ref; rejected push was retried serially. Arithmetic result c693bad was preserved, pushed, and the missing control resumed. No prediction, matrix or numerical algorithm changed."
+    }
+  ]
 }
