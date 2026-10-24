@@ -283,6 +283,12 @@
       "within_2_standard_errors": true
     },
     "gauss_20000_byte_identical": true,
-    "passed": true
+    "passed": true,
+    "code_commit": "14782d3",
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py validate",
+    "checks": {
+      "ruff_touched_python": "PASS",
+      "pytest": "343 passed"
+    }
   }
 }
