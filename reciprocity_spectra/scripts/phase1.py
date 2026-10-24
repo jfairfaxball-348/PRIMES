@@ -37,7 +37,9 @@ def compile_engine():
     DATA.mkdir(exist_ok=True)
     source = ROOT / 'reciprocity_spectra/native/residue_engine.c'
     for flags, output in [([], 'residue_engine'), (['-shared', '-fPIC'], 'libresidue.so')]:
-        shell('cc', '-O3', '-fopenmp', *flags, '-o', str(DATA / output), str(source), '-lm')
+        temp = DATA / (output + '.tmp')
+        shell('cc', '-O3', '-fopenmp', *flags, '-o', str(temp), str(source), '-lm')
+        temp.replace(DATA / output)
     shell('cc', '-O2', '-o', str(DATA / 'residue_matrix'),
           str(ROOT / 'reciprocity_spectra/native/residue_matrix.c'), '-lm')
 
@@ -58,13 +60,20 @@ class Engine:
         self.lib.rs_random.argtypes = [ct.c_void_p, ct.c_int, ct.c_int,
                                       ct.c_void_p, ct.c_uint64]
         self.lib.rs_random.restype = None
+        self.lib.rs_apply_sym.argtypes = [ct.c_void_p, ct.c_int, ct.c_int, ct.c_void_p,
+                                         ct.c_void_p, ct.c_void_p, ct.c_int]
+        self.lib.rs_apply_sym.restype = None
+        p = self.meta[:, 0]
+        self.odd = np.ascontiguousarray(p % 4 == 3 if mode == 'quad' else
+                                       p % 8 == 5 if mode == 'quartic' else
+                                       np.zeros(self.d, bool), dtype=np.uint8)
         self.calls = 0
 
     def apply(self, x, adjoint=False):
         x = np.ascontiguousarray(x, dtype=np.complex128).reshape(self.d)
         y = np.empty(self.d, dtype=np.complex128)
-        self.lib.rs_apply(self.e.ctypes.data, self.d, self.n, x.ctypes.data,
-                          y.ctypes.data, adjoint)
+        self.lib.rs_apply_sym(self.e.ctypes.data, self.d, self.n, self.odd.ctypes.data,
+                              x.ctypes.data, y.ctypes.data, adjoint)
         self.calls += 1
         return y
 
@@ -186,50 +195,62 @@ def validate():
     return out
 
 
-def run(doc, mode, x):
+def run(doc, mode, x, resume=False):
     signal.alarm(2700)
     t = time.monotonic()
-    row = {'mode': mode, 'X': x, 'code_commit': shell('git', 'rev-parse', 'HEAD'),
-           'command': ' '.join(sys.argv), 'seeds': {'control': 0, 'probes': 1, 'solver': 2}}
-    doc['runs'].append(row)
-    save(doc)
-    a = build(mode, x, gauss=(mode == 'cubic'))
-    row.update(D=a.d, build_seconds=time.monotonic() - t)
-    save(doc)
-    print('built', mode, x, a.d, row['build_seconds'], flush=True)
-    s, v, residual = a.top(12)
-    theta = bbp_strength(float(s[0]), a.d)
-    row.update(top12=s.tolist(), gram_relative_residuals=residual,
-               theta=theta if math.isfinite(theta) else None,
-               sigma1_over_edge=float(s[0] / (2 * math.sqrt(a.d))))
-    if mode == 'cubic':
-        g = np.fromfile(DATA / f'cubicg_{x}.bin', np.complex128)
-        row.update(kappa3=theta * math.log(x) / x**(2/3),
-                   overlap_conj_gauss=float(abs(np.vdot(g.conj(), v[:, 0])) / np.linalg.norm(g)),
-                   bbp_predicted_overlap=math.sqrt(1 - a.d / theta**2))
-        row['predictions'] = [
-            {'prediction': 'kappa3 in [1.38, 1.47]', 'outcome': 'PASS' if 1.38 <= row['kappa3'] <= 1.47 else 'FAIL'},
-            {'prediction': 'cubic top-singular-vector overlap with conj(g~) within 0.03 of sqrt(1 - D/theta^2)',
-             'outcome': 'PASS' if abs(row['overlap_conj_gauss'] - row['bbp_predicted_overlap']) <= .03 else 'FAIL'}]
-    elif mode == 'quartic':
-        row['theta_normalized'] = theta / math.sqrt(a.d)
-        row['predicted_theta_normalized'] = .166 * math.log(x) - .18
-        row['predictions'] = [{'prediction': 'quartic theta_n = 0.166*ln X - 0.18 +- 0.05',
-                               'outcome': 'PASS' if abs(row['theta_normalized'] - row['predicted_theta_normalized']) <= .05 else 'FAIL'}]
+    previous = next((r for r in doc['runs'] if r['mode'] == mode and r['X'] == x), None)
+    if resume and previous and previous.get('complete'):
+        signal.alarm(0)
+        return
+    if resume and previous and 'arithmetic_seconds' in previous:
+        row = previous
+        a = Engine(mode, x)
+        row['control_code_commit'] = shell('git', 'rev-parse', 'HEAD')
+        row['control_command'] = 'OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python ' + ' '.join(sys.argv)
     else:
-        row['m4'] = a.m4()
-        row['quadratic_correction'] = (2 - row['m4']['estimate']) * math.log(a.d)
-        row['quadratic_correction_standard_error'] = row['m4']['standard_error'] * math.log(a.d)
-        row['predictions'] = [{'prediction': 'quadratic (2 - m4)*ln D in [1.0, 1.4]',
-                               'outcome': 'PASS' if 1 <= row['quadratic_correction'] <= 1.4 else 'FAIL'}]
-    row['arithmetic_seconds'] = time.monotonic() - t
-    save(doc, f'RS-S002: checkpoint {mode} X={x} arithmetic results')
-    print('arithmetic', mode, row, flush=True)
+        row = {'mode': mode, 'X': x, 'code_commit': shell('git', 'rev-parse', 'HEAD'),
+               'command': ' '.join(sys.argv), 'seeds': {'control': 0, 'probes': 1, 'solver': 2}}
+        doc['runs'].append(row)
+        save(doc)
+        a = build(mode, x, gauss=(mode == 'cubic'))
+        row.update(D=a.d, build_seconds=time.monotonic() - t)
+        save(doc)
+        print('built', mode, x, a.d, row['build_seconds'], flush=True)
+        s, v, residual = a.top(12)
+        theta = bbp_strength(float(s[0]), a.d)
+        row.update(top12=s.tolist(), gram_relative_residuals=residual,
+                   theta=theta if math.isfinite(theta) else None,
+                   sigma1_over_edge=float(s[0] / (2 * math.sqrt(a.d))))
+        if mode == 'cubic':
+            g = np.fromfile(DATA / f'cubicg_{x}.bin', np.complex128)
+            row.update(kappa3=theta * math.log(x) / x**(2/3),
+                       overlap_conj_gauss=float(abs(np.vdot(g.conj(), v[:, 0])) / np.linalg.norm(g)),
+                       bbp_predicted_overlap=math.sqrt(1 - a.d / theta**2))
+            row['predictions'] = [
+                {'prediction': 'kappa3 in [1.38, 1.47]', 'outcome': 'PASS' if 1.38 <= row['kappa3'] <= 1.47 else 'FAIL'},
+                {'prediction': 'cubic top-singular-vector overlap with conj(g~) within 0.03 of sqrt(1 - D/theta^2)',
+                 'outcome': 'PASS' if abs(row['overlap_conj_gauss'] - row['bbp_predicted_overlap']) <= .03 else 'FAIL'}]
+        elif mode == 'quartic':
+            row['theta_normalized'] = theta / math.sqrt(a.d)
+            row['predicted_theta_normalized'] = .166 * math.log(x) - .18
+            row['predictions'] = [{'prediction': 'quartic theta_n = 0.166*ln X - 0.18 +- 0.05',
+                                   'outcome': 'PASS' if abs(row['theta_normalized'] - row['predicted_theta_normalized']) <= .05 else 'FAIL'}]
+        else:
+            row['m4'] = a.m4()
+            row['quadratic_correction'] = (2 - row['m4']['estimate']) * math.log(a.d)
+            row['quadratic_correction_standard_error'] = row['m4']['standard_error'] * math.log(a.d)
+            row['predictions'] = [{'prediction': 'quadratic (2 - m4)*ln D in [1.0, 1.4]',
+                                   'outcome': 'PASS' if 1 <= row['quadratic_correction'] <= 1.4 else 'FAIL'}]
+        row['arithmetic_seconds'] = time.monotonic() - t
+        save(doc, f'RS-S002: checkpoint {mode} X={x} arithmetic results')
+        print('arithmetic', mode, row, flush=True)
     a.control(seed=0)
     s, _, residual = a.top(12)
     row.update(control_top12=s.tolist(), control_gram_relative_residuals=residual,
                control_rng='SplitMix64 rejection-sampled upper-pair counters; seed 0',
-               total_seconds=time.monotonic() - t, matvec_calls=a.calls, complete=True)
+               total_seconds=time.monotonic() - t + (row['arithmetic_seconds'] if resume and previous else 0),
+               control_seconds=time.monotonic() - t if resume and previous else time.monotonic() - t - row['arithmetic_seconds'],
+               matvec_calls=a.calls, complete=True)
     signal.alarm(0)
     save(doc, f'RS-S002: checkpoint {mode} X={x} matched control')
     print('complete', mode, x, row['total_seconds'], flush=True)
@@ -238,6 +259,7 @@ def run(doc, mode, x):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['validate', 'run'])
+    parser.add_argument('--resume', action='store_true', help='Keep completed rows and resume saved arithmetic at its control')
     parser.add_argument('--x', type=int, default=320000)
     parser.add_argument('--mode', choices=list(ORDER), nargs='+', default=['cubic', 'quartic', 'quad'])
     args = parser.parse_args()
@@ -247,12 +269,16 @@ def main():
         'base_commit': shell('git', 'rev-parse', 'HEAD'), 'prediction_commit': '0b77769',
         'threads': 4, 'command': ' '.join(sys.argv), 'runs': []}
     if args.action == 'validate':
+        if 'validation' in doc:
+            doc.setdefault('validation_history', []).append(doc['validation'])
         doc['validation'] = validate()
+        doc['validation']['code_commit'] = shell('git', 'rev-parse', 'HEAD')
+        doc['validation']['command'] = 'OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python ' + ' '.join(sys.argv)
         save(doc, 'RS-S002: validate byte engine before scaling')
     else:
         assert doc.get('validation', {}).get('passed'), 'Validation must pass before scaling'
         for mode in args.mode:
-            run(doc, mode, args.x)
+            run(doc, mode, args.x, args.resume)
 
 
 if __name__ == '__main__':

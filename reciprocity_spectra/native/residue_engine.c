@@ -216,3 +216,35 @@ void rs_random(uint8_t *E, int D, int n, const int64_t *primes, uint64_t seed) {
         }
     }
 }
+
+/* Reciprocity-aware adjoint: C_ji = sign_ij C_ij, sign=-1 only
+ * when both metadata parity bits are set. This keeps byte reads contiguous.
+ * The generic transpose kernel above remains available for independent checks.
+ */
+void rs_apply_sym(const uint8_t *E, int D, int n, const uint8_t *odd,
+                  const double complex *x, double complex *y, int adjoint) {
+    if (!adjoint) { rs_apply(E, D, n, x, y, 0); return; }
+    double complex roots[256] = {0};
+    for (int k = 0; k < n; k++) roots[k] = conj(cexp(2 * M_PI * I * k / n));
+    omp_set_num_threads(4);
+    #pragma omp parallel for schedule(static)
+    for (int ib = 0; ib < D; ib += 64) {
+        int end = ib + 64 < D ? ib + 64 : D;
+        for (int i = ib; i < end; i++) {
+            double complex sum = 0;
+            const uint8_t *row = E + (size_t)i * D;
+            for (int jb = 0; jb < D; jb += 256) {
+                int je = jb + 256 < D ? jb + 256 : D;
+                double complex part = 0;
+                if (odd[i]) {
+                    for (int j = jb; j < je; j++)
+                        part += (odd[j] ? -roots[row[j]] : roots[row[j]]) * x[j];
+                } else {
+                    for (int j = jb; j < je; j++) part += roots[row[j]] * x[j];
+                }
+                sum += part;
+            }
+            y[i] = sum;
+        }
+    }
+}
