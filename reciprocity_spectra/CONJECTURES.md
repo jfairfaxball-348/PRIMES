@@ -92,7 +92,7 @@ Untwisted controls (`u = ω`, wrong twist sign) give 0.05.
 
 **Test:** compare the measured `θ_u` ratios with Patterson's closed formulas for `τ(u)`.
 
-## RS-3: the quartic regime is log-critical, and its outliers are not Gauss sums (PILOT)
+## RS-3: the quartic regime is log-critical, and its outliers are not Gauss sums (STRESSED)
 
 For `Q_X = ((π/ρ)₄)` over primary degree-one primes of `Z[i]`:
 
@@ -185,3 +185,11 @@ Predictions remain exactly as committed at `0b77769`. Results and validation are
 
 Both committed Phase-1 predictions pass at this scale, accompanied by the seed-0 matched control.
 The X = 640000 predictions remain untested at this checkpoint. Other families are still running.
+
+### RS-3: STRESSED
+
+- **PASS** — `quartic theta_n = 0.166*ln X - 0.18 +- 0.05`.
+  Measured theta/sqrt(D) = 1.922239066; formula = 1.924228662.
+
+The committed Phase-1 growth prediction passes with its matched control at X = 320000.
+This unit does not validate the proposed interpretation of the outlier vectors.

@@ -120,3 +120,16 @@ BBP prediction = 0.948673890. Seed-0 matched-control sigma1 =
 
 RS-1 becomes **STRESSED at X = 320000**: both of its committed Phase-1 predictions pass.
 The pre-registered X = 640000 test has not been run.
+
+**Quartic result (completed, with matched control):**
+
+X = 320000, D = 27542; sigma1 = 405.346301128, theta = 319.010616411,
+theta/sqrt(D) = 1.922239066, against the committed formula's
+1.924228662. Seed-0 matched-control sigma1 =
+331.545164828; all top-twelve singular values and residuals are in the JSON.
+Arithmetic plus control took 821.456 seconds.
+
+- **PASS** — `quartic theta_n = 0.166*ln X - 0.18 +- 0.05`.
+
+RS-3 becomes **STRESSED at X = 320000** for its committed Phase-1 growth prediction.
+The interpretation of its singular vectors remains unverified by this unit.
