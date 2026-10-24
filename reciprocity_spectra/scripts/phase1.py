@@ -258,7 +258,7 @@ def run(doc, mode, x, resume=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['validate', 'run'])
+    parser.add_argument('action', choices=['validate', 'run', 'control-m4'])
     parser.add_argument('--resume', action='store_true', help='Keep completed rows and resume saved arithmetic at its control')
     parser.add_argument('--x', type=int, default=320000)
     parser.add_argument('--mode', choices=list(ORDER), nargs='+', default=['cubic', 'quartic', 'quad'])
@@ -275,6 +275,23 @@ def main():
         doc['validation']['code_commit'] = shell('git', 'rev-parse', 'HEAD')
         doc['validation']['command'] = 'OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python ' + ' '.join(sys.argv)
         save(doc, 'RS-S002: validate byte engine before scaling')
+    elif args.action == 'control-m4':
+        assert doc.get('validation', {}).get('passed')
+        assert args.mode == ['quad'], 'control-m4 requires --mode quad'
+        row = next(r for r in doc['runs'] if r['mode'] == 'quad' and r['X'] == args.x)
+        assert row.get('complete'), 'Finish arithmetic and control spectra first'
+        signal.alarm(2700)
+        started = time.monotonic()
+        a = Engine('quad', args.x)
+        a.e = np.memmap(DATA / f'control_quad_{args.x}.bin', dtype=np.uint8,
+                        mode='r', shape=(a.d, a.d))
+        row['control_m4'] = a.m4()
+        row['control_m4'].update(code_commit=shell('git', 'rev-parse', 'HEAD'),
+                                 command='OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python ' + ' '.join(sys.argv),
+                                 elapsed_seconds=time.monotonic() - started,
+                                 role='Matched null diagnostic; not a separate conjecture prediction')
+        signal.alarm(0)
+        save(doc, f'RS-S002: checkpoint quadratic X={args.x} matched-control fourth moment')
     else:
         assert doc.get('validation', {}).get('passed'), 'Validation must pass before scaling'
         for mode in args.mode:
