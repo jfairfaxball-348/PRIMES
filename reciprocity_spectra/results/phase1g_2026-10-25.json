@@ -9487,5 +9487,6 @@
       ]
     }
   ],
-  "basis_160000": "EXPLORATORY at X=40000 (after the registered A2 FAILs): squarefree-only slope -0.377 (144 twists); the cube-free-squarefree classifier separates all 164 +-primary twists at r = 1.05 (non-squarefree r = 0.90-0.93); other associates max r 0.931. Classifier defined in scripts/phase1g.py."
+  "basis_160000": "EXPLORATORY at X=40000 (after the registered A2 FAILs): squarefree-only slope -0.377 (144 twists); the cube-free-squarefree classifier separates all 164 +-primary twists at r = 1.05 (non-squarefree r = 0.90-0.93); other associates max r 0.931. Classifier defined in scripts/phase1g.py.",
+  "prediction_commit_160000": "98118bf"
 }

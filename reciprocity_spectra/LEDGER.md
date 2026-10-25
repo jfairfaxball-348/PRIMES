@@ -625,3 +625,48 @@ No new computation was run and no statuses changed.
 - RS-S009 would then evaluate the reply under the evidence and novelty rules, and pre-register
   the falsification test it proposes.
 - `NEXT_SESSION_PROMPT.md` is suppressed until then.
+
+### RS-S009 (2026-10-25): evaluating the Astra referee response
+
+**Stage:** falsification and mechanism. **Branch:** `ccr-c363c6bb-0zejeu`. Main was already at
+RS-S008 (`c295f9c`). The owner sent a trimmed version of the Astra prompt; the response is
+committed verbatim as `ASTRA_RESPONSE_2026-10-25.md`.
+
+**A prompt error, recorded.** The trimmed prompt said the cubic case has "one" outlier. RS-2
+already records several. Astra's check 2 caught the inconsistency.
+
+**Claims checked:**
+
+- **Exact symmetry r_u = r_{−ū}.** It holds to 1.2e-15 on every existing twist run, with up to
+  2090 pairs per scale. It also confirms that our 1−ω data were consistent; there was no bug.
+- **Hasse–Davenport factorization.** g̃6(ρ) = conj((2/ρ)₃)·(ρ/|ρ|)·g̃₂·conj(g̃₃(ρ)) holds to
+  4.6e-15 for every prime up to 3000. It is now `test_sextic_gauss_sum_hasse_davenport_factorization`.
+- **Its consequence.** A unit twist ζ₆ʲ rotates the cubic frequency by a character ramified at 3,
+  unless j ∈ {0, 3}. This gives a derivable explanation of the structure of RS-7b.
+- **Sextic scaling.** The prediction N(u)^{−1/6} with X^{1/6}/log X agrees with the measured
+  exponent of −0.19 and with the flat ratio for r₁. This is already in the existing data; there
+  was no new test.
+- **Astra's cubic calibration.**
+  - Registered at `81aa006`/`9165700`, before the data.
+  - RS-S009-A2-exponent: FAIL (fit undefined).
+  - RS-S009-A2-count: FAIL (19 < 24).
+  - Diagnosis: non-squarefree u are suppressed.
+- **Corrected predictions.** Registered at `98118bf`, before the X = 160000 data; all three PASS
+  (RS-8).
+
+**Validation:** pytest passes 353 tests, and targeted Ruff passes.
+`scripts/phase1g.py` records its classifier, commands and commits in
+`results/phase1g_2026-10-25.json`.
+
+**Status:**
+
+- RS-8 (new): STRESSED at X = 160000.
+- RS-7b: STRESSED. Its structure is now partly derivable through the Hasse–Davenport
+  factorization, and its mechanism is no longer purely empirical. Astra's claim that non-cube
+  rotations kill the residue is still a conjecture.
+- All other statuses are unchanged.
+
+**Next dependency.** Astra's decisive test (Q5): Kubota partial sums T_j(X) over squarefree n
+coprime to 6, in the Heath-Brown–Patterson normalization. The prediction is a slope of 2/3 for
+j ∈ {0, 3} and 1/2 otherwise. Q3, the excess spectrum of a compressed twist basis against the
+cluster sizes 7/22/34, follows if time allows. This is one RS-S010 unit.

@@ -605,3 +605,32 @@ These outcomes stand.
 - **RS-S009-C2-squarefree.** min r over the squarefree ±primary u > 1.05, and max r over the
   non-squarefree ±primary u < 1.0.
 - **RS-S009-C3-associates.** max r over the non-±primary associates < 1.0.
+
+### RS-S009 outcomes at X = 160000 (scored verbatim against `98118bf`)
+
+| ID | value | outcome |
+|---|---|---|
+| RS-S009-C1-slope | −0.3634 | **PASS** |
+| RS-S009-C2-squarefree | min squarefree r 1.511; max non-squarefree r 0.934 | **PASS** |
+| RS-S009-C3-associates | max other-associate r 0.929 | **PASS** |
+
+At this scale r₁ = 3.057.
+
+## RS-8: cubic twist law (STRESSED at X = 160000)
+
+**Definitions.** w_u = conj(g̃3)·(u/π)₃, with u coprime to 3. The squarefree condition refers
+to the cube-free part of u.
+
+**Statement.**
+
+1. If u is ±primary and squarefree, the twist is enhanced, with r_u² − 1 ∝ N(u)^{≈−1/3}.
+2. If u is ±primary but not squarefree, r_u < 1.
+3. For every other associate, r_u < 1.
+
+**Interpretation.** This matches Patterson's cubic theta coefficients: they are unimodular at
+squarefree arguments, and the size of the residue gives −1/3 (Astra's derivation). Many of these
+twists are individually supercritical. The cubic outliers (RS-2) are this family.
+
+**Calibration value.** This is the cubic analogue of RS-7b, where the theory is known. The sextic
+exponent −0.19 is near Astra's predicted −1/6. In the sextic case squares stay enhanced,
+consistent with Chinta–Friedberg–Hoffstein.

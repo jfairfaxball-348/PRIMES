@@ -1,15 +1,12 @@
-# Next session prompt: SUPPRESSED (owner-decision blocker)
+Continue from the committed RS-S009 handover on `ccr-c363c6bb-0zejeu` (main holds RS-S008 at `c295f9c`; RS-S009 not yet merged). Read `reciprocity_spectra/PROTOCOL.md`, `reciprocity_spectra/LEDGER.md`, `reciprocity_spectra/CONJECTURES.md`, `reciprocity_spectra/ROADMAP.md`, `reciprocity_spectra/ASTRA_RESPONSE_2026-10-25.md` and this entire prompt before changes. Do not merge without explicit owner instruction.
 
-RS-S008 is complete. Continuation needs external input that only the owner can obtain:
+STATE: Astra's referee reply is evaluated. Verified: r_u = r_{-ubar} exactly; g6~(rho) = conj((2/rho)_3)(rho/|rho|) g2~ conj(g3~(rho)) (tested). RS-7b (sextic: twists enhanced iff the unit-class factor is unramified at 3) is STRESSED to X = 6.4e5, with structure partly derivable via that factorization; sextic strength exponent -0.19 vs Astra's predicted -1/6. RS-8 (cubic: +-primary twists with squarefree cube-free part enhanced with slope ~ -1/3; non-squarefree and other associates r < 1) PASSES at X = 160000 after Astra's uncorrected calibration FAILED at 40000. DISCOVERY-1 remains PAUSED.
 
-1. Send `reciprocity_spectra/ASTRA_PROMPT.md` to OpenAI's Astra agent (optionally attaching
-   `reciprocity_spectra/NOTE_DRAFT.md`).
-2. Commit the full reply verbatim as `reciprocity_spectra/ASTRA_RESPONSE_<date>.md`.
+ONE BOUNDED UNIT: RS-S010, Astra's decisive test (Q5).
 
-Once the reply is committed, a session can be started with "Run next session". It will:
+1. Implement Kubota-normalized sextic Gauss sums g6(c, n) = sum_{x mod n} (x/n)_6 e(Tr(c x / n)) for squarefree n in Z[w] coprime to 6 (Heath-Brown-Patterson normalization; note Astra's check 3: our e(t/p) sums differ by (pi-bar/pi)_6 at primes), via twisted multiplicativity from primes. Add exact pure-Python tests: agreement with direct summation for small composite n, twisted multiplicativity, |g6(c, pi)| = sqrt(N pi), and the relation to our existing g6 at primes. Cite the source of the twisted-multiplicativity formula.
+2. EXPLORATORY at N(n) <= 1e5: T_j(X) = sum over squarefree n, (n,6)=1, N(n) <= X, of g6(zeta6^j, n)/sqrt(N n), j = 0..5 (and the primes-only analogue from existing data). Fit log-log slopes on dyadic X.
+3. Pre-register, then test at a fresh larger X (as far as fits in about 45 minutes per job): Astra predicts |T_0| ~ |T_3| with slope ~2/3 and T_1, T_2, T_4, T_5 with slope ~1/2. Register explicit slope bands, the X grid, and the kill criteria Astra states (T_1 or T_2 with slope 2/3 kills the theta-residue explanation; T_0 without slope 2/3 sends findings 2-4 elsewhere).
+4. If time remains: Astra's Q3 excess-spectrum test (compress C onto an orthonormal twist basis of dimension ~D/25 to D/8, compare with the null compressed to the same span, predict outlier counts via sqrt(D)(t + 1/t) for excess eigenvalues t^2 > 1) as EXPLORATORY against the cluster sizes 7/22/34.
 
-- evaluate the reply under the evidence and novelty rules;
-- record known, derivable and conjectural claims with citations;
-- pre-register the sharpest falsification test that the reply proposes.
-
-No runnable prompt is issued until then.
+Update NOTE_DRAFT.md tables via scripts/note_tables.py if new registered results are added. Keep jobs within about 45 minutes, push checkpoints serially, never commit matrices, run Ruff on touched files and pytest. Close out under PROTOCOL section 7 with exactly one justified next prompt and a commit/push to the session branch; do not merge main without owner instruction.

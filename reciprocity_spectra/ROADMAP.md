@@ -81,6 +81,14 @@ open questions are theoretical.
   prepared.
 - Blocked on an owner action: send the prompt and commit the reply.
 
+**RS-S009 checkpoint:**
+
+- Astra's reply has been evaluated. Its exact symmetry and Hasse–Davenport factorization are
+  verified.
+- Its cubic calibration was registered and FAILED as stated. A squarefree correction was then
+  registered and PASSES at X = 160000 (RS-8).
+- Next: Astra's decisive Kubota-sum test (Q5).
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity
