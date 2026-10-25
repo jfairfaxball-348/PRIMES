@@ -96,7 +96,53 @@ def projections(v, vectors, m):
     return rows
 
 
-def explore(doc, x, k, seeds):
+def twist_family(meta, norm_max=60):
+    """Distinct sextic symbol vectors (u/pi)_6 for u = c + d w with 0 < N(u) <= norm_max."""
+    out = {}
+    for c in range(-10, 11):
+        for d in range(-10, 11):
+            if 0 < c * c - c * d + d * d <= norm_max:
+                v = sextic_symbol(meta, c, d)
+                out.setdefault(tuple(np.round(v[:40], 6)), v)
+    return list(out.values())
+
+
+def span_projection(vectors, v, k):
+    q, _ = np.linalg.qr(np.array(vectors).T)
+    return np.linalg.norm(q.conj().T @ v[:, :k], axis=0).tolist()
+
+
+def family_diagnostics(meta, g6, g3, v, k):
+    """Projection of each top right singular vector onto twisted-family spans, with random spans."""
+    family = twist_family(meta)
+    rng = np.random.default_rng(5)
+    out = {'twist_norm_max': 60, 'family_dimension': len(family)}
+    for name, base in [('conj g6', g6.conj()), ('g6', g6), ('conj g3', g3.conj()), ('g3', g3),
+                       ('ones', np.ones(len(meta)))]:
+        out[name] = span_projection([base * t for t in family], v, k)
+    out['random_span'] = span_projection([np.exp(2j * np.pi * rng.random(len(meta))) for _ in family], v, k)
+    return out
+
+
+def dense_tail(a, seeds):
+    """Full normalized singular spectra: m4, m6 and upper quantiles (dense; small D only)."""
+    out = {}
+    for label, seed in [('arithmetic', None)] + [(f'control {t}', t) for t in seeds]:
+        if seed is None:
+            a.arithmetic()
+        else:
+            a.control(seed)
+        s = np.linalg.svd(a.dense(), compute_uv=False) / math.sqrt(a.d)
+        out[label] = {'m4': float(np.mean(s**4)), 'm6': float(np.mean(s**6)),
+                      'quantiles_0.99_0.95_0.90': np.quantile(s, [.99, .95, .9]).tolist(),
+                      'count_above_1.9': int(np.sum(s > 1.9))}
+        if seed is not None:
+            a.path.unlink()
+    a.arithmetic()
+    return out
+
+
+def explore(doc, x, k, seeds, dense=False):
     signal.alarm(2700)
     started = time.monotonic()
     row = {'X': x, 'k': k, 'control_seeds': seeds, 'solver_seed': 2, 'command': command(),
@@ -128,6 +174,11 @@ def explore(doc, x, k, seeds):
         a.path.unlink()
     cmax = max(c['top2'][0] for c in controls.values())
     m = int(np.sum(s > cmax))
+    a.arithmetic()
+    row['family_span_projection'] = family_diagnostics(a.meta, g6, g3, v, k)
+    row['ipr_times_D_top_m'] = [float(a.d * np.sum(abs(v[:, j])**4)) for j in range(max(m, 1))]
+    if dense:
+        row['dense_tail'] = dense_tail(a, seeds)
     row.update(controls=controls, max_control_sigma1=cmax, multiplicity_above_max_control=m,
                top_k_over_edge=(s / edge).tolist(),
                projections=projections(v, vectors, max(m, 1)), rayleigh_over_edge=rayleigh,
@@ -138,6 +189,8 @@ def explore(doc, x, k, seeds):
     best = sorted(((r['proj_top_k'], n) for n, r in row['projections'].items()), reverse=True)[:8]
     print(json.dumps({'X': x, 'D': a.d, 'multiplicity': m, 'top_over_edge': [round(t, 4) for t in row['top_k_over_edge'][:8]],
                       'control_max_over_edge': cmax / edge, 'best': best,
+                      'family_conj_g6': [round(t, 3) for t in row['family_span_projection']['conj g6'][:8]],
+                      'family_random': [round(t, 3) for t in row['family_span_projection']['random_span'][:8]],
                       'seconds': row['total_seconds']}), flush=True)
 
 
@@ -147,13 +200,14 @@ def main():
     parser.add_argument('--x', type=int, required=True)
     parser.add_argument('--k', type=int, default=24)
     parser.add_argument('--seeds', type=int, nargs='+', default=[0, 1, 2])
+    parser.add_argument('--dense', action='store_true')
     args = parser.parse_args()
     legacy.compile_engine()
     doc = json.loads(RESULT.read_text()) if RESULT.exists() else {
         'session': 'RS-S005', 'phase': '1d', 'date': '2026-10-25',
         'control': 'rs_random_conj (RS-S004), seeds as listed', 'predictions': [],
         'prediction_commit': None}
-    explore(doc, args.x, args.k, args.seeds)
+    explore(doc, args.x, args.k, args.seeds, args.dense)
 
 
 if __name__ == '__main__':

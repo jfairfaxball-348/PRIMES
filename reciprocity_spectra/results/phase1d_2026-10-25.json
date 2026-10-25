@@ -5,7 +5,7 @@
   "control": "rs_random_conj (RS-S004), seeds as listed",
   "predictions": [],
   "prediction_commit": null,
-  "exploratory": [
+  "superseded_exploratory": [
     {
       "X": 40000,
       "k": 24,
@@ -796,5 +796,6 @@
       },
       "total_seconds": 73.88392650699996
     }
-  ]
+  ],
+  "superseded_note": "First X=40000 pass before family/tail diagnostics were added; retained."
 }
