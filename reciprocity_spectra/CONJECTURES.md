@@ -479,3 +479,48 @@ associate adds a unit supplementary factor, which destroys the alignment.
   - max r over the other associates ≤ 1.02.
 - **RS-S006-P7U-320000.** r₁ ∈ [1.370, 1.420].
 - **RS-S006-P7U-640000.** r₁ ∈ [1.375, 1.435].
+
+
+## RS-S006 outcomes (scored verbatim against `feca6a1`)
+
+| ID | X | D | value | criterion | outcome |
+|---|---:|---:|---|---|---|
+| RS-S006-P7S-320000 | 320000 | 27554 | min ±primary 1.1745; max other 0.9802 | ≥ 1.10 and ≤ 1.02 | **PASS** |
+| RS-S006-P7U-320000 | 320000 | 27554 | r₁ = 1.3963 | [1.370, 1.420] | **PASS** |
+| RS-S006-P7S-640000 | 640000 | 52008 | min ±primary 1.1907; max other 0.9824 | ≥ 1.10 and ≤ 1.02 | **PASS** |
+| RS-S006-P7U-640000 | 640000 | 52008 | r₁ = 1.4183 | [1.375, 1.435] | **PASS** |
+
+These are the first sextic computations at X = 640000. Random-phase vectors give r ≤ 1.0054
+there. r₁ = 1.4183 exceeds √2 = 1.4142, so in the spiked-model reading the u = 1 twist has just
+become individually supercritical (θ₁/√D ≈ 1.006). That reading is model-dependent: no spectrum
+was computed at X = 640000.
+
+## RS-7b: primary-class twist dichotomy (STRESSED at X = 640000)
+
+**Definitions.**
+
+- `w_u = conj(g̃6)·(u/π)₆`, with u coprime to 3 and the index primes π primary.
+- `r_u = ‖C w_u‖/(√D ‖w_u‖)`.
+
+**Statement.** Two properties hold:
+
+- If u is ±primary (u ≡ ±1 or ±2 mod 3, i.e. d ≡ 0 mod 3), then `r_u` is bounded away above 1.
+  The observed minimum is 1.117–1.191, rising with X.
+- If u is any other associate, `r_u` lies below the random level of 1.
+  The observed maximum is 0.945–0.982.
+
+**Scale dependence.** Strengths decay slowly with N(u) and increase with X. r₁ was 1.322, 1.354,
+1.362, 1.379, 1.396 and 1.418 for X from 2·10⁴ to 6.4·10⁵.
+
+**Tested range.**
+
+- N(u) ≤ 100 at X = 20000, 80000, 320000 and 640000.
+- N(u) ≤ 300 at X = 40000 and 160000.
+
+**Status.** This is a finite-range observation. The mechanism is an unproved hypothesis: sextic
+reciprocity makes `(u/π)₆` a character of π modulo u exactly when u is in the index
+normalization.
+
+**How it explains RS-7a.** The cluster comes from a large family of near-critical twisted spikes.
+No single twist is individually supercritical below X ≈ 6·10⁵. Two simple quantitative models of
+the cluster multiplicity fail (records in the JSON).

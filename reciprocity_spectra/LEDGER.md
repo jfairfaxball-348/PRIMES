@@ -452,3 +452,82 @@ from RS-S004 at the owner's request ("keep going"). Main was not merged.
 **Next dependency:** measure the per-twist strengths, i.e. the Rayleigh quotients of
 conj(g̃6)·(u/π)₆ as a function of N(u). Then test whether the number above threshold predicts
 the cluster multiplicity. This is one RS-S006 unit.
+
+### RS-S006 (2026-10-25): per-twist sextic spike strengths and the primary-class dichotomy
+
+**Stage:** discovery, then falsification. **Branch:** `ccr-c363c6bb-0zejeu`. At the start of the
+session, and on the owner's instruction, RS-S004/S005 were merged to main as `10153fd`.
+
+**EXPLORATORY** (`scripts/phase1e.py`, `results/phase1e_2026-10-25.json`): the Rayleigh quotient
+`r_u = ‖C conj(g̃6)(u/π)₆‖/√D` was computed for every twist.
+
+| X | N(u) ≤ | twists |
+|---:|---:|---:|
+| 40000 | 300 | 2094 |
+| 160000 | 300 | 2094 |
+| 20000 | 100 | 492 |
+| 80000 | 100 | 492 |
+
+At X = 40000 and 160000 the runs also included family capture, a compressed Gram matrix and a
+cluster count.
+
+**Findings:**
+
+1. **No twist is individually supercritical.** The maximum is r₁ = 1.379 at X = 160000, against
+   the threshold √2. The individual twist-count model predicts 0 outliers, against 7 and 22
+   observed: **FAIL**.
+2. **The collective random-left-direction model is wrong.** It gives 15–17 outliers at
+   σ₁/edge ≈ 1.017, against 7 observed with σ₁/edge 1.0295
+   (`phase1e_model_diagnostic.py`): **FAIL**. The left images of the strongest twists are partly
+   aligned: maximum |corr| 0.37, against 0.048 for the control.
+3. **Exact symmetry.** Twisting by (−1/π)₆ leaves r unchanged. This follows from
+   g6(conj π) = (−1/π)₆·conj(g6(π)) and the conjugation identity; the null already shares it.
+4. **Dichotomy.**
+   - Every "+" twist by a ±primary u has r ≥ 1.117.
+   - Every other associate coprime to 3 has r ≤ 0.980.
+   - Ramified 1 − ω is strong with the conjugate sign.
+   - The "−" twists stay near the random level, except for a few by ramified-divisible u.
+
+**Pre-registration:** `feca6a1`, pushed before any Rayleigh data at X = 320000 or 640000.
+
+**Registered outcomes:** all four PASS (table in `CONJECTURES.md`).
+
+| X | runtime |
+|---:|---:|
+| 320000 | 356 s |
+| 640000 (D = 52008) | 1172 s |
+
+These are the first sextic data at X = 640000. There, r₁ = 1.4183 > √2.
+
+**Status:**
+
+- RS-7b (new): STRESSED at X = 640000.
+- RS-7a: STRESSED. Its quantitative multiplicity model is still open.
+- All other statuses are unchanged.
+
+**Validation:**
+
+- Targeted Ruff passes, and pytest passes 350 tests.
+- No new exact functions were added; the twist symbols reuse the tested `sextic_symbol`
+  convention.
+- Matrices are not committed.
+
+**Commits:** `15b53f0`–`8aae078` (exploratory), `4def9cf`, `0d38368`, `4183876`, then
+`feca6a1`/`3cfeb05` (registration), `d6f96eb`, `cc07a91` (registered outcomes), `128d3de`
+(model diagnostic), then the closeout.
+
+**Limitations:**
+
+- The dichotomy and strengths are finite-range observations.
+- The mechanism has not been checked exactly.
+- The cluster-multiplicity model is unresolved.
+- No expert review has taken place.
+
+**Next dependency (mechanism stage):**
+
+- Verify exactly that, for ±primary u, `(u/π)₆ = ε(u, π)·(π/u)₆`, where ε is a simple sign
+  determined by sextic reciprocity.
+- Derive the associate sum rule implied by the depletion of non-primary associates.
+- Compare the profile of `r_u² − 1` against N(u) with a twisted-Gauss-sum heuristic.
+
+This is one RS-S007 unit.

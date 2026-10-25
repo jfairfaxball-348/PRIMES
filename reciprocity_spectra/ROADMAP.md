@@ -60,6 +60,15 @@ singular values above the corrected null at X = 40000, 160000 and 320000. Its de
 vectors are increasingly enriched in twisted conj(g̃6) spans (registered PASS). The
 identification is partial (RS-7a). Next: measure the per-twist strengths against N(u).
 
+**RS-S006 checkpoint:**
+
+- The sextic twist strengths obey an exact-looking primary-class dichotomy (RS-7b). It is
+  registered PASS at X = 320000 and 640000.
+- No twist is individually supercritical below X ≈ 6·10⁵.
+- Two simple models of the cluster multiplicity fail.
+
+Next: the mechanism stage for RS-7b, which opens Phase 2 for the sextic family.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity
