@@ -60,3 +60,51 @@ The programme studies its singular values, eigenvalues, outliers and singular ve
 - Extremal vectors of the cubic large sieve; Baier–Young; Heath-Brown sharpness. Found
   de Faveri–Dunn–Hoffstein 2607.07911.
 - Quadratic large sieve optimal constant; Heath-Brown ε-removal. No numerical study found.
+
+## RS-S008 refresh (2026-10-25)
+
+The searches used Parallel Search; the queries are listed below.
+
+**New relevant sources:**
+
+- G. Chinta, S. Friedberg, J. Hoffstein, *Double Dirichlet series and theta functions* (2011).
+  It makes a conjecture on the Fourier coefficients of the theta function on the 6-fold cover of
+  GL(2), and notes that for n = 3 the coefficients are essentially cubic Gauss sums (Patterson).
+  https://gchinta.github.io/assets/pdfs/doubledirichlet.pdf
+- R. Bröker, J. Hoffstein, *Fourier coefficients of sextic theta series*, Math. Comp. (2015),
+  DOI 10.1090/mcom3044, arXiv 1312.0568. It gives partially proven and partially conjectured
+  values of τ(π)², τ(π²) and τ(π⁴) at primes.
+- S. Friedberg, D. Ginzburg, *Descent and theta functions for metaplectic groups*,
+  arXiv 1403.3930. A descent framework consistent with the Patterson and Chinta–Friedberg–Hoffstein
+  conjectures.
+- *Vanishing of quartic and sextic twists of L-functions*, arXiv 2301.05329. It introduces
+  "totally order-ℓ" characters, and finds that sextic Gauss sums equidistribute much more slowly
+  in the full family than in the totally sextic subfamily. This is possibly related to our
+  unit-class dichotomy, but it concerns Dirichlet characters, not our matrices.
+- arXiv 2607.27131: second moments of Hecke L-functions of r-th order characters, citing the
+  X^{5/6} Patterson barrier and the de Faveri–Dunn–Hoffstein result.
+
+**Not peer-reviewed, different object:**
+
+- Notes from October 2026 on a "quasi-Riemann hypothesis" use sextic symbols, sextic Gauss sums
+  and the cubic theta function to bound Möbius sums:
+  - https://www.math.uwaterloo.ca/~mrubinst/quasi_rh_notes/zeta_7_8_guide.pdf
+  - https://www.emergentmind.com/openai-math-explorer/papers/6.pdf
+- They do not study residue matrices. They are recorded because they use the same
+  sextic-to-cubic Gauss-sum mechanism.
+
+**Status by finding:**
+
+| Statement | Status |
+|---|---|
+| Conjugation-matched null; cubic `C·P` Hermitian (exact identities) | KNOWN_IMPLIED (direct consequences of Galois equivariance and cubic reciprocity; no spectral use found) |
+| RS-6C: bulk gap ratios match the symmetry-matched null | SEARCHED_NO_COLLISION_FOUND |
+| RS-7/RS-7a: sextic cluster above the null, enriched in twisted conj(g̃6) spans | SEARCHED_NO_COLLISION_FOUND |
+| RS-7b: twist enhanced iff unit-class factor unramified at 3 | POSSIBLE_OVERLAP: 3-adic and unit normalization is intrinsic to the coefficients of the sextic theta function (Chinta–Friedberg–Hoffstein; Bröker–Hoffstein), but no statement about these twists or matrices was found. NOVELTY_REQUIRES_EXPERT_REVIEW |
+| Earlier statuses (RS-1 to RS-4) | unchanged from the 2026-10-24 audit |
+
+**Queries:** sextic Gauss sums distribution; sextic theta function metaplectic; bias sextic Gauss
+sums primes; residue matrix eigenvalues primes; large sieve sextic characters; cubic Gauss sums
+twisted Hecke character primes; de Faveri Dunn Hoffstein non-orthogonality; Gauss sums primary
+normalization ramified at 3; Chinta Friedberg Hoffstein sextic theta conjecture; Bröker Hoffstein
+sextic theta series.

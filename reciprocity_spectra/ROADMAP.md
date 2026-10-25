@@ -74,6 +74,13 @@ unit-class factor is unramified at 3. Its strength mechanism is UNEXPLAINED, and
 theta-coefficient heuristic fails. Next: the Phase-5 external note, starting early, because the
 open questions are theoretical.
 
+**RS-S008 checkpoint:**
+
+- The collision audit has been refreshed.
+- The expert-review note (`NOTE_DRAFT.md`) and the Astra referee prompt (`ASTRA_PROMPT.md`) are
+  prepared.
+- Blocked on an owner action: send the prompt and commit the reply.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity

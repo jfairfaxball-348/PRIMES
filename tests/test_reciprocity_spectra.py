@@ -394,3 +394,13 @@ def test_sextic_unit_symbols_are_characters_of_the_norm():
     assert all(len(v) == 1 for v in by_class.values())
     assert {p % 36 for p in range(7, 2000, 6) if ((p - 1) // 6) % 6 in (0, 3)} == {1, 19}
     assert {p % 36 for p in range(7, 2000, 6) if ((p - 1) // 6) % 2 == 0} == {1, 13, 25}
+
+
+def test_note_tables_match_results():
+    """NOTE_DRAFT.md tables are regenerated verbatim from the committed results JSONs."""
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    script = Path(__file__).resolve().parents[1] / 'reciprocity_spectra/scripts/note_tables.py'
+    subprocess.run([sys.executable, str(script), '--check'], check=True)

@@ -1,11 +1,15 @@
-Continue from the committed RS-S007 handover on `ccr-c363c6bb-0zejeu` (main holds RS-S006 at `1971fea`; RS-S007 is not yet merged). Read `reciprocity_spectra/PROTOCOL.md`, `reciprocity_spectra/LEDGER.md`, `reciprocity_spectra/CONJECTURES.md`, `reciprocity_spectra/ROADMAP.md`, `reciprocity_spectra/README.md`, `reciprocity_spectra/PRIOR_ART.md` and this entire prompt before changes; reconcile with authoritative main. Do not merge without explicit owner instruction.
+# Next session prompt: SUPPRESSED (owner-decision blocker)
 
-STATE: Findings are sharp and pre-registered: certified conjugation-matched null (RS-S004; exact identities, cubic C*P Hermitian); RS-6C (bulk gap ratios match the corrected null, X = 80000); RS-1/RS-3/RS-4 STRESSED at X = 320000; RS-7/RS-7a (sextic cluster above the corrected null: 7, 22, 34 values at X = 40000, 160000, 320000; enriched in twisted conj(g6~) spans); RS-7b (twists conj(g6~)(u/pi)_6, u coprime to 3, are enhanced iff the unit-class factor zeta6^(j(p-1)/6) is unramified at 3, i.e. u is +-primary; registered PASS at X = 320000 and 640000; strength theta_u^2/D ~ N(u)^-0.19; r_1 = 1.418 > sqrt 2 at X = 640000). Mechanism UNEXPLAINED; naive theta-coefficient heuristic FAILS; two cluster-multiplicity models FAIL. RS-S003 refutations stand. DISCOVERY-1 remains PAUSED: no reading, reconstruction or modification of its ledgers, interval roles, guard bands or E005 objects.
+RS-S008 is complete. Continuation needs external input that only the owner can obtain:
 
-ONE BOUNDED UNIT: RS-S008, collision audit refresh and external expert-review note (stage: collision-audit, then write-up).
+1. Send `reciprocity_spectra/ASTRA_PROMPT.md` to OpenAI's Astra agent (optionally attaching
+   `reciprocity_spectra/NOTE_DRAFT.md`).
+2. Commit the full reply verbatim as `reciprocity_spectra/ASTRA_RESPONSE_<date>.md`.
 
-1. Collision audit: search the literature (cite every source with URL/DOI; never write "new"/"novel"/"first"; use the novelty vocabulary) for: spectra/singular values of power-residue (Dummit-Dummit-Kisilevsky) matrices; sextic Gauss sums, sextic/metaplectic theta functions and Patterson-type biases for n = 6; distributions of twisted Gauss sums by Hecke characters ramified vs unramified at 3; large-sieve/bilinear forms with n-th order residue symbols (Heath-Brown, Dunn-Radziwill, de Faveri-Dunn-Hoffstein, David-Dunn-Hamieh-Lin). Update PRIOR_ART.md with per-finding statuses (RS-1, RS-3, RS-4, RS-6C, RS-7, RS-7a, RS-7b, the conjugation null).
-2. Draft `reciprocity_spectra/NOTE_DRAFT.md` (about 4-6 pages in Markdown): setup and conventions; the certified null and its exact identities; registered results as tables with exact X, D, seeds, commits and PASS/FAIL including all failures; RS-7b as the headline empirical finding with its exact reformulation; what is not known; three to five precise questions for an expert in metaplectic forms/Gauss sums; reproducibility instructions. Every number must trace to a results JSON; add a short script that regenerates the note's tables from the JSONs and check it.
-3. Do not contact anyone or publish anything externally; the owner decides on sharing.
+Once the reply is committed, a session can be started with "Run next session". It will:
 
-No new large computations are required; if the audit reveals a known result that predicts a measured quantity, record the comparison as EXPLORATORY and do not change statuses without a registered test. Run Ruff on touched Python files and pytest. Close out under PROTOCOL section 7 with exactly one justified next prompt (or an owner-decision stop for sharing the note) and a commit/push to the session branch; do not merge main without owner instruction.
+- evaluate the reply under the evidence and novelty rules;
+- record known, derivable and conjectural claims with citations;
+- pre-register the sharpest falsification test that the reply proposes.
+
+No runnable prompt is issued until then.
