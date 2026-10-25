@@ -31,7 +31,7 @@
       "prediction": "r_1 = ||C conj(g6~)||/(sqrt(D)||g6~||) lies in [1.375, 1.435] (still below sqrt(2) = 1.414 is not required)."
     }
   ],
-  "prediction_commit": null,
+  "prediction_commit": "feca6a1",
   "model": "RS-S006: per-twist sextic spike strengths and a twist-count model of the RS-7a cluster.\n\nFor w_u = conj(g6~) * (u/pi)_6^{+-1}, normalized, r_u = ||C w_u|| / sqrt(D). In the square spiked\nmodel C = R + theta x w*, ||C w||^2 ~ D + theta^2, so theta_u / sqrt(D) = sqrt(r_u^2 - 1) and a\nspike is supercritical (an outlier) iff r_u > sqrt(2). A collective check compresses C onto the\nfamily span W: eigenvalues of W* C* C W / D against the same compression of matched controls.\nUse OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4; 2700-second alarm per job.\n",
   "runs": [
     {
