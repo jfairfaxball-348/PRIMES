@@ -737,3 +737,23 @@ both conditions must hold:
 
 - the mean B² over the 24 pairs whose character has trivial cubic part is ≥ 1.6;
 - the mean B² over the 48 cubic-nontrivial pairs is ≤ 1.3.
+
+### RS-S011-M0 outcome (scored against `6bbb11b`): **FAIL**
+
+Window 1.92·10⁶ < p ≤ 2.56·10⁶ (43788 primes). Mean B² by group:
+
+| group | mean B² | criterion |
+|---|---:|---|
+| trivial cubic part (24 pairs) | 1.35 | ≥ 1.6 required (violated) |
+| cubic-nontrivial (48 pairs) | 0.93 | ≤ 1.3 required (met) |
+| s1 = 1 subgroup | 0.61 | — |
+| s1 = 0 subgroup | 2.08 | — |
+
+**Power note.** For a main term c·X^{2/3}/log X, the increment across this window is about 224·|c|,
+against a random-walk noise of about 209. The window test can therefore detect only main terms
+with |c| ≳ 1, and per-character entries fluctuate at signal level. Future window registrations
+must include a power calculation.
+
+**Disposition.** The 2-adic character selection rule is NOT established. Its registered forms
+failed twice. CAND-001 freezes only what passed fresh tests: RS-7b (matrix) and RS-S010-K2
+(prime-level unit classes).

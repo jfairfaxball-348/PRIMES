@@ -18,17 +18,22 @@ Order of attack (PROTOCOL §9):
 - χ runs over the 12 characters (m, s1, s2) of (ℤ[ω]/4)^× (`arith.mod4_character`).
 - j indexes the unit classes, via ζ₆ʲ.
 
-### H1, prime-level selection rule
+### H1, prime-level unit-class bias (CAND-001, statement 2)
+
+In the matrix normalization g̃_ours = (ρ̄/ρ)₆·g̃_trace:
 
 ```
-S_{j,χ}(X) = Σ_{N ρ ≤ X} g̃(ζ₆ʲ, ρ) χ(ρ) = c_{j,χ} X^{2/3}/log X + o(X^{2/3}/log X),
-with c_{j,χ} ≠ 0  ⟺  χ has trivial cubic part (m = 0) and χ(−1) = −1 (s1 = 1).
+S_j(X) = Σ_{N ρ ≤ X} g̃_ours(ρ) conj((ζ₆ʲ/ρ)₆) = c_j X^{2/3}/log X + o(X^{2/3}/log X),
+with c_j ≠ 0  ⟺  j ∈ {0, 3}.
 ```
 
 - The exponent 2/3 = 1/2 + 1/6 is the location of the pole of the sextic Kubota series. This is
-  heuristic (Astra Q2). In the cubic case the analogue is Patterson's X^{5/6}, proved under GRH
-  by Dunn–Radziwiłł.
-- Numerical status: RS-S011 (pooled selection statistic) and RS-9.
+  heuristic; the cubic analogue is Patterson's X^{5/6}, proved under GRH by Dunn–Radziwiłł.
+- Numerical status: registered PASS at X = 1.28·10⁶ (RS-S010-K2).
+- **Refuted refinements.** A finer rule by 2-adic characters χ of (ℤ[ω]/4)^× failed twice in fresh
+  windows (RS-S011-SEL, RS-S011-M0). Window statistics were probably underpowered: the main-term
+  increment per window is comparable to the noise. A theoretical derivation of the 2-adic
+  structure (T1 below) should come before any further numerical refinement.
 
 ### H2, matrix dichotomy (RS-7b)
 

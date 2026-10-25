@@ -98,6 +98,13 @@ open questions are theoretical.
   the matrix dichotomy.
 - Next: map the full 2-adic × unit-class selection table.
 
+**RS-S011 checkpoint:**
+
+- The 2-adic character selection rule FAILED twice in fresh windows, with underpowered
+  statistics; it is not established.
+- CAND-001 is frozen: the matrix dichotomy plus the prime-level unit-class bias.
+- The proof stage begins on the hard version (`PROOF_ROUTE.md`).
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity

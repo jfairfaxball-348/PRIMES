@@ -124,6 +124,94 @@ No `CAND-###` was allocated. D1-35 considered exactly `OBS-015`, `OBS-016`, and 
 
 Do not create a candidate merely because a pattern is visually interesting. See `docs/DISCOVERY_PROTOCOL.md`.
 
+## CAND-001 — Sextic twist dichotomy for power-residue matrices of Eisenstein primes — 2026-10-25
+
+Allocated by Reciprocity Spectra session RS-S011 (`reciprocity_spectra/`). This is the first
+`CAND-###` allocated in PRIMES. It is not a D1 candidate, and the D1 records are untouched.
+
+**Title:** Primary-class dichotomy of sextic Gauss-sum twists (matrix form), with its prime-level
+Gauss-sum bias shadow.
+
+**Lifecycle status:** CANDIDATE.
+
+**Novelty status:** NOVELTY_REQUIRES_EXPERT_REVIEW.
+
+- Collision searches 2026-10-24 and 2026-10-25 (`reciprocity_spectra/PRIOR_ART.md`):
+  SEARCHED_NO_COLLISION_FOUND for the matrix statement.
+- POSSIBLE_OVERLAP with sextic theta-function theory (Chinta–Friedberg–Hoffstein; Bröker–Hoffstein).
+- An AI referee (Astra) judged findings 2–5 unknown to it. That is not an audit.
+- Owner decision (PROTOCOL §9): a deep novelty audit is required before any publication.
+
+**Source observations:** RS-7, RS-7a, RS-7b, RS-9 (`reciprocity_spectra/CONJECTURES.md`).
+
+**Definitions.**
+
+- ρ, π run over the primary degree-one primes of ℤ[ω]: a ≡ 2 (mod 3), b ≡ 0 (mod 3),
+  p = N ≤ X.
+- C = ((π/ρ)₆), with ζ₆ = 1 + ω and zero diagonal; D is the dimension.
+- g̃₆(ρ) = Σₜ (t/ρ)₆ e(t/p)/√p.
+- For u ∈ ℤ[ω] coprime to 3: w_u = conj(g̃₆)·(u/·)₆ and r_u = ‖C w_u‖/(√D ‖w_u‖).
+- u is ±primary iff its ω-coefficient is ≡ 0 (mod 3).
+- (ζ₆ʲ u/ρ)₆ = ζ₆^{j(p−1)/6}·(u/ρ)₆; the factor is a character mod 36, unramified at 3 iff
+  j ∈ {0, 3} (exact).
+
+**Exact statement (conjecture).**
+
+1. **Matrix form.** For every fixed u coprime to 3, as X → ∞:
+   - if u is ±primary, lim inf r_u > 1;
+   - otherwise, lim sup r_u < 1.
+2. **Prime-level shadow.** In the matrix normalization, the unit-class sums
+   |Σ_{N ρ ≤ X} g̃₆(ρ) conj((ζ₆ʲ/ρ)₆)| grow faster than √(π(X)) exactly for j ∈ {0, 3}, and are
+   O(√(X/log X)·X^{o(1)}) for j ∈ {1, 2, 4, 5}.
+
+**Discovery provenance:** RS-S005–RS-S006 (sextic cluster, then the twist Rayleigh quotients).
+This was model-first, with no blind protocol.
+
+**Discovery range:** X ≤ 1.6·10⁵, with N(u) ≤ 300.
+
+**Holdout range (registered, PASS):**
+
+- statement 1 at X = 3.2·10⁵ and 6.4·10⁵ (N(u) ≤ 100; RS-S006, `feca6a1`);
+- statement 2 at X = 1.28·10⁶ (RS-S010-K2, `e745eaa`).
+
+**Adversarial tests.** The null is certified: it matches reciprocity, conjugation and the forced
+entries exactly (RS-S004). Random-vector and random-sixth-root controls stay at r ≤ 1.024.
+
+**Smallest counterexample searched/found:** none. The search covered every u with N(u) ≤ 300 at
+X ≤ 1.6·10⁵, and N(u) ≤ 100 up to X = 6.4·10⁵.
+
+**Triviality checks:**
+
+- r_u = r_{−ū} exactly;
+- (−1/ρ)₆-twists leave r unchanged exactly;
+- an associate sum-rule identity holds exactly.
+
+None of these implies the dichotomy. The structure of the unit factor (exact) explains which
+classes can differ, but not their sizes.
+
+**Failed refinements (retained).**
+
+- The 2-adic character selection rule was registered twice in fresh windows and failed both
+  times: RS-S011-SEL and RS-S011-M0. Underpowered window statistics are a likely cause; this is
+  not established.
+- Astra's Q5 prediction, as stated, failed (RS-S010).
+
+**Mechanism hypothesis.** The Hasse–Davenport factorization (exact, tested) is
+g̃₆ = conj((2/ρ)₃)(ρ/|ρ|) g̃₂ conj(g̃₃). Unit twists rotate the cubic Gauss-sum frequency by a
+character ramified at 3 unless j ∈ {0, 3}. The main term is a Patterson-type bias of sextic Gauss
+sums (pole of the Kubota series at s = 2/3). The cubic analogue is RS-8, which passes.
+
+**Equivalent formulations:** Statement 1 is equivalent to a twisted sextic dispersion estimate,
+the sextic analogue of Dunn–Radziwiłł's cubic dispersion estimate (`reciprocity_spectra/PROOF_ROUTE.md` §2).
+
+**Prior-art audit:** `reciprocity_spectra/PRIOR_ART.md` (RS-S008 refresh).
+
+**Current blocker:** a proof. The hard route comes first (PROTOCOL §9): Type I residues and Type
+II bilinear sextic sums, possibly under GRH.
+
+**Next bounded action:** `reciprocity_spectra/PROOF_ROUTE.md` §5, step 1: verify the reduction of
+‖C w_u‖² to twisted prime sums exactly.
+
 ## Template
 
 ### CAND-###

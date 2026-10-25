@@ -731,3 +731,60 @@ experts.
     any publication or formal submission.
 - RS-S011 is amended so that it ends by freezing CAND-001 and drafting the hard-version proof
   route.
+
+### RS-S011 (2026-10-25): selection table, CAND-001 frozen, hard-version proof route
+
+**Stage:** falsification, then the start of the proof stage. **Branch:** `ccr-c363c6bb-0zejeu`.
+Main is at `18bb011` plus the owner-decision commit `4a19e31`.
+
+**Exact work.**
+
+- `arith.mod4_class_coordinates` and `mod4_character`: (ℤ[ω]/4)^× = ⟨ω⟩ × ⟨−1⟩ × ⟨1+2ω⟩.
+- New tests:
+  - (2/ρ)₃ = χ(1,0,0);
+  - (−1/p) = χ(0,0,1);
+  - (ρ̄/ρ)₆ is a class function mod 4 but not a character. Exactly,
+    ψ = ½(χ₀₀₀ − χ₀₀₁ − χ₀₁₀ − χ₀₁₁).
+- Engine option `RS_GAUSS_MIN`, for disjoint norm windows. It was verified to give identical
+  Gauss sums above the cut.
+
+**EXPLORATORY.** The 6 × 12 table of (unit class, character) biases out to 1.28·10⁶ suggested
+main terms only for characters with trivial cubic part, and within those for s1 = 1.
+
+**Registered.**
+
+| test | window | outcome | detail |
+|---|---|---|---|
+| RS-S011-SEL (`e8821be`) | 1.28·10⁶ < p ≤ 1.92·10⁶ | **FAIL** | the even, trivial-cubic group averaged 2.05 |
+| RS-S011-M0 (`6bbb11b`) | 1.92·10⁶ < p ≤ 2.56·10⁶ | **FAIL** | the trivial-cubic group averaged 1.35 |
+
+A power calculation done after the fact shows that the window statistics are underpowered.
+
+**CAND-001 frozen** in `research/CONJECTURE_REGISTER.md`. It is the first CAND in PRIMES, and
+contains only what passed registered fresh tests:
+
+- statement 1, the matrix dichotomy (RS-7b);
+- statement 2, the prime-level unit-class bias (RS-S010-K2).
+
+**`PROOF_ROUTE.md`** follows PROTOCOL §9 (hard version first):
+
+- reduction of statement 1 to a twisted sextic dispersion estimate, the analogue of
+  Dunn–Radziwiłł;
+- a Heath-Brown decomposition into Type I (Kubota residues, T1) and Type II (bilinear sextic sums,
+  T2; the expected crux, with X^{1/6} of room);
+- a table of inputs marked known, conditional or open;
+- next steps.
+
+**Validation:** pytest passes 356 tests; targeted Ruff passes; the strict compile passes.
+
+**Commits:** `a9c0634`, `e8821be`, `c0a552b`, `6bbb11b`, `874e5e4`, `dc17534`, then the closeout.
+
+**Next dependency (hard route, step 1).** Verify exactly that
+
+```
+‖C w_u‖² = D(D − 1) + off-diagonal = Σ_π |S(πu)|²,
+```
+
+and measure how much of the off-diagonal term the S(πu) main terms carry. Then start T1, the
+local theory at 2 and 3, by reproducing the cubic RS-8 from Patterson's explicit coefficients.
+This is RS-S012.
