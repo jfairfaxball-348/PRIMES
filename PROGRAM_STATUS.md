@@ -1,10 +1,21 @@
 # PRIMES Programme Status
 
-Status date: 2026-10-24
+Status date: 2026-10-25
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1 (scaling with pre-registered predictions). RS-S003 / Phase 1b is complete: all eight registered finite comparisons FAIL. The finite sextic formulation of RS-5 and local-statistic extension of RS-6 are REFUTED; eventual asymptotic claims remain unresolved and the original RS-6 bulk claim remains PILOT. RS-1, RS-3 and RS-4 remain STRESSED at X = 320000; X = 640000 is still untested. The next unit is RS-S004 / Phase 1c (exact null-ensemble certification and fresh-scale tests). Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1. RS-S004 / Phase 1c is complete:
+
+- the conjugation-matched null is certified;
+- all five registered fresh-scale predictions PASS;
+- RS-6C (bulk gap ratio matches the corrected null) is STRESSED at X = 80000;
+- RS-7 (sextic outliers persist above the corrected null) is STRESSED at X = 320000;
+- RS-1, RS-3 and RS-4 remain STRESSED, and RS-2 remains PILOT;
+- the RS-S003 refutations of the RS-5 finite form and the RS-6 local extension stand;
+- X = 640000 is still untested.
+
+The next unit is RS-S005 / Phase 1d: identify the sextic outlier cluster. Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
+
 
 Previous stage line (D1-72, preserved): DISCOVERY-1 — D1-72 / S074 / SQ-036 E025 H25 ONE-SHOT CLOSED; OBS-025 REFUTED (25/48 POSITIVE SIGNED CLASSES < FROZEN 36/48); D25/H25 CONSUMED; 16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND; NEXT D1-73 / S075 / SQ-037 SOURCE-FREE DESIGN ONLY
 

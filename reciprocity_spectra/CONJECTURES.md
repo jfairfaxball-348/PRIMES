@@ -336,3 +336,53 @@ conjugation} orbit and copying the (π, conj π) entries.
 
 The basis is the EXPLORATORY rows in the JSON: gap-ratio differences ≤ 0.02 at X = 20000 and
 40000 over control seeds 0–2, and sextic excess 0.0325 and 0.0421 at X = 40000 and 160000.
+
+
+## RS-S004 outcomes (scored verbatim against `ed4961d`)
+
+| ID | mode | X | D | arithmetic | seed-0 conjugation control | value | outcome |
+|---|---|---:|---:|---:|---:|---:|---|
+| RS-S004-P6C-cubic | cubic | 80000 | 7796 | gap 0.424229725 | gap 0.417128495 | 0.007101230 | **PASS** |
+| RS-S004-P1C | cubic | 80000 | 7796 | σ₁/edge 1.514342308 | 1.000965311 | 0.513376997 | **PASS** |
+| RS-S004-P6C-quartic | quartic | 80000 | 7806 | gap 0.527786408 | gap 0.525672180 | 0.002114228 | **PASS** |
+| RS-S004-P3C | quartic | 80000 | 7806 | σ₁/edge 1.140784463 | 0.999855787 | 0.140928676 | **PASS** |
+| RS-S004-P5C | sextic | 320000 | 27554 | σ₁/edge 1.050189908 | 0.999755252 | 0.050434656 | **PASS** |
+
+Status consequences (scope limited to the tests performed; finite data prove nothing):
+
+- **RS-1, RS-3:** remain STRESSED. Their outliers stay far above the corrected null.
+- **RS-4:** unchanged. The quadratic null needs no conjugation matching.
+- **RS-5:** its registered finite form remains REFUTED.
+- **RS-6:** its RS-S003 finite local extension remains REFUTED, and its original bulk claim
+  remains PILOT. The qualified statement is registered as **RS-6C**.
+- **RS-7:** new. It records the sextic outlier persisting above the corrected null.
+
+## RS-6C: bulk gap ratio matches the conjugation-matched null (STRESSED at X = 80000)
+
+For the cubic and quartic matrices, the mean bulk gap ratio (RS-S003 window rules) agrees within
+0.03 with the conjugation-matched control at the same D. Evidence:
+
+- EXPLORATORY: X = 20000 and 40000, seeds 0–2.
+- Registered PASS: X = 80000.
+
+Mechanism (exact for the symmetry class, heuristic for the statistics): in the cubic case the
+singular values are the moduli of the eigenvalues of a real symmetric matrix. They therefore
+interleave two eigenvalue sequences, which is consistent with the low ratio of about 0.42. The
+quartic matrix is real in a real basis, and its ratio is about 0.53. Neither value has been
+compared with a theoretical ensemble constant. The RS-S003 failure was caused by a null with
+the wrong symmetry class; it was not an arithmetic deviation.
+
+## RS-7: sextic outliers above the corrected null (STRESSED at X = 320000)
+
+The sextic matrix over `Z[ω]` has `σ₁/edge` exceeding the conjugation-matched control by:
+
+| X | excess | status |
+|---:|---:|---|
+| 40000 | 0.0325 | EXPLORATORY |
+| 160000 | 0.0421 | EXPLORATORY |
+| 320000 | 0.0504 | registered PASS |
+
+This contradicts the RS-5 heuristic of no outliers for n ≥ 5 at these scales. At X = 320000 the
+top three singular values are nearly degenerate: 348.650, 347.581 and 346.681 against a control
+σ₁ of 331.907. This suggests a cluster of outliers rather than a single spike. The outlier
+vectors and their mechanism are unidentified.

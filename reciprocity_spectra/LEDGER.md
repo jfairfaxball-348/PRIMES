@@ -302,3 +302,89 @@ the forced entries gives, at X = 20000, bulk gap ratios 0.430/0.435 against arit
 is unaffected; quartic and sextic margins need re-measurement. Code:
 `scripts/conjugation_null_diagnostic.py`; data: `results/conjugation_null_diagnostic_2026-10-25.json`.
 `NEXT_SESSION_PROMPT.md` (RS-S004) now names this identity as the hypothesis to certify.
+
+### RS-S004 (2026-10-25): Phase 1c, certified conjugation-matched null and fresh-scale tests
+
+**Stage:** certification and falsification. **Branch:** `ccr-c363c6bb-0zejeu`, based on main
+`965a392`, which already contains RS-S003. Main was not merged.
+
+**Identity audit (exact):**
+
+- Galois equivariance gives `(conj x/conj y)_n = conj((x/y)_n)` for n = 3, 4 and 6. For n = 6,
+  conjugation also inverts `ζ₆ = 1 + ω`.
+- Primary primes map to primary primes of the same norm.
+- The reciprocity mask is conjugation-invariant.
+- The two identities force `(π/conj π)_n` to satisfy `x = s·conj(x)`:
+  - cubic: `x = 1`;
+  - quartic: `x ∈ {±1}` or `{±i}`, by `p mod 8`;
+  - sextic: `s = +1` and `x = ±1`.
+- For the cubic matrix, `H = C·P` is exactly Hermitian and real in a real basis.
+- The sextic mask is a function of (a, b) mod 4 classes. It is not of parity form.
+- Conjugation is the only nontrivial Galois automorphism, and units do not act on the primary
+  index set. No further identity was found; completeness is not claimed.
+- The quadratic null is unchanged.
+
+These checks are three new pure-Python or native tests (`tests/test_reciprocity_spectra.py`),
+including a byte-level pure-Python SplitMix reference for the new native control
+`rs_random_conj`. That control draws one exponent per {transpose, conjugation} orbit and copies
+the (π, conj π) entries.
+
+**Validation:** `phase1c.py validate` at X = 20000 for cubic, quartic and sextic:
+
+- zero identity violations in both the arithmetic and control matrices;
+- cubic and quartic matrices sha256-identical to RS-S002;
+- top-8 Lanczos values agree with SciPy `svds` within 8.0e-15 relative;
+- control complex matvec and adjoint products agree with dense products within 1e-12;
+- the control's `C·P` is Hermitian.
+
+Targeted Ruff and a strict `-Wall -Wextra -Werror` compile both pass, and pytest passes 348 tests.
+
+**EXPLORATORY (results JSON, not status drivers):**
+
+| mode | X | arithmetic gap ratio | control gap ratio (seeds 0–2) |
+|---|---:|---:|---|
+| cubic | 20000 | 0.4225 | 0.416, 0.426, 0.412 |
+| cubic | 40000 | 0.4104 | 0.430, 0.412, 0.435 |
+| quartic | 20000 | 0.5390 | 0.534, 0.528, 0.534 |
+| quartic | 40000 | 0.5329 | 0.546, 0.541, 0.520 |
+
+- Cubic and quartic corrected-control `σ₁/edge` is 0.997–1.008.
+- Sextic excess over the corrected control is 0.0325 at X = 40000 and 0.0421 at X = 160000. The
+  RS-5 failure is therefore not a null artefact.
+- The owner diagnostic is reproduced qualitatively, with independent code and a different RNG.
+
+**Pre-registration:** `ed4961d`, pushed before any X = 80000 or 320000 data. The predictions
+are in `CONJECTURES.md` and in the JSON.
+
+**Registered outcomes:** all five PASS (table in `CONJECTURES.md`).
+
+| job | value | runtime |
+|---|---|---:|
+| cubic, X = 80000 | gap difference 0.0071; outlier excess 0.513 | 342 s |
+| quartic, X = 80000 | gap difference 0.0021; outlier excess 0.141 | 346 s |
+| sextic, X = 320000 | excess 0.0504; Gram residuals ≤ 2.2e-12 | 1281 s |
+
+**Status:**
+
+- RS-6C (new): STRESSED at X = 80000.
+- RS-7 (new): STRESSED at X = 320000.
+- RS-1 and RS-3: STRESSED, with corrected-null margins confirmed.
+- RS-4: STRESSED, unchanged.
+- RS-2: PILOT.
+- RS-5 finite form and the RS-6 local extension: REFUTED, unchanged.
+- X = 640000: untested.
+
+**Commits:** `e486a07` (control, tests, runner), `0ca553b` (validation), `49c6102`–`5d9aa8a`
+(exploratory), `ed4961d`/`fb2b681` (registration), `6df598b`, `468a075`, `c934b55`
+(registered outcomes), then the closeout.
+
+**Limitations:**
+
+- Each registered comparison uses one control seed.
+- The gap-ratio statistic has a seed spread of about 0.01–0.025 at D ≈ 4000.
+- The ensemble constants and the sextic mechanism are not derived.
+- Matrices are not committed. No D1 records were touched.
+
+**Next dependency:** identify the sextic outlier cluster (RS-7): its multiplicity above the
+corrected null, and its singular vectors against sextic and cubic Gauss-sum candidates. This
+is one RS-S005 / Phase 1d unit.
