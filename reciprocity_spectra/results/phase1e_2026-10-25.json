@@ -62643,5 +62643,86 @@
       ]
     }
   ],
-  "prediction_basis": "EXPLORATORY rayleigh_runs/runs: dichotomy exact at X = 20000, 40000, 80000, 160000 (min +pm r 1.142, 1.117 [N<=300], 1.158, 1.135 [N<=300]; max other r 0.945, 0.962, 0.974, 0.980); r_1 = 1.3224, 1.3540, 1.3622, 1.3790, roughly +0.019 per doubling of X with +-0.01 jitter, extrapolating to about 1.393 (X=320000) and 1.406 (X=640000). Rayleigh quotients have never been computed at X = 320000 or 640000, and no sextic data exists at X = 640000."
+  "prediction_basis": "EXPLORATORY rayleigh_runs/runs: dichotomy exact at X = 20000, 40000, 80000, 160000 (min +pm r 1.142, 1.117 [N<=300], 1.158, 1.135 [N<=300]; max other r 0.945, 0.962, 0.974, 0.980); r_1 = 1.3224, 1.3540, 1.3622, 1.3790, roughly +0.019 per doubling of X with +-0.01 jitter, extrapolating to about 1.393 (X=320000) and 1.406 (X=640000). Rayleigh quotients have never been computed at X = 320000 or 640000, and no sextic data exists at X = 640000.",
+  "exploratory_model_diagnostic": {
+    "X": 40000,
+    "D": 4178,
+    "command": "python reciprocity_spectra/scripts/phase1e_model_diagnostic.py",
+    "code_commit": "d60a80d86871346e3140ebd14c16fc3bf4cfe046",
+    "arithmetic_multiplicity_vs_max_of_3_controls": 7,
+    "arithmetic_sigma1_over_edge": 1.0294700337997413,
+    "model": [
+      {
+        "cut": 1.024,
+        "rank": 375,
+        "left_seed": 0,
+        "multiplicity_above_control_seed0": 17,
+        "sigma1_over_edge": 1.0163462318162546
+      },
+      {
+        "cut": 1.024,
+        "rank": 375,
+        "left_seed": 1,
+        "multiplicity_above_control_seed0": 16,
+        "sigma1_over_edge": 1.0188128085336663
+      },
+      {
+        "cut": 1.024,
+        "rank": 375,
+        "left_seed": 2,
+        "multiplicity_above_control_seed0": 16,
+        "sigma1_over_edge": 1.018919454158779
+      },
+      {
+        "cut": 1.05,
+        "rank": 360,
+        "left_seed": 0,
+        "multiplicity_above_control_seed0": 16,
+        "sigma1_over_edge": 1.0166127791820323
+      },
+      {
+        "cut": 1.05,
+        "rank": 360,
+        "left_seed": 1,
+        "multiplicity_above_control_seed0": 16,
+        "sigma1_over_edge": 1.016100487801524
+      },
+      {
+        "cut": 1.05,
+        "rank": 360,
+        "left_seed": 2,
+        "multiplicity_above_control_seed0": 16,
+        "sigma1_over_edge": 1.0169781199870342
+      },
+      {
+        "cut": 1.1,
+        "rank": 356,
+        "left_seed": 0,
+        "multiplicity_above_control_seed0": 15,
+        "sigma1_over_edge": 1.0165858114708988
+      },
+      {
+        "cut": 1.1,
+        "rank": 356,
+        "left_seed": 1,
+        "multiplicity_above_control_seed0": 17,
+        "sigma1_over_edge": 1.0169369091707872
+      },
+      {
+        "cut": 1.1,
+        "rank": 356,
+        "left_seed": 2,
+        "multiplicity_above_control_seed0": 16,
+        "sigma1_over_edge": 1.0167759120277666
+      }
+    ],
+    "left_image_abs_corr_arithmetic": {
+      "mean": 0.023219153930631016,
+      "max": 0.3706182617462341
+    },
+    "left_image_abs_corr_control_seed0": {
+      "mean": 0.017064001842223744,
+      "max": 0.04757194755442179
+    }
+  }
 }
