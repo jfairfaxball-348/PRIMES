@@ -2,7 +2,7 @@
   "session": "RS-S007",
   "classification": "EXPLORATORY",
   "command": "python reciprocity_spectra/scripts/phase1f.py",
-  "code_commit": "1971fea218e6efcd683d0184d4fe1f5eecbf6d8d",
+  "code_commit": "55081e78fec9d45c5395191ee2cbfa97b76752d9",
   "bias": [
     {
       "X": 20000,
@@ -4390,5 +4390,12 @@
         }
       ]
     }
-  ]
+  ],
+  "sum_rule_identity": {
+    "X": 20000,
+    "u": "2",
+    "left": 32723530.157453224,
+    "right": 32723530.157453217,
+    "relative_error": 2.2768266629775147e-16
+  }
 }
