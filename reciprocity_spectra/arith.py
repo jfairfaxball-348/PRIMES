@@ -195,6 +195,33 @@ def reciprocity_sign(n: int, x, y) -> int:
 
 
 
+def conjugate_prime(prime: DegreeOnePrime) -> DegreeOnePrime:
+    """Complex conjugate of a primary degree-one prime; it is again primary with the same norm.
+
+    ``conj(a + b*w) = (a - b) - b*w`` (``w^2 = -1 - w``) and ``conj(a + b*i) = a - b*i``.
+    Galois equivariance of the power-residue symbol gives
+    ``(conj alpha / conj pi)_n = conj((alpha / pi)_n)``; for n = 6 the same holds because
+    complex conjugation also sends ``zeta6 = 1 + w`` to ``zeta6^-1``.
+    """
+    if prime.n == 3:
+        return DegreeOnePrime(3, prime.p, prime.a - prime.b, -prime.b)
+    if prime.n == 4:
+        return DegreeOnePrime(4, prime.p, prime.a, -prime.b)
+    raise ValueError("conjugation is defined for Eisenstein and Gaussian primes")
+
+
+def conjugate_pair_exponents(n: int, sign: int) -> set[int]:
+    """Exponents allowed at ``(pi / conj pi)_n`` by reciprocity plus conjugation alone.
+
+    Both identities give ``x = sign * conj(x)`` for that entry, so ``x`` lies on the line
+    fixed by this reflection: ``{0}`` for n = 3, ``{0, n/2}`` for ``sign = 1`` and
+    ``{n/4, 3n/4}`` for ``sign = -1`` (empty for n = 6, so the sign must be +1 there).
+    """
+    if sign == -1 and n % 2:
+        return set()
+    return {k for k in range(n) if (2 * k + (n // 2 if sign == -1 else 0)) % n == 0}
+
+
 def sextic_residue_exponent(c: int, d: int, prime: DegreeOnePrime) -> int | None:
     """Sextic exponent for c+d*omega; zeta6=1+omega, on the cubic primary index set.
 

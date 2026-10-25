@@ -215,3 +215,120 @@ def test_sextic_reciprocity_uses_field_quadratic_pair_signs():
             assert sign in (-1, 1)
             assert matrix[j][i] == (matrix[i][j] + (3 if sign == -1 else 0)) % 6
     assert seen == {-1, 1}
+
+
+def _conjugation_index(n, index):
+    from reciprocity_spectra.arith import conjugate_prime
+    lookup = {(p.p, p.a, p.b): i for i, p in enumerate(index)}
+    return [lookup[(c.p, c.a, c.b)] for c in map(conjugate_prime, index)]
+
+
+def test_conjugation_identity_and_forced_conjugate_pairs():
+    """(conj x/conj y)_n = conj((x/y)_n); (pi/conj pi)_n lies in the reflection-fixed set."""
+    from reciprocity_spectra.arith import conjugate_pair_exponents, conjugate_prime
+
+    for n in (3, 4, 6):
+        index, mat = residue_matrix(n, 600)
+        conj = _conjugation_index(n, index)
+        for i, x in enumerate(index):
+            c = conjugate_prime(x)
+            assert c.p == x.p and conj[i] != i and conj[conj[i]] == i
+            for j in range(len(index)):
+                if i == j:
+                    continue
+                assert mat[conj[i]][conj[j]] == (-mat[i][j]) % n
+                assert reciprocity_sign(n, index[conj[i]], index[conj[j]]) == \
+                    reciprocity_sign(n, x, index[j])
+            sign = reciprocity_sign(n, x, index[conj[i]])
+            assert mat[i][conj[i]] in conjugate_pair_exponents(n, sign)
+            if n == 3:
+                assert mat[i][conj[i]] == 0
+            if n == 6:
+                assert sign == 1
+
+
+def test_cubic_matrix_times_conjugation_is_hermitian():
+    """C symmetric and C[conj, conj] = conj(C) imply that H = C P is Hermitian, H_ij = C_{i,conj j}."""
+    index, mat = residue_matrix(3, 600)
+    conj = _conjugation_index(3, index)
+    for i in range(len(index)):
+        for j in range(len(index)):
+            hij, hji = mat[i][conj[j]], mat[j][conj[i]]
+            if hij is None:
+                assert hji is None
+            else:
+                assert hij == (-hji) % 3
+
+
+def _splitmix_exponent(seed, a, b, d, n):
+    mask = (1 << 64) - 1
+
+    def mix(x):
+        x = ((x ^ (x >> 30)) * 0xbf58476d1ce4e5b9) & mask
+        x = ((x ^ (x >> 27)) * 0x94d049bb133111eb) & mask
+        return x ^ (x >> 31)
+
+    state = (seed + a * d + b) & mask
+    while True:
+        state = (state + 0x9e3779b97f4a7c15) & mask
+        u = mix(state)
+        if u >= ((1 << 64) - n) % n:
+            return u % n
+
+
+def test_native_conjugation_orbit_control(tmp_path):
+    """rs_random_conj: exact identities, copied conjugate pairs, and a pure-Python reference."""
+    import ctypes as ct
+    import shutil
+    import struct
+    import subprocess
+    from array import array
+    from pathlib import Path
+
+    import pytest
+
+    if not shutil.which('cc'):
+        pytest.skip('C compiler unavailable')
+    source = Path(__file__).resolve().parents[1] / 'reciprocity_spectra/native/residue_engine.c'
+    exe, libpath = tmp_path / 'engine', tmp_path / 'engine.so'
+    for flags, target in [([], exe), (['-shared', '-fPIC'], libpath)]:
+        subprocess.run(['cc', '-O2', '-fopenmp', *flags, '-o', str(target),
+                        str(source), '-lm'], check=True)
+    lib = ct.CDLL(str(libpath))
+    lib.rs_pair_signs.argtypes = [ct.c_void_p, ct.c_void_p, ct.c_int, ct.c_int]
+    lib.rs_pair_signs.restype = ct.c_uint64
+    lib.rs_random_conj.argtypes = [ct.c_void_p, ct.c_void_p, ct.c_void_p, ct.c_void_p,
+                                   ct.c_int, ct.c_int, ct.c_uint64]
+    lib.rs_random_conj.restype = ct.c_uint64
+    for n, mode in [(3, 'cubic'), (4, 'quartic'), (6, 'sextic')]:
+        path = tmp_path / f'{mode}.bin'
+        subprocess.run([str(exe), mode, '400', str(path)], check=True)
+        raw = path.read_bytes()
+        d = struct.unpack_from('=i', raw)[0]
+        meta = [struct.unpack_from('=qqq', raw, 4 + 24 * j) for j in range(d)]
+        e = (ct.c_uint8 * (d*d)).from_buffer_copy(raw[4+24*d:])
+        signs = (ct.c_uint8 * (d*d))()
+        assert lib.rs_pair_signs(e, signs, d, n) == 0
+        key = {m: i for i, m in enumerate(meta)}
+        conj = array('i', [key[(p, a - b, -b) if n != 4 else (p, a, -b)] for p, a, b in meta])
+        forced = array('B', [e[i*d + conj[i]] for i in range(d)])
+        out = (ct.c_uint8 * (d*d))()
+        for seed in (0, 7):
+            assert lib.rs_random_conj(out, signs, conj.buffer_info()[0],
+                                      forced.buffer_info()[0], d, n, seed) == 0
+            h = n // 2
+            for i in range(d):
+                assert out[i*d+i] == 255
+                for j in range(d):
+                    if i == j:
+                        continue
+                    v = out[i*d+j]
+                    assert out[j*d+i] == (v + signs[i*d+j] * h) % n
+                    assert out[conj[i]*d + conj[j]] == (-v) % n
+                    if j == conj[i]:
+                        assert v == forced[i]
+                    elif i < j and (i, j) <= tuple(sorted((conj[i], conj[j]))):
+                        assert v == _splitmix_exponent(seed, i, j, d, n)
+            if seed == 0:
+                differs = sum(out[k] != e[k] for k in range(d*d))
+                assert differs > d * d // 2

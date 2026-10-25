@@ -318,3 +318,42 @@ void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
         }
     }
 }
+
+/* RS-S004 control: draws are constant on the orbits of the exact identities
+ * E[j][i] = E[i][j] + S[i][j]*(n/2) (reciprocity) and E[c[i]][c[j]] = -E[i][j]
+ * (complex conjugation, c = conjugate-prime index). The draw for an orbit uses
+ * the rs_random counter of its smallest ordered representative (a < b). The
+ * pair (i, c[i]) is fixed by both identities; its exponent is copied from
+ * forced[i]. Each row is written by one thread, so the result is deterministic.
+ * Returns the number of rows whose mask is not conjugation-invariant.
+ */
+uint64_t rs_random_conj(uint8_t *E, const uint8_t *S, const int32_t *c,
+                        const uint8_t *forced, int D, int n, uint64_t seed) {
+    uint64_t errors = 0;
+    int h = n / 2;
+    omp_set_num_threads(4);
+    #pragma omp parallel for schedule(static) reduction(+:errors)
+    for (int i = 0; i < D; i++) {
+        E[(size_t)i * D + i] = 255;
+        int ci = c[i];
+        for (int j = 0; j < D; j++) {
+            if (j == i) continue;
+            if (j == ci) { E[(size_t)i * D + j] = forced[i]; continue; }
+            int cj = c[j];
+            if (S[(size_t)i * D + j] != S[(size_t)ci * D + cj]) errors++;
+            int a = i < j ? i : j, b = i < j ? j : i;
+            int a2 = ci < cj ? ci : cj, b2 = ci < cj ? cj : ci;
+            int conjugated = a2 < a || (a2 == a && b2 < b);
+            if (conjugated) { a = a2; b = b2; }
+            uint64_t state = seed + (uint64_t)a * D + b, u;
+            do { state += UINT64_C(0x9e3779b97f4a7c15); u = mix64(state); }
+            while (u < (uint64_t)(-((uint64_t)n)) % n);
+            int k = u % n;                       /* exponent at (a, b) */
+            int ri = conjugated ? ci : i;
+            if (ri != a) k = (k + S[(size_t)a * D + b] * h) % n;  /* transpose */
+            if (conjugated) k = (n - k) % n;
+            E[(size_t)i * D + j] = k;
+        }
+    }
+    return errors;
+}
