@@ -696,3 +696,28 @@ is withdrawn; it stays visible for the record.
 **Open.** Why a purely 2-adic sign moves the main term between classes that differ at 3. A
 plausible route is the 2-adic cubic factor (2/ρ)₃ in the Hasse–Davenport factorization, but this
 is not derived.
+
+
+## RS-S011: selection rule, registered before the fresh-window data
+
+**EXPLORATORY** (`results/phase1i_2026-10-25.json`, primes up to 1.28·10⁶). The statistic is
+B(j, χ), the prime-level twisted Gauss-sum bias for unit class j and character χ = (m, s1, s2) of
+(ℤ[ω]/4)^× ≅ C₃ × C₂ × C₂.
+
+- The main terms concentrate on the characters with trivial cubic part (m = 0) that are odd at −1
+  (s1 = 1).
+- The strongest pairs are (j = 0, χ = 011) and (j = 3, χ = 010), with 3.83 random-walk units.
+
+**Exact identities.**
+
+- `(2/ρ)₃ = χ(1,0,0)` and `(−1/p) = χ(0,0,1)`.
+- The matrix-normalization sign is not a character. It expands as
+  `ψ = (ρ̄/ρ)₆ = ½(χ₀₀₀ − χ₀₀₁ − χ₀₁₀ − χ₀₁₁)`, which explains how it relabels the main term.
+
+**RS-S011-SEL.** Fresh window 1.28·10⁶ < p ≤ 1.92·10⁶. Both conditions must hold:
+
+- the mean of B² over the 12 rule pairs (m = 0, s1 = 1) is ≥ 2.0;
+- the means of B² over the 48 cubic-nontrivial pairs and over the 12 pairs with m = 0, s1 = 0 are
+  each ≤ 1.5.
+
+The random-walk expectation of each mean is 1.

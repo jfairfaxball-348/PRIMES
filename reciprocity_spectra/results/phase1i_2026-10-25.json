@@ -16,7 +16,16 @@
     "m s1 s2 = 210",
     "m s1 s2 = 211"
   ],
-  "predictions": [],
+  "predictions": [
+    {
+      "id": "RS-S011-SEL",
+      "X": 1920000,
+      "xmin": 1280000,
+      "prediction": "Fresh window 1.28e6 < p <= 1.92e6 (primary split primes): with B(j,chi) as defined, the mean of B^2 over the 12 rule pairs {all j, chi with m = 0 and s1 = 1 (chi(-1) = -1, trivial cubic part)} is >= 2.0, while the mean of B^2 over the 48 pairs with m != 0 is <= 1.5 and over the 12 pairs with m = 0, s1 = 0 is <= 1.5. (Random-walk expectation of each mean: 1.)",
+      "rule_min": 2.0,
+      "other_max": 1.5
+    }
+  ],
   "prediction_commit": null,
   "runs": [
     {
@@ -436,5 +445,6 @@
       "code_commit": "9ade9a5c1383dbd4a2d4647c327e9a49466b932e",
       "started_at": "2026-10-25T20:38:43.401375+00:00"
     }
-  ]
+  ],
+  "prediction_basis": "EXPLORATORY windows in this file (see printed pooled means); psi = (chi000 - chi001 - chi010 - chi011)/2 exactly."
 }

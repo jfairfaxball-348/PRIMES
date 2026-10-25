@@ -116,7 +116,7 @@ def main():
            'command': 'python ' + ' '.join(sys.argv), 'code_commit': phase1c.legacy.shell('git', 'rev-parse', 'HEAD'),
            'started_at': datetime.now(UTC).isoformat()}
     if args.label == 'REGISTERED':
-        assert doc['prediction_commit']
+        assert doc['prediction_commit'] and (args.x, args.xmin) == (1920000, 1280000)
         score(doc, row)
     doc['runs'].append(row)
     phase1c.phase1b.RESULT, phase1c.phase1b.BRANCH = RESULT, phase1c.BRANCH
@@ -131,16 +131,17 @@ def main():
 
 
 def score(doc, row):
-    b = np.array(next(iter(row['windows'].values()))['B'])
-    out = []
-    for p in doc['predictions']:
-        main = [(j, CHARS.index(tuple(c))) for j, c in p['main_pairs']]
-        rest = [(j, c) for j in range(6) for c in range(12) if (j, c) not in main]
-        lo_main = min(b[j, c] for j, c in main)
-        hi_rest = max(b[j, c] for j, c in rest)
-        out.append({'id': p['id'], 'min_main': float(lo_main), 'max_rest': float(hi_rest),
-                    'outcome': 'PASS' if lo_main >= p['main_min'] and hi_rest <= p['rest_max'] else 'FAIL'})
-    row['prediction_outcomes'] = out
+    """Pooled mean of B^2 over the rule pairs (m = 0, s1 = 1) and over the two complementary groups."""
+    b2 = np.array(next(iter(row['windows'].values()))['B']) ** 2
+    groups = {'rule': [], 'cubic_nontrivial': [], 'even_trivial_cubic': []}
+    for j in range(6):
+        for c, (m, s1, _) in enumerate(CHARS):
+            key = 'rule' if m == 0 and s1 == 1 else 'cubic_nontrivial' if m else 'even_trivial_cubic'
+            groups[key].append(b2[j, c])
+    means = {k: float(np.mean(v)) for k, v in groups.items()}
+    p = doc['predictions'][0]
+    ok = means['rule'] >= p['rule_min'] and max(means['cubic_nontrivial'], means['even_trivial_cubic']) <= p['other_max']
+    row['prediction_outcomes'] = [{'id': p['id'], 'means': means, 'outcome': 'PASS' if ok else 'FAIL'}]
 
 
 if __name__ == '__main__':
