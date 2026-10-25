@@ -17,7 +17,7 @@
       "prediction": "Family enrichment: mean over the top 8 right singular vectors of the projection onto span{conj(g6~) * (u/pi)_6 : 0 < N(u) <= 60, distinct symbol vectors}, divided by the same mean for a random-phase span of equal dimension (seed 5), is >= 2.0."
     }
   ],
-  "prediction_commit": null,
+  "prediction_commit": "f3a1b75",
   "superseded_exploratory": [
     {
       "X": 40000,
