@@ -757,3 +757,35 @@ must include a power calculation.
 **Disposition.** The 2-adic character selection rule is NOT established. Its registered forms
 failed twice. CAND-001 freezes only what passed fresh tests: RS-7b (matrix) and RS-S010-K2
 (prime-level unit classes).
+
+
+## RS-S012: twist-strength scaling laws (registered before fresh data)
+
+**Exact.** `test_twist_norm_equals_sum_of_twisted_prime_gauss_sums` verifies the dispersion
+reduction ‖C w_u‖² = Σ_π |S(πu)|², with diagonal D(D − 1).
+
+**Cubic calibration (EXPLORATORY).** Patterson's coefficients (Pat77 Thm 8.1, as in Dunn–Radziwiłł
+(5.7)–(5.8)) are unimodular on squarefree c ≡ 1 (mod 3) and satisfy τ(cd³) ∝ |d|. Together
+these predict:
+
+- θ_u² ∝ N(u)^{−1/3};
+- cube invariance;
+- squarefree support;
+- associate suppression.
+
+The measured ratio (r_u²−1)·N_cf(u)^{1/3}/(r₁²−1) over 142 twists:
+
+| X | mean | sd | residual slope |
+|---:|---:|---:|---:|
+| 40000 | 0.881 | 0.038 | −0.039 |
+| 160000 | 0.921 | 0.025 | −0.025 |
+
+**Sextic law (EXPLORATORY).** The ratio (r_u²−1)·N(u)^{1/6}/(r₁²−1) is constant to about 3% over
+all ±primary u, with no squarefree condition (mean 0.936, sd 0.028 at X = 6.4·10⁵). This
+confirms Astra's exponent −1/6. The earlier fitted −0.19 was finite-size bias.
+
+**Registered:**
+
+- **RS-S012-PAT-CUBIC (X = 320000).** The mean ratio lies in [0.90, 1.00], with sd ≤ 0.03.
+- **RS-S012-LAW-SEXTIC (X = 10⁶).** The mean ratio lies in [0.90, 1.00], with sd ≤ 0.035, over
+  80 twists. In addition, the dichotomy holds.

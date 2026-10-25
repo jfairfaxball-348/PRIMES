@@ -9488,5 +9488,42 @@
     }
   ],
   "basis_160000": "EXPLORATORY at X=40000 (after the registered A2 FAILs): squarefree-only slope -0.377 (144 twists); the cube-free-squarefree classifier separates all 164 +-primary twists at r = 1.05 (non-squarefree r = 0.90-0.93); other associates max r 0.931. Classifier defined in scripts/phase1g.py.",
-  "prediction_commit_160000": "98118bf"
+  "prediction_commit_160000": "98118bf",
+  "patterson_ratio_check": {
+    "classification": "EXPLORATORY (RS-S012, post hoc on existing data)",
+    "definition": "(r_u^2-1) N(u)^(1/3) / (r_1^2-1) over +-primary u with squarefree cube-free part, 1<N(u)<=200; Patterson (Pat77 Thm 8.1; Dunn-Radziwill (5.7)) predicts 1 up to finite-X corrections",
+    "results": {
+      "40000": {
+        "n": 144,
+        "mean": 0.9245132165998543,
+        "sd": 0.36698085156066923,
+        "residual_slope": -0.04401023748410495
+      },
+      "160000": {
+        "n": 144,
+        "mean": 0.9641390677196119,
+        "sd": 0.36111735554423674,
+        "residual_slope": -0.03010448038670858
+      }
+    },
+    "results_cube_free_norm": {
+      "40000": {
+        "n": 142,
+        "mean": 0.8811965013406973,
+        "sd": 0.038411619707837914,
+        "min": 0.8068185667220237,
+        "max": 0.9753923487138619,
+        "residual_slope": -0.03872945705036129
+      },
+      "160000": {
+        "n": 142,
+        "mean": 0.9213804630396066,
+        "sd": 0.0245961249111318,
+        "min": 0.8734399340568527,
+        "max": 0.9932718740267525,
+        "residual_slope": -0.02497273687032662
+      }
+    },
+    "note": "u = +-8 (cube) has the same twist vector as u = 1 (ratio 1 with cube-free norm), as Patterson tau(c d^3) ~ |d| tau(c) predicts."
+  }
 }

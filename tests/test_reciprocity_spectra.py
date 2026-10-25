@@ -517,3 +517,32 @@ def test_mod4_unit_group_and_two_adic_characters():
     psi = {p: (-1) ** (sextic_residue_exponent(p.a - p.b, -p.b, p) // 3) for p in primes}
     for chi in itertools.product(range(3), range(2), range(2)):
         assert any(abs(psi[p] - mod4_character(*chi, p.a, p.b)) > 1e-9 for p in primes)
+
+
+def test_twist_norm_equals_sum_of_twisted_prime_gauss_sums():
+    """||C w_u||^2 = sum_pi |S(pi u)|^2, S(c) = sum_{rho != pi} conj((c/rho)_6) g~(rho) (exact), with
+    diagonal part sum_pi sum_{rho != pi, rho prime to u} 1 (= D(D-1) for u prime to the index)."""
+    from reciprocity_spectra.arith import sextic_gauss_sum
+
+    z6 = cmath.exp(1j * math.pi / 3)
+    index, mat = residue_matrix(6, 400)
+    g = [sextic_gauss_sum(p) / math.sqrt(p.p) for p in index]
+    for c, d in [(2, 0), (-1, -3), (1, 1), (0, 1), (5, 0)]:
+        sym = [sextic_residue_exponent(c, d, p) for p in index]
+        w = [0j if k is None else g[i].conjugate() * z6 ** k for i, k in enumerate(sym)]
+        lhs = sum(abs(sum(z6 ** mat[i][j] * w[j] for j in range(len(index)) if j != i)) ** 2
+                  for i in range(len(index)))
+        rhs, diag = 0.0, 0
+        for i, pi in enumerate(index):
+            total = 0j
+            for j, rho in enumerate(index):
+                if j == i:
+                    continue
+                k = sextic_residue_exponent(pi.a * c - pi.b * d, pi.a * d + pi.b * c - pi.b * d, rho)  # (pi u / rho)
+                if k is not None:
+                    total += z6 ** (-k) * g[j]
+                    diag += 1
+            rhs += abs(total) ** 2
+        assert abs(lhs - rhs) < 1e-8 * rhs
+        assert diag == sum(1 for i in range(len(index)) for j in range(len(index))
+                           if j != i and sym[j] is not None)

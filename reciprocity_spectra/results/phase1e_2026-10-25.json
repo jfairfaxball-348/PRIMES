@@ -62724,5 +62724,120 @@
       "mean": 0.017064001842223744,
       "max": 0.04757194755442179
     }
+  },
+  "sextic_ratio_check": {
+    "classification": "EXPLORATORY (RS-S012, post hoc)",
+    "definition": "(r_u^2-1) N(u)^(1/6) / (r_1^2-1) over \"+\" twists by +-primary u coprime to 3, N(u)>1; Astra Q2 predicts a u-independent constant if the mean square of sextic theta coefficients is constant",
+    "note": "squarefree here means the cube-free part is squarefree (phase1g.squarefree), as for the cubic calibration",
+    "results": {
+      "40000": {
+        "squarefree": {
+          "n": 210,
+          "mean": 0.8834004632108918,
+          "sd": 0.051104106164807546
+        },
+        "non-squarefree": {
+          "n": 22,
+          "mean": 0.8580090265673175,
+          "sd": 0.043469354711352944
+        },
+        "all": {
+          "n": 232,
+          "mean": 0.8809926545636564,
+          "sd": 0.05097548502156674,
+          "residual_slope": -0.00463923983279956
+        }
+      },
+      "160000": {
+        "squarefree": {
+          "n": 210,
+          "mean": 0.891899030100929,
+          "sd": 0.03421299204461268
+        },
+        "non-squarefree": {
+          "n": 22,
+          "mean": 0.8859100545948653,
+          "sd": 0.02177161666999971
+        },
+        "all": {
+          "n": 232,
+          "mean": 0.8913311100098368,
+          "sd": 0.03327998972322535,
+          "residual_slope": -0.019015095319301845
+        }
+      },
+      "20000": {
+        "squarefree": {
+          "n": 74,
+          "mean": 0.9534827996357159,
+          "sd": 0.07536201183650866
+        },
+        "non-squarefree": {
+          "n": 6,
+          "mean": 0.9142702755161088,
+          "sd": 0.025028382115479093
+        },
+        "all": {
+          "n": 80,
+          "mean": 0.9505418603267455,
+          "sd": 0.0735331856297533,
+          "residual_slope": -0.005198010995947194
+        }
+      },
+      "80000": {
+        "squarefree": {
+          "n": 74,
+          "mean": 0.9000924459241123,
+          "sd": 0.040946821136458825
+        },
+        "non-squarefree": {
+          "n": 6,
+          "mean": 0.8872575993140449,
+          "sd": 0.011819740853968343
+        },
+        "all": {
+          "n": 80,
+          "mean": 0.8991298324283573,
+          "sd": 0.03965854689032712,
+          "residual_slope": -0.02833348289374843
+        }
+      },
+      "320000": {
+        "squarefree": {
+          "n": 74,
+          "mean": 0.9199964997836629,
+          "sd": 0.03955723505558064
+        },
+        "non-squarefree": {
+          "n": 6,
+          "mean": 0.9157240840920124,
+          "sd": 0.016160660198462126
+        },
+        "all": {
+          "n": 80,
+          "mean": 0.9196760686067892,
+          "sd": 0.038318019145724275,
+          "residual_slope": -0.04435620109594134
+        }
+      },
+      "640000": {
+        "squarefree": {
+          "n": 74,
+          "mean": 0.9359030016799383,
+          "sd": 0.029466647045521193
+        },
+        "non-squarefree": {
+          "n": 6,
+          "mean": 0.9398803102224328,
+          "sd": 0.006228769697400409
+        },
+        "all": {
+          "n": 80,
+          "mean": 0.9362012998206255,
+          "sd": 0.028410725111401067,
+          "residual_slope": -0.03140662746780291
+        }
+      }
+    }
   }
 }

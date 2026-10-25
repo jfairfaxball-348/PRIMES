@@ -1,0 +1,31 @@
+{
+  "session": "RS-S012",
+  "date": "2026-10-25",
+  "definition": "RS-S012: registered tests of the twist-strength scaling laws (Patterson calibration and sextic law).\n\nratio_u = (r_u^2 - 1) N_cf(u)^(1/k) / (r_1^2 - 1), with k = 3 (cubic, w_u = conj(g3~)(u/.)_3, u +-primary with\nsquarefree cube-free part, N_cf = norm of the cube-free part) or k = 6 (sextic, w_u = conj(g6~)(u/.)_6, every\n+-primary u coprime to 3). Forward matrix-vector products only (byte engine), so D up to ~8e4 fits.\n",
+  "predictions": [
+    {
+      "id": "RS-S012-PAT-CUBIC",
+      "mode": "cubic",
+      "X": 320000,
+      "norm_max": 200,
+      "mean_min": 0.9,
+      "mean_max": 1.0,
+      "sd_max": 0.03,
+      "prediction": "Cubic, X = 320000 (cubic twist strengths never computed there): over +-primary u with squarefree cube-free part, 1 < N_cf(u) <= 200, the Patterson ratio (r_u^2-1) N_cf(u)^(1/3)/(r_1^2-1) has mean in [0.90, 1.00] and standard deviation <= 0.03.",
+      "basis": "mean 0.881 / 0.921, sd 0.038 / 0.025 at X = 40000 / 160000 (142 twists); Patterson Pat77 Thm 8.1 via Dunn-Radziwill (5.7)-(5.8) predicts a u-independent ratio tending to 1."
+    },
+    {
+      "id": "RS-S012-LAW-SEXTIC",
+      "mode": "sextic",
+      "X": 1000000,
+      "norm_max": 100,
+      "mean_min": 0.9,
+      "mean_max": 1.0,
+      "sd_max": 0.035,
+      "prediction": "Sextic, X = 1e6 (beyond all sextic twist data): over all \"+\" twists by +-primary u coprime to 3, 1 < N(u) <= 100 (80 twists), the ratio (r_u^2-1) N(u)^(1/6)/(r_1^2-1) has mean in [0.90, 1.00] and sd <= 0.035; and every +-primary r_u > 1 while every non-primary associate with N(u) <= 13 has r_u < 1.",
+      "basis": "mean 0.951, 0.899, 0.920, 0.936 and sd 0.074, 0.040, 0.038, 0.028 at X = 2e4, 8e4, 3.2e5, 6.4e5 (80 twists); Astra Q2 predicts exponent -1/6 with a u-independent constant."
+    }
+  ],
+  "prediction_commit": null,
+  "runs": []
+}
