@@ -20,7 +20,7 @@
       "prediction": "Primes only, matrix normalization g_ours = (conj rho/rho)_6 g6(1, rho): |sum g_ours conj((zeta6^j/rho)_6)/sqrt(p)|/sqrt(count) >= 2.0 for j = 0 and <= 1.5 for every j in {1, 2, 4, 5}."
     }
   ],
-  "prediction_commit": null,
+  "prediction_commit": "e745eaa",
   "runs": [
     {
       "X": 320000,
