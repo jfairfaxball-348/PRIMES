@@ -369,3 +369,28 @@ def test_native_sextic_gauss_sums(tmp_path):
         re, im = struct.unpack_from('=dd', g, 16 * j)
         want = sextic_gauss_sum(DegreeOnePrime(3, p, a, b)) / math.sqrt(p)
         assert abs(complex(re, im) - want) < 1e-9
+
+
+def test_sextic_unit_symbols_are_characters_of_the_norm():
+    """(zeta6^j / pi)_6 = zeta6^(j(p-1)/6): a character of p mod 36, equal to (-1/p) for j = 3.
+
+    So for an associate u' = zeta6^j u, (u'/pi)_6 = zeta6^(j(p-1)/6) (u/pi)_6. The extra factor is
+    unramified at 3 (it depends on p mod 4 only) exactly for j in {0, 3}, i.e. u' = +-u.
+    """
+    primes = primary_eisenstein_primes(2000)
+    units = [(1, 0), (1, 1), (0, 1), (-1, 0), (-1, -1), (0, -1)]  # zeta6^j = (1 + w)^j
+    for prime in primes:
+        p = prime.p
+        for j, (c, d) in enumerate(units):
+            assert sextic_residue_exponent(c, d, prime) == (j * (p - 1) // 6) % 6
+        assert (-1) ** ((p - 1) // 6) == legendre(-1, p)
+    # multiplicativity in p of e(p) = (p - 1)/6 mod 6 on p = 1 mod 6, and its 3-part dependence
+    for p in range(7, 400, 6):
+        for q in range(7, 400, 6):
+            assert ((p * q - 1) // 6) % 6 == ((p - 1) // 6 + (q - 1) // 6) % 6
+    by_class = {}
+    for p in range(7, 2000, 6):
+        by_class.setdefault(p % 36, set()).add(((p - 1) // 6) % 6)
+    assert all(len(v) == 1 for v in by_class.values())
+    assert {p % 36 for p in range(7, 2000, 6) if ((p - 1) // 6) % 6 in (0, 3)} == {1, 19}
+    assert {p % 36 for p in range(7, 2000, 6) if ((p - 1) // 6) % 2 == 0} == {1, 13, 25}
