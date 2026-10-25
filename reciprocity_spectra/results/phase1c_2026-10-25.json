@@ -48200,7 +48200,63 @@
       "complete": true
     }
   ],
-  "sextic_run": null,
+  "sextic_run": {
+    "mode": "sextic",
+    "X": 320000,
+    "controls": {},
+    "D": 27554,
+    "matrix_sha256": "876aa36e369450315fd0ea54bf8039c296e5c70b91143391a603a23a0191b683",
+    "sign_mask_sha256": "f660fbee1fdd01f6bf2f70613deb60e6949b6175b9a7027f72c107e6459956af",
+    "arithmetic": {
+      "code_commit": "0a1aac0086fbadcfd400ca1744e26a919dfc92b8",
+      "command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1c.py run",
+      "at_utc": "2026-10-25T08:26:43.008575+00:00",
+      "audit": {
+        "checked_entries": 759222916,
+        "counts": {
+          "diagonal_mismatches": 0,
+          "conjugation_mismatches": 0,
+          "reciprocity_mismatches": 0,
+          "boundary_mismatches": 0,
+          "invalid_exponents": 0,
+          "off_diagonal_zeros": 0,
+          "sextic_mask_conjugation_mismatches": 0
+        },
+        "all_exact": true
+      },
+      "top12": [
+        348.65039633997503,
+        347.58131331090937,
+        346.6805237876704,
+        343.60906605812465,
+        342.4444306581758,
+        341.36207632808083,
+        338.8128281572317,
+        338.36485098204764,
+        337.2479760862837,
+        336.97292272012385,
+        336.323733577288,
+        335.749314439992
+      ],
+      "gram_relative_residuals": [
+        8.467480113500425e-15,
+        3.2608695848062906e-15,
+        3.667783070179409e-15,
+        2.6997900958799e-15,
+        2.374911168529239e-15,
+        1.9047067530236328e-15,
+        5.2158484277354565e-15,
+        2.6876546922625593e-15,
+        3.123928590193878e-15,
+        2.358126667613967e-15,
+        5.748954261265483e-15,
+        2.2070482820971064e-12
+      ],
+      "solver_seed": 2,
+      "sigma1_over_edge": 1.0501899080121277,
+      "seconds": 425.01313811799946
+    }
+  },
   "quadratic_run": {
     "mode": "quad",
     "X": 80000,
