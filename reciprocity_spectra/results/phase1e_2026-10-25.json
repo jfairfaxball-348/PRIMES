@@ -1,7 +1,36 @@
 {
   "session": "RS-S006",
   "date": "2026-10-25",
-  "predictions": [],
+  "predictions": [
+    {
+      "id": "RS-S006-P7S-320000",
+      "X": 320000,
+      "pm_min": 1.1,
+      "other_max": 1.02,
+      "prediction": "Primary-class dichotomy: over all u = c + d w coprime to 3 with N(u) <= 100 (246 elements), for w_u = conj(g6~)*(u/pi)_6 normalized and r_u = ||C w_u||/sqrt(D): min r_u over +-primary u (d = 0 mod 3) >= 1.10 AND max r_u over the other associates <= 1.02."
+    },
+    {
+      "id": "RS-S006-P7U-320000",
+      "X": 320000,
+      "min": 1.37,
+      "max": 1.42,
+      "prediction": "r_1 = ||C conj(g6~)||/(sqrt(D)||g6~||) lies in [1.37, 1.42] (still below sqrt(2) = 1.414 is not required)."
+    },
+    {
+      "id": "RS-S006-P7S-640000",
+      "X": 640000,
+      "pm_min": 1.1,
+      "other_max": 1.02,
+      "prediction": "Primary-class dichotomy: over all u = c + d w coprime to 3 with N(u) <= 100 (246 elements), for w_u = conj(g6~)*(u/pi)_6 normalized and r_u = ||C w_u||/sqrt(D): min r_u over +-primary u (d = 0 mod 3) >= 1.10 AND max r_u over the other associates <= 1.02."
+    },
+    {
+      "id": "RS-S006-P7U-640000",
+      "X": 640000,
+      "min": 1.375,
+      "max": 1.435,
+      "prediction": "r_1 = ||C conj(g6~)||/(sqrt(D)||g6~||) lies in [1.375, 1.435] (still below sqrt(2) = 1.414 is not required)."
+    }
+  ],
   "prediction_commit": null,
   "model": "RS-S006: per-twist sextic spike strengths and a twist-count model of the RS-7a cluster.\n\nFor w_u = conj(g6~) * (u/pi)_6^{+-1}, normalized, r_u = ||C w_u|| / sqrt(D). In the square spiked\nmodel C = R + theta x w*, ||C w||^2 ~ D + theta^2, so theta_u / sqrt(D) = sqrt(r_u^2 - 1) and a\nspike is supercritical (an outlier) iff r_u > sqrt(2). A collective check compresses C onto the\nfamily span W: eigenvalues of W* C* C W / D against the same compression of matched controls.\nUse OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4; 2700-second alarm per job.\n",
   "runs": [
@@ -52621,5 +52650,6 @@
       "r_u1": 1.3622346834162897,
       "total_seconds": 30.5615498330003
     }
-  ]
+  ],
+  "prediction_basis": "EXPLORATORY rayleigh_runs/runs: dichotomy exact at X = 20000, 40000, 80000, 160000 (min +pm r 1.142, 1.117 [N<=300], 1.158, 1.135 [N<=300]; max other r 0.945, 0.962, 0.974, 0.980); r_1 = 1.3224, 1.3540, 1.3622, 1.3790, roughly +0.019 per doubling of X with +-0.01 jitter, extrapolating to about 1.393 (X=320000) and 1.406 (X=640000). Rayleigh quotients have never been computed at X = 320000 or 640000, and no sextic data exists at X = 640000."
 }

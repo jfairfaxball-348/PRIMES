@@ -445,3 +445,37 @@ while the upper tail is stretched: the 0.99 quantile is 1.926 against 1.915–1.
 **Status of the identification.** It is partial. The family span captures only part of each
 vector, and the per-u spike strengths have not been measured. The mechanism is unknown, and the
 cluster contradicts the subcritical RS-5 heuristic at these scales.
+
+
+## RS-S006: pre-registered twist-dichotomy predictions (before X = 320000 / 640000 Rayleigh data)
+
+**Set-up.** Let `w_u = conj(g̃6)·(u/π)₆`, normalized, and `r_u = ‖C w_u‖/√D`. In the
+spiked model, `r_u² − 1 = θ_u²/D`, and a twist is individually supercritical iff `r_u > √2`.
+
+**EXPLORATORY findings** (`results/phase1e_2026-10-25.json`, X = 20000–160000):
+
+- **No twist is individually supercritical.** The maximum is r₁ = 1.379 at X = 160000.
+  - So "count the supercritical twists" predicts 0 outliers where 7–22 are observed. That model
+    FAILS.
+  - A synthetic model (control plus subcritical spikes with random left directions) gives about 16
+    small outliers at X = 40000, against 7 larger ones observed. That model also FAILS.
+- **Dichotomy (exact at every tested scale).** Among "+" twists by u coprime to 3, every
+  ±primary u (d ≡ 0 mod 3, the normalization of the index primes) has r ≥ 1.117. Every other
+  associate has r ≤ 0.980, below the random level of about 1.0.
+- **Ramified twist.** The ramified u = 1 − ω is strong with the conjugate sign, as in the cubic
+  RS-2 family.
+- **Strength profile.** Strength decays slowly with N(u) and grows with X.
+- **Exact symmetry.** Twisting by (−1/π)₆ leaves r unchanged. Conjugation sends g6(π) to
+  (−1/π)₆·conj(g6(π̄)), which forces `Re⟨C w₊, C w₋⟩ = 0`. The null already shares this.
+
+**Mechanism hypothesis (unproved).** For ±primary u, sextic reciprocity turns (u/π)₆ into a
+character of π modulo u. The family is then twisted Gauss sums, as in RS-2. A non-primary
+associate adds a unit supplementary factor, which destroys the alignment.
+
+**Predictions (N(u) ≤ 100, 246 elements u coprime to 3):**
+
+- **RS-S006-P7S-320000 and RS-S006-P7S-640000.** Both conditions must hold:
+  - min r over ±primary u ≥ 1.10;
+  - max r over the other associates ≤ 1.02.
+- **RS-S006-P7U-320000.** r₁ ∈ [1.370, 1.420].
+- **RS-S006-P7U-640000.** r₁ ∈ [1.375, 1.435].
