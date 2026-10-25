@@ -57,7 +57,7 @@
       "prediction": "0.035 <= sigma1/(2 sqrt D) - conj_control_seed0 sigma1/(2 sqrt D) <= 0.065 (top-12 Lanczos, solver seed 2)"
     }
   ],
-  "prediction_commit": null,
+  "prediction_commit": "ed4961d",
   "exploratory": [
     {
       "mode": "cubic",
