@@ -3,6 +3,7 @@ import cmath
 import math
 
 from reciprocity_spectra.arith import (
+    DegreeOnePrime,
     gauss_sum,
     jacobi_sum,
     legendre,
@@ -332,3 +333,39 @@ def test_native_conjugation_orbit_control(tmp_path):
             if seed == 0:
                 differs = sum(out[k] != e[k] for k in range(d*d))
                 assert differs > d * d // 2
+
+
+def test_sextic_gauss_sum_identities():
+    """|g6|^2 = p and g6^2 = J(chi6, chi6) g3, since chi6^2 is the cubic character."""
+    from reciprocity_spectra.arith import sextic_gauss_sum, sextic_jacobi_sum
+
+    for prime in primary_eisenstein_primes(400):
+        g6, g3 = sextic_gauss_sum(prime), gauss_sum(prime)
+        assert abs(abs(g6) ** 2 - prime.p) < 1e-8 * prime.p
+        assert abs(g6 * g6 - sextic_jacobi_sum(prime) * g3) < 1e-8 * prime.p
+
+
+def test_native_sextic_gauss_sums(tmp_path):
+    import shutil
+    import struct
+    import subprocess
+    from pathlib import Path
+
+    import pytest
+
+    from reciprocity_spectra.arith import sextic_gauss_sum
+
+    if not shutil.which('cc'):
+        pytest.skip('C compiler unavailable')
+    source = Path(__file__).resolve().parents[1] / 'reciprocity_spectra/native/residue_engine.c'
+    exe = tmp_path / 'engine'
+    subprocess.run(['cc', '-O2', '-fopenmp', '-o', str(exe), str(source), '-lm'], check=True)
+    subprocess.run([str(exe), 'sextic', '400', str(tmp_path / 'm.bin'), str(tmp_path / 'g.bin')],
+                   check=True)
+    raw, g = (tmp_path / 'm.bin').read_bytes(), (tmp_path / 'g.bin').read_bytes()
+    d = struct.unpack_from('=i', raw)[0]
+    for j in range(d):
+        p, a, b = struct.unpack_from('=qqq', raw, 4 + 24 * j)
+        re, im = struct.unpack_from('=dd', g, 16 * j)
+        want = sextic_gauss_sum(DegreeOnePrime(3, p, a, b)) / math.sqrt(p)
+        assert abs(complex(re, im) - want) < 1e-9

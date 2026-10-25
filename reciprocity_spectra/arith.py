@@ -243,6 +243,21 @@ def sextic_residue_exponent(c: int, d: int, prime: DegreeOnePrime) -> int | None
     raise ArithmeticError("sextic symbol is not a sixth root of unity")
 
 
+def sextic_gauss_sum(prime: DegreeOnePrime) -> complex:
+    """``g6(pi) = sum_{t=1}^{p-1} (t/pi)_6 e(t/p)`` with ``zeta6 = 1 + w`` (sextic convention)."""
+    p = prime.p
+    zeta6 = cmath.exp(1j * math.pi / 3)
+    return sum(zeta6 ** sextic_residue_exponent(t, 0, prime) * cmath.exp(2j * math.pi * t / p)
+               for t in range(1, p))
+
+
+def sextic_jacobi_sum(prime: DegreeOnePrime) -> complex:
+    """``J(chi6, chi6) = sum_t chi6(t) chi6(1 - t)``."""
+    zeta6 = cmath.exp(1j * math.pi / 3)
+    return sum(zeta6 ** (sextic_residue_exponent(t, 0, prime) + sextic_residue_exponent(1 - t, 0, prime))
+               for t in range(2, prime.p))
+
+
 def sextic_reciprocity_sign(x: DegreeOnePrime, y: DegreeOnePrime) -> int:
     """Exact pairwise reversal sign from the two field-quadratic symbols.
 
