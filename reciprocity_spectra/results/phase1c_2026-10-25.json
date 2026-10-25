@@ -17,5 +17,216 @@
   "predictions": [],
   "prediction_commit": null,
   "exploratory": [],
-  "registered": []
+  "registered": [],
+  "validation": {
+    "classification": "VALIDATION of the conjugation-matched control and engine path",
+    "cubic": {
+      "D": 2248,
+      "matrix_sha256": "3b3dba68e02b965b0a454513f248d44bd1495922fcf4a779a11f025d52e47160",
+      "arithmetic_identity_errors": {
+        "reciprocity": 0,
+        "conjugation": 0,
+        "diagonal_not_255": 0
+      },
+      "matrix_sha256_matches_RS-S002": true,
+      "top8": [
+        127.20267587256609,
+        108.51050224731969,
+        103.37180437693083,
+        101.33058411052568,
+        101.2756948219717,
+        100.28068590117745,
+        99.58918535836426,
+        98.73193573286161
+      ],
+      "reference_svds_top8": [
+        127.20267587256613,
+        108.51050224731942,
+        103.37180437693033,
+        101.33058411052554,
+        101.27569482197156,
+        100.28068590117748,
+        99.58918535836443,
+        98.73193573286144
+      ],
+      "max_relative_error": 4.884981308350689e-15,
+      "control_identity_errors": {
+        "reciprocity": 0,
+        "conjugation": 0,
+        "diagonal_not_255": 0
+      },
+      "control_top8": [
+        95.59618294732633,
+        95.47346592939495,
+        94.61129376427954,
+        94.33619311434374,
+        93.98250390888106,
+        93.75786584051757,
+        93.63511282459561,
+        93.52988020222202
+      ],
+      "control_reference_svds_top8": [
+        95.5961829473263,
+        95.47346592939448,
+        94.61129376427971,
+        94.33619311434383,
+        93.98250390888113,
+        93.75786584051764,
+        93.63511282459568,
+        93.52988020222209
+      ],
+      "control_max_relative_error": 4.884981308350689e-15,
+      "control_complex_matvec_relative_errors": [
+        8.93270221486178e-16,
+        9.47149659767966e-16
+      ],
+      "control_sha256": "b30b6a1a3fdabf4ee0947b16150f9499e0ac6824e08ac734ee4553f2dcfdcd39",
+      "control_upper_exponent_counts": [
+        842984,
+        841322,
+        841322
+      ],
+      "control_times_conjugation_hermitian_max_error": 7.447602459741819e-16
+    },
+    "quartic": {
+      "D": 2250,
+      "matrix_sha256": "0265a9017d1133aecadfe6bf0b6d95207a327eed842c204920148b8b59302edf",
+      "arithmetic_identity_errors": {
+        "reciprocity": 0,
+        "conjugation": 0,
+        "diagonal_not_255": 0
+      },
+      "matrix_sha256_matches_RS-S002": true,
+      "top8": [
+        101.77354434334754,
+        98.25421695493715,
+        97.65108193403785,
+        97.03342874266829,
+        96.17239659239343,
+        95.6533825310441,
+        95.23740820102975,
+        94.72142323242674
+      ],
+      "reference_svds_top8": [
+        101.77354434334774,
+        98.25421695493701,
+        97.65108193403823,
+        97.03342874266774,
+        96.17239659239361,
+        95.65338253104407,
+        95.23740820102972,
+        94.72142323242629
+      ],
+      "max_relative_error": 5.773159728050814e-15,
+      "control_identity_errors": {
+        "reciprocity": 0,
+        "conjugation": 0,
+        "diagonal_not_255": 0
+      },
+      "control_top8": [
+        94.59288788902538,
+        94.35870055087156,
+        93.942324310712,
+        93.72201923400293,
+        93.69242290812548,
+        93.56804414494947,
+        93.24932285951995,
+        93.1177782933817
+      ],
+      "control_reference_svds_top8": [
+        94.59288788902518,
+        94.3587005508714,
+        93.94232431071197,
+        93.72201923400306,
+        93.69242290812564,
+        93.56804414494954,
+        93.24932285951994,
+        93.1177782933821
+      ],
+      "control_max_relative_error": 4.218847493575595e-15,
+      "control_complex_matvec_relative_errors": [
+        7.49746520479697e-16,
+        9.763591177267702e-16
+      ],
+      "control_sha256": "772fb4e090d8c996fd6ff96e1b005d02a0383346498cf209ec175d6e13e5d7fd",
+      "control_upper_exponent_counts": [
+        634075,
+        632085,
+        631891,
+        632074
+      ]
+    },
+    "sextic": {
+      "D": 2248,
+      "matrix_sha256": "3e3e9760ad27f193afbe3fc3a106a70cbf3c37baf3880e8b6bffabd3dbde3dce",
+      "arithmetic_identity_errors": {
+        "reciprocity": 0,
+        "conjugation": 0,
+        "diagonal_not_255": 0
+      },
+      "top8": [
+        97.35383007475868,
+        96.51670379460491,
+        96.26332006351113,
+        95.40087621499691,
+        95.0948230836765,
+        94.31265942605759,
+        94.17311547805386,
+        93.96587968563104
+      ],
+      "reference_svds_top8": [
+        97.35383007475819,
+        96.51670379460509,
+        96.26332006351099,
+        95.40087621499706,
+        95.09482308367646,
+        94.3126594260576,
+        94.17311547805392,
+        93.96587968563102
+      ],
+      "max_relative_error": 4.884981308350689e-15,
+      "control_identity_errors": {
+        "reciprocity": 0,
+        "conjugation": 0,
+        "diagonal_not_255": 0
+      },
+      "control_top8": [
+        94.5864707880777,
+        93.77952381097101,
+        93.7728910412639,
+        93.59623368978001,
+        93.42351950087546,
+        93.24932180531499,
+        93.1709894773595,
+        93.01171319334799
+      ],
+      "control_reference_svds_top8": [
+        94.58647078807695,
+        93.77952381097138,
+        93.77289104126393,
+        93.59623368977985,
+        93.42351950087561,
+        93.2493218053148,
+        93.17098947735921,
+        93.01171319334787
+      ],
+      "control_max_relative_error": 7.993605777301127e-15,
+      "control_complex_matvec_relative_errors": [
+        9.459697089084568e-16,
+        1.0815487865255257e-15
+      ],
+      "control_sha256": "8ddbe035c1af5cc48073c0fe13e5e85899e4b4da4568321900b7a965ac25925b",
+      "control_upper_exponent_counts": [
+        421674,
+        419696,
+        421626,
+        421310,
+        421626,
+        419696
+      ]
+    },
+    "passed": true,
+    "code_commit": "e486a077a971bae4489b21524fd7ddaa8b32932a",
+    "command": "OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1c.py validate"
+  }
 }
