@@ -14,7 +14,49 @@
     "quadratic": "n = 2 has rational indices and no conjugation; its RS-S002 null is unchanged."
   },
   "control_definition": "native rs_random_conj: SplitMix64 counter draw (as rs_random) of the smallest ordered representative (a<b) of each {transpose, conjugation} orbit; transposes get the exact mask shift; conjugate images get -k; (i, c(i)) copied; diagonal 255.",
-  "predictions": [],
+  "predictions": [
+    {
+      "id": "RS-S004-P6C-cubic",
+      "mode": "cubic",
+      "X": 80000,
+      "statistic": "abs_gap_ratio_difference",
+      "max": 0.03,
+      "prediction": "abs(mean_bulk_gap_ratio - conj_control_seed0_mean_bulk_gap_ratio) <= 0.03 (RS-S003 window/deflation/tie rules)"
+    },
+    {
+      "id": "RS-S004-P6C-quartic",
+      "mode": "quartic",
+      "X": 80000,
+      "statistic": "abs_gap_ratio_difference",
+      "max": 0.03,
+      "prediction": "abs(mean_bulk_gap_ratio - conj_control_seed0_mean_bulk_gap_ratio) <= 0.03 (RS-S003 window/deflation/tie rules)"
+    },
+    {
+      "id": "RS-S004-P1C",
+      "mode": "cubic",
+      "X": 80000,
+      "statistic": "sigma1_over_edge_excess",
+      "min": 0.4,
+      "prediction": "sigma1/(2 sqrt D) - conj_control_seed0 sigma1/(2 sqrt D) >= 0.40 (arithmetic sigma1 at this X is known from the pilot; this tests the corrected control)"
+    },
+    {
+      "id": "RS-S004-P3C",
+      "mode": "quartic",
+      "X": 80000,
+      "statistic": "sigma1_over_edge_excess",
+      "min": 0.1,
+      "prediction": "sigma1/(2 sqrt D) - conj_control_seed0 sigma1/(2 sqrt D) >= 0.10 (arithmetic sigma1 at this X is known from the pilot; this tests the corrected control)"
+    },
+    {
+      "id": "RS-S004-P5C",
+      "mode": "sextic",
+      "X": 320000,
+      "statistic": "sigma1_over_edge_excess",
+      "min": 0.035,
+      "max": 0.065,
+      "prediction": "0.035 <= sigma1/(2 sqrt D) - conj_control_seed0 sigma1/(2 sqrt D) <= 0.065 (top-12 Lanczos, solver seed 2)"
+    }
+  ],
   "prediction_commit": null,
   "exploratory": [
     {
@@ -52161,5 +52203,6 @@
     "passed": true,
     "code_commit": "e486a077a971bae4489b21524fd7ddaa8b32932a",
     "command": "OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1c.py validate"
-  }
+  },
+  "prediction_rules": "Control: rs_random_conj seed 0 at the same D. Cubic/quartic X=80000 use dense full SVD (scipy svdvals) for both statistics; sextic X=320000 uses the RS-S002/3 Lanczos settings (tol 1e-11, solver seed 2). Basis: EXPLORATORY rows in this file (gap differences <= 0.02 at X=20000/40000 over seeds 0-2; sextic excess 0.0325/0.0421 at X=40000/160000, extrapolated ~+0.005 per doubling to ~0.047). New IDs; RS-S003 FAIL outcomes are unchanged. Every listed prediction is scored verbatim; any FAIL is retained."
 }

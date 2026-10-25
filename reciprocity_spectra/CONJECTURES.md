@@ -306,3 +306,33 @@ finite data do not disprove eventual asymptotic limits. The original RS-6 bulk c
 PILOT, and RS-1, RS-2, RS-3 and RS-4 retain their RS-S002 statuses. No prediction was revised.
 Additional exact identities in a null ensemble require separate certification and fresh-scale
 predictions; they must not retroactively change these outcomes.
+
+
+## RS-S004: conjugation-matched null and pre-registered Phase-1c predictions (before test data)
+
+**Certified identities** (exact tests in `tests/test_reciprocity_spectra.py`; machine record in
+`results/phase1c_2026-10-25.json`): for n = 3, 4, 6, `(conj x/conj y)_n = conj((x/y)_n)`, and
+the reciprocity mask is conjugation-invariant. Reciprocity plus conjugation force
+`x = (π/conj π)_n` to satisfy `x = s·conj(x)`: `x = 1` (cubic), `x ∈ {±1}` or `{±i}` by
+`p mod 8` (quartic), `s = +1` and `x = ±1` (sextic). For n = 3, `H = C·P` (P the conjugation
+permutation) is exactly Hermitian and real in a real basis, so the cubic singular values are
+the moduli of the eigenvalues of a real symmetric matrix. No further identity was found;
+completeness is not claimed. The quadratic null (n = 2, no conjugation) is unchanged.
+
+**Control:** `rs_random_conj` (seed 0), drawing one uniform exponent per {transpose,
+conjugation} orbit and copying the (π, conj π) entries.
+
+**Predictions (new IDs; RS-S003 outcomes are not changed):**
+
+- **RS-S004-P6C-cubic / -quartic (X = 80000):**
+  `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`, using the RS-S003 window,
+  deflation and tie rules.
+- **RS-S004-P1C (cubic, X = 80000):** `σ₁/edge − control σ₁/edge ≥ 0.40`.
+- **RS-S004-P3C (quartic, X = 80000):** `σ₁/edge − control σ₁/edge ≥ 0.10`.
+  For P1C/P3C the arithmetic σ₁ at this X is already known from the pilot; these test the
+  corrected control.
+- **RS-S004-P5C (sextic, X = 320000):** `0.035 ≤ σ₁/edge − control σ₁/edge ≤ 0.065`.
+  This predicts that the sextic outlier persists above the corrected null.
+
+The basis is the EXPLORATORY rows in the JSON: gap-ratio differences ≤ 0.02 at X = 20000 and
+40000 over control seeds 0–2, and sextic excess 0.0325 and 0.0421 at X = 40000 and 160000.
