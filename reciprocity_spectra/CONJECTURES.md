@@ -789,3 +789,19 @@ confirms Astra's exponent −1/6. The earlier fitted −0.19 was finite-size bia
 - **RS-S012-PAT-CUBIC (X = 320000).** The mean ratio lies in [0.90, 1.00], with sd ≤ 0.03.
 - **RS-S012-LAW-SEXTIC (X = 10⁶).** The mean ratio lies in [0.90, 1.00], with sd ≤ 0.035, over
   80 twists. In addition, the dichotomy holds.
+
+### RS-S012 outcomes (scored verbatim against `0971270`)
+
+| ID | X | D | value | outcome |
+|---|---:|---:|---|---|
+| RS-S012-PAT-CUBIC | 320000 | 27554 | ratio 0.942 ± 0.019 over 108 twists | **PASS** |
+| RS-S012-LAW-SEXTIC | 10⁶ | 78462 | ratio 0.943 ± 0.022 over 78 twists | **PASS** |
+
+The registration text said "80 twists". The computed set has 78, because the cubes u = ±8 have
+cube-free norm 1 and are excluded, exactly as in the cubic definition. The criterion is on the
+mean and sd and is unaffected.
+
+The sextic dichotomy also holds at X = 10⁶: min ±primary r = 1.201, and max non-primary associate
+(N ≤ 13) r = 0.984. At this scale r₁ = 1.434.
+
+**CAND-001 gains statement 3, the sextic strength law.**

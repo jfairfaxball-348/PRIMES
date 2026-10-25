@@ -4,7 +4,7 @@ Status date: 2026-10-25
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1, entering Phase 2 for the sextic family. RS-S004–RS-S011 are complete:
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1, entering Phase 2 for the sextic family. RS-S004–RS-S012 are complete:
 
 - the conjugation-matched null is certified;
 - all five registered fresh-scale predictions PASS;
@@ -20,7 +20,7 @@ Status date: 2026-10-25
 - the RS-S003 refutations of the RS-5 finite form and the RS-6 local extension stand;
 - X = 640000 spectra are still untested (sextic Rayleigh data exist).
 
-RS-S009 evaluated the Astra referee reply. Its exact claims are verified, its cubic calibration was FAIL as stated, and the squarefree-corrected cubic twist law (RS-8) PASSES at X = 160000. RS-S010: Astra's Q5 FAILED as stated; RS-9 (unit-class selection of the Gauss-sum main term) PASSES at X = 1.28e6. RS-S011: the 2-adic character selection rule FAILED twice (not established); **CAND-001 frozen** (sextic twist dichotomy, matrix form plus prime-level unit-class bias); proof stage started, hard version first (`reciprocity_spectra/PROOF_ROUTE.md`). The next unit is RS-S012: exact verification of the dispersion reduction, then Type I local theory. Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
+RS-S009 evaluated the Astra referee reply. Its exact claims are verified, its cubic calibration was FAIL as stated, and the squarefree-corrected cubic twist law (RS-8) PASSES at X = 160000. RS-S010: Astra's Q5 FAILED as stated; RS-9 (unit-class selection of the Gauss-sum main term) PASSES at X = 1.28e6. RS-S011: the 2-adic character selection rule FAILED twice (not established); **CAND-001 frozen** (sextic twist dichotomy, matrix form plus prime-level unit-class bias); proof stage started, hard version first (`reciprocity_spectra/PROOF_ROUTE.md`). RS-S012: dispersion reduction exact; cubic Patterson calibration and sextic strength law (theta_u^2 ~ N(u)^(-1/6)) PASS at fresh scales; CAND-001 extended. The next unit is RS-S013: Type II (bilinear sextic sums), the hard-route crux. Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
 
 
 Previous stage line (D1-72, preserved): DISCOVERY-1 — D1-72 / S074 / SQ-036 E025 H25 ONE-SHOT CLOSED; OBS-025 REFUTED (25/48 POSITIVE SIGNED CLASSES < FROZEN 36/48); D25/H25 CONSUMED; 16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND; NEXT D1-73 / S075 / SQ-037 SOURCE-FREE DESIGN ONLY

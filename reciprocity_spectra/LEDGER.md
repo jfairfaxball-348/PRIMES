@@ -788,3 +788,34 @@ contains only what passed registered fresh tests:
 and measure how much of the off-diagonal term the S(πu) main terms carry. Then start T1, the
 local theory at 2 and 3, by reproducing the cubic RS-8 from Patterson's explicit coefficients.
 This is RS-S012.
+
+### RS-S012 (2026-10-25): exact reduction, cubic calibration, sextic strength law
+
+**Stage:** proof (hard route), mechanism calibration. **Branch:** `ccr-c363c6bb-0zejeu`. At the
+start of the session, on the owner's instruction, main was fast-forwarded to RS-S011 (`357e734`).
+
+**Exact.** `test_twist_norm_equals_sum_of_twisted_prime_gauss_sums` verifies the dispersion
+reduction (PROOF_ROUTE step 1) for five twists, including non-primary ones.
+
+**Literature input.** The statement of Patterson's cubic theta coefficients is taken from
+Dunn–Radziwiłł, arXiv 2109.07463v3, (5.7)–(5.8) and (5.17), fetched in this session.
+
+**EXPLORATORY.**
+
+- The cubic Patterson ratio is constant to 2–4% and converges toward 1.
+- The sextic ratio with exponent 1/6 is constant to about 3%, with no squarefree condition: squares
+  follow the same law. The earlier fitted exponent −0.19 was finite-size bias.
+
+**Registered** at `0971270`, before the fresh-scale data:
+
+| test | scale | outcome |
+|---|---|---|
+| RS-S012-PAT-CUBIC | X = 320000 | **PASS** |
+| RS-S012-LAW-SEXTIC | X = 10⁶, D = 78462 | **PASS** |
+
+**Changes:** CAND-001 gains statement 3. `PROOF_ROUTE.md` §6 records progress.
+
+**Validation:** pytest passes 357 tests, and targeted Ruff passes.
+
+**Next dependency:** T2, the hard-route crux. Measure the bilinear sextic sums, extract the exact
+large-sieve exponents, and state the gap. This is RS-S013.

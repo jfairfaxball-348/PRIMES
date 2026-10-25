@@ -141,3 +141,50 @@ large sieve with correction by a non-trivial main term" (Annals 200 (2024); arXi
 - all-n Kubota residues (T1 alone, as a theorem in its own right);
 - the function-field analogue over 𝔽_q[t];
 - a cubic-only theorem.
+
+## 6. Progress (RS-S012)
+
+**Step 1: done (exact).** The identity ‖C w_u‖² = Σ_π |S(πu)|² is verified, with diagonal
+D(D − 1) (`test_twist_norm_equals_sum_of_twisted_prime_gauss_sums`). So H2 is exactly a
+statement about the off-diagonal (dispersion) part of twisted prime sums of g̃₆.
+
+**Step 2, cubic calibration of T1.** Patterson's coefficients (Pat77 Thm 8.1; Dunn–Radziwiłł
+(5.7)–(5.8)) have three properties:
+
+- τ is supported on ±ζλ^{3n−4}cd³ with c squarefree and c, d ≡ 1 (mod 3);
+- they are unimodular in c;
+- they carry a factor |d| on cubes.
+
+Dunn–Radziwiłł's main-term mechanism sieves to S = {λ⁻³cd³}. Under that mechanism, the twisted
+prime sum for a frequency in the ±1 class mod 3 has main term ∝ τ·N^{−1/6}. That predicts every
+feature of RS-8:
+
+- the N(u)^{−1/3} profile;
+- the squarefree condition;
+- cube invariance (u = 8 behaves like u = 1);
+- associate suppression.
+
+The predicted constant ratio holds to 2–4% and converges toward 1: 0.881 → 0.921 → 0.942 at
+X = 4·10⁴, 1.6·10⁵, 3.2·10⁵ (registered PASS at 3.2·10⁵). The prime-level cubic statement for a
+fixed twist appears accessible to the Dunn–Radziwiłł method under GRH, which already carries a
+twist r in its Type I proposition (Prop. 8.1). This is to be verified as a separate,
+known-method-implied statement. It is the calibration, not the target.
+
+**Sextic T1 (the target).** The same architecture predicts θ_u² ∝ |τ₆-type coefficient|²·N(u)^{−1/6}.
+
+- The data show that the relevant mean-square coefficient is **independent of u**, including at
+  squares. This was registered PASS at X = 10⁶, with ratio 0.943 ± 0.022.
+- So the main term behaves as if the sextic coefficients (on average over the rows πu) had
+  constant modulus on the ±1 class mod 3, and vanished, or were depleted, on the ω-rotated
+  classes.
+- What is needed for a proof:
+  1. the residue of the twisted sextic Kubota series and its size as a function of u, which is
+     the sextic analogue of Patterson's Thm 8.1 on average;
+  2. the local factor at 2 that explains why the matrix normalization (ρ̄/ρ)₆ moves the main
+     term (RS-9).
+- Status: **open**. The literature (Bröker–Hoffstein; Chinta–Friedberg–Hoffstein) gives τ₆(π)²
+  at primes, partly conjectured, but not mean squares at πu.
+
+**Step 3 (T2, the crux): not started.** Next, measure the actual size of the bilinear sextic sums
+that a Heath-Brown decomposition needs. Compare with the sextic large-sieve exponents, extracted
+exactly from the literature, and state the gap to o(X^{2/3}/log X).

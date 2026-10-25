@@ -164,6 +164,18 @@ Gauss-sum bias shadow.
    |Σ_{N ρ ≤ X} g̃₆(ρ) conj((ζ₆ʲ/ρ)₆)| grow faster than √(π(X)) exactly for j ∈ {0, 3}, and are
    O(√(X/log X)·X^{o(1)}) for j ∈ {1, 2, 4, 5}.
 
+3. **Strength law** (added RS-S012; registered PASS at X = 10⁶). For ±primary u coprime to 3:
+
+   ```
+   r_u² − 1 = (r₁² − 1)·N(u)^{−1/6}·(1 + o(1))
+   ```
+
+   - The constant is independent of u. This includes non-squarefree u, with no squarefree
+     condition, unlike the cubic case.
+   - The observed u-ratio is 0.943 ± 0.022 over 78 twists with N(u) ≤ 100.
+   - The cubic analogue is Patterson's law: r_u² − 1 ∝ N_cf(u)^{−1/3} on squarefree cube-free
+     parts. It passed at X = 320000, with ratio 0.942 ± 0.019, and is a calibration of the method.
+
 **Discovery provenance:** RS-S005–RS-S006 (sextic cluster, then the twist Rayleigh quotients).
 This was model-first, with no blind protocol.
 
@@ -209,8 +221,8 @@ the sextic analogue of Dunn–Radziwiłł's cubic dispersion estimate (`reciproc
 **Current blocker:** a proof. The hard route comes first (PROTOCOL §9): Type I residues and Type
 II bilinear sextic sums, possibly under GRH.
 
-**Next bounded action:** `reciprocity_spectra/PROOF_ROUTE.md` §5, step 1: verify the reduction of
-‖C w_u‖² to twisted prime sums exactly.
+**Next bounded action:** `reciprocity_spectra/PROOF_ROUTE.md` §6. The reduction was verified exactly
+in RS-S012. Next is Type II (T2), the crux of the hard route.
 
 ## Template
 

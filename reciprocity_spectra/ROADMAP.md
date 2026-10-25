@@ -105,6 +105,13 @@ open questions are theoretical.
 - CAND-001 is frozen: the matrix dichotomy plus the prime-level unit-class bias.
 - The proof stage begins on the hard version (`PROOF_ROUTE.md`).
 
+**RS-S012 checkpoint:**
+
+- The dispersion reduction is exact.
+- The cubic Patterson law is calibrated (PASS at X = 3.2·10⁵).
+- The sextic strength law θ_u² ∝ N(u)^{−1/6} holds (PASS at X = 10⁶), and is added to CAND-001.
+- Next: T2, the Type II crux.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity
