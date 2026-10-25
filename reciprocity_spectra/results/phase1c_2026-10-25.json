@@ -48262,6 +48262,65 @@
             "normalized_excess": 0.0504346560744503
           }
         ]
+      },
+      "1": {
+        "code_commit": "b3336c644a850c56f7199199dcf0ba181ae70976",
+        "command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1c.py run",
+        "at_utc": "2026-10-25T08:53:13.113758+00:00",
+        "audit": {
+          "checked_entries": 759222916,
+          "counts": {
+            "diagonal_mismatches": 0,
+            "conjugation_mismatches": 0,
+            "reciprocity_mismatches": 0,
+            "boundary_mismatches": 0,
+            "invalid_exponents": 0,
+            "off_diagonal_zeros": 0,
+            "sextic_mask_conjugation_mismatches": 0
+          },
+          "all_exact": true
+        },
+        "seed": 1,
+        "sha256": "66a289895784f47c9bde3f0dfd6e2a9cdae1a6df473a7ced0f126d0f69aecf7a",
+        "top12": [
+          332.02871557731675,
+          331.7663781240029,
+          331.59709335727695,
+          331.3252353010789,
+          331.26456360605664,
+          331.1015267257846,
+          330.93710979517516,
+          330.8826240810237,
+          330.7757014197676,
+          330.60323000119644,
+          330.4878486858352,
+          330.359579566803
+        ],
+        "gram_relative_residuals": [
+          4.0629705855249385e-15,
+          3.126704358902169e-15,
+          2.0836699973613887e-15,
+          3.065218478653881e-15,
+          3.354071576203454e-15,
+          3.6266285368826006e-15,
+          2.4322268592956216e-15,
+          5.180960533289735e-15,
+          2.801348835882965e-15,
+          5.0390303322858405e-15,
+          5.086809998525258e-14,
+          1.8854979925096966e-12
+        ],
+        "sigma1_over_edge": 1.0001227875545289,
+        "seconds": 729.1997619610001,
+        "outcomes": [
+          {
+            "id": "RS-S004-S-1",
+            "prediction": "sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02",
+            "role": "primary qualified sextic model",
+            "outcome": "FAIL",
+            "normalized_excess": 0.05006712045759887
+          }
+        ]
       }
     },
     "D": 27554,
@@ -48316,7 +48375,7 @@
       "sigma1_over_edge": 1.0501899080121277,
       "seconds": 425.01313811799946
     },
-    "complete": false
+    "complete": true
   },
   "quadratic_run": {
     "mode": "quad",
