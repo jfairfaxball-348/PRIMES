@@ -306,3 +306,34 @@ finite data do not disprove eventual asymptotic limits. The original RS-6 bulk c
 PILOT, and RS-1, RS-2, RS-3 and RS-4 retain their RS-S002 statuses. No prediction was revised.
 Additional exact identities in a null ensemble require separate certification and fresh-scale
 predictions; they must not retroactively change these outcomes.
+
+
+## RS-S004: pre-registered qualified models and retention diagnostics
+
+The corrected ensemble is specified and derived in `NULL_CERTIFICATION.md`. It conditions on
+reciprocity, simultaneous conjugation, the diagonal, and metadata-derived conjugate-pair entries.
+It does not claim to reproduce every arithmetic correlation. The owner-session diagnostic is
+EXPLORATORY input; its RNG and window are not the new validation targets.
+
+Before fresh-scale spectra, the following are committed and pushed with full parameters in
+`results/phase1c_2026-10-25.json`. Every comparison uses both certified-control seeds 0 and 1.
+
+- Qualified RS-6 local revision, cubic and quartic at X = 80000:
+  `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+- Qualified RS-5 positive-excess revision, sextic at X = 320000:
+  `sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02`.
+- Cubic and quartic outlier retention at X = 80000:
+  `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- Quadratic compression retention at X = 80000:
+  `certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))`.
+
+The gap-ratio rule is exactly the RS-S003 rule, including deflation, window and ties. The sextic
+criterion is one-sided positive excess; it cannot rescue the old absolute-edge FAIL. All four
+local comparisons must pass for the qualified local revision, and both sextic comparisons must
+pass for the qualified sextic revision. No old outcome is changed.
+
+The outlier/moment retention tests use pilot-known arithmetic observables but fresh certified
+controls; they do not independently re-stress the old scaling laws. Quadratic m4 uses 128
+Rademacher probes: arithmetic seed 1, control probe seeds 3 and 4 for matrix seeds 0 and 1.
+The combined standard error uses independent probe streams. The old X = 640000 predictions
+remain unchanged and are outside this unit.

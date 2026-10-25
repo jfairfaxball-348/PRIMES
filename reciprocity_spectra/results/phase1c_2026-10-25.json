@@ -1,0 +1,161 @@
+{
+  "session": "RS-S004",
+  "date": "2026-10-25T07:48:20.900517+00:00",
+  "base_commit": "965a392b19617ba41e7d71ec71247f3a15da618e",
+  "branch": "rs-s004-phase1c",
+  "classification": "PRE-REGISTERED; no fresh-scale data yet",
+  "owner_input": {
+    "commit": "965a392",
+    "path": "reciprocity_spectra/results/conjugation_null_diagnostic_2026-10-25.json",
+    "role": "EXPLORATORY hypothesis, not a status driver"
+  },
+  "predictions": [
+    {
+      "id": "RS-S004-L-cubic-0",
+      "role": "primary qualified local model",
+      "mode": "cubic",
+      "X": 80000,
+      "control_seed": 0,
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "upper_bound": 0.03
+    },
+    {
+      "id": "RS-S004-L-cubic-1",
+      "role": "primary qualified local model",
+      "mode": "cubic",
+      "X": 80000,
+      "control_seed": 1,
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "upper_bound": 0.03
+    },
+    {
+      "id": "RS-S004-L-quartic-0",
+      "role": "primary qualified local model",
+      "mode": "quartic",
+      "X": 80000,
+      "control_seed": 0,
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "upper_bound": 0.03
+    },
+    {
+      "id": "RS-S004-L-quartic-1",
+      "role": "primary qualified local model",
+      "mode": "quartic",
+      "X": 80000,
+      "control_seed": 1,
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "upper_bound": 0.03
+    },
+    {
+      "id": "RS-S004-S-0",
+      "role": "primary qualified sextic model",
+      "mode": "sextic",
+      "X": 320000,
+      "control_seed": 0,
+      "prediction": "sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02",
+      "upper_bound": 0.02
+    },
+    {
+      "id": "RS-S004-S-1",
+      "role": "primary qualified sextic model",
+      "mode": "sextic",
+      "X": 320000,
+      "control_seed": 1,
+      "prediction": "sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02",
+      "upper_bound": 0.02
+    },
+    {
+      "id": "RS-S004-O-cubic-0",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "mode": "cubic",
+      "X": 80000,
+      "control_seed": 0,
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "lower_bound": 0.05
+    },
+    {
+      "id": "RS-S004-O-cubic-1",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "mode": "cubic",
+      "X": 80000,
+      "control_seed": 1,
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "lower_bound": 0.05
+    },
+    {
+      "id": "RS-S004-O-quartic-0",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "mode": "quartic",
+      "X": 80000,
+      "control_seed": 0,
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "lower_bound": 0.05
+    },
+    {
+      "id": "RS-S004-O-quartic-1",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "mode": "quartic",
+      "X": 80000,
+      "control_seed": 1,
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "lower_bound": 0.05
+    },
+    {
+      "id": "RS-S004-Q-0",
+      "role": "quadratic-compression retention diagnostic",
+      "mode": "quad",
+      "X": 80000,
+      "control_seed": 0,
+      "prediction": "certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))",
+      "absolute_lower_bound": 0.05,
+      "standard_errors": 5
+    },
+    {
+      "id": "RS-S004-Q-1",
+      "role": "quadratic-compression retention diagnostic",
+      "mode": "quad",
+      "X": 80000,
+      "control_seed": 1,
+      "prediction": "certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))",
+      "absolute_lower_bound": 0.05,
+      "standard_errors": 5
+    }
+  ],
+  "definition": {
+    "certification": "NULL_CERTIFICATION.md: conjugation, primary/Galois/unit closure, exact conjugate-pair trace phases, and conditional uniform reciprocity/conjugation orbit measure. No cross-prime phase is copied from the arithmetic matrix; sextic reciprocity signs remain conditioned on as explicitly defined in RS-S003.",
+    "controls": "Independent orbit variables; SplitMix64 leader counters and unbiased rejection; seeds 0 and 1. Pair phases computed from one-prime metadata, not arithmetic entries.",
+    "metric": "Exactly RS-S003 gap_ratio: remove s>2sqrt(D), sort ascending, slice ceil(0.2*m):floor(0.8*m), mean adjacent min(gap_i,gap_i+1)/max, zero denominator contributes zero; no unfolding or dropped ties.",
+    "scope": "All four local comparisons must pass for the qualified RS-6 local revision; both sextic comparisons must pass for the qualified positive-excess revision. Old eight FAIL outcomes and old absolute-edge bounds remain immutable. Eventual asymptotic versions remain unsettled.",
+    "known_inputs": "Old pilot top singular values at X=80000 and quadratic moments are known. Retention tests assess signal against the certified controls, not independent blind tests of the old scaling laws. The new local statistic, certified controls at these scales, and sextic X=320000 spectra have not been measured.",
+    "sextic_solver": {
+      "k": 12,
+      "ncv": 64,
+      "tol": 1e-11,
+      "seed": 2,
+      "method": "matrix-free eigsh on C*C"
+    },
+    "local_solver": "scipy.linalg.svdvals, LAPACK gesdd, full spectra for arithmetic and each control",
+    "quadratic_m4": {
+      "method": "Hutchinson real Rademacher on (C*C)^2 / D^3",
+      "probes": 128,
+      "arithmetic_probe_seed": 1,
+      "control_probe_seeds": {
+        "0": 3,
+        "1": 4
+      },
+      "SE": "sample standard deviation / sqrt(probes); independent probe streams for the stated combined SE"
+    },
+    "validation": "Legacy quad/cubic/quartic overlap byte identity at X=20000 and top8 SciPy agreement at X=40000; sextic pure-Euler matrix/sign agreement and top8 at X=2000. Corrected controls byte-identical to independent pure-Python BFS sampler at X=500 for all four modes and seeds 0/1; complex product and top8 checks at X=2000; full exact structural audits on all reported matrices and controls.",
+    "resource_limits": {
+      "cpu_max": "200000 100000",
+      "memory_limit_bytes": 8589934592,
+      "openmp_threads": 4,
+      "blas_threads": 2,
+      "component_budget_seconds": 2700
+    }
+  },
+  "validation": null,
+  "local_runs": [],
+  "sextic_run": null,
+  "quadratic_run": null
+}

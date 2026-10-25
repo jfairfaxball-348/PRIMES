@@ -302,3 +302,21 @@ the forced entries gives, at X = 20000, bulk gap ratios 0.430/0.435 against arit
 is unaffected; quartic and sextic margins need re-measurement. Code:
 `scripts/conjugation_null_diagnostic.py`; data: `results/conjugation_null_diagnostic_2026-10-25.json`.
 `NEXT_SESSION_PROMPT.md` (RS-S004) now names this identity as the hypothesis to certify.
+
+
+### RS-S004 (2026-10-25): Phase 1c, certified structural null and fresh-scale tests
+
+**Stage:** certification and falsification.
+
+**Authority and bounded task:** main is now `965a392`, merging RS-S002/RS-S003 and the owner's
+revised prompt plus EXPLORATORY conjugation diagnostic. Start a separate `rs-s004-phase1c`
+branch from that authority, with no new main merge. Independently certify the structural
+constraints and control sampler; test the qualified gap-ratio and sextic-excess models at
+fresh scales and confirm retention of the earlier outlier/compression signals.
+
+**Pre-registration:** `NULL_CERTIFICATION.md` derives the exact identities and conditional
+control measure. CONJECTURES.md and `results/phase1c_2026-10-25.json` freeze all predictions,
+seeds, metrics, windows, solver settings, independent m4 probe streams and validation gates
+before any fresh-scale spectrum. There are six primary comparisons and six retention
+diagnostics. Both seeds must pass in each applicable qualified-model test. Old eight FAIL
+outcomes remain immutable. No quintic family or analytic kappa3/c4 derivation is included.
