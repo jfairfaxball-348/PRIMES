@@ -116,7 +116,7 @@ def main():
            'command': 'python ' + ' '.join(sys.argv), 'code_commit': phase1c.legacy.shell('git', 'rev-parse', 'HEAD'),
            'started_at': datetime.now(UTC).isoformat()}
     if args.label == 'REGISTERED':
-        assert doc['prediction_commit'] and (args.x, args.xmin) == (1920000, 1280000)
+        assert any((q['X'], q['xmin']) == (args.x, args.xmin) for q in doc['predictions'])
         score(doc, row)
     doc['runs'].append(row)
     phase1c.phase1b.RESULT, phase1c.phase1b.BRANCH = RESULT, phase1c.BRANCH
@@ -131,7 +131,7 @@ def main():
 
 
 def score(doc, row):
-    """Pooled mean of B^2 over the rule pairs (m = 0, s1 = 1) and over the two complementary groups."""
+    """Pooled means of B^2 by character group; scores the prediction registered for this window."""
     b2 = np.array(next(iter(row['windows'].values()))['B']) ** 2
     groups = {'rule': [], 'cubic_nontrivial': [], 'even_trivial_cubic': []}
     for j in range(6):
@@ -139,9 +139,18 @@ def score(doc, row):
             key = 'rule' if m == 0 and s1 == 1 else 'cubic_nontrivial' if m else 'even_trivial_cubic'
             groups[key].append(b2[j, c])
     means = {k: float(np.mean(v)) for k, v in groups.items()}
-    p = doc['predictions'][0]
-    ok = means['rule'] >= p['rule_min'] and max(means['cubic_nontrivial'], means['even_trivial_cubic']) <= p['other_max']
-    row['prediction_outcomes'] = [{'id': p['id'], 'means': means, 'outcome': 'PASS' if ok else 'FAIL'}]
+    means['trivial_cubic'] = float(np.mean(groups['rule'] + groups['even_trivial_cubic']))
+    out = []
+    for p in doc['predictions']:
+        if (p['X'], p['xmin']) != (row['X'], row['xmin']):
+            continue
+        if p['id'] == 'RS-S011-SEL':
+            ok = means['rule'] >= p['rule_min'] and max(means['cubic_nontrivial'],
+                                                         means['even_trivial_cubic']) <= p['other_max']
+        else:  # RS-S011-M0: trivial cubic part (24 pairs) against cubic-nontrivial (48 pairs)
+            ok = means['trivial_cubic'] >= p['m0_min'] and means['cubic_nontrivial'] <= p['other_max']
+        out.append({'id': p['id'], 'means': means, 'outcome': 'PASS' if ok else 'FAIL'})
+    row['prediction_outcomes'] = out
 
 
 if __name__ == '__main__':

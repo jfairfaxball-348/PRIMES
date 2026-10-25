@@ -721,3 +721,19 @@ B(j, χ), the prime-level twisted Gauss-sum bias for unit class j and character 
   each ≤ 1.5.
 
 The random-walk expectation of each mean is 1.
+
+### RS-S011-SEL outcome (scored against `e8821be`): **FAIL**
+
+In the window 1.28·10⁶ < p ≤ 1.92·10⁶ (44750 primes), the mean B² values were:
+
+- rule pairs (m = 0, s1 = 1): 2.25 (≥ 2.0 required; met);
+- cubic-nontrivial pairs: 1.01 (≤ 1.5 required; met);
+- even pairs with trivial cubic part (m = 0, s1 = 0): **2.05** (≤ 1.5 required; violated).
+
+The s1 refinement is refuted.
+
+**Revised hypothesis, registered for a new fresh window: RS-S011-M0.** For 1.92·10⁶ < p ≤ 2.56·10⁶,
+both conditions must hold:
+
+- the mean B² over the 24 pairs whose character has trivial cubic part is ≥ 1.6;
+- the mean B² over the 48 cubic-nontrivial pairs is ≤ 1.3.
