@@ -634,3 +634,30 @@ twists are individually supercritical. The cubic outliers (RS-2) are this family
 **Calibration value.** This is the cubic analogue of RS-7b, where the theory is known. The sextic
 exponent −0.19 is near Astra's predicted −1/6. In the sextic case squares stay enhanced,
 consistent with Chinta–Friedberg–Hoffstein.
+
+
+## RS-S010: registration of Astra's Q5 test and corrected versions (before X = 1.28·10⁶ data)
+
+**Exploratory results** (to X = 3.2·10⁵; `results/phase1h_2026-10-25.json`), in the trace form
+with n a product of primary primes:
+
+| class | \|T\| / √count | local slope |
+|---|---:|---:|
+| j = 1, 2 | 2.84 | ≈ 0.71 |
+| j = 4, 5 | 2.2 | ≈ 0.59 |
+| j = 0, 3 | 0.34 | — |
+
+This is the opposite of Astra's prediction. At the prime level, the matrix normalization
+(factor (ρ̄/ρ)₆) moves the strong classes to j = 0 and 3 (2.05 random-walk units against
+≤ 0.53). Astra's check 3 said this factor cannot create a 3-adic effect; the data contradict that.
+
+**Registered for X = 1.28·10⁶:**
+
+- **RS-S010-ASTRA-Q5.** Astra's prediction, as stated: the slope of |T₀| lies in 2/3 ± 0.1 and
+  the slope of |T₁| is ≤ 0.6.
+- **RS-S010-K1-trace.** The slope of |T₁| lies in [0.55, 0.85]; |T₁|/√count ≥ 3.0; and
+  |T₀|/√count ≤ 2.0.
+- **RS-S010-K2-primes-matrix-norm.** In the matrix normalization at primes, class 0 is ≥ 2.0
+  random-walk units, and classes 1, 2, 4 and 5 are each ≤ 1.5.
+
+Slopes are fitted on the dyadic grid for X ≥ 128000.

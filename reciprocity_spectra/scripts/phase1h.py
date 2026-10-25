@@ -151,7 +151,7 @@ def main():
         'session': 'RS-S010', 'date': '2026-10-25', 'source': 'ASTRA_RESPONSE_2026-10-25.md, Q5',
         'definition': __doc__, 'predictions': [], 'prediction_commit': None, 'runs': []}
     if args.label == 'REGISTERED':
-        assert doc['prediction_commit'], 'register first'
+        assert doc['prediction_commit'] and args.x == 1280000 and not args.psi and not args.split_only, 'register first'
     grid = [int(1000 * 2 ** k) for k in range(40) if 1000 * 2 ** k <= args.x]
     if grid[-1] != args.x:
         grid.append(args.x)
@@ -172,18 +172,30 @@ def main():
     print('nodes', nodes, 'seconds', round(row['seconds'], 1), row.get('prediction_outcomes'))
 
 
+def primes_only_matrix_norm(x):
+    """|sum over split primes of g_ours(zeta6^j, rho)/sqrt(p)| / sqrt(count), g_ours = (conj rho/rho)_6 g6."""
+    primes = build_primes(x, psi=True, split_only=True)
+    t = np.zeros(6, complex)
+    for r in primes:
+        t += r['g'] * np.conj(Z6[(np.arange(6) * r['unit']) % 6])
+    return (np.abs(t) / math.sqrt(len(primes))).tolist(), len(primes)
+
+
 def score(doc, row):
-    out = []
-    for p in doc['predictions']:
-        if p.get('psi') != row['psi'] or p.get('split_only') != row['split_only'] or p['X'] != row['X']:
-            continue
-        xs = np.array(row['grid'], float)
-        m = (xs >= p['fit_from']) & (xs <= p['fit_to'])
-        for j in p['classes']:
-            y = np.array(row['abs_T'][j])[m]
-            slope = float(np.polyfit(np.log(xs[m]), np.log(y), 1)[0])
-            ok = p['min'] <= slope <= p['max']
-            out.append({'id': f"{p['id']}-j{j}", 'slope': slope, 'outcome': 'PASS' if ok else 'FAIL'})
+    xs, n = np.array(row['grid'], float), np.array(row['count'], float)
+    m = xs >= 128000
+    slope = [float(np.polyfit(np.log(xs[m]), np.log(np.array(row['abs_T'][j])[m]), 1)[0]) for j in range(6)]
+    ratio = [row['abs_T'][j][-1] / math.sqrt(n[-1]) for j in range(6)]
+    prime_ratio, nprimes = primes_only_matrix_norm(row['X'])
+    row.update(slopes_from_128000=slope, ratio_to_sqrt_count=ratio, primes_only_matrix_norm=prime_ratio,
+               primes_only_count=nprimes)
+    out = [
+        {'id': 'RS-S010-ASTRA-Q5', 'value': [slope[0], slope[1]],
+         'outcome': 'PASS' if 0.5667 <= slope[0] <= 0.7667 and slope[1] <= 0.6 else 'FAIL'},
+        {'id': 'RS-S010-K1-trace', 'value': [slope[1], ratio[1], ratio[0]],
+         'outcome': 'PASS' if 0.55 <= slope[1] <= 0.85 and ratio[1] >= 3.0 and ratio[0] <= 2.0 else 'FAIL'},
+        {'id': 'RS-S010-K2-primes-matrix-norm', 'value': prime_ratio,
+         'outcome': 'PASS' if prime_ratio[0] >= 2.0 and max(prime_ratio[j] for j in (1, 2, 4, 5)) <= 1.5 else 'FAIL'}]
     row['prediction_outcomes'] = out
 
 

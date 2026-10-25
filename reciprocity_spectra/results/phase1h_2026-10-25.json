@@ -3,7 +3,23 @@
   "date": "2026-10-25",
   "source": "ASTRA_RESPONSE_2026-10-25.md, Q5",
   "definition": "RS-S010: Astra's decisive test (Q5) -- Kubota partial sums of sextic Gauss sums by unit class.\n\nT_j(X) = sum over squarefree n in Z[w], (n, 6) = 1, N(n) <= X, of g6(zeta6^j, n) / sqrt(N n),\nwith n a product of primary primes (split primary pi; inert rational q = 2 mod 3, q > 2) and the\ntrace-form Gauss sum g6(c, n) = sum_{x mod n} (x/n)_6 e(Tr(c x / n)) (arith.kubota_g6_prime;\ntwisted multiplicativity g6(c, n1 n2) = (n1/n2)_6 (n2/n1)_6 g6(c, n1) g6(c, n2), tested).\nFor a unit c, g6(c, n) = conj((c/n)_6) g6(1, n), and (zeta6/pi)_6 = zeta6^((N pi - 1)/6).\nSplit-prime sums come from the native engine (RS_NO_MATRIX=1): g_ours = (conj pi/pi)_6 g6(1, pi).\n",
-  "predictions": [],
+  "predictions": [
+    {
+      "id": "RS-S010-ASTRA-Q5",
+      "X": 1280000,
+      "prediction": "Astra Q5 as stated (trace form, n = products of primary primes, all squarefree n coprime to 6): log-log slope of |T_0| over grid X >= 128000 lies in [2/3 - 0.1, 2/3 + 0.1] AND slope of |T_1| <= 0.6. (Exploratory evidence suggests FAIL.)"
+    },
+    {
+      "id": "RS-S010-K1-trace",
+      "X": 1280000,
+      "prediction": "Same sums: slope of |T_1| (= |T_2|) over X >= 128000 in [0.55, 0.85], |T_1(X)|/sqrt(count) >= 3.0 and |T_0(X)|/sqrt(count) <= 2.0 at X = 1.28e6."
+    },
+    {
+      "id": "RS-S010-K2-primes-matrix-norm",
+      "X": 1280000,
+      "prediction": "Primes only, matrix normalization g_ours = (conj rho/rho)_6 g6(1, rho): |sum g_ours conj((zeta6^j/rho)_6)/sqrt(p)|/sqrt(count) >= 2.0 for j = 0 and <= 1.5 for every j in {1, 2, 4, 5}."
+    }
+  ],
   "prediction_commit": null,
   "runs": [
     {
@@ -1036,5 +1052,6 @@
       "code_commit": "f534d637de927edc892c12ddc82b0d9fb19a3ddd",
       "started_at": "2026-10-25T19:43:54.819463+00:00"
     }
-  ]
+  ],
+  "prediction_basis": "EXPLORATORY runs to X = 320000 in this file: trace form |T_1| = 853 (2.84 sqrt(count)), local slope ~0.71 over 3.2e4-3.2e5; |T_0| = 103 (0.34); |T_4| = 670 (2.23). Matrix normalization at primes: class 0 = 340.4/166 = 2.05, classes 1,2,4,5 <= 0.53. The (conj rho/rho)_6 factor relabels which unit classes carry the main term, contrary to Astra check 3 (\"cannot create a 3-adic effect\")."
 }
