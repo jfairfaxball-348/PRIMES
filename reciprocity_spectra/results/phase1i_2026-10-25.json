@@ -617,5 +617,5 @@
     }
   ],
   "prediction_basis": "EXPLORATORY windows in this file (see printed pooled means); psi = (chi000 - chi001 - chi010 - chi011)/2 exactly.",
-  "prediction_commit_M0": null
+  "prediction_commit_M0": "eaadcfc"
 }
