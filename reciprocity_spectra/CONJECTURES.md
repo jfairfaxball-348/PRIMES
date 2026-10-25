@@ -576,3 +576,32 @@ measurements.
   outcome is FAIL.
 - **RS-S009-A2-count (X = 40000).** At least 24 cubic singular values exceed the seed-0
   conjugation-matched control σ₁.
+
+### RS-S009 outcomes at X = 40000 and new registration for X = 160000
+
+**Registered outcomes at X = 40000.**
+
+- **RS-S009-A2-exponent: FAIL.** The fit is undefined: 18 ±primary cubic twists have r ≤ 1.
+- **RS-S009-A2-count: FAIL.** 19 singular values exceed the control σ₁, fewer than 24.
+
+These outcomes stand.
+
+**EXPLORATORY diagnostics (after scoring).**
+
+- The weak twists are exactly the u whose cube-free part is not squarefree: 2², π₇², 4π₇, π₁₃²,
+  4π₇². They have r = 0.90–0.93.
+- Over squarefree u the slope is −0.377, consistent with Astra's −1/3.
+- r₁ = 2.64 (θ₁²/D = 5.99, matching Astra's 5.9).
+- 98 ±primary twists have r > √2.
+- The other associates have max r = 0.931, so the cubic case has the same associate dichotomy.
+- In the sextic case, the same square u are enhanced (r ≈ 1.15–1.23 at X = 160000). This is
+  consistent with the Chinta–Friedberg–Hoffstein expectation that sextic coefficients at squares
+  are nonzero.
+
+**Registered for X = 160000 (cubic twist strengths not yet computed there).**
+
+- **RS-S009-C1-slope.** Over squarefree ±primary u with 1 < N(u) ≤ 200, the slope lies in
+  [−0.433, −0.233].
+- **RS-S009-C2-squarefree.** min r over the squarefree ±primary u > 1.05, and max r over the
+  non-squarefree ±primary u < 1.0.
+- **RS-S009-C3-associates.** max r over the non-±primary associates < 1.0.
