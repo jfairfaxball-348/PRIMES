@@ -661,3 +661,38 @@ This is the opposite of Astra's prediction. At the prime level, the matrix norma
   random-walk units, and classes 1, 2, 4 and 5 are each ≤ 1.5.
 
 Slopes are fitted on the dyadic grid for X ≥ 128000.
+
+### RS-S010 outcomes at X = 1.28·10⁶ (scored verbatim against `e745eaa`)
+
+The run had D = 98512 split primes and 361287 squarefree n.
+
+| ID | value | outcome |
+|---|---|---|
+| RS-S010-ASTRA-Q5 | slope of \|T₀\| 0.614; slope of \|T₁\| 0.602 (> 0.6) | **FAIL** |
+| RS-S010-K1-trace | slope of \|T₁\| 0.602; \|T₁\|/√count 3.27; \|T₀\|/√count 0.74 | **PASS** |
+| RS-S010-K2-primes-matrix-norm | classes 0, 3: 2.63; classes 1, 2: 0.61; classes 4, 5: 0.90 | **PASS** |
+
+A design lesson: slope fits are uninformative for classes with no main term. T₀ fluctuated (183,
+607, 443 on the last grid points) and landed inside the band by chance. The magnitude ratios are
+the reliable statistic.
+
+**Correction (exact, after the run).** (ρ̄/ρ)₆ = ±1 is determined by (a, b) mod 4, and is +1
+for p ≡ 3 (mod 4). This is tested to 2·10⁴ and checked to 2·10⁵. Astra's check 3 ("2-adic
+only") is therefore **correct**. The registration text above, which said the data contradict it,
+is withdrawn; it stays visible for the record.
+
+## RS-9: unit-class selection of the Gauss-sum main term (STRESSED at X = 1.28·10⁶)
+
+**Statement.** For sextic Gauss sums:
+
+- In the trace form (Heath-Brown–Patterson normalization, n a product of primary primes), the
+  Kubota sums over squarefree n carry growing main terms in the ω-rotated unit classes j = 1, 2
+  (and 4, 5). They carry none in j = 0, 3.
+- Over primes, the matrix normalization differs from the trace form only by the 2-adic sign
+  (ρ̄/ρ)₆. There the bias sits in j = 0, 3, and the ω-rotated classes are at or below random.
+
+**Interpretation.** RS-7b (the matrix dichotomy) is the matrix shadow of the second statement.
+
+**Open.** Why a purely 2-adic sign moves the main term between classes that differ at 3. A
+plausible route is the 2-adic cubic factor (2/ρ)₃ in the Hasse–Davenport factorization, but this
+is not derived.

@@ -430,7 +430,12 @@ def test_kubota_sextic_gauss_sums_and_twisted_multiplicativity():
     g6(c, n1 n2) = (n1/n2)_6 (n2/n1)_6 g6(c, n1) g6(c, n2), verified by direct summation.
     """
     from reciprocity_spectra.arith import (
-        _mul_w, eisenstein_trace, kubota_g6_prime, sextic_gauss_sum, sextic_symbol_at)
+        _mul_w,
+        eisenstein_trace,
+        kubota_g6_prime,
+        sextic_gauss_sum,
+        sextic_symbol_at,
+    )
 
     z6 = cmath.exp(1j * math.pi / 3)
     primes = primary_eisenstein_primes(120)
@@ -476,3 +481,14 @@ def test_kubota_sextic_gauss_sums_and_twisted_multiplicativity():
             twist = z6 ** (sextic_symbol_at(*element(f1), f2) + sextic_symbol_at(*element(f2), f1))
             got = twist * kubota_g6_prime(c, f1) * kubota_g6_prime(c, f2)
             assert abs(want - got) < 1e-7 * norm
+
+
+def test_conjugate_ratio_symbol_is_two_adic():
+    """(conj pi / pi)_6 = +-1 is a function of (a, b) mod 4 only, and +1 when p = 3 (mod 4)."""
+    table = {}
+    for pi in primary_eisenstein_primes(20000):
+        k = sextic_residue_exponent(pi.a - pi.b, -pi.b, pi)
+        assert k in (0, 3)
+        if pi.p % 4 == 3:
+            assert k == 0
+        assert table.setdefault((pi.a % 4, pi.b % 4), k) == k

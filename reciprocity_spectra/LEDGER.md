@@ -670,3 +670,54 @@ already records several. Astra's check 2 caught the inconsistency.
 coprime to 6, in the Heath-Brown–Patterson normalization. The prediction is a slope of 2/3 for
 j ∈ {0, 3} and 1/2 otherwise. Q3, the excess spectrum of a compressed twist basis against the
 cluster sizes 7/22/34, follows if time allows. This is one RS-S010 unit.
+
+### RS-S010 (2026-10-25): Astra's decisive test (Q5)
+
+**Stage:** falsification and mechanism. **Branch:** `ccr-c363c6bb-0zejeu`. At the start of the
+session, on the owner's instruction, main was fast-forwarded to RS-S009 (`e10dec3`).
+
+**Exact work:**
+
+- Trace-form sextic Gauss sums `kubota_g6_prime`, including inert primes.
+- Tests:
+  - |g|² = N(π);
+  - g_ours = (π̄/π)₆·g_HBP, Astra's check 3;
+  - unit-frequency rotation;
+  - twisted multiplicativity, by direct summation for split × split, π × π̄ and split × inert
+    moduli.
+- `test_conjugate_ratio_symbol_is_two_adic`.
+- Engine `RS_NO_MATRIX` mode. Its Gauss sums and metadata are byte-identical to a full build, and
+  the full-build hash is unchanged.
+
+**EXPLORATORY** (to X = 3.2·10⁵; `scripts/phase1h.py`, `results/phase1h_2026-10-25.json`):
+
+- In the trace form the main terms sit in j = 1, 2 and 4, 5, not in 0, 3. This is opposite to
+  Astra's prediction.
+- At primes, the matrix normalization puts the bias in j = 0, 3.
+- The multiplicative extension ψ(n) = Π(π̄ᵢ/πᵢ)₆ over composites gives no clean main term.
+
+**Registered:** `e745eaa`, before the X = 1.28·10⁶ data. The run took 649 s, with D = 98512.
+
+| prediction | outcome |
+|---|---|
+| Astra's Q5 as stated | **FAIL** |
+| K1-trace | **PASS** |
+| K2-primes-matrix-norm | **PASS** |
+
+**Correction recorded.** Astra's check 3 was right that the factor is purely 2-adic. My earlier
+claim to the contrary is withdrawn.
+
+**Status:**
+
+- RS-9 (new): STRESSED at X = 1.28·10⁶.
+- RS-7b: STRESSED. It is now tied to a prime-level Gauss-sum bias confirmed at a fresh scale.
+- Astra's literal Q5 explanation: FAIL as stated.
+- The 2-adic/3-adic interplay: open.
+
+**Validation:** pytest passes 355 tests; targeted Ruff passes; the strict C compile passes.
+
+**Next dependency.** Map the full selection rule. Over primes and over squarefree n, measure the
+main term for every pair (unit class j, character χ of (ℤ[ω]/4)^× or the relevant 2-adic group).
+Identify exactly which pairs carry a main term, register the table, and test it at a fresh scale.
+This is one RS-S011 unit. It will yield the crisp statement to send back to Astra and to human
+experts.

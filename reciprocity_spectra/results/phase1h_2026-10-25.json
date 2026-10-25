@@ -1407,5 +1407,6 @@
       ]
     }
   ],
-  "prediction_basis": "EXPLORATORY runs to X = 320000 in this file: trace form |T_1| = 853 (2.84 sqrt(count)), local slope ~0.71 over 3.2e4-3.2e5; |T_0| = 103 (0.34); |T_4| = 670 (2.23). Matrix normalization at primes: class 0 = 340.4/166 = 2.05, classes 1,2,4,5 <= 0.53. The (conj rho/rho)_6 factor relabels which unit classes carry the main term, contrary to Astra check 3 (\"cannot create a 3-adic effect\")."
+  "prediction_basis": "EXPLORATORY runs to X = 320000 in this file: trace form |T_1| = 853 (2.84 sqrt(count)), local slope ~0.71 over 3.2e4-3.2e5; |T_0| = 103 (0.34); |T_4| = 670 (2.23). Matrix normalization at primes: class 0 = 340.4/166 = 2.05, classes 1,2,4,5 <= 0.53. The (conj rho/rho)_6 factor relabels which unit classes carry the main term, contrary to Astra check 3 (\"cannot create a 3-adic effect\").",
+  "correction_2adic": "Post-run exact check: (conj rho/rho)_6 in {+-1} is determined by (a, b) mod 4 for all primes up to 2e5 (test_conjugate_ratio_symbol_is_two_adic, to 2e4), +1 for p = 3 mod 4. Astra check 3 (\"2-adic only\") is CORRECT; the earlier statement that the data contradict it is withdrawn. The finding is that a purely 2-adic +-1 twist relabels which unit classes (differing at 3) carry the Gauss-sum main term."
 }

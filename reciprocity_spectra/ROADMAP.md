@@ -89,6 +89,15 @@ open questions are theoretical.
   registered and PASSES at X = 160000 (RS-8).
 - Next: Astra's decisive Kubota-sum test (Q5).
 
+**RS-S010 checkpoint:**
+
+- Astra's Q5 FAILED as stated.
+- The trace-form Kubota sums carry main terms in the ω-rotated classes (RS-9, PASS at
+  X = 1.28·10⁶).
+- A purely 2-adic sign moves the prime-level bias to classes 0 and 3, which explains the side of
+  the matrix dichotomy.
+- Next: map the full 2-adic × unit-class selection table.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity
