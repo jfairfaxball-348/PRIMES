@@ -289,3 +289,16 @@ RS-3 and RS-4 remain STRESSED from RS-S002; RS-2 remains PILOT. X = 640000 is st
 the null ensemble against all exact matrix identities, then test a qualified model at fresh
 scales. That is one RS-S004 / Phase 1c unit, with a single prompt in NEXT_SESSION_PROMPT.md.
 No owner-decision blocker is active.
+
+### Owner-session note (2026-10-25): null-model defect behind the RS-6 FAIL (EXPLORATORY)
+
+Not a numbered session and not a status driver; RS-S003's eight registered FAIL outcomes are
+immutable. The cubic and quartic matrices satisfy `(conj π/conj ρ)_n = conj((π/ρ)_n)` exactly,
+`(π/conj π)₃ = 1` for every cubic index, and the quartic `(π/conj π)₄` entries are forced. The
+RS-S003 controls matched reciprocity only. A control imposing the conjugation identity and copying
+the forced entries gives, at X = 20000, bulk gap ratios 0.430/0.435 against arithmetic 0.422
+(cubic) and 0.535/0.542 against 0.539 (quartic): inside the old 0.03 tolerance. Corrected control
+`σ₁/edge` is 1.011–1.013 (cubic) and 0.991–1.001 (quartic), so the cubic outlier (1.341 at this X)
+is unaffected; quartic and sextic margins need re-measurement. Code:
+`scripts/conjugation_null_diagnostic.py`; data: `results/conjugation_null_diagnostic_2026-10-25.json`.
+`NEXT_SESSION_PROMPT.md` (RS-S004) now names this identity as the hypothesis to certify.
