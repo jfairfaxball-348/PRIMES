@@ -4,7 +4,7 @@ Status date: 2026-10-25
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1, entering Phase 2 for the sextic family. RS-S004–RS-S006 are complete:
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1, entering Phase 2 for the sextic family. RS-S004–RS-S007 are complete:
 
 - the conjugation-matched null is certified;
 - all five registered fresh-scale predictions PASS;
@@ -14,11 +14,13 @@ Status date: 2026-10-25
   twisted sextic Gauss-sum spans (RS-7a, STRESSED; partial identification);
 - RS-S006: twist strengths obey a primary-class dichotomy (RS-7b). It is registered PASS at
   X = 320000 and 640000; these are the first sextic data at X = 640000;
+- RS-S007: RS-7b reformulated exactly (enhanced iff the unit-class factor is unramified at 3);
+  its mechanism is UNEXPLAINED;
 - RS-1, RS-3 and RS-4 remain STRESSED, and RS-2 remains PILOT;
 - the RS-S003 refutations of the RS-5 finite form and the RS-6 local extension stand;
 - X = 640000 spectra are still untested (sextic Rayleigh data exist).
 
-The next unit is RS-S007: the mechanism stage for RS-7b. Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
+The next unit is RS-S008: draft the external expert-review note and refresh the collision audit. Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
 
 
 Previous stage line (D1-72, preserved): DISCOVERY-1 — D1-72 / S074 / SQ-036 E025 H25 ONE-SHOT CLOSED; OBS-025 REFUTED (25/48 POSITIVE SIGNED CLASSES < FROZEN 36/48); D25/H25 CONSUMED; 16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND; NEXT D1-73 / S075 / SQ-037 SOURCE-FREE DESIGN ONLY

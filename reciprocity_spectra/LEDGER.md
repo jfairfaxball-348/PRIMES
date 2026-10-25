@@ -531,3 +531,50 @@ These are the first sextic data at X = 640000. There, r₁ = 1.4183 > √2.
 - Compare the profile of `r_u² − 1` against N(u) with a twisted-Gauss-sum heuristic.
 
 This is one RS-S007 unit.
+
+### RS-S007 (2026-10-25): mechanism stage for RS-7b
+
+**Stage:** mechanism. **Branch:** `ccr-c363c6bb-0zejeu`. At the start of the session, on the
+owner's instruction, main was fast-forwarded to RS-S006 (`1971fea`).
+
+**Exact work:**
+
+- Added `test_sextic_unit_symbols_are_characters_of_the_norm`. It proves that the
+  associate-class factor `ζ₆^{j(p−1)/6}` is a character of p mod 36, and that it is unramified at
+  3 exactly for u′ = ±u.
+- Verified the associate sum-rule identity to a relative error of 2.3e-16.
+
+**Reformulation of RS-7b.** A twist is enhanced exactly when its unit-class factor is unramified
+at 3, in every case checked.
+
+**Diagnostics** (`scripts/phase1f.py`, X = 2·10⁴ to 6.4·10⁵, no new matrices beyond X = 20000):
+
+- the associate excess drifts from 0.04 to 0.75;
+- the strength exponent in N(u) is about −0.19, so the naive theta heuristic, which predicts
+  −2/3, FAILS;
+- the unramified-class Gauss-sum bias is the largest at every X ≥ 40000 but is only marginal.
+
+No fresh-scale prediction emerged, so none was registered.
+
+**Validation:** pytest passes 351 tests, and targeted Ruff passes.
+
+**Commits:** `7bb8406` and its parent, then the closeout.
+
+**Status:**
+
+- RS-7b: STRESSED, with its mechanism UNEXPLAINED. The algebraic reformulation is exact.
+- All other statuses are unchanged.
+
+**Assessment.** The empirical findings are now sharp and pre-registered. They are:
+
+- the certified null;
+- RS-6C;
+- the sextic cluster (RS-7, RS-7a);
+- the primary-class dichotomy (RS-7b), tested to X = 6.4·10⁵.
+
+The remaining questions are theoretical: why unramified twists are enhanced, the N(u)^−0.19
+profile, and how a cluster forms from subcritical spikes. These are what an expert in
+metaplectic forms should be asked.
+
+**Next dependency:** draft the external expert-review note and refresh the collision audit. This
+is one RS-S008 unit.

@@ -69,6 +69,11 @@ identification is partial (RS-7a). Next: measure the per-twist strengths against
 
 Next: the mechanism stage for RS-7b, which opens Phase 2 for the sextic family.
 
+**RS-S007 checkpoint:** RS-7b has been reformulated exactly: twists are enhanced iff their
+unit-class factor is unramified at 3. Its strength mechanism is UNEXPLAINED, and the naive
+theta-coefficient heuristic fails. Next: the Phase-5 external note, starting early, because the
+open questions are theoretical.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity

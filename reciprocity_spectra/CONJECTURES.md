@@ -524,3 +524,42 @@ normalization.
 **How it explains RS-7a.** The cluster comes from a large family of near-critical twisted spikes.
 No single twist is individually supercritical below X ≈ 6·10⁵. Two simple quantitative models of
 the cluster multiplicity fail (records in the JSON).
+
+
+## RS-S007: mechanism stage for RS-7b
+
+Data are in `results/phase1f_2026-10-25.json`.
+
+### Exact results
+
+These are tested in `test_sextic_unit_symbols_are_characters_of_the_norm`.
+
+- `(ζ₆ʲ/π)₆ = ζ₆^{j(p−1)/6}`. This is a Dirichlet character of p = N(π) modulo 36. For an
+  associate u′ = ζ₆ʲu, it gives `(u′/π)₆ = ζ₆^{j(p−1)/6}·(u/π)₆`.
+- The extra factor depends only on p mod 4, as `(−1/p)`, exactly for j ∈ {0, 3}, i.e. u′ = ±u.
+  For every other j it depends on p mod 9 or p mod 18, so it is ramified at 3.
+- RS-7b therefore says: **a twist of conj(g̃6) is enhanced exactly when its unit-class factor is
+  unramified at 3.** Ramification at 3 is necessary for suppression in every case checked. That
+  it is also sufficient is an observation.
+- Associate sum rule (exact). Orthogonality of the six unit characters gives
+  `Σ_j ‖C D_j w‖² = 6 Σ_{c mod 36} ‖C w|_{p≡c}‖²`. This holds to a relative error of 2.3e-16
+  (X = 20000, u = 2).
+
+### Measured, not explained
+
+| X | mean Σ(r²−1) over associates | ±primary mean r²−1 | other mean r²−1 |
+|---:|---:|---:|---:|
+| 40000 | 0.04 ± 0.11 | 0.339 | −0.159 |
+| 640000 | 0.75 ± 0.29 | 0.528 | −0.077 |
+
+So the compensation among associates is approximate, and it drifts with X.
+
+- **Strength profile:** `θ_u²/D ∝ N(u)^α` with α = −0.17 to −0.21, stable for X from 2·10⁴ to
+  6.4·10⁵. The naive theta-coefficient heuristic, `|τ(u)|² ∝ N(u)^{−2/3}`, **FAILS**.
+- **Bias:** the plain twisted Gauss-sum mean, `|Σ conj(g̃6) ζ₆^{j(p−1)/6}|/√D`, is largest in
+  the unramified classes j = 0 and 3 at every X ≥ 40000. It reaches 2.62 at X = 640000, against
+  ≤ 0.76 for the ramified classes. That is only marginally above the random range of 1.7–2.2,
+  so it is suggestive and not decisive.
+
+**Mechanism status:** UNEXPLAINED. The ramification criterion is exact as algebra but empirical as
+an equivalence. The cause of the strength and its N(u) profile is open.
