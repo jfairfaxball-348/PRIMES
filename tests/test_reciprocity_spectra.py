@@ -215,3 +215,94 @@ def test_sextic_reciprocity_uses_field_quadratic_pair_signs():
             assert sign in (-1, 1)
             assert matrix[j][i] == (matrix[i][j] + (3 if sign == -1 else 0)) % 6
     assert seen == {-1, 1}
+
+
+def test_conjugation_and_metadata_boundary_formulas():
+    from reciprocity_spectra.null_model import conjugate_pair_phase, conjugate_permutation
+
+    for n in (2, 3, 4, 6):
+        index, matrix = residue_matrix(n, 400)
+        bar = conjugate_permutation(n, index)
+        for i in range(len(index)):
+            assert bar[bar[i]] == i
+            assert (bar[i] == i) == (n == 2)
+            assert matrix[i][bar[i]] == conjugate_pair_phase(n, index[i])
+            for j in range(len(index)):
+                value = matrix[i][j]
+                assert matrix[bar[i]][bar[j]] == (None if value is None else -value % n)
+
+
+def test_primary_unit_and_galois_audit():
+    from reciprocity_spectra.arith import DegreeOnePrime
+    from reciprocity_spectra.null_model import (
+        is_primary,
+        root_galois_powers,
+        unit_character_phase,
+        unit_multiple,
+    )
+
+    for n in (2, 3, 4, 6):
+        index, _ = residue_matrix(n, 150)
+        assert root_galois_powers(n) == ([1] if n == 2 else [1, n-1])
+        unit_order = 2 if n == 2 else 4 if n == 4 else 6
+        for prime in index:
+            primary_powers = [k for k in range(unit_order) if is_primary(n, unit_multiple(n, prime, k))]
+            assert primary_powers == [0]
+            one = 1 if n == 2 else DegreeOnePrime(prime.n, 1, 1, 0)
+            for k in range(unit_order):
+                unit = unit_multiple(n, one, k)
+                expected = unit_character_phase(n, prime, k)
+                if n == 2:
+                    actual = 0 if legendre(unit, prime) == 1 else 1
+                elif n == 6:
+                    actual = sextic_residue_exponent(unit.a, unit.b, prime)
+                else:
+                    actual = residue_exponent(unit.a, unit.b, prime)
+                assert actual == expected
+
+
+def test_native_certified_orbits_against_independent_python_bfs(tmp_path):
+    import ctypes as ct
+    import shutil
+    import subprocess
+    from array import array
+    from pathlib import Path
+
+    import pytest
+
+    from reciprocity_spectra.null_model import (
+        conjugate_pair_phase,
+        conjugate_permutation,
+        reference_control,
+    )
+
+    if not shutil.which('cc'):
+        pytest.skip('C compiler unavailable')
+    source = Path(__file__).resolve().parents[1] / 'reciprocity_spectra/native/residue_engine.c'
+    libpath = tmp_path / 'certified.so'
+    subprocess.run(['cc', '-O2', '-fopenmp', '-shared', '-fPIC', '-o', str(libpath),
+                    str(source), '-lm'], check=True)
+    lib = ct.CDLL(str(libpath))
+    lib.rs_certified_random.argtypes = [ct.c_void_p]*5+[ct.c_int, ct.c_int, ct.c_uint64]
+    lib.rs_certified_random.restype = ct.c_uint64
+    lib.rs_random.argtypes = [ct.c_void_p, ct.c_int, ct.c_int, ct.c_void_p, ct.c_uint64]
+    lib.rs_random.restype = None
+    for n in (2, 3, 4, 6):
+        index, _ = residue_matrix(n, 100)
+        d = len(index)
+        bar = array('i', conjugate_permutation(n, index))
+        forced = array('B', [255 if n == 2 else conjugate_pair_phase(n, v) for v in index])
+        primes = array('q', [v if n == 2 else v.p for v in index])
+        signs = array('B', [int(i != j and reciprocity_sign(n, x, y) == -1)
+                            for i, x in enumerate(index) for j, y in enumerate(index)])
+        out = (ct.c_uint8*(d*d))()
+        for seed in (0, 1):
+            errors = lib.rs_certified_random(out, signs.buffer_info()[0], bar.buffer_info()[0],
+                                              forced.buffer_info()[0], primes.buffer_info()[0], d, n, seed)
+            assert errors == 0
+            reference = reference_control(n, index, seed)
+            assert bytes(out) == bytes(255 if v is None else v for row in reference for v in row)
+            if n == 2:
+                old = (ct.c_uint8*(d*d))()
+                lib.rs_random(old, d, n, primes.buffer_info()[0], seed)
+                assert bytes(old) == bytes(out)

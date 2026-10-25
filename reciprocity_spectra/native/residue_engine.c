@@ -318,3 +318,52 @@ void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
         }
     }
 }
+
+/* RS-S004 conditional structural null. bar is an involution. forced[i] is the
+ * metadata-derived exponent at (i,bar[i]); rational diagonal uses 255.
+ * Every free orbit is visited once by its minimum row-major position.
+ */
+static int certified_turn(int n, const uint8_t *S, const int64_t *p, int D, int i, int j) {
+    if (n == 2) return p[i]%4 == 3 && p[j]%4 == 3;
+    if (n == 4) return p[i]%8 == 5 && p[j]%8 == 5 ? 2 : 0;
+    if (n == 6) return S[(size_t)i*D+j] ? 3 : 0;
+    return 0;
+}
+uint64_t rs_certified_random(uint8_t *E, const uint8_t *S, const int32_t *bar,
+                            const uint8_t *forced, const int64_t *primes,
+                            int D, int n, uint64_t seed) {
+    uint64_t errors = 0;
+    omp_set_num_threads(4);
+    #pragma omp parallel for schedule(static) reduction(+:errors)
+    for (int i = 0; i < D; i++) {
+        E[(size_t)i*D+i] = 255;
+        for (int j = i+1; j < D; j++) {
+            int bi = bar[i], bj = bar[j];
+            size_t positions[4] = {(size_t)i*D+j, (size_t)j*D+i,
+                                   (size_t)bi*D+bj, (size_t)bj*D+bi};
+            size_t leader = positions[0];
+            for (int q = 1; q < 4; q++) if (positions[q] < leader) leader = positions[q];
+            if (leader != positions[0]) continue;
+            int t = certified_turn(n, S, primes, D, i, j);
+            if (t != certified_turn(n, S, primes, D, j, i) ||
+                t != certified_turn(n, S, primes, D, bi, bj)) { errors++; continue; }
+            int allowed[256], count = 0;
+            for (int k = 0; k < n; k++) {
+                if (j == bi && k != forced[i]) continue;
+                int code[4] = {k, (k+t)%n, (n-k)%n, (n-k+t)%n};
+                int ok = 1;
+                for (int a = 0; a < 4; a++) for (int b = 0; b < a; b++)
+                    if (positions[a] == positions[b] && code[a] != code[b]) ok = 0;
+                if (ok) allowed[count++] = k;
+            }
+            if (!count) { errors++; continue; }
+            uint64_t state = seed + leader, u;
+            do { state += UINT64_C(0x9e3779b97f4a7c15); u = mix64(state); }
+            while (u < (uint64_t)(-((uint64_t)count)) % count);
+            int k = allowed[u % count];
+            int code[4] = {k, (k+t)%n, (n-k)%n, (n-k+t)%n};
+            for (int q = 0; q < 4; q++) E[positions[q]] = code[q];
+        }
+    }
+    return errors;
+}
