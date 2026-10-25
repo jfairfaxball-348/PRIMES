@@ -415,3 +415,33 @@ cross the BBP threshold as X grows.
   top 8 right singular vectors, is ≥ 2.0.
 
 The solver is Lanczos with tol 1e-11 and seed 2. The random-span seed is 5.
+
+
+## RS-S005 outcomes (scored verbatim against `f3a1b75`)
+
+| ID | X | D | value | registered criterion | outcome |
+|---|---:|---:|---:|---|---|
+| RS-S005-P7M | 320000 | 27554 | 34 (not censored, k = 48) | ≥ 28 | **PASS** |
+| RS-S005-P7F | 320000 | 27554 | 2.962 | ≥ 2.0 | **PASS** |
+
+The seed-0 control σ₁/edge is 0.999755, which reproduces RS-S004. The family projections of the
+top 8 vectors are 0.17–0.36, against a random-span baseline of 0.084–0.092.
+
+## RS-7a: the sextic cluster is a growing family of weak twisted-Gauss-sum spikes (STRESSED at X = 320000)
+
+**Statement.**
+
+- The number of sextic singular values above the conjugation-matched null grows with X:
+  7, then 22, then 34 at X = 40000, 160000 and 320000.
+- The top singular vectors are delocalized.
+- The top singular vectors are increasingly enriched in the span of conj(g̃6)·(u/π)₆ over small
+  u: enrichment is 1.55, 2.35 and 2.96 at the same scales.
+- No single vector dominates: conj(g̃6) alone projects only about 0.24 onto the top-24
+  subspace.
+
+**Diagnostic at X = 40000.** The bulk m4 matches the controls (1.9994 against 1.9976–1.9992),
+while the upper tail is stretched: the 0.99 quantile is 1.926 against 1.915–1.917.
+
+**Status of the identification.** It is partial. The family span captures only part of each
+vector, and the per-u spike strengths have not been measured. The mechanism is unknown, and the
+cluster contradicts the subcritical RS-5 heuristic at these scales.

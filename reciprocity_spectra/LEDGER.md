@@ -388,3 +388,67 @@ are in `CONJECTURES.md` and in the JSON.
 **Next dependency:** identify the sextic outlier cluster (RS-7): its multiplicity above the
 corrected null, and its singular vectors against sextic and cubic Gauss-sum candidates. This
 is one RS-S005 / Phase 1d unit.
+
+### RS-S005 (2026-10-25): Phase 1d, sextic outlier cluster (RS-7)
+
+**Stage:** discovery, then falsification. **Branch:** `ccr-c363c6bb-0zejeu`, continuing directly
+from RS-S004 at the owner's request ("keep going"). Main was not merged.
+
+**Exact work:**
+
+- Added `sextic_gauss_sum` and `sextic_jacobi_sum` to `arith.py`.
+- New tests check `|g6|² = p` and `g6² = J(χ6,χ6)·g3`, and that native `sexticg` output matches
+  Python at X = 400.
+- Noted from existing exact tests: the sextic matrix equals conj(cubic matrix) ∘ (field-quadratic
+  symbol matrix), entrywise.
+
+**EXPLORATORY** (`scripts/phase1d.py`, `results/phase1d_2026-10-25.json`):
+
+| | X = 40000 | X = 160000 |
+|---|---:|---:|
+| values above the largest of seeds 0–2 controls | 7 | 22 |
+| IPR·D of the cluster vectors | 1.96–2.13 | 2.19–2.58 |
+| conj(g̃6) projection onto the top-24 subspace | 0.258 | 0.238 |
+| conj(g̃6) Rayleigh quotient / edge | 0.677 | 0.689 |
+| family enrichment, conj(g̃6) twists, N(u) ≤ 60 | 1.55 | 2.35 |
+
+- The cluster vectors are delocalized, with no concentration on small primes or residue classes.
+- conj(g̃6) is the best single candidate, but its Rayleigh quotient is well below the cluster's
+  σ/edge of about 1.03.
+- The g6, g3, conj g3 and constant twist families sit at the random level.
+- At X = 40000 the bulk m4 equals the control's, and the upper tail is stretched.
+- The first X = 40000 pass ran before the diagnostics were added. It is retained as
+  `superseded_exploratory`.
+
+**Pre-registration:** `f3a1b75`, pushed before any X = 320000 data.
+
+**Registered outcomes (X = 320000, D = 27554):**
+
+| prediction | value | outcome |
+|---|---:|---|
+| P7M multiplicity | 34 | **PASS** |
+| P7F enrichment | 2.962 | **PASS** |
+
+- The arithmetic job (top 48) took 1419 s, and the control job took 484 s.
+- The maximum Gram residual is 3.4e-14.
+
+**Status:**
+
+- RS-7a (new): STRESSED at X = 320000. The identification is partial.
+- All other statuses are unchanged.
+
+**Validation:** targeted Ruff passes, the strict compile passes, and pytest passes 350 tests.
+
+**Commits:** `a562069`, `754330c`, `0dc8836`, `35545ce`, `0cc7e53`, `f3a1b75`/`9822ae3`
+(registration), `511a8e2`, `a1235b8`, then the closeout.
+
+**Limitations:**
+
+- Multiplicity at the registered scale uses one control seed.
+- The family uses N(u) ≤ 60 only.
+- The enrichment ratio depends on the family dimension.
+- No mechanism is derived.
+
+**Next dependency:** measure the per-twist strengths, i.e. the Rayleigh quotients of
+conj(g̃6)·(u/π)₆ as a function of N(u). Then test whether the number above threshold predicts
+the cluster multiplicity. This is one RS-S006 unit.
