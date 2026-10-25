@@ -17,5 +17,5 @@
       "prediction": "Cubic: at least 24 (\"dozens\") singular values of the cubic matrix exceed the largest singular value of the seed-0 conjugation-matched control (dense SVD)."
     }
   ],
-  "prediction_commit": null
+  "prediction_commit": "81aa006"
 }
