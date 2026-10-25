@@ -194,9 +194,61 @@ def explore(doc, x, k, seeds, dense=False):
                       'seconds': row['total_seconds']}), flush=True)
 
 
+def registered_arithmetic(doc, x, k):
+    """Registered arithmetic part: top-k spectrum and family enrichment (no control)."""
+    signal.alarm(2700)
+    started = time.monotonic()
+    row = {'X': x, 'k': k, 'solver_seed': 2, 'command': command(),
+           'code_commit': legacy.shell('git', 'rev-parse', 'HEAD'),
+           'started_at': datetime.now(UTC).isoformat()}
+    a, g6, g3 = build(x)
+    s, v, res = a.top(k)
+    edge = 2 * math.sqrt(a.d)
+    fam = family_diagnostics(a.meta, g6, g3, v, k)
+    ratio = float(np.mean(fam['conj g6'][:8]) / np.mean(fam['random_span'][:8]))
+    row.update(D=a.d, top_k=s.tolist(), top_k_over_edge=(s / edge).tolist(),
+               gram_relative_residuals=res, matrix_sha256=phase1c.digest(a.path),
+               family_span_projection=fam, family_enrichment_top8=ratio,
+               arithmetic_seconds=time.monotonic() - started)
+    signal.alarm(0)
+    doc['registered'] = row
+    save(doc, f'RS-S005: registered sextic X={x} arithmetic spectrum and family enrichment')
+    print(json.dumps({'D': a.d, 'top8_over_edge': row['top_k_over_edge'][:8], 'enrichment': ratio,
+                      'seconds': row['arithmetic_seconds']}), flush=True)
+
+
+def registered_control(doc, x):
+    signal.alarm(2700)
+    started = time.monotonic()
+    row = doc['registered']
+    a = phase1c.ConjEngine('sextic', x)
+    assert phase1c.digest(a.path) == row['matrix_sha256']
+    a.control(0)
+    c, _, cres = a.top(2)
+    a.path.unlink()
+    s = np.array(row['top_k'])
+    m = int(np.sum(s > c[0]))
+    preds = {p['id']: p for p in doc['predictions']}
+    row.update(control_seed=0, control_command=command(),
+               control_code_commit=legacy.shell('git', 'rev-parse', 'HEAD'),
+               control_top2=c.tolist(), control_gram_relative_residuals=cres,
+               control_sigma1_over_edge=float(c[0] / (2 * math.sqrt(a.d))),
+               multiplicity=m, multiplicity_censored=m == row['k'],
+               control_seconds=time.monotonic() - started)
+    row['prediction_outcomes'] = [
+        {'id': 'RS-S005-P7M', 'prediction': preds['RS-S005-P7M']['prediction'], 'value': m,
+         'outcome': 'PASS' if m >= preds['RS-S005-P7M']['min'] else 'FAIL'},
+        {'id': 'RS-S005-P7F', 'prediction': preds['RS-S005-P7F']['prediction'],
+         'value': row['family_enrichment_top8'],
+         'outcome': 'PASS' if row['family_enrichment_top8'] >= preds['RS-S005-P7F']['min'] else 'FAIL'}]
+    signal.alarm(0)
+    save(doc, f'RS-S005: registered sextic X={x} control and prediction outcomes')
+    print(json.dumps(row['prediction_outcomes']), flush=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['explore'])
+    parser.add_argument('action', choices=['explore', 'registered-arithmetic', 'registered-control'])
     parser.add_argument('--x', type=int, required=True)
     parser.add_argument('--k', type=int, default=24)
     parser.add_argument('--seeds', type=int, nargs='+', default=[0, 1, 2])
@@ -207,7 +259,15 @@ def main():
         'session': 'RS-S005', 'phase': '1d', 'date': '2026-10-25',
         'control': 'rs_random_conj (RS-S004), seeds as listed', 'predictions': [],
         'prediction_commit': None}
-    explore(doc, args.x, args.k, args.seeds, args.dense)
+    if args.action == 'explore':
+        explore(doc, args.x, args.k, args.seeds, args.dense)
+        return
+    assert doc.get('prediction_commit') and args.x == 320000, 'Registered scale only, after registration'
+    if args.action == 'registered-arithmetic':
+        assert args.k == 48
+        registered_arithmetic(doc, args.x, args.k)
+    else:
+        registered_control(doc, args.x)
 
 
 if __name__ == '__main__':

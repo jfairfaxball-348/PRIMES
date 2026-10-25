@@ -386,3 +386,32 @@ This contradicts the RS-5 heuristic of no outliers for n ≥ 5 at these scales. 
 top three singular values are nearly degenerate: 348.650, 347.581 and 346.681 against a control
 σ₁ of 331.907. This suggests a cluster of outliers rather than a single spike. The outlier
 vectors and their mechanism are unidentified.
+
+
+## RS-S005: pre-registered Phase-1d predictions for RS-7 (before X = 320000 data)
+
+The exploratory basis is in `results/phase1d_2026-10-25.json`.
+
+**Multiplicity.** The number of sextic singular values above the largest of three corrected
+controls is:
+
+- 7 at X = 40000 (D = 4178);
+- 22 at X = 160000 (D = 14640).
+
+**Delocalization.** The cluster vectors are delocalized: IPR·D ≈ 2.0–2.6.
+
+**Gauss-sum candidates.** No single Gauss-sum candidate dominates. The best is conj(g̃6),
+which projects 0.26 and 0.24 onto the top-24 subspace.
+
+**Family span.** The span of conj(g̃6)·(u/π)₆ over N(u) ≤ 60 (210 vectors) is enriched over a
+random span of equal dimension: by 1.55× at X = 40000 and by 2.35× at X = 160000.
+
+**Working picture (hypothesis).** The cluster is many weak twisted-Gauss-sum spikes, which
+cross the BBP threshold as X grows.
+
+- **RS-S005-P7M (X = 320000):** the number of singular values (top 48) strictly above the seed-0
+  conjugation-matched control σ₁ is ≥ 28. A count of 48 is censored and counts as ≥ 48.
+- **RS-S005-P7F (X = 320000):** the conj(g̃6) twisted-family enrichment ratio, averaged over the
+  top 8 right singular vectors, is ≥ 2.0.
+
+The solver is Lanczos with tol 1e-11 and seed 2. The random-span seed is 5.

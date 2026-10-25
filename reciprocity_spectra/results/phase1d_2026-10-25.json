@@ -3,7 +3,20 @@
   "phase": "1d",
   "date": "2026-10-25",
   "control": "rs_random_conj (RS-S004), seeds as listed",
-  "predictions": [],
+  "predictions": [
+    {
+      "id": "RS-S005-P7M",
+      "X": 320000,
+      "min": 28,
+      "prediction": "Number of arithmetic sextic singular values (top k=48, Lanczos tol 1e-11, solver seed 2) strictly above the seed-0 conjugation-matched control sigma1 is >= 28 (m = 48 is reported as censored, and counts as >= 48)."
+    },
+    {
+      "id": "RS-S005-P7F",
+      "X": 320000,
+      "min": 2.0,
+      "prediction": "Family enrichment: mean over the top 8 right singular vectors of the projection onto span{conj(g6~) * (u/pi)_6 : 0 < N(u) <= 60, distinct symbol vectors}, divided by the same mean for a random-phase span of equal dimension (seed 5), is >= 2.0."
+    }
+  ],
   "prediction_commit": null,
   "superseded_exploratory": [
     {
@@ -2774,5 +2787,6 @@
       },
       "total_seconds": 765.6845693300002
     }
-  ]
+  ],
+  "prediction_basis": "EXPLORATORY: multiplicity above max of control seeds 0-2 is 7 (X=40000, D=4178) and 22 (X=160000, D=14640), about D^0.92, extrapolating to ~39 at D=27554; enrichment 1.55 (X=40000) and 2.35 (X=160000). Multiplicity uses seed 0 only at the registered scale. A failed identification is a valid outcome and is retained."
 }
