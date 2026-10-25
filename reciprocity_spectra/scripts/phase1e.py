@@ -124,9 +124,72 @@ def run(doc, x, norm_max, k, seeds, label):
           flush=True)
 
 
+def coprime_twists(meta, norm_max):
+    """All u = c + d w coprime to 3 with N(u) <= norm_max, both signs (no deduplication).
+
+    'pm-primary' means d = 0 mod 3 and c != 0 mod 3 (u = +-primary), the index normalization.
+    """
+    out = []
+    for c in range(-12, 13):
+        for d in range(-12, 13):
+            n = c * c - c * d + d * d
+            if 0 < n <= norm_max and (c + d) % 3:
+                sym = phase1d.sextic_symbol(meta, c, d)
+                cls = 'pm-primary' if d % 3 == 0 else 'other'
+                out += [{'u': [c, d], 'norm': n, 'class': cls, 'sign': '+', 'vector': sym},
+                        {'u': [c, d], 'norm': n, 'class': cls, 'sign': '-', 'vector': sym.conj()}]
+    return out
+
+
+def rayleigh_run(doc, x, norm_max, label):
+    """Rayleigh quotients only (matvecs; no spectra): sextic matrix and sextic Gauss sums."""
+    signal.alarm(2700)
+    started = time.monotonic()
+    row = {'X': x, 'norm_max': norm_max, 'command': command(), 'classification': label,
+           'code_commit': legacy.shell('git', 'rev-parse', 'HEAD'),
+           'started_at': datetime.now(UTC).isoformat()}
+    legacy.subprocess.run([str(phase1c.DATA / 'residue_engine'), 'sextic', str(x),
+                           str(phase1c.DATA / f'sextic_{x}.bin'),
+                           str(phase1c.DATA / f'sexticg_{x}.bin')], check=True, timeout=2700)
+    a = phase1c.ConjEngine('sextic', x)
+    base = np.fromfile(phase1c.DATA / f'sexticg_{x}.bin', np.complex128).conj()
+    row.update(D=a.d, matrix_sha256=phase1c.digest(a.path), build_seconds=time.monotonic() - started)
+    family = coprime_twists(a.meta, norm_max)
+    rows = [{k: f[k] for k in ('u', 'norm', 'class', 'sign')} | {'r': rayleigh(a, base * f['vector'])}
+            for f in family]
+    rng = np.random.default_rng(13)
+    row.update(twists=rows,
+               random_phase_r=[rayleigh(a, np.exp(2j * np.pi * rng.random(a.d))) for _ in range(20)],
+               conj_g6_random_roots_r=[rayleigh(a, base * np.exp(1j * np.pi / 3 * rng.integers(0, 6, a.d)))
+                                       for _ in range(20)])
+    plus = [f for f in rows if f['sign'] == '+']
+    pm = [f['r'] for f in plus if f['class'] == 'pm-primary']
+    other = [f['r'] for f in plus if f['class'] == 'other']
+    row.update(min_r_plus_pm_primary=min(pm), max_r_plus_other=max(other),
+               r_u1=next(f['r'] for f in plus if f['u'] == [-1, 0]),
+               total_seconds=time.monotonic() - started)
+    if label == 'REGISTERED':
+        preds = {p['id']: p for p in doc['predictions'] if p['X'] == x}
+        sep = preds[f'RS-S006-P7S-{x}']
+        band = preds[f'RS-S006-P7U-{x}']
+        row['prediction_outcomes'] = [
+            {'id': sep['id'], 'value': [min(pm), max(other)],
+             'outcome': 'PASS' if min(pm) >= sep['pm_min'] and max(other) <= sep['other_max'] else 'FAIL'},
+            {'id': band['id'], 'value': row['r_u1'],
+             'outcome': 'PASS' if band['min'] <= row['r_u1'] <= band['max'] else 'FAIL'}]
+    signal.alarm(0)
+    doc.setdefault('rayleigh_runs', []).append(row)
+    save(doc, f'RS-S006: {label} sextic twist Rayleigh quotients X={x}')
+    print(json.dumps({k: row[k] for k in ('X', 'D', 'min_r_plus_pm_primary', 'max_r_plus_other', 'r_u1',
+                                          'total_seconds')} | {'n_twists': len(rows),
+          'random_max': max(row['random_phase_r']), 'outcomes': row.get('prediction_outcomes')}), flush=True)
+    a.path.unlink()
+    a.mask_path.unlink()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['explore'])
+    parser.add_argument('action', choices=['explore', 'rayleigh', 'rayleigh-registered'])
     parser.add_argument('--x', type=int, required=True)
     parser.add_argument('--norm-max', type=int, default=300)
     parser.add_argument('--k', type=int, default=0)
@@ -136,8 +199,15 @@ def main():
     doc = json.loads(RESULT.read_text()) if RESULT.exists() else {
         'session': 'RS-S006', 'date': '2026-10-25', 'predictions': [], 'prediction_commit': None,
         'model': __doc__}
+    if args.action == 'rayleigh-registered':
+        assert doc.get('prediction_commit') and args.x in (320000, 640000) and args.norm_max == 100
+        rayleigh_run(doc, args.x, args.norm_max, 'REGISTERED')
+        return
     assert args.x <= 160000, 'EXPLORATORY scales only before registration'
-    run(doc, args.x, args.norm_max, args.k, args.seeds, 'EXPLORATORY')
+    if args.action == 'rayleigh':
+        rayleigh_run(doc, args.x, args.norm_max, 'EXPLORATORY')
+    else:
+        run(doc, args.x, args.norm_max, args.k, args.seeds, 'EXPLORATORY')
 
 
 if __name__ == '__main__':
