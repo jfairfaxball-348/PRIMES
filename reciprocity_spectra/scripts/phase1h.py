@@ -82,9 +82,15 @@ def inert_gauss(q):
     return complex(np.sum(Z6[k] * np.exp(2j * np.pi * (2 * s - t) / q)) / q)
 
 
-def build_primes(x):
+def build_primes(x, psi=False, split_only=False):
+    """psi: multiply each split g6(1, pi) by (conj pi / pi)_6, the factor relating the trace form to
+    the matrix normalization g_ours (RS-S010 finding; Astra check 3). Inert q keep psi(q) = 1."""
     primes = split_primes(x)
-    for q in primes_upto(math.isqrt(x)):
+    if psi:
+        for r in primes:
+            a, b = r['elem']
+            r['g'] *= Z6[sextic_symbol_at(a - b, -b, r['prime'])]
+    for q in ([] if split_only else primes_upto(math.isqrt(x))):
         if q % 3 == 2 and q > 2:
             primes.append({'norm': q * q, 'elem': (q, 0), 'prime': q, 'g': inert_gauss(q),
                            'unit': ((q * q - 1) // 6) % 6})
@@ -96,9 +102,9 @@ def mul_w(x, y):
     return (x[0] * y[0] - x[1] * y[1], x[0] * y[1] + x[1] * y[0] - x[1] * y[1])
 
 
-def kubota_sums(x, grid):
+def kubota_sums(x, grid, psi=False, split_only=False):
     """Accumulate g6(zeta6^j, n)/sqrt(N n) over squarefree n by depth-first products of primes."""
-    primes = build_primes(x)
+    primes = build_primes(x, psi, split_only)
     norms = np.array([r['norm'] for r in primes])
     sums = np.zeros((len(grid), 6), complex)
     count = np.zeros(len(grid), int)
@@ -137,6 +143,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('label', choices=['EXPLORATORY', 'REGISTERED'])
     parser.add_argument('--x', type=int, required=True)
+    parser.add_argument('--psi', action='store_true')
+    parser.add_argument('--split-only', action='store_true')
     args = parser.parse_args()
     phase1c.legacy.compile_engine()
     doc = json.loads(RESULT.read_text()) if RESULT.exists() else {
@@ -148,8 +156,8 @@ def main():
     if grid[-1] != args.x:
         grid.append(args.x)
     started = time.monotonic()
-    sums, count, nodes, nprimes = kubota_sums(args.x, grid)
-    row = {'X': args.x, 'classification': args.label, 'grid': grid, 'count': count.tolist(),
+    sums, count, nodes, nprimes = kubota_sums(args.x, grid, args.psi, args.split_only)
+    row = {'X': args.x, 'classification': args.label, 'psi': args.psi, 'split_only': args.split_only, 'grid': grid, 'count': count.tolist(),
            'abs_T': np.abs(sums).T.tolist(), 'T_re': sums.real.T.tolist(), 'T_im': sums.imag.T.tolist(),
            'nodes': nodes, 'primes': nprimes, 'seconds': time.monotonic() - started,
            'command': 'python ' + ' '.join(sys.argv), 'code_commit': phase1c.legacy.shell('git', 'rev-parse', 'HEAD'),
@@ -158,7 +166,7 @@ def main():
         score(doc, row)
     doc['runs'].append(row)
     phase1c.phase1b.RESULT, phase1c.phase1b.BRANCH = RESULT, phase1c.BRANCH
-    phase1c.phase1b.save(doc, f'RS-S010: {args.label} Kubota sums X={args.x}')
+    phase1c.phase1b.save(doc, f'RS-S010: {args.label} Kubota sums X={args.x} psi={args.psi} split_only={args.split_only}')
     for gx, c, t in zip(grid, count, np.abs(sums), strict=True):
         print(gx, c, ' '.join(f'{v:9.1f}' for v in t), flush=True)
     print('nodes', nodes, 'seconds', round(row['seconds'], 1), row.get('prediction_outcomes'))
@@ -167,6 +175,8 @@ def main():
 def score(doc, row):
     out = []
     for p in doc['predictions']:
+        if p.get('psi') != row['psi'] or p.get('split_only') != row['split_only'] or p['X'] != row['X']:
+            continue
         xs = np.array(row['grid'], float)
         m = (xs >= p['fit_from']) & (xs <= p['fit_to'])
         for j in p['classes']:
