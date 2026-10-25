@@ -46,6 +46,20 @@ remain unresolved and the original RS-6 bulk claim remains PILOT. Phase 1c next 
 additional exact identities required of the null ensemble, followed by qualified-model tests
 at fresh scales. Old outcomes and predictions stay unchanged. See the ledger and Phase-1b JSON.
 
+**RS-S004 checkpoint (Phase 1c):** the conjugation-matched null is certified with exact tests.
+All five registered fresh-scale predictions PASS:
+
+- bulk gap ratios match the corrected null (RS-6C, X = 80000);
+- the cubic and quartic outliers stay above it;
+- the sextic excess persists at X = 320000 (RS-7).
+
+Phase 1d next characterises the sextic outlier cluster.
+
+**RS-S005 checkpoint (Phase 1d):** the sextic excess is a growing cluster: 7, 22 and 34
+singular values above the corrected null at X = 40000, 160000 and 320000. Its delocalized
+vectors are increasingly enriched in twisted conj(g̃6) spans (registered PASS). The
+identification is partial (RS-7a). Next: measure the per-twist strengths against N(u).
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity

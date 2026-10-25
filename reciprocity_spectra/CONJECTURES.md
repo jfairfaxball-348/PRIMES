@@ -306,3 +306,142 @@ finite data do not disprove eventual asymptotic limits. The original RS-6 bulk c
 PILOT, and RS-1, RS-2, RS-3 and RS-4 retain their RS-S002 statuses. No prediction was revised.
 Additional exact identities in a null ensemble require separate certification and fresh-scale
 predictions; they must not retroactively change these outcomes.
+
+
+## RS-S004: conjugation-matched null and pre-registered Phase-1c predictions (before test data)
+
+**Certified identities** (exact tests in `tests/test_reciprocity_spectra.py`; machine record in
+`results/phase1c_2026-10-25.json`): for n = 3, 4, 6, `(conj x/conj y)_n = conj((x/y)_n)`, and
+the reciprocity mask is conjugation-invariant. Reciprocity plus conjugation force
+`x = (π/conj π)_n` to satisfy `x = s·conj(x)`: `x = 1` (cubic), `x ∈ {±1}` or `{±i}` by
+`p mod 8` (quartic), `s = +1` and `x = ±1` (sextic). For n = 3, `H = C·P` (P the conjugation
+permutation) is exactly Hermitian and real in a real basis, so the cubic singular values are
+the moduli of the eigenvalues of a real symmetric matrix. No further identity was found;
+completeness is not claimed. The quadratic null (n = 2, no conjugation) is unchanged.
+
+**Control:** `rs_random_conj` (seed 0), drawing one uniform exponent per {transpose,
+conjugation} orbit and copying the (π, conj π) entries.
+
+**Predictions (new IDs; RS-S003 outcomes are not changed):**
+
+- **RS-S004-P6C-cubic / -quartic (X = 80000):**
+  `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`, using the RS-S003 window,
+  deflation and tie rules.
+- **RS-S004-P1C (cubic, X = 80000):** `σ₁/edge − control σ₁/edge ≥ 0.40`.
+- **RS-S004-P3C (quartic, X = 80000):** `σ₁/edge − control σ₁/edge ≥ 0.10`.
+  For P1C/P3C the arithmetic σ₁ at this X is already known from the pilot; these test the
+  corrected control.
+- **RS-S004-P5C (sextic, X = 320000):** `0.035 ≤ σ₁/edge − control σ₁/edge ≤ 0.065`.
+  This predicts that the sextic outlier persists above the corrected null.
+
+The basis is the EXPLORATORY rows in the JSON: gap-ratio differences ≤ 0.02 at X = 20000 and
+40000 over control seeds 0–2, and sextic excess 0.0325 and 0.0421 at X = 40000 and 160000.
+
+
+## RS-S004 outcomes (scored verbatim against `ed4961d`)
+
+| ID | mode | X | D | arithmetic | seed-0 conjugation control | value | outcome |
+|---|---|---:|---:|---:|---:|---:|---|
+| RS-S004-P6C-cubic | cubic | 80000 | 7796 | gap 0.424229725 | gap 0.417128495 | 0.007101230 | **PASS** |
+| RS-S004-P1C | cubic | 80000 | 7796 | σ₁/edge 1.514342308 | 1.000965311 | 0.513376997 | **PASS** |
+| RS-S004-P6C-quartic | quartic | 80000 | 7806 | gap 0.527786408 | gap 0.525672180 | 0.002114228 | **PASS** |
+| RS-S004-P3C | quartic | 80000 | 7806 | σ₁/edge 1.140784463 | 0.999855787 | 0.140928676 | **PASS** |
+| RS-S004-P5C | sextic | 320000 | 27554 | σ₁/edge 1.050189908 | 0.999755252 | 0.050434656 | **PASS** |
+
+Status consequences (scope limited to the tests performed; finite data prove nothing):
+
+- **RS-1, RS-3:** remain STRESSED. Their outliers stay far above the corrected null.
+- **RS-4:** unchanged. The quadratic null needs no conjugation matching.
+- **RS-5:** its registered finite form remains REFUTED.
+- **RS-6:** its RS-S003 finite local extension remains REFUTED, and its original bulk claim
+  remains PILOT. The qualified statement is registered as **RS-6C**.
+- **RS-7:** new. It records the sextic outlier persisting above the corrected null.
+
+## RS-6C: bulk gap ratio matches the conjugation-matched null (STRESSED at X = 80000)
+
+For the cubic and quartic matrices, the mean bulk gap ratio (RS-S003 window rules) agrees within
+0.03 with the conjugation-matched control at the same D. Evidence:
+
+- EXPLORATORY: X = 20000 and 40000, seeds 0–2.
+- Registered PASS: X = 80000.
+
+Mechanism (exact for the symmetry class, heuristic for the statistics): in the cubic case the
+singular values are the moduli of the eigenvalues of a real symmetric matrix. They therefore
+interleave two eigenvalue sequences, which is consistent with the low ratio of about 0.42. The
+quartic matrix is real in a real basis, and its ratio is about 0.53. Neither value has been
+compared with a theoretical ensemble constant. The RS-S003 failure was caused by a null with
+the wrong symmetry class; it was not an arithmetic deviation.
+
+## RS-7: sextic outliers above the corrected null (STRESSED at X = 320000)
+
+The sextic matrix over `Z[ω]` has `σ₁/edge` exceeding the conjugation-matched control by:
+
+| X | excess | status |
+|---:|---:|---|
+| 40000 | 0.0325 | EXPLORATORY |
+| 160000 | 0.0421 | EXPLORATORY |
+| 320000 | 0.0504 | registered PASS |
+
+This contradicts the RS-5 heuristic of no outliers for n ≥ 5 at these scales. At X = 320000 the
+top three singular values are nearly degenerate: 348.650, 347.581 and 346.681 against a control
+σ₁ of 331.907. This suggests a cluster of outliers rather than a single spike. The outlier
+vectors and their mechanism are unidentified.
+
+
+## RS-S005: pre-registered Phase-1d predictions for RS-7 (before X = 320000 data)
+
+The exploratory basis is in `results/phase1d_2026-10-25.json`.
+
+**Multiplicity.** The number of sextic singular values above the largest of three corrected
+controls is:
+
+- 7 at X = 40000 (D = 4178);
+- 22 at X = 160000 (D = 14640).
+
+**Delocalization.** The cluster vectors are delocalized: IPR·D ≈ 2.0–2.6.
+
+**Gauss-sum candidates.** No single Gauss-sum candidate dominates. The best is conj(g̃6),
+which projects 0.26 and 0.24 onto the top-24 subspace.
+
+**Family span.** The span of conj(g̃6)·(u/π)₆ over N(u) ≤ 60 (210 vectors) is enriched over a
+random span of equal dimension: by 1.55× at X = 40000 and by 2.35× at X = 160000.
+
+**Working picture (hypothesis).** The cluster is many weak twisted-Gauss-sum spikes, which
+cross the BBP threshold as X grows.
+
+- **RS-S005-P7M (X = 320000):** the number of singular values (top 48) strictly above the seed-0
+  conjugation-matched control σ₁ is ≥ 28. A count of 48 is censored and counts as ≥ 48.
+- **RS-S005-P7F (X = 320000):** the conj(g̃6) twisted-family enrichment ratio, averaged over the
+  top 8 right singular vectors, is ≥ 2.0.
+
+The solver is Lanczos with tol 1e-11 and seed 2. The random-span seed is 5.
+
+
+## RS-S005 outcomes (scored verbatim against `f3a1b75`)
+
+| ID | X | D | value | registered criterion | outcome |
+|---|---:|---:|---:|---|---|
+| RS-S005-P7M | 320000 | 27554 | 34 (not censored, k = 48) | ≥ 28 | **PASS** |
+| RS-S005-P7F | 320000 | 27554 | 2.962 | ≥ 2.0 | **PASS** |
+
+The seed-0 control σ₁/edge is 0.999755, which reproduces RS-S004. The family projections of the
+top 8 vectors are 0.17–0.36, against a random-span baseline of 0.084–0.092.
+
+## RS-7a: the sextic cluster is a growing family of weak twisted-Gauss-sum spikes (STRESSED at X = 320000)
+
+**Statement.**
+
+- The number of sextic singular values above the conjugation-matched null grows with X:
+  7, then 22, then 34 at X = 40000, 160000 and 320000.
+- The top singular vectors are delocalized.
+- The top singular vectors are increasingly enriched in the span of conj(g̃6)·(u/π)₆ over small
+  u: enrichment is 1.55, 2.35 and 2.96 at the same scales.
+- No single vector dominates: conj(g̃6) alone projects only about 0.24 onto the top-24
+  subspace.
+
+**Diagnostic at X = 40000.** The bulk m4 matches the controls (1.9994 against 1.9976–1.9992),
+while the upper tail is stretched: the 0.99 quantile is 1.926 against 1.915–1.917.
+
+**Status of the identification.** It is partial. The family span captures only part of each
+vector, and the per-u spike strengths have not been measured. The mechanism is unknown, and the
+cluster contradicts the subcritical RS-5 heuristic at these scales.
