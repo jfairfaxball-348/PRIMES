@@ -48880,5 +48880,189 @@
     },
     "complete": true
   },
-  "prediction_commit": "5502ba3"
+  "prediction_commit": "5502ba3",
+  "closed_at_utc": "2026-10-25T09:09:25.300182+00:00",
+  "registration_commit": "5502ba3a5a54b86c8a5cacfe1b08101ff6be5b71",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "cpu_max": "200000 100000",
+    "memory_limit_bytes": 8589934592,
+    "compiler": "cc (Debian 14.2.0-19) 14.2.0"
+  },
+  "outcomes": [
+    {
+      "id": "RS-S004-L-cubic-0",
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "role": "primary qualified local model",
+      "outcome": "PASS",
+      "absolute_difference": 0.007101230063903452
+    },
+    {
+      "id": "RS-S004-L-cubic-1",
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "role": "primary qualified local model",
+      "outcome": "PASS",
+      "absolute_difference": 0.006131367994675396
+    },
+    {
+      "id": "RS-S004-L-quartic-0",
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "role": "primary qualified local model",
+      "outcome": "PASS",
+      "absolute_difference": 0.0021142283220209057
+    },
+    {
+      "id": "RS-S004-L-quartic-1",
+      "prediction": "abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03",
+      "role": "primary qualified local model",
+      "outcome": "PASS",
+      "absolute_difference": 0.006216189512683101
+    },
+    {
+      "id": "RS-S004-O-cubic-0",
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "outcome": "PASS",
+      "normalized_excess": 0.5133769968203521
+    },
+    {
+      "id": "RS-S004-O-cubic-1",
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "outcome": "PASS",
+      "normalized_excess": 0.5119535449786468
+    },
+    {
+      "id": "RS-S004-O-quartic-0",
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "outcome": "PASS",
+      "normalized_excess": 0.14092867571131262
+    },
+    {
+      "id": "RS-S004-O-quartic-1",
+      "prediction": "(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05",
+      "role": "retention diagnostic; no new kappa/theta-law promotion",
+      "outcome": "PASS",
+      "normalized_excess": 0.14152752998189355
+    },
+    {
+      "id": "RS-S004-Q-0",
+      "prediction": "certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))",
+      "role": "quadratic-compression retention diagnostic",
+      "outcome": "PASS",
+      "m4_difference": 0.13541114720511005,
+      "combined_standard_error": 0.005693902627784155,
+      "required_margin": 0.05
+    },
+    {
+      "id": "RS-S004-Q-1",
+      "prediction": "certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))",
+      "role": "quadratic-compression retention diagnostic",
+      "outcome": "PASS",
+      "m4_difference": 0.13294495904301518,
+      "combined_standard_error": 0.00532862024856684,
+      "required_margin": 0.05
+    },
+    {
+      "id": "RS-S004-S-0",
+      "prediction": "sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02",
+      "role": "primary qualified sextic model",
+      "outcome": "FAIL",
+      "normalized_excess": 0.0504346560744503
+    },
+    {
+      "id": "RS-S004-S-1",
+      "prediction": "sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02",
+      "role": "primary qualified sextic model",
+      "outcome": "FAIL",
+      "normalized_excess": 0.05006712045759887
+    }
+  ],
+  "outcome_counts": {
+    "primary": {
+      "PASS": 4,
+      "FAIL": 2
+    },
+    "retention": {
+      "PASS": 6,
+      "FAIL": 0
+    },
+    "total": {
+      "PASS": 10,
+      "FAIL": 2
+    }
+  },
+  "dispositions": {
+    "qualified_RS6_certified_null_local_revision": "STRESSED at X=80000 for the registered statistic and fixed seeds",
+    "qualified_RS5_certified_null_positive_excess_revision": "REFUTED at X=320000 in its registered finite form",
+    "RS_S003_all_eight_FAIL": "UNCHANGED",
+    "RS1_RS3_RS4_prior_STRESSED": "UNCHANGED; all retention diagnostics PASS",
+    "RS2": "PILOT",
+    "original_RS6_bulk": "PILOT",
+    "eventual_asymptotic_limits": "UNRESOLVED by these finite tests"
+  },
+  "family_component_seconds": {
+    "cubic": 581.5371371240003,
+    "quartic": 524.3644738430003,
+    "sextic": 2012.008059284,
+    "quad": 41.20031004900011
+  },
+  "checks": {
+    "ruff": {
+      "command": "ruff check reciprocity_spectra/null_model.py reciprocity_spectra/scripts/phase1c.py tests/test_reciprocity_spectra.py",
+      "outcome": "PASS"
+    },
+    "pytest": {
+      "command": "python -m pytest",
+      "outcome": "350 passed"
+    },
+    "c_warnings": {
+      "command": "cc -O3 -fopenmp -Wall -Wextra -Werror -fsyntax-only reciprocity_spectra/native/residue_engine.c",
+      "outcome": "PASS"
+    },
+    "frozen_predictions_and_definitions_unchanged": true,
+    "earlier_results_byte_unchanged": true,
+    "recorded_full_spectra_reproduce_local_statistics": true,
+    "all_reported_arithmetic_and_control_entries_audited_exactly": true,
+    "closeout": {
+      "prior_ledgers_and_conjectures_preserved_as_prefix": true,
+      "frozen_D1_paths_unchanged": true,
+      "program_legacy_suffix_unchanged": true,
+      "matrices_untracked": true,
+      "all_twelve_outcomes_in_both_records": true,
+      "earlier_results_byte_unchanged": true,
+      "one_RS_S005_prompt": true
+    }
+  },
+  "certification_doc_sha256": "989ead9d5b9fa7805784e815222f3f3c3f0219e4ecd9ae2a8f7e3a0229b96313",
+  "limitations": [
+    "Certification concerns the stated closed index symmetries, reciprocity shifts and metadata boundary values, not all arithmetic correlations.",
+    "The tested local revision concerns one statistic at one fresh scale, not bulk convergence or Tracy-Widom limits.",
+    "Additive counter seeds can reuse shifted draws across seeds; these are fixed benchmarks, with no independent-replication p-value.",
+    "Quadratic combined Monte Carlo errors condition on each matrix and use independent registered probe streams.",
+    "Retention inputs include pilot-known arithmetic observables and are not new blind tests of the old scaling laws.",
+    "No analytic mechanism for sextic excess or kappa3/c4 was established."
+  ],
+  "next_unit": {
+    "id": "RS-S005",
+    "phase": "2a",
+    "objective": "One sextic Gauss-sum mechanism/collision unit; pre-register any new directional overlap test",
+    "proposed_overlap_X": [
+      160000,
+      320000
+    ],
+    "classification": "PLANNING ONLY, no overlap prediction or measurement yet"
+  },
+  "additional_exact_audits": {
+    "X": 320000,
+    "D": 27554,
+    "same_cubic_sextic_index_metadata": true,
+    "entrywise_sextic_square_to_cubic_exponent_mismatches": 0,
+    "checked_entries": 759222916,
+    "role": "Certification of character normalization on recorded matrices, not a new spectral prediction"
+  },
+  "future_default_null": "RS-S004 certified conditional structural ensemble; legacy helper retained for historical reproduction"
 }

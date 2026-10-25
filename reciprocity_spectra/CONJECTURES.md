@@ -337,3 +337,76 @@ controls; they do not independently re-stress the old scaling laws. Quadratic m4
 Rademacher probes: arithmetic seed 1, control probe seeds 3 and 4 for matrix seeds 0 and 1.
 The combined standard error uses independent probe streams. The old X = 640000 predictions
 remain unchanged and are outside this unit.
+
+
+## RS-S004: certified-null outcomes (separate prediction IDs)
+
+The registered conditional null is certified for its stated structural constraints, not all
+arithmetic correlations. Earlier FAIL outcomes are unchanged; the qualified versions below
+are distinct finite formulations.
+
+**Qualified local revision: STRESSED at X = 80000 (registered finite statistic only).**
+
+| mode | D | control seed | arithmetic mean ratio | certified control | absolute difference | outcome |
+|---|---:|---:|---:|---:|---:|---|
+| cubic | 7796 | 0 | 0.424229725 | 0.417128495 | 0.007101230 | PASS |
+| cubic | 7796 | 1 | 0.424229725 | 0.430361093 | 0.006131368 | PASS |
+| quartic | 7806 | 0 | 0.527786408 | 0.525672180 | 0.002114228 | PASS |
+| quartic | 7806 | 1 | 0.527786408 | 0.534002598 | 0.006216190 | PASS |
+
+- **PASS** (`RS-S004-L-cubic-0`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+- **PASS** (`RS-S004-L-cubic-1`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+- **PASS** (`RS-S004-L-quartic-0`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+- **PASS** (`RS-S004-L-quartic-1`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+
+All four comparisons pass under the separately registered certified-null model. The original
+RS-S003 finite local-extension FAIL outcomes remain unchanged, and the original RS-6 bulk
+claim remains PILOT. This is not a universality or Tracy-Widom theorem.
+
+**Qualified sextic positive-excess revision: REFUTED at X = 320000.**
+
+D = 27554; arithmetic sigma1/(2 sqrt(D)) = 1.050189908.
+
+| control seed | certified control sigma1/edge | normalized arithmetic excess | outcome |
+|---|---:|---:|---|
+| 0 | 0.999755252 | 0.050434656 | FAIL |
+| 1 | 1.000122788 | 0.050067120 | FAIL |
+
+- **FAIL** (`RS-S004-S-0`) — `sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02`.
+- **FAIL** (`RS-S004-S-1`) — `sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+Both fixed controls fail the registered upper-excess bound. The old absolute-edge FAILs are
+not turned into PASS by changing the null. Finite data do not disprove an eventual asymptotic
+claim, and no new positive-outlier conjecture or mechanism is promoted from these values alone.
+
+**Retention diagnostics (pilot-known arithmetic inputs, not new scaling-law promotions):**
+
+| mode | control seed | arithmetic sigma1/edge | certified control sigma1/edge | excess | outcome |
+|---|---:|---:|---:|---:|---|
+| cubic | 0 | 1.514342308 | 1.000965311 | 0.513376997 | PASS |
+| cubic | 1 | 1.514342308 | 1.002388763 | 0.511953545 | PASS |
+| quartic | 0 | 1.140784463 | 0.999855787 | 0.140928676 | PASS |
+| quartic | 1 | 1.140784463 | 0.999256933 | 0.141527530 | PASS |
+
+Quadratic X = 80000, D = 7836: arithmetic m4 estimate 1.863670765, standard
+error 0.003404155, using 128 Rademacher probes and probe seed 1.
+
+| matrix seed | control m4 | control SE | m4 deficit | combined SE | required margin | outcome |
+|---|---:|---:|---:|---:|---:|---|
+| 0 | 1.999081913 | 0.004564237 | 0.135411147 | 0.005693903 | 0.050000000 | PASS |
+| 1 | 1.996615724 | 0.004099503 | 0.132944959 | 0.005328620 | 0.050000000 | PASS |
+
+Control probe seeds are 3 and 4. The probe streams are separate from the arithmetic stream;
+combined errors condition on the realized matrices. All six retention predicates pass.
+
+- **PASS** (`RS-S004-O-cubic-0`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-O-cubic-1`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-O-quartic-0`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-O-quartic-1`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-Q-0`) — `certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))`.
+- **PASS** (`RS-S004-Q-1`) — `certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))`.
+
+**Status scope:** the qualified local revision is STRESSED, while the qualified sextic
+positive-excess revision is REFUTED. The old RS-S003 local and absolute-edge forms remain
+REFUTED, and the original RS-6 bulk claim remains PILOT. No eventual asymptotic claim is
+disproved by these finite tests. All earlier quantitative predictions remain unchanged.

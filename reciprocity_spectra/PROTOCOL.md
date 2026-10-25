@@ -77,8 +77,17 @@ Computations without a committed prediction are allowed. They must be labelled E
 
 ## 5. Null-model rule
 
-Every reported spectral deviation is accompanied by the symmetry-matched random control at the same
-dimension D (`scripts/spectra.py`, `structured_random`), with the seed recorded.
+Every reported spectral deviation is accompanied by a stated symmetry-matched random control at the
+same dimension D, with its seed and model version recorded.
+
+For orders 2, 3, 4 and 6, new work uses the RS-S004 certified conditional structural ensemble in
+`NULL_CERTIFICATION.md` / `null_model.py` and native `rs_certified_random`: reciprocity, simultaneous
+conjugation, zero diagonal, and metadata-derived conjugate-pair phases. Certification is for those
+constraints, not every arithmetic correlation. The legacy `scripts/spectra.py::structured_random`
+reciprocity-only ensemble remains available for historical reproduction; its recorded RS-S003 FAIL
+outcomes are immutable. A different conditioning rule or RNG implementation needs its own documented
+version, validation and pre-registration before fresh measurements. Fixed seeded benchmarks do not
+by themselves justify independent-replication p-values.
 
 ## 6. Results and code
 

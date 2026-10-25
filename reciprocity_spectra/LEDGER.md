@@ -320,3 +320,115 @@ seeds, metrics, windows, solver settings, independent m4 probe streams and valid
 before any fresh-scale spectrum. There are six primary comparisons and six retention
 diagnostics. Both seeds must pass in each applicable qualified-model test. Old eight FAIL
 outcomes remain immutable. No quintic family or analytic kappa3/c4 derivation is included.
+
+**Qualified local revision: STRESSED at X = 80000 (registered finite statistic only).**
+
+| mode | D | control seed | arithmetic mean ratio | certified control | absolute difference | outcome |
+|---|---:|---:|---:|---:|---:|---|
+| cubic | 7796 | 0 | 0.424229725 | 0.417128495 | 0.007101230 | PASS |
+| cubic | 7796 | 1 | 0.424229725 | 0.430361093 | 0.006131368 | PASS |
+| quartic | 7806 | 0 | 0.527786408 | 0.525672180 | 0.002114228 | PASS |
+| quartic | 7806 | 1 | 0.527786408 | 0.534002598 | 0.006216190 | PASS |
+
+- **PASS** (`RS-S004-L-cubic-0`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+- **PASS** (`RS-S004-L-cubic-1`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+- **PASS** (`RS-S004-L-quartic-0`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+- **PASS** (`RS-S004-L-quartic-1`) — `abs(mean_bulk_gap_ratio - certified_control_mean_bulk_gap_ratio) <= 0.03`.
+
+All four comparisons pass under the separately registered certified-null model. The original
+RS-S003 finite local-extension FAIL outcomes remain unchanged, and the original RS-6 bulk
+claim remains PILOT. This is not a universality or Tracy-Widom theorem.
+
+**Qualified sextic positive-excess revision: REFUTED at X = 320000.**
+
+D = 27554; arithmetic sigma1/(2 sqrt(D)) = 1.050189908.
+
+| control seed | certified control sigma1/edge | normalized arithmetic excess | outcome |
+|---|---:|---:|---|
+| 0 | 0.999755252 | 0.050434656 | FAIL |
+| 1 | 1.000122788 | 0.050067120 | FAIL |
+
+- **FAIL** (`RS-S004-S-0`) — `sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02`.
+- **FAIL** (`RS-S004-S-1`) — `sextic (sigma1 - certified_control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+Both fixed controls fail the registered upper-excess bound. The old absolute-edge FAILs are
+not turned into PASS by changing the null. Finite data do not disprove an eventual asymptotic
+claim, and no new positive-outlier conjecture or mechanism is promoted from these values alone.
+
+**Retention diagnostics (pilot-known arithmetic inputs, not new scaling-law promotions):**
+
+| mode | control seed | arithmetic sigma1/edge | certified control sigma1/edge | excess | outcome |
+|---|---:|---:|---:|---:|---|
+| cubic | 0 | 1.514342308 | 1.000965311 | 0.513376997 | PASS |
+| cubic | 1 | 1.514342308 | 1.002388763 | 0.511953545 | PASS |
+| quartic | 0 | 1.140784463 | 0.999855787 | 0.140928676 | PASS |
+| quartic | 1 | 1.140784463 | 0.999256933 | 0.141527530 | PASS |
+
+Quadratic X = 80000, D = 7836: arithmetic m4 estimate 1.863670765, standard
+error 0.003404155, using 128 Rademacher probes and probe seed 1.
+
+| matrix seed | control m4 | control SE | m4 deficit | combined SE | required margin | outcome |
+|---|---:|---:|---:|---:|---:|---|
+| 0 | 1.999081913 | 0.004564237 | 0.135411147 | 0.005693903 | 0.050000000 | PASS |
+| 1 | 1.996615724 | 0.004099503 | 0.132944959 | 0.005328620 | 0.050000000 | PASS |
+
+Control probe seeds are 3 and 4. The probe streams are separate from the arithmetic stream;
+combined errors condition on the realized matrices. All six retention predicates pass.
+
+- **PASS** (`RS-S004-O-cubic-0`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-O-cubic-1`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-O-quartic-0`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-O-quartic-1`) — `(sigma1 - certified_control_sigma1)/(2 sqrt(D)) >= 0.05`.
+- **PASS** (`RS-S004-Q-0`) — `certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))`.
+- **PASS** (`RS-S004-Q-1`) — `certified_control_m4 - arithmetic_m4 >= max(0.05, 5*sqrt(SE_arithmetic^2 + SE_control^2))`.
+
+**Certification and validation:**
+
+- Independently derived conjugation, primary/unit/Galois closure, and one-prime conjugate-pair
+  phases in NULL_CERTIFICATION.md. No arithmetic matrix entry is copied for the fixed pairs.
+- Native orbit controls are byte-identical to the independent Python BFS sampler at X = 500
+  for all four orders and both seeds. Complex products and top-eight singular values agree
+  with SciPy at X = 2000; maximum corrected-control relative discrepancy is 7.994e-15.
+- The previous quad/cubic/quartic byte and numerical overlap gates and the sextic exact/Euler
+  gate were rerun before fresh data. All full-entry structural audits on every reported
+  arithmetic matrix and corrected control have zero mismatches.
+- Unit column-phase, character power, and norm-product identities are exact audit consequences,
+  not changes to the sampler. Numerical cross-prime norm characters are not conditioned on.
+- The quadratic sampler is byte-identical to the old null; the compression signal survives
+  independent registered probe streams in the fresh retention diagnostic.
+- Targeted Ruff, strict C compiler checks and all 350 pytest tests pass. The saved full spectra
+  reproduce the registered local statistic exactly. No frozen D1 paths were changed.
+- The two additive-counter seeds are fixed benchmarks; overlapping shifted draws preclude
+  treating them as formally independent replications. No such p-value is claimed. This does
+  not change any registered finite predicate or the conditional Monte Carlo errors.
+- Every component and the sum of completed components within each family fit the 45-minute
+  budget. Full spectra, top-twelve sextic values, probes, hashes, exact audits, commands,
+  code commits, seeds and timings are in `results/phase1c_2026-10-25.json`.
+
+**Checkpoints:** `5502ba3` (registration/proof, pushed before data), `b516a5b` (engine/reference),
+`489f344` (validation), local checkpoints through `11e216f`, quadratic checkpoints through
+`0a1aac0`, and sextic `ed9568c`/`b3336c6`/`33028a7`. Pushes were serialized. Final closeout
+follows on `rs-s004-phase1c`; main was not merged.
+
+**Outgoing state:** four primary local PASS, two primary sextic FAIL; all six retention PASS.
+The certified-null local revision is STRESSED in its registered finite scope. The certified-null
+sextic positive-excess revision is REFUTED in its registered finite scope. RS-S003's eight FAIL
+outcomes and all earlier predictions are immutable. RS-1, RS-3 and RS-4 keep their prior STRESSED
+labels; RS-2 and the original RS-6 bulk claim remain PILOT. Eventual asymptotic limits are not
+settled. X = 640000 remains untested. No quintic family or analytic kappa3/c4 derivation was done.
+
+**Next dependency and justification:** the structural-null correction restores the tested local
+agreement but leaves sextic excess. The next bounded unit is a cited exact Gauss-sum bridge and
+one defensible mechanism test (or precise operator obstruction), with a bounded collision
+check, rather than another scale sweep or an explanation fitted from singular values alone.
+Exactly one RS-S005 / Phase 2a prompt is in NEXT_SESSION_PROMPT.md. No owner-decision blocker.
+
+**Additional exact production audit:** at X = 320000, all 759222916 sextic/cubic
+exponent entries have matching metadata and satisfy the entrywise square relation exactly
+(with zero diagonal preserved). There are zero mismatches. This checks the character
+normalization on the recorded matrices; it is not a new spectral prediction or mechanism.
+
+The protocol's null-model reference is updated for future work to the certified structural
+ensemble; the same-D/recorded-seed requirement is unchanged. The reciprocity-only helper is
+retained for historical reproduction. This implements the owner's requested corrected-null
+workflow and does not reinterpret any old result.

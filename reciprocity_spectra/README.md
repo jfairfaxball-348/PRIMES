@@ -2,11 +2,11 @@
 
 **A new PRIMES research programme, opened 2026-10-24.**
 
-**Status: PHASE 1b COMPLETE; all registered RS-S003 finite comparisons FAIL.** The finite
-sextic formulation of RS-5 and local-statistic extension of RS-6 are REFUTED. Their eventual
-asymptotic versions remain unresolved; the original RS-6 bulk claim remains PILOT. RS-1,
-RS-3 and RS-4 remain STRESSED from Phase 1a, and RS-2 remains PILOT. The next dependency is
-exact null-ensemble certification. Nothing is proved. No novelty claim is made beyond the search scope
+**Status: PHASE 1c COMPLETE.** The certified-null local revision is STRESSED for its registered
+finite statistic; the qualified sextic positive-excess revision is REFUTED. Cubic/quartic
+outliers and quadratic compression survive the corrected controls. All old FAIL outcomes
+remain unchanged; eventual asymptotic limits and the original RS-6 bulk claim are unsettled.
+Nothing is proved. No novelty claim is made beyond the search scope
 recorded in `PRIOR_ART.md`.
 
 ## The idea in one paragraph
@@ -15,14 +15,15 @@ Put the law of reciprocity into a matrix. Take every prime of norm `≤ X` in a 
 reciprocity holds:
 
 - odd rational primes, for n = 2;
-- primary Eisenstein primes in `Z[ω]`, for n = 3;
+- primary Eisenstein primes in `Z[ω]`, for n = 3 or 6 with the declared character normalization;
 - primary Gaussian primes in `Z[i]`, for n = 4.
 
-Form the matrix `R_n(X) = ((π/ρ)_n)` of power-residue symbols between them. Reciprocity fixes the
-matrix's symmetry type. Otherwise its entries look like independent n-th roots of unity. So
-random-matrix theory gives a sharp, parameter-free null model, and **every deviation from it is
-arithmetic**. A pilot computation, with matrices of dimension up to 14,682, found three distinct
-regimes.
+Form the matrix `R_n(X) = ((π/ρ)_n)` of power-residue symbols between them. Reciprocity and
+simultaneous conjugation impose structural relations, with further fixed values between conjugate
+prime generators. The certified conditional null draws uniformly on the remaining symmetry orbits.
+A deviation from that stated benchmark identifies correlations beyond its conditions; it does not
+by itself identify a mechanism. A pilot computation, with matrices of dimension up to 14,682,
+found three distinct regimes.
 
 | n | What the spectrum does | Mechanism (hypothesis) |
 |---|---|---|
@@ -30,7 +31,8 @@ regimes.
 | 4 | **Slowly growing outliers.** `σ₁/edge` = 1.07 → 1.18 as X goes from 2·10⁴ to 1.6·10⁵, with spike strength growing like `log X`. The singular vectors are *not* Gauss-sum vectors. | Quartic theta function, whose Fourier coefficients at primes are not known in closed form. The outliers may give a numerical window onto them. |
 | 2 | **No outliers, but a compressed spectrum.** The singular values of the Legendre matrix of the first D primes approach the quarter-circle law with an arithmetic correction: `(2 − m₄)·log D ≈ 1.20` and edge `≈ 2√D·(1 − 0.58/log D)`, steady for D = 668 to 14,682. | Montgomery–Hooley-type secondary term in mean squares of real character sums over primes. |
 
-A uniformly random matrix with *exactly the same reciprocity symmetry* shows none of these effects:
+The pilot reciprocity-only random control showed none of these effects (the corrected structural
+ensemble and its limitations are described in the RS-S004 section below):
 `σ₁/edge = 0.997–1.000` and `m₄ = 1.997`.
 
 ## Why this is a good research area
@@ -156,7 +158,30 @@ OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phas
 OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py local
 ```
 
-The runner is specific to RS-S003; preserve its evidence when starting another session. The
-next bounded unit, RS-S004 / Phase 1c, certifies whether additional exact matrix identities
-need matching in the null, then tests a qualified model at fresh scales. Its sole prompt is
-in the root `NEXT_SESSION_PROMPT.md`. No explanation of the failures is claimed here.
+The runner is specific to RS-S003; preserve its evidence when starting another session. The subsequent structural-null certification and fresh-scale results are recorded below.
+No explanation of the sextic excess is claimed here.
+
+
+## Certified structural null (RS-S004)
+
+`NULL_CERTIFICATION.md` derives the exact conjugation, primary/unit/Galois, boundary and
+conditional orbit constraints, with their scope. `null_model.py` is the pure-Python exact BFS
+reference; the native engine supplies the independent four-position orbit sampler. Fixed
+conjugate-pair phases come from one-prime trace formulas, not copied arithmetic entries.
+
+`results/phase1c_2026-10-25.json` contains the committed registration, validation, all-entry
+audits, full cubic/quartic spectra at X = 80000, sextic top-twelve spectra at X = 320000, two
+fixed controls per comparison, quadratic Monte Carlo probes/errors, and every outcome. Four
+qualified local tests and six retention diagnostics PASS; both qualified sextic tests FAIL.
+These do not retroactively change any RS-S003 result. The two counter seeds are fixed
+benchmarks, not independent-replication p-values; see the certification document.
+
+```bash
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1c.py validate
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1c.py run
+```
+
+The session-specific runner resumes incomplete components and preserves completed ones. Do
+not overwrite its evidence for a later session. The next unit, RS-S005 / Phase 2a, investigates
+one exact Gauss-sum mechanism for the remaining sextic excess with a bounded collision check.
+Its single prompt is in the root `NEXT_SESSION_PROMPT.md`.

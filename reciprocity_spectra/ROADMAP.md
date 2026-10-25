@@ -46,7 +46,19 @@ remain unresolved and the original RS-6 bulk claim remains PILOT. Phase 1c next 
 additional exact identities required of the null ensemble, followed by qualified-model tests
 at fresh scales. Old outcomes and predictions stay unchanged. See the ledger and Phase-1b JSON.
 
+**RS-S004 checkpoint:** the certified-null local revision passes all four fresh comparisons
+and is STRESSED in that finite scope; all six retention checks pass. Both qualified sextic
+positive-excess tests fail, so that finite revision is REFUTED. All older FAIL outcomes remain
+unchanged. Structural certification does not remove all arithmetic correlations or prove
+asymptotic universality. Phase 1c is closed at this bounded checkpoint.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
+
+**RS-S005 entry point:** before the original constants agenda below, investigate the surviving
+sextic excess through one correctly normalized character/Gauss-sum bridge and a bounded
+collision check. A directional mechanism test requires its own committed prediction before
+measuring overlaps; an exact operator obstruction is an acceptable negative result.
+
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity
    of Gauss sums, `(C w)_ρ` is a twisted Gauss-sum average with main term `≍ τ(ρ) X^{5/6}/log X`.

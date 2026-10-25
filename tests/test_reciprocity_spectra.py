@@ -306,3 +306,44 @@ def test_native_certified_orbits_against_independent_python_bfs(tmp_path):
                 old = (ct.c_uint8*(d*d))()
                 lib.rs_random(old, d, n, primes.buffer_info()[0], seed)
                 assert bytes(old) == bytes(out)
+
+
+def test_global_unit_change_is_a_column_character_phase():
+    from reciprocity_spectra.null_model import unit_character_phase, unit_multiple
+
+    for n in (2, 3, 4, 6):
+        index, matrix = residue_matrix(n, 100)
+        unit_order = 2 if n == 2 else 4 if n == 4 else 6
+        for power in range(unit_order):
+            for i, numerator in enumerate(index):
+                dressed = unit_multiple(n, numerator, power)
+                for j, denominator in enumerate(index):
+                    if n == 2:
+                        symbol = legendre(dressed, denominator)
+                        actual = None if symbol == 0 else int(symbol == -1)
+                    elif n == 6:
+                        actual = sextic_residue_exponent(dressed.a, dressed.b, denominator)
+                    else:
+                        actual = residue_exponent(dressed.a, dressed.b, denominator)
+                    expected = matrix[i][j]
+                    if expected is not None:
+                        expected = (expected + unit_character_phase(n, denominator, power)) % n
+                    assert actual == expected
+
+
+def test_norm_product_character_identity_and_sextic_quadratic_component():
+    from reciprocity_spectra.null_model import conjugate_permutation
+
+    for n in (3, 4, 6):
+        index, matrix = residue_matrix(n, 150)
+        bar = conjugate_permutation(n, index)
+        for i, numerator in enumerate(index):
+            for j, denominator in enumerate(index):
+                first, second = matrix[i][j], matrix[bar[i]][j]
+                product = None if None in (first, second) else (first+second) % n
+                if n == 6:
+                    norm = sextic_residue_exponent(numerator.p, 0, denominator)
+                    assert (0 if norm is None else (-1)**norm) == legendre(numerator.p, denominator.p)
+                else:
+                    norm = residue_exponent(numerator.p, 0, denominator)
+                assert product == norm
