@@ -721,3 +721,13 @@ main term for every pair (unit class j, character χ of (ℤ[ω]/4)^× or the re
 Identify exactly which pairs carry a main term, register the table, and test it at a fresh scale.
 This is one RS-S011 unit. It will yield the crisp statement to send back to Astra and to human
 experts.
+
+### Owner decisions (2026-10-25, recorded before RS-S011)
+
+- RS-S010 was merged to main (`18bb011`).
+- The owner set two rules, now recorded as PROTOCOL §9:
+  - proof work targets the hard, prime-level and matrix-level version first;
+  - no external human reviewer is required to proceed; a deep novelty audit is required before
+    any publication or formal submission.
+- RS-S011 is amended so that it ends by freezing CAND-001 and drafting the hard-version proof
+  route.

@@ -121,3 +121,24 @@ container.
   (3.6–6.4 GB). That covers Phase 1, X ≤ 6.4·10⁵.
 - Beyond D ≈ 100,000 (X ≳ 1.3·10⁶): use 2-bit packing, compute blocks on the fly, or move to a
   machine with ≥ 64 GB RAM.
+
+## 9. Owner decisions (2026-10-25)
+
+These are binding for Reciprocity Spectra sessions until the owner changes them.
+
+1. **Proof order.** When a statement moves to the proof stage, attack the **hard version first**:
+   prime-level and matrix-level statements, e.g. twisted sextic Gauss-sum averages over primes
+   and the matrix dichotomy itself. Switch to the more tractable versions only when the hard
+   route is exhausted and the exhaustion is documented. The tractable versions are:
+   - sums over all squarefree moduli or Kubota-series residues;
+   - function-field analogues;
+   - results conditional on GRH.
+2. **External review.** An external human reviewer is **not** required in order to proceed to
+   freezing, candidate registration or proof work. This overrides the earlier "expert review
+   required before any claim" wording in `PRIOR_ART.md` and `LEDGER.md` for internal progress.
+   Before anything is **published or formally submitted**, a deep novelty audit is required.
+   After it, the owner decides on external review.
+3. **Honesty requirements are unchanged.** Records must say exactly what is proved, what is
+   conditional (and on what), and what remains a gap. AI referee opinions, including Astra's,
+   are evidence to evaluate, not authority. The novelty vocabulary still applies: never write
+   "new", "novel" or "first" without the deep audit.
