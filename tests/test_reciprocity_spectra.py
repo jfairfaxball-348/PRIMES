@@ -404,3 +404,20 @@ def test_note_tables_match_results():
 
     script = Path(__file__).resolve().parents[1] / 'reciprocity_spectra/scripts/note_tables.py'
     subprocess.run([sys.executable, str(script), '--check'], check=True)
+
+
+def test_sextic_gauss_sum_hasse_davenport_factorization():
+    """g6~(rho) = conj((2/rho)_3) (rho/|rho|) g2~(p) conj(g3~(rho)) (Astra referee, 2026-10-25).
+
+    g2~ = 1 for p = 1 (mod 4) and i for p = 3 (mod 4); our e(t/p) normalization throughout.
+    """
+    from reciprocity_spectra.arith import sextic_gauss_sum
+
+    w = cmath.exp(2j * math.pi / 3)
+    for rho in primary_eisenstein_primes(1500):
+        p = rho.p
+        g6, g3 = sextic_gauss_sum(rho) / math.sqrt(p), gauss_sum(rho) / math.sqrt(p)
+        g2 = 1 if p % 4 == 1 else 1j
+        phase = rho.complex_value() / abs(rho.complex_value())
+        chi = w ** residue_exponent(2, 0, rho)
+        assert abs(g6 - chi.conjugate() * phase * g2 * g3.conjugate()) < 1e-9

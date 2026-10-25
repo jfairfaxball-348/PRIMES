@@ -563,3 +563,16 @@ So the compensation among associates is approximate, and it drifts with X.
 
 **Mechanism status:** UNEXPLAINED. The ramification criterion is exact as algebra but empirical as
 an equivalence. The cause of the strength and its N(u) profile is open.
+
+
+## RS-S009: registration of Astra's cubic-calibration prediction (before data)
+
+The source is `ASTRA_RESPONSE_2026-10-25.md`, check 2. It was written without access to these
+measurements.
+
+- **RS-S009-A2-exponent (X = 40000).** Take cubic twists `conj(g̃3)·(u/π)₃` over ±primary u
+  coprime to 3, with 1 < N(u) ≤ 200. The fitted slope of `log(r_u² − 1)` against `log N(u)` lies
+  in [−0.433, −0.233], i.e. −1/3 ± 0.1. If any twist has r ≤ 1, the fit is undefined and the
+  outcome is FAIL.
+- **RS-S009-A2-count (X = 40000).** At least 24 cubic singular values exceed the seed-0
+  conjugation-matched control σ₁.

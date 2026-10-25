@@ -1,0 +1,21 @@
+{
+  "session": "RS-S009",
+  "date": "2026-10-25",
+  "source": "ASTRA_RESPONSE_2026-10-25.md, check 2 (prediction made without access to these measurements)",
+  "predictions": [
+    {
+      "id": "RS-S009-A2-exponent",
+      "X": 40000,
+      "min": -0.4333,
+      "max": -0.2333,
+      "prediction": "Cubic: for w_u = conj(g3~)*(u/pi)_3 with u +-primary coprime to 3, 1 < N(u) <= 200, the least-squares slope of log(r_u^2 - 1) on log N(u) lies in [-1/3 - 0.1, -1/3 + 0.1] (Astra: theta_u^2 ~ theta_1^2 N(u)^(-1/3)). Twists with r_u <= 1 make the fit undefined and count as FAIL."
+    },
+    {
+      "id": "RS-S009-A2-count",
+      "X": 40000,
+      "min": 24,
+      "prediction": "Cubic: at least 24 (\"dozens\") singular values of the cubic matrix exceed the largest singular value of the seed-0 conjugation-matched control (dense SVD)."
+    }
+  ],
+  "prediction_commit": null
+}
