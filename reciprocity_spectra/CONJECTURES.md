@@ -21,7 +21,7 @@ Notation:
 
 ---
 
-## RS-1: cubic spike law (PILOT)
+## RS-1: cubic spike law (STRESSED)
 
 For `C_X = ((π/ρ)₃)` over primary degree-one primes of `Z[ω]` with `N ≤ X`:
 
@@ -92,7 +92,7 @@ Untwisted controls (`u = ω`, wrong twist sign) give 0.05.
 
 **Test:** compare the measured `θ_u` ratios with Patterson's closed formulas for `τ(u)`.
 
-## RS-3: the quartic regime is log-critical, and its outliers are not Gauss sums (PILOT)
+## RS-3: the quartic regime is log-critical, and its outliers are not Gauss sums (STRESSED)
 
 For `Q_X = ((π/ρ)₄)` over primary degree-one primes of `Z[i]`:
 
@@ -113,7 +113,7 @@ of the quartic theta function at primes. Those coefficients are *not known in cl
 - derive the `log X` growth from the X^{3/4} bias conjecture;
 - compare the outlier vectors with any available numerics for the quartic theta coefficients.
 
-## RS-4: compression of the quadratic Legendre matrix (PILOT)
+## RS-4: compression of the quadratic Legendre matrix (STRESSED)
 
 For `L_D = ((p_i/p_j))` over the first `D` odd primes:
 
@@ -152,7 +152,7 @@ That is a secondary term of Montgomery–Hooley / Barban–Davenport–Halbersta
 **Contrast:** the cubic bulk shows no such deficit (`m₄ = 1.993` at D = 2248). A candidate reason
 is that `χ² = 1` only for real characters.
 
-## RS-5: no outliers for n ≥ 6 (UNTESTED)
+## RS-5: no outliers for n ≥ 6 (REFUTED: registered finite-scale form)
 
 **Heuristic:** an n-th order theta function with prime coefficients of size `N^{-(1/2 - 1/n)}`
 gives a spike of order `X^{2/n}` against a bulk of `√X`:
@@ -165,8 +165,144 @@ For n = 2 the theta function is supported on squares, so there is no spike at pr
 
 **Test:** sextic residue matrices over `Z[ω]`, and quintic over `Z[ζ₅]`.
 
-## RS-6: bulk universality for n = 3, 4 after removing outliers (PILOT)
+## RS-6: bulk universality for n = 3, 4 after removing outliers (PILOT bulk; finite local extension REFUTED)
 
 After deflating `O(1)` outliers, the singular-value distribution tends to the quarter circle with
 no `1/log D` correction. Local statistics remain to be tested: spacings, and Tracy–Widom
 fluctuations of the first non-outlier singular value.
+
+
+## RS-S002: Phase-1a outcomes at X = 320000
+
+Predictions remain exactly as committed at `0b77769`. Results and validation are in
+`results/phase1_2026-10-24.json`; no asymptotic assertion is proved by this computation.
+
+### RS-1: STRESSED
+
+- **PASS** — `kappa3 in [1.38, 1.47]`. Measured 1.422127145.
+- **PASS** — `cubic top-singular-vector overlap with conj(g~) within 0.03 of sqrt(1 - D/theta^2)`.
+  Measured overlap 0.941510961, BBP prediction 0.948673890.
+
+Both committed Phase-1 predictions pass at this scale, accompanied by the seed-0 matched control.
+The X = 640000 predictions remain untested; the final budget decision is recorded below.
+
+### RS-3: STRESSED
+
+- **PASS** — `quartic theta_n = 0.166*ln X - 0.18 +- 0.05`.
+  Measured theta/sqrt(D) = 1.922239066; formula = 1.924228662.
+
+The committed Phase-1 growth prediction passes with its matched control at X = 320000.
+This unit does not validate the proposed interpretation of the outlier vectors.
+
+### RS-4: STRESSED
+
+- **PASS** — `quadratic (2 - m4)*ln D in [1.0, 1.4]`.
+  Measured correction 1.230641123, standard error
+  0.021399855. The m4 estimate is 1.879653606
+  with standard error 0.002092727, from 128 probes (seed 1).
+
+The registered band contains the estimate and its two-standard-error interval.
+Sigma1/(2 sqrt(D)) = 0.944136181; the matched control is recorded at the same D.
+
+RS-1, RS-3 and RS-4 are STRESSED at X = 320000 for their committed Phase-1 predictions.
+RS-2 and RS-6 remain PILOT; RS-5 remains UNTESTED.
+
+### Larger-scale limit of this session
+
+X = 640000 was **SKIPPED**, not passed or failed. Required-job runtime projections are
+54.11 minutes (cubic), 48.89 (quartic), and
+87.86 (quadratic), exceeding the 45-minute limit on this two-CPU-quota container.
+These are planning estimates, not spectral measurements. The original predictions are unchanged.
+All STRESSED labels above refer to X = 320000 only.
+
+
+## RS-S003: pre-registered Phase-1b predictions (before test data)
+
+The owner requested continuation here from the committed RS-S002 handover. Main remains
+`9a038fa`; RS-S003 is based on `52d0854` on a separate branch, without merging main.
+The machine-readable registration is `results/phase1b_2026-10-24.json`.
+
+**RS-5, sextic at X = 40000 and 160000, both criteria at both scales:**
+
+- `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+Use the same primary Eisenstein indices as cubic. Define zeta6 = 1 + omega, and the sextic
+character by direct Euler exponentiation in the residue field: its square is the cubic character
+and its cube the field-quadratic character. The seed-0 control has independent uniform
+upper sextic exponents and the exact full pairwise reciprocity signs, with zero diagonal.
+These signs need not have the simpler rank-one parity form used for quadratic/quartic matrices.
+
+**RS-6, cubic and quartic at X = 20000 and 40000, all four comparisons:**
+
+- `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+
+Deflate every singular value strictly above 2 sqrt(D), separately for arithmetic and seed-0
+matched control. Sort the remaining m singular values ascending; take the half-open slice
+[ceil(0.2 m), floor(0.8 m)). For consecutive gaps in that slice, average
+min(delta_i, delta_(i+1))/max(delta_i, delta_(i+1)); a zero denominator contributes zero.
+There is no unfolding, dropped tie, adjusted window, fitted cutoff or change after seeing data.
+
+The tolerances are fixed finite-scale discrimination allowances, not calibrated confidence
+levels. Every applicable prediction must pass before promotion. RS-5 promotion covers only
+its tested sextic case; RS-6 promotion covers only this registered local statistic. Other
+universality claims are not certified. Any failure is retained and prevents promotion.
+No old Phase-1a prediction changes. No sextic spectrum or local statistic has been measured
+before this registration is committed and pushed.
+
+
+## RS-S003 incremental outcomes
+
+### RS-5: registered finite-scale sextic formulation REFUTED
+
+At X = 40000, D = 4178: sigma1/(2 sqrt(D)) = 1.029470034,
+control = 0.996124577, normalized excess = 0.033345457.
+
+- **FAIL** — `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- **FAIL** — `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+The first registered scale fails both criteria, preventing STRESSED promotion. REFUTED here
+refers to the explicit finite-scale formulation; an eventual asymptotic claim is not disproved
+by this finite test. At that checkpoint the pre-registered X = 160000 run continued without changed tolerances,
+character normalization, or control; its completed outcome follows below.
+
+**Second registered sextic result: X = 160000, D = 14640.**
+
+Sigma1/(2 sqrt(D)) = 1.041519910; matched control =
+0.998855152; normalized excess = 0.042664758.
+Completed arithmetic plus resumed control took 258.876 seconds.
+
+- **FAIL** — `sextic sigma1/(2 sqrt(D)) <= 1.02`.
+- **FAIL** — `sextic (sigma1 - control_sigma1)/(2 sqrt(D)) <= 0.02`.
+
+Both criteria fail at both registered scales. The first registered failing scale is X = 40000;
+no assertion about the globally smallest failing X is made. The original character definition,
+normalization, control and tolerances were not changed after seeing either result.
+
+**Registered local-statistics results:**
+
+| mode | X | D | arithmetic mean ratio | control mean ratio | absolute difference | outcome |
+|---|---:|---:|---:|---:|---:|---|
+| cubic | 20000 | 2248 | 0.422538122 | 0.528322607 | 0.105784485 | FAIL |
+| cubic | 40000 | 4178 | 0.410355005 | 0.533655860 | 0.123300854 | FAIL |
+| quartic | 20000 | 2250 | 0.538972970 | 0.601537355 | 0.062564385 | FAIL |
+| quartic | 40000 | 4170 | 0.532925836 | 0.605604066 | 0.072678229 | FAIL |
+
+- **FAIL** (cubic, X = 20000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (cubic, X = 40000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (quartic, X = 20000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+- **FAIL** (quartic, X = 40000) — `abs(mean_bulk_gap_ratio - control_mean_bulk_gap_ratio) <= 0.03`.
+
+The RS-6 finite local-statistic extension is REFUTED; the original bulk quarter-circle and
+no-secondary-term claim remains PILOT. This scalar local test does not settle those bulk
+claims, eventual asymptotic limits, or Tracy-Widom fluctuations. Raw full singular spectra,
+window bounds, deflation and ratio counts, seeds, commands and code commits are in the JSON.
+
+### RS-S003 disposition and scope
+
+All eight finite comparisons FAIL. No STRESSED promotion follows from RS-S003. The REFUTED
+labels refer to the registered finite-scale sextic formulation and local-statistic extension;
+finite data do not disprove eventual asymptotic limits. The original RS-6 bulk claim remains
+PILOT, and RS-1, RS-2, RS-3 and RS-4 retain their RS-S002 statuses. No prediction was revised.
+Additional exact identities in a null ensemble require separate certification and fresh-scale
+predictions; they must not retroactively change these outcomes.

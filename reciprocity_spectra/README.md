@@ -2,8 +2,11 @@
 
 **A new PRIMES research programme, opened 2026-10-24.**
 
-**Status: PILOT POSITIVE.** Live, model-discriminating structure has been found and the open
-questions are identified. Nothing is proved. No novelty claim is made beyond the search scope
+**Status: PHASE 1b COMPLETE; all registered RS-S003 finite comparisons FAIL.** The finite
+sextic formulation of RS-5 and local-statistic extension of RS-6 are REFUTED. Their eventual
+asymptotic versions remain unresolved; the original RS-6 bulk claim remains PILOT. RS-1,
+RS-3 and RS-4 remain STRESSED from Phase 1a, and RS-2 remains PILOT. The next dependency is
+exact null-ensemble certification. Nothing is proved. No novelty claim is made beyond the search scope
 recorded in `PRIOR_ART.md`.
 
 ## The idea in one paragraph
@@ -86,9 +89,74 @@ The exact core checks these identities on small cases:
 
 The C builder reproduces the pilot matrices byte for byte.
 
-## Immediate next step
+## Original scaling plan (RS-S001)
 
 Phase 1 of `ROADMAP.md`. Store matrices as uint8 exponents with blockwise matrix–vector products to
 reach X = 6.4·10⁵. Before running, pre-register the predictions: κ₃ ∈ [1.38, 1.47]; cubic overlap
 within 0.03 of the BBP value; quartic `θ_n ≈ 0.166·log X − 0.18`; quadratic `(2 − m₄)·log D` in
 [1.0, 1.4]. Then run the n = 6 test of RS-5.
+
+## Scalable byte engine (RS-S002)
+
+`native/residue_engine.c` builds the same byte format as the pilot builder, using four OpenMP
+threads for character tables, matrix construction, and normalized Gauss sums. Its ctypes ABI
+provides blocked complex forward and adjoint products directly from the bytes. The solver uses
+Lanczos on `C*C`; it never materializes a dense floating matrix at the scaling sizes.
+
+The quadratic fourth moment uses independent real Rademacher Hutchinson probes of `(C*C)^2`,
+with the individual estimates, probe count, seed and sample standard error retained in JSON.
+The matched controls use uniform upper-triangle exponents and the pilot reciprocity signs.
+Their seeded SplitMix64 counter stream differs from numpy's PCG64 stream; the distribution is
+matched, not the individual realization. Matrices and controls stay in ignored `data/`.
+
+From the repository root:
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py validate
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py run --x 320000
+```
+
+The validation command checks byte identity against the unchanged pilot C builder, singular
+values against dense SciPy `svds`, forward and adjoint products, Gauss sums, control symmetry,
+and the stochastic fourth moment against a dense Gram trace. The run command requires a passed
+validation record, limits each family and its control to about 45 minutes, and checkpoints and
+pushes arithmetic results and matched controls separately to the RS-S002 session branch.
+Do not reuse that branch or results filename for a later session without updating the runner's
+session-specific provenance and checkpoint destinations.
+
+The RS-S002 required scaling target is now complete; see `results/phase1_2026-10-24.json`
+and the ledger for every comparison, both engine validation records, the abandoned slow-control
+attempt, and the X = 640000 runtime-budget skip. STRESSED is finite numerical evidence, not proof.
+The subsequent RS-S003 results and current handover are described below.
+
+The adjoint uses the existing reciprocity signs to read contiguous byte rows; the generic
+transpose kernel remains available and is checked independently. To reproduce the additional
+exploratory quadratic matched-control moment after completing its spectra:
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1.py control-m4 --x 320000 --mode quad
+```
+
+
+## Phase 1b: sextic and local-statistics tests (RS-S003)
+
+`arith.py` now defines the sextic character explicitly with zeta6 = 1 + omega on the existing
+Eisenstein indices. Metadata coefficients stay in the omega basis. The native engine supports
+`sextic` and a full pairwise reciprocity mask for blocked adjoints and seed-0 controls. The
+simpler parity-mask kernel remains unchanged for the previous families.
+
+`results/phase1b_2026-10-24.json` contains the registration committed before data, exact/numerical
+validation, both sextic top-twelve spectra and controls, all full local-statistics spectra,
+fixed-window summaries, eight FAIL outcomes, and the checkpoint incident. These finite failures
+do not disprove eventual limits. Only the registered gap-ratio extension was tested locally.
+
+```bash
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py validate
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py sextic
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1b.py local
+```
+
+The runner is specific to RS-S003; preserve its evidence when starting another session. The
+next bounded unit, RS-S004 / Phase 1c, certifies whether additional exact matrix identities
+need matching in the null, then tests a qualified model at fresh scales. Its sole prompt is
+in the root `NEXT_SESSION_PROMPT.md`. No explanation of the failures is claimed here.

@@ -2,6 +2,9 @@
 
 Conventions
 -----------
+* ``n = 6``: the same Eisenstein indices as n=3, with coefficients still in the omega
+  basis and ``prime.n == 3``. Use ``sextic_residue_exponent`` with ``zeta6 = 1 + omega``;
+  the metadata ring and the character order are deliberately distinct.
 * ``n = 2``: odd rational primes ``p``; the symbol is the Legendre symbol ``(p_i / p_j)``.
 * ``n = 3``: primary primes ``pi = a + b*w`` of ``Z[w]``, ``w = exp(2 pi i / 3)``, with
   ``a = 2 (mod 3)``, ``b = 0 (mod 3)`` and norm ``p = a^2 - a*b + b^2 = 1 (mod 3)``
@@ -158,6 +161,9 @@ def residue_matrix(n: int, limit: int) -> tuple[list, list[list[int | None]]]:
     For ``n = 2`` the index set is the odd primes ``<= limit`` and the entry is 0 for ``+1``
     and 1 for ``-1``.  Intended for small ``limit`` (tests); use ``native/residue_matrix.c`` at scale.
     """
+    if n == 6:
+        index = primary_eisenstein_primes(limit)
+        return index, [[sextic_residue_exponent(x.a, x.b, y) for y in index] for x in index]
     if n == 2:
         index: list = [q for q in primes_upto(limit) if q > 2]
         mat = [
@@ -170,7 +176,7 @@ def residue_matrix(n: int, limit: int) -> tuple[list, list[list[int | None]]]:
     elif n == 4:
         index = primary_gaussian_primes(limit)
     else:
-        raise ValueError("n must be 2, 3 or 4")
+        raise ValueError("n must be 2, 3, 4 or 6")
     mat = [[symbol_between(x, y) for y in index] for x in index]
     return index, mat
 
@@ -181,6 +187,42 @@ def reciprocity_sign(n: int, x, y) -> int:
         return -1 if (x % 4 == 3 and y % 4 == 3) else 1
     if n == 3:
         return 1
+    if n == 6:
+        return sextic_reciprocity_sign(x, y)
     if n == 4:
         return -1 if ((x.p - 1) // 4) * ((y.p - 1) // 4) % 2 else 1
-    raise ValueError("n must be 2, 3 or 4")
+    raise ValueError("n must be 2, 3, 4 or 6")
+
+
+
+def sextic_residue_exponent(c: int, d: int, prime: DegreeOnePrime) -> int | None:
+    """Sextic exponent for c+d*omega; zeta6=1+omega, on the cubic primary index set.
+
+    Keep prime.n=3: (a,b) are coefficients in the omega basis, not zeta6.
+    Direct Euler exponentiation independently determines the sixth root.
+    """
+    if prime.n != 3:
+        raise ValueError("sextic characters require a primary Eisenstein prime")
+    p, omega = prime.p, prime.root
+    value = (c + d * omega) % p
+    if not value:
+        return None
+    target = pow(value, (p - 1) // 6, p)
+    zeta6, power = (1 + omega) % p, 1
+    for k in range(6):
+        if target == power:
+            return k
+        power = power * zeta6 % p
+    raise ArithmeticError("sextic symbol is not a sixth root of unity")
+
+
+def sextic_reciprocity_sign(x: DegreeOnePrime, y: DegreeOnePrime) -> int:
+    """Exact pairwise reversal sign from the two field-quadratic symbols.
+
+    Cubic reciprocity fixes the quotient's square to one; its cube is the
+    quotient of the quadratic characters, equal to their product. This is an
+    implementation identity, not an asymptotic spectral mechanism.
+    """
+    if x.n != 3 or y.n != 3:
+        raise ValueError("sextic characters require primary Eisenstein primes")
+    return legendre(x.a + x.b * y.root, y.p) * legendre(y.a + y.b * x.root, x.p)
