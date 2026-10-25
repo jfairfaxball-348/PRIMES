@@ -318,6 +318,33 @@ def kubota_g6_prime(c, prime) -> complex:
     return total
 
 
+def mod4_class_coordinates(a: int, b: int) -> tuple[int, int, int]:
+    """Coordinates (i, k, l) with a + b w = w^i (-1)^k (1 + 2w)^l in (Z[w]/4)^x (order 12).
+
+    (Z[w]/4)^x = <w> x <-1> x <1 + 2w>, of type C3 x C2 x C2; a + b w must be prime to 2.
+    """
+    target = (a % 4, b % 4)
+    for i in range(3):
+        for k in range(2):
+            for m in range(2):
+                x = (1, 0)
+                for _ in range(i):
+                    x = _mul_w(x, (0, 1))
+                if k:
+                    x = (-x[0], -x[1])
+                if m:
+                    x = _mul_w(x, (1, 2))
+                if (x[0] % 4, x[1] % 4) == target:
+                    return i, k, m
+    raise ValueError("element is not a unit modulo 4")
+
+
+def mod4_character(m: int, s1: int, s2: int, a: int, b: int) -> complex:
+    """chi_(m, s1, s2)(a + b w) = w^(m i) (-1)^(s1 k + s2 l) for coordinates (i, k, l)."""
+    i, k, l2 = mod4_class_coordinates(a, b)
+    return cmath.exp(2j * math.pi * m * i / 3) * (-1) ** (s1 * k + s2 * l2)
+
+
 def sextic_reciprocity_sign(x: DegreeOnePrime, y: DegreeOnePrime) -> int:
     """Exact pairwise reversal sign from the two field-quadratic symbols.
 

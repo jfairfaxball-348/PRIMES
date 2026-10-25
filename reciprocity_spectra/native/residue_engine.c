@@ -133,8 +133,12 @@ int main(int argc, char **argv) {
         FILE *g = fopen(argv[4], "wb");
         double *G = malloc((size_t)D * 2 * sizeof(double));
         if (!G) abort();
+        /* RS_GAUSS_MIN: Gauss sums only for p > min (others written as 0), for disjoint norm windows. */
+        const char *gmin_env = getenv("RS_GAUSS_MIN");
+        ll gmin = gmin_env ? atoll(gmin_env) : 0;
         #pragma omp parallel for schedule(dynamic, 1)
         for (int j = 0; j < D; j++) {
+            if (P[j].p <= gmin) { G[2*j] = 0; G[2*j+1] = 0; continue; }
             ll p = P[j].p, r = P[j].r, e = (p - 1) / n, gen = 2;
             ll unit = n == 6 ? mod(1 + r, p) : r;
             for (;; gen++) { /* primitive root mod p */

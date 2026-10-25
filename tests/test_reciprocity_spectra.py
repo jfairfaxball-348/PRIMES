@@ -492,3 +492,28 @@ def test_conjugate_ratio_symbol_is_two_adic():
         if pi.p % 4 == 3:
             assert k == 0
         assert table.setdefault((pi.a % 4, pi.b % 4), k) == k
+
+
+def test_mod4_unit_group_and_two_adic_characters():
+    """(Z[w]/4)^x = <w> x <-1> x <1+2w>; (2/rho)_3 = chi(1,0,0); (-1/p) = chi(0,0,1);
+    (conj rho/rho)_6 is a class function mod 4 but not a character."""
+    import itertools
+
+    from reciprocity_spectra.arith import _mul_w, mod4_character, mod4_class_coordinates
+
+    units = [(a, b) for a in range(4) for b in range(4) if (a % 2, b % 2) != (0, 0)]
+    coords = {u: mod4_class_coordinates(*u) for u in units}
+    assert len(set(coords.values())) == 12
+    for u in units:
+        for v in units:
+            uv = tuple(c % 4 for c in _mul_w(u, v))
+            assert coords[uv] == tuple((x + y) % n for x, y, n in zip(coords[u], coords[v], (3, 2, 2), strict=True))
+    w = cmath.exp(2j * math.pi / 3)
+    primes = primary_eisenstein_primes(5000)
+    assert len({coords[(p.a % 4, p.b % 4)] for p in primes}) == 12
+    for p in primes:
+        assert abs(w ** residue_exponent(2, 0, p) - mod4_character(1, 0, 0, p.a, p.b)) < 1e-12
+        assert abs((-1) ** ((p.p - 1) // 2) - mod4_character(0, 0, 1, p.a, p.b)) < 1e-12
+    psi = {p: (-1) ** (sextic_residue_exponent(p.a - p.b, -p.b, p) // 3) for p in primes}
+    for chi in itertools.product(range(3), range(2), range(2)):
+        assert any(abs(psi[p] - mod4_character(*chi, p.a, p.b)) > 1e-9 for p in primes)
