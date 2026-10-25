@@ -3253,6 +3253,35 @@
       ]
     },
     "family_enrichment_top8": 2.9616656476363117,
-    "arithmetic_seconds": 1419.2005646560003
+    "arithmetic_seconds": 1419.2005646560003,
+    "control_seed": 0,
+    "control_command": "OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 python reciprocity_spectra/scripts/phase1d.py registered-control --x 320000",
+    "control_code_commit": "511a8e230a8a0ec12ec047b13419842022d3fcab",
+    "control_top2": [
+      331.90669818074076,
+      331.88675736400336
+    ],
+    "control_gram_relative_residuals": [
+      1.96230658973976e-12,
+      6.784490812077322e-12
+    ],
+    "control_sigma1_over_edge": 0.9997552519376727,
+    "multiplicity": 34,
+    "multiplicity_censored": false,
+    "control_seconds": 483.95832809299964,
+    "prediction_outcomes": [
+      {
+        "id": "RS-S005-P7M",
+        "prediction": "Number of arithmetic sextic singular values (top k=48, Lanczos tol 1e-11, solver seed 2) strictly above the seed-0 conjugation-matched control sigma1 is >= 28 (m = 48 is reported as censored, and counts as >= 48).",
+        "value": 34,
+        "outcome": "PASS"
+      },
+      {
+        "id": "RS-S005-P7F",
+        "prediction": "Family enrichment: mean over the top 8 right singular vectors of the projection onto span{conj(g6~) * (u/pi)_6 : 0 < N(u) <= 60, distinct symbol vectors}, divided by the same mean for a random-phase span of equal dimension (seed 5), is >= 2.0.",
+        "value": 2.9616656476363117,
+        "outcome": "PASS"
+      }
+    ]
   }
 }
