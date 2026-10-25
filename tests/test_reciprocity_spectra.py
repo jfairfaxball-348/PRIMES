@@ -421,3 +421,58 @@ def test_sextic_gauss_sum_hasse_davenport_factorization():
         phase = rho.complex_value() / abs(rho.complex_value())
         chi = w ** residue_exponent(2, 0, rho)
         assert abs(g6 - chi.conjugate() * phase * g2 * g3.conjugate()) < 1e-9
+
+
+def test_kubota_sextic_gauss_sums_and_twisted_multiplicativity():
+    """Trace-form g6(c, n): |g6(1, pi)|^2 = N(pi); relation to our e(t/p) sum; CRT multiplicativity.
+
+    g_ours(pi) = (conj(pi)/pi)_6 g6(1, pi) (Astra referee check 3), and for coprime n1, n2:
+    g6(c, n1 n2) = (n1/n2)_6 (n2/n1)_6 g6(c, n1) g6(c, n2), verified by direct summation.
+    """
+    from reciprocity_spectra.arith import (
+        _mul_w, eisenstein_trace, kubota_g6_prime, sextic_gauss_sum, sextic_symbol_at)
+
+    z6 = cmath.exp(1j * math.pi / 3)
+    primes = primary_eisenstein_primes(120)
+    for pi in primes:
+        g = kubota_g6_prime((1, 0), pi)
+        assert abs(abs(g) ** 2 - pi.p) < 1e-8 * pi.p
+        k = sextic_residue_exponent(pi.a - pi.b, -pi.b, pi)  # (conj pi / pi)_6
+        assert abs(sextic_gauss_sum(pi) - z6 ** k * g) < 1e-8 * pi.p
+        for c in [(0, 1), (1, 1), (-1, 0)]:  # g6(u, pi) = conj((u/pi)_6) g6(1, pi) for units u
+            assert abs(kubota_g6_prime(c, pi) - z6 ** (-sextic_residue_exponent(*c, pi)) * g) < 1e-8 * pi.p
+    for q in (5, 11):
+        assert abs(abs(kubota_g6_prime((1, 0), q)) - q) < 1e-8 * q
+
+    def symbol(x, factors):
+        ks = [sextic_symbol_at(*x, f) for f in factors]
+        return None if None in ks else sum(ks) % 6
+
+    def element(f):
+        return (f, 0) if isinstance(f, int) else (f.a, f.b)
+
+    def direct(c, factors, reps, n):
+        nbar = (n[0] - n[1], -n[1])
+        norm = n[0] ** 2 - n[0] * n[1] + n[1] ** 2
+        total = 0j
+        for x in reps:
+            k = symbol(x, factors)
+            if k is not None:
+                total += z6 ** k * cmath.exp(2j * math.pi * eisenstein_trace(_mul_w(_mul_w(c, x), nbar)) / norm)
+        return total
+
+    cases = [(primes[0], primes[2]), (primes[0], primes[1]), (primes[2], 5)]
+    for f1, f2 in cases:
+        n = _mul_w(element(f1), element(f2))
+        norm = n[0] ** 2 - n[0] * n[1] + n[1] ** 2
+        if isinstance(f2, int) or f1.p == f2.p:  # Z[w]/n is not cyclic: residues s + t w modulo m
+            m = f2 if isinstance(f2, int) else f1.p
+            m = m * (f1.p if isinstance(f2, int) else 1)
+            reps = [(s_, t) for s_ in range(m) for t in range(norm // m)]
+        else:
+            reps = [(s_, 0) for s_ in range(norm)]
+        for c in [(1, 0), (0, 1), (1, 1)]:
+            want = direct(c, [f1, f2], reps, n)
+            twist = z6 ** (sextic_symbol_at(*element(f1), f2) + sextic_symbol_at(*element(f2), f1))
+            got = twist * kubota_g6_prime(c, f1) * kubota_g6_prime(c, f2)
+            assert abs(want - got) < 1e-7 * norm

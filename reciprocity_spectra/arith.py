@@ -258,6 +258,66 @@ def sextic_jacobi_sum(prime: DegreeOnePrime) -> complex:
                for t in range(2, prime.p))
 
 
+def _mul_w(x, y):
+    """(x0 + x1 w)(y0 + y1 w) with w^2 = -1 - w."""
+    return (x[0] * y[0] - x[1] * y[1], x[0] * y[1] + x[1] * y[0] - x[1] * y[1])
+
+
+def eisenstein_trace(x) -> int:
+    """Tr(x0 + x1 w) = 2 x0 - x1."""
+    return 2 * x[0] - x[1]
+
+
+def inert_sextic_exponent(c: int, d: int, q: int) -> int | None:
+    """Exponent k with ((c + d w)/q)_6 = zeta6^k for an inert rational prime q = 2 (mod 3), q > 2.
+
+    The residue field is F_{q^2} = F_q[w]; the symbol is x^((q^2 - 1)/6), and zeta6 = 1 + w.
+    """
+    x = (c % q, d % q)
+    if x == (0, 0):
+        return None
+    e, result, base = (q * q - 1) // 6, (1, 0), x
+    while e:
+        if e & 1:
+            result = tuple(v % q for v in _mul_w(result, base))
+        base = tuple(v % q for v in _mul_w(base, base))
+        e >>= 1
+    power = (1, 0)
+    for k in range(6):
+        if result == power:
+            return k
+        power = tuple(v % q for v in _mul_w(power, (1, 1)))
+    raise ArithmeticError("inert sextic symbol is not a sixth root of unity")
+
+
+def sextic_symbol_at(c: int, d: int, prime) -> int | None:
+    """Sextic exponent of c + d w at a split DegreeOnePrime or an inert rational prime q."""
+    return inert_sextic_exponent(c, d, prime) if isinstance(prime, int) else sextic_residue_exponent(c, d, prime)
+
+
+def kubota_g6_prime(c, prime) -> complex:
+    """g6(c, pi) = sum_{x mod pi} (x/pi)_6 e(Tr(c x / pi)) (Heath-Brown--Patterson trace form).
+
+    Split pi = a + b w: residues t = 0..p-1 and Tr(c t / pi) = t Tr(c conj(pi)) / p.
+    Inert q: residues s + t w with s, t mod q and Tr(c x / q) = Tr(c x) / q.
+    """
+    z6 = cmath.exp(1j * math.pi / 3)
+    total = 0j
+    if isinstance(prime, int):
+        q = prime
+        for s_ in range(q):
+            for t in range(q):
+                k = inert_sextic_exponent(s_, t, q)
+                if k is not None:
+                    total += z6 ** k * cmath.exp(2j * math.pi * eisenstein_trace(_mul_w(c, (s_, t))) / q)
+        return total
+    p = prime.p
+    tr = eisenstein_trace(_mul_w(c, (prime.a - prime.b, -prime.b)))  # c * conj(pi)
+    for t in range(1, p):
+        total += z6 ** sextic_residue_exponent(t, 0, prime) * cmath.exp(2j * math.pi * t * tr / p)
+    return total
+
+
 def sextic_reciprocity_sign(x: DegreeOnePrime, y: DegreeOnePrime) -> int:
     """Exact pairwise reversal sign from the two field-quadratic symbols.
 

@@ -82,10 +82,12 @@ int main(int argc, char **argv) {
     fprintf(stderr, "mode=%s X=%lld D=%d\n", argv[1], X, D);
 
     omp_set_num_threads(4);
-    uint8_t *E = malloc((size_t)D * D);
-    if (!E) { fprintf(stderr, "matrix allocation failed\n"); return 3; }
+    /* RS_NO_MATRIX: write header and index metadata only (Gauss sums at scales beyond the matrix). */
+    int nomatrix = getenv("RS_NO_MATRIX") != NULL;
+    uint8_t *E = nomatrix ? NULL : malloc((size_t)D * D);
+    if (!nomatrix && !E) { fprintf(stderr, "matrix allocation failed\n"); return 3; }
     #pragma omp parallel for schedule(dynamic, 1)
-    for (int j = 0; j < D; j++) {
+    for (int j = 0; j < (nomatrix ? 0 : D); j++) {
         ll p = P[j].p, r = P[j].r, e = (p - 1) / n;
         ll unit = n == 6 ? mod(1 + r, p) : r;
         /* Build the character table in O(p), rather than D modular powers. */
@@ -124,7 +126,7 @@ int main(int argc, char **argv) {
     FILE *f = fopen(argv[3], "wb");
     int32_t D32 = D; fwrite(&D32, 4, 1, f);
     for (int i = 0; i < D; i++) { int64_t rec[3] = {P[i].p, P[i].a, P[i].b}; fwrite(rec, 8, 3, f); }
-    fwrite(E, 1, (size_t)D * D, f);
+    if (!nomatrix) fwrite(E, 1, (size_t)D * D, f);
     fclose(f);
 
     if (argc > 4) {
