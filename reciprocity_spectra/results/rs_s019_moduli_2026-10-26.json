@@ -54,5 +54,5 @@
     }
   ],
   "power_note": "Class counts at X = 2e5: P uses 15 pi^5 singles (N = 19..73); Q plateau 38 classes, crossover 11 classes (k = 3, N = 43..73; k = 4, N = 19, 25). Random-phase sd of r about 0.003 at D ~ 1.8e4, so sigma_eps ~ 0.007 and sigma_s(pi^5) ~ 0.08-0.25 per class; SE of B, U about 0.05.",
-  "prediction_commit": null
+  "prediction_commit": "d915b4decab333ad8f54823e14a8cac175258ed6"
 }
