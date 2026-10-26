@@ -1483,3 +1483,39 @@ and took 686 s. Random-phase max 1.0027, sd 0.0015.
 
 **Next dependency.** RS-S021: reformulate and freeze CAND-002. The large-X holdout and H+ need an
 owner compute decision; they are not blockers for freezing.
+
+### RS-S021 (2026-10-26): matrix-free engine and larger-X evidence. Prediction block
+
+**Stage:** certification (the new engine) and falsification. **Branch:** `rs-s021-large-x`.
+**Execution:** local Windows, 16 threads. The owner chose local larger-X runs; the machine runs
+continuously.
+
+**New engine: `native/residue_free.c`.**
+
+- It computes Y = R·W without storing R. Each symbol is Euler's criterion x^{(p−1)/6} mod p,
+  matched against the powers of the image of ζ₆ = 1 + ω, using a double-assisted mulmod for
+  p < 2²².
+- Threads own row blocks, and each row accumulates in a fixed order, so the results are
+  thread-independent.
+- `residue_engine.c` gains `RS_THREADS`, which sets the thread count for the build and Gauss sums.
+  Results do not depend on it.
+- Memory is O(D·V) rather than D² (about 1 GB at X = 4·10⁶ instead of about 80 GB).
+
+**Validation (PROTOCOL §6), before use.** The record is `results/rs_s021_large_x_2026-10-26.json`
+(`validation`).
+
+- At X = 3.2·10⁵, all 101 stored r values agree to 5.3·10⁻¹⁵ relative.
+- At X = 10⁶, r₁ = 1.434211094004326, against the stored 1.4342110940043258 (relative 2.2·10⁻¹⁶).
+
+**Registered before data:** fresh scales X = 2·10⁶ and 4·10⁶, on the RS-S015 singles, with seed 21
+and 10 random-phase controls.
+
+- **H+:** let K1 be the mean s over the k = 1 singles with N ≤ 43. The stored values are 0.932,
+  0.953, 0.963 and 0.961 for X = 1.6·10⁵ … 10⁶.
+  - RISING if K1(4e6) > 0.9712, K1(4e6) > K1(2e6) and K1(4e6) ≤ 1.05;
+  - LEVEL if |K1(4e6) − 0.9612| ≤ 0.01;
+  - otherwise UNDECIDED.
+- **A (new-scale holdout of the crossover law):** every half-decade bin with ≥ 4 singles (k ≤ 4)
+  has |mean s − frozen F| ≤ 0.12.
+- **B:** π⁵ singles with t ≥ 3 have mean s ∈ [−1.15, −0.85] at each X.
+- **Power:** the SE of K1 is about 0.001. The π⁵ classes have σ_s about 0.03–0.07 each.

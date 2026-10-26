@@ -1,0 +1,53 @@
+{
+  "session": "RS-S021",
+  "runs": [],
+  "validation": {
+    "threads": 16,
+    "platform": "win32",
+    "X320000": {
+      "n": 101,
+      "max_relative_r_difference": 5.266281873553854e-15,
+      "apply_seconds": 28.32799999997951,
+      "build_seconds": 12.21899999998277
+    },
+    "X1000000": {
+      "r_u1": 1.434211094004326,
+      "stored": 1.4342110940043258,
+      "relative_difference": 2.220446049250313e-16,
+      "apply_seconds_V1": 62.79700000002049,
+      "build_seconds": 119.01600000000326
+    },
+    "pass": true
+  },
+  "date": "2026-10-26",
+  "scales": [
+    2000000,
+    4000000
+  ],
+  "control_seed": 21,
+  "threads": 16,
+  "classes": "RS-S015 singles (pi^k, k = 1..5, 20 smallest primary primes); rational normalization; prime moduli",
+  "frozen_F": "results/rs_s016_x_dependence_2026-10-26.json analysis.collapse_bins_t_eq_N6_over_X.k234",
+  "stored_trend_K1": {
+    "1.6e5": 0.9319,
+    "3.2e5": 0.9534,
+    "6.4e5": 0.9632,
+    "1e6": 0.9612
+  },
+  "predictions": [
+    {
+      "id": "RS-S021-H+",
+      "text": "K1 = mean s over k = 1 singles with N <= 43 (14 classes). Strong form (F(0+) = 1): K1(4e6) > K1(1e6) + 0.01 = 0.9712 and K1(4e6) > K1(2e6), with K1(4e6) <= 1.05: RISING. Plateau alternative: |K1(4e6) - 0.9612| <= 0.01: LEVEL. Otherwise UNDECIDED."
+    },
+    {
+      "id": "RS-S021-A",
+      "text": "New-scale holdout of the crossover law: for every half-decade bin of log10 t (pooled over both X) with >= 4 singles having k <= 4 and an F prediction, |mean s - mean F| <= 0.12."
+    },
+    {
+      "id": "RS-S021-B",
+      "text": "At each X, mean s over pi^5 singles with t >= 3 lies in [-1.15, -0.85]."
+    }
+  ],
+  "power_note": "Random-phase sd of r scales as D^(-1/2): about 0.0011 at X = 2e6 and 0.0008 at 4e6, so sigma_eps about 0.002 and sigma_s about 0.002-0.003 for k = 1 (SE of K1 about 0.001); pi^5 classes with t >= 3 have sigma_s about 0.03-0.07 each.",
+  "prediction_commit": null
+}

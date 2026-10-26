@@ -96,7 +96,9 @@ int main(int argc, char **argv) {
     }
     fprintf(stderr, "mode=%s X=%lld D=%d\n", argv[1], X, D);
 
-    omp_set_num_threads(4);
+    /* RS_THREADS (RS-S021): thread count for the build and Gauss sums; results do not depend on it. */
+    const char *threads_env = getenv("RS_THREADS");
+    omp_set_num_threads(threads_env ? atoi(threads_env) : 4);
     /* RS_NO_MATRIX: write header and index metadata only (Gauss sums at scales beyond the matrix). */
     int nomatrix = getenv("RS_NO_MATRIX") != NULL;
     uint8_t *E = nomatrix ? NULL : malloc((size_t)D * D);
