@@ -148,6 +148,14 @@ These are binding for Reciprocity Spectra sessions until the owner changes them.
    branch. This supersedes "merge only with the owner's explicit instruction in that session".
 5. **Release gate: formalization and registration (2026-10-26).** No paper, preprint, draft for
    circulation or public claim of a result is written or released until the gate in §10 is passed.
+6. **Mathematics before further formalisation (owner clarification, 2026-10-26).** For CAND-002,
+   suspend new Lean sextic character/specialization work until the fixed-class
+   implication gap is resolved mathematically. Statement (1)'s compact-aspect
+   uniformity excludes fixed κ at N₆(κ)/X→0, and statement (2)'s large-aspect
+   regime excludes fixed π. Audit the analytic H_P too; establish a rigorous
+   implication or formulate a separate proposed repair without silently changing
+   the frozen conjecture. Preserve the valid Lean work and the §10 release gate.
+   See `RS_CAND002_LOGICAL_BRIDGE_AUDIT.md`. RS-S026 is mathematics-first.
 
 ## 10. Release gate: Lean formalization and Palomar registration
 

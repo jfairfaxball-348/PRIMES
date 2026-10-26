@@ -214,3 +214,18 @@ kernel checked.
 yield its fixed-prime conclusion. Additionally, (1)'s compact-uniform
 `t>0` statement does not give a fixed-class limit at `t→0`.
 The frozen conjecture remains unchanged and unproved.
+
+## Post-RS-S025 mathematical priority (owner, 2026-10-26)
+
+Further Lean formalisation is **PAUSED** until the mathematical implication to
+CAND-002(3) has been addressed. The rigorous abstract countermodel in
+`RS_CAND002_LOGICAL_BRIDGE_AUDIT.md` shows (1)'s compact-aspect and (2)'s
+large-aspect regimes, together with the normalization gap, do not imply
+fixed-class limits in their own right. This is not a matrix counterexample,
+and the independent abstract H_P remains unaudited as a sufficient bridge.
+
+RS-S026 is mathematics-first: resolve whether H_P genuinely supplies the
+missing endpoint control, including the raw/normalised Gauss weighting and
+coefficient information, or provide a minimal separately labelled repair.
+Existing verified Lean identities are retained; no new sextic E4/E7
+specialization or Palomar packaging is authorized in the meantime.
