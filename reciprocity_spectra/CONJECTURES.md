@@ -967,3 +967,11 @@ vanishing in Bröker–Hoffstein's Hecke relation τ₆(mp²) = G₃(m, p)·τ�
 
 - Unit twists are characters of N(c) mod 36.
 - The rational-to-trace factor is (ρ̄/ρ)₆ = (−1/ρ)(√−3/ρ)(3/ρ)(b′/ρ).
+
+## RS-S021: larger-X evidence (matrix-free engine; scored verbatim against `2717a13`)
+
+| ID | Outcome |
+|---|---|
+| RS-S021-H+ (plateau rising toward 1) | **RISING**: 0.961 → 0.970 → 0.975 (X = 10⁶, 2·10⁶, 4·10⁶) |
+| RS-S021-A (frozen F at new scales X = 2·10⁶ and 4·10⁶) | **PASS**: 12 of 12 bins within 0.05 |
+| RS-S021-B (π⁵ mean s ∈ [−1.15, −0.85]) | **PASS**: −1.058, −1.047 |

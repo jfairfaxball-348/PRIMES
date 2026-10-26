@@ -293,7 +293,13 @@ Type II dependencies.
   τ₆(ρπ²)-type vanishing (exploratory).
 - Two exact lemmas were added.
 
-**Next bounded action:** RS-S021, reformulate and freeze CAND-002 (NEXT_SESSION_PROMPT.md).
+**RS-S021 (2026-10-26).** Registered at new scales X = 2·10⁶ and 4·10⁶:
+
+- the crossover law's frozen F PASSES (12 bins within 0.05);
+- the π⁵ law PASSES;
+- the plateau keeps RISING toward 1 (0.961 → 0.975).
+
+**Next bounded action:** RS-S022, reformulate and freeze CAND-002 (NEXT_SESSION_PROMPT.md).
 **Done:** RS-S020, the rho-partition test, the exact unit-normalization factor, and
 registration of the ±1 limit hypotheses (NEXT_SESSION_PROMPT.md). **Previous (done):** RS-S019, the reviewer-suggested decisive tests (prime versus unrestricted
 moduli; log-correction fit), as specified in NEXT_SESSION_PROMPT.md. Freezing CAND-002 is deferred

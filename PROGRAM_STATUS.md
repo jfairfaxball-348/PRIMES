@@ -4,7 +4,16 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S020 is complete (2026-10-26).**
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S021 is complete (2026-10-26).** It ran the larger-X
+evidence locally with a new matrix-free engine (validated to 5·10⁻¹⁵).
+
+- At fresh scales X = 2·10⁶ and 4·10⁶, the frozen crossover profile F PASSES: every bin is within
+  0.05.
+- The π⁵ law PASSES: −1.06 and −1.05.
+- The small-t plateau keeps rising toward 1: 0.961 → 0.970 → 0.975.
+- Next: **RS-S022, freeze CAND-002.** The release gate (§10) still applies.
+
+Previous: RS-S020 is complete (2026-10-26).**
 
 - **H− PASSES:** the π⁵ coefficient is −0.919 ± 0.083 on 88 fresh primes with N ≤ 1000, consistent
   with the limit −1.

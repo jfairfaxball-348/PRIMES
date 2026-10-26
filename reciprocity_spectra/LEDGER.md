@@ -1519,3 +1519,35 @@ and 10 random-phase controls.
   has |mean s − frozen F| ≤ 0.12.
 - **B:** π⁵ singles with t ≥ 3 have mean s ∈ [−1.15, −0.85] at each X.
 - **Power:** the SE of K1 is about 0.001. The π⁵ classes have σ_s about 0.03–0.07 each.
+
+### RS-S021 outcomes (scored verbatim against `2717a13`)
+
+| X | D | r₁ | Gauss build | products (V = 111) | Random-phase sd (max) |
+|---|---:|---:|---:|---:|---|
+| 2·10⁶ | 148824 | 1.45405 | 446 s | 723 s | 0.00117 (1.0025) |
+| 4·10⁶ | 282896 | 1.47899 | 1724 s | 2697 s | 0.00083 (1.0013) |
+
+| ID | Outcome | Numbers |
+|---|---|---|
+| RS-S021-H+ | **RISING** | K1 = 0.9612 (10⁶, stored) → 0.9701 (2·10⁶) → 0.9747 (4·10⁶) |
+| RS-S021-A (new-scale holdout of frozen F) | **PASS** | 12 of 12 bins within 0.05 of F (tolerance 0.12), log₁₀ t from −5 to 1.5 |
+| RS-S021-B (π⁵) | **PASS** | −1.058 (2·10⁶), −1.047 (4·10⁶) |
+
+**Reading.**
+
+- **The crossover law transfers to new scales**, up to 4× beyond any earlier computation, with the
+  frozen F. The largest bin gap is 0.049.
+- **The plateau keeps rising toward 1.** This favours F(0⁺) = 1 over a level near 0.96. Finite data
+  cannot establish the limit.
+- **The π⁵ law holds at the new scales.**
+- These are the largest computations in the programme, made possible by the matrix-free engine.
+
+**Validation.**
+
+- Engine: 5.3·10⁻¹⁵ against stored results.
+- Targeted Ruff passes.
+- PYTHONUTF8=1 pytest: 323 passed and 3 skipped (fcntl exclusions).
+- Both audit checkers pass.
+- No large files are committed.
+
+**Next dependency.** RS-S022: freeze CAND-002, now including the new-scale holdouts.

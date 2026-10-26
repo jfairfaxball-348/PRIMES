@@ -119,6 +119,8 @@ container.
 - Dense complex128 matrices held in RAM: up to D ≈ 15,000 (3.4 GB).
 - uint8 exponent storage with blockwise matrix–vector products: up to D ≈ 60,000–80,000
   (3.6–6.4 GB). That covers Phase 1, X ≤ 6.4·10⁵.
+- Matrix-free products (RS-S021, `native/residue_free.c`; validated to 5·10⁻¹⁵) remove the D² memory
+  limit. X = 4·10⁶ (D = 282896) ran locally on 16 threads in about 75 min, using about 1 GB.
 - Beyond D ≈ 100,000 (X ≳ 1.3·10⁶): use 2-bit packing, compute blocks on the fly, or move to a
   machine with ≥ 64 GB RAM.
 
