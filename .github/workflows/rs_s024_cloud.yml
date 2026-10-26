@@ -1,12 +1,12 @@
-name: RS-S024 cloud Lean validation
+name: RS-S025 cloud Lean validation
 
 on:
   push:
-    branches: [rs-s024-cloud]
+    branches: [rs-s025-cloud]
   workflow_dispatch:
 
 concurrency:
-  group: rs-s024-cloud
+  group: rs-s025-cloud
   cancel-in-progress: true
 
 jobs:
