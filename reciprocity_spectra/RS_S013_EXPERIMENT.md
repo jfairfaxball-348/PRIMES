@@ -37,8 +37,9 @@ Each support has three matched random controls (seeds 0,1,2). The prime-matrix
 `structured_random` implementation does not apply to composite reciprocal
 products. Its counterpart here randomizes transpose/conjugation orbits among
 the three sixth roots with the same exponent parity, retaining the coprimality
-mask, quadratic reciprocity signs, and forced self-conjugate entries. Both
-arithmetic and null matrices receive the same harmless Gauss phases.
+mask, quadratic reciprocity signs, and forced self-conjugate entries. The
+null's Gauss phases are omitted because unitary diagonal multiplication
+leaves its operator norm unchanged.
 
 Save compact JSON after every support. It records the command, code commit,
 source hashes, dimensions, X, seeds, versions, and floating-point limitations.

@@ -1,0 +1,55 @@
+{
+  "session": "RS-S013",
+  "date": "2026-10-26",
+  "execution_environment": "local Windows; Python 3.12; PYTHONUTF8=1",
+  "implementation_commit": "b6556f7",
+  "checks": [
+    {
+      "command": "python -m pytest",
+      "status": "BLOCKED_AT_COLLECTION",
+      "reason": "ModuleNotFoundError: No module named 'fcntl' in three frozen D1 test modules",
+      "modules": [
+        "tests/test_e010.py",
+        "tests/test_e010_runtime.py",
+        "tests/test_e011.py"
+      ]
+    },
+    {
+      "command": "python -m pytest --ignore=tests/test_e010.py --ignore=tests/test_e010_runtime.py --ignore=tests/test_e011.py",
+      "status": "PASS_WITH_EXPLICIT_PLATFORM_EXCLUSIONS",
+      "passed": 319,
+      "skipped": 3,
+      "skip_reason": "Existing native C tests require unavailable GCC"
+    },
+    {
+      "command": "ruff check reciprocity_spectra/bilinear.py reciprocity_spectra/scripts/type_ii.py reciprocity_spectra/scripts/phase1j.py reciprocity_spectra/scripts/audit_strength.py tests/test_reciprocity_spectra.py",
+      "status": "PASS"
+    },
+    {
+      "command": "python reciprocity_spectra/scripts/audit_strength.py --check",
+      "status": "PASS",
+      "scope": "All 80 original sextic rows and criteria, source evidence/historical code hashes, exact u64 arithmetic, integer symbols at 160 prime ideals with norm<=1000"
+    },
+    {
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "independent_numerical_review": {
+    "method": "Read-only independent reconstruction of all eight integer exponent matrices; Gram Hermitian eigenvalue calculation independent of SVD; recomputation of matched controls",
+    "exponent_hashes_matched": 8,
+    "operator_norm_max_absolute_discrepancy": 3.2e-14,
+    "all_controls_reproduced": true,
+    "null_checks": [
+      "coprimality zero mask",
+      "conjugation",
+      "transpose where supports coincide",
+      "quadratic sign via null cubed equals arithmetic cubed"
+    ],
+    "scope": "Finite complex128 computations, not an asymptotic bound or a rigorous interval enclosure"
+  },
+  "no_cloud_compute_requested": true,
+  "checkpoint_commit_ci_policy": "[skip ci]",
+  "main_entry_commit": "68d19bde1cbe3c4cd1eaf353f721eba97edfadcf",
+  "merge_authorized": false
+}

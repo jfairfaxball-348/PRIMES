@@ -805,3 +805,33 @@ The sextic dichotomy also holds at X = 10⁶: min ±primary r = 1.201, and max n
 (N ≤ 13) r = 0.984. At this scale r₁ = 1.434.
 
 **CAND-001 gains statement 3, the sextic strength law.**
+
+## RS-S013: exact refutation and correction (2026-10-26)
+
+**Frozen CAND-001 package: REFUTED.** Statement 3 quantified over every
+fixed +/-primary u coprime to 3. For u=64=2^6, every indexed sextic symbol
+is one, so w_64=w_1 and r_64=r_1 exactly. The claimed relative excess
+would instead tend to N(64)^(-1/6)=1/4. Statement 1 ensures the reference
+excess is eventually positive. This algebraic contradiction does not refute
+the matrix dichotomy (RS-7b) or prime bias (RS-9).
+
+**Correction to the RS-S012 explanation above:** excluding +/-8 in sextic
+mode was a scoring defect, not a valid use of the cubic definition. All
+80 registered rows were stored. Their independent rescore gives mean
+0.9426270886 and population sd 0.02148995984; all other original criteria
+also pass. The finite verdict stays **PASS**. Original rows and the historical
+78-row summary remain unchanged. The current script restricts its cube
+special case to cubic mode. Reproduce with
+`python reciprocity_spectra/scripts/audit_strength.py --check`.
+
+The exact dispersion diagonal is (D-1)D_u, with D_u the number of indexed
+primes not dividing u; D(D-1) is the special case D_u=D. A positive squared
+main-term correction cannot explain the negative excess of nonprimary
+twists. The previous claimed equivalence to that ansatz is withdrawn.
+
+The Type II kernel reduces to a locally signed cubic-symbol kernel. Its
+generic sieve bound is too large, and an unrestricted coefficient bound at
+the proposed target is impossible. Eight small squarefree kernel measurements
+are **EXPLORATORY**; they promote no conjecture. Source details, exact
+derivations and scope are in `PROOF_ROUTE.md` section 7 and
+`RS_S013_CANDIDATE_AUDIT.md`. No repaired strength law is asserted.

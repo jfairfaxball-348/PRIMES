@@ -16,7 +16,10 @@
     },
     {
       "path": "reciprocity_spectra/scripts/phase1j.py",
-      "sha256": "108b2ce2f80a1a1ac82ee4dccba055377cf24a9a00439aa95b6e342f9e2d00b1"
+      "sha256": "108b2ce2f80a1a1ac82ee4dccba055377cf24a9a00439aa95b6e342f9e2d00b1",
+      "git_ref": "68d19bde1cbe3c4cd1eaf353f721eba97edfadcf",
+      "git_blob_sha256": "421459406185fe51fef81b534fe205f0bd6d3c9624d08a4da86c9fe3860c3f52",
+      "sha256_scope": "Historical local file bytes before RS-S013 correction; verify immutable git blob using git_ref/git_blob_sha256."
     }
   ],
   "registration": {
@@ -130,5 +133,7 @@
       "all_zero": true
     },
     "disposition": "CAND-001 as the frozen three-statement package is REFUTED. Statements 1 and 2 are not refuted by this argument. Preserve the finite PASS, which covered norm<=100 and excluded norm4096. Any replacement statement needs explicit new formulation and lifecycle handling; do not silently substitute a sixth-power-free norm."
-  }
+  },
+  "reproduction_command": "python reciprocity_spectra/scripts/audit_strength.py --check",
+  "current_script_correction": "b6556f7 limits the +/-8 cube special case to cubic mode. Frozen source evidence is unchanged."
 }

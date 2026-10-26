@@ -1,6 +1,10 @@
 # Proof route for CAND-001: hard version first
 
-Status: **draft plan, RS-S011 (2026-10-25)**. Nothing here is proved unless it is marked
+Status: **RS-S013 audit complete (2026-10-26)**. The frozen CAND-001 package is
+**REFUTED** by its unreduced strength law; its matrix dichotomy and prime-bias
+components are not refuted. The unrestricted Type II operator route is ruled
+out; the arithmetic-coefficient route is unresolved. See section 7 before
+using the historical plan below. Nothing here is proved unless it is marked
 *exact* or *known*.
 
 Order of attack (PROTOCOL §9):
@@ -49,13 +53,15 @@ Patterson's explicit coefficients. It is the testbed for the method.
 
 ## 2. Reduction of H2 to twisted prime sums
 
-*To verify exactly before use* (Astra, Q1):
+*Exact algebraic identity; checked independently in RS-S012* (Astra, Q1):
 
 ```
 ‖C w_u‖² = Σ_π |S(πu)|²,   S(c) = Σ_{ρ ≠ π} conj((c/ρ)₆) g̃_ours(ρ),
 ```
 
-- The diagonal ρ₁ = ρ₂ contributes D(D − 1) exactly.
+- The diagonal ρ₁ = ρ₂ contributes (D − 1)D_u exactly, where D_u counts indexed
+  primes not dividing u. This equals D(D − 1) only when u is coprime to the
+  entire index. RS-S013 corrects the earlier unrestricted diagonal claim.
 - Everything else is the off-diagonal "dispersion" term.
 
 So H2 is a statement about S(c) for frequencies c = πu, with N(c) up to about X. It needs:
@@ -65,9 +71,12 @@ So H2 is a statement about S(c) for frequencies c = πu, with N(c) up to about X
 - **(R2) Dispersion bound.**
   Σ_π |S(πu)|² = D(D − 1) + Σ_π |M(πu)|² + o(Σ_π |M(πu)|²).
 
-This is exactly the shape of Dunn–Radziwiłł's "dispersion estimate for cubic Gauss sums: a cubic
-large sieve with correction by a non-trivial main term" (Annals 200 (2024); arXiv 2109.07463).
-**H2 is the sextic analogue of their dispersion estimate, twisted by u.**
+**RS-S013 correction:** R2 is a positive-excess proposal for primary classes
+only, not an equivalent formulation of the full H2 dichotomy. The nonprimary
+limsup r_u < 1 requires a negative off-diagonal contribution of order D D_u,
+which a nonnegative sum of squared main terms cannot supply. The exact identity
+above survives; R1/R2 are unproved ansatzes. Dunn–Radziwiłł's cubic dispersion
+estimate is a methodological model, not an existing sextic theorem.
 
 ## 3. Method template: Dunn–Radziwiłł for n = 3, adapted to n = 6
 
@@ -188,3 +197,134 @@ known-method-implied statement. It is the calibration, not the target.
 **Step 3 (T2, the crux): not started.** Next, measure the actual size of the bilinear sextic sums
 that a Heath-Brown decomposition needs. Compare with the sextic large-sieve exponents, extracted
 exactly from the literature, and state the gap to o(X^{2/3}/log X).
+
+## 7. RS-S013: exact kernel, measured norms, and the actual obstruction
+
+Stages: **mechanism, certification, exploratory measurement, falsification**.
+Executed locally on Windows. Entry authority was main/origin/main `68d19bd`;
+the handoff's claim that RS-S012 was unmerged was stale. Session branch:
+`codex/rs-s013-type-ii`; no merge is authorized by this session.
+
+### Exact building blocks
+
+For squarefree coprime m,n prime to 6, define the trace-form normalized Gauss
+sum G_c(m)=g6(c,m)/sqrt(Nm). The Chinese remainder theorem gives
+
+```text
+G_c(mn) = (m/n)_6 (n/m)_6 G_c(m)G_c(n).
+```
+
+Indeed, representing a residue modulo mn by nx+my factors its additive
+character as e(Tr(cx/m))e(Tr(cy/n)), and its multiplicative character as
+(n/m)_6(m/n)_6(x/m)_6(y/n)_6. Multiplying the two finite sums proves the
+identity. If c shares a prime factor, the corresponding primitive local sum
+is zero. Noncoprime m,n are excluded rather than assigned an asserted
+nonsquarefree Gauss value.
+
+The reciprocal-symbol factor Q is cubic with a local sign:
+
+```text
+Q(m,n) = epsilon(m,n) (m/n)_3,
+epsilon = (-1)^(k*l' + l*k' + l*l'),
+m mod4 = omega^i (-1)^k (1+2omega)^l.
+```
+
+The exact transport from E-primary reciprocity to our prime-product generators
+is derived in `RS_S013_LITERATURE.md` section 2. `bilinear.py` implements it
+with integer exponent arithmetic. Independent CRT residue summation checks
+the Gauss factorization on split, conjugate, inert and mixed composites;
+independent Euler exponentiation checks the cubic reduction. These finite
+checks certify implementations of the algebraic derivations, not asymptotic
+claims.
+
+For fixed c coprime to the supports, G_c has modulus one. Its row and column
+factors therefore leave every singular value unchanged. Operator norms discard
+the special Gauss phases that the arithmetic-coefficient problem needs.
+
+### Literature and precise exponent gap
+
+`RS_S013_LITERATURE.md` records source URLs, theorem numbers, coefficient
+hypotheses and domains. Heath-Brown's cubic sieve and BGL's higher-order sieve
+give, after the finite local class partition,
+
+```text
+|B| << (MN)^epsilon ||alpha||_2 ||beta||_2
+       sqrt(M + N + (MN)^(2/3)).
+```
+
+For divisor-bounded dense coefficients and MN=X, the exponent is
+`1/2 + max(a,1-a,2/3)/2`, where M=X^a. It is 5/6 throughout
+1/3 <= a <= 2/3 and worse outside. The gap to X^(2/3)/log X is a power
+X^(1/6), plus logarithms and epsilon losses. GL's stronger quadratic bound
+does not apply to this cubic product kernel.
+
+Dunn–Radziwill Proposition 10.1 treats a **corrected cubic main term**, with
+special coefficient cancellation conditions supplied by GRH in their
+application; its dense broad range is X^(1/3+xi) <= B <= X^(1/2-xi).
+It is not an assertion that every Type II block is negligible. Neither this
+theorem nor ordinary Hecke GRH as used there supplies the missing
+sextic-weighted residual estimate. No complete sextic prime decomposition or
+its total logarithmic error budget has been proved here.
+
+### Local measurements and their scope
+
+The pre-run specification is `RS_S013_EXPERIMENT.md`; the implementation/design
+checkpoint is `b6556f7`. `results/type_ii_2026-10-26.json` contains all eight
+supports, exact exponent hashes, coefficients, matched controls and provenance.
+Supports include **every squarefree ideal prime to 6**, not only prime pairs.
+Here M,N are lower dyadic endpoints and X=4MN is the product upper bound.
+
+| M,N | matrix dimensions | norm | matched control norms (seeds 0,1,2) | L2 extremal form / (X^(2/3)/log X) |
+|---|---|---:|---|---:|
+| 32,32 | 7 x 7 | 3.9004 | 4.1623, 3.9004, 4.5955 | 0.8871 |
+| 64,64 | 19 x 19 | 8.3772 | 7.3973, 8.3788, 9.0731 | 2.3944 |
+| 128,128 | 37 x 37 | 11.1526 | 12.5518, 11.4453, 10.7449 | 2.8154 |
+| 256,256 | 74 x 74 | 16.5505 | 17.5758, 16.3257, 16.8774 | 3.7306 |
+| 512,512 | 139 x 139 | 22.4568 | 23.4257, 22.5973, 23.2687 | 4.1926 |
+| 32,256 | 7 x 74 | 10.6273 | 9.7281, 11.0156, 9.9449 | 2.4559 |
+| 64,512 | 19 x 139 | 14.9406 | 14.6732, 15.0751, 15.9426 | 3.5063 |
+| 32,1024 | 7 x 294 | 18.8082 | 18.5240, 18.4830, 18.4301 | 3.8965 |
+
+At (512,512), the extremal L2 form is 3121.50 versus target 744.52; even its
+unimodular phase projection gives 2562.47. Eight random unimodular coefficient
+pairs have maximum 189.34. The coefficients make a decisive difference.
+The finite sieve-shape ratios are recorded without interpreting an unspecified
+theorem constant as one. These are exploratory examples, not an asymptotic
+exponent fit, a new spectral conjecture, or a prime-weight estimate.
+
+### What can and cannot close
+
+**Unconditional obstruction to the proposed unrestricted route.** The Frobenius
+norm implies sigma_max >= sqrt(number of nonzero entries / min(R,S)).
+Even arbitrary pointwise-bounded coefficients admit a balanced prime-band
+bilinear value of order X^(3/4)/(log X)^(3/2): random column phases followed
+by row alignment prove this via second/fourth moments. The derivation is in
+`RS_S013_CANDIDATE_AUDIT.md`. Thus an all-coefficient o(X^(2/3)/log X) theorem
+is impossible. More operator-norm measurements cannot remove that obstruction.
+
+**Unresolved arithmetic route.** One must specify the actual prime-decomposition
+coefficients, identify any Type II main term/correction, and bound the residual
+below the required total error. H2 additionally needs a frequency average for
+c=pi*u and a negative off-diagonal mechanism for nonprimary u. T1 residues and
+local factors remain unresolved. Conditional statements must explicitly assume
+the missing sextic coefficient estimate as well as any Hecke hypothesis; this
+session proves no such estimate. Viability is not established.
+
+**Disposition.** This exhausts the generic large-sieve/operator-norm approach
+proposed for this unit, not every hard-route method. It does not authorize an
+automatic all-n or function-field fallback under PROTOCOL section 9.
+
+### Candidate correction encountered during the audit
+
+The frozen CAND-001 conjunction is **REFUTED**: u=64=2^6 has w_64=w_1 exactly,
+but its statement 3 predicts excess ratio N(64)^(-1/6)=1/4. Statements 1 and
+2 are not refuted. The norm-100 finite test remains PASS after independently
+restoring the two omitted sextic rows u=+/-8 (80 rows, mean 0.9426271,
+population SD 0.0214900). Old evidence and original statements are preserved;
+the current scoring script now limits its cube special case to cubic mode.
+See `RS_S013_CANDIDATE_AUDIT.md` and its JSON for the exact proof and rescore.
+
+The immediate next bounded unit is an invariant formulation audit and explicit
+repair decision for the strength statement; a sixth-power-free norm is only a
+possible repair, not an established law. CAND-001 must not be silently revived
+or renumbered. No theorem export or publication is justified by this session.

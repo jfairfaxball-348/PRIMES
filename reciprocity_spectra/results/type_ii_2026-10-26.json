@@ -1,0 +1,533 @@
+{
+  "session": "RS-S013",
+  "stage": "EXPLORATORY",
+  "date": "2026-10-26",
+  "created_utc": "2026-10-26T07:28:56.652935+00:00",
+  "execution": "local Windows",
+  "code_commit": "b6556f785e777ad16daaba134b143e384feb9bfa",
+  "source_sha256": {
+    "reciprocity_spectra\\scripts\\type_ii.py": "9a40137a3fe01d768cfc80413a090494bd524fd924588830f8827695a8ac16d7",
+    "reciprocity_spectra\\bilinear.py": "4ba5883aad20a08c53661652103e334a5b8d96966d74b0c5dcff9b90e6fd7614",
+    "reciprocity_spectra\\arith.py": "334435b4e7cd10246be05ff24b64ad80b5893d350b2743e381b3126c11dff126"
+  },
+  "command": "C:\\Users\\johnf\\AppData\\Local\\Programs\\Python\\Python312\\python.exe reciprocity_spectra/scripts/type_ii.py --output reciprocity_spectra/results/type_ii_2026-10-26.json",
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3"
+  },
+  "parameters": {
+    "norm_intervals": "(M,2M], (N,2N]",
+    "pairs": [
+      [
+        32,
+        32
+      ],
+      [
+        64,
+        64
+      ],
+      [
+        128,
+        128
+      ],
+      [
+        256,
+        256
+      ],
+      [
+        512,
+        512
+      ],
+      [
+        32,
+        256
+      ],
+      [
+        64,
+        512
+      ],
+      [
+        32,
+        1024
+      ]
+    ],
+    "support": "all squarefree ideals of Z[omega] coprime to 6; canonical prime-factor products",
+    "noncoprime_pairs": "zero (restricted Type II form)",
+    "frequency_c": [
+      1,
+      0
+    ],
+    "coefficient_seed": 23,
+    "control_seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "limitations": [
+    "Approximate complex128 spectra; exact integer character exponents.",
+    "The sieve expression omits its unknown constant and epsilon; it is not a numerical upper bound.",
+    "L2 extremizers are data-dependent and need not be bounded by one or arise in a prime decomposition.",
+    "No bound uniform in moving frequency c, no prime asymptotic, and no conjecture status promotion.",
+    "The product-kernel control preserves coprimality zeros, transpose, conjugation, quadratic signs and forced entries."
+  ],
+  "runs": [
+    {
+      "M_lower": 32,
+      "N_lower": 32,
+      "X_product_upper": 4096,
+      "D": [
+        7,
+        7
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 42,
+      "matrix_exponent_sha256": "89c74cee4b5e61e017324def964f8c5cc23b7d678cc37625efbfd48a632f6618",
+      "operator_norm": 3.9003748033389836,
+      "symbol_operator_norm": 3.9003748033389805,
+      "gauss_phase_norm_max_error": 3.1086244689504383e-15,
+      "frobenius_rank_lower_bound": 2.449489742783178,
+      "sieve_shape_without_constant_or_epsilon": 383.9999999999999,
+      "operator_norm_over_sqrt_sieve_shape": 0.19904016820393325,
+      "target_X_two_thirds_over_log_X": 30.77749420563121,
+      "l2_extremal_form": 27.302623623372913,
+      "l2_extremal_over_target": 0.8870970274889203,
+      "l2_extremal_max_abs_coefficients": [
+        1.1159076014167422,
+        1.115907601416741
+      ],
+      "phase_projected_unimodular_form": 27.213474509443728,
+      "random_unimodular_forms": [
+        6.288961455166936,
+        14.030130668745365,
+        5.38234700374253,
+        5.622558788301919,
+        5.911875120255191,
+        1.8047575204595498,
+        9.106510991451573,
+        11.356130057612864
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 8.674638086671093,
+      "mobius_coefficient_form": 2.2727568490971595,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 4.162277660168379
+        },
+        {
+          "seed": 1,
+          "operator_norm": 3.9003748033389796
+        },
+        {
+          "seed": 2,
+          "operator_norm": 4.595505080903777
+        }
+      ],
+      "wall_seconds": 0.018642500042915344
+    },
+    {
+      "M_lower": 64,
+      "N_lower": 64,
+      "X_product_upper": 16384,
+      "D": [
+        19,
+        19
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 334,
+      "matrix_exponent_sha256": "8e32b38edbfbeb378774caf717c396a7fc06c2111a2c84d62b165c84970e9b8e",
+      "operator_norm": 8.377238142993022,
+      "symbol_operator_norm": 8.377238142993024,
+      "gauss_phase_norm_max_error": 9.547918011776346e-15,
+      "frobenius_rank_lower_bound": 4.192725529821986,
+      "sieve_shape_without_constant_or_epsilon": 901.0795775461748,
+      "operator_norm_over_sqrt_sieve_shape": 0.27907394272909697,
+      "target_X_two_thirds_over_log_X": 66.47522196461529,
+      "l2_extremal_form": 159.1675247168676,
+      "l2_extremal_over_target": 2.39438876641273,
+      "l2_extremal_max_abs_coefficients": [
+        1.4393390878190404,
+        1.439339087819042
+      ],
+      "phase_projected_unimodular_form": 125.40121373457598,
+      "random_unimodular_forms": [
+        8.670414557718635,
+        22.388040296796216,
+        6.427926977745039,
+        7.152565084989072,
+        10.044569584359758,
+        11.502369673956721,
+        14.769380358544895,
+        5.306415862942055
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 13.351324551026348,
+      "mobius_coefficient_form": 31.14060057635686,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 7.397298947774456
+        },
+        {
+          "seed": 1,
+          "operator_norm": 8.378798153765981
+        },
+        {
+          "seed": 2,
+          "operator_norm": 9.073079729001725
+        }
+      ],
+      "wall_seconds": 0.010298800014425069
+    },
+    {
+      "M_lower": 128,
+      "N_lower": 128,
+      "X_product_upper": 65536,
+      "D": [
+        37,
+        37
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 1250,
+      "matrix_exponent_sha256": "dddb004026782dee050bad8e0b8cdef77b378e37fbddf9d20c84ac791ce25485",
+      "operator_norm": 11.152569415220738,
+      "symbol_operator_norm": 11.15256941522073,
+      "gauss_phase_norm_max_error": 8.881784197001252e-15,
+      "frobenius_rank_lower_bound": 5.812381937190964,
+      "sieve_shape_without_constant_or_epsilon": 2137.4986772154357,
+      "operator_norm_over_sqrt_sieve_shape": 0.24122482928013655,
+      "target_X_two_thirds_over_log_X": 146.56868003689243,
+      "l2_extremal_form": 412.6450683631674,
+      "l2_extremal_over_target": 2.8153700248873195,
+      "l2_extremal_max_abs_coefficients": [
+        1.7880498044097832,
+        1.7880498044097832
+      ],
+      "phase_projected_unimodular_form": 356.5564675779115,
+      "random_unimodular_forms": [
+        34.04873670544104,
+        7.05351338973177,
+        19.53910371244045,
+        12.04781907415474,
+        33.65838712787781,
+        42.963339801589555,
+        26.090420441961903,
+        34.942810324516344
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 21.510911251666087,
+      "mobius_coefficient_form": 16.079915554410835,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 12.551820587951765
+        },
+        {
+          "seed": 1,
+          "operator_norm": 11.445257913210073
+        },
+        {
+          "seed": 2,
+          "operator_norm": 10.744853147828804
+        }
+      ],
+      "wall_seconds": 0.033403499983251095
+    },
+    {
+      "M_lower": 256,
+      "N_lower": 256,
+      "X_product_upper": 262144,
+      "D": [
+        74,
+        74
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 5122,
+      "matrix_exponent_sha256": "12cecb4e9e5fc0dc558bf8b08e963453694dcea23022fc01995ae6c5015feaa5",
+      "operator_norm": 16.550512634195336,
+      "symbol_operator_norm": 16.55051263419533,
+      "gauss_phase_norm_max_error": 1.6431300764452317e-14,
+      "frobenius_rank_lower_bound": 8.31962837007857,
+      "sieve_shape_without_constant_or_epsilon": 5119.999999999998,
+      "operator_norm_over_sqrt_sieve_shape": 0.2313004457033118,
+      "target_X_two_thirds_over_log_X": 328.29327152673284,
+      "l2_extremal_form": 1224.7379349304556,
+      "l2_extremal_over_target": 3.730621493504248,
+      "l2_extremal_max_abs_coefficients": [
+        1.8912202944906287,
+        1.891220294490631
+      ],
+      "phase_projected_unimodular_form": 1003.3248500555487,
+      "random_unimodular_forms": [
+        150.495944782715,
+        34.84340345452504,
+        14.846510681673127,
+        28.970638186287857,
+        36.00375054115646,
+        29.571637914128626,
+        96.33237970289625,
+        99.3614819654535
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 108.4289707458134,
+      "mobius_coefficient_form": 66.64426913778782,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 17.57580281306846
+        },
+        {
+          "seed": 1,
+          "operator_norm": 16.325707670231143
+        },
+        {
+          "seed": 2,
+          "operator_norm": 16.87743243377468
+        }
+      ],
+      "wall_seconds": 0.1343899000203237
+    },
+    {
+      "M_lower": 512,
+      "N_lower": 512,
+      "X_product_upper": 1048576,
+      "D": [
+        139,
+        139
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 18312,
+      "matrix_exponent_sha256": "dce37f49de6cbf0e6a3cb369e89a36957ee4c96a11100607dbc9934a36dc9631",
+      "operator_norm": 22.456839427407974,
+      "symbol_operator_norm": 22.456839427408013,
+      "gauss_phase_norm_max_error": 2.7977620220553945e-14,
+      "frobenius_rank_lower_bound": 11.477848543792717,
+      "sieve_shape_without_constant_or_epsilon": 12369.273240738796,
+      "operator_norm_over_sqrt_sieve_shape": 0.2019187002501743,
+      "target_X_two_thirds_over_log_X": 744.522486003691,
+      "l2_extremal_form": 3121.5006804097065,
+      "l2_extremal_over_target": 4.192621094850628,
+      "l2_extremal_max_abs_coefficients": [
+        2.0245677605992154,
+        2.0245677605992367
+      ],
+      "phase_projected_unimodular_form": 2562.4689469704526,
+      "random_unimodular_forms": [
+        99.75287060794707,
+        158.73439282857566,
+        104.78459255141964,
+        135.73983601666077,
+        189.3376403719413,
+        105.79642090585817,
+        64.25774036927604,
+        175.82316279614457
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 64.33969740394794,
+      "mobius_coefficient_form": 78.81272942531865,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 23.425677708675813
+        },
+        {
+          "seed": 1,
+          "operator_norm": 22.59730334689463
+        },
+        {
+          "seed": 2,
+          "operator_norm": 23.26874368015366
+        }
+      ],
+      "wall_seconds": 0.47500949999084696
+    },
+    {
+      "M_lower": 32,
+      "N_lower": 256,
+      "X_product_upper": 32768,
+      "D": [
+        7,
+        74
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 482,
+      "matrix_exponent_sha256": "4a3c594eeb24af61b1320712feb68cf88a3e7beea35906a110489fd983a357f3",
+      "operator_norm": 10.627282304944433,
+      "symbol_operator_norm": 10.627282304944437,
+      "gauss_phase_norm_max_error": 1.6431300764452317e-14,
+      "frobenius_rank_lower_bound": 8.298020417975776,
+      "sieve_shape_without_constant_or_epsilon": 1599.9999999999995,
+      "operator_norm_over_sqrt_sieve_shape": 0.26568205762361086,
+      "target_X_two_thirds_over_log_X": 98.48798145801987,
+      "l2_extremal_form": 241.8728362588376,
+      "l2_extremal_over_target": 2.455861442971445,
+      "l2_extremal_max_abs_coefficients": [
+        1.364501830100598,
+        1.7452173256429742
+      ],
+      "phase_projected_unimodular_form": 211.06023358306413,
+      "random_unimodular_forms": [
+        22.090956173446873,
+        20.266771541823232,
+        11.808421441394163,
+        13.893696935089215,
+        36.41033302396359,
+        15.013762347094723,
+        8.159024445584672,
+        42.038655408474426
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 19.79734978552325,
+      "mobius_coefficient_form": 5.183159923039863,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 9.72813619038682
+        },
+        {
+          "seed": 1,
+          "operator_norm": 11.015559416572916
+        },
+        {
+          "seed": 2,
+          "operator_norm": 9.94494163019504
+        }
+      ],
+      "wall_seconds": 0.014642200025264174
+    },
+    {
+      "M_lower": 64,
+      "N_lower": 512,
+      "X_product_upper": 131072,
+      "D": [
+        19,
+        139
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 2511,
+      "matrix_exponent_sha256": "b55daf9ba9552e4c521098f7a29745acb0c7688b91f8489f353ed321241462c9",
+      "operator_norm": 14.940571393488362,
+      "symbol_operator_norm": 14.94057139348838,
+      "gauss_phase_norm_max_error": 2.7977620220553945e-14,
+      "frobenius_rank_lower_bound": 11.495994725853093,
+      "sieve_shape_without_constant_or_epsilon": 3732.318310184699,
+      "operator_norm_over_sqrt_sieve_shape": 0.2445557449452932,
+      "target_X_two_thirds_over_log_X": 218.97720176579148,
+      "l2_extremal_form": 767.8058341028152,
+      "l2_extremal_over_target": 3.506327726865498,
+      "l2_extremal_max_abs_coefficients": [
+        1.4020405196805628,
+        2.0819900313862854
+      ],
+      "phase_projected_unimodular_form": 621.395159032796,
+      "random_unimodular_forms": [
+        44.467421758780716,
+        47.1432510171665,
+        4.810836951820981,
+        55.36142435500956,
+        54.286869105634864,
+        65.02841759625375,
+        28.482165674482886,
+        44.1486563806021
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 40.09460552476103,
+      "mobius_coefficient_form": 28.136944107896465,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 14.673246868673191
+        },
+        {
+          "seed": 1,
+          "operator_norm": 15.075115897354861
+        },
+        {
+          "seed": 2,
+          "operator_norm": 15.942647484234882
+        }
+      ],
+      "wall_seconds": 0.06967659998917952
+    },
+    {
+      "M_lower": 32,
+      "N_lower": 1024,
+      "X_product_upper": 131072,
+      "D": [
+        7,
+        294
+      ],
+      "frequency_c": [
+        1,
+        0
+      ],
+      "coprime_pairs": 1955,
+      "matrix_exponent_sha256": "c3bfecc844c1335f20ddadbbd12bf7061cd21756e4f1802044afc4c9efcde99c",
+      "operator_norm": 18.808214074057986,
+      "symbol_operator_norm": 18.808214074057965,
+      "gauss_phase_norm_max_error": 4.674038933671909e-14,
+      "frobenius_rank_lower_bound": 16.711843533426055,
+      "sieve_shape_without_constant_or_epsilon": 4692.318310184699,
+      "operator_norm_over_sqrt_sieve_shape": 0.27457046963127635,
+      "target_X_two_thirds_over_log_X": 218.97720176579148,
+      "l2_extremal_form": 853.2381088988054,
+      "l2_extremal_over_target": 3.8964700526742138,
+      "l2_extremal_max_abs_coefficients": [
+        1.354241986661508,
+        1.8990174709808505
+      ],
+      "phase_projected_unimodular_form": 706.0005354452637,
+      "random_unimodular_forms": [
+        63.06767526878251,
+        41.12017412928098,
+        9.389525775119811,
+        27.53009192018276,
+        64.77707337728394,
+        34.20310306195609,
+        41.972802153528946,
+        1.8838615760363002
+      ],
+      "coefficient_seed": 23,
+      "constant_coefficient_form": 51.98080593286533,
+      "mobius_coefficient_form": 7.002758167978683,
+      "matched_controls": [
+        {
+          "seed": 0,
+          "operator_norm": 18.52404271246404
+        },
+        {
+          "seed": 1,
+          "operator_norm": 18.482999104673766
+        },
+        {
+          "seed": 2,
+          "operator_norm": 18.430146372301376
+        }
+      ],
+      "wall_seconds": 0.05764880002243444
+    }
+  ]
+}

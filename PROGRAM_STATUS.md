@@ -1,27 +1,20 @@
 # PRIMES Programme Status
 
-Status date: 2026-10-25
+Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA (opened RS-S001, 2026-10-24, by owner decision). It is in Phase 1, entering Phase 2 for the sextic family. RS-S004–RS-S012 are complete:
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S013 is complete (2026-10-26), executed locally on Windows.** Phase 2 mechanism/proof-route audit for the sextic family; earlier Phase 1 evidence remains preserved.
 
-- the conjugation-matched null is certified;
-- all five registered fresh-scale predictions PASS;
-- RS-6C (bulk gap ratio matches the corrected null) is STRESSED at X = 80000;
-- RS-7 (sextic outliers persist above the corrected null) is STRESSED at X = 320000;
-- RS-S005: the sextic excess is a growing cluster (34 values at X = 320000), enriched in
-  twisted sextic Gauss-sum spans (RS-7a, STRESSED; partial identification);
-- RS-S006: twist strengths obey a primary-class dichotomy (RS-7b). It is registered PASS at
-  X = 320000 and 640000; these are the first sextic data at X = 640000;
-- RS-S007: RS-7b reformulated exactly (enhanced iff the unit-class factor is unramified at 3);
-  its mechanism is UNEXPLAINED;
-- RS-1, RS-3 and RS-4 remain STRESSED, and RS-2 remains PILOT;
-- the RS-S003 refutations of the RS-5 finite form and the RS-6 local extension stand;
-- X = 640000 spectra are still untested (sextic Rayleigh data exist).
+- **CAND-001's frozen three-statement package is REFUTED.** Its unreduced strength law contradicts exact sixth-power invariance: u=64 gives r_64=r_1, but the predicted excess ratio is 1/4. The matrix dichotomy and prime-level bias are not refuted.
+- The original RS-S012 finite sextic criterion still **PASSES** when independently rescored on all 80 registered twists. The historical 78-row summary omitted +/-8 by a cubic-only rule wrongly applied in sextic mode; the current script is corrected and old evidence retained.
+- The Type II kernel is exactly a locally signed cubic-symbol kernel. The generic large-sieve envelope is X^(5/6+epsilon), above the sextic X^(2/3)/log X target. An unrestricted all-coefficient bound at the target is impossible even with square-root operator norms; arithmetic coefficients require a separate argument.
+- Eight local squarefree-kernel measurements and matched controls are EXPLORATORY. No asymptotic theorem or further conjecture promotion follows.
+- The exact dispersion identity survives, with diagonal (D-1)D_u. The old positive-main-term ansatz cannot establish nonprimary suppression.
+- The hard arithmetic-coefficient route is unresolved, not globally exhausted. No fallback or theorem export is started.
+- Next bounded unit: **RS-S014, invariant-formulation audit of the strength law**. No owner decision blocker. Continue from the session branch under `NEXT_SESSION_PROMPT.md`; no merge was requested.
 
-RS-S009 evaluated the Astra referee reply. Its exact claims are verified, its cubic calibration was FAIL as stated, and the squarefree-corrected cubic twist law (RS-8) PASSES at X = 160000. RS-S010: Astra's Q5 FAILED as stated; RS-9 (unit-class selection of the Gauss-sum main term) PASSES at X = 1.28e6. RS-S011: the 2-adic character selection rule FAILED twice (not established); **CAND-001 frozen** (sextic twist dichotomy, matrix form plus prime-level unit-class bias); proof stage started, hard version first (`reciprocity_spectra/PROOF_ROUTE.md`). RS-S012: dispersion reduction exact; cubic Patterson calibration and sextic strength law (theta_u^2 ~ N(u)^(-1/6)) PASS at fresh scales; CAND-001 extended. The next unit is RS-S013: Type II (bilinear sextic sums), the hard-route crux. Sessions follow `reciprocity_spectra/PROTOCOL.md`. The DISCOVERY-1 blind chain is PAUSED at D1-72 / S074 with 16 REPLICATED / 0 OBSERVED / 9 REFUTED and zero candidates. SQ-037 is deferred, not started.**
-
+Prior RS-1/RS-3/RS-4/RS-6C/RS-7/RS-7a/RS-7b/RS-8/RS-9 evidence and statuses are unchanged except for the explicitly refuted CAND package. Earlier failures remain failures. See `reciprocity_spectra/LEDGER.md` and `PROOF_ROUTE.md` section 7. DISCOVERY-1 remains PAUSED at D1-72 / S074: 16 REPLICATED / 0 OBSERVED / 9 REFUTED, zero D1 candidates; SQ-037 is deferred, not started.
 
 Previous stage line (D1-72, preserved): DISCOVERY-1 — D1-72 / S074 / SQ-036 E025 H25 ONE-SHOT CLOSED; OBS-025 REFUTED (25/48 POSITIVE SIGNED CLASSES < FROZEN 36/48); D25/H25 CONSUMED; 16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND; NEXT D1-73 / S075 / SQ-037 SOURCE-FREE DESIGN ONLY
 

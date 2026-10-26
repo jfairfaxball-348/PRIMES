@@ -132,7 +132,10 @@ Allocated by Reciprocity Spectra session RS-S011 (`reciprocity_spectra/`). This 
 **Title:** Primary-class dichotomy of sextic Gauss-sum twists (matrix form), with its prime-level
 Gauss-sum bias shadow.
 
-**Lifecycle status:** CANDIDATE.
+**Lifecycle status:** REFUTED (RS-S013, 2026-10-26), for the frozen
+three-statement package. Statements 1 and 2 below are not refuted by this
+audit. The original statement 3 is preserved verbatim, with its refutation
+recorded immediately below; no silent repair or replacement ID is made.
 
 **Novelty status:** NOVELTY_REQUIRES_EXPERT_REVIEW.
 
@@ -156,6 +159,19 @@ Gauss-sum bias shadow.
   j ∈ {0, 3} (exact).
 
 **Exact statement (conjecture).**
+
+**RS-S013 disposition of the frozen statement:** u=64=2^6 gives w_64=w_1
+and r_64=r_1 exactly because no indexed prime divides 2. Statement 3 requires
+relative excess N(64)^(-1/6)=1/4, whereas statement 1 makes that ratio well
+defined and identically 1 for all sufficiently large X. Thus the conjunction
+is refuted. This is a smallest-norm nonunit integral sixth-power obstruction
+coprime to 3, not a claim of the smallest counterexample among all twists.
+See `reciprocity_spectra/RS_S013_CANDIDATE_AUDIT.md` and its results JSON.
+
+The RS-S012 finite test at norm <=100 remains PASS after correcting its
+summary to include all 80 registered twists (mean 0.9426270886, population
+sd 0.02148995984); u=64 has norm4096, outside that finite family. A corrected
+law on sixth-power classes is untested and is not substituted below.
 
 1. **Matrix form.** For every fixed u coprime to 3, as X → ∞:
    - if u is ±primary, lim inf r_u > 1;
@@ -189,8 +205,10 @@ This was model-first, with no blind protocol.
 **Adversarial tests.** The null is certified: it matches reciprocity, conjugation and the forced
 entries exactly (RS-S004). Random-vector and random-sixth-root controls stay at r ≤ 1.024.
 
-**Smallest counterexample searched/found:** none. The search covered every u with N(u) ≤ 300 at
-X ≤ 1.6·10⁵, and N(u) ≤ 100 up to X = 6.4·10⁵.
+**Counterexample record:** RS-S013 found the exact u=64, N(u)=4096 obstruction
+to the frozen conjunction, as above. The earlier finite matrix-dichotomy
+search found none: it covered every u with N(u) ≤ 300 at X ≤ 1.6·10⁵,
+and N(u) ≤ 100 up to X = 6.4·10⁵. Those different scopes must not be conflated.
 
 **Triviality checks:**
 
@@ -213,16 +231,22 @@ g̃₆ = conj((2/ρ)₃)(ρ/|ρ|) g̃₂ conj(g̃₃). Unit twists rotate the cu
 character ramified at 3 unless j ∈ {0, 3}. The main term is a Patterson-type bias of sextic Gauss
 sums (pole of the Kubota series at s = 2/3). The cubic analogue is RS-8, which passes.
 
-**Equivalent formulations:** Statement 1 is equivalent to a twisted sextic dispersion estimate,
-the sextic analogue of Dunn–Radziwiłł's cubic dispersion estimate (`reciprocity_spectra/PROOF_ROUTE.md` §2).
+**Equivalent formulations (corrected RS-S013):** the exact twisted prime-sum
+identity in `reciprocity_spectra/PROOF_ROUTE.md` section 2 survives. Its proposed
+positive-main-term R2 is not equivalent to the full dichotomy: nonprimary
+suppression needs a negative off-diagonal contribution. The sextic analytic
+estimate remains unresolved.
 
 **Prior-art audit:** `reciprocity_spectra/PRIOR_ART.md` (RS-S008 refresh).
 
-**Current blocker:** a proof. The hard route comes first (PROTOCOL §9): Type I residues and Type
-II bilinear sextic sums, possibly under GRH.
+**Current blocker:** the frozen conjunction is refuted, so it cannot be a proof
+target. A corrected invariant statement needs explicit formulation and evidence.
+Surviving components still have unresolved Type I and arithmetic-coefficient
+Type II dependencies.
 
-**Next bounded action:** `reciprocity_spectra/PROOF_ROUTE.md` §6. The reduction was verified exactly
-in RS-S012. Next is Type II (T2), the crux of the hard route.
+**Next bounded action:** RS-S014 invariant-formulation audit, as specified in
+NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no replacement is allocated.
+The Type II closeout is PROOF_ROUTE.md section 7.
 
 ## Template
 

@@ -1,5 +1,16 @@
 # Roadmap
 
+**Current checkpoint: RS-S013 (2026-10-26), local execution.** The Type II
+product is exactly a locally signed cubic kernel. Generic large-sieve and
+unrestricted operator-norm approaches cannot reach the proposed sextic target;
+the route using actual arithmetic coefficients remains unresolved. CAND-001's
+frozen three-statement package is REFUTED by sixth-power invariance of u=64.
+Its matrix and prime-bias components are not refuted, and the corrected finite
+80-row test still passes. Historical checkpoints below are preserved.
+Next: RS-S014, a bounded invariant-formulation audit of the strength law.
+No automatic fallback, theorem graduation, or new candidate is authorized by
+this checkpoint; see `PROOF_ROUTE.md` section 7 and `NEXT_SESSION_PROMPT.md`.
+
 Each phase ends with:
 
 - updated `results/`;

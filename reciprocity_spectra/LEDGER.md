@@ -819,3 +819,65 @@ Dunn–Radziwiłł, arXiv 2109.07463v3, (5.7)–(5.8) and (5.17), fetched in thi
 
 **Next dependency:** T2, the hard-route crux. Measure the bilinear sextic sums, extract the exact
 large-sieve exponents, and state the gap. This is RS-S013.
+
+### RS-S013 (2026-10-26): Type II audit, exact obstruction, local closeout
+
+**Stages:** mechanism, certification, EXPLORATORY measurement, falsification.
+**Branch:** codex/rs-s013-type-ii. **Execution:** local Windows, as requested.
+Local main and fetched origin/main were both 68d19bd, already containing
+RS-S012; the handoff's unmerged-branch note was stale. No cloud compute or
+merge was started; checkpoint commits use [skip ci].
+
+**Mathematical result.** The reciprocal sextic-symbol product is a cubic
+kernel with an explicit mod-4 sign. Unimodular Gauss factors do not change
+its singular values. The generic large-sieve envelope is X^(5/6+epsilon),
+above the sextic target by X^(1/6), apart from logs. An arbitrary bounded
+coefficient estimate at X^(2/3)/log X is impossible: random column phases
+and row alignment give balanced prime-band values of order
+X^(3/4)/(log X)^(3/2). Actual arithmetic coefficients remain a separate
+unresolved problem. Source statements and hypotheses are in
+RS_S013_LITERATURE.md; full interpretation is PROOF_ROUTE.md section 7.
+
+**Measurements.** The implementation/design checkpoint b6556f7 was pushed
+before execution. Eight squarefree-ideal supports completed locally,
+including inert factors and both split conjugates; c=1, coprime pairs only.
+Matched controls use seeds 0,1,2; random coefficients use seed 23.
+At dimensions 139 x 139 the norm is 22.4568 and the L2 extremal form is
+4.1926 times the numerical target. Results are EXPLORATORY, with no
+asymptotic or conjecture promotion: results/type_ii_2026-10-26.json.
+
+**Exact refutation.** The frozen CAND-001 conjunction is REFUTED: u=64=2^6
+gives w_64=w_1 and r_64=r_1 exactly, but statement 3 predicts excess ratio
+1/4. Statement 1 makes the denominator eventually positive. Statements
+1 and 2 themselves are not refuted. Original statements and evidence remain.
+
+**Finite correction.** The RS-S012 scorer wrongly excluded +/-8 in sextic
+mode using a cubic-only rule. Rescoring all 80 originally registered stored
+rows gives mean 0.9426270886, population sd 0.02148995984; all original
+conditions still PASS. The current script is fixed; frozen JSON is unchanged.
+The reproducible audit is scripts/audit_strength.py --check; its JSON preserves
+original/corrected summaries and historical source provenance.
+
+**Dispersion correction.** The exact diagonal is (D-1)D_u. The old positive
+squared-main-term ansatz cannot imply nonprimary suppression; that claimed
+full equivalence is withdrawn. The exact sum identity survives.
+
+**Validation.** Targeted Ruff and the audit pass. With PYTHONUTF8=1, the
+Windows-compatible suite has 319 passed, 3 skipped. Full pytest was attempted
+but three frozen D1 modules fail collection on Unix-only fcntl:
+test_e010.py, test_e010_runtime.py, test_e011.py. They were explicitly excluded
+from the compatible-suite run. Three native-C tests skip without GCC.
+D1 source files were not edited. Independent review rebuilt all eight exponent
+hashes and all control norms; Gram eigenvalues agree with SVD norms within
+3.2e-14. See results/rs_s013_validation_2026-10-26.json.
+
+**Commits:** implementation/design/source audit b6556f7; result/authority
+closeout commit follows this entry on the same branch. Checkpoints are pushed
+serially. Main remains at the entry authority until an explicitly requested merge.
+
+**Current state / next dependency:** the generic operator route is exhausted,
+not every hard-route method. No all-n/function-field fallback or theorem
+graduation is started. RS-S014 is an invariant-formulation audit using exact
+sixth-power classes and existing evidence before any fresh registration.
+No owner blocker. Exactly one continuation is in NEXT_SESSION_PROMPT.md;
+RS-S014 is not executed here.
