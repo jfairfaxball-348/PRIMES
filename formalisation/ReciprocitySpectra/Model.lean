@@ -70,7 +70,7 @@ def admissibleSmallClass (bound : ℕ) (κ : TwistClass) : Prop :=
       ((κ a).val = 1 ∨ (κ a).val = 2 ∨ (κ a).val = 3 ∨ (κ a).val = 4)
 
 /-- The exponent-five family consists of a single admissible prime to the fifth power. -/
-def fifthClass (π : Eis) : TwistClass := Finsupp.single π (5 : ZMod 6)
+noncomputable def fifthClass (π : Eis) : TwistClass := Finsupp.single π (5 : ZMod 6)
 
 /-- The sixth-power-free class norm (with exponents 1,...,5). -/
 def classNorm6 (κ : TwistClass) : ℕ :=
@@ -118,7 +118,7 @@ noncomputable def scaledExcess (X : ℕ) (κ : TwistClass) : ℝ :=
   relativeExcess X κ * ((classNorm6 κ : ℝ) ^ ((1 : ℝ) / 6))
 
 /-- t = N₆(κ) / X (X is understood positive in limit statements). -/
-def aspect (X : ℕ) (κ : TwistClass) : ℝ :=
+noncomputable def aspect (X : ℕ) (κ : TwistClass) : ℝ :=
   (classNorm6 κ : ℝ) / (X : ℝ)
 
 end ReciprocitySpectra
