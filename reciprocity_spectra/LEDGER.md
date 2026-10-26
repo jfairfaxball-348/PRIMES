@@ -1093,3 +1093,37 @@ before the runs. The record is `results/rs_s016_x_dependence_2026-10-26.json`, a
 - No matrices are committed; `data/*.bin` were deleted.
 
 **Next dependency.** RS-S017: register Q1–Q4 verbatim, then run them.
+
+### RS-S017 (2026-10-26): registered fresh-class tests of PROV-RS16. Prediction block
+
+**Stage:** falsification. **Branch:** `rs-s017-fresh-classes`. **Execution:** local Windows, MSVC
+engine. X = 1.28·10⁶ is skipped because there is 6.2 GB of free RAM, against a 9.7 GB matrix.
+
+**Fresh classes.** These use only primary primes with 79 ≤ N ≤ 400; none was used in RS-S015 or
+RS-S016. That is 58 primes, including inert 11 and 17. There are 440 classes:
+
+- singles π^k, k = 1–5, over all 58 primes;
+- pairs (e₁, e₂) ∈ {1..5}² over the 6 pairs of the 4 smallest.
+
+**Scales:** X = 6.4·10⁵ and 10⁶. **Controls:** 10 + 10 per X, seed 17.
+
+**Frozen inputs.** F is the RS-S016 k234 bin table, linearly interpolated in log₁₀ t. Per-class
+predictions are in `results/rs_s017_fresh_classes_2026-10-26.json`. A class is "powered" if
+σ_s = 0.004·N₆^{1/6} ≤ 0.05; 149 of the 328 no-5 classes are powered.
+
+**Predictions (verbatim from `RS_S016_CROSSOVER.md` §5; "fresh no-5" means powered).**
+
+- **Q1:** every fresh no-5 class with t ≤ 10⁻² has s ∈ [0.70, 1.00], at each X.
+- **Q2:** every half-decade bin with at least 4 fresh no-5 classes has |mean s − mean F| ≤ 0.12.
+- **Q3:** every fresh class containing a 5 has r < 1, and the π⁵ singles with t ≥ 3 have mean s
+  ∈ [−1.25, −0.85], at each X.
+- **Q4:** at least 80% of fresh no-5 classes with 10^{−1.5} ≤ t(10⁶) ≤ 10 have s(10⁶) > s(6.4·10⁵).
+
+**Pre-data power.** Q4 covers 66 classes. Its expected fraction under PROV-RS16 is 0.904, giving
+P(pass) ≈ 0.999.
+
+**Decision rule.**
+
+- A failure of Q1, Q2 or Q4 refutes (A″). A failure of Q3 refutes (B″).
+- If all four pass, draft (do not freeze) a replacement candidate.
+- Otherwise, record the smallest failing class and begin the fallback.
