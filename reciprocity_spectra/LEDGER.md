@@ -1174,3 +1174,42 @@ covers (A″), now that (A″) has passed a registered test. This scope extensio
 - No matrices are committed.
 
 **Next dependency.** RS-S018: a collision-audit (prior-art and novelty) of the surviving core.
+
+### RS-S018 (2026-10-26): collision audit of the surviving core
+
+**Stage:** collision-audit. **Branch:** `rs-s018-collision-audit`. No new matrices were built.
+**Records:**
+
+- `RS_S018_COLLISION_AUDIT.md`;
+- the `PRIOR_ART.md` RS-S018 section;
+- `results/rs_s018_collision_checks_2026-10-26.json`, from `scripts/audit_collision.py`.
+
+**Sources read.**
+
+- Bröker–Hoffstein, arXiv 1312.0568: the sextic theta Hecke relations, including τ₆(p⁵) = 0.
+- David–Dunn–Hamieh–Lin, arXiv 2306.11875: the general-n first-moment heuristic.
+- Xu–Sang, arXiv 2610.17675v2 (Oct 2026): the sextic large sieve is sharp via Gauss vectors.
+- Dunn–Radziwiłł, for context.
+
+**Findings.**
+
+- (i), statement 2: its main term is theory-implied (conjecturally). The exact unit-class selection
+  rule needs expert review.
+- (ii): non-enhancement of π⁵ is consistent with τ₆(p⁵) = 0. The negative constant −1.05 has no
+  collision.
+- (iii), the crossover law: no collision.
+- A stored-data check shows the excess is uniform across Bröker–Hoffstein's τ₆(π²)-vanishing
+  condition (0.848 versus 0.843). So the matrix quantity is not a naive τ₆ readout.
+- RS-7/RS-7a are upgraded to POSSIBLE_OVERLAP at the norm level (Xu–Sang).
+
+**Decision.** A candidate is drafted for RS-S019, not frozen and with no ID: the *sextic
+twist-class crossover law*, in `RS_S018_COLLISION_AUDIT.md` §5. Its status is
+NOVELTY_REQUIRES_EXPERT_REVIEW.
+
+**Validation.**
+
+- Targeted Ruff passes.
+- PYTHONUTF8=1 pytest: 321 passed and 3 skipped (fcntl exclusions).
+- Both audit checkers pass.
+
+**Next dependency.** RS-S019: freeze the candidate as CAND-002, with full candidate-record fields.

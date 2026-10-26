@@ -4,7 +4,21 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S017 is complete (2026-10-26).** It ran registered
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S018 is complete (2026-10-26).** It was a collision
+audit of the surviving core.
+
+- Statement 2's main term is conjecturally theory-implied (Patterson–Kubota residues). Its
+  unit-class selection rule needs expert review.
+- π⁵ non-enhancement is consistent with τ₆(p⁵) = 0.
+- The crossover law (A″) and the negative π⁵ constant have no collision.
+- The matrix excess is not a naive theta-coefficient readout: it is uniform across Bröker–Hoffstein's
+  τ₆(π²) = 0 condition.
+- A new external result, Xu–Sang (arXiv 2610.17675, Oct 2026), makes the norm-level sextic outlier
+  known.
+- A candidate, the sextic twist-class crossover law, is drafted (NOVELTY_REQUIRES_EXPERT_REVIEW).
+- Next: **RS-S019, freeze it as CAND-002.** There is no owner-decision blocker.
+
+Previous (RS-S017): RS-S017 is complete (2026-10-26).** It ran registered
 fresh-class tests of PROV-RS16: 440 unseen classes at X = 6.4·10⁵ and 10⁶.
 
 - **(A″), the crossover law s = F(N₆/X), PASSES** Q1, Q2 and Q4. Every bin is within 0.08 of the

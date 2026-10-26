@@ -914,3 +914,18 @@ There were 440 fresh classes, using primes with 79 ≤ N ≤ 400, at X = 6.4·10
 - **(B″) is REFUTED as stated** (Q3). The mean form, s ≈ −1.05 for t ≫ 1, passed twice: RS-S015-P2
   and RS-S017-Q3's mean clause.
 - No candidate is drafted. The next step is the collision-audit.
+
+## RS-S018: collision audit (`RS_S018_COLLISION_AUDIT.md`)
+
+| Statement | Status |
+|---|---|
+| (i) main term | KNOWN_IMPLIED (conjectural) |
+| (i) selection rule | NOVELTY_REQUIRES_EXPERT_REVIEW |
+| (ii) non-enhancement | KNOWN_IMPLIED (heuristic, from τ₆(p⁵) = 0) |
+| (ii) negative constant | SEARCHED_NO_COLLISION_FOUND |
+| (iii) crossover law | SEARCHED_NO_COLLISION_FOUND |
+| RS-7/7a | POSSIBLE_OVERLAP at norm level (Xu–Sang 2026) |
+
+The matrix excess is not the naive τ₆ readout: it is uniform across BH's τ₆(π²) = 0 condition.
+
+The candidate draft, the sextic twist-class crossover law, is to be frozen in RS-S019.

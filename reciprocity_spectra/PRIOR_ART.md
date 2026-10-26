@@ -108,3 +108,35 @@ sums primes; residue matrix eigenvalues primes; large sieve sextic characters; c
 twisted Hecke character primes; de Faveri Dunn Hoffstein non-orthogonality; Gauss sums primary
 normalization ramified at 3; Chinta Friedberg Hoffstein sextic theta conjecture; Bröker Hoffstein
 sextic theta series.
+
+## RS-S018 collision audit (2026-10-26)
+
+The full record is `RS_S018_COLLISION_AUDIT.md`, and the check is in
+`results/rs_s018_collision_checks_2026-10-26.json`.
+
+**New relevant sources.**
+
+- Xu–Sang, *A matching lower bound for the sextic large sieve and structured prime moments*,
+  arXiv 2610.17675v2 (14 Oct 2026). It proves Ξ₆(Q, Q) ≫ Q^{7/6−ε} via Gauss-sum vectors (Thm 1.1),
+  and gives prime-sum second moments for sextic characters (Thm 1.2).
+  - It upgrades RS-7/RS-7a to POSSIBLE_OVERLAP / partly KNOWN at the norm level.
+  - It cites OpenAI preprints from September 2026 (the quasi-RH paper, and "An unconditional first
+    moment for cubic Gauss sums").
+- Bröker–Hoffstein §1 (from Kazhdan–Patterson): τ₆(p⁵) = 0, τ₆(p⁴) = G₁(1, p),
+  τ₆(p) = G₂(1, p)·τ₆(p³), and τ₆(m·p⁶) = τ₆(m)·N(p)^{1/2}. Lemma 5.3 ties τ₆(π²) ≠ 0 to
+  (π/π̄)₆ = 1.
+- David–Dunn–Hamieh–Lin: an X^{3/4} quartic conjecture. Sums of n-th order Gauss sums over primes
+  are hard to bound for n ≥ 5.
+
+**Statuses.**
+
+| Statement | Status |
+|---|---|
+| (i) unit-class main term exists | KNOWN_IMPLIED (conjectural; Patterson–Kubota) |
+| (i) selection rule | NOVELTY_REQUIRES_EXPERT_REVIEW |
+| (ii) π⁵ not enhanced | KNOWN_IMPLIED (heuristic, from τ₆(p⁵) = 0) |
+| (ii) its negative constant | SEARCHED_NO_COLLISION_FOUND |
+| (iii) the crossover law F(N₆/X) | SEARCHED_NO_COLLISION_FOUND; the transition scale is POSSIBLE_OVERLAP |
+
+**Stored-data check.** The twist excess does not track BH's τ₆(π²) vanishing condition: s = 0.848
+versus 0.843. So the matrix quantity is not a naive τ₆ readout.

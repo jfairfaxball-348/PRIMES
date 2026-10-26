@@ -220,6 +220,14 @@ unseen classes (Q1, Q2 and Q4). (B″) fails as stated, through an underpowered 
 clause; its mean form passes. The decision rule therefore sends the work to the fallback: a
 collision-audit of statement 2, the mean form of law (B) and (A″).
 
+**RS-S018 collision audit (2026-10-26), no new ID.** See `reciprocity_spectra/RS_S018_COLLISION_AUDIT.md`.
+
+- Statement 2's main term is conjecturally theory-implied (Patterson–Kubota). Its unit-class
+  selection rule needs expert review.
+- (A″) and the negative π⁵ constant have no collision.
+- A replacement candidate (sextic twist-class crossover law) is drafted, to be frozen as CAND-002
+  in RS-S019.
+
 **Discovery provenance:** RS-S005–RS-S006 (sextic cluster, then the twist Rayleigh quotients).
 This was model-first, with no blind protocol.
 
@@ -272,8 +280,8 @@ target. A corrected invariant statement needs explicit formulation and evidence.
 Surviving components still have unresolved Type I and arithmetic-coefficient
 Type II dependencies.
 
-**Next bounded action:** RS-S018, a collision-audit (prior-art and novelty) of the surviving core,
-as specified in NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no
+**Next bounded action:** RS-S019, freezing the drafted crossover-law candidate as CAND-002, as
+specified in NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no
 replacement is allocated.
 The Type II closeout is PROOF_ROUTE.md section 7.
 
