@@ -1,0 +1,58 @@
+{
+  "session": "RS-S019",
+  "runs": [],
+  "validation": {
+    "X": 160000,
+    "n": 101,
+    "max_relative_r_difference": 4.643390902404919e-15,
+    "pass": true,
+    "platform": "win32"
+  },
+  "explore": [
+    {
+      "X": 50000,
+      "D": 5112,
+      "n_unrestricted_moduli": 14120,
+      "classification": "EXPLORATORY",
+      "prime": {
+        "j=0": 1.2863940533128781,
+        "j=1": 1.0891011887585618,
+        "j=2": 1.0891011887585622,
+        "j=3": 1.2863940533128784,
+        "j=4": 1.087514293345466,
+        "j=5": 1.0875142933454658
+      },
+      "unrestricted": {
+        "j=0": 1.24541719051519,
+        "j=1": 1.2628651757929903,
+        "j=2": 1.2628651757929905,
+        "j=3": 1.24541719051519,
+        "j=4": 1.2637297639121101,
+        "j=5": 1.2637297639121101
+      }
+    }
+  ],
+  "date": "2026-10-26",
+  "X": 200000,
+  "unit_j": 0,
+  "control_seed": 19,
+  "unit_j_basis": "EXPLORATORY scan at X = 50000 (explore): trace/prime r is maximal for j in {0, 3}",
+  "classes": "RS-S015 singles: pi^k, k = 1..5, over the 20 smallest primary primes (k1.classes singles)",
+  "settings": {
+    "prime": "columns = split primes sigma, N <= X, trace-normalized G",
+    "unrestricted": "columns = all squarefree primary c coprime to 6 (split and inert factors), N(c) <= X, trace-normalized G by twisted multiplicativity"
+  },
+  "statistic": "s = eps * N6^(1/6), eps = (r^2 - 1)/(r_1^2 - 1), r_1 = kappa = 1 vector in the same setting",
+  "predictions": [
+    {
+      "id": "RS-S019-P",
+      "text": "B = mean s over pi^5 singles with t >= 3 (prime setting), U = same (unrestricted). If B > -0.6: BASELINE_ABSENT. Else SIEVE_SUPPORTED if U - B >= 0.5 or U > 0; INTRINSIC if |U - B| <= 0.25; otherwise UNDECIDED. The reviewer-suggested sieve hypothesis predicts SIEVE_SUPPORTED."
+    },
+    {
+      "id": "RS-S019-Q",
+      "text": "In each setting, plateau Pl = mean s over k in {1..4} singles with t <= 1e-2, crossover C = mean s over k in {1..4} singles with 10^-0.5 <= t <= 10^0.5. PROFILE_PRESENT iff Pl in [0.5, 1.3] and C <= Pl - 0.3. Predicted: PRESENT in both settings (crossover is a shift-aspect property of the Gauss-sum first moment); ABSENT in the unrestricted setting would make it prime-specific."
+    }
+  ],
+  "power_note": "Class counts at X = 2e5: P uses 15 pi^5 singles (N = 19..73); Q plateau 38 classes, crossover 11 classes (k = 3, N = 43..73; k = 4, N = 19, 25). Random-phase sd of r about 0.003 at D ~ 1.8e4, so sigma_eps ~ 0.007 and sigma_s(pi^5) ~ 0.08-0.25 per class; SE of B, U about 0.05.",
+  "prediction_commit": null
+}

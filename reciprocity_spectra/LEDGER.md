@@ -1297,3 +1297,59 @@ the gate blocks release only.
   repository, possibly also in a conjecture collection after checking its criteria.
 - Known limits: theta-coefficient conditional hypotheses can only be stated abstractly;
   reciprocity-dependent lemmas need reciprocity laws that Mathlib likely lacks.
+
+### RS-S019 (2026-10-26): prime versus unrestricted moduli. Prediction block
+
+**Stage:** falsification. It runs the anonymous reviewer's decisive test. **Branch:**
+`rs-s019-moduli`. **Execution:** local Windows.
+
+**Design.**
+
+- Rows are the primary degree-one primes ρ, N ≤ X.
+- **prime** columns are the split primes σ.
+- **unrestricted** columns are every squarefree primary c coprime to 6, with split and inert
+  factors and N(c) ≤ X.
+- Entries are (ρ/c)₆ = Π_{p|c} (ρ/p)₆.
+- Column weights are conj(G(c))·(κ/c)₆·(ζ₆ʲ/c)₆ with j = 0. G is **trace-normalized**:
+  g(1, c) = Σ_{x mod c} (x/c)₆·e(Tr(x/c)), assembled by twisted multiplicativity.
+
+Trace normalization is used on both sides because twisted multiplicativity, and hence the Kubota
+object, needs a trace character. Our earlier rational e(t/p) prime weights have no natural
+composite extension.
+
+**Exact and validation work (before data).**
+
+- New `arith.trace_gauss_sum` (brute force over ℤ[ω]/(c)) and `arith.twisted_gauss_product`.
+- New test `test_trace_gauss_sums_twisted_multiplicativity`. It checks |g|² = N(c), the twisted
+  multiplicativity including inert 5 and 11, conjugate pairs and three factors, and
+  g_trace(σ) = conj(((2a−b)/σ)₆)·g_rational(σ).
+- The new rectangular code path (`scripts/phase1n.py`), in rational/prime mode, reproduces all 101
+  stored RS-S016 r values at X = 1.6·10⁵ to 4.6·10⁻¹⁵ relative.
+
+**Exploratory, X = 5·10⁴ (not scored).**
+
+| Setting | j ∈ {0, 3} | j ∈ {1, 2, 4, 5} |
+|---|---:|---:|
+| trace / prime | r₁ = 1.286 | 1.088–1.089 |
+| trace / unrestricted | 1.245 | 1.263–1.264 |
+
+The unit-class selection largely disappears with unrestricted moduli. j = 0 was fixed from this
+scan.
+
+**Registered predictions** (`results/rs_s019_moduli_2026-10-26.json`). The run is at X = 2·10⁵ on
+the RS-S015 singles, with seed 19 and 10 + 10 controls per setting.
+
+- **P:** let B be the mean s over π⁵ singles with t ≥ 3 (prime setting), and U the same in the
+  unrestricted setting.
+  - BASELINE_ABSENT if B > −0.6;
+  - otherwise SIEVE_SUPPORTED if U − B ≥ 0.5 or U > 0;
+  - INTRINSIC if |U − B| ≤ 0.25;
+  - UNDECIDED in between.
+
+  The sieve hypothesis predicts SIEVE_SUPPORTED.
+- **Q:** in each setting, let Pl be the plateau mean (k ≤ 4, t ≤ 10⁻²) and C the crossover mean
+  (k ≤ 4, 10^{−0.5} ≤ t ≤ 10^{0.5}). PROFILE_PRESENT iff Pl ∈ [0.5, 1.3] and C ≤ Pl − 0.3.
+  Predicted PRESENT in both settings.
+
+**Power.** P uses 15 classes; Q uses 38 plateau and 11 crossover classes. The SE of B and of U is
+about 0.05.

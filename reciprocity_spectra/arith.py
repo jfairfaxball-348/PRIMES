@@ -476,3 +476,65 @@ def sextic_class_exponents(kappa, index: list[DegreeOnePrime]) -> list[int | Non
             total += e * k
         out.append(None if total is None else total % 6)
     return out
+
+
+def prime_element(prime) -> tuple[int, int]:
+    """The primary generator of a split DegreeOnePrime, or (q, 0) for an inert rational prime q."""
+    return (prime, 0) if isinstance(prime, int) else (prime.a, prime.b)
+
+
+def prime_norm(prime) -> int:
+    return prime * prime if isinstance(prime, int) else prime.p
+
+
+def residues_mod(c: tuple[int, int]) -> list[tuple[int, int]]:
+    """Representatives x0 + x1 w of Z[w]/(c), from the Hermite basis {(n1, 0), (m, n2)} of (c)."""
+    a, b = c
+    norm = a * a - a * b + b * b
+    # (c) is spanned by c = (a, b) and c*w = (-b, a - b); n2 = gcd of the w-coordinates.
+    g, s, t = _ext_gcd(b, a - b)
+    n2 = abs(g)
+    n1 = norm // n2
+    return [(i, j) for j in range(n2) for i in range(n1)]
+
+
+def _ext_gcd(x: int, y: int) -> tuple[int, int, int]:
+    if y == 0:
+        return x, 1, 0
+    g, s, t = _ext_gcd(y, x % y)
+    return g, t, s - (x // y) * t
+
+
+def trace_gauss_sum(factors) -> complex:
+    """g(1, c) = sum_{x mod c} (x/c)_6 e(Tr(x/c)) for c = product of distinct primary primes, by brute force.
+
+    (x/c)_6 = prod over factors (split DegreeOnePrime or inert q) of sextic_symbol_at; Tr(x/c) = Tr(x conj c)/N(c).
+    """
+    c = (1, 0)
+    for p in factors:
+        c = _mul_w(c, prime_element(p))
+    norm = c[0] * c[0] - c[0] * c[1] + c[1] * c[1]
+    cbar = (c[0] - c[1], -c[1])
+    total = 0j
+    for x in residues_mod(c):
+        k = 0
+        for p in factors:
+            e = sextic_symbol_at(x[0], x[1], p)
+            if e is None:
+                break
+            k += e
+        else:
+            total += cmath.exp(2j * math.pi * (k / 6 + eisenstein_trace(_mul_w(x, cbar)) / norm))
+    return total
+
+
+def twisted_gauss_product(factors, prime_sums) -> complex:
+    """g(1, c) from prime values by twisted multiplicativity: prod g(1, p_i) * prod_{i<j} (p_i/p_j)_6 (p_j/p_i)_6."""
+    total = complex(1)
+    for g in prime_sums:
+        total *= g
+    for i, p in enumerate(factors):
+        for q in factors[i + 1:]:
+            k = sextic_symbol_at(*prime_element(p), q) + sextic_symbol_at(*prime_element(q), p)
+            total *= cmath.exp(2j * math.pi * k / 6)
+    return total

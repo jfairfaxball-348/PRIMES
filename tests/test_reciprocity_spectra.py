@@ -794,3 +794,35 @@ def test_sextic_class_exponents_match_direct_symbols():
         assert sextic_class_exponents(kappa, index) == direct
         assert any(k is None for k in direct) == any(
             sextic_residue_exponent(*pi, rho) is None for pi, _ in kappa for rho in index)
+
+
+def test_trace_gauss_sums_twisted_multiplicativity():
+    """RS-S019: composite trace-normalized sextic Gauss sums, exactly as used for unrestricted moduli.
+
+    Checks, by brute force over Z[w]/(c): |g(1, c)|^2 = N(c) for squarefree c; twisted multiplicativity
+    g(c1 c2) = (c1/c2)(c2/c1) g(c1) g(c2) (split, inert 5 and 11, conjugate pairs, three factors); and the
+    prime relation g_trace(sigma) = conj(((2a - b)/sigma)_6) * g_rational(sigma), g_rational = sum_t (t/sigma)_6 e(t/p).
+    """
+    import cmath
+    import math
+
+    from reciprocity_spectra.arith import (
+        conjugate_prime,
+        trace_gauss_sum,
+        twisted_gauss_product,
+    )
+
+    primes = primary_eisenstein_primes(80)
+    for s in primes[:6]:
+        rational = sum(cmath.exp(2j * math.pi * (sextic_residue_exponent(t, 0, s) / 6 + t / s.p))
+                       for t in range(1, s.p))
+        k = sextic_residue_exponent(2 * s.a - s.b, 0, s)
+        assert abs(trace_gauss_sum([s]) - cmath.exp(-2j * math.pi * k / 6) * rational) < 1e-8
+    cases = [[primes[0], primes[2]], [primes[1], 5], [primes[0], conjugate_prime(primes[0])],
+             [5, 11], [primes[0], primes[3], 5], [primes[2], primes[4]]]
+    for factors in cases:
+        brute = trace_gauss_sum(factors)
+        norm = math.prod(p * p if isinstance(p, int) else p.p for p in factors)
+        assert abs(abs(brute) ** 2 - norm) < 1e-6 * norm
+        formula = twisted_gauss_product(factors, [trace_gauss_sum([p]) for p in factors])
+        assert abs(brute - formula) < 1e-6 * math.sqrt(norm)
