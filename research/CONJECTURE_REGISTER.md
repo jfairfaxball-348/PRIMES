@@ -299,7 +299,7 @@ Type II dependencies.
 - the π⁵ law PASSES;
 - the plateau keeps RISING toward 1 (0.961 → 0.975).
 
-**Next bounded action:** RS-S022, reformulate and freeze CAND-002 (NEXT_SESSION_PROMPT.md).
+**Superseded:** CAND-002 was frozen in RS-S022 (see below). **Done:** RS-S022, reformulate and freeze CAND-002 (NEXT_SESSION_PROMPT.md).
 **Done:** RS-S020, the rho-partition test, the exact unit-normalization factor, and
 registration of the ±1 limit hypotheses (NEXT_SESSION_PROMPT.md). **Previous (done):** RS-S019, the reviewer-suggested decisive tests (prime versus unrestricted
 moduli; log-correction fit), as specified in NEXT_SESSION_PROMPT.md. Freezing CAND-002 is deferred
@@ -307,6 +307,201 @@ until the statement is reformulated as a rho-averaged shift-aspect crossover wit
 claims (`reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md`). CAND-001 remains REFUTED; no
 replacement is allocated.
 The Type II closeout is PROOF_ROUTE.md section 7.
+
+## CAND-002: Shift-aspect crossover law for twisted sextic Gauss-sum vectors (2026-10-26)
+
+Allocated by Reciprocity Spectra session RS-S022. It replaces no earlier record: CAND-001 stays
+REFUTED and is preserved. CAND-002 grew out of the audits and tests RS-S014 to RS-S021.
+
+**Title.** A universal shift-aspect crossover for twisted sextic Gauss-sum vectors of the sextic
+residue matrix, and the exponent-five deficit.
+
+**Lifecycle status:** CANDIDATE (frozen 2026-10-26, RS-S022).
+
+**Novelty status:** NOVELTY_REQUIRES_EXPERT_REVIEW.
+
+- The RS-S018 collision audit found no collision.
+- An anonymous external reviewer (2026-10-26; never to be named or cited) knows of no result giving
+  this profile.
+- The norm-level sextic outlier is known: Xu–Sang, arXiv 2610.17675.
+
+**Source observations.**
+
+- RS-7, RS-7a and RS-7b: the sextic outliers and the twist family.
+- RS-S014: the twist classes.
+- RS-S016: the N₆/X collapse.
+
+### Definitions (identical to the code)
+
+**Primes and symbols.**
+
+- 𝒫(X) is the set of primary degree-one primes ρ = a + bω of ℤ[ω], with a ≡ 2 (mod 3),
+  b ≡ 0 (mod 3) and N(ρ) = p ≤ X; D = |𝒫(X)|.
+- (α/ρ)₆ is the sextic residue symbol, α^{(p−1)/6} ≡ ζ₆^k (mod ρ) with ζ₆ = 1 + ω; it is 0 if
+  ρ | α.
+
+**Matrix and Gauss sums.**
+
+- R_X = ((ρ/σ)₆)_{ρ,σ∈𝒫(X)}, with zero diagonal. The row prime is the numerator.
+- g̃(σ) = p^{−1/2}·Σ_{t=1}^{p−1} (t/σ)₆·e(t/p), the rational normalization.
+
+**Classes and vectors.**
+
+- A class is κ = Π π^{e_π} over finitely many distinct primary primes π coprime to 3 (split, or
+  inert (q, 0)), with e_π ∈ {1, …, 5}. N₆(κ) = Π N(π)^{e_π}.
+- w_κ(σ) = conj(g̃(σ))·Π_π (π/σ)₆^{e_π}. It is 0 when σ | κ, and w₁ = conj(g̃).
+
+**Statistics.**
+
+- r_κ(X) = ‖R_X w_κ‖/(‖w_κ‖·√D);
+- ε_κ = (r_κ² − 1)/(r₁² − 1);
+- s_κ(X) = ε_κ·N₆(κ)^{1/6};
+- t = N₆(κ)/X.
+
+### Exact statement (conjecture)
+
+**(1) Crossover.** There is a function F: (0, ∞) → ℝ, independent of κ, with the following
+property. For classes κ whose exponents all lie in {1, 2, 3, 4} and whose number of prime factors is
+bounded, s_κ(X) − F(N₆(κ)/X) → 0 as X → ∞, uniformly for N₆(κ)/X in any fixed compact subset of
+(0, ∞). Moreover:
+
+- lim inf_{t→0⁺} F(t) > 0;
+- F is decreasing on [10⁻², 1];
+- lim sup_{t→∞} F(t) ≤ 0.
+
+**(2) Exponent five.** For κ = π⁵: for every δ > 0 there are N₀ and T such that
+|s_κ(X) + 1| < δ whenever N(π) ≥ N₀, N(π)⁵/X ≥ T, and X is large.
+
+**(3) Fixed-class corollary (conditional).** Assume a sextic analogue H_P of Patterson's
+prime-modulus first-moment asymptotic for shifted Gauss sums, uniform in the shift, stated
+abstractly. Under H_P, (1) gives lim inf_X r_κ(X) > 1 for every fixed κ without exponent 5, and
+(2) gives lim sup_X r_{π⁵}(X) ≤ 1.
+
+H_P is unproved even for n = 3 without GRH (Dunn–Radziwiłł is conditional), so (3) is conditional
+throughout.
+
+**Not part of the frozen claim (open sub-questions).**
+
+- **Q-a:** F(0⁺) = 1? Evidence: K1 rises 0.932 → 0.975 over X = 1.6·10⁵ … 4·10⁶.
+- **Q-b:** the small-t value of s_{π⁵}; about −0.2 at π = 2.
+- **Q-c:** the unit-class selection of statement 2. It is prime-specific (RS-S019).
+- **Q-d:** the quadratic-residue row concentration for k = 2 and N ≡ 1 mod 12, and its absence for
+  N ≡ 7 mod 12 (RS-S020).
+
+**Variant (recorded, not frozen).** With trace normalization and all squarefree moduli coprime to 6
+as columns, the same profile and the exponent-5 deficit are present (RS-S019).
+
+### Evidence
+
+**Discovery provenance.**
+
+- The failures of PROV-RS14 at X = 10⁶ (RS-S015) led to an exploratory X-scan (RS-S016). Its
+  decision rule was committed before the runs (`4cf7c60`), and found the collapse in N₆/X.
+- F was frozen as the RS-S016 k234 bin table (`results/rs_s016_x_dependence_2026-10-26.json`).
+
+**Discovery range.**
+
+- X ∈ {1.6·10⁵, 3.2·10⁵, 6.4·10⁵, 10⁶};
+- the 20 smallest primary primes, as singles π^k (k = 1..5) and pairs;
+- 400 single-class points.
+
+**Holdout range** (all registered before data; outcomes scored verbatim):
+
+| Session | Commit | Test | Outcome |
+|---|---|---|---|
+| RS-S017 | `df8f889` | 440 fresh classes (primes 79 ≤ N ≤ 400) at X = 6.4·10⁵ and 10⁶ | Q1, Q2, Q4 **PASS**; Q3 FAIL on an underpowered per-class clause (its mean clause passed) |
+| RS-S019 | `d915b4d` | prime versus all squarefree moduli, X = 2·10⁵ | the profile is present in both; the π⁵ deficit is INTRINSIC (−1.08 / −1.22) |
+| RS-S020 | `0efc29b` | 88 fresh π⁵ classes, 400 < N ≤ 1000, X = 10⁶ | **PASS**, −0.919 ± 0.083 |
+| RS-S021 | `2717a13` | new scales X = 2·10⁶ and 4·10⁶ (matrix-free engine) | frozen F **PASS** (12 bins within 0.05); π⁵ **PASS** (−1.058, −1.047); plateau RISING (0.961 → 0.975) |
+
+**Adversarial tests.**
+
+- Prime versus unrestricted moduli (RS-S019).
+- Rational versus trace normalization (RS-S019).
+- The ρ-partition (RS-S020).
+- Normalization artefact (RS-S022, `results/rs_s022_cand002_audit_2026-10-26.json`). Control-
+  referenced and r₁-normalized excess collapse identically (roughness 0.0037 for both). Without
+  r₁ normalization, the across-X spread triples (0.067 against 0.022).
+
+**Smallest counterexample searched/found.** None against the frozen statement. Historical
+counterexamples belong to its predecessors:
+
+- CAND-001: u = 64;
+- PROV-RS14: π₇³π₁₃², N₆ = 57967, r = 1.049 at X = 10⁶.
+
+Those are crossover effects under this statement.
+
+**Triviality checks.**
+
+- Sixth-power invariance and (u⁵/ρ)₆ = conj((u/ρ)₆) are exact (tests). Statements are on twist
+  classes.
+- Unit twists by −1 leave r unchanged exactly.
+- The excess is above symmetry-matched random controls at every scale.
+- It is not a prime-sieve artefact, and not a normalization artefact.
+- The engines agree to ≤ 5·10⁻¹⁵ (byte-identical matrices across platforms).
+
+**Mechanism hypothesis (heuristic; not derived).**
+
+- The orientation identity (R w_κ)_ρ = Σ_σ conj(g̃(ρκ, σ)) is exact. Each row is a first moment of
+  shifted sextic Gauss sums with shift u = ρκ.
+- F would arise from averaging, over the row primes, a shift-aspect crossover in the functional
+  equation of the Kubota series ψ₆(u, s). This is the anonymous reviewer's proposal.
+- The π⁵ behaviour is consistent with τ₆(p⁵) = 0 (Bröker–Hoffstein, from Kazhdan–Patterson).
+- The k = 2 quadratic-residue row concentration (RS-S020) matches the ρ-dependent vanishing in
+  BH's Hecke relation.
+
+**Equivalent formulations.**
+
+- Rows as shifted first moments, via the orientation identity.
+- Classes as exponent vectors modulo 6 (RS-S014).
+- The unrestricted-moduli variant above.
+
+**Prior-art audit.**
+
+- `reciprocity_spectra/RS_S018_COLLISION_AUDIT.md`;
+- `PRIOR_ART.md` (RS-S018 section);
+- `EXTERNAL_REVIEW_2026-10-26.md`.
+
+**Current blocker.**
+
+- **Proof.** Even the conditional corollary needs H_P. The crossover itself needs uniform
+  shift-aspect estimates for prime-modulus first moments when N(u) is comparable to X; the reviewer
+  calls this non-standard. Both are open.
+- **Release gate (PROTOCOL §10).** No paper until the exact lemmas are formalized in Lean and
+  registered on Palomar, and the conjecture is formalized as a Lean `Prop`.
+
+**Proof targets (PROTOCOL §9, hard version first; no proof work started).**
+
+- **Hard targets:** (1) and (2) in matrix form over primes. They depend on an unconditional or
+  GRH-free sextic Patterson-type prime asymptotic, uniform in the shift. Beyond the current
+  literature.
+- **Tractable versions** are allowed only after the hard route is documented as exhausted:
+  - (i) the all-moduli Kubota version, using residues of ψ₆(u, s);
+  - (ii) a GRH-conditional version;
+  - (iii) a function-field analogue.
+- **Graduation path:** the exact lemmas go to a dedicated public Lean repository (§10). The
+  conjecture stays a conjecture.
+
+**Exact-identity inventory** (input to §10, stage 1):
+
+- **(a) Formalizable:**
+  - E1: sixth-power invariance;
+  - E2: the conjugate-twist identity;
+  - E3: class exponents add;
+  - E4: the orientation identity, via g(r, σ) = conj((r/σ)₆)·g(1, σ);
+  - E5: (ζ₆/c)₆ = ζ₆^{(N(c)−1)/6};
+  - E6: the normalization-factor decomposition;
+  - E7: |g(1, σ)|² = p;
+  - E8: twisted multiplicativity of trace Gauss sums;
+  - E9: −1 twist invariance of r.
+- **(b) Paper-proved or literature-dependent:**
+  - the u → uv⁶ limit-invariance lemma (BGL large sieve; RS-S014);
+  - the cubic reduction of the reciprocal sextic product (needs sextic reciprocity; RS-S013).
+- **(c) Conjectural:** CAND-002 (1)–(3), and Q-a to Q-d.
+
+**Next bounded action.** RS-S023, release-gate stage 1. Turn the inventory into precise statements,
+set up the Lean repository scaffold, and assess the Mathlib gaps. An optional mechanism session can
+run alongside.
 
 ## Template
 

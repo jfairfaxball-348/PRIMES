@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-26",
+  "scales": [
+    160000,
+    320000,
+    640000,
+    1000000,
+    2000000,
+    4000000
+  ],
+  "n_points": 600,
+  "normalizations": {
+    "frozen": {
+      "collapse_roughness_k234": 0.003736270250119836,
+      "median_across_X_spread_of_bin_means": 0.021872594036857377,
+      "pi5_mean_t_ge_3": -1.0592162057546624,
+      "pi5_n": 83
+    },
+    "raw": {
+      "collapse_roughness_k234": 0.008224643061760333,
+      "median_across_X_spread_of_bin_means": 0.06705786209807423,
+      "pi5_mean_t_ge_3": -1.089122222019519,
+      "pi5_n": 83
+    },
+    "control": {
+      "collapse_roughness_k234": 0.003685223335326775,
+      "median_across_X_spread_of_bin_means": 0.021132554197781997,
+      "pi5_mean_t_ge_3": -1.0561698840829834,
+      "pi5_n": 83
+    }
+  }
+}

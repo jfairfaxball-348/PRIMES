@@ -1551,3 +1551,42 @@ and 10 random-phase controls.
 - No large files are committed.
 
 **Next dependency.** RS-S022: freeze CAND-002, now including the new-scale holdouts.
+
+### RS-S022 (2026-10-26): CAND-002 frozen
+
+**Stage:** candidate freezing. **Branch:** `rs-s022-cand002`. No new matrices were built.
+
+**Allocated: CAND-002**, the shift-aspect crossover law for twisted sextic Gauss-sum vectors, plus
+the exponent-five deficit (`research/CONJECTURE_REGISTER.md`; RS-10 in `CONJECTURES.md`).
+
+- Lifecycle status: CANDIDATE.
+- Novelty status: NOVELTY_REQUIRES_EXPERT_REVIEW.
+- Limits are conditional on a sextic Patterson-type hypothesis H_P, as the external review advised.
+- F(0⁺) = 1 and three other items stay open sub-questions.
+
+**Triviality check** (`scripts/audit_cand002.py`; `results/rs_s022_cand002_audit_2026-10-26.json`;
+600 points over six scales):
+
+| Normalization | Collapse roughness (k = 2–4) | Across-X spread of bin means | π⁵ mean |
+|---|---:|---:|---:|
+| frozen | 0.0037 | 0.022 | −1.059 |
+| control-referenced | 0.0037 | 0.021 | −1.056 |
+| raw | 0.0082 | 0.067 | −1.089 |
+
+So F is not an artefact of the baseline, and normalizing by r₁ (the untwisted strength) is what
+makes the scales coincide.
+
+**Recorded in the candidate.**
+
+- Proof targets under §9: the hard versions need H_P with shift uniformity, which is open.
+- The exact-identity inventory E1–E9 (formalizable), plus the paper-proved and conjectural
+  groups. This is the input to §10 stage 1.
+
+**Validation.**
+
+- Targeted Ruff passes.
+- PYTHONUTF8=1 pytest: 323 passed and 3 skipped (fcntl exclusions).
+- Both audit checkers pass.
+
+**Next dependency.** RS-S023, release-gate stage 1: precise inventory statements, a Lean repository
+scaffold, and a Mathlib gap assessment.

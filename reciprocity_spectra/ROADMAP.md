@@ -1,6 +1,6 @@
 # Roadmap
 
-**Current checkpoint: RS-S021 (2026-10-26): new-scale holdouts PASS at X = 2·10⁶ and 4·10⁶ (matrix-free engine); plateau rising toward 1; next RS-S022 freeze CAND-002.** Earlier: RS-S020, H− PASSES on fresh primes. Earlier: RS-S019, π⁵ deficit intrinsic. Earlier: external review received (anonymous), CAND-002 freeze deferred. Earlier: RS-S018, collision audit done, crossover-law candidate drafted. Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
+**Current checkpoint: RS-S022 (2026-10-26): CAND-002 frozen; Phase 1 (settle the science) complete; next Phase 2 release gate, RS-S023 inventory + Lean scaffold.** Earlier: RS-S021, new-scale holdouts PASS. Earlier: RS-S020, H− PASSES on fresh primes. Earlier: RS-S019, π⁵ deficit intrinsic. Earlier: external review received (anonymous), CAND-002 freeze deferred. Earlier: RS-S018, collision audit done, crossover-law candidate drafted. Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
 product is exactly a locally signed cubic kernel. Generic large-sieve and
 unrestricted operator-norm approaches cannot reach the proposed sextic target;
 the route using actual arithmetic coefficients remains unresolved. CAND-001's

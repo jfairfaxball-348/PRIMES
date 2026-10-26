@@ -4,7 +4,18 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S021 is complete (2026-10-26).** It ran the larger-X
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S022 is complete (2026-10-26). CAND-002 is frozen
+(CANDIDATE; NOVELTY_REQUIRES_EXPERT_REVIEW).** It is the shift-aspect crossover law for twisted
+sextic Gauss-sum vectors, plus the exponent-five deficit.
+
+- It is supported by registered holdouts on fresh classes, on all moduli, on fresh primes, and at
+  new scales up to X = 4·10⁶.
+- Its limits are conditional on a sextic Patterson-type hypothesis.
+- Next: **RS-S023, release-gate stage 1** (PROTOCOL §10): an exact-identity inventory, a Lean
+  repository scaffold, and a Mathlib gap assessment.
+- No paper is drafted before the gate.
+
+Previous: RS-S021 is complete (2026-10-26).** It ran the larger-X
 evidence locally with a new matrix-free engine (validated to 5·10⁻¹⁵).
 
 - At fresh scales X = 2·10⁶ and 4·10⁶, the frozen crossover profile F PASSES: every bin is within

@@ -975,3 +975,29 @@ vanishing in Bröker–Hoffstein's Hecke relation τ₆(mp²) = G₃(m, p)·τ�
 | RS-S021-H+ (plateau rising toward 1) | **RISING**: 0.961 → 0.970 → 0.975 (X = 10⁶, 2·10⁶, 4·10⁶) |
 | RS-S021-A (frozen F at new scales X = 2·10⁶ and 4·10⁶) | **PASS**: 12 of 12 bins within 0.05 |
 | RS-S021-B (π⁵ mean s ∈ [−1.15, −0.85]) | **PASS**: −1.058, −1.047 |
+
+## RS-10: shift-aspect crossover law and exponent-five deficit (CANDIDATE; frozen as CAND-002, 2026-10-26)
+
+The full record, with the exact statement, definitions, evidence, triviality checks, proof targets
+and inventory, is **CAND-002** in `research/CONJECTURE_REGISTER.md`.
+
+**In brief.** For twisted sextic Gauss-sum vectors w_κ of the sextic residue matrix,
+s_κ = ε_κ·N₆(κ)^{1/6}.
+
+- (1) For classes without exponent 5, s_κ → F(N₆/X), with one universal F: positive as t → 0,
+  decreasing through about 0 near t ≈ 1, and ≤ 0 for large t.
+- (2) s_{π⁵} → −1 for large N(π) with N(π)⁵ ≫ X.
+- (3) A fixed-class corollary, conditional on a sextic Patterson-type hypothesis.
+
+**Registered support.**
+
+- RS-S017 (Q1, Q2 and Q4);
+- RS-S019 (all moduli);
+- RS-S020 (H−);
+- RS-S021: new scales X = 2·10⁶ and 4·10⁶, where the frozen F is within 0.05 in every bin.
+
+**Open sub-questions.** F(0⁺) = 1 (the plateau is rising: 0.932 → 0.975); the small-t limit of
+π⁵; unit-class selection; parity structure.
+
+**Normalization check (RS-S022).** F is not an artefact of the baseline. r₁ normalization is
+necessary for the collapse across scales.
