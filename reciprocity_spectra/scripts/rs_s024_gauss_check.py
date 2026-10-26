@@ -17,7 +17,7 @@ import struct
 from pathlib import Path
 
 from reciprocity_spectra.arith import primary_eisenstein_primes, sextic_gauss_sum
-from reciprocity_spectra.scripts.phase1 import DATA, compile_engine, build
+from reciprocity_spectra.scripts.phase1 import DATA, build, compile_engine
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "formalisation/fixtures/sextic_gauss_200.json"
