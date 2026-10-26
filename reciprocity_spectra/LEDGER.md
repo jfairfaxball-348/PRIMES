@@ -1710,3 +1710,29 @@ sextic `MulChar`, prove its nontriviality and the primitive additive
 character bridge, then instantiate E7/E4; document any remaining gap.
 Do not treat incomplete mathematical bridges as completed because generic
 character results compiled.
+
+### RS-S025 (2026-10-26): cloud kernel-checked additive-character bridge — bounded partial checkpoint
+
+**Execution:** GitHub-hosted cloud on `rs-s025-cloud`, PR #4. The session began at committed main and preserved the frozen D1 programme and CAND-002.
+
+**New proved declarations** in `formalisation/ReciprocitySpectra/CharacterBridge.lean`:
+
+- `rationalAddChar p : AddChar (ZMod p) ℂ`, the canonical character using `exp(2πi/p)` with the **positive** numerical sign convention (assuming `NeZero p`).
+- `rationalAddChar_primitive`: its primitivity, discharged with Mathlib's `AddChar.zmodChar_primitive_of_primitive_root`.
+- `rationalAddChar_apply`: the exact formula as the `t.val`-th power of the positive primitive exponential root.
+
+These two theorems are **kernel checked with standard axioms only**. The first CI attempt failed on a missing explicit modulus argument to the Mathlib primitivity theorem; the correction is preserved in branch history and passed a new run. No `sorry` or new axioms were introduced.
+
+**Independent cloud validation:** GitHub Actions run
+https://github.com/jfairfaxball-348/PRIMES/actions/runs/40405177673
+**PASS**, including `lake build ReciprocitySpectra`, `lake build Checks`; the axiom printout for both new theorems lists only `propext`, `Classical.choice`, `Quot.sound`; the engine-to-Lean exponent fixture remains **1764/1764**; **366** Python tests passed; `ruff check reciprocity_spectra/scripts` passed; native/Python Gauss X=200 **42** values agree to ~1.5e-15; both frozen strength and CAND-002 audit checkers passed. The legacy repo-wide Ruff CI still fails on hundreds of frozen D1 files and is outside this programme's targeted lint scope.
+
+**Exact outstanding mathematical bridges:**
+
+1. Construct `chi_rho : MulChar (ZMod p) ℂ` from `sexticExp r x`, including zero at zero, full multiplicativity, an exact complex sixth-root compatibility, order six, and `chi_rho ≠ 1` with all hypotheses on p, r and the split-prime model.
+2. Prove pointwise equality of `chi_rho` and the existing `complexSymbol` on rational residues, including the zero branch; prove `rationalAddChar` agrees with the exponential factor of `rawGauss` and then `gaussSum chi_rho (rationalAddChar p) = rawGauss σ`.
+3. Only then specialize E7 (`|g|²=p`, `|gtilde|=1`) and E4 (matrix row-numerator / column-denominator orientation, zero shifts, primes dividing rho·kappa). Generic Gauss theorems remain proved, but **E7/E4 are not proved for the actual sextic matrix**.
+
+**Frozen CAND-002 logic remains an open owner decision.** Statement (2) controls `N(π)^5/X` bounded below by a large threshold, whereas fixed π and X→∞ sends the ratio to zero. Also statement (1) has crossover uniformity only on compact subsets of `(0,∞)`; fixed-class `t=N₆(κ)/X→0` lies outside them. Neither fixed-class conclusion of (3) is a formal logical consequence of those respective regimes as written; further hypotheses/arguments would be needed. No claim is refuted merely by these implication gaps; the frozen record was not altered.
+
+**Release gate:** still closed. No Palomar packaging, paper, external review or novelty audit in this session. The next unit is RS-S026, **complete the actual sextic multiplicative-character bridge** before any packaging.
