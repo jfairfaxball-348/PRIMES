@@ -1,0 +1,41 @@
+name: RS-S024 cloud Lean validation
+
+on:
+  push:
+    branches: [rs-s024-cloud]
+  workflow_dispatch:
+
+jobs:
+  lean-and-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install pinned Lean and Mathlib cache
+        run: bash formalisation/cloud_setup.sh
+      - name: Check both Lean build targets (fail hard)
+        working-directory: formalisation
+        run: |
+          lake build ReciprocitySpectra
+          lake build Checks
+      - name: Check for placeholders and unsafe axioms
+        run: |
+          if grep -R -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' formalisation/ReciprocitySpectra; then
+            echo "Found proof placeholder" >&2
+            exit 1
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project tests
+        run: python -m pip install -e ".[dev]"
+      - name: Lint touched files
+        run: ruff check reciprocity_spectra/scripts
+      - name: Full pytest
+        run: pytest
+      - name: Frozen evidence audit checkers
+        run: |
+          python reciprocity_spectra/scripts/audit_strength.py --check
+          python reciprocity_spectra/scripts/audit_cand002.py --check
