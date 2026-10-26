@@ -2,3 +2,4 @@ import ReciprocitySpectra.Sextic
 import ReciprocitySpectra.Gauss
 import ReciprocitySpectra.Model
 import ReciprocitySpectra.Conjecture
+import ReciprocitySpectra.CharacterBridge

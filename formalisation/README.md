@@ -84,7 +84,7 @@ is stated, not derived from a Mathlib ℤ[ω].
 - `.github/workflows/rs_s024_cloud.yml` installs the pinned Mathlib
   cache and validates the Lean, Python and audit targets on GitHub runners.
 
-**Next RS-S025:** construct and prove the actual sextic
+**Former RS-S025 target (only partially reached):** construct and prove the actual sextic
 `MulChar (ZMod p) ℂ` (including order 6), connect to the primitive
 additive character, instantiate E7/E4 including zero shifts.
 Do not proceed to Palomar packaging as though that bridge were complete.
@@ -93,3 +93,31 @@ Do not proceed to Palomar packaging as though that bridge were complete.
 asks for a fixed π while X→∞, making N(π)^5/X→0. A separate
 argument or corrected statement is required. No frozen claim was edited.
 
+## RS-S025 cloud checkpoint (validated, partial)
+
+`ReciprocitySpectra/CharacterBridge.lean` now defines
+`rationalAddChar p`, the positive-sign rational additive character on
+`ZMod p`, and proves `rationalAddChar_primitive` and
+`rationalAddChar_apply`. `ReciprocitySpectra.lean` imports it and
+`Checks/Axioms.lean` audits the two new theorems. Neither has a `sorry`
+or a nonstandard axiom.
+
+**Cloud success:** https://github.com/jfairfaxball-348/PRIMES/actions/runs/40405177673:
+Lean library and Checks, 1764/1764 exponent entries, 366 Python tests,
+targeted Ruff, X=200 42 Gauss comparisons (max ~1.5e-15), and both
+historical evidence audit scripts. The unrelated global Ruff CI still
+fails on protected D1 files.
+
+**Not yet proved:** construct the sextic `MulChar` from `sexticExp`,
+prove its order-six/nontriviality and value equality to `complexSymbol`,
+identify the full `gaussSum` with `rawGauss`, prove sextic E7 and E4
+including zero shifts and row/column orientation. Generic E4/E7 from
+RS-S024 must not be advertised as sextic E4/E7.
+
+**Next RS-S026:** finish the character-level sextic bridge and
+specializations. No Challenge/Solution split or Palomar submission yet.
+
+**Formal conjecture limitation:** CAND-002 is still unproved and frozen.
+Its large-t exponent-five condition and its compact-t crossover do
+not directly imply fixed-class X→∞ behaviour where t→0; additional
+arguments would be needed for the conditional fixed-class statement.
