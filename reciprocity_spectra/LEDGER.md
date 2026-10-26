@@ -1213,3 +1213,21 @@ NOVELTY_REQUIRES_EXPERT_REVIEW.
 - Both audit checkers pass.
 
 **Next dependency.** RS-S019: freeze the candidate as CAND-002, with full candidate-record fields.
+
+### Owner action (2026-10-26): external expert review requested
+
+After RS-S018, the owner sent an external expert (an established researcher on Gauss sums over
+primes and metaplectic theta functions) a review request. The request covers:
+
+- the twist-class setup;
+- observations (1) the crossover law, (2) the π⁵ deficit and (3) the unit-class rule;
+- the τ₆(π²) contrast check;
+- five questions: whether it is known, the theta-side correspondence, the π⁵ constant, the
+  unit-class rule, and possible triviality.
+
+The expert is not named here without their consent.
+
+**Status:** awaiting a reply. Under PROTOCOL §9.2 this does not block RS-S019. A reply is evidence
+to evaluate, not authority. When it arrives, record its substance (with the expert's permission
+before naming them), and update the novelty statuses in `RS_S018_COLLISION_AUDIT.md` and
+`PRIOR_ART.md`.
