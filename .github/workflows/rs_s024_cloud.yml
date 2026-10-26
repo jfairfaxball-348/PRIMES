@@ -3,6 +3,8 @@ name: RS-S025 cloud Lean validation
 on:
   push:
     branches: [rs-s025-cloud]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -57,7 +59,7 @@ jobs:
           python reciprocity_spectra/scripts/audit_cand002.py --check
 
       - name: Preserve cloud Lean diagnostics on the session branch
-        if: always()
+        if: always() && github.event_name == 'push'
         run: |
           mkdir -p formalisation/checkpoints
           if [ -f rs_s025_build.log ]; then
