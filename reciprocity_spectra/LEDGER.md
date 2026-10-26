@@ -1448,3 +1448,38 @@ classes π^k for k = 1, 2, 4 with N ≤ 200; `results/rs_s020_rho_partition_2026
   reported as exploratory only.
 - **H+ (F(0⁺) = 1):** needs X ≥ 4·10⁶. It is deferred to a large-RAM or cloud session, which is an
   owner compute decision.
+
+### RS-S020 outcome (scored verbatim against `0efc29b`)
+
+The run is at X = 10⁶ (D = 78462; r₁ = 1.4342110940043258, identical to the earlier stored value)
+and took 686 s. Random-phase max 1.0027, sd 0.0015.
+
+| ID | Outcome | Numbers |
+|---|---|---|
+| RS-S020-H− | **PASS** | mean s = −0.919 ± 0.083 over 88 fresh π⁵ classes (400 < N ≤ 1000); band [−1.15, −0.85]; max r = 1.0029 |
+
+**Exploratory.**
+
+- The fitted intercept is c₅ = −0.43 with b = −320. As stated before the data, it is too noisy to
+  interpret.
+- The fresh π¹ classes give mean s = 0.859 at t ≈ 4·10⁻⁴ to 10⁻³.
+
+**Reading.**
+
+- The π⁵ law, s → −1 in the large-t regime, now has:
+  - three registered passes: RS-S015-P2, RS-S017-Q3 (mean clause), and RS-S020-H− (on fresh primes
+    up to N = 1000);
+  - the exploratory norm-band trend toward −1.00;
+  - persistence over all squarefree moduli (RS-S019).
+- H+ (F(0⁺) = 1) is deferred, because it needs X ≥ 4·10⁶.
+
+**Validation.**
+
+- Two new exact lemmas, tested.
+- Targeted Ruff passes.
+- PYTHONUTF8=1 pytest: 323 passed and 3 skipped (fcntl exclusions).
+- Both audit checkers pass.
+- No matrices are committed.
+
+**Next dependency.** RS-S021: reformulate and freeze CAND-002. The large-X holdout and H+ need an
+owner compute decision; they are not blockers for freezing.

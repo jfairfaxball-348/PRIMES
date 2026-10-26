@@ -1,21 +1,21 @@
-Run RS-S020 locally in C:\PRIMES (Windows; MSVC engine) on a new branch from main. Read `reciprocity_spectra/PROTOCOL.md` (sections 4–10), `reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md` (the reviewer is anonymous: never name or cite them), the RS-S019 entries in `reciprocity_spectra/LEDGER.md` and `CONJECTURES.md`, `results/rs_s019_moduli_2026-10-26.json`, and `scripts/phase1n.py`.
+Run RS-S021 in C:\PRIMES on a new branch from main. Read `AGENTS.md` (candidate discipline and the graduation rule), `reciprocity_spectra/PROTOCOL.md` (sections 2, 7, 9 and 10), `reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md` (the reviewer is anonymous: never name or cite them), `reciprocity_spectra/RS_S018_COLLISION_AUDIT.md`, `reciprocity_spectra/RS_S016_CROSSOVER.md`, the RS-S015 to RS-S020 entries in `LEDGER.md` and `CONJECTURES.md`, and CAND-001 plus the template in `research/CONJECTURE_REGISTER.md`.
 
-RELEASE GATE: no paper or preprint drafting (PROTOCOL section 10). Research only.
+RELEASE GATE: no paper or preprint drafting (PROTOCOL section 10). Candidate freezing is allowed.
 
-STATE: RS-S019 (registered, X = 2e5, trace normalization) found:
-- the pi^5 deficit is INTRINSIC: s = -1.08 with prime moduli and -1.22 with all squarefree moduli, so it is not a sieve effect;
-- the crossover profile is present for both modulus sets.
-Exploratory findings:
-- the pi^5 coefficient tends to -1 as N(pi) grows (-1.08 -> -1.00 over N = 19..400; fit s = -0.995 - 2.6/N);
-- the plateau keeps rising as t -> 0 (0.97–0.99 at the smallest t) and is not a single 1/log X correction;
-- statement 2's unit-class selection (j in {0,3}) is strong with prime moduli and vanishes with unrestricted moduli.
+STATE (all at X <= 1e6, local):
+- Crossover law: s = F(N6/X) for classes without exponent 5. Holdout PASS on 440 fresh classes (RS-S017). The profile persists over all squarefree moduli (RS-S019), so it is a shift-aspect property of sextic Gauss-sum first moments.
+- pi^5 law: s -> -1 for t >> 1. Registered PASS three times (RS-S015-P2; RS-S017-Q3 mean clause; RS-S020-H-: -0.919 +- 0.083 on 88 fresh primes, N <= 1000). INTRINSIC, not a sieve effect (RS-S019).
+- Mechanism evidence: rho-averaged shift u = rho*kappa (the reviewer's mechanism). The k = 2 excess sits on quadratic-residue rows (RS-S020), consistent with the rho-dependent vanishing in Broker–Hoffstein's Hecke relation.
+- Open: H+ (F(0+) = 1) and a new-scale holdout need >= 32 GB RAM or cloud (owner decision; not a blocker). The plateau is still rising as t -> 0. The unit-class selection of statement 2 is prime-specific.
 
-ONE BOUNDED UNIT, RS-S020:
-1. Reviewer's rho-partition test (EXPLORATORY): for exponent-2 singles with N = 1 mod 12, split the row primes rho by (rho/pi)_6 and compute the per-class excess within each residue class (rational and trace normalization, prime moduli, X about 3.2e5). Ask whether the concentration correlates with (pi/pibar)_6, i.e. whether Broker–Hoffstein Lemma 5.3's tau_6(pi^2) = 0 condition reappears inside the rho-average.
-2. Exact unit-normalization factor (stage: mechanism): derive and test (pure-Python exact test) the factor relating the rational e(t/p) and trace prime Gauss sums, ((2a-b)/rho)_6 = (pibar/pi)_6, decomposed into (-1/rho)_6, (-3/rho)_6 (b mod 9) and the residual (b'/rho)_6. Explain, or show unexplained, why the prime-moduli selection j in {0,3} vanishes for unrestricted moduli.
-3. Register (commit and push before data) the limit hypotheses at a fresh scale or fresh classes feasible locally:
-   - H+: F(0+) = 1, i.e. s -> 1 as t -> 0;
-   - H-: s(pi^5) -> -1 as N(pi) -> infinity with t >> 1.
-   Use numerical tolerances and a power calculation. Prefer fresh primes (N > 400 for H-; small N at the largest feasible X for H+). Run and score if time allows; otherwise leave registered for RS-S021.
+ONE BOUNDED UNIT, RS-S021 (stage: candidate freezing; no new matrices):
+1. Write the exact CAND-002 statement as a rho-averaged shift-aspect law for sextic Gauss-sum first moments, in matrix form, with definitions identical to the code (rows rho; columns prime moduli; rational normalization), and an unrestricted-moduli variant noted. Parts:
+   (a) the crossover profile (a common F, positive for t -> 0, about 0 near t = 1);
+   (b) the pi^5 law s -> -1 for N(pi)^5/X -> infinity;
+   (c) conjectural fixed-class limits, stated conditionally on a sextic Patterson-type prime asymptotic (per the review).
+   Keep F(0+) = 1 as an open sub-question, not part of the frozen claim.
+2. Fill every AGENTS.md candidate field: provenance; discovery range (RS-S015/16); holdouts (RS-S017, RS-S019, RS-S020) with machine-readable sources; falsification strategy (H+ at X >= 4e6; new-scale holdout; Q3 redesign with power-filtered per-class clauses); triviality checks (sixth-power and conjugation invariance; the normalization-artefact check: recompute s using the random-control level instead of r_1 from stored data, as a stored-data script); mechanism notes; prior-art status NOVELTY_REQUIRES_EXPERT_REVIEW; lifecycle status CANDIDATE.
+3. Identify the exact-identity inventory items this candidate relies on (input to PROTOCOL section 10 stage 1) and the proof targets under section 9 (hard version first), without starting proof work.
+4. Update CONJECTURES.md (a new RS-n entry), PROGRAM_STATUS.md, ROADMAP.md and the LEDGER.
 
-Never commit matrices; delete data/*.bin after use. Run targeted Ruff, PYTHONUTF8=1 pytest (record the three fcntl exclusions), and both audit checkers. Close out under PROTOCOL section 7: merge to main, push and delete the branch without asking, with exactly one justified next prompt.
+Run targeted Ruff and PYTHONUTF8=1 pytest if any code is touched, and both audit checkers. Close out under PROTOCOL section 7: merge to main, push and delete the branch without asking, with exactly one justified next prompt.

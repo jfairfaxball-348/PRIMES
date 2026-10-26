@@ -138,6 +138,13 @@ before any release (PROTOCOL §10). The exact identities are checked by pure-Pyt
   t-dependence of F.
 - **The unit-class selection** disappears with unrestricted moduli (exploratory).
 
+**RS-S020 follow-up.**
+
+- **The ρ-partition test:** for k = 2 and N ≡ 1 mod 12, the excess concentrates on rows that are
+  quadratic residues mod π. This is the ρ-dependent vanishing the reviewer anticipated (BH relation
+  (1.3)).
+- **The π⁵ coefficient approaching −1** is confirmed by a registered test on fresh primes, N ≤ 1000.
+
 **Effect on the candidate.** Freezing CAND-002 in the RS-S018 §5 form is **deferred**. The
 reviewer's interpretation implies the statement should be reformulated:
 

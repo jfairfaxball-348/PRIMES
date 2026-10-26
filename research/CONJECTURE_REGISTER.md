@@ -286,7 +286,15 @@ Type II dependencies.
 - The crossover profile is present for both prime and unrestricted moduli.
 - Exploratory: the π⁵ coefficient tends to −1; unit-class selection is prime-specific.
 
-**Next bounded action:** RS-S020, the rho-partition test, the exact unit-normalization factor, and
+**RS-S020 (2026-10-26).**
+
+- H− PASSES on 88 fresh π⁵ classes (mean s = −0.919 ± 0.083).
+- The ρ-partition shows the k = 2 excess on quadratic-residue rows, i.e. ρ-averaging of a
+  τ₆(ρπ²)-type vanishing (exploratory).
+- Two exact lemmas were added.
+
+**Next bounded action:** RS-S021, reformulate and freeze CAND-002 (NEXT_SESSION_PROMPT.md).
+**Done:** RS-S020, the rho-partition test, the exact unit-normalization factor, and
 registration of the ±1 limit hypotheses (NEXT_SESSION_PROMPT.md). **Previous (done):** RS-S019, the reviewer-suggested decisive tests (prime versus unrestricted
 moduli; log-correction fit), as specified in NEXT_SESSION_PROMPT.md. Freezing CAND-002 is deferred
 until the statement is reformulated as a rho-averaged shift-aspect crossover with conditional limit

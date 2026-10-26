@@ -1,6 +1,6 @@
 # Roadmap
 
-**Current checkpoint: RS-S019 (2026-10-26): π⁵ deficit INTRINSIC (persists over all squarefree moduli); crossover present for both modulus sets; next RS-S020.** Earlier: external review received (anonymous), CAND-002 freeze deferred. Earlier: RS-S018, collision audit done, crossover-law candidate drafted. Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
+**Current checkpoint: RS-S020 (2026-10-26): H− PASSES on fresh primes; ρ-partition supports the averaging mechanism; next RS-S021 freeze CAND-002.** Earlier: RS-S019, π⁵ deficit intrinsic. Earlier: external review received (anonymous), CAND-002 freeze deferred. Earlier: RS-S018, collision audit done, crossover-law candidate drafted. Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
 product is exactly a locally signed cubic kernel. Generic large-sieve and
 unrestricted operator-norm approaches cannot reach the proposed sextic target;
 the route using actual arithmetic coefficients remains unresolved. CAND-001's

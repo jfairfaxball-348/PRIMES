@@ -4,7 +4,19 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S019 is complete (2026-10-26).** It ran the anonymous
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S020 is complete (2026-10-26).**
+
+- **H− PASSES:** the π⁵ coefficient is −0.919 ± 0.083 on 88 fresh primes with N ≤ 1000, consistent
+  with the limit −1.
+- **ρ-partition (exploratory):** the exponent-2 excess sits on quadratic-residue rows. This matches
+  the ρ-dependent vanishing in Bröker–Hoffstein's Hecke relation, the averaging the reviewer
+  proposed.
+- **Two exact lemmas:** unit twists are characters of N(c) mod 36, and the normalization factor is
+  decomposed.
+- H+ and a new-scale holdout need ≥ 32 GB RAM or cloud compute (an owner decision; not blocking).
+- Next: **RS-S021, reformulate and freeze CAND-002.** The release gate (§10) still applies.
+
+Previous: RS-S019 is complete (2026-10-26).** It ran the anonymous
 reviewer's decisive test, registered, at X = 2·10⁵.
 
 - **The π⁵ deficit is INTRINSIC:** −1.08 with prime moduli against −1.22 with all squarefree

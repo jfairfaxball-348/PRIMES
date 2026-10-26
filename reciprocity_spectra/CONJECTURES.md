@@ -952,3 +952,18 @@ The candidate draft, the sextic twist-class crossover law, is to be frozen in RS
 - **H−:** for π⁵, s → −1 as N(π) → ∞ in the large-t regime.
 
 Together: ε_κ ≈ +N₆^{−1/6} as t → 0 and ε_{π⁵} ≈ −N(π)^{−5/6}.
+
+## RS-S020 (2026-10-26)
+
+| ID | Outcome |
+|---|---|
+| RS-S020-H− (π⁵: mean s ∈ [−1.15, −0.85] on 88 fresh primes, 400 < N ≤ 1000, X = 10⁶) | **PASS**: −0.919 ± 0.083 |
+
+**Mechanism evidence (exploratory).** For k = 2 and N ≡ 1 mod 12, the excess concentrates on rows
+ρ that are quadratic residues mod π (s ≈ +1.75 against −0.37). That matches the ρ-dependent
+vanishing in Bröker–Hoffstein's Hecke relation τ₆(mp²) = G₃(m, p)·τ₆(mp²). The ρ-average hides it.
+
+**Exact (tested).**
+
+- Unit twists are characters of N(c) mod 36.
+- The rational-to-trace factor is (ρ̄/ρ)₆ = (−1/ρ)(√−3/ρ)(3/ρ)(b′/ρ).
