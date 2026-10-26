@@ -1,6 +1,6 @@
-import ReciprocitySpectra.Sextic
+import ReciprocitySpectra.Gauss
 
-/-! Axiom audit: every theorem should depend only on `propext`, `Classical.choice`, `Quot.sound`. -/
+/-! Axiom audit: only the standard Lean axioms are permissible. -/
 
 open ReciprocitySpectra
 
@@ -15,3 +15,6 @@ open ReciprocitySpectra
 #print axioms sexticExp_zeta
 #print axioms unit_exponent_additive
 #print axioms trace_residue
+#print axioms gauss_modulus_sq
+#print axioms gauss_shift
+#print axioms finite_gauss_orientation

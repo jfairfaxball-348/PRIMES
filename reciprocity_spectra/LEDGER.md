@@ -1647,3 +1647,66 @@ and the checks.
   - Challenge/Solution, `comparator.json` and `formalization.yaml`, as in Almost-Stacked;
   - an orphan `palomar/submission` snapshot;
   - the owner uploads.
+
+### RS-S024 (2026-10-26): cloud Lean checkpoint — generic Gauss identities and formal CAND-002
+
+**Execution:** GitHub-hosted Linux cloud runner (not owner's local machine);
+branch `rs-s024-cloud`. The work was broken into smaller, pushed checkpoints.
+
+**Kernel-checked, standard axioms only:**
+
+- `formalisation/ReciprocitySpectra/Gauss.lean`: character-level E7,
+  `gauss_modulus_sq`, establishes `g · conj(g) = |F|` assuming the
+  multiplicative character is nontrivial and the additive character primitive.
+- Character-level E4: `gauss_shift` for nonzero shifts, and
+  `finite_gauss_orientation` by finite-sum congruence.
+- Existing E0–E3, E5–E6 remain unchanged and proved.
+
+**Definitions and statements (NOT proofs of the conjecture):**
+
+- `Model.lean` defines a norm-bounded primary split-prime index, the sextic
+  exponent-based complex matrix, twist classes, vectors, finite matrix-vector
+  product and the exact statistics `r`, `epsilon`, `s`, `t`.
+- `Conjecture.lean` states CAND-002 (1), (2), and the conditional (3) as
+  Lean `Prop`s, including a positive untwisted denominator gap, compact
+  uniformity, support bounds, and an abstract prime-moment H_P.
+  No conjecture is asserted as an axiom or proven.
+- The finite-index and symbol-exponent data are computable; analytic complex
+  exponentials are noncomputable in Lean. The new *numerical* Gauss comparison
+  is C against independent Python, not Lean `#eval`.
+
+**Numerical faithfulness at X=200:** 42 complex128 normalized sextic Gauss
+sums exported by `native/residue_engine.c` into
+`formalisation/fixtures/sextic_gauss_200.json`; independent comparison
+with `arith.sextic_gauss_sum`. Maximum complex absolute difference
+1.4983512726234129e-15 (tolerance 2e-12). The existing 1764/1764 Lean
+exponent matrix comparison remains intact.
+
+**Validation:** Cloud run 40401497506
+(`https://github.com/jfairfaxball-348/PRIMES/actions/runs/40401497506`)
+passed: `lake build ReciprocitySpectra`, `lake build Checks`;
+all printed theorem axioms confined to `propext`, `Classical.choice`,
+`Quot.sound`; matrix fidelity 1764/1764; 366 passed in Linux pytest;
+Ruff on scripts; strength audit; read-only CAND-002 audit.
+A later cloud run additionally checks the committed Gauss fixture.
+
+**Not completed in this bounded session:**
+
+- No `MulChar (ZMod p) ℂ` was constructed from `sexticExp`;
+  sextic nontriviality/order 6 and compatibility with the primitive additive
+  character are *not* yet established. E7/E4 therefore hold only at the
+  generic character level, not yet for the project's instantiated sextic symbol.
+  The zero-shift case in the sextic orientation formula also needs proof.
+- CAND-002 (3) has a quantifier/implication gap: frozen (2) concerns
+  `N(pi)^5/X` large, while fixing `pi` and letting `X→∞` makes
+  that quantity tend to zero. Thus (3) does not follow from (2)
+  as written, even under H_P without additional information.
+  The frozen candidate text is not silently changed.
+- No Palomar Challenge/Solution packaging, module-system migration, or
+  submission was attempted. The release gate remains closed.
+
+**Next dependency:** RS-S025, one focused Lean unit: construct the actual
+sextic `MulChar`, prove its nontriviality and the primitive additive
+character bridge, then instantiate E7/E4; document any remaining gap.
+Do not treat incomplete mathematical bridges as completed because generic
+character results compiled.

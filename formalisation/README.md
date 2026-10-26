@@ -62,9 +62,34 @@ r² + r + 1 = 0.
 **Modelling convention.** The residue field ℤ[ω]/ρ is identified with `ZMod p` via ω ↦ r = −a/b. This
 is stated, not derived from a Mathlib ℤ[ω].
 
-**Planned next:**
+## RS-S024 cloud checkpoint (partial, validated)
 
-- E7 (|g|² = p) and E4 (the orientation identity), via `MulChar` and `gaussSum`;
-- the matrix and vector definitions;
-- CAND-002 as a `Prop`;
-- Palomar Challenge/Solution packaging.
+- `ReciprocitySpectra/Gauss.lean`: the conditional character-level Gauss
+  modulus identity, multiplicative shift, and finite orientation sum are
+  **proved** using Mathlib. The hypotheses `χ ≠ 1` and primitive `ψ`
+  have **not** been discharged for the sextic exponent character.
+- `ReciprocitySpectra/Model.lean`: finite primary split-prime index,
+  sextic-symbol matrix, twist classes/vectors and normalized statistics.
+  These are definitions, not asymptotic theorems.
+- `ReciprocitySpectra/Conjecture.lean`: CAND-002 (1), (2) and conditional
+  (3) are stated as Lean `Prop`s, with denominator/quantifier choices
+  documented. None is proved.
+- `fixtures/sextic_gauss_200.json`: 42 complex double Gauss values from the
+  C engine; `python -m reciprocity_spectra.scripts.rs_s024_gauss_check --check`
+  verifies these and an independent Python computation to absolute
+  tolerance 2e-12 (observed max 1.4983512726234129e-15).
+  These complex exponential values are NOT evaluated by Lean.
+- `Checks/Axioms.lean` audits all proved Gauss identities and the
+  original sextic exponent lemmas. The 1764/1764 exponent check remains.
+- `.github/workflows/rs_s024_cloud.yml` installs the pinned Mathlib
+  cache and validates the Lean, Python and audit targets on GitHub runners.
+
+**Next RS-S025:** construct and prove the actual sextic
+`MulChar (ZMod p) ℂ` (including order 6), connect to the primitive
+additive character, instantiate E7/E4 including zero shifts.
+Do not proceed to Palomar packaging as though that bridge were complete.
+
+**Important logic gap:** CAND-002 (2) handles N(π)^5/X large but (3)
+asks for a fixed π while X→∞, making N(π)^5/X→0. A separate
+argument or corrected statement is required. No frozen claim was edited.
+
