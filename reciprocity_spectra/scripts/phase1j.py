@@ -67,7 +67,7 @@ def run(mode, x, norm_max):
     law = []
     for t in rows:
         if t['pm_primary'] and t['norm'] > 1:
-            ncf = 1 if t['u'] in ([8, 0], [-8, 0]) else t['norm']
+            ncf = 1 if mode == 'cubic' and t['u'] in ([8, 0], [-8, 0]) else t['norm']
             if ncf > 1:
                 law.append(((t['r'] ** 2 - 1) * ncf ** (1 / k) / (r1 ** 2 - 1), ncf))
     ratio = np.array([v for v, _ in law])

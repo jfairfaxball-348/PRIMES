@@ -483,6 +483,156 @@ def test_kubota_sextic_gauss_sums_and_twisted_multiplicativity():
             assert abs(want - got) < 1e-7 * norm
 
 
+def test_squarefree_moduli_include_inert_and_conjugate_split_factors():
+    """Ideal-squarefreeness permits norm p^2 from conjugate split factors."""
+    from collections import Counter
+
+    import pytest
+
+    from reciprocity_spectra.bilinear import SquarefreeModulus, squarefree_moduli
+
+    moduli = squarefree_moduli(500)
+    assert squarefree_moduli(0) == []
+    assert squarefree_moduli(1) == [SquarefreeModulus(())]
+    assert len(set(moduli)) == len(moduli)
+    assert Counter(m.norm for m in moduli if m.norm <= 49) == Counter(
+        [1, 7, 7, 13, 13, 19, 19, 25, 31, 31, 37, 37, 43, 43, 49])
+    # Independent rational-norm Euler factors: split (1+2t+t^2), inert (1+t^2).
+    counts = {1: 1}
+    for p in primes_upto(500):
+        terms = [(1, 1)]
+        if p > 3 and p % 3 == 1:
+            terms += [(p, 2), (p * p, 1)]
+        elif p > 3 and p % 3 == 2:
+            terms += [(p * p, 1)]
+        updated = Counter()
+        for norm, count in counts.items():
+            for factor, multiplicity in terms:
+                if norm * factor <= 500:
+                    updated[norm * factor] += count * multiplicity
+        counts = updated
+    assert Counter(m.norm for m in moduli) == counts
+    for m in moduli:
+        a, b = m.element
+        assert m.norm == a * a - a * b + b * b
+        assert a % 3 in (1, 2) and b % 3 == 0
+    pi, conjugate = primary_eisenstein_primes(7)
+    assert SquarefreeModulus((pi, conjugate)).norm == 49
+    assert SquarefreeModulus((pi, 5)) == SquarefreeModulus((5, pi))
+    for factors in ((pi, pi), (5, 5), (2,), (3,), (7,), (35,), (DegreeOnePrime(3, 7, 1, 3),)):
+        with pytest.raises(ValueError):
+            SquarefreeModulus(factors)
+
+
+def test_squarefree_kernel_reduces_to_cubic_with_local_sign():
+    """Exact character exponents, including inert and composite moduli, norm <= 300."""
+    from reciprocity_spectra.arith import _mul_w
+    from reciprocity_spectra.bilinear import (
+        coprime,
+        cubic_kernel_exponent,
+        kernel_exponent,
+        squarefree_moduli,
+        symbol_exponent,
+    )
+    from reciprocity_spectra.bilinear import reciprocity_sign as local_sign
+
+    def independent_cubic(alpha, modulus):
+        exponent = 0
+        for factor in modulus.factors:
+            if not isinstance(factor, int):
+                exponent += residue_exponent(*alpha, factor)
+                continue
+            # Direct cubic Euler criterion in F_(q^2), not a sextic exponent reduction.
+            e, base, power = (factor * factor - 1) // 3, alpha, (1, 0)
+            while e:
+                if e & 1:
+                    power = tuple(v % factor for v in _mul_w(power, base))
+                base = tuple(v % factor for v in _mul_w(base, base))
+                e //= 2
+            roots = ((1, 0), (0, 1), (factor - 1, factor - 1))
+            exponent += roots.index(power)
+        return exponent % 3
+
+    moduli = squarefree_moduli(300)
+    signs = set()
+    for m in moduli:
+        for n in moduli:
+            exponent = kernel_exponent(m, n)
+            if not coprime(m, n):
+                assert exponent is None
+                assert cubic_kernel_exponent(m, n) is None
+                continue
+            forward, backward = symbol_exponent(m.element, n), symbol_exponent(n.element, m)
+            sign = local_sign(m, n)
+            signs.add(sign)
+            shift = 3 if sign == -1 else 0
+            assert backward == (forward + shift) % 6
+            cubic = independent_cubic(m.element, n)
+            assert cubic_kernel_exponent(m, n) == cubic
+            assert exponent == (2 * cubic + shift) % 6
+    assert signs == {-1, 1}
+
+
+def test_squarefree_gauss_product_against_independent_crt_residue_sum():
+    """Float Gauss values validate exact CRT identities; c may share a prime factor."""
+    from reciprocity_spectra.bilinear import (
+        SquarefreeModulus,
+        bilinear_kernel,
+        crt_representatives,
+        direct_gauss_sum,
+        normalized_gauss_sum,
+    )
+
+    pi, conjugate, rho, _ = primary_eisenstein_primes(13)
+    cases = [(), (pi,), (5,), (pi, conjugate), (pi, rho), (pi, 5),
+             (5, 11), (pi, rho, 5), (pi, conjugate, rho)]
+
+    def residue_signature(x, factors):
+        return tuple((x[0] % f, x[1] % f) if isinstance(f, int)
+                     else ((x[0] + x[1] * f.root) % f.p,)
+                     for f in factors)
+
+    for factors in cases:
+        modulus = SquarefreeModulus(factors)
+        residues = list(crt_representatives(modulus))
+        assert len(residues) == modulus.norm
+        assert len({residue_signature(x, modulus.factors) for x in residues}) == modulus.norm
+        left = SquarefreeModulus(modulus.factors[:1])
+        right = SquarefreeModulus(modulus.factors[1:])
+        for c in [(1, 0), (0, 1), (2, -1), (pi.a, pi.b), (5, 0), (0, 0)]:
+            direct = direct_gauss_sum(c, modulus) / math.sqrt(modulus.norm)
+            assert abs(normalized_gauss_sum(c, modulus) - direct) < 1e-9
+            assert abs(bilinear_kernel(c, left, right) - direct) < 1e-9
+
+
+def test_bilinear_kernel_coprime_restriction_and_ramified_frequency():
+    """A noncoprime pair is excluded; a factor dividing c gives an actual zero."""
+    import pytest
+
+    from reciprocity_spectra.bilinear import (
+        SquarefreeModulus,
+        bilinear_kernel,
+        direct_gauss_sum,
+        kernel_exponent,
+        normalized_gauss_sum,
+        symbol_exponent,
+    )
+    from reciprocity_spectra.bilinear import reciprocity_sign as local_sign
+
+    pi, conjugate = primary_eisenstein_primes(7)
+    m, n = SquarefreeModulus((pi,)), SquarefreeModulus((conjugate, 5))
+    shared = SquarefreeModulus((pi, 5))
+    assert kernel_exponent(m, shared) is None
+    assert bilinear_kernel((1, 0), m, shared) == 0j
+    with pytest.raises(ValueError, match="coprime"):
+        local_sign(m, shared)
+    assert symbol_exponent(m.element, shared) is None
+    assert normalized_gauss_sum(m.element, shared) == 0j
+    assert abs(direct_gauss_sum(m.element, shared)) < 1e-9
+    assert bilinear_kernel(m.element, m, n) == 0j
+    assert abs(abs(normalized_gauss_sum((1, 0), shared)) - 1) < 1e-10
+
+
 def test_conjugate_ratio_symbol_is_two_adic():
     """(conj pi / pi)_6 = +-1 is a function of (a, b) mod 4 only, and +1 when p = 3 (mod 4)."""
     table = {}
@@ -492,6 +642,31 @@ def test_conjugate_ratio_symbol_is_two_adic():
         if pi.p % 4 == 3:
             assert k == 0
         assert table.setdefault((pi.a % 4, pi.b % 4), k) == k
+
+
+def test_sixth_power_twist_invariance_refutes_unreduced_strength_norm():
+    """u=64 is a sixth power with no prime divisor in the matrix index.
+
+    Character equality gives vector/Rayleigh equality at every scale; the
+    unreduced norm law instead requires relative excess 1/4. The general
+    identity is tested away from prime divisors of the sixth-power base.
+    """
+    from fractions import Fraction
+
+    from reciprocity_spectra.arith import _mul_w
+
+    for rho in primary_eisenstein_primes(1000):
+        assert sextic_residue_exponent(64, 0, rho) == 0
+        for base in [(2, 0), (1, -1), (-1, -3)]:
+            if sextic_residue_exponent(*base, rho) is None:
+                continue
+            power = (1, 0)
+            for _ in range(6):
+                power = _mul_w(power, base)
+            for u in [(1, 0), (0, 1), (2, 0), (rho.a, rho.b)]:
+                assert sextic_residue_exponent(*_mul_w(u, power), rho) == sextic_residue_exponent(*u, rho)
+    assert 64**2 == 4**6
+    assert Fraction(1, 4) != 1
 
 
 def test_mod4_unit_group_and_two_adic_characters():

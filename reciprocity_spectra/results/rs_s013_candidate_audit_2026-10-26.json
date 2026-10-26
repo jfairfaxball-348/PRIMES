@@ -1,0 +1,134 @@
+{
+  "session": "RS-S013",
+  "date": "2026-10-26",
+  "stage": [
+    "falsification",
+    "certification"
+  ],
+  "created_at": "2026-10-26T07:24:51.921430+00:00",
+  "execution_environment": "local Windows; standard-library recomputation of committed evidence",
+  "code_commit": "68d19bde1cbe3c4cd1eaf353f721eba97edfadcf",
+  "audit_scope": "No new scale; reread frozen RS-S012 rows and certify an exact sixth-power invariance obstruction. Source evidence unchanged.",
+  "sources": [
+    {
+      "path": "reciprocity_spectra/results/phase1j_2026-10-25.json",
+      "sha256": "521f97a58cd298b6711d6722b5d61130ea52be58b66c4eb4fdde2901121cd1b8"
+    },
+    {
+      "path": "reciprocity_spectra/scripts/phase1j.py",
+      "sha256": "108b2ce2f80a1a1ac82ee4dccba055377cf24a9a00439aa95b6e342f9e2d00b1"
+    }
+  ],
+  "registration": {
+    "commit": "09712700a7f8bc8e11ab94d1eed395fc6e432258",
+    "prediction_matches_frozen_run_file": true,
+    "prediction": {
+      "id": "RS-S012-LAW-SEXTIC",
+      "mode": "sextic",
+      "X": 1000000,
+      "norm_max": 100,
+      "mean_min": 0.9,
+      "mean_max": 1.0,
+      "sd_max": 0.035,
+      "prediction": "Sextic, X = 1e6 (beyond all sextic twist data): over all \"+\" twists by +-primary u coprime to 3, 1 < N(u) <= 100 (80 twists), the ratio (r_u^2-1) N(u)^(1/6)/(r_1^2-1) has mean in [0.90, 1.00] and sd <= 0.035; and every +-primary r_u > 1 while every non-primary associate with N(u) <= 13 has r_u < 1.",
+      "basis": "mean 0.951, 0.899, 0.920, 0.936 and sd 0.074, 0.040, 0.038, 0.028 at X = 2e4, 8e4, 3.2e5, 6.4e5 (80 twists); Astra Q2 predicts exponent -1/6 with a u-independent constant."
+    }
+  },
+  "finite_recomputation": {
+    "source_code_commit": "175f3686751e0949a7d94ac6e299a5b1d3d320d3",
+    "X": 1000000,
+    "D": 78462,
+    "seeds": null,
+    "method": "Select every stored pm_primary row with 1 < norm <= 100. Compute (r*r-1)*norm**(1/6)/(r_u1*r_u1-1); use population standard deviation. Recheck all original inequalities.",
+    "original": {
+      "ratio_n": 78,
+      "ratio_mean": 0.9426628358681987,
+      "ratio_sd": 0.02176255398638871,
+      "r_u1": 1.4342110940043258,
+      "max_r_other_associates": 0.9840004489998705,
+      "min_r_pm_primary": 1.2014012924866115,
+      "prediction_outcomes": [
+        {
+          "id": "RS-S012-LAW-SEXTIC",
+          "outcome": "PASS"
+        }
+      ]
+    },
+    "selection_defect": "phase1j.run uses the cubic special case ncf=1 at u=+/-8 in sextic mode too, so both valid sextic rows were omitted from aggregate statistics.",
+    "omitted_rows": [
+      {
+        "u": [
+          -8,
+          0
+        ],
+        "norm": 64,
+        "r": 1.223692557032458,
+        "correct_ratio": 0.9412329435695991
+      },
+      {
+        "u": [
+          8,
+          0
+        ],
+        "norm": 64,
+        "r": 1.223692557032458,
+        "correct_ratio": 0.9412329435695991
+      }
+    ],
+    "corrected": {
+      "ratio_n": 80,
+      "ratio_mean": 0.9426270885607334,
+      "ratio_sd": 0.021489959842676997,
+      "criteria": {
+        "mean_in_registered_interval": true,
+        "population_sd_at_most_registered_max": true,
+        "all_pm_primary_r_gt_1": true,
+        "all_tested_other_associates_norm_le_13_r_lt_1": true
+      },
+      "outcome": "PASS"
+    }
+  },
+  "exact_obstruction": {
+    "u": [
+      64,
+      0
+    ],
+    "u_is_pm_primary": true,
+    "u_is_coprime_to_3": true,
+    "u_equals_v_to_sixth_with_v": [
+      2,
+      0
+    ],
+    "norm_u": 4096,
+    "index_contains_no_prime_dividing_v": true,
+    "proof": "Every degree-one split prime rho has odd norm p=1 mod 3, so rho does not divide 2. The multiplicative sextic character gives (64/rho)_6=(2/rho)_6^6=1. Thus w_64=w_1 and r_64=r_1 for every nonempty matrix index.",
+    "actual_relative_strength": {
+      "numerator": 1,
+      "denominator": 1
+    },
+    "statement_3_required_relative_strength_limit": {
+      "numerator": 1,
+      "denominator": 4
+    },
+    "actual_rescaled_ratio": {
+      "numerator": 4,
+      "denominator": 1
+    },
+    "statement_3_required_rescaled_ratio_limit": {
+      "numerator": 1,
+      "denominator": 1
+    },
+    "division_condition": "The relative-strength ratio is 1 whenever r_1^2-1 is nonzero. Statement 1 ensures it is eventually bounded away from zero. Hence the frozen conjunction of statements 1 and 3 is contradicted; convergence r_1->1 through nonzero values would not repair the ratio.",
+    "smallest_claim": "Smallest-norm nonunit integral sixth power coprime to 3: the smallest nonunit base norm coprime to 3 is 4, giving 4^6=4096. This is not a claim of the smallest counterexample to every possible refinement.",
+    "bounded_sanity_check": {
+      "method": "Exact integer Euler exponentiation via arith.sextic_residue_exponent(64,0,rho)",
+      "X": 1000,
+      "prime_ideal_count": 160,
+      "exponents_observed": [
+        0
+      ],
+      "all_zero": true
+    },
+    "disposition": "CAND-001 as the frozen three-statement package is REFUTED. Statements 1 and 2 are not refuted by this argument. Preserve the finite PASS, which covered norm<=100 and excluded norm4096. Any replacement statement needs explicit new formulation and lifecycle handling; do not silently substitute a sixth-power-free norm."
+  }
+}
