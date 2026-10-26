@@ -1,1 +1,2 @@
 import ReciprocitySpectra.Sextic
+import ReciprocitySpectra.Gauss
