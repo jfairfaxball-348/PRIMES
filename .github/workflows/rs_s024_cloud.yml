@@ -40,6 +40,8 @@ jobs:
         run: ruff check reciprocity_spectra/scripts
       - name: Full pytest
         run: pytest
+      - name: Export verified native sextic Gauss sums at X=200
+        run: python reciprocity_spectra/scripts/rs_s024_gauss_check.py --export
       - name: Frozen evidence audit checkers
         run: |
           python reciprocity_spectra/scripts/audit_strength.py --check
