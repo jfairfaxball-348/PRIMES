@@ -1623,3 +1623,27 @@ scaffold, and a Mathlib gap assessment.
 
 **Next dependency.** RS-S024: E7 and E4 via `MulChar`/`gaussSum`; the matrix and vector
 definitions; CAND-002 as a Lean `Prop`.
+
+### Owner note (2026-10-26): RS-S024 runs in the cloud
+
+The next session runs as a cloud session, not locally. Its prompt carries CLOUD EXECUTION NOTES,
+using the same method as the owner's Almost-Stacked-Proof `formal/`.
+
+**New `formalisation/cloud_setup.sh`.** It installs elan, takes the pinned toolchain from
+`lean-toolchain`, runs `lake exe cache get` for the pinned Mathlib commit, then builds the library
+and the checks.
+
+**Baseline the cloud session must reproduce.**
+
+- Standard axioms only.
+- Faithfulness 1764/1764.
+
+**Also in the notes.**
+
+- The container is ephemeral, so push often.
+- The engine compiles with gcc on Linux, and full pytest runs on Linux.
+- Palomar readiness:
+  - convert every file to the module system;
+  - Challenge/Solution, `comparator.json` and `formalization.yaml`, as in Almost-Stacked;
+  - an orphan `palomar/submission` snapshot;
+  - the owner uploads.

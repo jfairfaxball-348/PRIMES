@@ -6,6 +6,27 @@ itself is stated, not proved.
 
 ## Build
 
+### Fresh clone or cloud session
+
+Use the same method as Almost-Stacked-Proof `formal/`:
+
+```bash
+bash formalisation/cloud_setup.sh
+```
+
+The script:
+
+- installs elan if needed (the toolchain is pinned by `lean-toolchain`);
+- runs `lake exe cache get`, which fetches prebuilt Mathlib oleans for the pinned commit (several
+  GB);
+- builds the library and the checks.
+
+`.lake/` is never committed.
+
+### Local (owner's Windows machine)
+
+The Mathlib packages are already in `formalisation/.lake`. Add `~/.elan/bin` to `PATH`, then build:
+
 ```bash
 lake build ReciprocitySpectra
 ```
