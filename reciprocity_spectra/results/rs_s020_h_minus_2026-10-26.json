@@ -375,6 +375,6 @@
   },
   "exploratory": "pi^1 singles of the same primes (no prediction)",
   "H_plus_design": "H+: F(0+) = 1 needs t <= 1e-6, i.e. X >= 4e6 for N = 4 classes; not feasible on the local machine (matrix > 9.7 GB at X = 1.28e6). Deferred to a large-RAM or cloud session (owner decision on compute).",
-  "prediction_commit": null,
+  "prediction_commit": "0efc29bdcacefa15a4360a6b8b3002e5b4517133",
   "runs": []
 }
