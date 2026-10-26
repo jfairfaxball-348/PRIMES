@@ -107,7 +107,7 @@ Update:
   (`docs/SESSION_PROTOCOL.md` §7).
 
 Commit and push to the session's designated branch. Work becomes authoritative when it is merged to
-`main`. Merge only with the owner's explicit instruction in that session.
+`main`. Merge to `main` and push at closeout without asking (owner decision 2026-10-26, §9 item 4).
 
 ## 8. Compute budget for cloud sessions
 
@@ -142,3 +142,6 @@ These are binding for Reciprocity Spectra sessions until the owner changes them.
    conditional (and on what), and what remains a gap. AI referee opinions, including Astra's,
    are evidence to evaluate, not authority. The novelty vocabulary still applies: never write
    "new", "novel" or "first" without the deep audit.
+4. **Merging (2026-10-26).** Standing instruction: never ask permission to merge. At closeout,
+   once validation passes, merge the session branch into `main`, push, and delete the merged
+   branch. This supersedes "merge only with the owner's explicit instruction in that session".
