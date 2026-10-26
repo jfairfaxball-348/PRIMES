@@ -1,4 +1,4 @@
-import ReciprocitySpectra.Gauss
+import ReciprocitySpectra.CharacterBridge
 
 /-! Axiom audit: only the standard Lean axioms are permissible. -/
 
@@ -18,3 +18,5 @@ open ReciprocitySpectra
 #print axioms gauss_modulus_sq
 #print axioms gauss_shift
 #print axioms finite_gauss_orientation
+#print axioms rationalAddChar_primitive
+#print axioms rationalAddChar_apply
