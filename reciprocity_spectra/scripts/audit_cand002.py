@@ -10,6 +10,7 @@ the spread across X of half-decade bin means, and the pi^5 mean for t >= 3.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import math
 from datetime import UTC, datetime
@@ -52,6 +53,10 @@ def points():
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true',
+                        help='Compare against the committed RS-S022 record without writing it')
+    args = parser.parse_args()
     pts = points()
     out = {'date': datetime.now(UTC).date().isoformat(), 'scales': sorted({p['X'] for p in pts}),
            'n_points': len(pts), 'normalizations': {}}
@@ -67,8 +72,22 @@ def main():
         out['normalizations'][key] = {'collapse_roughness_k234': rough,
                                       'median_across_X_spread_of_bin_means': float(np.median(spreads)),
                                       'pi5_mean_t_ge_3': float(np.mean(p5)), 'pi5_n': len(p5)}
-    RESULT.write_text(json.dumps(out, indent=2) + '\n')
-    print(json.dumps(out, indent=1))
+    if args.check:
+        recorded = json.loads(RESULT.read_text(encoding='utf-8'))
+        assert out['scales'] == recorded['scales']
+        assert out['n_points'] == recorded['n_points']
+        assert out['normalizations'].keys() == recorded['normalizations'].keys()
+        for key, fields in out['normalizations'].items():
+            expected = recorded['normalizations'][key]
+            assert fields.keys() == expected.keys()
+            for name, actual in fields.items():
+                target = expected[name]
+                assert (math.isclose(actual, target, rel_tol=1e-12, abs_tol=1e-14)
+                        if isinstance(actual, float) else actual == target), (key, name)
+        print('RS-S022 CAND-002 audit: PASS (read-only)')
+    else:
+        RESULT.write_text(json.dumps(out, indent=2) + '\n')
+        print(json.dumps(out, indent=1))
 
 
 if __name__ == '__main__':
