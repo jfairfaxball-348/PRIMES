@@ -11,6 +11,14 @@ Next: RS-S014, a bounded invariant-formulation audit of the strength law.
 No automatic fallback, theorem graduation, or new candidate is authorized by
 this checkpoint; see `PROOF_ROUTE.md` section 7 and `NEXT_SESSION_PROMPT.md`.
 
+**Release gate (2026-10-26, PROTOCOL §10).** Before any paper or preprint, four stages run in
+order:
+
+1. the exact-identity inventory;
+2. Lean 4 formalization, in a separate public repository;
+3. Palomar registration;
+4. a draft that separates registered, paper-proved and conjectural claims.
+
 Each phase ends with:
 
 - updated `results/`;

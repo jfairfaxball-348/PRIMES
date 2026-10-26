@@ -1253,7 +1253,8 @@ remain anonymous and uncited: never name them.**
 - Orientation: (R₆w)_ρ = Σ_σ (ρ/σ)₆·w(σ), so the shift is u = ρκ directly, with no reciprocity
   factor.
 - The twisting prime is excluded, and the generators are primary.
-- No Lean formalizations exist. The "Palomar register" is unknown to us; no claim is made about it.
+- No Lean formalizations exist. The "Palomar register" is the Palomar registry, identified by the
+  owner and now a release gate (see below).
 - We also corrected our own RS-S018 typo: the exponent is 1/2 + 1/n, giving X^{2/3} for n = 6.
 
 **Decision.** Freezing CAND-002 is deferred. The candidate will be reformulated, as a ρ-averaged
@@ -1261,3 +1262,27 @@ crossover with conditional limiting claims, after the decisive tests.
 
 **Next.** RS-S019 runs pre-registered tests: prime versus unrestricted moduli, and a log-correction
 fit.
+
+### Owner decision (2026-10-26): Lean formalization and Palomar registration before any release
+
+The reviewer's question 7 referred to the Palomar registry of Lean-verified mathematics
+(https://palomar-registry.org/). The owner agrees: exact results must be formalized and registered
+before anything is released.
+
+The new stage is PROTOCOL §10, with §9 item 5 and an `AGENTS.md` graduation-rule note. It runs:
+
+1. exact-identity inventory;
+2. Lean 4 + Mathlib formalization, in a separate public repository;
+3. Palomar registration, with the IDs recorded;
+4. only then a draft, which labels every claim as registered, paper-proved or conjectural.
+
+**Facts from Palomar's own pages.**
+
+- Lean 4 Challenge/Solution modules from a fixed public GitHub commit.
+- The Lean FRO comparator, with no `sorry` or custom axioms.
+- `formalization.yaml` metadata.
+- Registration is not a journal green light.
+- Only proved statements are registered. Conjectures cannot be.
+
+**Status.** No formalization exists yet. Lean 4.35 is installed locally. Research sessions continue;
+the gate blocks release only.

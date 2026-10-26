@@ -4,7 +4,9 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. External review received (2026-10-26).** An anonymous
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. External review received (2026-10-26).** **Release gate added
+(PROTOCOL §10):** no paper or preprint is released until its exact results are formalized in Lean 4
+and registered on Palomar. No formalization exists yet. An anonymous
 expert reviewed the RS-S018 findings. Do not name or cite them.
 
 - No known result gives the crossover profile.

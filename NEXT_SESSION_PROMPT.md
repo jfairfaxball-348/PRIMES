@@ -1,5 +1,7 @@
 Run RS-S019 locally in C:\PRIMES (Windows; MSVC engine) on a new branch from main. Read `reciprocity_spectra/PROTOCOL.md` (sections 4–9), `reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md` (the reviewer is anonymous: never name or cite them), `reciprocity_spectra/RS_S018_COLLISION_AUDIT.md`, `reciprocity_spectra/RS_S016_CROSSOVER.md`, the RS-S015 to RS-S018 and review entries in `reciprocity_spectra/LEDGER.md`, and `scripts/phase1k.py` and `phase1m.py`.
 
+RELEASE GATE: no paper or preprint drafting (PROTOCOL section 10: Lean formalization and Palomar registration come first). This session is research only.
+
 STATE: the crossover law (s = F(N6/X) for classes without exponent 5) passed fresh-class tests (RS-S017), and the pi^5 deficit (s about -1.05 for t >> 1) passed in mean form. An anonymous expert suggests both come from prime-modulus first moments of shifted sextic Gauss sums with shift u = rho*kappa: the profile would be a rho-averaged shift-aspect crossover, and the pi^5 deficit possibly an opposite-sign prime-sieve term left once tau_6(p^5) = 0 removes the principal local term. Freezing CAND-002 is deferred.
 
 ONE BOUNDED UNIT, RS-S019: pre-registered decisive tests.

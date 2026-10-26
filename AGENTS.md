@@ -133,6 +133,10 @@ When a pattern is found, ask in this order:
 
 ## Graduation rule
 
+Release gate (Reciprocity Spectra, 2026-10-26): no paper or preprint is written for release until its
+exact results are formalized in Lean 4 and registered on the Palomar registry
+(`reciprocity_spectra/PROTOCOL.md` §10). Conjectural and numerical claims stay labelled as such.
+
 PRIMES is discovery infrastructure. A serious surviving theorem candidate should be frozen and exported to a dedicated proof repository rather than allowing this repository to become an unbounded proof-development tree.
 
 

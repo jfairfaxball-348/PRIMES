@@ -121,9 +121,10 @@ for n = 6. The reviewer's "X^{5/6} type" is read as a reference to the cubic ana
 - Q4: the exact normalization factor.
 - Q5b: a 1/log X fit.
 
-**Lean and the "Palomar register".** The programme has **no** Lean formalizations, and no entries
-in any external register. We do not know what the "Palomar register" refers to and make no claim
-about it. The exact identities are checked by pure-Python tests in
+**Lean and Palomar.** The programme has **no** Lean formalizations yet. "Palomar" is the Palomar
+registry of Lean-verified mathematics (https://palomar-registry.org/), as the owner identified. By
+owner decision, formalization and registration of the exact results is now a mandatory stage
+before any release (PROTOCOL §10). The exact identities are checked by pure-Python tests in
 `tests/test_reciprocity_spectra.py`.
 
 **Effect on the candidate.** Freezing CAND-002 in the RS-S018 §5 form is **deferred**. The

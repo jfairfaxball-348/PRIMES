@@ -145,3 +145,56 @@ These are binding for Reciprocity Spectra sessions until the owner changes them.
 4. **Merging (2026-10-26).** Standing instruction: never ask permission to merge. At closeout,
    once validation passes, merge the session branch into `main`, push, and delete the merged
    branch. This supersedes "merge only with the owner's explicit instruction in that session".
+5. **Release gate: formalization and registration (2026-10-26).** No paper, preprint, draft for
+   circulation or public claim of a result is written or released until the gate in §10 is passed.
+
+## 10. Release gate: Lean formalization and Palomar registration
+
+This is binding from 2026-10-26, by owner decision. It was prompted by the anonymous external
+review.
+
+**Registry.** [Palomar](https://palomar-registry.org/) is a public registry of machine-checked Lean 4
+proofs, incubated by the Lean FRO and ICARM. A registration records:
+
+- an exact commit of a public GitHub repository;
+- a Challenge/Solution pair of Lean modules: the formal statement, and its proof;
+- `formalization.yaml` metadata covering authorship, sources, automation and limitations.
+
+The Lean FRO comparator checks that the proof proves the recorded statement against a specified
+Mathlib, with no `sorry`, custom axioms or `Lean.ofReduceBool`. Submissions go through
+submit.palomar-registry.org; follow its how-to-submit page and policy rather than inferring the
+rules. Palomar states that registration is **not** a green light for journal submission.
+
+**Required stages, in order, before any writing for release.**
+
+1. **Exact-identity inventory.** List every exact statement a paper would rely on, for example:
+   - sixth-power invariance (uv⁶/ρ)₆ = (u/ρ)₆ away from ρ | v;
+   - (u⁵/ρ)₆ = conj((u/ρ)₆);
+   - the product-of-symbols class construction;
+   - the matrix-orientation identity (R₆w_κ)_ρ = Σ_σ conj(g̃₆(σ))·(ρκ/σ)₆;
+   - the cubic reduction of the reciprocal sextic product (RS-S013);
+   - the invariance lemma, which depends on BGL and so may be beyond reach.
+
+   Separate the inventory into three groups:
+   - (a) exact and formalizable;
+   - (b) proved only on paper, or dependent on unformalized literature;
+   - (c) conjectural or numerical.
+2. **Formalize** group (a) in Lean 4 with Mathlib, in a dedicated public repository. Under the
+   AGENTS.md graduation rule, this lives outside PRIMES. Record the Mathlib gaps found, for example
+   n-th power residue symbols in ℤ[ω] and Gauss sums.
+3. **Register** each formalized result on Palomar from a fixed commit. Record the Palomar ID and
+   version in `research/CONJECTURE_REGISTER.md` and `LEDGER.md`.
+4. **Draft only then.** Any paper or preprint must:
+   - mark every claim as Palomar-registered (with ID), proved on paper (with gaps stated), or
+     conjectural / numerical (with the pre-registered evidence);
+   - keep asymptotic laws conjectural unless proved. In particular, limiting enhancement is
+     conditional on a sextic Patterson-type prime asymptotic.
+5. The deep novelty audit (§9.2) and the owner's decision on external review also apply before
+   release.
+
+**Scope.** Exploratory and registered computations, collision audits and candidate records
+continue as before. The gate blocks release, not research. An external reviewer may be sent
+specific Palomar entries, once they exist, before a preprint circulates.
+
+**Current state (2026-10-26).** No Lean formalization exists yet. Lean 4.35 and lake are installed
+on the local machine.
