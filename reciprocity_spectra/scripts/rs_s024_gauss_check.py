@@ -14,10 +14,11 @@ import argparse
 import json
 import math
 import struct
+import subprocess
 from pathlib import Path
 
 from reciprocity_spectra.arith import primary_eisenstein_primes, sextic_gauss_sum
-from reciprocity_spectra.scripts.phase1 import DATA, build, compile_engine
+from reciprocity_spectra.scripts.phase1 import DATA, compile_engine
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "formalisation/fixtures/sextic_gauss_200.json"
@@ -27,13 +28,19 @@ TOL = 2e-12
 
 def native_values():
     compile_engine()
-    engine = build("sextic", X, gauss=True)
+    matrix = DATA / f"sextic_{X}.bin"
     path = DATA / f"sexticg_{X}.bin"
+    subprocess.run(
+        [str(DATA / "residue_engine"), "sextic", str(X), str(matrix), str(path)],
+        check=True, timeout=120,
+    )
+    metadata = matrix.read_bytes()
+    d = struct.unpack_from("i", metadata)[0]
+    index = [struct.unpack_from("qqq", metadata, 4 + 24 * j) for j in range(d)]
     raw = path.read_bytes()
-    if len(raw) != engine.d * 16:
+    if len(raw) != d * 16:
         raise AssertionError(f"Incorrect native Gauss length: {len(raw)}")
-    vals = [complex(*struct.unpack_from("dd", raw, 16 * j)) for j in range(engine.d)]
-    index = [(int(p), int(a), int(b)) for p, a, b in engine.meta]
+    vals = [complex(*struct.unpack_from("dd", raw, 16 * j)) for j in range(d)]
     return index, vals
 
 
