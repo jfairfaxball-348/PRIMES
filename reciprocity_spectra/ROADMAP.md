@@ -1,6 +1,6 @@
 # Roadmap
 
-**Current checkpoint: RS-S015 (2026-10-26): PROV-RS14 refuted at X = 10⁶; see the RS-S015 checkpoint below.** Previous: RS-S013 (2026-10-26), local execution. The Type II
+**Current checkpoint: RS-S016 (2026-10-26): finite-X crossover in N₆/X; PROV-RS16 awaits registered fresh-class tests (RS-S017).** Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
 product is exactly a locally signed cubic kernel. Generic large-sieve and
 unrestricted operator-norm approaches cannot reach the proposed sextic target;
 the route using actual arithmetic coefficients remains unresolved. CAND-001's
@@ -135,6 +135,12 @@ open questions are theoretical.
 - PROV-RS14 is REFUTED at X = 10⁶ (P1 and P3 FAIL; P2 PASS).
 - Exponents 3 and 4 decay faster than N₆^{−1/6}.
 - Next: RS-S016, exploratory X-dependence.
+
+**RS-S016 checkpoint:**
+
+- The decay is finite-X: the excess collapses in N₆/X.
+- PROV-RS16 is recorded.
+- Next: RS-S017, registered fresh-class tests.
 
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 

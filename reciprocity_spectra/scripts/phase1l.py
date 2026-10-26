@@ -117,7 +117,32 @@ def analyse():
                 slope, icept = np.polyfit(np.log([p[0] for p in pts]), np.log([p[1] for p in pts]), 1)
                 fits[f'k{k}_X{x}'] = {'n': len(pts), 'eps_power_of_N': float(slope),
                                       'const': float(np.exp(icept))}
-    doc['analysis'] = {'scales': xs, 'r_u1': {str(x): tab[x][0] for x in xs},
+    # Collapse in t = N6 / X^a: roughness = mean squared step of s after sorting by log t (a-scan),
+    # and half-decade bins of log10(N6/X) for exponents {2,3,4} pooled and for exponent 5.
+    def points(ks):
+        return [(n ** e, x, s) for x in xs for n, e, _, s in tab[x][3] if e in ks]
+
+    def rough(p, a):
+        z = sorted(p, key=lambda t: np.log(t[0]) - a * np.log(t[1]))
+        return float(np.mean(np.diff([t[2] for t in z]) ** 2))
+
+    grid = [round(v, 2) for v in np.linspace(0, 2, 41)]
+    scan = {}
+    for name, ks in (('k2', [2]), ('k3', [3]), ('k4', [4]), ('k234', [2, 3, 4]), ('k5', [5])):
+        v = [rough(points(ks), a) for a in grid]
+        scan[name] = {'best_a': grid[int(np.argmin(v))], 'roughness_best': min(v),
+                      'roughness_a0': v[0], 'roughness_a1': v[20]}
+    bins = {}
+    for name, ks in (('k234', [2, 3, 4]), ('k2', [2]), ('k3', [3]), ('k4', [4]), ('k5', [5])):
+        z = np.array([(np.log10(t / x), s) for t, x, s in points(ks)])
+        rows = []
+        for lo in np.arange(-6.0, 4.5, 0.5):
+            m = (z[:, 0] >= lo) & (z[:, 0] < lo + 0.5)
+            if m.sum():
+                rows.append({'log10_t_lo': float(lo), 'n': int(m.sum()), 'mean_s': float(z[m, 1].mean()),
+                             'sd_s': float(z[m, 1].std())})
+        bins[name] = rows
+    doc['analysis'] = {'collapse_a_scan': scan, 'collapse_bins_t_eq_N6_over_X': bins,'scales': xs, 'r_u1': {str(x): tab[x][0] for x in xs},
                        'D': {str(x): tab[x][1] for x in xs},
                        'random_phase_sd': {str(x): tab[x][2] for x in xs},
                        'group_mean_s': stats, 'decision_statistic_T': t, 'verdict': verdict,

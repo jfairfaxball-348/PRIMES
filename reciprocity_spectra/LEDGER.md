@@ -1056,3 +1056,40 @@ visible.
 
 **Next dependency.** RS-S016 (exploratory): decide whether the exponent-3 and exponent-4 decay is a
 finite-X effect or a different class law.
+
+### RS-S016 (2026-10-26): X-dependence of the class excess (EXPLORATORY)
+
+**Stage:** discovery and falsification, exploratory; no registration and no CAND. **Branch:**
+`rs-s016-x-dependence`. **Execution:** local Windows, MSVC engine. **Owner direction (this
+session):** if the exponent-3/4 decay is a finite-X effect, register a corrected class law;
+otherwise pivot to CAND-001 statement 2 plus law (B) and a prior-art audit.
+
+**Work.** `scripts/phase1l.py` reran the RS-S015 single-prime classes at X = 1.6·10⁵, 3.2·10⁵ and
+6.4·10⁵ (20 + 20 controls in total per X, seed 16). The decision rule was committed in `4cf7c60`,
+before the runs. The record is `results/rs_s016_x_dependence_2026-10-26.json`, and the write-up is
+`RS_S016_CROSSOVER.md`.
+
+**Result.**
+
+- T (k = 3, N ≥ 37) = 0.022, 0.129, 0.250 and 0.342 at the four X. This is monotone, with a gain
+  of 0.32, so the **verdict is finite-X**.
+- The excess collapses in t = N₆/X, with best exponent a = 1.0 for exponents {2,3,4} pooled. The
+  curve has a plateau of about 0.85, falls to about 0 near t ≈ 1, and is about −0.1 for t ≫ 1.
+- Exponent 5 has the opposite profile: about −1.1 for t ≫ 1, and about −0.2 at small t.
+- RS-S015's P1 and P3 failures are crossover effects. Its P2 / law (B) is the large-t regime.
+
+**PROV-RS16** is recorded in §4 of `RS_S016_CROSSOVER.md`:
+
+- (A″): a crossover law with a fixed-class limit c ∈ [0.80, 1.00];
+- (B″): the exponent-5 law;
+- the dichotomy restated in fixed-class form;
+- a falsification plan, Q1–Q4, on fresh classes at X = 10⁶ and 6.4·10⁵.
+
+**Validation.**
+
+- Targeted Ruff passes.
+- PYTHONUTF8=1 pytest: 321 passed and 3 skipped, with the fcntl exclusions as in RS-S015.
+- Both audit checkers pass.
+- No matrices are committed; `data/*.bin` were deleted.
+
+**Next dependency.** RS-S017: register Q1–Q4 verbatim, then run them.

@@ -883,3 +883,15 @@ pairs of the 4 smallest.
 - Every exponent-5 class is non-enhanced.
 - Exponents 1 and 2 keep s ≈ 0.86–0.95.
 - No CAND-002 is frozen.
+
+## RS-S016: crossover in N₆/X (EXPLORATORY; `RS_S016_CROSSOVER.md`)
+
+The pre-committed decision rule (`4cf7c60`) returned **finite-X**: the k = 3 statistic T went
+0.022 → 0.342 over X = 1.6·10⁵ … 10⁶.
+
+The class excess is approximately s = F(N₆/X). For exponents {2,3,4}, F has a plateau of about
+0.85 and crosses to about 0 at t ≈ 1. Exponent 5 instead goes to about −1.1 for t ≫ 1.
+
+**PROV-RS16** (provisional; not a CAND) consists of (A″), the crossover law with a positive
+fixed-class limit, and (B″), the exponent-5 law in the large-t regime. Its falsification plan Q1–Q4
+uses fresh classes and is to be registered before data.

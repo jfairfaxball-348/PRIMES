@@ -4,7 +4,19 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S015 is complete (2026-10-26).** It ran registered
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S016 is complete (2026-10-26).** It was exploratory.
+The RS-S015 exponent-3/4 failures are finite-X: under the pre-committed rule, T rose from 0.022 to
+0.342 over X = 1.6·10⁵ … 10⁶. The class excess collapses in t = N₆/X (plateau about 0.85,
+crossover near t ≈ 1). Law (B) for exponent 5 is the large-t regime.
+
+- PROV-RS16 (`reciprocity_spectra/RS_S016_CROSSOVER.md`) restates the class law and the dichotomy
+  in fixed-class form, with a crossover.
+- Next bounded unit: **RS-S017**, registered fresh-class tests Q1–Q4 at X = 10⁶ and 6.4·10⁵. There
+  is no owner-decision blocker.
+- If they fail, the owner-agreed fallback is CAND-001 statement 2 plus law (B), with a prior-art
+  audit.
+
+Previous (RS-S015): RS-S015 is complete (2026-10-26). It ran registered
 class tests of PROV-RS14 at X = 10⁶ (D = 78462), locally on Windows. The MSVC engine port is
 byte-identical to the stored Linux matrix digests.
 
