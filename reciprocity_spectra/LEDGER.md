@@ -1216,8 +1216,7 @@ NOVELTY_REQUIRES_EXPERT_REVIEW.
 
 ### Owner action (2026-10-26): external expert review requested
 
-After RS-S018, the owner sent an external expert (an established researcher on Gauss sums over
-primes and metaplectic theta functions) a review request. The request covers:
+After RS-S018, the owner sent an external expert a review request. The request covers:
 
 - the twist-class setup;
 - observations (1) the crossover law, (2) the π⁵ deficit and (3) the unit-class rule;
@@ -1231,3 +1230,34 @@ The expert is not named here without their consent.
 to evaluate, not authority. When it arrives, record its substance (with the expert's permission
 before naming them), and update the novelty statuses in `RS_S018_COLLISION_AUDIT.md` and
 `PRIOR_ART.md`.
+
+### External review received (2026-10-26, anonymous)
+
+The reply is recorded, paraphrased, in `EXTERNAL_REVIEW_2026-10-26.md`. **The reviewer asked to
+remain anonymous and uncited: never name them.**
+
+**Main points.**
+
+- Each coordinate of R₆w_κ is a prime-modulus first moment of shifted sextic Gauss sums with
+  u = ρκ. The universal profile could be a ρ-averaged shift-aspect crossover of the Kubota series
+  ψ₆(u, s). This would explain why N₆(κ), rather than N(rad κ), sets the scale.
+- No known result gives the profile.
+- Limiting claims must be conjectural, conditional on a sextic Patterson-type prime asymptotic.
+- The τ₆(π²) contrast may be a squaring and ρ-averaging effect. Test: split the rows by (ρ/π)₆.
+- The π⁵ deficit may be a prime-sieve term. Decisive test: prime versus unrestricted moduli.
+- The unit-class rule needs an exact normalization-factor calculation, (c_ρ/ρ)₆.
+- Fit a 1/log X correction to the plateau drift.
+
+**Our checks.**
+
+- Orientation: (R₆w)_ρ = Σ_σ (ρ/σ)₆·w(σ), so the shift is u = ρκ directly, with no reciprocity
+  factor.
+- The twisting prime is excluded, and the generators are primary.
+- No Lean formalizations exist. The "Palomar register" is unknown to us; no claim is made about it.
+- We also corrected our own RS-S018 typo: the exponent is 1/2 + 1/n, giving X^{2/3} for n = 6.
+
+**Decision.** Freezing CAND-002 is deferred. The candidate will be reformulated, as a ρ-averaged
+crossover with conditional limiting claims, after the decisive tests.
+
+**Next.** RS-S019 runs pre-registered tests: prime versus unrestricted moduli, and a log-correction
+fit.

@@ -4,7 +4,18 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S018 is complete (2026-10-26).** It was a collision
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. External review received (2026-10-26).** An anonymous
+expert reviewed the RS-S018 findings. Do not name or cite them.
+
+- No known result gives the crossover profile.
+- Proposed mechanism: a ρ-averaged shift-aspect crossover of sextic Gauss-sum first moments with
+  shift u = ρκ. Our matrix orientation gives this shift directly.
+- Limiting claims must be conditional on a sextic Patterson-type prime asymptotic.
+- The decisive suggested test is prime versus unrestricted moduli at exponent 5.
+- Freezing CAND-002 is deferred until reformulation.
+- Next: **RS-S019, pre-registered decisive tests.** There is no owner-decision blocker.
+
+Previous (RS-S018): RS-S018 is complete (2026-10-26).** It was a collision
 audit of the surviving core.
 
 - Statement 2's main term is conjecturally theory-implied (Patterson–Kubota residues). Its

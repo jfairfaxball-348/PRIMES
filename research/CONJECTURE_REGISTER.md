@@ -280,8 +280,10 @@ target. A corrected invariant statement needs explicit formulation and evidence.
 Surviving components still have unresolved Type I and arithmetic-coefficient
 Type II dependencies.
 
-**Next bounded action:** RS-S019, freezing the drafted crossover-law candidate as CAND-002, as
-specified in NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no
+**Next bounded action:** RS-S019, the reviewer-suggested decisive tests (prime versus unrestricted
+moduli; log-correction fit), as specified in NEXT_SESSION_PROMPT.md. Freezing CAND-002 is deferred
+until the statement is reformulated as a rho-averaged shift-aspect crossover with conditional limit
+claims (`reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md`). CAND-001 remains REFUTED; no
 replacement is allocated.
 The Type II closeout is PROOF_ROUTE.md section 7.
 

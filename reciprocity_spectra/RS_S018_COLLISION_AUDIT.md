@@ -58,7 +58,8 @@ This is registered PASS on 440 fresh classes (RS-S017 Q1, Q2 and Q4).
 - Hence the prime sum Σ_ρ g̃₆(ρ)·conj((u/ρ)₆) is the prime-restricted first moment of g̃₆(u, ·).
   Its expected main term is governed by τ₆(u).
 
-**Size.** For general n, Patterson's heuristic gives a first moment of order X^{1/2+1/(2n)} over
+**Size.** (The exponent was corrected 2026-10-26 from a mistyped 1/2 + 1/(2n); the values below
+were always 1/2 + 1/n.) For general n, Patterson's heuristic gives a first moment of order X^{1/2+1/n} over
 primes:
 
 - n = 3 gives X^{5/6} (proved under GRH; Dunn–Radziwiłł, Ann. of Math. 200 (2024), arXiv

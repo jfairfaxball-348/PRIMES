@@ -1,6 +1,6 @@
 # Roadmap
 
-**Current checkpoint: RS-S018 (2026-10-26): collision audit done; crossover-law candidate drafted; next RS-S019 freeze as CAND-002.** Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
+**Current checkpoint: external review received (2026-10-26, anonymous); CAND-002 freeze deferred; next RS-S019 decisive tests (prime vs unrestricted moduli).** Earlier: RS-S018, collision audit done, crossover-law candidate drafted. Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
 product is exactly a locally signed cubic kernel. Generic large-sieve and
 unrestricted operator-norm approaches cannot reach the proposed sextic target;
 the route using actual arithmetic coefficients remains unresolved. CAND-001's
