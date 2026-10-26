@@ -135,15 +135,14 @@ These are binding for Reciprocity Spectra sessions until the owner changes them.
    - sums over all squarefree moduli or Kubota-series residues;
    - function-field analogues;
    - results conditional on GRH.
-2. **External review.** An external human reviewer is **not** required in order to proceed to
-   freezing, candidate registration or proof work. This overrides the earlier "expert review
-   required before any claim" wording in `PRIOR_ART.md` and `LEDGER.md` for internal progress.
-   Before anything is **published or formally submitted**, a deep novelty audit is required.
-   After it, the owner decides on external review.
+2. **Novelty and external review (revised 2026-10-26).** The owner runs novelty assessment and
+   external review independently. They are **not gates** for freezing, formalization, registration,
+   writing, arXiv posting or journal submission. Sessions do not run novelty audits or seek review
+   unless the owner asks. Existing statuses and audits stay in the records as history.
 3. **Honesty requirements are unchanged.** Records must say exactly what is proved, what is
    conditional (and on what), and what remains a gap. AI referee opinions, including Astra's,
-   are evidence to evaluate, not authority. The novelty vocabulary still applies: never write
-   "new", "novel" or "first" without the deep audit.
+   are evidence to evaluate, not authority. Novelty wording in any draft follows the owner's
+   independent assessment. Sessions do not assert novelty on their own.
 4. **Merging (2026-10-26).** Standing instruction: never ask permission to merge. At closeout,
    once validation passes, merge the session branch into `main`, push, and delete the merged
    branch. This supersedes "merge only with the owner's explicit instruction in that session".
@@ -181,8 +180,9 @@ rules. Palomar states that registration is **not** a green light for journal sub
    - (a) exact and formalizable;
    - (b) proved only on paper, or dependent on unformalized literature;
    - (c) conjectural or numerical.
-2. **Formalize** group (a) in Lean 4 with Mathlib, in a dedicated public repository. Under the
-   AGENTS.md graduation rule, this lives outside PRIMES. Record the Mathlib gaps found, for example
+2. **Formalize** group (a) in Lean 4 with Mathlib in `formalisation/`, inside the PRIMES
+   repository. This is an owner decision of 2026-10-26: the owner's repositories keep their Lean
+   formalisations in-repo. Palomar registration needs the repository to be public on GitHub. Record the Mathlib gaps found, for example
    n-th power residue symbols in ℤ[ω] and Gauss sums.
 2b. **Formalize the conjecture statements** (owner decision, 2026-10-26). State each
    conjecture as a Lean `Prop` with no proof, using the same definitions as the lemmas. Record
@@ -200,7 +200,7 @@ rules. Palomar states that registration is **not** a green light for journal sub
    the class vectors at small X, and compare them byte-for-byte with the engine's output.
 3. **Register** each formalized result on Palomar from a fixed commit. Record the Palomar ID and
    version in `research/CONJECTURE_REGISTER.md` and `LEDGER.md`. Palomar registers proved results
-   only. Formal conjecture statements live in the public Lean repository. A conjecture collection
+   only. Formal conjecture statements live in `formalisation/`. A conjecture collection
    such as Google DeepMind's `formal-conjectures` may be considered, after checking its
    contribution criteria.
 4. **Draft only then.** Any paper or preprint must:
@@ -208,8 +208,8 @@ rules. Palomar states that registration is **not** a green light for journal sub
      conjectural / numerical (with the pre-registered evidence);
    - keep asymptotic laws conjectural unless proved. In particular, limiting enhancement is
      conditional on a sextic Patterson-type prime asymptotic.
-5. The deep novelty audit (§9.2) and the owner's decision on external review also apply before
-   release.
+5. Novelty assessment and external review are done independently by the owner. They are not
+   gates (§9.2).
 
 **Scope.** Exploratory and registered computations, collision audits and candidate records
 continue as before. The gate blocks release, not research. An external reviewer may be sent

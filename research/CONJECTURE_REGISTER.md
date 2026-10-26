@@ -499,7 +499,7 @@ Those are crossover effects under this statement.
   - the cubic reduction of the reciprocal sextic product (needs sextic reciprocity; RS-S013).
 - **(c) Conjectural:** CAND-002 (1)–(3), and Q-a to Q-d.
 
-**Next bounded action.** RS-S023, release-gate stage 1. Turn the inventory into precise statements,
+**RS-S023:** Lean formalisation started in `formalisation/`. E0–E3, E5 and E6 are proved, and faithfulness is 1764/1764. **Next bounded action.** RS-S024 (E7, E4, matrix definitions, CAND-002 as a `Prop`). **Earlier next action (done):** RS-S023, release-gate stage 1. Turn the inventory into precise statements,
 set up the Lean repository scaffold, and assess the Mathlib gaps. An optional mechanism session can
 run alongside.
 

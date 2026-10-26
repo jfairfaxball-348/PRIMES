@@ -4,7 +4,16 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S022 is complete (2026-10-26). CAND-002 is frozen
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S023 is complete (2026-10-26).** Formalisation has
+started in `formalisation/`, in-repo.
+
+- Proved in Lean, with no `sorry`: E0, E1, E2, E3, E5 and E6.
+- The faithfulness check against the engine passes: 1764 of 1764 entries.
+- Novelty assessment and external review are owner-run and not gates.
+- **Route:** formalise in Lean → Palomar → paper → arXiv → journal.
+- Next: **RS-S024:** E7, E4, the matrix definitions, and CAND-002 as a Lean `Prop`.
+
+Previous: RS-S022 is complete (2026-10-26). CAND-002 is frozen
 (CANDIDATE; NOVELTY_REQUIRES_EXPERT_REVIEW).** It is the shift-aspect crossover law for twisted
 sextic Gauss-sum vectors, plus the exponent-five deficit.
 

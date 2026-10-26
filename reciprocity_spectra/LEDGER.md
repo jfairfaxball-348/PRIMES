@@ -1590,3 +1590,36 @@ makes the scales coincide.
 
 **Next dependency.** RS-S023, release-gate stage 1: precise inventory statements, a Lean repository
 scaffold, and a Mathlib gap assessment.
+
+### RS-S023 (2026-10-26): owner decisions; release gate stage 1; Lean formalisation started
+
+**Owner decisions (2026-10-26).**
+
+- The Lean formalisation lives in `formalisation/` inside this repository, matching the owner's
+  other repositories. This is recorded in PROTOCOL §10 and AGENTS.md.
+- Novelty assessment and external review are done independently by the owner. They are **not
+  gates** (PROTOCOL §9.2 and §10.5 are revised).
+- The roadmap is now: formalise in Lean → Palomar registration → write the paper → arXiv preprint →
+  journal submission (`ROADMAP.md`).
+
+**Work.**
+
+- `RELEASE_INVENTORY.md` gives precise statements of E0–E9, L1–L2 and C1–C2, with tests, Lean
+  formulations and an effort rating.
+- **Mathlib assessment:** `gaussSum`, `gaussSum_mulShift`, `gaussSum_sq`, `MulChar` and Fermat are
+  available. There is no power-residue symbol and no Eisenstein-integer API. The route is therefore
+  `ZMod p` via ω ↦ r, as a documented modelling convention.
+- **The `formalisation/` Lean project.** It pins Lean v4.35.0 and Mathlib `56a005855ea1`, the
+  owner's Palomar-ready pin. The built packages were copied locally and are git-ignored.
+  - Proved: E0, E1, E2, E3, E5 and E6, with no `sorry` and standard axioms only.
+  - Faithfulness: all 1764 entries of the engine's X = 200 exponent matrix match the Lean
+    definition.
+
+**Validation.**
+
+- `lake build ReciprocitySpectra` and `lake build Checks` succeed.
+- PYTHONUTF8=1 pytest: 323 passed and 3 skipped.
+- Both audit checkers pass.
+
+**Next dependency.** RS-S024: E7 and E4 via `MulChar`/`gaussSum`; the matrix and vector
+definitions; CAND-002 as a Lean `Prop`.

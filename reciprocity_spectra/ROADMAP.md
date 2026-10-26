@@ -1,6 +1,6 @@
 # Roadmap
 
-**Current checkpoint: RS-S022 (2026-10-26): CAND-002 frozen; Phase 1 (settle the science) complete; next Phase 2 release gate, RS-S023 inventory + Lean scaffold.** Earlier: RS-S021, new-scale holdouts PASS. Earlier: RS-S020, H− PASSES on fresh primes. Earlier: RS-S019, π⁵ deficit intrinsic. Earlier: external review received (anonymous), CAND-002 freeze deferred. Earlier: RS-S018, collision audit done, crossover-law candidate drafted. Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
+**Current checkpoint: RS-S023 (2026-10-26): stage 1 (formalise in Lean) under way; E0–E3, E5 and E6 proved; faithfulness 1764/1764; next RS-S024.** Earlier: RS-S022, CAND-002 frozen. Earlier: RS-S021, new-scale holdouts PASS. Earlier: RS-S020, H− PASSES on fresh primes. Earlier: RS-S019, π⁵ deficit intrinsic. Earlier: external review received (anonymous), CAND-002 freeze deferred. Earlier: RS-S018, collision audit done, crossover-law candidate drafted. Earlier: RS-S017, (A″) PASSES on fresh classes. Earlier: RS-S016, finite-X crossover in N₆/X. Earlier: RS-S015, PROV-RS14 refuted at X = 10⁶. Previous: RS-S013 (2026-10-26), local execution. The Type II
 product is exactly a locally signed cubic kernel. Generic large-sieve and
 unrestricted operator-norm approaches cannot reach the proposed sextic target;
 the route using actual arithmetic coefficients remains unresolved. CAND-001's
@@ -11,61 +11,30 @@ Next: RS-S014, a bounded invariant-formulation audit of the strength law.
 No automatic fallback, theorem graduation, or new candidate is authorized by
 this checkpoint; see `PROOF_ROUTE.md` section 7 and `NEXT_SESSION_PROMPT.md`.
 
-## Route to arXiv and journals (agreed with the owner 2026-10-26)
+## Route to publication (owner, 2026-10-26; replaces the earlier six-phase route)
 
-**Phase 1: settle the science (research; about 3–5 sessions).**
+Phase 1, settling the science, is complete: CAND-002 was frozen in RS-S022. Novelty assessment and
+external review are done independently by the owner and are not stages or gates. The route has five
+stages, in order:
 
-- **RS-S019:** prime versus unrestricted moduli, the reviewer's decisive test; a 1/log X fit of the
-  plateau.
-- **RS-S020:** the ρ-partition test of the τ₆(π²) averaging; the exact unit-normalization factor.
-- **RS-S021:** reformulate as a ρ-averaged shift-aspect crossover with conditional limits; freeze
-  CAND-002; a registered holdout at a new X. This needs ≥ 32 GB RAM or cloud compute: **owner
-  decision**.
-- **RS-S022 (optional):** a heuristic mechanism predicting F from the Kubota-series functional
-  equation.
-- **Exits:** a normalization artefact, a failed holdout, or a collision in the deep audit.
-
-**Phase 2: release gate (PROTOCOL §10).**
-
-1. Exact-identity inventory.
-2. Lean 4 lemmas: character-level identities first. Reciprocity-dependent items are likely to stay
-   "paper-proved, gaps stated".
-3. Lean conjecture statements (§10.2b).
-4. Byte-for-byte faithfulness check (§10.2c).
-5. Palomar registration of the proved lemmas. **Owner action:** a public GitHub repository and
-   write-access proof.
-
-**Phase 3: pre-release.**
-
-- The deep novelty audit (§9.2).
-- Optionally, share the Palomar entries and an outline with the anonymous reviewer, who offered to
-  read a draft: **owner decision**. Never name or cite them without consent.
-
-**Phase 4: writing.** An experimental-mathematics paper:
-
-- definitions;
-- registered predictions and every outcome, including failures;
-- the Palomar-registered lemmas, with IDs;
-- the formal conjecture statements;
-- the prime-versus-all-moduli comparison;
-- a heuristic mechanism, labelled as such;
-- a reproducibility archive with a DOI;
-- an AI-use disclosure.
-
-**Phase 5: arXiv.** math.NT, possibly cross-listed to math.PR. A first-time unaffiliated submitter
-likely needs an endorser: **owner action**.
-
-**Phase 6: journal.** Experimental Mathematics is the natural fit. Mathematics of Computation,
-Research in Number Theory, or JTNB if the mechanism section is substantial. Review takes about 3–12
-months.
-
-**Release gate (2026-10-26, PROTOCOL §10).** Before any paper or preprint, four stages run in
-order:
-
-1. the exact-identity inventory;
-2. Lean 4 formalization, in a separate public repository;
-3. Palomar registration;
-4. a draft that separates registered, paper-proved and conjectural claims.
+1. **Formalise in Lean** (`formalisation/` in this repository; PROTOCOL §10):
+   - the exact-identity inventory E1–E9;
+   - Lean 4 + Mathlib definitions and proofs;
+   - CAND-002 as a Lean `Prop`;
+   - the byte-for-byte faithfulness check against the engine.
+2. **Palomar register** the proved lemmas from a fixed public commit. **Owner action:** the
+   repository must be public on GitHub, with write-access proof.
+3. **Write the paper** (experimental mathematics):
+   - definitions;
+   - every registered prediction and its outcome;
+   - Palomar IDs;
+   - the formal conjecture;
+   - the mechanism, labelled heuristic;
+   - a reproducibility archive;
+   - an AI-use disclosure.
+4. **arXiv preprint:** math.NT. **Owner action:** an endorsement if needed.
+5. **Journal submission:** Experimental Mathematics first. Mathematics of Computation, Research in
+   Number Theory or JTNB are alternatives.
 
 Each phase ends with:
 

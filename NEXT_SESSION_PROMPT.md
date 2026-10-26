@@ -1,14 +1,13 @@
-Run RS-S023 in C:\PRIMES on a new branch from main. Read `reciprocity_spectra/PROTOCOL.md` (section 10 in full; sections 2, 7 and 9), `AGENTS.md` (the graduation rule), CAND-002 in `research/CONJECTURE_REGISTER.md` (especially "Exact-identity inventory" and "Proof targets"), the RS-S022 LEDGER entry, `reciprocity_spectra/arith.py`, and the exact tests in `tests/test_reciprocity_spectra.py`. Lean 4.35 and lake are installed locally (~/.elan).
+Run RS-S024 in C:\PRIMES on a new branch from main. Read `reciprocity_spectra/PROTOCOL.md` section 10, `reciprocity_spectra/RELEASE_INVENTORY.md`, CAND-002 in `research/CONJECTURE_REGISTER.md`, `formalisation/README.md` and `formalisation/ReciprocitySpectra/Sextic.lean`. Lean: add ~/.elan/bin to PATH and run `lake build` in `formalisation/`. The Mathlib packages are already in formalisation/.lake (git-ignored).
 
-RELEASE GATE: no paper or preprint drafting.
+Novelty assessment and external review are owner-run and are not gates. Route: formalise in Lean -> Palomar -> paper -> arXiv -> journal.
 
-STATE: CAND-002 is frozen (CANDIDATE; NOVELTY_REQUIRES_EXPERT_REVIEW). Phase 1 (science) is done. Phase 2 (PROTOCOL section 10) starts here.
+STATE: proved with no sorry: E0, E1, E2, E3, E5 and E6. Faithfulness: 1764/1764 at X = 200.
 
-ONE BOUNDED UNIT, RS-S023: release-gate stage 1, plus the start of the Lean scaffold.
-1. Write `reciprocity_spectra/RELEASE_INVENTORY.md`: for each item E1–E9 and each paper-proved or conjectural item, give the precise mathematical statement, its Python test, its dependencies, and its proposed Lean formulation (types and definitions).
-2. Assess Mathlib (search the installed or fetched Mathlib sources) for: number fields and the cyclotomic or Eisenstein integers Z[omega]; residue fields of primes; power-residue symbols (likely absent); MulChar, AddChar, gaussSum and the |gaussSum|^2 = p results; ZMod. Record each gap, and the cheapest route (for example, working in ZMod p via omega's image r for split primes, with the residue-field isomorphism stated separately).
-3. Create the Lean project skeleton in a new sibling directory outside PRIMES (for example C:\PRIMES-lean or a path the owner prefers). The graduation rule keeps proof work out of PRIMES. Pin a Mathlib version. Write the definitions for the split-prime case in ZMod p (the symbol as an exponent mod 6 via Euler's criterion, the class exponent, the Gauss-sum vector), plus E3 and E5 stated and, if quick, proved. Add the computable faithfulness check (section 10.2c) at tiny X, against an exported engine fixture.
-4. Record which items look quick, medium or hard, and the order of formalization for RS-S024+.
-Do not publish anything. Creating a public GitHub repository and registering on Palomar are owner actions: ask only when a registrable lemma exists.
-
-Run targeted Ruff and PYTHONUTF8=1 pytest if any PRIMES code is touched, and both audit checkers. Close out under PROTOCOL section 7: merge PRIMES records to main, push and delete the branch without asking, with exactly one justified next prompt.
+ONE BOUNDED UNIT, RS-S024 (Lean):
+1. Build the sextic character chi_rho as a `MulChar (ZMod p) ℂ` from `sexticExp` (multiplicativity from E3; zero at 0). Prove it nontrivial (order 6).
+2. E7: |gaussSum chi psi|^2 = p for the primitive additive character psi(t) = e(t/p), using Mathlib's `gaussSum_mul_gaussSum_eq_card` (or `gaussSum_sq`) and the character's conjugation. Record the normalisation g~ = g/sqrt p.
+3. E4: the shifted Gauss-sum identity g(r, chi) = conj(chi(r)) g(1, chi) (`gaussSum_mulShift`), and the matrix-orientation identity as a finite-sum lemma.
+4. Define the finite index set of primary split primes with N <= X, the matrix R_X, the class vectors w_kappa and the statistics r, eps and s (computable where possible). Extend the faithfulness check to the normalized Gauss sums at X = 200, against an exported fixture, to a stated tolerance.
+5. State CAND-002 (1) and (2) as Lean `Prop`s, with every interpretive choice documented. State the conditional (3) with an abstract hypothesis H_P.
+Update `RELEASE_INVENTORY.md` status, `formalisation/README.md`, and the LEDGER. Run `lake build` (both targets), PYTHONUTF8=1 pytest, and both audit checkers. Close out under PROTOCOL section 7: merge to main, push and delete the branch without asking, with exactly one justified next prompt.

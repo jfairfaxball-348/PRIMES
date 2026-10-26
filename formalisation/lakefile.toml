@@ -1,0 +1,20 @@
+name = "reciprocity_spectra"
+version = "0.1.0"
+defaultTargets = ["ReciprocitySpectra"]
+
+[leanOptions]
+autoImplicit = false
+
+# Mathlib pinned to the exact commit tagged v4.35.0, matching `lean-toolchain` (same pin as the
+# owner's other Palomar-ready formalisations; Palomar requires an exact toolchain match).
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "ReciprocitySpectra"
+
+# Faithfulness check against the numerical engine (#eval; not part of any Palomar Solution).
+[[lean_lib]]
+name = "Checks"
