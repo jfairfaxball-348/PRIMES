@@ -121,3 +121,14 @@ specializations. No Challenge/Solution split or Palomar submission yet.
 Its large-t exponent-five condition and its compact-t crossover do
 not directly imply fixed-class X→∞ behaviour where t→0; additional
 arguments would be needed for the conditional fixed-class statement.
+
+## Owner priority switch (2026-10-26): mathematics first
+
+**No new Lean until the CAND-002 mathematical implication gap is resolved.**
+Existing kernel-checked lemmas and their validation are retained. The next
+session RS-S026, previously planned for the sextic `MulChar` bridge, is now a
+prime-level/matrix-level mathematical proof/repair session. See
+`../reciprocity_spectra/RS_CAND002_LOGICAL_BRIDGE_AUDIT.md` for the
+abstract countermodel, boundary-uniformity issue and H_P obligations.
+That countermodel does not refute the actual residue matrix or H_P.
+Palomar packaging is on hold.
