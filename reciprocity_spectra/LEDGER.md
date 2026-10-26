@@ -1286,3 +1286,14 @@ The new stage is PROTOCOL §10, with §9 item 5 and an `AGENTS.md` graduation-ru
 
 **Status.** No formalization exists yet. Lean 4.35 is installed locally. Research sessions continue;
 the gate blocks release only.
+
+### Owner decisions (2026-10-26): route to publication; formalize the conjectures too
+
+- The route to arXiv and journals is recorded in `ROADMAP.md`. It has six phases, from settling
+  the science to journal submission, with the owner decisions marked.
+- Conjecture statements will be formalized in Lean as `Prop`s, alongside the proved lemmas
+  (PROTOCOL §10.2b), with a computable faithfulness check against the engine (§10.2c).
+- Palomar registers proved results only, so the formal conjectures live in the public Lean
+  repository, possibly also in a conjecture collection after checking its criteria.
+- Known limits: theta-coefficient conditional hypotheses can only be stated abstractly;
+  reciprocity-dependent lemmas need reciprocity laws that Mathlib likely lacks.

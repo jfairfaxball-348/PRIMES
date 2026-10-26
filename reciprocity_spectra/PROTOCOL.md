@@ -182,8 +182,25 @@ rules. Palomar states that registration is **not** a green light for journal sub
 2. **Formalize** group (a) in Lean 4 with Mathlib, in a dedicated public repository. Under the
    AGENTS.md graduation rule, this lives outside PRIMES. Record the Mathlib gaps found, for example
    n-th power residue symbols in ℤ[ω] and Gauss sums.
+2b. **Formalize the conjecture statements** (owner decision, 2026-10-26). State each
+   conjecture as a Lean `Prop` with no proof, using the same definitions as the lemmas. Record
+   every interpretive choice the formalization forces:
+   - quantifier order;
+   - the admissible classes;
+   - the uniformity family;
+   - X real or a sequence;
+   - r₁² − 1 bounded away from 0.
+
+   Conditional hypotheses that need theta coefficients, i.e. residues of Kubota series, are beyond
+   Mathlib. State them abstractly ("the prime first moment has asymptotic c(u)·X^{2/3}/log X for
+   some c"), and record that this is not identified with τ₆.
+2c. **Faithfulness check.** Make the Lean definitions computable. Evaluate the symbol matrix and
+   the class vectors at small X, and compare them byte-for-byte with the engine's output.
 3. **Register** each formalized result on Palomar from a fixed commit. Record the Palomar ID and
-   version in `research/CONJECTURE_REGISTER.md` and `LEDGER.md`.
+   version in `research/CONJECTURE_REGISTER.md` and `LEDGER.md`. Palomar registers proved results
+   only. Formal conjecture statements live in the public Lean repository. A conjecture collection
+   such as Google DeepMind's `formal-conjectures` may be considered, after checking its
+   contribution criteria.
 4. **Draft only then.** Any paper or preprint must:
    - mark every claim as Palomar-registered (with ID), proved on paper (with gaps stated), or
      conjectural / numerical (with the pre-registered evidence);

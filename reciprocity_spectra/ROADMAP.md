@@ -11,6 +11,54 @@ Next: RS-S014, a bounded invariant-formulation audit of the strength law.
 No automatic fallback, theorem graduation, or new candidate is authorized by
 this checkpoint; see `PROOF_ROUTE.md` section 7 and `NEXT_SESSION_PROMPT.md`.
 
+## Route to arXiv and journals (agreed with the owner 2026-10-26)
+
+**Phase 1: settle the science (research; about 3–5 sessions).**
+
+- **RS-S019:** prime versus unrestricted moduli, the reviewer's decisive test; a 1/log X fit of the
+  plateau.
+- **RS-S020:** the ρ-partition test of the τ₆(π²) averaging; the exact unit-normalization factor.
+- **RS-S021:** reformulate as a ρ-averaged shift-aspect crossover with conditional limits; freeze
+  CAND-002; a registered holdout at a new X. This needs ≥ 32 GB RAM or cloud compute: **owner
+  decision**.
+- **RS-S022 (optional):** a heuristic mechanism predicting F from the Kubota-series functional
+  equation.
+- **Exits:** a normalization artefact, a failed holdout, or a collision in the deep audit.
+
+**Phase 2: release gate (PROTOCOL §10).**
+
+1. Exact-identity inventory.
+2. Lean 4 lemmas: character-level identities first. Reciprocity-dependent items are likely to stay
+   "paper-proved, gaps stated".
+3. Lean conjecture statements (§10.2b).
+4. Byte-for-byte faithfulness check (§10.2c).
+5. Palomar registration of the proved lemmas. **Owner action:** a public GitHub repository and
+   write-access proof.
+
+**Phase 3: pre-release.**
+
+- The deep novelty audit (§9.2).
+- Optionally, share the Palomar entries and an outline with the anonymous reviewer, who offered to
+  read a draft: **owner decision**. Never name or cite them without consent.
+
+**Phase 4: writing.** An experimental-mathematics paper:
+
+- definitions;
+- registered predictions and every outcome, including failures;
+- the Palomar-registered lemmas, with IDs;
+- the formal conjecture statements;
+- the prime-versus-all-moduli comparison;
+- a heuristic mechanism, labelled as such;
+- a reproducibility archive with a DOI;
+- an AI-use disclosure.
+
+**Phase 5: arXiv.** math.NT, possibly cross-listed to math.PR. A first-time unaffiliated submitter
+likely needs an endorser: **owner action**.
+
+**Phase 6: journal.** Experimental Mathematics is the natural fit. Mathematics of Computation,
+Research in Number Theory, or JTNB if the mechanism section is substantial. Review takes about 3–12
+months.
+
 **Release gate (2026-10-26, PROTOCOL §10).** Before any paper or preprint, four stages run in
 order:
 
