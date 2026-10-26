@@ -862,3 +862,24 @@ n-th order large sieve (BGL Thm 1.3), with a convention-matching caveat.
 
 **PROV-RS14** (provisional; not a CAND). Its statements (A)–(D) and a powered falsification plan,
 P1–P3, are in the audit. They are to be registered before any X = 10⁶ class run.
+
+## RS-S015: registered class tests of PROV-RS14 at X = 10⁶ (scored verbatim)
+
+The registration is `552f5b7`. The record is `results/rs_s015_class_tests_2026-10-26.json`. It has
+250 classes: singles π^k over the 20 smallest primary primes, and all exponent pairs over the 6
+pairs of the 4 smallest.
+
+| ID | Outcome |
+|---|---|
+| RS-S015-P1 (A: mean s ∈ [0.90, 1.00], sd ≤ 0.05) | **FAIL**: 0.791, sd 0.215 |
+| RS-S015-P2 (B: k = 5 singles r < 1; mean s ∈ [−1.30, −0.80]) | **PASS**: max r 0.982; mean −1.050 |
+| RS-S015-P3 (exponent-5 classes r < 1.02; {1,2,3}-classes r > 1.05) | **FAIL**: first clause PASS (0.992); second fails on 16 classes; smallest failing is π₇³π₁₃² (N₆ = 57967, r = 1.049) |
+| RS-S015-P4 (exploratory, exponent 4) | (4): s = 0.19; (4,4): −0.07; (1,4): 0.70; (4,5): −1.06 |
+
+**Status.**
+
+- PROV-RS14 is **REFUTED** as stated: (A) fails at exponent 3, and (D) fails at exponents 3 and 4.
+- (B) passes at X = 10⁶.
+- Every exponent-5 class is non-enhanced.
+- Exponents 1 and 2 keep s ≈ 0.86–0.95.
+- No CAND-002 is frozen.

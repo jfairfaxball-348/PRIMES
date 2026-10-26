@@ -987,3 +987,72 @@ w_κ = conj(g̃₆)·Π(π/·)₆^e, and s = ε·N₆^{1/6}.
 
 **Decision rule.** Freeze CAND-002 only if P1, P2 and P3 all PASS. A failure of P1 or P3 refutes
 PROV-RS14 as stated. The prediction commit hash is recorded in the JSON (`prediction_commit`).
+
+### RS-S015 outcomes (scored verbatim against `552f5b7`; prediction_commit in the JSON)
+
+The record is `results/rs_s015_class_tests_2026-10-26.json` (`runs`, `score`). Runs:
+
+- singles (101 products and 20 controls): 664 s;
+- pairs: run separately.
+
+r₁ = 1.4342110940043258 in both parts. This is identical to the stored Linux X = 10⁶ value
+(RS-S012). The controls are:
+
+- random-phase: max 1.0043, sd 0.0022;
+- conj(g̃₆)·roots: max 1.0022.
+
+| Prediction | Outcome | Numbers |
+|---|---|---|
+| P1 | **FAIL** | mean s = 0.791, sd = 0.215 over 114 {1,2,3}-classes |
+| P2 | **PASS** | max r = 0.982 over 11 k = 5 singles with 19 ≤ N ≤ 61; mean s = −1.050 for N ≥ 19 |
+| P3 | **FAIL** | exponent-5 clause PASS (max r = 0.992 over 74 classes); {1,2,3} clause FAIL on 16 classes |
+| P4 | exploratory | see the table below |
+
+**The smallest failing class** by N₆ is π₇³·π₁₃², with (a, b) = (−1, −3)³ and (−4, −3)²,
+N₆ = 57967 and r = 1.049. Clear failures:
+
+- π₇₃³: r = 1.009;
+- (3,3) on π₇·π₁₃: r = 0.998, at the random level.
+
+**Mean s by exponent pattern** (s = ε·N₆^{1/6}; (A) predicts about 0.95):
+
+| pattern | s | pattern | s | pattern | s |
+|---|---:|---|---:|---|---:|
+| (1) | 0.952 | (1,1) | 0.938 | (4) | 0.190 |
+| (2) | 0.863 | (1,2) | 0.866 | (4,4) | −0.072 |
+| (3) | 0.577 | (2,2) | 0.844 | (5) | −0.913 |
+| (1,3) | 0.859 | (2,3) | 0.717 | (5,5) | −0.844 |
+| (3,3) | 0.386 | (1,4) | 0.701 | (4,5) | −1.057 |
+
+**Single-prime trend.** For k = 3, s falls from 0.94 at N = 4 to 0.14 at N = 73. For k = 4, r ≤ 1
+when N ≥ 31. The RS-S014 k = 3 and k = 4 evidence came from N ≤ 13 only, where the decay is not yet
+visible.
+
+**Disposition.**
+
+- **PROV-RS14 is REFUTED as stated.** (A) fails at exponent 3. (D) fails: classes with every
+  exponent in {1, …, 4}, such as (4), (4,4), (3,3) and (3,4), are not enhanced at large N₆.
+- (B) survives as a registered PASS (P2).
+- Every class containing an exponent 5 has r < 1, which is consistent with the second half of (D).
+- Per the decision rule, **no CAND-002 is frozen.** CAND-001 remains REFUTED.
+
+**Validation.**
+
+- Targeted Ruff passes.
+- `audit_strength.py --check` and `audit_invariance.py --check` pass. The invariance checker now
+  writes POSIX source paths, which fixes a Windows-only mismatch; the record is unchanged.
+- Local pytest (`PYTHONUTF8=1`): 321 passed, 3 skipped.
+- Windows exclusions: `tests/test_e010.py`, `test_e010_runtime.py` and `test_e011.py`, because the
+  frozen D1 experiments import POSIX `fcntl`.
+- Without `PYTHONUTF8`, `test_note_tables_match_results` fails on cp1252 decoding; this is a
+  Windows locale issue only.
+
+**Commits.**
+
+- `552f5b7`: engine port, runner, test and registration;
+- `c953114`: prediction commit;
+- `32b88fb`: singles run;
+- the pairs run and the closeout commits that follow it.
+
+**Next dependency.** RS-S016 (exploratory): decide whether the exponent-3 and exponent-4 decay is a
+finite-X effect or a different class law.

@@ -203,6 +203,12 @@ law on sixth-power classes is untested and is not substituted below.
   has the wrong sign for exponent 5.
 - Statement 2 is unaffected.
 
+**RS-S015 registered class tests (2026-10-26), no new ID allocated.** PROV-RS14 was tested at
+X = 10⁶ on 250 sixth-power classes and is REFUTED as stated. The outcomes are P1 FAIL, P2 PASS and
+P3 FAIL. The smallest failing class is π₇³π₁₃² (r = 1.049). Exponent-3 and exponent-4 classes lose
+their enhancement as N grows, e.g. π₇₃³ (r = 1.009) and (3,3) on π₇π₁₃ (r = 0.998). The
+exponent-5 law (B) passes. The gate failed, so no replacement (CAND-002) is frozen.
+
 **Discovery provenance:** RS-S005–RS-S006 (sextic cluster, then the twist Rayleigh quotients).
 This was model-first, with no blind protocol.
 
@@ -255,8 +261,9 @@ target. A corrected invariant statement needs explicit formulation and evidence.
 Surviving components still have unresolved Type I and arithmetic-coefficient
 Type II dependencies.
 
-**Next bounded action:** RS-S014 invariant-formulation audit, as specified in
-NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no replacement is allocated.
+**Next bounded action:** RS-S016, an exploratory study of the X-dependence of the exponent-3 and
+exponent-4 classes, as specified in NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no
+replacement is allocated.
 The Type II closeout is PROOF_ROUTE.md section 7.
 
 ## Template

@@ -218,6 +218,8 @@ def score():
                'clause_low_pass': bool(all(c['r'] > 1.05 for c in low))},
     }
     out['P3']['pass'] = out['P3']['clause_5_pass'] and out['P3']['clause_low_pass']
+    failing = sorted((c for c in low if c['r'] <= 1.05), key=lambda t: t['N6'])
+    out['P3']['smallest_failing_low'] = failing and {k: failing[0][k] for k in ('kappa', 'N6', 'r', 's')}
     by_pattern = {}
     for c in allc:
         by_pattern.setdefault(str(c['exponents']), []).append(c)

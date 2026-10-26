@@ -74,7 +74,7 @@ def audit():
                      'r_32_equals_conjugate_twist_of_2': r_inverse_of_2})
     return {'session': 'RS-S014', 'date': '2026-10-26', 'classification': 'AUDIT of stored evidence (no new matrices)',
             'definition': __doc__,
-            'sources': [{'path': str(p.relative_to(ROOT)), 'sha256_lf': lf_sha256(p)} for p in SOURCES],
+            'sources': [{'path': p.relative_to(ROOT).as_posix(), 'sha256_lf': lf_sha256(p)} for p in SOURCES],
             'runs': rows}
 
 

@@ -4,27 +4,20 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S014 is complete (2026-10-26).** It is an audit of
-stored evidence on sixth-power twist classes. No new matrices were built.
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S015 is complete (2026-10-26).** It ran registered
+class tests of PROV-RS14 at X = 10⁶ (D = 78462), locally on Windows. The MSVC engine port is
+byte-identical to the stored Linux matrix digests.
 
-- CAND-001's frozen package remains REFUTED (RS-S013; u = 64).
-- **RS-S014 obstruction O1.** Statement 1's universal form ("every ±primary u is enhanced") is
-  withdrawn. The exact identity (u⁵/ρ)₆ = conj((u/ρ)₆) makes the conjugate twists, the classes
-  π⁵ (for example r₃₂ = r₂⁽⁻⁾), part of it, and they are never enhanced (max r ≤ 1.014 over six
-  scales).
-- **RS-S014 obstruction O2.** The N₆^{−1/6} repair fits exponents 1–3 (constant 0.94 at
-  X = 6.4·10⁵ and 10⁶). It is open at exponent 4, and has the wrong sign at exponent 5
-  (ε·N^{5/6} ≈ −1 for N(π) ≥ 19).
-- Statement 2 (prime-level unit-class bias) stands.
-- A class-based provisional statement, PROV-RS14, has a powered falsification plan.
-- An exact lemma: any limit strength law is invariant under u → uv⁶, via the BGL large sieve with
-  a convention-matching caveat.
-- The RS-S013 Type II findings are unchanged: the generic route is ruled out, and the
-  arithmetic-coefficient route is open.
-- The RS-S013 audit checker's hash comparison is now independent of line endings (the CRLF vs LF
-  hash of the same file).
-- Next bounded unit: **RS-S015, register and run the PROV-RS14 class tests at X = 10⁶.** There
-  is no owner-decision blocker.
+- **PROV-RS14 is REFUTED as stated.** P1 FAIL, P2 PASS, P3 FAIL.
+- Exponent-3 and exponent-4 classes lose their enhancement as N grows: π₇₃³ has r = 1.009, and
+  (3,3) on π₇π₁₃ has r = 0.998. The smallest failing class is π₇³π₁₃² (r = 1.049).
+- Exponents 1 and 2 stay near the N₆^{−1/6} law (s ≈ 0.86–0.95).
+- The exponent-5 law (B) PASSES (mean s = −1.05), and every exponent-5 class has r < 1.
+- No CAND-002 is frozen. CAND-001 remains REFUTED; statement 2 stands.
+- Next bounded unit: **RS-S016 (exploratory)**, the X-dependence of the exponent-3 and exponent-4
+  class decay. There is no owner-decision blocker.
+- Earlier history: RS-S014 (O1 and O2 obstructions, the invariance lemma) and RS-S013 (Type II
+  findings) are unchanged.
 
 Prior RS-1/RS-3/RS-4/RS-6C/RS-7/RS-7a/RS-7b/RS-8/RS-9 evidence and statuses are unchanged except as
 recorded. Earlier failures remain failures. See `reciprocity_spectra/LEDGER.md`,
