@@ -148,7 +148,7 @@ statement leaves open:
    `Prop`s, and an independent native/Python Gauss fixture. Full sextic `MulChar` bridge open.
 2b. **RS-S025:** construct the sextic `MulChar` and primitive additive character, instantiate
     E7/E4, and settle zero shifts before claiming either exact identity complete.
-3. **RS-S026 (only after the sextic bridge):** the Challenge/Solution split, `comparator.json` and `formalization.yaml`, following
+3. **After full sextic bridge (not RS-S026 until proved):** the Challenge/Solution split, `comparator.json` and `formalization.yaml`, following
    `C:/Almost-Stacked-Proof/formal`. Then a local comparator run.
 4. **Owner action:** make the repository public on GitHub, then submit to Palomar.
 5. **Optional:** E8 and E9.
@@ -191,3 +191,26 @@ statement leaves open:
   either experimental asymptotic observation.
 - **Release:** no Palomar registration, manuscript or public result claim.
   Move to full sextic character formalization in RS-S025 before packaging.
+
+## RS-S025 checkpoint (2026-10-26)
+
+**Proved, standard Lean axioms only:** `rationalAddChar_primitive` and
+`rationalAddChar_apply` construct and certify the positive-sign canonical
+additive character on `ZMod p` (`NeZero p`). This discharges the abstract
+primitivity hypothesis of the future sextic E7 application, **not** the
+multiplicative-character hypothesis. Cloud run 40405177673 passed both
+Lean targets, printed axioms, 1764/1764 matrix fidelity, 366 Python tests,
+the 42-value Gauss fixture (max ~1.5e-15), targeted Ruff and both audits.
+
+**Open:** sextic `MulChar` with nontrivial order six, equality to the
+computable exponent-based `complexSymbol` (including zero), identification
+of the additive character's values with `rawGauss`'s direct exponential,
+E7/E4 specialization and zero shifts. E7/E4 are still generic-only.
+Next RS-S026 is another Lean bridge session: it is **not** Palomar
+packaging. Packaging remains blocked until these sextic identities are
+kernel checked.
+
+**CAND-002 (3) logic audit:** (2)'s large-`N(π)^5/X` regime cannot
+yield its fixed-prime conclusion. Additionally, (1)'s compact-uniform
+`t>0` statement does not give a fixed-class limit at `t→0`.
+The frozen conjecture remains unchanged and unproved.
