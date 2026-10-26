@@ -1127,3 +1127,50 @@ P(pass) ≈ 0.999.
 - A failure of Q1, Q2 or Q4 refutes (A″). A failure of Q3 refutes (B″).
 - If all four pass, draft (do not freeze) a replacement candidate.
 - Otherwise, record the smallest failing class and begin the fallback.
+
+### RS-S017 outcomes (scored verbatim against `df8f889`)
+
+The record is `results/rs_s017_fresh_classes_2026-10-26.json` (`runs`, `score`, `observed`,
+`post_data_note`).
+
+| X | r₁ | Run time | Random-phase max | conj(g̃₆)·roots max |
+|---|---:|---:|---:|---:|
+| 6.4·10⁵ | 1.41831 | 503 s | 1.0026 | 1.0059 |
+| 10⁶ | 1.43421 | 1148 s | 1.0025 | 1.0019 |
+
+Both r₁ values are identical to the earlier stored values.
+
+| ID | Outcome | Numbers |
+|---|---|---|
+| Q1 | **PASS** | 129 class-scale points with t ≤ 10⁻²; s ∈ [0.797, 0.936] |
+| Q2 | **PASS** | all 10 bins within 0.12 of frozen F; largest gap +0.081 at log t ∈ [0.5, 1) |
+| Q3 | **FAIL** | mean clause passes (−0.966 at 6.4·10⁵, −1.051 at 10⁶); per-class r < 1 fails on 30 of 224 points |
+| Q4 | **PASS** | 61 of 66 classes increase (0.924) |
+
+**Q3 failure.**
+
+- **Smallest failing class:** the π⁵ single on N = 307, π = (−1, −18), with r = 1.0002 at 6.4·10⁵.
+- All the failures lie inside control noise. The expected r under (B) is 0.996–0.9997, so the
+  per-class clause had no power at large N₆, and it was not power-filtered at registration. This
+  is a design defect, recorded as such and not re-scored.
+- One class is near z ≈ 3 at both X: π₇₉⁴·π₉₇⁵, with r = 1.0059 and 1.0053.
+
+**Disposition (decision rule).**
+
+- **(A″) survives** its registered fresh-class test: Q1, Q2 and Q4 all pass. F transferred to 149
+  unseen powered classes, including exponent 1, and to pairs.
+- **(B″) is refuted as stated** by Q3. Its mean form (s ≈ −1.05 at t ≫ 1) passes again.
+- Not all four Q passed, so **no replacement candidate is drafted**, and the owner-agreed fallback
+  begins.
+
+**Fallback scope.** The audit covers CAND-001 statement 2 and the mean form of law (B). It also
+covers (A″), now that (A″) has passed a registered test. This scope extension is stated openly here.
+
+**Validation.**
+
+- Targeted Ruff passes.
+- PYTHONUTF8=1 pytest: 321 passed and 3 skipped (fcntl exclusions).
+- Both audit checkers pass.
+- No matrices are committed.
+
+**Next dependency.** RS-S018: a collision-audit (prior-art and novelty) of the surviving core.

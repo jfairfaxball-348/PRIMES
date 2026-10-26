@@ -895,3 +895,22 @@ The class excess is approximately s = F(N₆/X). For exponents {2,3,4}, F has a 
 **PROV-RS16** (provisional; not a CAND) consists of (A″), the crossover law with a positive
 fixed-class limit, and (B″), the exponent-5 law in the large-t regime. Its falsification plan Q1–Q4
 uses fresh classes and is to be registered before data.
+
+## RS-S017: registered fresh-class tests of PROV-RS16 (scored verbatim against `df8f889`)
+
+There were 440 fresh classes, using primes with 79 ≤ N ≤ 400, at X = 6.4·10⁵ and 10⁶.
+
+| ID | Outcome |
+|---|---|
+| RS-S017-Q1 (no-5 classes with t ≤ 10⁻² have s ∈ [0.70, 1.00]) | **PASS**: 129 points, s ∈ [0.797, 0.936] |
+| RS-S017-Q2 (bin means within 0.12 of frozen F) | **PASS**: 10 of 10 bins; largest gap 0.081 |
+| RS-S017-Q3 (every 5-class has r < 1; π⁵ mean s ∈ [−1.25, −0.85]) | **FAIL**: mean clause passes (−0.97, −1.05); 30 of 224 points have r ≥ 1, all within control noise (an underpowered clause) |
+| RS-S017-Q4 (≥ 80% of crossover classes increase with X) | **PASS**: 0.924 |
+
+**Status.**
+
+- **(A″), the crossover law s = F(N₆/X) with a positive fixed-class limit, is STRESSED.** It
+  passed on unseen classes.
+- **(B″) is REFUTED as stated** (Q3). The mean form, s ≈ −1.05 for t ≫ 1, passed twice: RS-S015-P2
+  and RS-S017-Q3's mean clause.
+- No candidate is drafted. The next step is the collision-audit.

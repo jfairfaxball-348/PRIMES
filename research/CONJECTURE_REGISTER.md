@@ -215,6 +215,11 @@ The excess collapses in N₆/X, under a decision rule committed before the runs.
 fixed-class form, with a crossover. It awaits registered tests on fresh classes. No ID is
 allocated.
 
+**RS-S017 registered fresh-class tests (2026-10-26), no new ID.** PROV-RS16 (A″) PASSES on 440
+unseen classes (Q1, Q2 and Q4). (B″) fails as stated, through an underpowered per-class r < 1
+clause; its mean form passes. The decision rule therefore sends the work to the fallback: a
+collision-audit of statement 2, the mean form of law (B) and (A″).
+
 **Discovery provenance:** RS-S005–RS-S006 (sextic cluster, then the twist Rayleigh quotients).
 This was model-first, with no blind protocol.
 
@@ -267,8 +272,8 @@ target. A corrected invariant statement needs explicit formulation and evidence.
 Surviving components still have unresolved Type I and arithmetic-coefficient
 Type II dependencies.
 
-**Next bounded action:** RS-S017, registered fresh-class tests Q1–Q4 of PROV-RS16, as specified
-in NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no
+**Next bounded action:** RS-S018, a collision-audit (prior-art and novelty) of the surviving core,
+as specified in NEXT_SESSION_PROMPT.md. CAND-001 remains REFUTED; no
 replacement is allocated.
 The Type II closeout is PROOF_ROUTE.md section 7.
 

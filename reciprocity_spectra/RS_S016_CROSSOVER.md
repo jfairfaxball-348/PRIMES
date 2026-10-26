@@ -155,3 +155,9 @@ Failure of Q1, Q2 or Q4 refutes (A″) as stated. Failure of Q3 refutes (B″). 
 would a replacement candidate be considered. That candidate would cover the fixed-class dichotomy
 with crossover, together with CAND-001 statement 2, after the prior-art audit agreed for that
 branch.
+
+## 6. Outcome (RS-S017, registered)
+
+Q1, Q2 and Q4 PASS on 440 fresh classes, so (A″) is STRESSED. Q3 FAILS on its per-class r < 1
+clause; that clause was underpowered at large N₆. Its mean clause passes. See the RS-S017 entries
+in `LEDGER.md` and `CONJECTURES.md`.

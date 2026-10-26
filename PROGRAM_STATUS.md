@@ -4,7 +4,19 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S016 is complete (2026-10-26).** It was exploratory.
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S017 is complete (2026-10-26).** It ran registered
+fresh-class tests of PROV-RS16: 440 unseen classes at X = 6.4·10⁵ and 10⁶.
+
+- **(A″), the crossover law s = F(N₆/X), PASSES** Q1, Q2 and Q4. Every bin is within 0.08 of the
+  frozen F, and 92% of crossover classes rise with X.
+- **(B″) FAILS as stated** (Q3), on an underpowered per-class r < 1 clause: 30 of 224 points have
+  r ≥ 1, all within control noise. Its mean form, s ≈ −1.05 at t ≫ 1, passes again.
+- No candidate is drafted. The surviving core is CAND-001 statement 2, the mean form of law (B),
+  and (A″).
+- Next bounded unit: **RS-S018, a collision-audit (prior-art and novelty) of that core.** There is
+  no owner-decision blocker.
+
+Previous (RS-S016): RS-S016 is complete (2026-10-26).** It was exploratory.
 The RS-S015 exponent-3/4 failures are finite-X: under the pre-committed rule, T rose from 0.022 to
 0.342 over X = 1.6·10⁵ … 10⁶. The class excess collapses in t = N₆/X (plateau about 0.85,
 crossover near t ≈ 1). Law (B) for exponent 5 is the large-t regime.
