@@ -92,7 +92,7 @@ noncomputable def AbstractPrimeMomentHP : Prop :=
           ∀ u : Eis, 0 < eisNorm u →
             (eisNorm u : ℝ) ≤ B * (X : ℝ) →
               ‖shiftedFirstMoment X u -
-                c u * (((X : ℝ) ^ ((2 : ℝ) / 3)) / Real.log X)‖ ≤
+                c u * ((((X : ℝ) ^ ((2 : ℝ) / 3)) / Real.log X : ℝ) : ℂ)‖ ≤
                 ε * (((X : ℝ) ^ ((2 : ℝ) / 3)) / Real.log X)
 
 /-- Admissible fixed twist classes without exponent five (including 1). -/
