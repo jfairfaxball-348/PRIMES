@@ -3438,5 +3438,5 @@
     }
   ],
   "decision_rule": "Freeze CAND-002 only if P1, P2 and P3 all PASS. A failure of P1 or P3 refutes PROV-RS14 as stated; record the smallest failing class.",
-  "prediction_commit": null
+  "prediction_commit": "552f5b7f0c7c5583b5a3158632299f920c2e5022"
 }
