@@ -13179,6 +13179,6 @@
   ],
   "decision_rule": "Failure of Q1, Q2 or Q4 refutes (A\") as stated; failure of Q3 refutes (B\"). If Q1-Q4 all PASS, draft (do not freeze) a replacement candidate for collision-audit with CAND-001 statement 2. Otherwise record the smallest failing class and begin the owner-agreed fallback (prior-art audit of statement 2 plus law (B)).",
   "scale_note": "X = 1.28e6 (D = 98512, 9.7 GB matrix) skipped: 6.2 GB free RAM on this machine at registration.",
-  "prediction_commit": null,
+  "prediction_commit": "df8f889d5e246bc6da15040bfc235a2f3344e2e6",
   "power_note": "Pre-data, under PROV-RS16 (frozen F, sigma_s = 0.004*N6^(1/6)): 149 powered no-5 classes; Q1 has 61 (6.4e5) and 68 (1e6) class-scale points with t <= 1e-2; Q4 has 66 classes, expected increasing fraction 0.904, simulated P(Q4 pass) = 0.999. The pi^5 singles all have t >= 10^3.4 at 1e6."
 }
