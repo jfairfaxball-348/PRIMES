@@ -123,6 +123,13 @@ open questions are theoretical.
 - The sextic strength law θ_u² ∝ N(u)^{−1/6} holds (PASS at X = 10⁶), and is added to CAND-001.
 - Next: T2, the Type II crux.
 
+**RS-S014 checkpoint:**
+
+- The strength law and the dichotomy must be stated on sixth-power twist classes.
+- Exponents 1–3 follow N₆^{−1/6}; exponent 4 is open; exponent 5 has a negative excess.
+- CAND-001 statement 1's universal form is withdrawn.
+- PROV-RS14 awaits registered class tests at X = 10⁶.
+
 ## Phase 2: mechanisms (heuristic derivations, then comparison)
 
 1. **κ₃ (RS-1).** Heuristic: let `w = conj(g̃)`. By cubic reciprocity and twisted multiplicativity

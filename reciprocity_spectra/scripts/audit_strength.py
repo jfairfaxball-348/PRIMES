@@ -120,7 +120,13 @@ def check_record(path, prediction, run, corrected, omitted, sanity):
             content = (ROOT / source['path']).read_bytes()
             expected = source['sha256']
         digest = hashlib.sha256(content).hexdigest()
-        require(digest == expected, f"Source hash mismatch: {source['path']}")
+        # RS-S014: the RS-S013 record hashed a Windows CRLF checkout. Also accept the same content
+        # with normalized line endings, so the check is platform independent.
+        lf = content.replace(b'\r\n', b'\n')
+        candidates = {digest, hashlib.sha256(lf).hexdigest(),
+                      hashlib.sha256(lf.replace(b'\n', b'\r\n')).hexdigest()}
+        require(expected in candidates or source.get('sha256_lf') in candidates,
+                f"Source hash mismatch: {source['path']}")
     compare(prediction, record['registration']['prediction'], 'registered prediction')
     finite = record['finite_recomputation']
     for key in ('X', 'D'):

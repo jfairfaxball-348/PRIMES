@@ -328,3 +328,20 @@ The immediate next bounded unit is an invariant formulation audit and explicit
 repair decision for the strength statement; a sixth-power-free norm is only a
 possible repair, not an established law. CAND-001 must not be silently revived
 or renumbered. No theorem export or publication is justified by this session.
+
+
+## 8. RS-S014 consequence for the targets
+
+- H2, the matrix dichotomy, must be stated on **twist classes**: exponent vectors mod 6. It cannot
+  be stated on "±primary u", because u⁵ is ±primary and its twist is the conjugate twist, which is
+  not enhanced.
+- Any dispersion target has to produce three behaviours:
+  - a positive main term for exponents 1–3, with ε ∝ N₆^{−1/6};
+  - a **negative** excess of size about N^{−5/6} for exponent 5;
+  - the depletion of the non-primary associates.
+
+  This reinforces the RS-S013 finding that a positive squared-main-term ansatz (R2) cannot be the
+  whole story. A signed dispersion formula is required.
+- The cubic analogue of the exponent-5 behaviour is Patterson's τ₃(π²) = 0, at exponent n − 1.
+  Whether the sextic exponent-(n − 1) excess is a nonzero negative constant is a precise question
+  for T1. See `RS_S014_INVARIANCE_AUDIT.md`.

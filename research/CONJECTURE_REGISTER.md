@@ -192,6 +192,17 @@ law on sixth-power classes is untested and is not substituted below.
    - The cubic analogue is Patterson's law: r_u² − 1 ∝ N_cf(u)^{−1/3} on squarefree cube-free
      parts. It passed at X = 320000, with ratio 0.942 ± 0.019, and is a calibration of the method.
 
+**RS-S014 audit (2026-10-26), no new ID allocated.**
+
+- The exact identity (u⁵/ρ)₆ = conj((u/ρ)₆) puts the conjugate twists, the classes π⁵, inside
+  statement 1's "every ±primary u". For example, r₃₂ = r₂⁽⁻⁾ exactly.
+- At every computed scale those classes are at or below the random level (max r ≤ 1.014; r₃₂ ≈ 0.97).
+- Statement 1's **universal form is withdrawn**. A class-based provisional statement, PROV-RS14
+  (`reciprocity_spectra/RS_S014_INVARIANCE_AUDIT.md`), replaces it pending registered tests.
+- The sixth-power-free-norm repair of statement 3 holds for exponents 1–3, is uncertain for 4, and
+  has the wrong sign for exponent 5.
+- Statement 2 is unaffected.
+
 **Discovery provenance:** RS-S005–RS-S006 (sextic cluster, then the twist Rayleigh quotients).
 This was model-first, with no blind protocol.
 

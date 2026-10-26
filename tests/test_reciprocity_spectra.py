@@ -721,3 +721,49 @@ def test_twist_norm_equals_sum_of_twisted_prime_gauss_sums():
         assert abs(lhs - rhs) < 1e-8 * rhs
         assert diag == sum(1 for i in range(len(index)) for j in range(len(index))
                            if j != i and sym[j] is not None)
+
+
+def test_sextic_twist_classes_sixth_powers_and_inversion():
+    """Exact twist-class identities behind RS-S014.
+
+    (u v^6 / rho)_6 = (u/rho)_6 for rho not dividing v, and 0 if rho | v; (u^5/rho)_6 = conj((u/rho)_6),
+    so the "+" twist by u^5 is exactly the conjugate twist by u. The factorization reconstructs u,
+    and the sixth-power-free norm and twist class are invariant under u -> -u, conj(u), u v^6.
+    """
+    from reciprocity_spectra.arith import (
+        _mul_w,
+        eisenstein_factorization,
+        sextic_twist_class,
+        sixth_power_free_norm,
+    )
+
+    def power(x, k):
+        out = (1, 0)
+        for _ in range(k):
+            out = _mul_w(out, x)
+        return out
+
+    primes = primary_eisenstein_primes(1500)
+    us = [(2, 0), (-1, -3), (5, 0), (4, 3), (7, 0), (2, 3)]
+    vs = [(2, 0), (primes[0].a, primes[0].b), (5, 0)]
+    for u in us:
+        u5 = power(u, 5)
+        for v in vs:
+            uv6 = _mul_w(u, power(v, 6))
+            for rho in primes:
+                k, k5, k6 = (sextic_residue_exponent(*x, rho) for x in (u, u5, uv6))
+                divides_v = sextic_residue_exponent(*v, rho) is None
+                assert k6 == (None if divides_v or k is None else k)
+                assert k5 == (None if k is None else (-k) % 6)
+        j, factors = eisenstein_factorization(*u)
+        rebuilt = power((1, 1), j)
+        for pi, e in factors:
+            rebuilt = _mul_w(rebuilt, power(pi, e))
+        assert rebuilt == u
+        conj = (u[0] - u[1], -u[1])
+        for w in [(-u[0], -u[1]), conj, _mul_w(u, power((2, 0), 6))]:
+            assert sixth_power_free_norm(*w) == sixth_power_free_norm(*u)
+        assert sextic_twist_class(*u5) == sextic_twist_class(*u, sign=-1)
+        assert sextic_twist_class(*_mul_w(u, power((2, 0), 6))) == sextic_twist_class(*u)
+    assert sixth_power_free_norm(64, 0) == 1 and sixth_power_free_norm(8, 0) == 64
+    assert sixth_power_free_norm(128, 0) == 4

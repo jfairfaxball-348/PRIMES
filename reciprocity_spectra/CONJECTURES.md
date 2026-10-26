@@ -835,3 +835,30 @@ the proposed target is impossible. Eight small squarefree kernel measurements
 are **EXPLORATORY**; they promote no conjecture. Source details, exact
 derivations and scope are in `PROOF_ROUTE.md` section 7 and
 `RS_S013_CANDIDATE_AUDIT.md`. No repaired strength law is asserted.
+
+
+## RS-S014: sixth-power-class audit (no new data)
+
+The full record is `RS_S014_INVARIANCE_AUDIT.md`, with machine record
+`results/rs_s014_invariance_2026-10-26.json`.
+
+**Exact.** The following are tested:
+
+- (uv⁶/ρ)₆ = (u/ρ)₆ away from ρ | v;
+- (u⁵/ρ)₆ = conj((u/ρ)₆);
+- the factorization and the sixth-power-free norm are invariant under u → −u, ū, uv⁶.
+
+**Lemma.** Any limit of ε_u = (r_u² − 1)/(r₁² − 1) is invariant under u → uv⁶. The proof uses the
+n-th order large sieve (BGL Thm 1.3), with a convention-matching caveat.
+
+**Obstructions.**
+
+- **O1.** CAND-001 statement 1, "every ±primary u is enhanced", includes the classes π⁵. These are
+  the conjugate twists, for example r₃₂ = r₂⁽⁻⁾ exactly, and they are never enhanced in the data.
+  The universal form is withdrawn.
+- **O2.** The N₆^{−1/6} repair of the strength law fits exponents 1–3, with constant 0.94 at
+  X = 6.4·10⁵ and 10⁶. It is uncertain at exponent 4 (0.83, rising). At exponent 5 the sign is
+  wrong: ε·N^{5/6} ≈ −1 for N(π) ≥ 19.
+
+**PROV-RS14** (provisional; not a CAND). Its statements (A)–(D) and a powered falsification plan,
+P1–P3, are in the audit. They are to be registered before any X = 10⁶ class run.

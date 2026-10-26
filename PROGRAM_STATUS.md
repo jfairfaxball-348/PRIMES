@@ -4,17 +4,33 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S013 is complete (2026-10-26), executed locally on Windows.** Phase 2 mechanism/proof-route audit for the sextic family; earlier Phase 1 evidence remains preserved.
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S014 is complete (2026-10-26).** It is an audit of
+stored evidence on sixth-power twist classes. No new matrices were built.
 
-- **CAND-001's frozen three-statement package is REFUTED.** Its unreduced strength law contradicts exact sixth-power invariance: u=64 gives r_64=r_1, but the predicted excess ratio is 1/4. The matrix dichotomy and prime-level bias are not refuted.
-- The original RS-S012 finite sextic criterion still **PASSES** when independently rescored on all 80 registered twists. The historical 78-row summary omitted +/-8 by a cubic-only rule wrongly applied in sextic mode; the current script is corrected and old evidence retained.
-- The Type II kernel is exactly a locally signed cubic-symbol kernel. The generic large-sieve envelope is X^(5/6+epsilon), above the sextic X^(2/3)/log X target. An unrestricted all-coefficient bound at the target is impossible even with square-root operator norms; arithmetic coefficients require a separate argument.
-- Eight local squarefree-kernel measurements and matched controls are EXPLORATORY. No asymptotic theorem or further conjecture promotion follows.
-- The exact dispersion identity survives, with diagonal (D-1)D_u. The old positive-main-term ansatz cannot establish nonprimary suppression.
-- The hard arithmetic-coefficient route is unresolved, not globally exhausted. No fallback or theorem export is started.
-- Next bounded unit: **RS-S014, invariant-formulation audit of the strength law**. No owner decision blocker. Continue from the session branch under `NEXT_SESSION_PROMPT.md`; no merge was requested.
+- CAND-001's frozen package remains REFUTED (RS-S013; u = 64).
+- **RS-S014 obstruction O1.** Statement 1's universal form ("every ±primary u is enhanced") is
+  withdrawn. The exact identity (u⁵/ρ)₆ = conj((u/ρ)₆) makes the conjugate twists, the classes
+  π⁵ (for example r₃₂ = r₂⁽⁻⁾), part of it, and they are never enhanced (max r ≤ 1.014 over six
+  scales).
+- **RS-S014 obstruction O2.** The N₆^{−1/6} repair fits exponents 1–3 (constant 0.94 at
+  X = 6.4·10⁵ and 10⁶). It is open at exponent 4, and has the wrong sign at exponent 5
+  (ε·N^{5/6} ≈ −1 for N(π) ≥ 19).
+- Statement 2 (prime-level unit-class bias) stands.
+- A class-based provisional statement, PROV-RS14, has a powered falsification plan.
+- An exact lemma: any limit strength law is invariant under u → uv⁶, via the BGL large sieve with
+  a convention-matching caveat.
+- The RS-S013 Type II findings are unchanged: the generic route is ruled out, and the
+  arithmetic-coefficient route is open.
+- The RS-S013 audit checker's hash comparison is now independent of line endings (the CRLF vs LF
+  hash of the same file).
+- Next bounded unit: **RS-S015, register and run the PROV-RS14 class tests at X = 10⁶.** There
+  is no owner-decision blocker.
 
-Prior RS-1/RS-3/RS-4/RS-6C/RS-7/RS-7a/RS-7b/RS-8/RS-9 evidence and statuses are unchanged except for the explicitly refuted CAND package. Earlier failures remain failures. See `reciprocity_spectra/LEDGER.md` and `PROOF_ROUTE.md` section 7. DISCOVERY-1 remains PAUSED at D1-72 / S074: 16 REPLICATED / 0 OBSERVED / 9 REFUTED, zero D1 candidates; SQ-037 is deferred, not started.
+Prior RS-1/RS-3/RS-4/RS-6C/RS-7/RS-7a/RS-7b/RS-8/RS-9 evidence and statuses are unchanged except as
+recorded. Earlier failures remain failures. See `reciprocity_spectra/LEDGER.md`,
+`RS_S014_INVARIANCE_AUDIT.md` and `PROOF_ROUTE.md` §§7–8. DISCOVERY-1 remains PAUSED at
+D1-72 / S074: 16 REPLICATED / 0 OBSERVED / 9 REFUTED, zero D1 candidates; SQ-037 is deferred,
+not started.
 
 Previous stage line (D1-72, preserved): DISCOVERY-1 — D1-72 / S074 / SQ-036 E025 H25 ONE-SHOT CLOSED; OBS-025 REFUTED (25/48 POSITIVE SIGNED CLASSES < FROZEN 36/48); D25/H25 CONSUMED; 16 REPLICATED / 0 OBSERVED / 9 REFUTED, ZERO CAND; NEXT D1-73 / S075 / SQ-037 SOURCE-FREE DESIGN ONLY
 

@@ -12,7 +12,9 @@
   "sources": [
     {
       "path": "reciprocity_spectra/results/phase1j_2026-10-25.json",
-      "sha256": "521f97a58cd298b6711d6722b5d61130ea52be58b66c4eb4fdde2901121cd1b8"
+      "sha256": "521f97a58cd298b6711d6722b5d61130ea52be58b66c4eb4fdde2901121cd1b8",
+      "sha256_lf": "3ebb0b46fa8603b8b5741c745c66af1771c68259eb0beb4eca86b51ad9f931d7",
+      "sha256_note": "RS-S014: sha256 above was computed on a Windows CRLF checkout; sha256_lf is the LF (git blob content) hash of the same file."
     },
     {
       "path": "reciprocity_spectra/scripts/phase1j.py",

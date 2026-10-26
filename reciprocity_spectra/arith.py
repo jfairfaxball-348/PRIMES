@@ -345,6 +345,85 @@ def mod4_character(m: int, s1: int, s2: int, a: int, b: int) -> complex:
     return cmath.exp(2j * math.pi * m * i / 3) * (-1) ** (s1 * k + s2 * l2)
 
 
+def _primes_above(q: int) -> list[tuple[int, int]]:
+    """Primary prime elements above the rational prime q (q != 3): two if q = 1 (mod 3), else q."""
+    if q % 3 == 2:
+        return [(q, 0)]
+    out = set()
+    bound = math.isqrt(4 * q // 3) + 3
+    for b in range(-bound, bound + 1):
+        if b % 3:
+            continue
+        disc = 4 * q - 3 * b * b
+        if disc < 0:
+            continue
+        root = math.isqrt(disc)
+        if root * root != disc:
+            continue
+        for t in (b + root, b - root):
+            if t % 2 == 0 and (t // 2) % 3 == 2 and (t // 2) ** 2 - (t // 2) * b + b * b == q:
+                out.add((t // 2, b))
+    if len(out) != 2:
+        raise ArithmeticError(f"expected two primary primes above {q}")
+    return sorted(out)
+
+
+def eisenstein_factorization(c: int, d: int) -> tuple[int, list[tuple[tuple[int, int], int]]]:
+    """u = c + d w (coprime to 3) as zeta6^j * prod pi^e over primary primes pi; returns (j, [(pi, e)]).
+
+    zeta6 = 1 + w. The rational norm is factored first; each prime element above a divisor of
+    N(u) is then divided out exactly.
+    """
+    n = c * c - c * d + d * d
+    if n == 0 or (c + d) % 3 == 0:
+        raise ValueError("u must be nonzero and coprime to 3")
+    rational, m, q = [], n, 2
+    while q * q <= m:
+        if m % q == 0:
+            rational.append(q)
+            while m % q == 0:
+                m //= q
+        q += 1
+    if m > 1:
+        rational.append(m)
+    factors, cur = [], (c, d)
+    for q in rational:
+        for a, b in _primes_above(q):
+            norm, e = a * a - a * b + b * b, 0
+            while True:
+                re, im = cur[0] * (a - b) + cur[1] * b, cur[1] * a - cur[0] * b  # cur * conj(a + b w)
+                if re % norm or im % norm:
+                    break
+                cur, e = (re // norm, im // norm), e + 1
+            if e:
+                factors.append(((a, b), e))
+    unit, j = (1, 0), 0
+    while unit != cur:
+        unit, j = _mul_w(unit, (1, 1)), j + 1
+        if j > 5:
+            raise ArithmeticError("cofactor is not a unit")
+    return j, sorted(factors)
+
+
+def sixth_power_free_norm(c: int, d: int) -> int:
+    """Norm of the sixth-power-free part of u = c + d w (coprime to 3): prod N(pi)^(e mod 6)."""
+    _, factors = eisenstein_factorization(c, d)
+    out = 1
+    for (a, b), e in factors:
+        out *= (a * a - a * b + b * b) ** (e % 6)
+    return out
+
+
+def sextic_twist_class(c: int, d: int, sign: int = 1) -> tuple[tuple[tuple[int, int], int], ...]:
+    """Exponent vector mod 6 of the twist (u/.)_6^sign (sign = -1 for the conjugate twist).
+
+    Units are dropped: (-1/.)_6 leaves r_u unchanged exactly, and only +-primary u (unit +-1) are
+    classified. Entries with exponent 0 mod 6 are omitted.
+    """
+    _, factors = eisenstein_factorization(c, d)
+    return tuple(sorted((pi, (sign * e) % 6) for pi, e in factors if (sign * e) % 6))
+
+
 def sextic_reciprocity_sign(x: DegreeOnePrime, y: DegreeOnePrime) -> int:
     """Exact pairwise reversal sign from the two field-quadratic symbols.
 

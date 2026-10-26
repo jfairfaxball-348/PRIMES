@@ -881,3 +881,59 @@ graduation is started. RS-S014 is an invariant-formulation audit using exact
 sixth-power classes and existing evidence before any fresh registration.
 No owner blocker. Exactly one continuation is in NEXT_SESSION_PROMPT.md;
 RS-S014 is not executed here.
+
+### RS-S014 (2026-10-26): sixth-power-class audit of the strength law
+
+**Stages:** falsification and certification. This audited stored evidence only; no new matrices
+were built.
+
+**Branch and execution.** Branch `ccr-c363c6bb-0zejeu`, in the cloud session. At the owner's
+request, main was first fast-forwarded to RS-S013 (`db46d65`), and RS-S014 was then run here. The
+handoff had assumed a local Windows run; the scope was kept: no fresh-scale matrices, no new CAND,
+no merge of RS-S014, no fallback.
+
+**Exact work.**
+
+- New functions:
+  - `arith.eisenstein_factorization`, which factors via the rational norm;
+  - `sixth_power_free_norm`;
+  - `sextic_twist_class`.
+- New test `test_sextic_twist_classes_sixth_powers_and_inversion` covers:
+  - (uv⁶/ρ)₆ = (u/ρ)₆ away from ρ | v, and 0 at ρ | v;
+  - (u⁵/ρ)₆ = conj((u/ρ)₆);
+  - exact reconstruction of the factorization;
+  - invariance of N₆ and of the twist class.
+- **Lemma (`RS_S014_INVARIANCE_AUDIT.md` §2).** Any limit of (r_u² − 1)/(r₁² − 1) is invariant
+  under u → uv⁶, with explicit error ≪ X^{−1/6+ε}. The proof uses the BGL large sieve; the matching
+  of conventions is still a caveat.
+
+**Audit of stored evidence.** `scripts/audit_invariance.py` produces
+`results/rs_s014_invariance_2026-10-26.json`, verified with `--check`. The single-prime class
+statistic ε·N^{k/6} is:
+
+| X | k = 1 | k = 2 | k = 3 | k = 4 | k = 5 |
+|---:|---:|---:|---:|---:|---:|
+| 6.4·10⁵ | 0.943 | 0.940 | 0.940 | 0.827 | −0.97 |
+| 10⁶ | 0.947 | 0.945 | 0.941 | — | — |
+
+For k = 5 the value is −1.02 to −1.11 when N(π) ≥ 19, and less negative for N = 4, 7, 13. The
+patterns (5), (5,5) and (4,5) are never enhanced.
+
+**Obstructions.**
+
+- **O1.** CAND-001 statement 1's universal form is withdrawn. Its ±primary u include the classes
+  π⁵, which are the conjugate twists (r₃₂ = r₂⁽⁻⁾ exactly, ≈ 0.97). Its registered tests had
+  covered "+" twists with N(u) ≤ 100 only.
+- **O2.** The N₆^{−1/6} repair has the wrong sign at exponent 5.
+
+**PROV-RS14** (provisional, class-based; statements (A)–(D)) and a powered falsification plan
+(P1–P3) are recorded. No CAND was allocated.
+
+**Maintenance.** The RS-S013 checker `audit_strength.py --check` failed on Linux. The cause: the
+record stored the hash of a Windows CRLF checkout. The checker now accepts the line-ending-normalized
+content, and the record gains a `sha256_lf` field; its original fields are unchanged. It now
+passes.
+
+**Validation:** full pytest passes 363 tests on Linux (no exclusions); targeted Ruff passes; `audit_strength.py --check` and `audit_invariance.py --check` both pass.
+
+**Next dependency.** RS-S015: register P1–P3 verbatim, then run the class tests at X = 10⁶.
