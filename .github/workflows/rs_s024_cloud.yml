@@ -5,6 +5,9 @@ on:
     branches: [rs-s025-cloud]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: rs-s025-cloud
   cancel-in-progress: true
@@ -23,8 +26,14 @@ jobs:
         working-directory: formalisation
         run: |
           export PATH="$HOME/.elan/bin:$PATH"
-          lake build ReciprocitySpectra
-          lake build Checks
+          set +e
+          lake build ReciprocitySpectra > "$GITHUB_WORKSPACE/rs_s025_build.log" 2>&1
+          code1=$?
+          lake build Checks >> "$GITHUB_WORKSPACE/rs_s025_build.log" 2>&1
+          code2=$?
+          echo "Lean library exit: $code1, Checks exit: $code2" >> "$GITHUB_WORKSPACE/rs_s025_build.log"
+          cat "$GITHUB_WORKSPACE/rs_s025_build.log"
+          test "$code1" -eq 0 && test "$code2" -eq 0
       - name: Check for placeholders and unsafe axioms
         run: |
           if grep -R -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' formalisation/ReciprocitySpectra; then
@@ -46,3 +55,20 @@ jobs:
         run: |
           python reciprocity_spectra/scripts/audit_strength.py --check
           python reciprocity_spectra/scripts/audit_cand002.py --check
+
+      - name: Preserve cloud Lean diagnostics on the session branch
+        if: always()
+        run: |
+          mkdir -p formalisation/checkpoints
+          if [ -f rs_s025_build.log ]; then
+            cp rs_s025_build.log formalisation/checkpoints/RS_S025_LEAN_BUILD.txt
+          else
+            printf 'No Lean build log: preceding environment setup may have failed.\n' > formalisation/checkpoints/RS_S025_LEAN_BUILD.txt
+          fi
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add formalisation/checkpoints/RS_S025_LEAN_BUILD.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "RS-S025: preserve cloud Lean validation evidence"
+            git push origin HEAD:rs-s025-cloud
+          fi
