@@ -7,9 +7,6 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 concurrency:
   group: rs-s025-cloud
   cancel-in-progress: true
@@ -57,20 +54,3 @@ jobs:
         run: |
           python reciprocity_spectra/scripts/audit_strength.py --check
           python reciprocity_spectra/scripts/audit_cand002.py --check
-
-      - name: Preserve cloud Lean diagnostics on the session branch
-        if: always() && github.event_name == 'push'
-        run: |
-          mkdir -p formalisation/checkpoints
-          if [ -f rs_s025_build.log ]; then
-            cp rs_s025_build.log formalisation/checkpoints/RS_S025_LEAN_BUILD.txt
-          else
-            printf 'No Lean build log: preceding environment setup may have failed.\n' > formalisation/checkpoints/RS_S025_LEAN_BUILD.txt
-          fi
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-          git add formalisation/checkpoints/RS_S025_LEAN_BUILD.txt
-          if ! git diff --cached --quiet; then
-            git commit -m "RS-S025: preserve cloud Lean validation evidence"
-            git push origin HEAD:rs-s025-cloud
-          fi
