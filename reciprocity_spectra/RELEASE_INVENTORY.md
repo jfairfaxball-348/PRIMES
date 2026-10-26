@@ -144,9 +144,11 @@ statement leaves open:
 ## Order of formalisation
 
 1. **RS-S023:** E0 definitions, E3, E1, E2, E5 and E6, plus the faithfulness check.
-2. **RS-S024:** the MulChar construction, E7 and E4; the matrix and vector definitions; C1 as a
-   `Prop`.
-3. **RS-S025:** the Challenge/Solution split, `comparator.json` and `formalization.yaml`, following
+2. **RS-S024:** generic Gauss lemmas, the matrix/vector/statistic definitions, CAND-002
+   `Prop`s, and an independent native/Python Gauss fixture. Full sextic `MulChar` bridge open.
+2b. **RS-S025:** construct the sextic `MulChar` and primitive additive character, instantiate
+    E7/E4, and settle zero shifts before claiming either exact identity complete.
+3. **RS-S026 (only after the sextic bridge):** the Challenge/Solution split, `comparator.json` and `formalization.yaml`, following
    `C:/Almost-Stacked-Proof/formal`. Then a local comparator run.
 4. **Owner action:** make the repository public on GitHub, then submit to Palomar.
 5. **Optional:** E8 and E9.
@@ -165,3 +167,27 @@ statement leaves open:
 **Faithfulness check:** 1764 of 1764 engine entries at X = 200 match. Mismatches: 0.
 
 **Remaining:** E7, E4, the matrix and vector definitions, C1 as a `Prop`, and the Palomar packaging.
+
+## RS-S024 checkpoint (2026-10-26)
+
+- **E7:** `gauss_modulus_sq` is a proved theorem for any nontrivial
+  multiplicative character and primitive additive character. Its sextic
+  specialization is **NOT YET FORMALIZED**.
+- **E4:** `gauss_shift` and the finite orientation sum are proved with
+  unit shifts for generic characters. The sextic instance and zero-shift
+  handling remain **OPEN**.
+- **C1:** frozen CAND-002 statements (1), (2), (3) are represented as
+  unproved Lean propositions. An explicit abstract H_P is not equated to
+  Kubota-series theta coefficients.
+- **Matrix/vectors/statistics:** explicit Lean definitions in `Model.lean`.
+- **Numerical check:** native/Python at X=200, 42 Gauss entries, max
+  difference 1.4983512726234129e-15 against tolerance 2e-12,
+  fixture `formalisation/fixtures/sextic_gauss_200.json`. This is NOT
+  a Lean `#eval` comparison of complex transcendental sums.
+- **Faithfulness:** previously verified 1764/1764 exponent entries in Lean.
+- **Logic note:** statement (2)'s large-`N(pi)^5/X` regime does not
+  imply statement (3)'s fixed-`pi`, X→∞ limit by itself.
+  Record this as a proof/statement obligation, not a refutation of
+  either experimental asymptotic observation.
+- **Release:** no Palomar registration, manuscript or public result claim.
+  Move to full sextic character formalization in RS-S025 before packaging.
