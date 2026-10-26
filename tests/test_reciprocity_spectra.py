@@ -826,3 +826,32 @@ def test_trace_gauss_sums_twisted_multiplicativity():
         assert abs(abs(brute) ** 2 - norm) < 1e-6 * norm
         formula = twisted_gauss_product(factors, [trace_gauss_sum([p]) for p in factors])
         assert abs(brute - formula) < 1e-6 * math.sqrt(norm)
+
+
+def test_trace_normalization_factor_and_unit_twist_by_norm():
+    """RS-S020 exact lemmas.
+
+    (1) ((2a - b)/rho)_6 = (-1/rho)_6 (sqrt(-3)/rho)_6 (3/rho)_6 (b'/rho)_6 with b = 3 b', and it equals
+        (conj rho / rho)_6, the factor between rational and trace prime Gauss sums.
+    (2) (zeta6/sigma)_6 = zeta6^((p - 1)/6) at split primes; multiplicativity makes (zeta6/c)_6 = zeta6^((N(c)-1)/6)
+        for squarefree products c of split primes, because (N - 1)/6 is additive mod 6 on N = 1 mod 6.
+    (3) at inert q, (zeta6/q)_6 = zeta6^((q^2 - 1)/6).
+    """
+    from reciprocity_spectra.arith import (
+        inert_sextic_exponent,
+        trace_normalization_factor,
+        unit_twist_exponent_from_norm,
+    )
+
+    primes = primary_eisenstein_primes(3000)
+    for rho in primes:
+        f = trace_normalization_factor(rho)
+        assert f['total'] == (f['minus_one'] + f['sqrt_minus_3'] + f['three'] + f['b_prime']) % 6
+        assert f['total'] == sextic_residue_exponent(rho.a - rho.b, -rho.b, rho)
+        assert sextic_residue_exponent(1, 1, rho) == unit_twist_exponent_from_norm(rho.p)
+    for i, s1 in enumerate(primes[:25]):
+        for s2 in primes[i + 1:25]:
+            k = (sextic_residue_exponent(1, 1, s1) + sextic_residue_exponent(1, 1, s2)) % 6
+            assert k == unit_twist_exponent_from_norm(s1.p * s2.p)
+    for q in (5, 11, 17, 23):
+        assert inert_sextic_exponent(1, 1, q) == ((q * q - 1) // 6) % 6

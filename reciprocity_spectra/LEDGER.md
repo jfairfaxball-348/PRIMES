@@ -1413,3 +1413,38 @@ squarefree moduli, and took 100 s.
 reappear when the rows are split by (ρ/π)₆?) and the exact unit-normalization factor, which now
 must explain why the selection vanishes for unrestricted moduli. It then registers the ±1
 hypotheses for a later scale.
+
+### RS-S020 (2026-10-26): ρ-partition, normalization lemmas, H− registration. Prediction block
+
+**Stage:** mechanism and falsification. **Branch:** `rs-s020`. **Execution:** local Windows.
+
+**Exact lemmas** (test `test_trace_normalization_factor_and_unit_twist_by_norm`, over every prime
+up to 3000):
+
+- ((2a−b)/ρ)₆ = (−1/ρ)₆·(√−3/ρ)₆·(3/ρ)₆·(b′/ρ)₆ = (ρ̄/ρ)₆. This is the rational-to-trace factor.
+  The residual (b′/ρ)₆ is not a character of ρ.
+- (ζ₆/c)₆ = ζ₆^{(N(c)−1)/6} for squarefree products of split primes, and ζ₆^{(q²−1)/6} at inert
+  q. So unit twists are characters of N(c) mod 36.
+
+**Exploratory: the reviewer's ρ-partition test** (`scripts/phase1o.py`, X = 3.2·10⁵, prime moduli,
+classes π^k for k = 1, 2, 4 with N ≤ 200; `results/rs_s020_rho_partition_2026-10-26.json`).
+
+- For k = 2 and N ≡ 1 mod 12, the excess lives on rows ρ that are quadratic residues mod π.
+  - Parts j = (ρ/π)₆ even: s ≈ +1.75.
+  - Parts j odd: s ≈ −0.37 (rational normalization, both (π/π̄)₆ groups).
+  - This is consistent with BH's Hecke relation τ₆(mp²) = G₃(m, p)·τ₆(mp²): a coefficient at ρπ²
+    can be nonzero only for one quadratic class of ρ. So **ρ-averaging hides the vanishing
+    condition**, as the reviewer suggested.
+- In trace normalization, the (π/π̄)₆ ≠ 1 group shows a weaker contrast (+0.84 / +0.16 against
+  +1.55 / −0.57). So BH's Lemma 5.3 condition is visible there.
+- N ≡ 7 mod 12, k = 1 and k = 4 are uniform across parts. The N ≡ 7 case is unexplained.
+
+**Registered before data:** RS-S020-H− (`results/rs_s020_h_minus_2026-10-26.json`).
+
+- **Classes:** 88 fresh π⁵ singles, 400 < N ≤ 1000, including inert 23 and 29, all with t ≫ 1, at
+  X = 10⁶ with prime moduli and rational normalization.
+- **Prediction:** mean s ∈ [−1.15, −0.85]. The SE is about 0.076.
+- **Dropped before data:** a fitted-intercept clause, which was underpowered (SE about 0.31). It is
+  reported as exploratory only.
+- **H+ (F(0⁺) = 1):** needs X ≥ 4·10⁶. It is deferred to a large-RAM or cloud session, which is an
+  owner compute decision.

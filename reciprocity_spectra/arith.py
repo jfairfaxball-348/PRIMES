@@ -538,3 +538,26 @@ def twisted_gauss_product(factors, prime_sums) -> complex:
             k = sextic_symbol_at(*prime_element(p), q) + sextic_symbol_at(*prime_element(q), p)
             total *= cmath.exp(2j * math.pi * k / 6)
     return total
+
+
+def trace_normalization_factor(prime: DegreeOnePrime) -> dict[str, int]:
+    """Exponents of the factor (Tr rho / rho)_6 = (conj rho / rho)_6 relating rational and trace prime Gauss sums.
+
+    g_rational(rho) = ((2a - b)/rho)_6 * g_trace(rho). Since 1 + 2w = sqrt(-3) and w = -a/b mod rho,
+    2a - b = -b * sqrt(-3) (mod rho); with b = 3 b' this gives
+    ((2a - b)/rho)_6 = (-1/rho)_6 (sqrt(-3)/rho)_6 (3/rho)_6 (b'/rho)_6.
+    The first three depend only on rho modulo a fixed power of the primes above 2 and 3 (supplementary laws);
+    the residual (b'/rho)_6 is not a fixed character of rho.
+    """
+    a, b = prime.a, prime.b
+    parts = {'total': sextic_residue_exponent(2 * a - b, 0, prime),
+             'minus_one': sextic_residue_exponent(-1, 0, prime),
+             'sqrt_minus_3': sextic_residue_exponent(1, 2, prime),
+             'three': sextic_residue_exponent(3, 0, prime),
+             'b_prime': sextic_residue_exponent(b // 3, 0, prime)}
+    return parts
+
+
+def unit_twist_exponent_from_norm(norm: int) -> int:
+    """(zeta6 / c)_6 = zeta6^((N(c) - 1)/6) for c squarefree, built from split primes (N(c) = 1 mod 6)."""
+    return ((norm - 1) // 6) % 6
