@@ -18,7 +18,7 @@ noncomputable def rationalAddChar (p : ℕ) [NeZero p] : AddChar (ZMod p) ℂ :=
 theorem rationalAddChar_primitive (p : ℕ) [NeZero p] :
     (rationalAddChar p).IsPrimitive := by
   unfold rationalAddChar
-  exact AddChar.zmodChar_primitive_of_primitive_root
+  exact AddChar.zmodChar_primitive_of_primitive_root p
     (Complex.isPrimitiveRoot_exp p (NeZero.out))
 
 /-- Exact character values at the canonical representatives 0,...,p-1. -/
