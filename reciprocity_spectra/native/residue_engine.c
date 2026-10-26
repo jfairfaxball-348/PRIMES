@@ -13,9 +13,16 @@
  * gauss.bin  : D complex doubles g(pi)/sqrt(p), g(pi) = sum_{t=1}^{p-1} (t/pi)_n e(t/p).
  *
  * Build: cc -O2 -o residue_matrix residue_matrix.c -lm
+ * Windows (MSVC, RS-S015): cl /O2 /openmp residue_engine.c; see phase1.compile_engine. MSVC has no
+ * __int128 or C99 complex arithmetic, so the complex kernels have an explicit real-arithmetic port.
  */
+#ifdef _MSC_VER
+#define _USE_MATH_DEFINES
+#endif
 #include <math.h>
+#ifndef _MSC_VER
 #include <complex.h>
+#endif
 #include <omp.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -23,12 +30,19 @@
 #include <string.h>
 
 typedef long long ll;
+#ifdef _MSC_VER
+typedef ll wide; /* main() rejects X >= 2^31, so every product of residues fits in 63 bits */
+#define RS_EXPORT __declspec(dllexport)
+#else
+typedef __int128 wide;
+#define RS_EXPORT
+#endif
 typedef struct { ll p, a, b, r; } prime_t; /* r = image of the root of unity in F_p */
 
 static ll mod(ll a, ll m) { a %= m; return a < 0 ? a + m : a; }
 static ll pw(ll a, ll e, ll m) {
     ll r = 1; a = mod(a, m);
-    while (e) { if (e & 1) r = (__int128)r * a % m; a = (__int128)a * a % m; e >>= 1; }
+    while (e) { if (e & 1) r = (wide)r * a % m; a = (wide)a * a % m; e >>= 1; }
     return r;
 }
 static ll inv(ll a, ll m) { return pw(a, m - 2, m); }
@@ -51,6 +65,7 @@ int main(int argc, char **argv) {
     int n = !strcmp(argv[1], "sextic") ? 6 : !strcmp(argv[1], "cubic") ? 3 : !strcmp(argv[1], "quartic") ? 4 : !strcmp(argv[1], "quad") ? 2 : 0;
     if (!n) { fprintf(stderr, "unknown mode %s\n", argv[1]); return 1; }
     ll X = atoll(argv[2]);
+    if (sizeof(wide) == 8 && X >= 2147483647LL) { fprintf(stderr, "X too large for 64-bit products\n"); return 1; }
     char *comp = sieve(X);
     prime_t *P = malloc(sizeof(prime_t) * (X + 2));
     int D = 0;
@@ -86,8 +101,9 @@ int main(int argc, char **argv) {
     int nomatrix = getenv("RS_NO_MATRIX") != NULL;
     uint8_t *E = nomatrix ? NULL : malloc((size_t)D * D);
     if (!nomatrix && !E) { fprintf(stderr, "matrix allocation failed\n"); return 3; }
+    int j; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(dynamic, 1)
-    for (int j = 0; j < (nomatrix ? 0 : D); j++) {
+    for (j = 0; j < (nomatrix ? 0 : D); j++) {
         ll p = P[j].p, r = P[j].r, e = (p - 1) / n;
         ll unit = n == 6 ? mod(1 + r, p) : r;
         /* Build the character table in O(p), rather than D modular powers. */
@@ -136,8 +152,9 @@ int main(int argc, char **argv) {
         /* RS_GAUSS_MIN: Gauss sums only for p > min (others written as 0), for disjoint norm windows. */
         const char *gmin_env = getenv("RS_GAUSS_MIN");
         ll gmin = gmin_env ? atoll(gmin_env) : 0;
+        int j; /* declared outside: MSVC OpenMP */
         #pragma omp parallel for schedule(dynamic, 1)
-        for (int j = 0; j < D; j++) {
+        for (j = 0; j < D; j++) {
             if (P[j].p <= gmin) { G[2*j] = 0; G[2*j+1] = 0; continue; }
             ll p = P[j].p, r = P[j].r, e = (p - 1) / n, gen = 2;
             ll unit = n == 6 ? mod(1 + r, p) : r;
@@ -148,12 +165,12 @@ int main(int argc, char **argv) {
                 if (ok) break;
             }
             int kg = 1; /* chi(gen) = zeta_n^kg */
-            if (n > 2) { ll ge = pw(gen, e, p), rr = 1; for (int k = 0; k < n; k++) { if (rr == ge) { kg = k; break; } rr = (__int128)rr * unit % p; } }
+            if (n > 2) { ll ge = pw(gen, e, p), rr = 1; for (int k = 0; k < n; k++) { if (rr == ge) { kg = k; break; } rr = (wide)rr * unit % p; } }
             double re = 0, im = 0; ll x = 1;
             for (ll s = 0; s < p - 1; s++) {
                 double ang = 2 * M_PI * ((double)((s * kg) % n) / n + (double)x / p);
                 re += cos(ang); im += sin(ang);
-                x = (__int128)x * gen % p;
+                x = (wide)x * gen % p;
             }
             double v[2] = {re / sqrt((double)p), im / sqrt((double)p)};
             G[2*j] = v[0]; G[2*j+1] = v[1];
@@ -166,17 +183,19 @@ int main(int argc, char **argv) {
     return 0;
 }
 
+#ifndef _MSC_VER
 /* ctypes ABI: interleaved complex128 vectors; no dense floating matrix.
  * 64-row blocks, 256-column blocks; adjoint uses transposed byte accesses.
  * Each output row belongs to one thread, so reductions are deterministic.
  */
-void rs_apply(const uint8_t *E, int D, int n, const double complex *x,
+RS_EXPORT void rs_apply(const uint8_t *E, int D, int n, const double complex *x,
               double complex *y, int adjoint) {
     double complex roots[256] = {0};
     for (int k = 0; k < n; k++) roots[k] = cexp(2 * M_PI * I * k / n);
     omp_set_num_threads(4);
+    int ib; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(static)
-    for (int ib = 0; ib < D; ib += 64) {
+    for (ib = 0; ib < D; ib += 64) {
         int end = ib + 64 < D ? ib + 64 : D;
         for (int i = ib; i < end; i++) y[i] = 0;
         for (int jb = 0; jb < D; jb += 256) {
@@ -198,6 +217,8 @@ void rs_apply(const uint8_t *E, int D, int n, const double complex *x,
     }
 }
 
+#endif
+
 /* Counter-based SplitMix64: each independent upper pair has a fixed draw.
  * Rejection removes modulo bias (notably n=3). Same signs as structured_random.
  * The seed-0 stream is specified here, distinct from numpy's PCG64 stream.
@@ -207,11 +228,12 @@ static uint64_t mix64(uint64_t x) {
     x = (x ^ (x >> 27)) * UINT64_C(0x94d049bb133111eb);
     return x ^ (x >> 31);
 }
-void rs_random(uint8_t *E, int D, int n, const int64_t *primes, uint64_t seed) {
+RS_EXPORT void rs_random(uint8_t *E, int D, int n, const int64_t *primes, uint64_t seed) {
     if (n == 6) abort(); /* Sextic controls require the full pairwise mask API below. */
     omp_set_num_threads(4);
+    int i; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(static)
-    for (int i = 0; i < D; i++) {
+    for (i = 0; i < D; i++) {
         E[(size_t)i * D + i] = 255;
         for (int j = i+1; j < D; j++) {
             uint64_t state = seed + (uint64_t)i * D + j;
@@ -227,18 +249,20 @@ void rs_random(uint8_t *E, int D, int n, const int64_t *primes, uint64_t seed) {
     }
 }
 
+#ifndef _MSC_VER
 /* Reciprocity-aware adjoint: C_ji = sign_ij C_ij, sign=-1 only
  * when both metadata parity bits are set. This keeps byte reads contiguous.
  * The generic transpose kernel above remains available for independent checks.
  */
-void rs_apply_sym(const uint8_t *E, int D, int n, const uint8_t *odd,
+RS_EXPORT void rs_apply_sym(const uint8_t *E, int D, int n, const uint8_t *odd,
                   const double complex *x, double complex *y, int adjoint) {
     if (!adjoint) { rs_apply(E, D, n, x, y, 0); return; }
     double complex roots[256] = {0};
     for (int k = 0; k < n; k++) roots[k] = conj(cexp(2 * M_PI * I * k / n));
     omp_set_num_threads(4);
+    int ib; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(static)
-    for (int ib = 0; ib < D; ib += 64) {
+    for (ib = 0; ib < D; ib += 64) {
         int end = ib + 64 < D ? ib + 64 : D;
         for (int i = ib; i < end; i++) {
             double complex sum = 0;
@@ -259,15 +283,18 @@ void rs_apply_sym(const uint8_t *E, int D, int n, const uint8_t *odd,
     }
 }
 
+#endif
+
 /* Extract the full exact +/- reciprocity mask from exponents. Returns the
  * number of invalid pairs (nonzero/half-turn phase, or off-diagonal zero).
  * For sextic characters, cubic reciprocity makes this ratio a sign.
  */
-uint64_t rs_pair_signs(const uint8_t *E, uint8_t *S, int D, int n) {
+RS_EXPORT uint64_t rs_pair_signs(const uint8_t *E, uint8_t *S, int D, int n) {
     uint64_t errors = 0;
     omp_set_num_threads(4);
+    int ib; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(static) reduction(+:errors)
-    for (int ib = 0; ib < D; ib += 64) {
+    for (ib = 0; ib < D; ib += 64) {
         int ie = ib + 64 < D ? ib + 64 : D;
         for (int jb = 0; jb < D; jb += 256) {
             int je = jb + 256 < D ? jb + 256 : D;
@@ -284,10 +311,11 @@ uint64_t rs_pair_signs(const uint8_t *E, uint8_t *S, int D, int n) {
     return errors;
 }
 
-void rs_random_signed(uint8_t *E, const uint8_t *S, int D, int n, uint64_t seed) {
+RS_EXPORT void rs_random_signed(uint8_t *E, const uint8_t *S, int D, int n, uint64_t seed) {
     omp_set_num_threads(4);
+    int i; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(static)
-    for (int i = 0; i < D; i++) {
+    for (i = 0; i < D; i++) {
         E[(size_t)i * D + i] = 255;
         for (int j = i+1; j < D; j++) {
             uint64_t state = seed + (uint64_t)i * D + j, u;
@@ -300,15 +328,17 @@ void rs_random_signed(uint8_t *E, const uint8_t *S, int D, int n, uint64_t seed)
     }
 }
 
+#ifndef _MSC_VER
 /* Contiguous adjoint with a full pairwise sign mask, rather than odd[i]*odd[j]. */
-void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
+RS_EXPORT void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
                      const double complex *x, double complex *y, int adjoint) {
     if (!adjoint) { rs_apply(E, D, n, x, y, 0); return; }
     double complex roots[256] = {0};
     for (int k = 0; k < n; k++) roots[k] = conj(cexp(2 * M_PI * I * k / n));
     omp_set_num_threads(4);
+    int ib; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(static)
-    for (int ib = 0; ib < D; ib += 64) {
+    for (ib = 0; ib < D; ib += 64) {
         int ie = ib + 64 < D ? ib + 64 : D;
         for (int i = ib; i < ie; i++) {
             double complex sum = 0;
@@ -325,6 +355,8 @@ void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
     }
 }
 
+#endif
+
 /* RS-S004 control: draws are constant on the orbits of the exact identities
  * E[j][i] = E[i][j] + S[i][j]*(n/2) (reciprocity) and E[c[i]][c[j]] = -E[i][j]
  * (complex conjugation, c = conjugate-prime index). The draw for an orbit uses
@@ -333,13 +365,14 @@ void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
  * forced[i]. Each row is written by one thread, so the result is deterministic.
  * Returns the number of rows whose mask is not conjugation-invariant.
  */
-uint64_t rs_random_conj(uint8_t *E, const uint8_t *S, const int32_t *c,
+RS_EXPORT uint64_t rs_random_conj(uint8_t *E, const uint8_t *S, const int32_t *c,
                         const uint8_t *forced, int D, int n, uint64_t seed) {
     uint64_t errors = 0;
     int h = n / 2;
     omp_set_num_threads(4);
+    int i; /* declared outside: MSVC OpenMP */
     #pragma omp parallel for schedule(static) reduction(+:errors)
-    for (int i = 0; i < D; i++) {
+    for (i = 0; i < D; i++) {
         E[(size_t)i * D + i] = 255;
         int ci = c[i];
         for (int j = 0; j < D; j++) {
@@ -363,3 +396,92 @@ uint64_t rs_random_conj(uint8_t *E, const uint8_t *S, const int32_t *c,
     }
     return errors;
 }
+
+#ifdef _MSC_VER
+/* MSVC port of the three complex kernels above, with the same blocking, the same per-row
+ * summation order and explicit (re, im) arithmetic; x and y are interleaved complex128.
+ * Forward products are validated against stored Linux results (RS-S015 ledger entry).
+ */
+static void rs_roots(int n, int conjugate, double *re, double *im) {
+    for (int k = 0; k < 256; k++) { re[k] = 0; im[k] = 0; }
+    for (int k = 0; k < n; k++) {
+        double t = 2 * M_PI * k / n;
+        re[k] = cos(t); im[k] = conjugate ? -sin(t) : sin(t);
+    }
+}
+
+RS_EXPORT void rs_apply(const uint8_t *E, int D, int n, const double *x, double *y, int adjoint) {
+    double rr[256], ri[256];
+    rs_roots(n, 0, rr, ri);
+    omp_set_num_threads(4);
+    int ib; /* declared outside: MSVC OpenMP */
+    #pragma omp parallel for schedule(static)
+    for (ib = 0; ib < D; ib += 64) {
+        int end = ib + 64 < D ? ib + 64 : D;
+        for (int i = ib; i < end; i++) { y[2*i] = 0; y[2*i+1] = 0; }
+        for (int jb = 0; jb < D; jb += 256) {
+            int je = jb + 256 < D ? jb + 256 : D;
+            if (!adjoint) {
+                for (int i = ib; i < end; i++) {
+                    double sr = 0, si = 0;
+                    const uint8_t *row = E + (size_t)i * D;
+                    for (int j = jb; j < je; j++) {
+                        double ar = rr[row[j]], ai = ri[row[j]], xr = x[2*j], xi = x[2*j+1];
+                        sr += ar * xr - ai * xi; si += ar * xi + ai * xr;
+                    }
+                    y[2*i] += sr; y[2*i+1] += si;
+                }
+            } else {
+                for (int j = jb; j < je; j++) {
+                    const uint8_t *row = E + (size_t)j * D;
+                    double xr = x[2*j], xi = x[2*j+1];
+                    for (int i = ib; i < end; i++) {
+                        double ar = rr[row[i]], ai = -ri[row[i]];
+                        y[2*i] += ar * xr - ai * xi; y[2*i+1] += ar * xi + ai * xr;
+                    }
+                }
+            }
+        }
+    }
+}
+
+static void rs_apply_masked(const uint8_t *E, const uint8_t *S, const uint8_t *odd, int D, int n,
+                            const double *x, double *y) {
+    double rr[256], ri[256];
+    rs_roots(n, 1, rr, ri);
+    omp_set_num_threads(4);
+    int ib; /* declared outside: MSVC OpenMP */
+    #pragma omp parallel for schedule(static)
+    for (ib = 0; ib < D; ib += 64) {
+        int ie = ib + 64 < D ? ib + 64 : D;
+        for (int i = ib; i < ie; i++) {
+            double sr = 0, si = 0;
+            const uint8_t *row = E + (size_t)i * D, *signs = S ? S + (size_t)i * D : NULL;
+            for (int jb = 0; jb < D; jb += 256) {
+                int je = jb + 256 < D ? jb + 256 : D;
+                double pr = 0, pi = 0;
+                for (int j = jb; j < je; j++) {
+                    int neg = signs ? signs[j] : odd[i] && odd[j];
+                    double ar = rr[row[j]], ai = ri[row[j]], xr = x[2*j], xi = x[2*j+1];
+                    if (neg) { ar = -ar; ai = -ai; }
+                    pr += ar * xr - ai * xi; pi += ar * xi + ai * xr;
+                }
+                sr += pr; si += pi;
+            }
+            y[2*i] = sr; y[2*i+1] = si;
+        }
+    }
+}
+
+RS_EXPORT void rs_apply_sym(const uint8_t *E, int D, int n, const uint8_t *odd,
+                            const double *x, double *y, int adjoint) {
+    if (!adjoint) { rs_apply(E, D, n, x, y, 0); return; }
+    rs_apply_masked(E, NULL, odd, D, n, x, y);
+}
+
+RS_EXPORT void rs_apply_signed(const uint8_t *E, const uint8_t *S, int D, int n,
+                               const double *x, double *y, int adjoint) {
+    if (!adjoint) { rs_apply(E, D, n, x, y, 0); return; }
+    rs_apply_masked(E, S, NULL, D, n, x, y);
+}
+#endif

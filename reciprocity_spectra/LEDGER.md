@@ -937,3 +937,53 @@ passes.
 **Validation:** full pytest passes 363 tests on Linux (no exclusions); targeted Ruff passes; `audit_strength.py --check` and `audit_invariance.py --check` both pass.
 
 **Next dependency.** RS-S015: register P1–P3 verbatim, then run the class tests at X = 10⁶.
+
+### RS-S015 (2026-10-26): registered sixth-power-class tests of PROV-RS14 at X = 10⁶. Prediction block
+
+**Stage:** falsification. **Branch:** `rs-s015-class-tests`. **Execution:** local Windows, as the owner
+requested.
+
+**Engine port (before any data).** This machine has MSVC only. `native/residue_engine.c` gains an
+`_MSC_VER` path, and the GCC path is unchanged in behaviour:
+
+- 64-bit residue products (X < 2³¹ is enforced);
+- the three complex kernels written in explicit real arithmetic, with the same blocking and
+  summation order;
+- OpenMP loop variables declared outside the loop.
+
+`phase1.compile_engine` builds with `cl /openmp:llvm` on win32. Validation is in
+`results/rs_s015_class_tests_2026-10-26.json` (`engine_validation`):
+
+- the sextic matrices at X = 3.2·10⁵ and 6.4·10⁵ are **byte-identical** to the stored Linux
+  SHA-256 hashes;
+- 42 stored r values at X = 3.2·10⁵ (40 twists and 2 random-phase draws) agree to 5.9·10⁻¹⁶
+  relative.
+
+**Exact test.** `test_sextic_class_exponents_match_direct_symbols` checks that the product of
+prime-symbol exponents equals (u/ρ)₆ for u = Π π^e. It covers inert 2 and 5, conjugate pairs,
+exponents 1–5 and ρ | u.
+
+**Registered before data (verbatim from `RS_S014_INVARIANCE_AUDIT.md` §6).** The setting is X = 10⁶,
+w_κ = conj(g̃₆)·Π(π/·)₆^e, and s = ε·N₆^{1/6}.
+
+**Classes.** There are 250:
+
+- singles π^k, k = 1–5, over the 20 smallest primary primes. These include inert (2) and (5); the
+  norms run from 4 to 73.
+- pairs: all 6 pairs among the 4 smallest primary primes, with (e₁, e₂) ∈ {1..5}².
+
+**Controls.** Ten random-phase vectors and ten conj(g̃₆)·(random sixth roots), with seed 15.
+
+**Predictions.**
+
+- **P1:** over the {1,2,3}-classes, mean s ∈ [0.90, 1.00] and sd ≤ 0.05.
+- **P2:** every k = 5 single with 19 ≤ N ≤ 61 has r < 1, and the mean s over N ≥ 19 lies in
+  [−1.30, −0.80].
+- **P3:** every class containing an exponent 5 has r < 1.02, and every {1,2,3}-class has r > 1.05.
+- **P4:** exploratory report on the classes containing exponent 4.
+
+**Pre-data margin note.** Under (A), with r₁ = 1.4342, the smallest expected r is 1.0513, for
+(3,3) on N = 7·13. The P3 threshold therefore has a thin margin.
+
+**Decision rule.** Freeze CAND-002 only if P1, P2 and P3 all PASS. A failure of P1 or P3 refutes
+PROV-RS14 as stated. The prediction commit hash is recorded in the JSON (`prediction_commit`).

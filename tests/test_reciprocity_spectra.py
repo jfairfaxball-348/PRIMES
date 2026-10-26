@@ -767,3 +767,30 @@ def test_sextic_twist_classes_sixth_powers_and_inversion():
         assert sextic_twist_class(*_mul_w(u, power((2, 0), 6))) == sextic_twist_class(*u)
     assert sixth_power_free_norm(64, 0) == 1 and sixth_power_free_norm(8, 0) == 64
     assert sixth_power_free_norm(128, 0) == 4
+
+
+def test_sextic_class_exponents_match_direct_symbols():
+    """RS-S015: the product of prime symbol vectors equals (u/.)_6 for u = prod pi^e, exactly.
+
+    Covers inert 2 and 5, conjugate split pairs, exponents 1..5 and indexed primes dividing u.
+    """
+    from reciprocity_spectra.arith import (
+        class_element,
+        sextic_class_exponents,
+        smallest_primary_primes,
+    )
+
+    small = smallest_primary_primes(20)
+    assert small[:3] == [(2, 0), (-1, -3), (2, 3)] and (5, 0) in small and len(small) == 20
+    norms = [a * a - a * b + b * b for a, b in small]
+    assert norms == sorted(norms) and max(norms) == 73
+    index = primary_eisenstein_primes(400)
+    kappas = [[(pi, k)] for pi in small[:8] for k in range(1, 6)]
+    kappas += [[(small[i], e1), (small[j], e2)] for i, j in [(0, 1), (1, 2), (2, 4)]
+               for e1 in range(1, 6) for e2 in (1, 4, 5)]
+    for kappa in kappas:
+        u = class_element(kappa)
+        direct = [sextic_residue_exponent(*u, rho) for rho in index]
+        assert sextic_class_exponents(kappa, index) == direct
+        assert any(k is None for k in direct) == any(
+            sextic_residue_exponent(*pi, rho) is None for pi, _ in kappa for rho in index)

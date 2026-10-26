@@ -434,3 +434,45 @@ def sextic_reciprocity_sign(x: DegreeOnePrime, y: DegreeOnePrime) -> int:
     if x.n != 3 or y.n != 3:
         raise ValueError("sextic characters require primary Eisenstein primes")
     return legendre(x.a + x.b * y.root, y.p) * legendre(y.a + y.b * x.root, x.p)
+
+
+def smallest_primary_primes(count: int) -> list[tuple[int, int]]:
+    """The ``count`` primary primes (a, b) of Z[w] coprime to 3 with smallest norm, split and inert.
+
+    Inert primes are (q, 0) with q = 2 (mod 3) and norm q^2. Ties are ordered by (a, b).
+    """
+    limit = 16
+    while True:
+        found = [(q * q, q, 0) for q in primes_upto(math.isqrt(limit)) if q % 3 == 2]
+        found += [(p.p, p.a, p.b) for p in primary_eisenstein_primes(limit)]
+        if len(found) >= count:
+            # Every prime of norm <= limit is present, so the first ``count`` by norm are exact.
+            return [(a, b) for _, a, b in sorted(found)[:count]]
+        limit *= 2
+
+
+def class_element(kappa) -> tuple[int, int]:
+    """u = prod pi^e for an exponent vector kappa = [((a, b), e), ...]."""
+    out = (1, 0)
+    for pi, e in kappa:
+        for _ in range(e):
+            out = _mul_w(out, pi)
+    return out
+
+
+def sextic_class_exponents(kappa, index: list[DegreeOnePrime]) -> list[int | None]:
+    """Exponents of w_kappa / conj(g6~) = prod_pi (pi/rho)_6^e at each indexed rho (None where rho | u).
+
+    Built from prime symbols only, as at scale; equals sextic_residue_exponent of class_element(kappa).
+    """
+    out: list[int | None] = []
+    for rho in index:
+        total: int | None = 0
+        for (a, b), e in kappa:
+            k = sextic_residue_exponent(a, b, rho)
+            if k is None:
+                total = None
+                break
+            total += e * k
+        out.append(None if total is None else total % 6)
+    return out

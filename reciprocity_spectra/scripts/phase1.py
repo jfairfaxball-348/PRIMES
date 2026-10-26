@@ -33,9 +33,27 @@ def shell(*args):
     return subprocess.check_output(args, cwd=ROOT, text=True).strip()
 
 
+VCVARS = Path('C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Auxiliary/Build/vcvars64.bat')
+
+
+def compile_engine_msvc(source):
+    """Windows-local build (RS-S015): MSVC with OpenMP; validated against stored Linux digests."""
+    build = DATA / 'msvc_build'
+    build.mkdir(exist_ok=True)
+    for flags, output in [([], 'residue_engine.exe'), (['/LD'], 'libresidue.so')]:
+        cl = ' '.join(['cl', '/nologo', '/O2', '/openmp:llvm', '/std:c11', *flags, f'"{source}"',
+                       f'/Fe"{build / output}"'])
+        subprocess.run(f'call "{VCVARS}" >nul && {cl}', shell=True, cwd=build, check=True,
+                       stdout=subprocess.DEVNULL)
+        (build / output).replace(DATA / output)
+
+
 def compile_engine():
     DATA.mkdir(exist_ok=True)
     source = ROOT / 'reciprocity_spectra/native/residue_engine.c'
+    if sys.platform == 'win32':
+        compile_engine_msvc(source)
+        return
     for flags, output in [([], 'residue_engine'), (['-shared', '-fPIC'], 'libresidue.so')]:
         temp = DATA / (output + '.tmp')
         shell('cc', '-O3', '-fopenmp', *flags, '-o', str(temp), str(source), '-lm')
