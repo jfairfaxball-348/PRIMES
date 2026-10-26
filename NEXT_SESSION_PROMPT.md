@@ -1,16 +1,21 @@
-Run RS-S019 locally in C:\PRIMES (Windows; MSVC engine) on a new branch from main. Read `reciprocity_spectra/PROTOCOL.md` (sections 4–9), `reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md` (the reviewer is anonymous: never name or cite them), `reciprocity_spectra/RS_S018_COLLISION_AUDIT.md`, `reciprocity_spectra/RS_S016_CROSSOVER.md`, the RS-S015 to RS-S018 and review entries in `reciprocity_spectra/LEDGER.md`, and `scripts/phase1k.py` and `phase1m.py`.
+Run RS-S020 locally in C:\PRIMES (Windows; MSVC engine) on a new branch from main. Read `reciprocity_spectra/PROTOCOL.md` (sections 4–10), `reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md` (the reviewer is anonymous: never name or cite them), the RS-S019 entries in `reciprocity_spectra/LEDGER.md` and `CONJECTURES.md`, `results/rs_s019_moduli_2026-10-26.json`, and `scripts/phase1n.py`.
 
-RELEASE GATE: no paper or preprint drafting (PROTOCOL section 10: Lean formalization and Palomar registration come first). This session is research only.
+RELEASE GATE: no paper or preprint drafting (PROTOCOL section 10). Research only.
 
-STATE: the crossover law (s = F(N6/X) for classes without exponent 5) passed fresh-class tests (RS-S017), and the pi^5 deficit (s about -1.05 for t >> 1) passed in mean form. An anonymous expert suggests both come from prime-modulus first moments of shifted sextic Gauss sums with shift u = rho*kappa: the profile would be a rho-averaged shift-aspect crossover, and the pi^5 deficit possibly an opposite-sign prime-sieve term left once tau_6(p^5) = 0 removes the principal local term. Freezing CAND-002 is deferred.
+STATE: RS-S019 (registered, X = 2e5, trace normalization) found:
+- the pi^5 deficit is INTRINSIC: s = -1.08 with prime moduli and -1.22 with all squarefree moduli, so it is not a sieve effect;
+- the crossover profile is present for both modulus sets.
+Exploratory findings:
+- the pi^5 coefficient tends to -1 as N(pi) grows (-1.08 -> -1.00 over N = 19..400; fit s = -0.995 - 2.6/N);
+- the plateau keeps rising as t -> 0 (0.97–0.99 at the smallest t) and is not a single 1/log X correction;
+- statement 2's unit-class selection (j in {0,3}) is strong with prime moduli and vanishes with unrestricted moduli.
 
-ONE BOUNDED UNIT, RS-S019: pre-registered decisive tests.
-1. Build the unrestricted-moduli variant at a locally feasible X (about 1e5 to 3e5). Rows are the primary degree-one primes rho as now. Columns are all squarefree primary c coprime to 6 with N(c) <= X (non-squarefree c have g(1,c) = 0). Entries are (rho/c)_6 by multiplicativity. Column weights are g6~(c), built from prime Gauss sums by twisted multiplicativity (g(c1 c2) = (c1/c2)(c2/c1) g(c1) g(c2)). Validate exactly against a pure-Python implementation at small X, with a new test in tests/test_reciprocity_spectra.py. Define the analogue r_kappa = ||R w_kappa|| / ||w_kappa|| normalized by the matched random control for the rectangular shape, and compute the prime-moduli version at the same X for direct comparison.
-2. Before any unrestricted-moduli class data: register in a new results JSON and LEDGER block, then commit and push.
-   - (P) the reviewer's sieve hypothesis predicts that the pi^5 deficit disappears or changes substantially with unrestricted moduli. Fix numerical thresholds in advance: for example, the mean s over pi^5 classes with t >= 3 moves by >= 0.5 toward 0 or changes sign. State the alternative outcome too.
-   - (Q) for exponents 1–4, state whether the profile shape is expected to persist.
-   Use the same class families (powered classes only), seeds and controls.
-3. Run, then score verbatim.
-4. Also (exploratory) fit an explicit 1/log X correction to the plateau using the stored RS-S016/17 data, and the trend of the pi^5 coefficient with N(pi) (the reviewer's Q3a).
+ONE BOUNDED UNIT, RS-S020:
+1. Reviewer's rho-partition test (EXPLORATORY): for exponent-2 singles with N = 1 mod 12, split the row primes rho by (rho/pi)_6 and compute the per-class excess within each residue class (rational and trace normalization, prime moduli, X about 3.2e5). Ask whether the concentration correlates with (pi/pibar)_6, i.e. whether Broker–Hoffstein Lemma 5.3's tau_6(pi^2) = 0 condition reappears inside the rho-average.
+2. Exact unit-normalization factor (stage: mechanism): derive and test (pure-Python exact test) the factor relating the rational e(t/p) and trace prime Gauss sums, ((2a-b)/rho)_6 = (pibar/pi)_6, decomposed into (-1/rho)_6, (-3/rho)_6 (b mod 9) and the residual (b'/rho)_6. Explain, or show unexplained, why the prime-moduli selection j in {0,3} vanishes for unrestricted moduli.
+3. Register (commit and push before data) the limit hypotheses at a fresh scale or fresh classes feasible locally:
+   - H+: F(0+) = 1, i.e. s -> 1 as t -> 0;
+   - H-: s(pi^5) -> -1 as N(pi) -> infinity with t >> 1.
+   Use numerical tolerances and a power calculation. Prefer fresh primes (N > 400 for H-; small N at the largest feasible X for H+). Run and score if time allows; otherwise leave registered for RS-S021.
 
-Never commit matrices; delete data/*.bin after use. Run targeted Ruff, PYTHONUTF8=1 pytest (record the three fcntl exclusions), and both audit checkers. Close out under PROTOCOL section 7: merge to main, push and delete the branch without asking, with exactly one justified next prompt (the rho-partition test and the exact unit-normalization calculation are the queued follow-ups).
+Never commit matrices; delete data/*.bin after use. Run targeted Ruff, PYTHONUTF8=1 pytest (record the three fcntl exclusions), and both audit checkers. Close out under PROTOCOL section 7: merge to main, push and delete the branch without asking, with exactly one justified next prompt.

@@ -280,7 +280,14 @@ target. A corrected invariant statement needs explicit formulation and evidence.
 Surviving components still have unresolved Type I and arithmetic-coefficient
 Type II dependencies.
 
-**Next bounded action:** RS-S019, the reviewer-suggested decisive tests (prime versus unrestricted
+**RS-S019 (2026-10-26), registered.**
+
+- The π⁵ deficit is INTRINSIC: it persists over all squarefree moduli, so it is not a sieve effect.
+- The crossover profile is present for both prime and unrestricted moduli.
+- Exploratory: the π⁵ coefficient tends to −1; unit-class selection is prime-specific.
+
+**Next bounded action:** RS-S020, the rho-partition test, the exact unit-normalization factor, and
+registration of the ±1 limit hypotheses (NEXT_SESSION_PROMPT.md). **Previous (done):** RS-S019, the reviewer-suggested decisive tests (prime versus unrestricted
 moduli; log-correction fit), as specified in NEXT_SESSION_PROMPT.md. Freezing CAND-002 is deferred
 until the statement is reformulated as a rho-averaged shift-aspect crossover with conditional limit
 claims (`reciprocity_spectra/EXTERNAL_REVIEW_2026-10-26.md`). CAND-001 remains REFUTED; no

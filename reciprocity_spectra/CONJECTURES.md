@@ -929,3 +929,26 @@ There were 440 fresh classes, using primes with 79 ≤ N ≤ 400, at X = 6.4·10
 The matrix excess is not the naive τ₆ readout: it is uniform across BH's τ₆(π²) = 0 condition.
 
 The candidate draft, the sextic twist-class crossover law, is to be frozen in RS-S019.
+
+## RS-S019: prime versus unrestricted moduli (scored verbatim against `d915b4d`)
+
+| ID | Outcome |
+|---|---|
+| RS-S019-P (is the π⁵ deficit a sieve effect?) | **INTRINSIC**: B = −1.081, U = −1.222 |
+| RS-S019-Q (does the crossover profile persist?) | **PRESENT in both settings** (prediction met) |
+
+**Consequences.**
+
+- The crossover law and the exponent-5 deficit are properties of shifted sextic Gauss-sum first
+  moments over all squarefree moduli. They are not prime-restriction artefacts.
+- Exploratory findings:
+  - the π⁵ coefficient tends to −1 as N(π) grows (−1.08 → −1.00 over N = 19 … 400);
+  - unit-class selection is prime-specific;
+  - the plateau keeps rising as t → 0 (0.97–0.99 at the smallest t).
+
+**Hypotheses to register.**
+
+- **H+:** F(0⁺) = 1.
+- **H−:** for π⁵, s → −1 as N(π) → ∞ in the large-t regime.
+
+Together: ε_κ ≈ +N₆^{−1/6} as t → 0 and ε_{π⁵} ≈ −N(π)^{−5/6}.

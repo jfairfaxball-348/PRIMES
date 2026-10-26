@@ -127,6 +127,17 @@ owner decision, formalization and registration of the exact results is now a man
 before any release (PROTOCOL §10). The exact identities are checked by pure-Python tests in
 `tests/test_reciprocity_spectra.py`.
 
+**Results of the reviewer's tests (RS-S019, registered).**
+
+- **Prime versus unrestricted moduli:** the π⁵ deficit is **INTRINSIC** (−1.08 prime against
+  −1.22 over all squarefree moduli). The sieve explanation is not supported.
+- **The crossover profile persists** with unrestricted moduli, consistent with the proposed
+  ρ-averaged shift-aspect mechanism.
+- **Q3a:** the π⁵ coefficient approaches −1 as N(π) grows (exploratory).
+- **The 0.85 → 0.94 drift** does not fit a single 1/log X correction. It looks like continued
+  t-dependence of F.
+- **The unit-class selection** disappears with unrestricted moduli (exploratory).
+
 **Effect on the candidate.** Freezing CAND-002 in the RS-S018 §5 form is **deferred**. The
 reviewer's interpretation implies the statement should be reformulated:
 

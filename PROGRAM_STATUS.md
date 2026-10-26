@@ -4,7 +4,22 @@ Status date: 2026-10-26
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. External review received (2026-10-26).** **Release gate added
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S019 is complete (2026-10-26).** It ran the anonymous
+reviewer's decisive test, registered, at X = 2·10⁵.
+
+- **The π⁵ deficit is INTRINSIC:** −1.08 with prime moduli against −1.22 with all squarefree
+  moduli, so it is not a sieve effect.
+- **The crossover profile persists** for unrestricted moduli. It is a property of shifted sextic
+  Gauss-sum first moments.
+- **Exploratory:**
+  - the π⁵ coefficient tends to −1 as N(π) grows;
+  - the plateau keeps rising toward about 1 as t → 0;
+  - the unit-class selection of statement 2 vanishes for unrestricted moduli.
+- The release gate (PROTOCOL §10) still applies.
+- Next: **RS-S020**: the ρ-partition test, the exact unit-normalization factor, and registration of
+  the ±1 hypotheses. There is no owner-decision blocker.
+
+Previous: External review received (2026-10-26).** **Release gate added
 (PROTOCOL §10):** no paper or preprint is released until its exact results are formalized in Lean 4
 and registered on Palomar. No formalization exists yet. An anonymous
 expert reviewed the RS-S018 findings. Do not name or cite them.

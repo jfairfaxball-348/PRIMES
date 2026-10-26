@@ -335,14 +335,63 @@ def score():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('step', choices=['validate', 'explore', 'register', 'run', 'score'])
+    parser.add_argument('step', choices=['validate', 'explore', 'register', 'run', 'score', 'fits'])
     parser.add_argument('--x', type=int)
     args = parser.parse_args()
     k1.legacy.compile_engine()
-    if args.step in ('register', 'score'):
-        {'register': register, 'score': score}[args.step]()
+    if args.step in ('register', 'score', 'fits'):
+        {'register': register, 'score': score, 'fits': exploratory_fits}[args.step]()
     else:
         {'validate': validate, 'explore': explore, 'run': run}[args.step](args.x)
+
+
+
+def exploratory_fits():
+    """EXPLORATORY (RS-S019 item 4): 1/log X fit of the plateau, and the pi^5 coefficient against N(pi).
+
+    Uses stored rational-normalization prime-moduli runs: RS-S016 singles (X = 1.6e5..6.4e5), RS-S015 (1e6),
+    RS-S017 fresh singles (6.4e5, 1e6).
+    """
+    tab = phase1l.table()  # {X: (r1, D, sd, [(N, k, r, s)])}, RS-S015/16 singles
+    groups = {'k1_t<=1e-3.5': lambda n, k, x: k == 1 and n / x <= 10 ** -3.5,
+              'k2,3_1e-3.5<t<=1e-2': lambda n, k, x: k in (2, 3) and 10 ** -3.5 < n ** k / x <= 1e-2}
+    fits = {}
+    for name, sel in groups.items():
+        xs, ms = [], []
+        for x, (_, _, _, rows) in tab.items():
+            v = [s for n, k, _, s in rows if sel(n, k, x)]
+            if v:
+                xs.append(x)
+                ms.append(float(np.mean(v)))
+        inv = 1 / np.log(np.array(xs, float))
+        slope, icept = np.polyfit(inv, ms, 1)
+        fits[name] = {'X': xs, 'mean_s': ms, 'fit': 's = c - a/log X', 'c_infinity': float(icept),
+                      'a': float(-slope), 'max_abs_residual': float(np.max(np.abs(np.polyval([slope, icept], inv) - ms)))}
+    pts = []
+    for x, (_, _, _, rows) in tab.items():
+        pts += [(n, s, x) for n, k, _, s in rows if k == 5 and n ** 5 / x >= 3]
+    fresh = json.loads((k1.RESULTS / 'rs_s017_fresh_classes_2026-10-26.json').read_text())
+    for key, o in fresh['observed'].items():
+        kappa = json.loads(key)
+        if len(kappa) == 1 and kappa[0][1] == 5:
+            for x, v in o.items():
+                if v['log10_t'] >= math.log10(3):
+                    pts.append((norm(kappa[0][0]), v['s'], int(x)))
+    bands = [(19, 43), (61, 73), (79, 150), (151, 250), (251, 400)]
+    trend = []
+    for lo, hi in bands:
+        v = [s for n, s, _ in pts if lo <= n <= hi]
+        trend.append({'N_range': [lo, hi], 'n': len(v), 'mean_s': float(np.mean(v)),
+                      'se': float(np.std(v) / math.sqrt(len(v)))})
+    nn = np.array([p[0] for p in pts], float)
+    ss = np.array([p[1] for p in pts])
+    b1, b0 = np.polyfit(1 / nn, ss, 1)
+    doc = load()
+    doc['exploratory_fits'] = {'classification': 'EXPLORATORY', 'plateau_log_fits': fits,
+                               'pi5_trend_by_N': trend, 'pi5_fit': {'model': 's = c5 + b/N', 'c5': float(b0),
+                                                                    'b': float(b1), 'n': len(pts)}}
+    save(doc)
+    print(json.dumps(doc['exploratory_fits'], indent=1))
 
 
 if __name__ == '__main__':

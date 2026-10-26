@@ -1353,3 +1353,63 @@ the RS-S015 singles, with seed 19 and 10 + 10 controls per setting.
 
 **Power.** P uses 15 classes; Q uses 38 plateau and 11 crossover classes. The SE of B and of U is
 about 0.05.
+
+### RS-S019 outcomes (scored verbatim against `d915b4d`)
+
+The run is at X = 2·10⁵ with D = 17976 rows. It has 17976 prime columns and 56433 unrestricted
+squarefree moduli, and took 100 s.
+
+| | r₁ | Random-phase max (sd) | conj(G)·roots max |
+|---|---:|---|---:|
+| prime (trace) | 1.3064 | 1.0053 (0.0031) | 1.0092 |
+| unrestricted | 1.2972 | 1.0067 (0.0025) | 1.0066 |
+
+| ID | Outcome | Numbers |
+|---|---|---|
+| RS-S019-P | **INTRINSIC** | B = −1.081 (prime), U = −1.222 (unrestricted), U − B = −0.141 (15 π⁵ classes each) |
+| RS-S019-Q | **PROFILE_PRESENT in both; prediction met** | prime: plateau 0.863 (n = 38), crossover −0.042 (n = 11); unrestricted: 0.899 and −0.132 |
+
+**Reading.**
+
+- The π⁵ deficit is **not** a prime-sieve effect. It persists, and slightly deepens, over all
+  squarefree moduli. It also survives the change to trace normalization. So the reviewer's
+  sieve hypothesis is not supported.
+- The crossover profile is a property of the shifted Gauss-sum first moment (the Kubota object),
+  not of the prime restriction. This is consistent with the reviewer's ρ-averaged shift-aspect
+  mechanism.
+
+**Exploratory, `phase1n.py fits`; record `exploratory_fits`.**
+
+- **The π⁵ coefficient tends to −1.** By norm band (174 class-scale points):
+
+  | N(π) | 19–43 | 61–73 | 79–150 | 151–250 | 251–400 |
+  |---|---:|---:|---:|---:|---:|
+  | mean s | −1.081 | −1.035 | −1.021 | −1.011 | −1.001 |
+  | SE | 0.018 | 0.034 | 0.041 | 0.044 | 0.064 |
+
+  The fit is s = −0.995 − 2.6/N. This answers the reviewer's Q3a: the coefficient approaches −1.
+- **The plateau is not a single 1/log X correction.**
+  - k = 1 with t ≤ 10^{−3.5} rises with X (0.932 → 0.952).
+  - k = 2/3 with 10^{−3.5} < t ≤ 10^{−2} falls slightly (0.857 → 0.843).
+  - Their 1/log X extrapolations disagree (1.10 and 0.75).
+  - The smallest-t classes (k = 1, N ≤ 13) sit at 0.97–0.99.
+  - Hypothesis, not a finding: F keeps rising as t → 0, possibly to F(0⁺) = 1, mirroring the π⁵
+    limit −1.
+- **Unit classes (the explore scan at X = 5·10⁴).** The j ∈ {0, 3} versus j ∈ {1, 2, 4, 5}
+  selection is strong with prime moduli (1.286 versus 1.089) and nearly absent with unrestricted
+  moduli (1.245 versus 1.263). Statement 2's selection rule therefore looks like a prime-modulus
+  effect.
+
+**Validation.**
+
+- New exact test: composite trace Gauss sums.
+- The new code path reproduces 101 stored r values to 4.6·10⁻¹⁵.
+- Targeted Ruff passes.
+- PYTHONUTF8=1 pytest: 322 passed and 3 skipped (fcntl exclusions).
+- Both audit checkers pass.
+- No matrices are committed.
+
+**Next dependency.** RS-S020 runs the reviewer's ρ-partition test (does the τ₆(π²) vanishing
+reappear when the rows are split by (ρ/π)₆?) and the exact unit-normalization factor, which now
+must explain why the selection vanishes for unrestricted moduli. It then registers the ±1
+hypotheses for a later scale.
