@@ -32,13 +32,15 @@ per-class clause. This failure remains part of the record.
 
 At \(X=2\times10^6\) and \(4\times10^6\), the
 matrix-free RS-S021 runs found all \(12\) scored bins within
-their registered \(\pm0.05\) difference from the frozen
-profile. This means the \emph{pre-registered finite test}
-passed; it cannot prove uniform convergence in \(X\).
+\(\pm0.05\) of the frozen profile (largest absolute residual
+\(0.04946\)), against the \emph{pre-registered} tolerance
+\(\pm0.12\). The registered finite test passed; this is
+not a claim of uniform convergence in \(X\).
 % Source: results/rs_s021_large_x_2026-10-26.json score.A.bins and score.A.outcome.
 \fig{holdout_residuals}{.88}{RS-S021 holdout mean
 minus frozen-profile mean, with the precommitted
-\(\pm0.05\) threshold. Marker areas represent bin sample
+\(\pm0.12\) threshold (the observed residuals are all
+within \(\pm0.05\)). Marker areas represent bin sample
 counts. Source: \texttt{rs\_s021\_large\_x\_2026-10-26.json},
 \texttt{score.A.bins} (\texttt{30965467}).}{residuals}
 

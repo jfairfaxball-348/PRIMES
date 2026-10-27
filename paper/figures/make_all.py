@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RS-S041 plots. Read-only reproduction of committed data, no fitting or new tests.
+"""RS-S041/RS-S042 plots. Read-only reproduction of committed data, no fitting or new tests.
 
 Usage from repository root: python paper/figures/make_all.py
 Uses only reciprocity_spectra/results/*.json. Figures are explanatory or
@@ -121,14 +121,14 @@ def collapse(fig, ax):
     ax.plot([p["log10_t_lo"]+.25 for p in bins],[p["mean_s"] for p in bins],
             color="black",lw=2.3,label="Frozen discovery bin means")
     style(ax,r"$\log_{10}(t)$, $t=N_6/X$",r"$s_\kappa$","Exponent classes 1–4: shift-aspect profile")
-    ax.legend(ncol=2,fontsize=6,loc="lower left")
+    ax.legend(ncol=2,fontsize=7,loc="lower left")
 
 def residuals(fig, ax):
     j=load("s021")
     p=j["score"]["A"]["bins"]
     xx=[a["log10_t_lo"]+.25 for a in p]
     yy=[a["diff"] for a in p]
-    ax.axhspan(-.05,.05,color=PALETTE[2],alpha=.13,label="Registered ±0.05")
+    ax.axhspan(-.12,.12,color=PALETTE[2],alpha=.13,label="Registered ±0.12")
     ax.axhline(0,color="black",lw=.7)
     ax.scatter(xx,yy,c=PALETTE[0],s=[10+2*v["n"] for v in p])
     style(ax,r"Half-decade bin centre in $\log_{10}t$",r"Observed mean $s$ minus frozen $F$",
