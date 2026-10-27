@@ -25,7 +25,9 @@
     "ReciprocitySpectra.shiftedGauss_e4",
     "ReciprocitySpectra.classNumerator_reduction",
     "ReciprocitySpectra.rowShift_eisenstein",
-    "ReciprocitySpectra.residueMatVec_frozen_orientation"
+    "ReciprocitySpectra.residueMatVec_frozen_orientation",
+    "ReciprocitySpectra.sexticValue_one",
+    "ReciprocitySpectra.sexticValue_mul"
   ],
   "definition_names": [],
   "permitted_axioms": [
