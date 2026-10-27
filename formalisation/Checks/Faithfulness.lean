@@ -1,5 +1,11 @@
-import Checks.Fixture200
-import ReciprocitySpectra.Sextic
+module
+
+public import Checks.Fixture200
+public import ReciprocitySpectra.Sextic
+import all ReciprocitySpectra.Sextic -- #eval needs the compiled implementation of symExp
+import all Checks.Fixture200 -- and the generated finite fixture
+
+@[expose] public section
 
 /-!
 # Faithfulness check (PROTOCOL §10.2c)

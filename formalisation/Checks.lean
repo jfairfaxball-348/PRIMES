@@ -1,2 +1,6 @@
-import Checks.Faithfulness
-import Checks.Axioms
+module
+
+public import Checks.Faithfulness
+public import Checks.Axioms
+
+@[expose] public section

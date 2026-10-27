@@ -2038,3 +2038,39 @@ frozen-row bridge. Optional finite Gram, E8/E9, group (B), and all CAND-002
 Palomar registry ID is claimed. Next: **RS-S034**, package *only* the proved
 finite Lean identities for Palomar from a fixed public main commit, following
 the comparator and registry's actual requirements.
+
+### RS-S034 (2026-10-27): Palomar preparation and source-policy reconciliation
+
+**Stage:** bounded Palomar packaging preparation. From authoritative main
+`b94b57fda47b2659cd57c51ae0e3da76c3134cb2`, branch
+`rs-s034-palomar-prepare`, [PR #13](https://github.com/jfairfaxball-348/PRIMES/pull/13).
+Official Palomar policy requires module-format Lean in every submitted source,
+a root SPDX-matching licence, an independent Mathlib-only Challenge, Solution,
+Comparator and accurate nonempty automation disclosure. This supersedes the
+previous assumption that only Challenge and Solution require module headers.
+
+**Changes:** 17 library/Checks files migrated to `module` and public
+interfaces without changing theorem statements or proof bodies. Root Apache-2.0
+licence added. Draft `formalisation/Challenge.lean` states 15 already-proved
+finite field/character theorems with intentional statement-only `sorry`;
+`Solution.lean` imports the proved library and `comparator.json` names
+the exact declarations. The pinned cloud workflow was extended to compile
+both new modules. Specialised sextic E4/E7 and actual matrix row orientation
+still require an independently auditable Challenge representation; this first
+draft does not silently claim them as included.
+
+**Automation/provenance:** per owner, Apache-2.0. AI disclosure is left
+pending **without falsely stating that no AI was used**. Current
+`formalization.yaml` has an intentionally empty methods list and is
+**not mechanically valid for Palomar**. No submission or ID.
+
+**Validation:** RS-S033 remains the last independently confirmed green
+baseline. RS-S034 cloud validation is required before merge; even a green
+Lake build would not establish Comparator or independent NanoDa acceptance.
+Continue in RS-S035 with completion of the substantive Challenge coverage,
+full toolchain/statement comparison and accurate owner-reviewed metadata.
+No D1 records, conjectural asymptotics or paper drafting touched.
+
+**RS-S034 code-head validation addendum (2026-10-27):** Pinned cloud validation run [40516664832](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40516664832) on code head `42d0607727aca68ad973da3903d845b0b949fa02` passed: library, Checks, Challenge, Solution built (all three Lean exit codes 0), the existing standard-axiom audit and exponent faithfulness ran, full pytest 366 passed, 42 Gauss comparison max error 1.5e-15, targeted Ruff and both frozen evidence audits passed. An earlier run failed because module visibility omitted native IR for `symExp` used by the faithfulness `#eval`; this was fixed using `import all ReciprocitySpectra.Sextic` and `import all Checks.Fixture200` in Checks/Faithfulness. This cloud validation does NOT run leanprover/comparator or NanoDa and does not make the metadata submission-valid.
+
+**Next dependency:** RS-S035 completes the independently audited Challenge for specialised E4/E7 and the finite matrix row identity, executes actual Comparator/NanoDa, and keeps AI disclosure pending human review. No Palomar entry exists.

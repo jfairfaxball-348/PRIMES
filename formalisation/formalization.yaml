@@ -1,0 +1,64 @@
+# RS-S034 draft: NOT FOR SUBMISSION. Automation declaration awaits owner review.
+# No statement of "no AI used" is being made; AI assistance is known to have occurred.
+version: "v0.4"
+project:
+  name: "Finite sextic-residue identities underlying Reciprocity Spectra"
+  description: >-
+    A formal library of exact finite-field sextic residue-exponent laws in the
+    split Eisenstein-prime model, character-level Gauss sum identities and
+    additional proved finite row identities. The initial auditable Comparator
+    challenge selects E0/E1/E2/E3/E5/E6 arithmetic and generic E4/E7 character
+    statements, but does not yet select the specialised sextic Gauss or full
+    finite Eisenstein matrix row theorem. It makes no asymptotic claim.
+  authors: ["John Fairfax-Ball"]
+  responsible_maintainers: ["John Fairfax-Ball"]
+  license: "Apache-2.0"
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A15", "11L05"]
+sources:
+  - title: "PRIMES Reciprocity Spectra exact-identity inventory and verified formal development (RS-S023–RS-S033)"
+    type: other
+    relationship: formalizes
+    location: "https://github.com/jfairfaxball-348/PRIMES"
+    note: "In-repository mathematical formulation; no claim of original priority or external peer review."
+status:
+  scope: >-
+    Draft comparator currently includes finite sextic exponent identities and
+    generic character-level Gauss identities. The library separately proves
+    the direct sextic modulus, shifted Gauss sum, finite row orientation, and
+    Eisenstein class numerator. They are NOT YET part of the independent
+    audited Challenge/Solution comparator selection. CAND-002(1)-(3), other
+    asymptotics, optional Gram and composite-modulus results remain unproved.
+    Submission is blocked on completing the Challenge coverage, independent
+    comparator, module compatibility, and owner automation disclosure.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+automation:
+  methods: [] # PENDING human-authored declaration; intentionally not Palomar-valid.
+  notes: >-
+    PENDING OWNER DISCLOSURE. AI-assisted work has occurred in the research and
+    Lean development. This draft does not assert that no AI was used. Before
+    registration, identify material models and methods in automation.methods.
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Pinned Lean library and axiom audits completed before RS-S034; independent Comparator is pending."
+fidelity:
+  divergences: >-
+    Split Eisenstein prime residue fields are explicitly modelled using ZMod p
+    and an Eisenstein root. The quotient ring is not constructed from Mathlib.
+    The formal CAND-002 asymptotic statements have no proofs.
+alignment:
+  namespace: "ReciprocitySpectra"
+  statements:
+    - source: "Finite E0–E3, E5–E6 sextic symbol and normalization laws"
+      lean: "ReciprocitySpectra.sexticExp_mul"
+      module: "ReciprocitySpectra.Sextic"
+      status: "proved, draft Comparator selection"
+    - source: "Generic E4/E7 Gauss character identities"
+      lean: "ReciprocitySpectra.gauss_modulus_sq"
+      module: "ReciprocitySpectra.Gauss"
+      status: "proved, draft Comparator selection; not specialised sextic E7"
+acknowledgements: "Lean 4 and Mathlib contributors; automation credits pending owner review."

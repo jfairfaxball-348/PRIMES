@@ -1,4 +1,8 @@
-import ReciprocitySpectra.Gauss
+module
+
+public import ReciprocitySpectra.Gauss
+
+@[expose] public section
 
 /-!
 # Computable finite-data semantics for CAND-002

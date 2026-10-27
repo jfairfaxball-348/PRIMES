@@ -1,4 +1,8 @@
-import ReciprocitySpectra.Sextic
+module
+
+public import ReciprocitySpectra.Sextic
+
+@[expose] public section
 
 /-!
 # Gauss-sum identities: analytic part of E4 and E7

@@ -1,5 +1,9 @@
-import ReciprocitySpectra.Conjecture
-import ReciprocitySpectra.ShiftedGauss
+module
+
+public import ReciprocitySpectra.Conjecture
+public import ReciprocitySpectra.ShiftedGauss
+
+@[expose] public section
 
 /-!
 # RS-S032: positive-sign exponential periodicity

@@ -1,4 +1,8 @@
-import ReciprocitySpectra.GaussBridge
+module
+
+public import ReciprocitySpectra.GaussBridge
+
+@[expose] public section
 
 /-!
 # RS-S031: positive-sign shifted sextic Gauss sums

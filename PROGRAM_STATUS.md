@@ -1,5 +1,7 @@
 # PRIMES Programme Status
 
+**ACTIVE RS-S034 PALOMAR PREPARATION (2026-10-27, PR #13):** Module-format source migration, Apache-2.0 licence and an initial Mathlib-only Challenge/Solution/comparator are on a session branch; pinned full cloud library/Checks/Challenge/Solution verification PASSED in run 40516664832; independent Comparator verification remains pending. The Challenge currently covers 15 finite elementary/generic character identities but not yet the actual sextic Gauss and full frozen row theorem. The owner will complete the AI-use disclosure; `automation.methods` intentionally remains blank and **the metadata is not submission-ready**. CAND-002(1)–(3) remain conjectural. No Palomar ID. The 2026-10-27 RS-S033 proven finite row theorem on main remains the baseline.
+
 **ACTIVE RS-S033 CHECKPOINT (2026-10-27):** Finite Eisenstein product `classNumerator κ : Eis`, reduction-to-`classResidue`, and the literal frozen `shiftedGauss(ρ * classNumerator κ, σ)` finite matrix-row orientation now compile and pass pinned Lean verification [40511639019](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40511639019). Both Lean targets, standard axiom audit, 1764/1764 exponent faithfulness, 366 pytest tests, 42 Gauss values, Ruff and both frozen evidence audits pass. Group (A′) 1–3 complete in the finite model; no conjectural/asymptotic theorem and no Palomar ID. **Next RS-S034:** Palomar packaging only after full final-commit validation and merge. D1 paused and untouched.
 
 
