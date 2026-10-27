@@ -50,12 +50,13 @@ def sexticExp (r x : ZMod p) : Option (Fin 6) :=
 def symExp (r : ZMod p) (α : Eis) : Option (Fin 6) :=
   sexticExp r (res r α)
 
-section Field
-variable [Fact p.Prime]
-
 /-- E3: reduction preserves multiplication under the Eisenstein root equation. -/
 theorem res_mul {r : ZMod p} (hr : r ^ 2 + r + 1 = 0) (x y : Eis) :
     res r (x * y) = res r x * res r y := by sorry
+
+section Field
+variable [Fact p.Prime]
+
 
 /-- E0: 1+r is a primitive sixth root in the split-prime model. -/
 theorem zeta_primitive {r : ZMod p} (hr : r ^ 2 + r + 1 = 0)
