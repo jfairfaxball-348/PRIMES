@@ -351,7 +351,7 @@ theorem rationalAddChar._proof_2 (p : ℕ) [NeZero p] :
           (@MulOneClass.toMulOne ℂ
             (@Monoid.toMulOneClass ℂ
               (@CommMonoid.toMonoid ℂ
-                (@CommRing.toCommMonoid ℂ Complex.commRing)))))) :=
+                (@CommRing.toCommMonoid ℂ Complex.commRing))))))) :=
   (Complex.isPrimitiveRoot_exp p (NeZero.out)).pow_eq_one
 
 /-- Canonical positive-sign additive character of the finite prime residue field. -/
