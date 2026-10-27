@@ -1,5 +1,8 @@
 # PRIMES Programme Status
 
+**ACTIVE RS-S031 CHECKPOINT (2026-10-27):** Specialized positive-sign sextic E4 is Lean-compiled for all shifts including zero, together with the actual Eisenstein model-residue character, class product and per-column matrix orientation (theorems `ShiftedGauss.lean`, `RowBridge.lean`). The full `residueMatVec` sum and reconciliation to the pre-existing `Conjecture.shiftedGauss` (unreduced rational-representative exponential) remain **OPEN**. RS-S032 handles those exact finite bridges; no Palomar packaging yet. CAND-002 remains conjectural, its proof optional, and paused D1 remains untouched. See latest RS-S031 GitHub Actions for Checks and full-suite validation.
+
+
 Status date: 2026-10-27
 
 **ACTIVE UPDATE: plan of record (owner, 2026-10-27).** Formalise what is exact; everything else
