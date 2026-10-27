@@ -41,3 +41,7 @@ open ReciprocitySpectra
 #print axioms shiftedGauss_eq_gaussSum
 #print axioms shiftedGauss_e4
 #print axioms sexticCharacter_eis
+
+#print axioms sexticCharacter_class
+#print axioms rowShift_symbol
+#print axioms residueColumn_orientation
