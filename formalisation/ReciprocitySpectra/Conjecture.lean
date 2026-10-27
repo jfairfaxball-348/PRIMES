@@ -78,12 +78,26 @@ noncomputable def shiftedGauss (u σ : Eis) : ℂ :=
         (((res (residueRoot σ) u).val : ℕ) : ℂ) * (t : ℂ) /
         ((eisNorm σ).toNat : ℂ))
 
+/-- Raw (unnormalised) prime first moment: each summand has modulus √(N σ). -/
 noncomputable def shiftedFirstMoment (X : ℕ) (u : Eis) : ℂ :=
   ∑ σ ∈ primarySplitPrimes X, shiftedGauss u σ
 
+/-- Normalised prime first moment Σ g_σ(u)/√(N σ), the quantity in the matrix
+orientation identity (each summand has modulus at most 1). -/
+noncomputable def normalizedShiftedFirstMoment (X : ℕ) (u : Eis) : ℂ :=
+  ∑ σ ∈ primarySplitPrimes X,
+    shiftedGauss u σ / (Real.sqrt ((eisNorm σ).toNat : ℝ) : ℂ)
+
 /-- The deliberately abstract sextic Patterson-type hypothesis, uniform in
 all positive-norm shifts with N(u) ≤ B X. It asserts the existence of c(u)
-without identifying c(u) with τ₆ or any known theta coefficient. -/
+without identifying c(u) with τ₆ or any known theta coefficient.
+
+Scale (corrected 2026-10-27): the Patterson-type main term X^(1/2 + 1/n)/log X
+(n = 3: X^(5/6); n = 4: X^(3/4); n = 6: X^(2/3)) is for **normalised** Gauss
+sums, so the hypothesis is stated for `normalizedShiftedFirstMoment`. The
+earlier version applied X^(2/3)/log X to the raw sums, whose expected size is
+X^(7/6)/log X; it was therefore expected to be false for the actual Gauss sums,
+which made `CAND002_Conditional` vacuous. See RS_HP_SCALE_ERRATUM.md. -/
 noncomputable def AbstractPrimeMomentHP : Prop :=
   ∃ c : Eis → ℂ,
     ∀ B : ℝ, 0 < B →
@@ -91,7 +105,7 @@ noncomputable def AbstractPrimeMomentHP : Prop :=
         ∀ X : ℕ, X₀ ≤ X → 2 ≤ X →
           ∀ u : Eis, 0 < eisNorm u →
             (eisNorm u : ℝ) ≤ B * (X : ℝ) →
-              ‖shiftedFirstMoment X u -
+              ‖normalizedShiftedFirstMoment X u -
                 c u * ((((X : ℝ) ^ ((2 : ℝ) / 3)) / Real.log X : ℝ) : ℂ)‖ ≤
                 ε * (((X : ℝ) ^ ((2 : ℝ) / 3)) / Real.log X)
 

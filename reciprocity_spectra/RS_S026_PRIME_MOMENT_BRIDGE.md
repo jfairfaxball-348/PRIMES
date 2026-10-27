@@ -1,5 +1,7 @@
 # RS-S026 — Prime-moment to fixed-class bridge: mathematics-first checkpoint
 
+> **Erratum (2026-10-27).** The H_P used here applied the X^(2/3)/log X scale to raw Gauss sums. The correct scale is normalised X^(2/3)/log X (raw X^(7/6)/log X). See `RS_HP_SCALE_ERRATUM.md` for which statements are unaffected and which rates change.
+
 **Date:** 2026-10-27. **Status:** exact finite identities and a fixed-shift Abelian lemma PROVED on paper; CAND-002(3) **NOT PROVED**. **Scope:** hard prime-level / matrix-level problem only. No new computation at a discovery scale, novelty audit, Lean edits or Palomar work.
 
 ## 0. Authority and distinctions

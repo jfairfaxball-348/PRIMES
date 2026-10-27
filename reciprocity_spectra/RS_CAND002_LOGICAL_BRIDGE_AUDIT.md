@@ -1,5 +1,7 @@
 # CAND-002 mathematical implication audit (owner priority, 2026-10-26)
 
+> **Erratum (2026-10-27).** The H_P used here applied the X^(2/3)/log X scale to raw Gauss sums. The correct scale is normalised X^(2/3)/log X (raw X^(7/6)/log X). See `RS_HP_SCALE_ERRATUM.md` for which statements are unaffected and which rates change.
+
 **Status:** proof obligation OPEN; formalisation paused pending mathematical resolution.
 **Authority:** the exact CAND-002 statement remains frozen in `research/CONJECTURE_REGISTER.md`.
 This note is a logical diagnosis and an **abstract countermodel to a claimed implication**,

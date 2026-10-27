@@ -1865,3 +1865,35 @@ No status promotion and no owner blocker. **Next:** RS-S029,
 an exact arithmetic coefficient/local-factor and signed Type II
 obligation using the defined ideal Vaughan blocks, before any
 attempt to equate a Kubota residue with a prime main term.
+
+### H_P scale erratum and RS-S028 merge (2026-10-27; owner-requested review)
+
+**Review.** The owner asked for a check of RS-S024 to RS-S028.
+
+- The logical-bridge audit is **correct**: CAND-002(3) does not follow from (1) and (2). This was an
+  error in the RS-S022 freezing text.
+- The exact identities of RS-S026, RS-S027 and RS-S028 check out.
+- The Lean build and checks pass locally.
+
+**Erratum.** `AbstractPrimeMomentHP` applied X^{2/3}/log X to **raw** Gauss sums, which are expected
+to be about X^{7/6}/log X. That made the conditional statement vacuous.
+
+- **Fix:** the hypothesis is now stated for the normalised first moment. The owner authorised this
+  Lean edit; it overrides the §9.6 Lean pause for this correction only.
+- **Impact** (`RS_HP_SCALE_ERRATUM.md`):
+  - RS-S026 Props 1–2 and RS-S027 Prop 1, (7) and (8) are unaffected.
+  - The specific rates in RS-S026 Prop 3 (coefficient 4) and RS-S027 Prop 2 belong to the old
+    scale.
+  - New, stronger obstruction: H_P's uniform error exceeds the √D row scale, so H_P alone cannot
+    constrain r_κ.
+- Erratum pointers were added to RS-S026, RS-S027 and the bridge audit. A clarification was added
+  to the CAND-002 record; the frozen text is unchanged.
+
+**Merged:** `rs-s028-prime-projection-vaughan`, including its RS-S029 handoff, which is now
+amended. Stale branches were deleted after archive tags.
+
+**Validation.**
+
+- `lake build ReciprocitySpectra Checks` succeeds.
+- Standard axioms only.
+- Faithfulness 1764/1764.

@@ -1,5 +1,7 @@
 # RS-S027 — Reciprocity transfer, conductor and uniform-tail checkpoint
 
+> **Erratum (2026-10-27).** The H_P used here applied the X^(2/3)/log X scale to raw Gauss sums. The correct scale is normalised X^(2/3)/log X (raw X^(7/6)/log X). See `RS_HP_SCALE_ERRATUM.md` for which statements are unaffected and which rates change.
+
 **Date:** 2026-10-27. **Stage:** mathematics-first hard prime/matrix route.
 **Status:** a finite reciprocity transformation and a uniform upper-tail consequence
 of abstract H_P are proved on paper. The fixed-class implication in frozen

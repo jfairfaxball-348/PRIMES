@@ -380,6 +380,11 @@ abstractly. Under H_P, (1) gives lim inf_X r_κ(X) > 1 for every fixed κ withou
 H_P is unproved even for n = 3 without GRH (Dunn–Radziwiłł is conditional), so (3) is conditional
 throughout.
 
+**Clarifications (2026-10-27).** These do not change the frozen text; they record two defects in it.
+
+- (i) H_P is meant for **normalised** sums, Σ_σ g_σ(u)/√Nσ ~ c(u)X^{2/3}/log X. The formal version was corrected (`RS_HP_SCALE_ERRATUM.md`).
+- (ii) The phrase "(1) gives … and (2) gives …" asserts an implication that does **not** hold. Statements (1) and (2) do not reach the fixed-class boundary (`RS_CAND002_LOGICAL_BRIDGE_AUDIT.md`), and H_P is too weak at row scale (erratum §3). (3) is therefore a separate conjecture with an open logical bridge, not a corollary.
+
 **Not part of the frozen claim (open sub-questions).**
 
 - **Q-a:** F(0⁺) = 1? Evidence: K1 rises 0.932 → 0.975 over X = 1.6·10⁵ … 4·10⁶.
