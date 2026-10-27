@@ -456,7 +456,7 @@ See [RS-S040 preflight](RS_S040_PALOMAR_PREFLIGHT.md) for the exact nested-proje
 26-theorem coverage, source-size and metadata audits, root licence, and the required
 owner-invoked intake sequence. Independent Comparator/NanoDa and scoped cloud both passed
 at the owner AI-disclosure main `ff6ef1742582a9acddefe4ab56203b16c30d4ed4` (runs 40569785577 and 40569785692).
-The 516-line Challenge triggers a Palomar readability warning, not the 1,000-line hard cap.
+The 515-line Challenge triggers a Palomar readability warning, not the 1,000-line hard cap.
 Added the policy-requested theorem-level informal account to `formalisation/README.md`.
 No mathematical source or proof was edited, no registration was made, and the final documentation
 merge SHA still requires independent/scoped green workflows before intake. CAND-002 asymptotics

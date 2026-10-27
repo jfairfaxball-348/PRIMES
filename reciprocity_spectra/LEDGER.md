@@ -2187,7 +2187,7 @@ snapshot size, Challenge limits and truthful substantial ChatGPT disclosure are 
 
 **Verification:** independent Comparator/NanoDa/Lean kernel `40569785577` **SUCCESS** and
 scoped Lean/cloud `40569785692` **SUCCESS** on disclosure main `ff6ef1742582a9acddefe4ab56203b16c30d4ed4`.
-Challenge 516 lines/20,253 bytes exceeds only the advisory 300-line readability warning;
+Challenge 515 lines/20,253 bytes exceeds only the advisory 300-line readability warning;
 tracked source tree is 10,456,370 bytes, below 500 MiB. Additional checks must pass at the
 final merged release-doc SHA. The general historical D1 Ruff CI failure is unrelated.
 

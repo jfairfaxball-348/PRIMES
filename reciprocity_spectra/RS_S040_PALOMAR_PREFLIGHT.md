@@ -38,7 +38,7 @@ is **not** `.`. Use the exact pinned immutable revision ultimately submitted.
 | Public repository, SHA, nested project layout | **PASS**; root licence and nested `lean-toolchain`, `lakefile.toml`, committed `lake-manifest.json` are present |
 | Selected declarations | **PASS**; 26 unique `theorem_names` all exist in independently stated Challenge; no compared `definition_names` |
 | Comparator JSON schema | **PASS**; only supported keys, distinct `Challenge` / `Solution` modules, permitted axioms `propext`, `Quot.sound`, `Classical.choice`; NanoDa enabled |
-| Challenge size | **PASS WITH AUDIT WARNING**; 20,253 bytes and 516 lines, below hard limits 100 KiB and 1,000 lines, above advisory 300-line warning threshold |
+| Challenge size | **PASS WITH AUDIT WARNING**; 20,253 bytes and 515 lines, below hard limits 100 KiB and 1,000 lines, above advisory 300-line warning threshold |
 | Project snapshot size | **PASS**; Git tree contains 10,456,370 bytes of tracked blobs, far below 500 MiB hard ceiling (without Git metadata or checkout overhead) |
 | Untrusted repository artefacts | **PASS on Git tree audit**; no committed compiled-artifact suffixes, submodules or symlink entries; full registry intake retains independent authority for source scan |
 | Lean/Mathlib dependency pins | **PASS**; Lean v4.35.0 and Mathlib `56a005855ea17e0b0958f73ec801ae140b0a1679`, with matching manifest; all Git dependencies have public GitHub HTTPS URLs and full 40-character SHA pins |
@@ -58,7 +58,7 @@ or invalidate successful scoped Lean and Comparator workflows; keep that distinc
 
 **Technical preflight: submission-ready for an author-initiated intake**, subject to both
 independent workflows passing on the **final submitted SHA** after the documentation merge.
-The advisory 516-line Challenge warning is real but not a hard rejection. Palomar's separate
+The advisory 515-line Challenge warning is real but not a hard rejection. Palomar's separate
 editorial research-interest standard (§1) requires a potentially paper-worthy result with a
 credible mathematical audience; 26 verified supporting finite identities do **not** automatically
 satisfy it, and editorial acceptance cannot be promised. The reader's guide does not claim
