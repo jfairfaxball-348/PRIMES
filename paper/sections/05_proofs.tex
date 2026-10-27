@@ -1,0 +1,149 @@
+\section{Exact finite core and paper-level identities}\label{sec:proof}
+\subsection{Lean-verified finite algebra}
+The pinned Lean~4 / Mathlib project under
+\texttt{formalisation/} contains exact finite theorems,
+not asymptotic estimates. The twenty-six independently
+compared selections are listed with precise names and
+hypotheses in \texttt{formalisation/README.md};
+the comparison includes:
+\texttt{sexticExp\_mul\_sixth\_pow},
+\texttt{sexticExp\_pow\_five},
+\texttt{rawGauss\_modulus\_sq},
+\texttt{shiftedGauss\_e4}, and
+\texttt{residueMatVec\_frozen\_orientation}.
+The checked source baseline is commit
+\texttt{8b050b06d1195491b17b92e68b2d92d9d2478cb0}
+and the independent Comparator/NanoDa success run is
+\href{https://github.com/jfairfaxball-348/PRIMES/actions/runs/40569785577}{40569785577};
+the corresponding full scoped cloud workflow is
+\href{https://github.com/jfairfaxball-348/PRIMES/actions/runs/40569785692}{40569785692}.
+The code also reports \(1764/1764\) agreement in its
+finite exponent-faithfulness fixture.
+% Source: PROGRAM_STATUS.md RS-S040 checkpoint; formalisation/README.md (main 30965467).
+The formal residue convention maps
+\(\omega\mapsto r=-a/b\) in \(\mathrm{ZMod}(p)\),
+with explicit prime/root/divisibility hypotheses;
+it is \emph{not} a Mathlib construction of
+the quotient \(\OO/(\sigma)\).
+The frozen CAND-002 statements are defined as
+Lean propositions, with \emph{no proofs} of
+their asymptotic parts. Palomar registration is
+not asserted.
+
+\fig{verification}{.95}{Schematic evidence pipeline:
+native arithmetic, test fixtures, finite Lean
+models, numerical faithfulness, proved library
+and independent Comparator/NanoDa check.
+Source: \texttt{formalisation/README.md},
+\texttt{PROGRAM\_STATUS.md} at \texttt{30965467}.
+An accepted finite package is not a proof of CAND-002.}{verification}
+
+\subsection{Exact shifted row and signed Gram identities}
+Put \(G_\sigma=\gtilde(\sigma)\),
+\(q_\kappa(\sigma)=\overline{G_\sigma}\chi_\sigma(\kappa)\),
+and \(U_\kappa=\{\sigma\in\PP(X):\chi_\sigma(\kappa)\ne0\}\);
+let \(D_\kappa=|U_\kappa|\).
+For the positive-sign rational additive character,
+\[
+ g_\sigma(u)=\sum_{a\bmod\sigma}
+    \chi_\sigma(a)e(\operatorname{res}_\sigma(ua)/\Nm\sigma).
+\]
+
+\begin{proposition}[Finite row identity, exact]\label{prop:row}
+For every indexed row \(\rho\), with the zero convention,
+\[
+ (\rX w_\kappa)_\rho=
+ \overline{\sum_{\sigma\in\PP(X)}
+              \frac{g_\sigma(\rho\kappa)}{\sqrt{\Nm\sigma}}}.
+\]
+\end{proposition}
+\begin{proof}
+For \(\sigma\nmid \rho\kappa\), substitute
+\(a\mapsto(\rho\kappa)^{-1}a\) in the Gauss sum:
+\(g_\sigma(\rho\kappa)
+=\overline{\chi_\sigma(\rho\kappa)}g_\sigma(1)\).
+Conjugating and multiplying symbols gives exactly the
+\(\sigma\)-summand of the matrix product. If
+\(\sigma\mid\rho\kappa\), the shifted sum vanishes by
+nontrivial multiplicative-character orthogonality,
+and so does the corresponding matrix term.
+This includes the zero diagonal.
+\end{proof}
+
+Define a Hermitian prime-correlation kernel and real signed excess
+\begin{align*}
+ K_X(\sigma,\tau)
+   &=\sum_{\rho\in\PP(X)}
+          \chi_\sigma(\rho)\overline{\chi_\tau(\rho)},\\
+ O_\kappa
+   &=\sum_{\substack{\sigma,\tau\in U_\kappa\\\sigma\ne\tau}}
+      q_\kappa(\sigma)\overline{q_\kappa(\tau)}
+         K_X(\sigma,\tau).
+\end{align*}
+\begin{proposition}[Exact zero-diagonal Gram expansion]\label{prop:gram}
+For \(D,D_\kappa>0\),
+\[
+ \|\rX w_\kappa\|^2=D_\kappa(D-1)+O_\kappa,\qquad
+ r_\kappa^2=1-\frac1D+\frac{O_\kappa}{DD_\kappa}.
+\]
+Consequently, wherever \(r_1^2\ne1\),
+\[
+ s_\kappa=\Nm_6(\kappa)^{1/6}
+ \frac{O_\kappa/D_\kappa-1}{O_1/D-1}.
+\]
+\end{proposition}
+\begin{proof}
+Expand the squared row sums and interchange finite sums.
+For a diagonal column pair \(\sigma=\tau\),
+\(|q_\kappa(\sigma)|^2=1\), while the
+inner row sum has \(D-1\) unit-modulus terms
+and one zero term at \(\rho=\sigma\).
+The off-diagonal pairs give \(O_\kappa\).
+Conjugate-symmetric pairing makes \(O_\kappa\) real;
+normalising gives the formula.
+\end{proof}
+These results follow RS-S026 and do not assume an
+unproved first-moment estimate. Their finite row
+counterpart is independently Lean-checked;
+the separate Gram expansion is proved here on paper.
+
+\subsection{Reciprocity kernel, sieve and logical limitation}
+For distinct columns away from exceptional local primes,
+RS-S027 gives an exact reciprocity transform
+\[
+ K_X(\sigma,\tau)
+  =\sum_{\rho\in\PP(X)}
+       h_{\sigma,\tau}(\rho)
+       \left(\frac{\sigma\tau^5}{\rho}\right)_6,
+\]
+where \(h_{\sigma,\tau}\) is a \emph{quadratic
+local factor modulo \(4\)} determined by the
+primary representatives. This is a rearrangement,
+not cancellation. The conductor grows with
+\(\sigma,\tau\), so the fixed-character prime-ideal
+theorem does not establish the required
+uniform signed estimate.
+
+The ideal-prime projection in RS-S028 applies
+a von Mangoldt weight and separates inert ideals,
+prime powers and local exclusions. An exact ideal
+Vaughan convolution decomposes the weighted
+sum into Type I and Type II pieces.
+A separate Dirichlet-series countermodel in
+that audit shows that knowledge of a pole
+\emph{residue alone} does not determine
+a prime-sieved coefficient. These are proofs
+of reductions and obstructions, not a proof of
+a sextic coefficient asymptotic.
+
+Likewise, the abstract scalar countermodel in
+\texttt{RS\_CAND002\_LOGICAL\_BRIDGE\_AUDIT.md}
+demonstrates that compact-positive-aspect and
+large-aspect hypotheses need not specify the
+fixed-class boundary. It is \emph{not}
+a counterexample to the arithmetic conjecture.
+Detailed mod-\(4\) local signs, trace-to-rational
+normalisation corrections, and the ideal
+Vaughan terms remain in the referenced
+paper-level derivations; no unproved transfer
+has been promoted here.

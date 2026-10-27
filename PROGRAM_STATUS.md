@@ -2,17 +2,13 @@
 
 Status date: 2026-10-27
 
-**CURRENT (2026-10-27): paper drafting next. Palomar is optional, not a gate.**
+**CURRENT (2026-10-27): RS-S041 full first-draft paper generated and compiled successfully. Next RS-S042 editorial and arXiv package revision.**
 
-- **Palomar:** submission at commit `8b050b0` passed mechanical verification. Its editorial review
-  declined registration on *research interest*: the 26 selected finite identities are elementary,
-  and the substantive claims are conjectural. The owner withdraws that submission.
-- **Lean:** the formalisation stays as a verification artefact, cited in the paper by commit and
-  Comparator runs.
-- **CAND-002** (1), (2) and (3) remain conjectures. Proof work is parked.
-- **Route:** paper → arXiv → journal.
-- **Next:** RS-S041, figure-rich paper drafting (`NEXT_SESSION_PROMPT.md`).
-- **Branches:** `main` is the only branch. `rs-s031` is archived as a tag.
+- **Paper:** figure-rich LaTeX first draft in `paper/`, 14 reproducibly generated vector PDF + PNG figures. [Paper build 40587444244](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40587444244) **PASS**, with uploaded preview artifact `rs-s041-paper-preview`.
+- **Mathematical statuses:** CAND-002(1), (2), (3) all **CONJECTURES**. The 26 finite theorem statements are independently kernel verified and cited as a **Lean verification artefact**, not spectral/asymptotic proof. Prior refutations and the H_P normalization/scale erratum are preserved.
+- **Plan:** revise paper → owner-authorized arXiv preprint → owner-authorized journal. Palomar optional; no release or external contact in RS-S041.
+- **Next:** RS-S042, bibliography/figure/traceability and arXiv metadata (see NEXT_SESSION_PROMPT.md).
+- **RS-S041 branch:** PR #21 contains the session before final main merge; subsequent closeout must reconcile final main. D1 remains PAUSED.
 
 **HISTORICAL — RS-S040 PALOMAR LIVE-POLICY PREFLIGHT (2026-10-27):** Baseline main `ff6ef1742582a9acddefe4ab56203b16c30d4ed4` includes truthful substantial OpenAI ChatGPT disclosure and passed true independent Comparator/NanoDa/Lean kernel (40569785577) plus full scoped cloud (40569785692). Live PalomarPolicy confirms nested selected project `formalisation`, repo-relative `formalisation/comparator.json` and `formalisation/formalization.yaml`, root Apache-2.0 licence, accepted v0.4 provenance/classification/automation/review shape and 26 exact finite Challenge theorems. Git snapshot ~10.46 MB <500 MiB; Challenge 515 lines/20,253 bytes passes hard limits but exceeds advisory 300-line warning. Reader's guide now describes every selected theorem in `formalisation/README.md`. Full documented audit: `reciprocity_spectra/RS_S040_PALOMAR_PREFLIGHT.md`. Technical intake-preflight PASS pending final docs-SHA validation and merge, but no registration/Palomar ID or editorial acceptance. Next RS-S041 is a separately author-invoked intake step requiring valid portal authentication and explicit registration consent; do not take RS-S040 as consent. CAND-002(1)–(3) unproved; D1 paused.
 

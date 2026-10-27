@@ -1,0 +1,65 @@
+\section{Frozen conjectures and boundary distinctions}\label{sec:conj}
+The following restates CAND-002 from
+\texttt{research/CONJECTURE\_REGISTER.md}, including the
+2026-10-27 correction that its third statement is \emph{standalone}.
+The original frozen wording and historical clarifications
+are preserved in the repository. No statement in this
+section is claimed as a theorem.
+
+\begin{conjecture}[CAND-002(1), compact-aspect crossover]\label{conj:one}
+There exists \(F:(0,\infty)\to\mathbb R\),
+independent of the twist class \(\kappa\), such that for
+bounded-factor classes whose exponents all belong to
+\(\{1,2,3,4\}\),
+\[
+ s_\kappa(X)-F\!\left(\frac{\Nm_6(\kappa)}X\right)\longrightarrow0
+\]
+as \(X\to\infty\), uniformly when \(\Nm_6(\kappa)/X\)
+ranges over any fixed compact subset of \((0,\infty)\).
+Moreover \(\liminf_{t\to0^+}F(t)>0\), \(F\) is decreasing
+on \([10^{-2},1]\), and
+\(\limsup_{t\to\infty}F(t)\le0\).
+\end{conjecture}
+
+\begin{conjecture}[CAND-002(2), fifth-power large aspect]\label{conj:two}
+For \(\kappa=\pi^5\), for every \(\delta>0\)
+there exist \(N_0\) and \(T\) such that
+\[
+ |s_{\pi^5}(X)+1|<\delta
+\]
+whenever \(\Nm(\pi)\ge N_0\),
+\(\Nm(\pi)^5/X\ge T\), and \(X\) is sufficiently large.
+\end{conjecture}
+
+\begin{conjecture}[CAND-002(3), standalone fixed classes]\label{conj:three}
+For every fixed admissible class \(\kappa\) with
+no exponent \(5\),
+\(\liminf_{X\to\infty}r_\kappa(X)>1\).
+For every fixed prime \(\pi\),
+\(\limsup_{X\to\infty}r_{\pi^5}(X)\le1\).
+\end{conjecture}
+
+The registry's historical version of (3) phrased it as
+a corollary conditional on a sextic Patterson-type
+first-moment hypothesis \(H_P\).
+The later logical-bridge audit showed that the
+\emph{compact-aspect} information in (1) and the
+\emph{large-aspect} information in (2) do not control
+fixed classes, where \(t\to0\). The 2026-10-27
+restatement is the authoritative standalone
+fixed-class conjecture. Even corrected \(H_P\) has
+errors too large on the typical row scale; see
+Section~\ref{sec:heuristic}.
+\fig{regime_map}{.90}{The fixed-class boundary is reached by
+holding \(\Nm_6\) constant as \(X\) increases, whereas
+Conjecture~\ref{conj:one} is uniform on compact positive
+\(t\) intervals and Conjecture~\ref{conj:two} concerns
+large \(t\). This is a \emph{conceptual} parameter diagram,
+not measured data.}{regimes}
+
+Open empirical questions from the frozen record are
+(a) whether \(F(0^+)=1\);
+(b) the small-aspect fifth-power behavior;
+(c) the prime-specific unit-class selection; and
+(d) the exponent-two row-parity concentration.
+All four are questions, not predictions scored in this paper.

@@ -1,0 +1,124 @@
+\section{Heuristic interpretation, literature and limitations}\label{sec:heuristic}
+\subsection{Proposed mechanism, explicitly heuristic}
+Proposition~\ref{prop:row} interprets each matrix row as a
+\emph{normalized shifted sextic Gauss-sum first moment}
+with shift \(u=\rho\kappa\). It is plausible that
+averaging these moments across row primes produces a
+crossover when the conductor scale of the shift changes
+relative to the prime-modulus cutoff. This is a proposed
+mechanism, \emph{not} derived from the Kubota functional
+equation or from known theta-coefficient formulas.
+
+The large-\(t\) fifth-power deficit is compatible with
+the vanishing condition for some sextic theta
+coefficients at fifth prime powers discussed by
+Br\"oker--Hoffstein \cite{broeker2013};
+compatibility does not determine the \emph{signed}
+matrix energy. Similarly, the exploratory exponent-two
+row concentration resembles arithmetic local-factor
+selection, without constituting a proof.
+
+The scale correction in
+\texttt{reciprocity\_spectra/RS\_HP\_SCALE\_ERRATUM.md}
+is essential: a Patterson-type sextic prime moment
+at size \(X^{2/3}/\log X\) is an asymptotic for
+\emph{normalized} sums \(g_\sigma(u)/\sqrt{\Nm\sigma}\).
+The analogous raw Gauss-sum scale would be
+\(X^{7/6}/\log X\). The former raw-scale
+hypothesis in RS-S026/S027 was an error and
+its dependent rates must not be invoked as
+results for the corrected model.
+
+Even a uniform \(o(X^{2/3}/\log X)\) error in
+\(H_P\) exceeds the typical row size
+\(\sqrt D\), so it provides no direct control
+of the signed excess in
+Proposition~\ref{prop:gram}.
+A viable proof would require substantially
+finer, row-averaged \emph{signed two-point}
+estimates in the moving-shift range.
+The programme's mathematical proof work on
+that question is parked rather than
+misrepresented as completed.
+
+\subsection{Relation to existing work}
+Residue-symbol matrices and their
+characterizations were studied by
+Dummit--Dummit--Kisilevsky \cite{ddk2016}.
+Patterson, Heath-Brown--Patterson,
+Kazhdan--Patterson, and
+Chinta--Friedberg--Hoffstein supply part
+of the metaplectic/character-sum framework
+\cite{patterson1987,hbp1979,kazhdan1984,chinta2003}.
+Br\"oker--Hoffstein analyse quartic and
+sextic metaplectic coefficients
+\cite{broeker2013}. For cubic Gauss sums,
+Dunn--Radziwi\l{}\l{} investigate
+Patterson's prime-argument bias
+\cite{dunn2024}, while David--Dunn--Hamieh--Lin
+treat the quartic setting \cite{ddhl2023}.
+Blomer--Goldmakher--Louvel provide
+large-sieve context \cite{bgl2014};
+de Faveri--Dunn--Hoffstein study
+nonorthogonality phenomena
+\cite{dfdh2026}; Xu--Sang provide recent
+norm-level sextic context \cite{xusang2026}.
+The analyses here neither claim
+independence from these papers nor
+infer novelty from a literature search.
+
+\subsection{Limitations and failed antecedents}
+The main empirical limitation is that all
+arithmetic measurements end at
+\(X\le4\cdot10^6\); no data here establish
+the function \(F\), uniform limiting
+convergence or a fixed-class threshold.
+Some plotted points share class lists and
+engines; error bars based solely on
+independent sampling would be misleading.
+
+The universal norm-only predecessor
+CAND-001 is \emph{refuted} by sixth-power
+invariance at \(u=64\), and the attempted
+repair PROV-RS14 was \emph{refuted} by its
+registered RS-S015 class tests.
+The per-class fifth-power clause of
+RS-S017 Q3 \emph{failed}. The attractive
+finite mean deficit is not a justification
+for erasing any of these failures.
+The H\(_P\) raw-versus-normalized erratum,
+the incorrect historical logical-corollary
+wording and the absent signed prime-correlation
+estimate are further substantive limitations.
+
+\subsection{Availability and responsible-use disclosure}
+The code, numerical records, frozen predictions,
+session ledger and this manuscript source are in
+\url{https://github.com/jfairfaxball-348/PRIMES}.
+The primary data are the committed machine-readable
+files under \texttt{reciprocity\_spectra/results/};
+the plotting program is
+\texttt{paper/figures/make\_all.py}. The finite Lean
+package is \texttt{formalisation/} on the pinned
+toolchain; independently verified selected theorems
+are listed in its README. Each plot is reproducible
+from the committed JSON, and conceptual diagrams
+are labelled as such. No Palomar ID is claimed.
+
+\textbf{AI assistance.}
+OpenAI's ChatGPT was used substantially in the
+Lean formalisation and assisted with manuscript
+drafting. The author is responsible for the
+mathematical claims, numerical evidence,
+verification, presentation and submission.
+The exact underlying model versions were not
+consistently recorded. Machine checking of the
+finite Lean results does not independently
+validate the conjectures or this written text.
+
+\paragraph{Paper status.}
+This is an internal first draft. Bibliographic
+metadata, figures, exact numerical traceability,
+and the TeX build must pass a revision audit
+before any owner-authorized arXiv upload
+or journal submission.
