@@ -20,31 +20,41 @@ instance : CommMonoid Eis where
   mul := (· * ·)
   one_mul := by
     intro x
-    cases x
-    simp [Eis.mul_c, Eis.mul_d]
+    apply Eis.ext
+    · change (1 * x.c - 0 * x.d : ℤ) = x.c
+      ring
+    · change (1 * x.d + 0 * x.c - 0 * x.d : ℤ) = x.d
+      ring
   mul_one := by
     intro x
-    cases x
-    simp [Eis.mul_c, Eis.mul_d]
+    apply Eis.ext
+    · change (x.c * 1 - x.d * 0 : ℤ) = x.c
+      ring
+    · change (x.c * 0 + x.d * 1 - x.d * 0 : ℤ) = x.d
+      ring
   mul_assoc := by
     intro x y z
-    cases x
-    cases y
-    cases z
-    simp only [Eis.mk.injEq, Eis.mul_c, Eis.mul_d]
-    constructor <;> ring
+    apply Eis.ext
+    · simp only [Eis.mul_c, Eis.mul_d]
+      ring
+    · simp only [Eis.mul_c, Eis.mul_d]
+      ring
   mul_comm := by
     intro x y
-    cases x
-    cases y
-    simp only [Eis.mk.injEq, Eis.mul_c, Eis.mul_d]
-    constructor <;> ring
+    apply Eis.ext
+    · simp only [Eis.mul_c]
+      ring
+    · simp only [Eis.mul_d]
+      ring
 
 end Eis
 
+variable {p : ℕ}
+
 /-- Reduction preserves the actual Eisenstein identity. -/
 @[simp] theorem res_one (r : ZMod p) : res r (1 : Eis) = 1 := by
-  simp [res]
+  change (1 : ZMod p) + 0 * r = 1
+  simp
 
 /-- Reduction commutes with arbitrary natural powers, including the zeroth
 power, so it also handles all six exponent classes. -/
