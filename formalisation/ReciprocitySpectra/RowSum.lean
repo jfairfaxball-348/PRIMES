@@ -52,7 +52,10 @@ theorem primeNorm_d_ne_zero (σ : Eis)
     push_cast at hz
     simpa only [pow_two] using hz
   have hc2 : (σ.c : ZMod p) ^ 2 = 0 := by simpa [hd0] using hnormzero
-  have hc0 : (σ.c : ZMod p) = 0 := pow_eq_zero hc2
+  have hc0 : (σ.c : ZMod p) = 0 := by
+    rcases mul_eq_zero.mp (by simpa only [pow_two] using hc2) with h | h
+    · exact h
+    · exact h
   obtain ⟨u, hu⟩ := (ZMod.intCast_zmod_eq_zero_iff_dvd σ.c p).mp hc0
   obtain ⟨v, hv⟩ := (ZMod.intCast_zmod_eq_zero_iff_dvd σ.d p).mp hd0
   let m : ℤ := u * u - u * v + v * v
