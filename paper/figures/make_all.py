@@ -203,8 +203,7 @@ def regimes(fig, ax):
         ax.plot(xx,np.full_like(xx,X),ls="--",lw=1,label=fr"$t=1$ at $\log_{{10}}X={X}$")
     ax.fill_between(xx,xx+2,xx+5,where=(xx+2<=xx+5),alpha=.10,color=PALETTE[0])
     ax.text(1.0,5.8,"fixed class: $N_6$ fixed,\n$X\\to\\infty$ is a separate boundary",fontsize=9)
-    style(ax,r"$\log_{10}N_6$",r"$\log_{10}X$","Parameter regions
-    conceptual, not evidence")
+    style(ax,r"$\log_{10}N_6$",r"$\log_{10}X$","Parameter regions; conceptual, not evidence")
     ax.set_ylim(3,8)
     ax.legend(fontsize=7)
 
@@ -226,8 +225,7 @@ def normalisation(fig, ax):
     y=[j[k]["median_across_X_spread_of_bin_means"] for k in keys]
     ax.bar(x,y,color=[PALETTE[0],PALETTE[2],PALETTE[1]])
     ax.set_xticks(x,["baseline-normalised","control-referenced","unnormalised"])
-    style(ax,"",r"Median across-$X$ bin spread","Normalisation audit
-    same 600 finite points")
+    style(ax,"",r"Median across-$X$ bin spread","Normalisation audit; same 600 finite points")
     ax.tick_params(axis="x",labelrotation=12)
 
 def phase(fig,ax):
