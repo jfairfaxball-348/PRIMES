@@ -229,3 +229,8 @@ missing endpoint control, including the raw/normalised Gauss weighting and
 coefficient information, or provide a minimal separately labelled repair.
 Existing verified Lean identities are retained; no new sextic E4/E7
 specialization or Palomar packaging is authorized in the meantime.
+
+
+## RS-S026 mathematics-first checkpoint (2026-10-27)
+
+The mathematical proof record is \`RS_S026_PRIME_MOMENT_BRIDGE.md\`. It proves on paper the exact prime-row orientation, signed off-diagonal Gram expansion (with support/diagonal corrections) and a **fixed-shift** Abelian normalization lemma under the abstract H_P, with leading factor 4. The hypothesized H_P does not yet yield moving-shift uniformity or signed/averaged-square prime correlations. Neither fixed-class endpoint is proved; CAND-002(3) remains OPEN. The next unit RS-S027 stays mathematics-first. No new Lean E4/E7 specialization, release work or change to the frozen candidate is authorized by this checkpoint.
