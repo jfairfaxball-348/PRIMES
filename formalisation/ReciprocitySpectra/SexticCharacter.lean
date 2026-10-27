@@ -140,6 +140,46 @@ theorem sexticCharacter_apply (r : ZMod p)
     (x : ZMod p) :
     sexticCharacter r hr h2 h3 h6 x = sexticValue r x := rfl
 
+/-- Nontriviality follows from cyclicity of the split-prime field's
+multiplicative group. The Euler-criterion power cannot be identically one
+because its exponent is strictly smaller than the group's order. -/
+theorem sexticCharacter_ne_one (r : ZMod p)
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1) :
+    sexticCharacter r hr h2 h3 h6 ≠ 1 := by
+  classical
+  have hp : 1 < p := (Fact.out : p.Prime).one_lt
+  have hge : 6 ≤ p - 1 := Nat.le_of_dvd (by omega) h6
+  obtain ⟨g, hg⟩ := (inferInstance : IsCyclic (ZMod p)ˣ).exists_generator
+  have hgo : orderOf g = p - 1 := by
+    simpa [Nat.card_eq_fintype_card, Fintype.card_units] using
+      (orderOf_eq_card_of_forall_mem_zpowers hg)
+  have hpowUnits : g ^ ((p - 1) / 6) ≠ 1 :=
+    pow_ne_one_of_lt_orderOf (by omega) (by rw [hgo]; omega)
+  have hpow : ((g : ZMod p) ^ ((p - 1) / 6)) ≠ 1 := by
+    intro heq
+    apply hpowUnits
+    apply Units.val_injective
+    simpa using heq
+  obtain ⟨k, hk⟩ := exists_exp hr h2 h3 h6 g.ne_zero
+  have hs : sexticExp r (g : ZMod p) = some k :=
+    sexticExp_eq_some hr h2 h3 g.ne_zero hk
+  intro htriv
+  have hv : sexticCharacter r hr h2 h3 h6 (g : ZMod p) = 1 := by
+    rw [htriv]
+    exact MulChar.one_apply_coe g
+  have hroot : complexZeta6 ^ k.val = 1 := by
+    calc
+      complexZeta6 ^ k.val = sexticCharacter r hr h2 h3 h6 (g : ZMod p) :=
+        (sexticValue_of_some hs).symm.trans (sexticCharacter_apply r hr h2 h3 h6 _).symm
+      _ = 1 := hv
+  have hdvd : 6 ∣ k.val :=
+    (complexZeta6_primitive.pow_eq_one_iff_dvd _).mp hroot
+  have hkzero : k.val = 0 := by omega
+  apply hpow
+  rw [hk]
+  simp [hkzero]
+
 /-- Identification with the complex symbol for embedded rational integers,
 including the zero residue. -/
 theorem sexticCharacter_rational (σ : Eis)
