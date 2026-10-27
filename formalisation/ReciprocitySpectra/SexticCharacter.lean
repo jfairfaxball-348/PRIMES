@@ -90,14 +90,15 @@ theorem residueRoot_poly (σ : Eis)
       (eisNorm σ : ZMod (eisNorm σ).toNat) =
           (((eisNorm σ).toNat : ℤ) : ZMod (eisNorm σ).toNat) :=
             congrArg (fun z : ℤ => (z : ZMod (eisNorm σ).toNat)) hn_int
-      _ = 0 := by simp
+      _ = 0 := by simpa only [Int.cast_natCast] using
+        (ZMod.natCast_self (eisNorm σ).toNat)
   have hn : (σ.c : ZMod (eisNorm σ).toNat) ^ 2 -
       (σ.c : ZMod (eisNorm σ).toNat) * (σ.d : ZMod (eisNorm σ).toNat) +
       (σ.d : ZMod (eisNorm σ).toNat) ^ 2 = 0 := by
     change ((σ.c * σ.c - σ.c * σ.d + σ.d * σ.d : ℤ) :
       ZMod (eisNorm σ).toNat) = 0 at hcast
     push_cast at hcast
-    nlinarith [hcast]
+    simpa only [pow_two] using hcast
   have hbr : (σ.d : ZMod (eisNorm σ).toNat) * residueRoot σ =
       -(σ.c : ZMod (eisNorm σ).toNat) := by
     dsimp [residueRoot]
