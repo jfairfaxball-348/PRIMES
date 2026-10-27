@@ -2,7 +2,15 @@
 
 Status date: 2026-10-27
 
-**CURRENT (2026-10-27): RS-S041 full first-draft paper generated and compiled successfully. Next RS-S042 editorial and arXiv package revision.**
+**CURRENT (2026-10-27): RS-S042 arXiv INTERNAL paper revision is technically validated; next RS-S043 standalone source-package rehearsal (NO external submission).**
+
+- **Paper:** RS-S042 corrected 13-page PDF internally compiled/rendered. **12 figures displayed** from **14 reproducible vector-PDF + PNG pairs**; redundant boxed process illustrations removed, visible “Draft / Not submitted” label removed. All eleven bibliography entries corrected from primary records. Source-key/commit audit in `paper/NUMERICAL_SOURCE_AUDIT.md`, copy-ready metadata plus owner-only decisions in `paper/ARXIV_METADATA.md`.
+- **Crucial correction:** RS-S021 A-bin **registered threshold ±0.12**, whereas **observed maximum absolute difference was 0.0494578894**; the old ±0.05 figure caption/claim was incorrect. No frozen data or predictions altered.
+- **Validated code-head `c7e87a3fe43740069223877c32ced8c192bf4d0b`:** [fresh paper build and figure validation 40591098532](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40591098532) PASS; [full scoped Lean, pytest, two frozen evidence audits 40591098569](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40591098569) PASS; [26-theorem independent Comparator/NanoDa 40591098652](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40591098652) PASS. Generic legacy D1 Ruff CI still red. **These are code-head checks**, not automatically final-documentation-head checks.
+- **Epistemic status:** CAND-002 (1), (2), (3) all CONJECTURES. Twenty-six kernel-proved finite Lean statements are verification artefacts, not proofs of asymptotics. Failed precursors and the H_P normalized/raw scale erratum remain on record. Truthful substantial ChatGPT use is disclosed.
+- **Release state:** arXiv metadata/package **internal candidate only**; no uploads, Palomar registration, journal submission or third-party contact. Owner retains final title/institution, arXiv licence, endorsement and journal choices. RS-S043 is mechanically bounded to **offline arXiv source bundle rehearsal**, no authorization to publish. D1 remains PAUSED.
+
+**HISTORICAL (2026-10-27): RS-S041 full first-draft paper generated and compiled successfully. RS-S042 editorial and arXiv package revision followed.**
 
 - **Paper:** figure-rich LaTeX first draft in `paper/`, 14 reproducibly generated vector PDF + PNG figures. [Paper build 40587444244](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40587444244) **PASS**, with uploaded preview artifact `rs-s041-paper-preview`.
 - **Mathematical statuses:** CAND-002(1), (2), (3) all **CONJECTURES**. The 26 finite theorem statements are independently kernel verified and cited as a **Lean verification artefact**, not spectral/asymptotic proof. Prior refutations and the H_P normalization/scale erratum are preserved.
