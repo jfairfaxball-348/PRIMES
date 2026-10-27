@@ -83,15 +83,14 @@ def baseline(fig, ax):
     y=[a["analysis"]["r_u1"][str(x)] for x in X]
     for k,v in b["score"]["r_u1"].items():
         X.append(int(k))
-    y.append(v)
+        y.append(v)
     pairs=sorted(zip(X,y, strict=False))
     ax.plot([x/1e6 for x,_ in pairs],[v for _,v in pairs],marker="o",color=PALETTE[0])
     style(ax,r"Cutoff $X$ ($10^6$)",r"Baseline $r_1$","Observed baseline strength")
 
 def collapse(fig, ax):
     a,b,c=load("s016"),load("s021"),load("s015")
-    for run in a["runs"]+c["runs"][:
-        1]+b["runs"]:
+    for run in a["runs"]+c["runs"][:1]+b["runs"]:
         X=run["X"]
         vals=[]
         if X<=1e6:
