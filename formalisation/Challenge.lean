@@ -152,53 +152,6 @@ arithmetic and the original finite sums, not an unconstructed quotient ring.
 The advertised theorems are statements here and have proofs in Solution.
 -/
 
-namespace Eis
-
-/-- Coordinatewise extensionality for the explicit Eisenstein pair. -/
-theorem ext {x y : Eis} (hc : x.c = y.c) (hd : x.d = y.d) :
-    x = y := by
-  cases x
-  cases y
-  cases hc
-  cases hd
-  rfl
-
-/-- Multiplicative identity in the concrete coordinate-pair model of Z[ω]. -/
-instance : CommMonoid Eis where
-  one := ⟨1, 0⟩
-  mul := (· * ·)
-  one_mul := by
-    intro x
-    apply Eis.ext
-    · change (1 * x.c - 0 * x.d : ℤ) = x.c
-      ring
-    · change (1 * x.d + 0 * x.c - 0 * x.d : ℤ) = x.d
-      ring
-  mul_one := by
-    intro x
-    apply Eis.ext
-    · change (x.c * 1 - x.d * 0 : ℤ) = x.c
-      ring
-    · change (x.c * 0 + x.d * 1 - x.d * 0 : ℤ) = x.d
-      ring
-  mul_assoc := by
-    intro x y z
-    apply Eis.ext
-    · simp only [Eis.mul_c, Eis.mul_d]
-      ring
-    · simp only [Eis.mul_c, Eis.mul_d]
-      ring
-  mul_comm := by
-    intro x y
-    apply Eis.ext
-    · simp only [Eis.mul_c]
-      ring
-    · simp only [Eis.mul_d]
-      ring
-
-end Eis
-
-
 /-- Quadratic Eisenstein norm c²-cd+d²; no positivity assumption is built into the definition. -/
 def eisNorm (x : Eis) : ℤ := x.c * x.c - x.c * x.d + x.d * x.d
 
@@ -274,6 +227,53 @@ noncomputable def shiftedGauss (u σ : Eis) : ℂ :=
       Complex.exp (2 * (Real.pi : ℂ) * Complex.I *
         (((res (residueRoot σ) u).val : ℕ) : ℂ) * (t : ℂ) /
         ((eisNorm σ).toNat : ℂ))
+
+
+namespace Eis
+
+/-- Coordinatewise extensionality for the explicit Eisenstein pair. -/
+theorem ext {x y : Eis} (hc : x.c = y.c) (hd : x.d = y.d) :
+    x = y := by
+  cases x
+  cases y
+  cases hc
+  cases hd
+  rfl
+
+/-- Multiplicative identity in the concrete coordinate-pair model of Z[ω]. -/
+instance : CommMonoid Eis where
+  one := ⟨1, 0⟩
+  mul := (· * ·)
+  one_mul := by
+    intro x
+    apply Eis.ext
+    · change (1 * x.c - 0 * x.d : ℤ) = x.c
+      ring
+    · change (1 * x.d + 0 * x.c - 0 * x.d : ℤ) = x.d
+      ring
+  mul_one := by
+    intro x
+    apply Eis.ext
+    · change (x.c * 1 - x.d * 0 : ℤ) = x.c
+      ring
+    · change (x.c * 0 + x.d * 1 - x.d * 0 : ℤ) = x.d
+      ring
+  mul_assoc := by
+    intro x y z
+    apply Eis.ext
+    · simp only [Eis.mul_c, Eis.mul_d]
+      ring
+    · simp only [Eis.mul_c, Eis.mul_d]
+      ring
+  mul_comm := by
+    intro x y
+    apply Eis.ext
+    · simp only [Eis.mul_c]
+      ring
+    · simp only [Eis.mul_d]
+      ring
+
+end Eis
 
 
 /-- One column-independent Eisenstein product of all class atoms with their exponents. -/

@@ -1,7 +1,7 @@
 name: RS-S035 independent Comparator and NanoDa
 on:
   push:
-    branches: [rs-s035-palomar-coverage]
+    branches: [rs-s035-palomar-coverage, rs-s036-comparator-fidelity]
   pull_request:
     branches: [main]
   workflow_dispatch:
