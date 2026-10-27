@@ -1,6 +1,8 @@
 # PRIMES Programme Status
 
-**ACTIVE RS-S031 CHECKPOINT (2026-10-27):** Specialized positive-sign sextic E4 is Lean-compiled for all shifts including zero, together with the actual Eisenstein model-residue character, class product and per-column matrix orientation (theorems `ShiftedGauss.lean`, `RowBridge.lean`). The full `residueMatVec` sum and reconciliation to the pre-existing `Conjecture.shiftedGauss` (unreduced rational-representative exponential) remain **OPEN**. RS-S032 handles those exact finite bridges; no Palomar packaging yet. CAND-002 remains conjectural, its proof optional, and paused D1 remains untouched. See latest RS-S031 GitHub Actions for Checks and full-suite validation.
+**ACTIVE RS-S032 CHECKPOINT (2026-10-27):** Lean proves every indexed split-prime column satisfies the sextic field/root/characteristic hypotheses and the full, unconditional finite `residueMatVec` shifted row sum in the reduced residue-field convention (`RowSum.lean`). Exact positive exponential periodicity connects the frozen `Conjecture.shiftedGauss(u,σ)` with the direct model for any true Eisenstein u (`ShiftConvention.lean`), including zero. Pinned workflow 40505888940 PASSED. A remaining column-independent Eisenstein representative of a general TwistClass is NOT proved; the uncompiled attempt was removed, so no combined frozen `ρκ` row identity or Palomar packaging. RS-S033 addresses this one exact bridge. CAND-002 remains entirely conjectural; D1 untouched.
+
+**HISTORICAL RS-S031 CHECKPOINT:** Previous per-column result led to RS-S032; its open full reduced row sum and standalone shift-convention obligations are now discharged, except for the true Eisenstein class-product identification.
 
 
 Status date: 2026-10-27
