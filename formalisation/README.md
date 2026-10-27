@@ -132,3 +132,14 @@ prime-level/matrix-level mathematical proof/repair session. See
 abstract countermodel, boundary-uniformity issue and H_P obligations.
 That countermodel does not refute the actual residue matrix or H_P.
 Palomar packaging is on hold.
+
+## Plan of record (2026-10-27)
+
+- Proof work is out of the pipeline, and the Lean pause is lifted.
+- `Conjecture.lean` now packages `CAND002 = CAND002_Crossover ∧ CAND002_Fifth ∧
+  CAND002_FixedClass`. (3) is a standalone conjecture.
+- The H_P-conditional form is kept outside the package. H_P is stated at the corrected normalised
+  scale; see `RS_HP_SCALE_ERRATUM.md`.
+- **Next (RS-S029):** the sextic `MulChar` built from `sexticExp`, E7 and E4 in the sextic case, and
+  the row orientation identity. Then Palomar packaging (RS-S030).
+- The full list is in `../reciprocity_spectra/RELEASE_INVENTORY.md`, "Plan of record".

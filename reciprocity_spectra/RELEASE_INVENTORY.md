@@ -234,3 +234,45 @@ specialization or Palomar packaging is authorized in the meantime.
 ## RS-S026 mathematics-first checkpoint (2026-10-27)
 
 The mathematical proof record is `RS_S026_PRIME_MOMENT_BRIDGE.md`. It proves on paper the exact prime-row orientation, signed off-diagonal Gram expansion (with support/diagonal corrections) and a **fixed-shift** Abelian normalization lemma under the abstract H_P, with leading factor 4. The hypothesized H_P does not yet yield moving-shift uniformity or signed/averaged-square prime correlations. Neither fixed-class endpoint is proved; CAND-002(3) remains OPEN. The next unit RS-S027 stays mathematics-first. No new Lean E4/E7 specialization, release work or change to the frozen candidate is authorized by this checkpoint.
+
+## Plan of record (owner decision, 2026-10-27)
+
+Proof work is out of the pipeline. The Lean pause is lifted. Formalise what is exact; everything
+else stays conjecture.
+
+**(A) Lean-proved, to register on Palomar** (no `sorry`, standard axioms):
+
+- **`Sextic.lean`:** E0 (`exists_exp`, `exp_unique`, `zeta_primitive`), E1, E2, E3, E5 and E6.
+- **`Gauss.lean`** (generic characters): `gauss_modulus_sq`, `gauss_shift` and
+  `finite_gauss_orientation`.
+- **`CharacterBridge.lean`:** `rationalAddChar_primitive` and `rationalAddChar_apply`.
+
+**(A′) Formalisable, still to do.** RS-S029 covers items 1–3; items 4 and 5 are optional.
+
+1. The sextic `MulChar` χ_σ on `ZMod p`, built from `sexticExp`:
+   - multiplicative, and zero at 0;
+   - χ_σ ≠ 1;
+   - agrees with `complexSymbol`, including zeros.
+2. E7, sextic case: |`rawGauss` σ|² = p, from `gauss_modulus_sq`, `rationalAddChar_primitive` and
+   `rationalAddChar_apply`.
+3. E4, sextic case: `shiftedGauss u σ = conj(χ_σ(res u))·rawGauss σ` for σ ∤ u, and 0 otherwise.
+   Then the row orientation identity for `residueMatVec` (RS-S026 Prop. 1).
+4. Optional: the finite Gram identity for `imageNormSq` (RS-S026 Prop. 2).
+5. Optional: the abstract countermodel of `RS_CAND002_LOGICAL_BRIDGE_AUDIT.md` §2 (scalar real
+   analysis).
+
+**(B) Paper-proved, not formalised** (stated in the paper with proofs and gaps):
+
+- RS-S026 Props 1–2, if not formalised;
+- RS-S027 Prop. 1 and the conductor lemma (they need sextic reciprocity, which is not in Mathlib);
+- RS-S028's prime sieve, ideal Vaughan identity and trace-Gauss sign rule;
+- L1 (BGL-dependent) and L2;
+- the H_P scale analysis (`RS_HP_SCALE_ERRATUM.md` §3).
+
+**(C) Conjectural or numerical:**
+
+- CAND-002 (1) crossover, (2) exponent five and (3) fixed class, formalised as `Prop`s only;
+- Q-a to Q-d;
+- all registered numerical outcomes (RS-S015 to RS-S021, with commits).
+
+**After (A′):** Palomar packaging (RS-S030), then the paper.

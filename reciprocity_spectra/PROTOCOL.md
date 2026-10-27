@@ -148,14 +148,18 @@ These are binding for Reciprocity Spectra sessions until the owner changes them.
    branch. This supersedes "merge only with the owner's explicit instruction in that session".
 5. **Release gate: formalization and registration (2026-10-26).** No paper, preprint, draft for
    circulation or public claim of a result is written or released until the gate in §10 is passed.
-6. **Mathematics before further formalisation (owner clarification, 2026-10-26).** For CAND-002,
-   suspend new Lean sextic character/specialization work until the fixed-class
-   implication gap is resolved mathematically. Statement (1)'s compact-aspect
-   uniformity excludes fixed κ at N₆(κ)/X→0, and statement (2)'s large-aspect
-   regime excludes fixed π. Audit the analytic H_P too; establish a rigorous
-   implication or formulate a separate proposed repair without silently changing
-   the frozen conjecture. Preserve the valid Lean work and the §10 release gate.
-   See `RS_CAND002_LOGICAL_BRIDGE_AUDIT.md`. RS-S026 is mathematics-first.
+6. **Proof work out of the pipeline; formalise what is exact (owner decision, 2026-10-27).**
+   This supersedes the 2026-10-26 "mathematics before further formalisation" pause, which is
+   lifted.
+   - Proving CAND-002, including (3), is removed from the release pipeline. It is parked as
+     optional research and is not a gate.
+   - Release proceeds as follows:
+     - formalise in Lean every exact statement that can be formalised;
+     - register the proved lemmas on Palomar;
+     - everything else stays conjecture, labelled as such.
+   - CAND-002(3) is a standalone conjecture. It is not a corollary of (1) and (2) or of H_P.
+   - The proof-route notes stay as paper-level material: RS-S026 to RS-S028,
+     `RS_CAND002_LOGICAL_BRIDGE_AUDIT.md` and `RS_HP_SCALE_ERRATUM.md`.
 
 ## 10. Release gate: Lean formalization and Palomar registration
 

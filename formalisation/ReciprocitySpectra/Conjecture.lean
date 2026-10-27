@@ -14,9 +14,9 @@ Interpretive choices made explicit:
 * r₁² - 1 is eventually bounded below by a positive real constant.
 * H_P is an ABSTRACT prime-first-moment asymptotic with a coefficient c(u);
   it is not an identification with a Kubota coefficient or τ₆.
-* Statement (3) is a conditional statement, not a proved logical implication
-  from statements (1) and (2). In particular the large-t premise of (2)
-  does not yield a fixed-prime X→∞ limit.
+* Statement (3) is a standalone fixed-class conjecture (owner decision
+  2026-10-27), not a consequence of (1) and (2): (1) is compact-aspect and
+  (2) is large-aspect, and neither reaches the fixed-class limit.
 -/
 
 namespace ReciprocitySpectra
@@ -124,15 +124,26 @@ noncomputable def fixedFifthNotEnhanced (π : Eis) : Prop :=
   ∀ ε : ℝ, 0 < ε → ∃ X₀ : ℕ,
     ∀ X : ℕ, X₀ ≤ X → strength X (fifthClass π) ≤ 1 + ε
 
-/-- CAND-002 (3): the separate conditional fixed-class corollary.
-This is *not* a theorem derived from (1) and (2). -/
+/-- CAND-002 (3), restated (owner decision 2026-10-27) as a **standalone**
+fixed-class conjecture with no analytic hypothesis: every fixed admissible class
+without exponent five is eventually enhanced, and every fixed fifth class is not.
+It is not derived from (1) and (2), which do not reach the fixed-class boundary
+(`RS_CAND002_LOGICAL_BRIDGE_AUDIT.md`). -/
+noncomputable def CAND002_FixedClass : Prop :=
+  (∀ κ : TwistClass, admissibleFixedClass κ → fixedClassEnhanced κ) ∧
+    (∀ π : Eis, admissibleAtom π → fixedFifthNotEnhanced π)
+
+/-- Historical H_P-conditional form of (3), retained for the record only and NOT
+part of the CAND-002 package: H_P (even at the corrected normalised scale) is too
+weak at row scale to bear on it (`RS_HP_SCALE_ERRATUM.md` §3). -/
 noncomputable def CAND002_Conditional : Prop :=
   AbstractPrimeMomentHP →
     ((∀ κ : TwistClass, admissibleFixedClass κ → fixedClassEnhanced κ) ∧
       (∀ π : Eis, admissibleAtom π → fixedFifthNotEnhanced π))
 
-/-- The complete formal-conjecture package. No proof of this Prop is claimed. -/
+/-- The complete formal-conjecture package: (1), (2) and standalone (3).
+No proof of this Prop is claimed. -/
 noncomputable def CAND002 : Prop :=
-  CAND002_Crossover ∧ CAND002_Fifth ∧ CAND002_Conditional
+  CAND002_Crossover ∧ CAND002_Fifth ∧ CAND002_FixedClass
 
 end ReciprocitySpectra

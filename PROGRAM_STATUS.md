@@ -2,13 +2,27 @@
 
 Status date: 2026-10-27
 
-**ACTIVE UPDATE — RS-S028 (2026-10-27):** Reciprocity Spectra is **mathematics-first**, CAND-002(3) logical bridge **OPEN**. The exact prime-ideal Vaughan sieve now has explicit Möbius/Λ Type I/II coefficients, primary-generator and rational/trace corrections, and an inert-prime error. A counterexample proves that a full-moduli Dirichlet-series pole residue alone cannot supply the prime-sieved coefficient. No moving-shift prime main term, signed fifth/non-five inequalities or analytic B₆ model has been proved. No Lean/Palomar/paper. Next RS-S029, explicit local arithmetic factors and Type II signed main term (or a rigorous narrower obstruction). See \`reciprocity_spectra/RS_S028_PRIME_PROJECTION_VAUGHAN.md\`.
+**ACTIVE UPDATE: plan of record (owner, 2026-10-27).** Formalise what is exact; everything else
+stays conjecture.
 
-**ACTIVE UPDATE — RS-S027 (2026-10-27):** Reciprocity Spectra remains mathematics-first. Exact mod-4 sextic reciprocity transforms the signed prime kernel; raw abstract H_P gives a uniform Abel asymptotic on fixed upper intervals only. Neither fixed non-five enhancement nor fixed fifth suppression is proved. CAND-002(3) logical bridge OPEN; no new Lean/Palomar/paper; next RS-S028, arithmetic-coefficient Type II mechanism. See `reciprocity_spectra/RS_S027_SIGNED_KERNEL_TAIL.md`.
+- Proof work on CAND-002 is **out of the pipeline**, parked as optional research. The Lean pause
+  (PROTOCOL §9.6) is lifted.
+- CAND-002(3) is restated as a standalone fixed-class conjecture (`CAND002_FixedClass`).
+- The H_P scale erratum is recorded (`RS_HP_SCALE_ERRATUM.md`).
+- Next: **RS-S029 (cloud Lean): the sextic character bridge**:
+  - the sextic `MulChar`;
+  - E7 and E4 in the sextic case;
+  - the row orientation identity.
+- Then RS-S030, Palomar packaging. The route is Lean → Palomar → paper → arXiv → journal.
+- The RS-S026 to RS-S028 entries below are historical.
+
+**HISTORICAL — RS-S028 (2026-10-27):** Reciprocity Spectra is **mathematics-first**, CAND-002(3) logical bridge **OPEN**. The exact prime-ideal Vaughan sieve now has explicit Möbius/Λ Type I/II coefficients, primary-generator and rational/trace corrections, and an inert-prime error. A counterexample proves that a full-moduli Dirichlet-series pole residue alone cannot supply the prime-sieved coefficient. No moving-shift prime main term, signed fifth/non-five inequalities or analytic B₆ model has been proved. No Lean/Palomar/paper. Next RS-S029, explicit local arithmetic factors and Type II signed main term (or a rigorous narrower obstruction). See \`reciprocity_spectra/RS_S028_PRIME_PROJECTION_VAUGHAN.md\`.
+
+**HISTORICAL — RS-S027 (2026-10-27):** Reciprocity Spectra remains mathematics-first. Exact mod-4 sextic reciprocity transforms the signed prime kernel; raw abstract H_P gives a uniform Abel asymptotic on fixed upper intervals only. Neither fixed non-five enhancement nor fixed fifth suppression is proved. CAND-002(3) logical bridge OPEN; no new Lean/Palomar/paper; next RS-S028, arithmetic-coefficient Type II mechanism. See `reciprocity_spectra/RS_S027_SIGNED_KERNEL_TAIL.md`.
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA — RS-S028 closed, RS-S029 next.** Mathematical hard-route proof obligations take priority over further formalisation; the established Lean work is preserved but paused under PROTOCOL §9.6. The original fixed-class implications and analytic H_P bridge remain unproved.
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. Plan of record (2026-10-27): formalise what is exact; proof work parked.** RS-S029 is the next Lean session. Superseded: the earlier mathematics-first pause under PROTOCOL §9.6. The original fixed-class implications and analytic H_P bridge remain unproved.
 
 **Historical RS-S023 checkpoint (2026-10-26).** Formalisation had started in `formalisation/`, in-repo.
 

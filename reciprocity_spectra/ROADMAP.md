@@ -19,6 +19,13 @@ Next: RS-S014, a bounded invariant-formulation audit of the strength law.
 No automatic fallback, theorem graduation, or new candidate is authorized by
 this checkpoint; see `PROOF_ROUTE.md` section 7 and `NEXT_SESSION_PROMPT.md`.
 
+**Plan of record (owner, 2026-10-27).** Proof work is out of the pipeline and parked as optional
+research (PROTOCOL §9.6). Formalise what is exact; everything else stays conjecture.
+
+- Stage 1 next: RS-S029, the Lean sextic character bridge (E7/E4 sextic cases).
+- Then RS-S030, Palomar packaging.
+- The classification of claims is in `RELEASE_INVENTORY.md`, "Plan of record".
+
 ## Route to publication (owner, 2026-10-26; replaces the earlier six-phase route)
 
 Phase 1, settling the science, is complete: CAND-002 was frozen in RS-S022. Novelty assessment and

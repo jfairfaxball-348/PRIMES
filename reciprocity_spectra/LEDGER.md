@@ -1897,3 +1897,18 @@ amended. Stale branches were deleted after archive tags.
 - `lake build ReciprocitySpectra Checks` succeeds.
 - Standard axioms only.
 - Faithfulness 1764/1764.
+
+### Owner decision (2026-10-27): proof work out of the pipeline; formalise what is exact
+
+- Proving CAND-002 is removed from the release pipeline and parked as optional research
+  (PROTOCOL §9.6 revised). The 2026-10-26 Lean pause is lifted.
+- CAND-002(3) is restated as a standalone fixed-class conjecture (register entry), formalised as
+  `CAND002_FixedClass`. `CAND002` is now (1) ∧ (2) ∧ (3). The H_P-conditional form is kept
+  outside the package for the record.
+- The Lean build succeeds, and faithfulness is 1764/1764.
+- `RELEASE_INVENTORY.md` has a plan of record that classifies every claim:
+  - (A) Lean-proved;
+  - (A′) formalisable, to do;
+  - (B) paper-proved;
+  - (C) conjectural or numerical.
+- **Next:** RS-S029, the cloud Lean sextic character bridge. Then RS-S030, Palomar packaging.

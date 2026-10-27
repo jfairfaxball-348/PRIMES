@@ -385,6 +385,16 @@ throughout.
 - (i) H_P is meant for **normalised** sums, Σ_σ g_σ(u)/√Nσ ~ c(u)X^{2/3}/log X. The formal version was corrected (`RS_HP_SCALE_ERRATUM.md`).
 - (ii) The phrase "(1) gives … and (2) gives …" asserts an implication that does **not** hold. Statements (1) and (2) do not reach the fixed-class boundary (`RS_CAND002_LOGICAL_BRIDGE_AUDIT.md`), and H_P is too weak at row scale (erratum §3). (3) is therefore a separate conjecture with an open logical bridge, not a corollary.
 
+**Restatement of (3) (owner decision, 2026-10-27).** (3) is a **standalone fixed-class conjecture**
+with no analytic hypothesis:
+
+- for every fixed admissible class κ without exponent 5, lim inf_X r_κ(X) > 1;
+- for every fixed π, lim sup_X r_{π⁵}(X) ≤ 1.
+
+It is formalised as `CAND002_FixedClass`, and the formal package is now
+`CAND002 = (1) ∧ (2) ∧ (3)`. Proving CAND-002 is out of the release pipeline (PROTOCOL §9.6).
+**Next bounded action:** RS-S029, the Lean sextic character bridge (`NEXT_SESSION_PROMPT.md`).
+
 **Not part of the frozen claim (open sub-questions).**
 
 - **Q-a:** F(0⁺) = 1? Evidence: K1 rises 0.932 → 0.975 over X = 1.6·10⁵ … 4·10⁶.
