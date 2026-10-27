@@ -244,7 +244,7 @@ Apache-2.0, as directed. No Palomar submission is authorised at this stage.
 
 ## RS-S035: expanded independent Palomar statement surface (pending verification)
 
-The independent Mathlib-only `Challenge.lean` now declares 24 exact theorem
+The independent Mathlib-only `Challenge.lean` now declares 26 exact theorem
 statements, compared by `comparator.json`: the previous 15 E0/E1/E2/E3/E5/E6
 and generic-character statements, plus the actual sextic MulChar applications,
 raw/direct Gauss bridge, specialised sextic E7 squared modulus, shifted E4
@@ -270,3 +270,18 @@ removed. The corrected package requires a new complete verification.
 No Palomar ID, registration, or AI-disclosure assertion exists.
 `formalization.yaml` deliberately retains `automation.methods: []`
 pending the owner's accurate declaration; it is not submission-ready.
+
+**RS-S035 final verification finding:** The existing full pinned cloud pipeline
+[40522609418](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40522609418)
+passed at code head `e15e314` (library, Checks, Challenge, Solution,
+axioms, 1764/1764, 366 tests, 42 Gauss checks, Ruff and frozen audits).
+The separate independently pinned Comparator/NanoDa run
+[40522609498](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40522609498)
+**failed**, precisely: `Const does not match between challenge and target
+'ReciprocitySpectra.shiftedGauss'`. Prior runs detected an extra prime
+assumption on `res_mul`, mismatch in Eisenstein monoid proof constants, and a
+missing `sexticValue_zero` simp proof; these were corrected on the branch.
+26 theorem names are selected (two additional sextic character prerequisite
+laws), but **none of the 26 is certified as a full accepted comparator package**.
+PR #14 remains draft and unmerged; RS-S036 must resolve strict definition
+fidelity before any registration. Owner automation disclosure is still pending.
