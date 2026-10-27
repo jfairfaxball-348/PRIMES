@@ -342,3 +342,25 @@ The earlier RS-S030 E7 remains proved. The group (A′) *specialized E4 and per-
 The initial complete pinned validation is [40505888940](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40505888940): both Lean targets, standard-axiom audit, 1764/1764 faithfulness, the entire Python suite, native/Python Gauss fixture, targeted Ruff and two evidence audits passed. This result predates documentation closeout, which requires a final run.
 
 **Precisely open:** the existing `rowShift κ ρ σ` is a finite residue-class product depending on σ. Theorems do **not** identify it with reduction of one column-independent Eisenstein product `ρκ`. An attempt to construct that representative in `ClassProduct.lean` did not compile and was removed; it contributes no theorem or axiom. Consequently the already-proved finite matrix row sum and already-proved frozen shift convention cannot yet be combined into a statement using `Conjecture.shiftedGauss` with one true Eisenstein `ρκ`. This is the RS-S033 proof obligation. Group (A′) item 3: sextic E4 and actual finite `residueMatVec` orientation PROVED in the reduced model; full frozen-class representative bridge still OPEN. Do not initiate Palomar until that bridge is proved and all checks pass. Optional Gram E8/E9 and paper-only (B) remain deferred; all CAND-002 asymptotic claims are **unproved**.
+
+
+## RS-S033 checkpoint (2026-10-27): group (A′) item 3 COMPLETE
+
+Pinned cloud Lean build [40511639019](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40511639019) **SUCCESS**, with no proof placeholders or
+nonstandard axioms. `ClassProduct.lean` constructs a real finite
+Eisenstein product `classNumerator κ : Eis` independent of the column and
+proves its reduction equals `classResidue κ σ` for every split root,
+including zero and all six residue exponents. The new unconditional
+`residueMatVec_frozen_orientation` identifies the full finite matrix row
+with the conjugated normalized sum of the **unchanged**
+`Conjecture.shiftedGauss (ρ * classNumerator κ) σ`. E4, E7 and the
+full finite orientation are therefore actually proved in the frozen model;
+this is not an asymptotic theorem. 1764/1764 exponents, 366 tests, 42
+Gauss fixture checks, Ruff and both frozen audits passed.
+
+The release inventory's group (A′) items **1, 2 and 3 are all complete**
+at the explicitly modeled finite split-prime level; the next bounded
+unit is Palomar comparator/package preparation (RS-S034), after a clean
+final closeout-head run and merge. Optional Gram/E8/E9 and all paper-only
+and conjectural assertions remain outside this registration. CAND-002
+(1)–(3) has not been proved; no Palomar entry exists yet.

@@ -66,3 +66,4 @@ open ReciprocitySpectra
 #print axioms classNumerator_reduction
 #print axioms rowShift_eisenstein
 #print axioms residueMatVec_frozen_orientation
+#print axioms Eis.ext
