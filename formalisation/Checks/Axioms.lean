@@ -45,3 +45,7 @@ open ReciprocitySpectra
 #print axioms sexticCharacter_class
 #print axioms rowShift_symbol
 #print axioms residueColumn_orientation
+
+#print axioms primarySplitPrimes_prime
+#print axioms primary_norm_mod_three
+#print axioms residueMatVec_orientation_of
