@@ -1,7 +1,7 @@
 name: RS-S039 independent Comparator and NanoDa
 on:
   push:
-    branches: [rs-s035-palomar-coverage, rs-s036-comparator-fidelity, rs-s037-sextic-aux-fidelity, rs-s038-direct-shift-fidelity, rs-s039-addchar-fidelity]
+    branches: [rs-s035-palomar-coverage, rs-s036-comparator-fidelity, rs-s037-sextic-aux-fidelity, rs-s038-direct-shift-fidelity, rs-s039-addchar-fidelity, main]
   pull_request:
     branches: [main]
   workflow_dispatch:
