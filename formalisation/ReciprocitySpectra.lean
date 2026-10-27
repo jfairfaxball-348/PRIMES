@@ -12,3 +12,4 @@ import ReciprocitySpectra.ShiftedGauss
 
 import ReciprocitySpectra.RowBridge
 import ReciprocitySpectra.RowSum
+import ReciprocitySpectra.ShiftConvention
