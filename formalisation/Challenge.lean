@@ -324,9 +324,27 @@ noncomputable def sexticValue (r x : ZMod p) : ℂ :=
   (sexticExp r x).elim 0 (fun k => complexZeta6 ^ k.val)
 
 
+/-!
+RS-S039: exactly named source numeral witness and its dependent positive-sign
+root-of-unity power proof. The source automatically creates these declarations
+in CharacterBridge.lean. Retain their source names and mathematical content
+in the independent Challenge so strict comparison does not reuse rawGauss's
+numeral witness. The character is the original one, not a replacement.
+-/
+theorem rationalAddChar._proof_1 : Nat.AtLeastTwo ((1 : Nat) + 1) :=
+  Nat.instAtLeastTwoHAddOfNat (1 : Nat)
+
+theorem rationalAddChar._proof_2 (p : ℕ) [NeZero p] :
+    Complex.exp (
+      (@OfNat.ofNat ℂ (nat_lit 2)
+        (@instOfNatAtLeastTwo ℂ (nat_lit 2) Complex.instNatCast
+          rationalAddChar._proof_1)) *
+      (Real.pi : ℂ) * Complex.I / (p : ℂ)) ^ p = 1 :=
+  (Complex.isPrimitiveRoot_exp p (NeZero.out)).pow_eq_one
+
 /-- Canonical positive-sign additive character of the finite prime residue field. -/
 noncomputable def rationalAddChar (p : ℕ) [NeZero p] : AddChar (ZMod p) ℂ :=
-  AddChar.zmodChar p (Complex.isPrimitiveRoot_exp p (NeZero.out)).pow_eq_one
+  AddChar.zmodChar p (rationalAddChar._proof_2 p)
 
 
 section Specialised
