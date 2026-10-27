@@ -318,15 +318,30 @@ variable [Fact p.Prime]
 
 /-- The original sextic multiplicative character, determined by sexticValue
     at every residue. The laws are proved in the Solution. -/
+theorem sexticValue_one {r : ZMod p}
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) :
+    sexticValue r 1 = 1 := by sorry
+
+theorem sexticValue_mul {r : ZMod p}
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1)
+    (x y : ZMod p) :
+    sexticValue r (x * y) = sexticValue r x * sexticValue r y := by sorry
+
 noncomputable def sexticCharacter (r : ZMod p)
     (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
     (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1) :
     MulChar (ZMod p) ℂ where
   toFun := sexticValue r
-  map_one' := by sorry
-  map_mul' := by sorry
-  map_nonunit' := by sorry
-
+  map_one' := sexticValue_one hr h2 h3
+  map_mul' := sexticValue_mul hr h2 h3 h6
+  map_nonunit' := by
+    intro x hnot
+    have hx : x = 0 := by
+      by_contra h
+      exact hnot (isUnit_iff_ne_zero.mpr h)
+    simp [hx]
 
 /-- Exact library theorem; all original hypotheses and quantifiers retained. -/
 theorem sexticCharacter_apply (r : ZMod p)
