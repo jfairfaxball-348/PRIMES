@@ -57,6 +57,14 @@ jobs:
           print('Total differing lines:', len(diff))
           print('\n'.join(diff[:140]))
           PY
+          printf 'import Challenge\\nset_option pp.all true\\n#print ReciprocitySpectra.rawGauss._proof_1\\n#print ReciprocitySpectra.complexZeta6._proof_1\\n' > /tmp/Rs036ChallengeAux.lean
+          printf 'import Solution\\nset_option pp.all true\\n#print ReciprocitySpectra.sexticCharacter._proof_2\\n#print ReciprocitySpectra.sexticCharacter._proof_3\\n' > /tmp/Rs036SolutionAux.lean
+          lake env lean /tmp/Rs036ChallengeAux.lean > /tmp/rs036_aux_challenge.txt
+          lake env lean /tmp/Rs036SolutionAux.lean > /tmp/rs036_aux_solution.txt
+          echo 'SOURCE character auxiliary proofs:'
+          cat /tmp/rs036_aux_solution.txt
+          echo 'CHALLENGE unrelated-name auxiliaries:'
+          cat /tmp/rs036_aux_challenge.txt
       - name: Independently compare all selected proofs (with NanoDa)
         working-directory: formalisation
         shell: bash
