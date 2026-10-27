@@ -36,6 +36,27 @@ jobs:
           git clone https://github.com/robsimmons/nanoda_lib.git .ci/nanoda
           git -C .ci/nanoda checkout 68d5ca9db226849b41a6fff59d796ff19d0a8840
           (cd .ci/nanoda && cargo build --release)
+      - name: Diagnose exported frozen shiftedGauss elaboration (no checker bypass)
+        working-directory: formalisation
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build Challenge Solution > /tmp/rs036_build.log 2>&1 || { tail -80 /tmp/rs036_build.log; exit 1; }
+          printf 'import Challenge\nset_option pp.all true\n#print ReciprocitySpectra.shiftedGauss\n' > /tmp/Rs036Challenge.lean
+          printf 'import Solution\nset_option pp.all true\n#print ReciprocitySpectra.shiftedGauss\n' > /tmp/Rs036Solution.lean
+          lake env lean /tmp/Rs036Challenge.lean > /tmp/rs036_challenge.txt
+          lake env lean /tmp/Rs036Solution.lean > /tmp/rs036_solution.txt
+          python3 - <<'PY'
+          import difflib
+          from pathlib import Path
+          c = Path('/tmp/rs036_challenge.txt').read_text()
+          s = Path('/tmp/rs036_solution.txt').read_text()
+          print('ShiftedGauss print lengths:', len(c), len(s))
+          diff = list(difflib.unified_diff(c.splitlines(), s.splitlines(), fromfile='CHALLENGE', tofile='SOLUTION', lineterm=''))
+          print('Total differing lines:', len(diff))
+          print('\n'.join(diff[:140]))
+          PY
       - name: Independently compare all selected proofs (with NanoDa)
         working-directory: formalisation
         shell: bash
