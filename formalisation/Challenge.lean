@@ -225,7 +225,8 @@ shifted Gauss sum. This is the same trivial typeclass fact that the source
 compiler generates under this exact name in Conjecture.lean. Keeping it
 separate prevents the Challenge compiler from reusing rawGauss._proof_1.
 The numeral's value is unchanged. -/
-theorem shiftedGauss._proof_1 : Nat.AtLeastTwo (nat_lit 2) := ⟨by decide⟩
+theorem shiftedGauss._proof_1 : Nat.AtLeastTwo ((1 : Nat) + 1) :=
+  Nat.instAtLeastTwoHAddOfNat (1 : Nat)
 
 /-- Frozen positive-sign exponential sum with unreduced shift product modulo the norm. -/
 noncomputable def shiftedGauss (u σ : Eis) : ℂ :=
