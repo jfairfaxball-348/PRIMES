@@ -1756,3 +1756,45 @@ https://github.com/jfairfaxball-348/PRIMES/actions/runs/40405177673
 **Validation:** Independent arbitrary zero-diagonal unit-complex-matrix algebra checks at D=3,5,8, with every one-column deletion, pass for the exact norm and dispersion identity. These are consistency checks, not sextic number-theory evidence. All analytic claims are proved step by step in the record. No new conjecture testing, results JSON, Lean edits or frozen D1 changes.
 
 **Disposition:** CAND-002 (1)–(3) remain CANDIDATE/OPEN as appropriate; no status promotion, no Palomar registration. Next RS-S027 remains **MATHEMATICS-FIRST**, targeting signed two-point prime correlations and uniform moving-shift weighted moments before any formalisation.
+
+
+### RS-S027 (2026-10-27): reciprocal kernel and uniform moving-shift upper-tail lemma
+
+**Stage:** mathematics-first hard prime-level / matrix-level proof obligation.
+**Session branch:** \`rs-s027-signed-kernel\`. **Record:**
+\`reciprocity_spectra/RS_S027_SIGNED_KERNEL_TAIL.md\`.
+
+**Proved on paper:**
+- Exact sextic reciprocity transfer of the off-diagonal prime kernel:
+  \(K_X(\sigma,\tau)=\sum_{\rho\in P_X}h_{\sigma,\tau}(\rho)(\sigma\tau^5/\rho)_6\)
+  with an explicit mod-4 quadratic sign, including all zero terms.
+- The character \(z\mapsto(z/\sigma)_6\overline{(z/\tau)_6}\) is primitive at
+  both distinct primes, has complete-residue orthogonality, and extends
+  with a necessary \(\pm1\) normalization to a nonprincipal Hecke ideal
+  character of conductor dividing \((3\sigma\tau)\). Invoking the classical
+  fixed-conductor Hecke prime-ideal theorem gives
+  \(K_X(\sigma,\tau)=o_{\sigma,\tau}(D)\), **not** uniform in moving pairs.
+- From the *unproved* raw H_P, a genuine **uniform upper-slice** weighted
+  Abel lemma for every fixed \(\lambda>0,B>0\), uniformly in
+  \(0<N(u)\le B\lambda X\), with its exact deterministic \(H_\lambda(X)\).
+  The coefficient c(u) remains unconstrained, and the missing lower slice
+  cannot be controlled from the same H_P quantifiers.
+
+**Hard-route obstruction:** reciprocity produces moving shift
+\(N(\sigma\tau^5)\asymp X^6\) for bulk index pairs, outside
+H_P's fixed-B scale \(N(u)\le BX\), and the \(\bmod4\) factor requires
+a local twist. Fixed-pair PNT and generic operator estimates do not
+give the sign-sensitive averaged energy needed for the fixed endpoints.
+No fifth-class negative limit or non-five positive limit is proved.
+
+**Validation:** independent Euler-symbol and mod-4 computations on 32
+split primary primes: 992 ordered reciprocity pairs and 31,744
+kernel triples passed, including prime-divisor zeros. Mathematical
+proofs and quantifier review as in the note; no discovery-scale run.
+No Lean, formalization, registration, publication or frozen evidence edit.
+
+**Disposition:** CAND-002 and its fixed-class logical bridge remain OPEN;
+status unchanged. The generic large-sieve route is exhausted as in RS-S013,
+not the hard arithmetic-coefficient route. **Next:** RS-S028, make a
+non-circular arithmetic coefficient/model and Type II obligation explicit
+or prove its obstruction. No owner-decision blocker.

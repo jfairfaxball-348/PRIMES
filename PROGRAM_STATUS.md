@@ -1,6 +1,8 @@
 # PRIMES Programme Status
 
-Status date: 2026-10-26
+Status date: 2026-10-27
+
+**ACTIVE UPDATE — RS-S027 (2026-10-27):** Reciprocity Spectra remains mathematics-first. Exact mod-4 sextic reciprocity transforms the signed prime kernel; raw abstract H_P gives a uniform Abel asymptotic on fixed upper intervals only. Neither fixed non-five enhancement nor fixed fifth suppression is proved. CAND-002(3) logical bridge OPEN; no new Lean/Palomar/paper; next RS-S028, arithmetic-coefficient Type II mechanism. See `reciprocity_spectra/RS_S027_SIGNED_KERNEL_TAIL.md`.
 
 ## Current stage
 
