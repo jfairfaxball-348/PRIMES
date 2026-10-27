@@ -62,7 +62,8 @@ variable {p : ℕ}
 
 /-- Reduction preserves the actual Eisenstein identity. -/
 @[simp] theorem res_one (r : ZMod p) : res r (1 : Eis) = 1 := by
-  simp [res]
+  have hOne : (1 : Eis) = ⟨1, 0⟩ := rfl
+  simp [res, hOne]
 
 /-- Reduction commutes with arbitrary natural powers, including the zeroth
 power, so it also handles all six exponent classes. -/
