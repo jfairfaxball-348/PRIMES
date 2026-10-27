@@ -254,3 +254,8 @@ Contact:
 - a random-matrix theorist, for the spiked-model analysis.
 
 Graduate any proved statement to its own repository, following the PRIMES graduation rule.
+
+## Release verification checkpoint — RS-S036 (2026-10-27)
+
+The 26 finite exact theorem statements are still proven in the library, but their independent Palomar Challenge/Solution fidelity is not certified. RS-S036 isolated the automatic `shiftedGauss._proof_1` numeral witness as the next strict Comparator obligation (see `LEDGER.md`). CAND-002(1)–(3) stay separate conjectures and outside the release proof pipeline; do not broaden this verification session to numerical discovery or asymptotic proofs. No paper or registration before the explicit release gate.
+

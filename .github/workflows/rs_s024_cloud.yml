@@ -2,7 +2,7 @@ name: RS-S034 cloud Lean and package validation
 
 on:
   push:
-    branches: [rs-s034-palomar-prepare]
+    branches: [rs-s034-palomar-prepare, rs-s036-comparator-fidelity]
   pull_request:
     branches: [main]
   workflow_dispatch:

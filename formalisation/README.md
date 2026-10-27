@@ -285,3 +285,6 @@ missing `sexticValue_zero` simp proof; these were corrected on the branch.
 laws), but **none of the 26 is certified as a full accepted comparator package**.
 PR #14 remains draft and unmerged; RS-S036 must resolve strict definition
 fidelity before any registration. Owner automation disclosure is still pending.
+
+**RS-S036 (2026-10-27) generated-constant fidelity checkpoint:** in unmerged draft PR #15 (stacked on #14), pinned Lean `#print` established that the literal positive-sign `shiftedGauss` Challenge and source had only a generated numeral proof-name difference. An explicit raw-literal witness corrected the *entire* exported `shiftedGauss` definition (40528521143: **zero printed differences**) but Comparator next rejected `ReciprocitySpectra.shiftedGauss._proof_1`. Code head `12b904b` is testing the exact raw-Nat class type; no Comparator/NanoDa acceptance yet. Experimental separate ChallengePrefix module was removed: Palomar forbids project-specific Challenge transitive imports. Original 26 proof-library statements, CAND-002 conjectures, Apache-2.0 licence and deferred AI-use declaration unchanged. **No merge or submission.** See `LEDGER.md` RS-S036.
+
