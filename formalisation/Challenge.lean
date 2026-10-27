@@ -353,8 +353,17 @@ theorem sexticCharacter._proof_2 : Nat.AtLeastTwo ((1 : Nat) + 1) :=
 theorem sexticCharacter._proof_3 : Nat.AtLeastTwo ((2 : Nat) + 1) :=
   Nat.instAtLeastTwoHAddOfNat (2 : Nat)
 
-noncomputable def sexticCharacter (r : ZMod p)
-    (hr : r ^ 2 + r + 1 = 0)
+/-! RS-S037: separate source-level parameter types from the separately elaborated
+function binders. This is solely a definitional-fidelity repair for the actual
+same multiplicative character, not a different mathematical construction. -/
+noncomputable def sexticCharacter :
+    (r : ZMod p) →
+    (hr : r ^ 2 + r + 1 = 0) →
+    (h2 : (2 : ZMod p) ≠ 0) →
+    (h3 : (3 : ZMod p) ≠ 0) →
+    (h6 : 6 ∣ p - 1) →
+    MulChar (ZMod p) ℂ :=
+  fun r hr
     (h2 : (@OfNat.ofNat (ZMod p) (nat_lit 2)
       (@instOfNatAtLeastTwo (ZMod p) (nat_lit 2)
         (@AddMonoidWithOne.toNatCast (ZMod p)
@@ -369,17 +378,16 @@ noncomputable def sexticCharacter (r : ZMod p)
         (@Ring.toAddGroupWithOne (ZMod p)
           (@DivisionRing.toRing (ZMod p)
             (@Field.toDivisionRing (ZMod p) (ZMod.instField p)))))) sexticCharacter._proof_3)) ≠ 0)
-    (h6 : 6 ∣ p - 1) :
-    MulChar (ZMod p) ℂ where
-  toFun := sexticValue r
-  map_one' := sexticValue_one hr h2 h3
-  map_mul' := sexticValue_mul hr h2 h3 h6
-  map_nonunit' := by
-    intro x hnot
-    have hx : x = 0 := by
-      by_contra h
-      exact hnot (isUnit_iff_ne_zero.mpr h)
-    simp [hx]
+    h6 =>
+    { toFun := sexticValue r
+      map_one' := sexticValue_one hr h2 h3
+      map_mul' := sexticValue_mul hr h2 h3 h6
+      map_nonunit' := by
+        intro x hnot
+        have hx : x = 0 := by
+          by_contra h
+          exact hnot (isUnit_iff_ne_zero.mpr h)
+        simp [hx] }
 
 /-- Exact library theorem; all original hypotheses and quantifiers retained. -/
 theorem sexticCharacter_apply (r : ZMod p)
