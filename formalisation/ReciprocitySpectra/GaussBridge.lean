@@ -62,7 +62,6 @@ theorem gaussSum_sextic_eq_raw (σ : Eis)
     simpa only [Int.cast_natCast] using
       (sexticCharacter_rational σ hr h2 h3 h6 (t : ℤ))
   rw [hχ, rationalAddChar_nat p t (Finset.mem_range.mp ht)]
-  rfl
 
 /-- E7 for the actual rational sextic Gauss sum, not merely an abstract
 character: squared modulus is the norm p of the split prime. -/
