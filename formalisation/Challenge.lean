@@ -340,9 +340,28 @@ theorem sexticValue_mul {r : ZMod p}
     (x y : ZMod p) :
     sexticValue r (x * y) = sexticValue r x * sexticValue r y := by sorry
 
+/-!
+RS-S037: proof-irrelevant numeral witnesses copied with their exact SOURCE
+generated declaration names/types/values. These ensure that the independently
+elaborated character references the source definitions instead of two earlier
+Challenge-only auxiliary declarations. The character and all mathematical
+hypotheses and theorem statements are unchanged.
+-/
+theorem sexticCharacter._proof_2 : Nat.AtLeastTwo ((1 : Nat) + 1) :=
+  Nat.instAtLeastTwoHAddOfNat (1 : Nat)
+
+theorem sexticCharacter._proof_3 : Nat.AtLeastTwo ((2 : Nat) + 1) :=
+  Nat.instAtLeastTwoHAddOfNat (2 : Nat)
+
 noncomputable def sexticCharacter (r : ZMod p)
-    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
-    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1) :
+    (hr : r ^ 2 + r + 1 = 0)
+    (h2 : (@OfNat.ofNat (ZMod p) (nat_lit 2)
+      (@instOfNatAtLeastTwo (ZMod p) (nat_lit 2)
+        (inferInstance : NatCast (ZMod p)) sexticCharacter._proof_2)) ≠ 0)
+    (h3 : (@OfNat.ofNat (ZMod p) (nat_lit 3)
+      (@instOfNatAtLeastTwo (ZMod p) (nat_lit 3)
+        (inferInstance : NatCast (ZMod p)) sexticCharacter._proof_3)) ≠ 0)
+    (h6 : 6 ∣ p - 1) :
     MulChar (ZMod p) ℂ where
   toFun := sexticValue r
   map_one' := sexticValue_one hr h2 h3
