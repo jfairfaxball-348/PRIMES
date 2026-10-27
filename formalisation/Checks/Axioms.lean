@@ -54,3 +54,7 @@ open ReciprocitySpectra
 
 #print axioms positiveExp_mod
 #print axioms shiftedGauss_frozen_eq_direct
+
+#print axioms primeNorm_d_ne_zero
+#print axioms primarySplitPrimes_model
+#print axioms residueMatVec_orientation
