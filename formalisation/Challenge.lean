@@ -231,7 +231,7 @@ theorem shiftedGauss._proof_1 : Nat.AtLeastTwo 2 := ⟨by omega⟩
 noncomputable def shiftedGauss (u σ : Eis) : ℂ :=
   ∑ t ∈ Finset.range (eisNorm σ).toNat,
     complexSymbol ⟨(t : ℤ), 0⟩ σ *
-      Complex.exp ((@OfNat.ofNat ℂ 2 (@instOfNatAtLeastTwo ℂ 2 Complex.instNatCast shiftedGauss._proof_1)) * (Real.pi : ℂ) * Complex.I *
+      Complex.exp ((@OfNat.ofNat ℂ (nat_lit 2) (@instOfNatAtLeastTwo ℂ (nat_lit 2) Complex.instNatCast shiftedGauss._proof_1)) * (Real.pi : ℂ) * Complex.I *
         (((res (residueRoot σ) u).val : ℕ) : ℂ) * (t : ℂ) /
         ((eisNorm σ).toNat : ℂ))
 
