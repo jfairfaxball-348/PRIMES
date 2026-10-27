@@ -9,3 +9,5 @@ make -C paper
 ```
 
 The figure script reads only committed `reciprocity_spectra/results/` JSON. Each of the fourteen figures gets a vector PDF and PNG preview in `paper/figures/generated/` (generated files are not evidence; source JSON is the evidence). Run `make -C paper clean` to remove TeX intermediates. Figures named “conceptual” or “illustrative” are not numerical support for conjectures. Frozen RS-S015/RS-S017 failures remain in the paper. All proofs and source claims must be checked against their referenced repository files before submission. No registration, arXiv submission or journal submission has occurred.
+
+**RS-S041 build:** [GitHub Actions run 40587444244](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40587444244) PASS on code head `62751c4`: fourteen PDF+PNG figure pairs, Ruff, compiled manuscript PDF and `rs-s041-paper-preview` artifact. Exact references/layout/numeric audit are RS-S042 tasks. No external submission.
