@@ -318,6 +318,9 @@ variable [Fact p.Prime]
 
 /-- The original sextic multiplicative character, determined by sexticValue
     at every residue. The laws are proved in the Solution. -/
+@[simp] theorem sexticValue_zero (r : ZMod p) : sexticValue r 0 = 0 := by
+  simp [sexticValue, sexticExp]
+
 theorem sexticValue_one {r : ZMod p}
     (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
     (h3 : (3 : ZMod p) ≠ 0) :
