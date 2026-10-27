@@ -160,9 +160,11 @@ instance : CommMonoid Eis where
 end Eis
 
 
+/-- Quadratic Eisenstein norm c²-cd+d²; no positivity assumption is built into the definition. -/
 def eisNorm (x : Eis) : ℤ := x.c * x.c - x.c * x.d + x.d * x.d
 
 
+/-- Finite square-box enumeration of primary Eisenstein pairs with prime norm at most X. -/
 def primarySplitPrimes (X : ℕ) : Finset Eis :=
   (((Finset.Icc (-(2 * (X : ℤ))) (2 * (X : ℤ))).product
       (Finset.Icc (-(2 * (X : ℤ))) (2 * (X : ℤ)))).image
@@ -171,21 +173,25 @@ def primarySplitPrimes (X : ℕ) : Finset Eis :=
         (eisNorm x).toNat.Prime ∧ (eisNorm x).toNat ≤ X)
 
 
+/-- Image of ω in the residue-field model: -c/d modulo the norm. -/
 def residueRoot (σ : Eis) : ZMod (eisNorm σ).toNat :=
   -(σ.c : ZMod (eisNorm σ).toNat) *
     (σ.d : ZMod (eisNorm σ).toNat)⁻¹
 
 
+/-- Complex sixth root exp(πi/3), fixing the positive sextic phase convention. -/
 noncomputable def complexZeta6 : ℂ :=
   Complex.exp (Complex.I * ((Real.pi : ℂ) / 3))
 
 
+/-- Complex sextic residue symbol from the computable exponent; zero when the residue vanishes. -/
 noncomputable def complexSymbol (num den : Eis) : ℂ :=
   match symExp (residueRoot den) num with
   | none => 0
   | some k => complexZeta6 ^ k.val
 
 
+/-- Actual positive-sign rational Gauss sum on representatives t from 0 to Nσ-1. -/
 noncomputable def rawGauss (σ : Eis) : ℂ :=
   ∑ t ∈ Finset.range (eisNorm σ).toNat,
     complexSymbol ⟨(t : ℤ), 0⟩ σ *
@@ -193,29 +199,36 @@ noncomputable def rawGauss (σ : Eis) : ℂ :=
         ((eisNorm σ).toNat : ℂ))
 
 
+/-- Direct rational Gauss sum divided by the positive real square root of Nσ. -/
 noncomputable def normalizedGauss (σ : Eis) : ℂ :=
   rawGauss σ / (Real.sqrt ((eisNorm σ).toNat : ℝ) : ℂ)
 
 
+/-- A finitely supported Eisenstein-pair map to the six exponent classes ZMod 6. -/
 abbrev TwistClass := Eis →₀ ZMod 6
 
 
+/-- Product of complex symbols over the finite class support, preserving zero factors. -/
 noncomputable def classSymbol (κ : TwistClass) (σ : Eis) : ℂ :=
   κ.support.prod (fun π => complexSymbol π σ ^ (κ π).val)
 
 
+/-- Conjugate-normalised sextic Gauss vector multiplied by the class symbol. -/
 noncomputable def classVector (κ : TwistClass) (σ : Eis) : ℂ :=
   star (normalizedGauss σ) * classSymbol κ σ
 
 
+/-- Original finite matrix entry with row numerator ρ and column denominator σ. -/
 noncomputable def residueMatrix (ρ σ : Eis) : ℂ :=
   complexSymbol ρ σ
 
 
+/-- Full finite matrix-vector product over the chosen primary norm-bounded prime set. -/
 noncomputable def residueMatVec (X : ℕ) (κ : TwistClass) (ρ : Eis) : ℂ :=
   ∑ σ ∈ primarySplitPrimes X, residueMatrix ρ σ * classVector κ σ
 
 
+/-- Frozen positive-sign exponential sum with unreduced shift product modulo the norm. -/
 noncomputable def shiftedGauss (u σ : Eis) : ℂ :=
   ∑ t ∈ Finset.range (eisNorm σ).toNat,
     complexSymbol ⟨(t : ℤ), 0⟩ σ *
@@ -224,20 +237,24 @@ noncomputable def shiftedGauss (u σ : Eis) : ℂ :=
         ((eisNorm σ).toNat : ℂ))
 
 
+/-- One column-independent Eisenstein product of all class atoms with their exponents. -/
 noncomputable def classNumerator (κ : TwistClass) : Eis :=
   ∏ a ∈ κ.support, a ^ (κ a).val
 
 
+/-- Reduction of the finite twist product into the residue field of column σ. -/
 noncomputable def classResidue (κ : TwistClass) (σ : Eis) :
     ZMod (eisNorm σ).toNat :=
   κ.support.prod (fun π => res (residueRoot σ) π ^ (κ π).val)
 
 
+/-- Residue of row ρ times the reduced finite-class numerator. -/
 noncomputable def rowShift (κ : TwistClass) (ρ σ : Eis) :
     ZMod (eisNorm σ).toNat :=
   res (residueRoot σ) ρ * classResidue κ σ
 
 
+/-- Direct finite sextic Gauss sum using the reduced product a·t in the positive exponential. -/
 noncomputable def directShiftedGauss (σ : Eis)
     (a : ZMod (eisNorm σ).toNat) : ℂ :=
   ∑ t ∈ Finset.range (eisNorm σ).toNat,
@@ -247,10 +264,12 @@ noncomputable def directShiftedGauss (σ : Eis)
         ((eisNorm σ).toNat : ℂ))
 
 
+/-- Complex sixth root raised to the chosen nonzero residue exponent; zero at zero. -/
 noncomputable def sexticValue (r x : ZMod p) : ℂ :=
   (sexticExp r x).elim 0 (fun k => complexZeta6 ^ k.val)
 
 
+/-- Canonical positive-sign additive character of the finite prime residue field. -/
 noncomputable def rationalAddChar (p : ℕ) [NeZero p] : AddChar (ZMod p) ℂ :=
   AddChar.zmodChar p (Complex.isPrimitiveRoot_exp p (NeZero.out)).pow_eq_one
 
