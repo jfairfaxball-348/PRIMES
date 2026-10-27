@@ -46,6 +46,34 @@ theorem finite_gauss_orientation {ι : Type*} (S : Finset ι)
   intro j hj
   exact gauss_shift (χ j) (ψ j) (shift j)
 
+/-- The zero additive shift vanishes for a nontrivial multiplicative character.
+This closes the zero-shift branch of the generic E4 identity without assuming
+that the shift is a unit. -/
+theorem gauss_zero_shift (χ : MulChar F ℂ) (ψ : AddChar F ℂ)
+    (hχ : χ ≠ 1) :
+    gaussSum χ (ψ.mulShift (0 : F)) = 0 := by
+  simpa [gaussSum, AddChar.mulShift_apply] using
+    (MulChar.sum_eq_zero_of_ne_one hχ)
+
+/-- Shift a Gauss sum by any field element, including zero. This is an
+unconditional finite-character identity *given* a nontrivial χ; the sextic
+character and its nontriviality still need constructing. -/
+theorem gauss_shift_all (χ : MulChar F ℂ) (ψ : AddChar F ℂ)
+    (hχ : χ ≠ 1) (a : F) :
+    gaussSum χ (ψ.mulShift a) =
+      if a = 0 then 0 else χ⁻¹ a * gaussSum χ ψ := by
+  by_cases ha : a = 0
+  · subst a
+    simpa using gauss_zero_shift χ ψ hχ
+  · simp only [if_neg ha]
+    let u : Fˣ := Units.mk0 a ha
+    have hu : (u : F) = a := rfl
+    calc
+      gaussSum χ (ψ.mulShift a) =
+          gaussSum χ (ψ.mulShift (u : F)) := by rw [hu]
+      _ = χ⁻¹ (u : F) * gaussSum χ ψ := gauss_shift χ ψ u
+      _ = χ⁻¹ a * gaussSum χ ψ := by rw [hu]
+
 end GaussIdentities
 
 end ReciprocitySpectra
