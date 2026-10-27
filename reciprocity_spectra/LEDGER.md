@@ -1912,3 +1912,37 @@ amended. Stale branches were deleted after archive tags.
   - (B) paper-proved;
   - (C) conjectural or numerical.
 - **Next:** RS-S029, the cloud Lean sextic character bridge. Then RS-S030, Palomar packaging.
+
+### RS-S029 (2026-10-27): sextic MulChar bridge — verified partial completion
+
+**Authority:** the owner's plan of record from commit `daaaa681`;
+the proof of CAND-002 is parked. **Branch:** `rs-s029-sextic-character-bridge`.
+**Pull request:** #8.
+
+**Exact Lean results, no `sorry`:** new `SexticCharacter.lean`
+constructs the exponent-based `MulChar` with E3 multiplicativity,
+zero at zero, nontriviality via the cyclic unit group, agreement
+with `complexSymbol` for rational residues and the split-prime
+residue-root quadratic equation under the explicit nonzero
+coefficient assumption. Generic E4 now has a certified zero-shift
+branch (`gauss_zero_shift`, `gauss_shift_all`). Every theorem
+is included in `Checks/Axioms.lean`.
+
+**Validation:** pinned Lean 4.35.0/Mathlib full cloud run
+`40485959252` SUCCESS for both library and Checks; standard
+axioms only; 1764/1764 matching exponents; complete pytest,
+Gauss fixture, touched-Python Ruff and both frozen-evidence
+audit checkers PASS. No new numerical claim and no change to
+conjecture status.
+
+**Precise remainder:** `rawGauss` is still a `Finset.range`
+direct sum, with no Lean equation to `gaussSum sexticCharacter
+rationalAddChar`. Consequently no E7 specialized raw modulus,
+no E4 specialized shifted identity and no finite matrix
+row-orientation identity have been proved. These are not
+implied merely by the generic Gauss lemmas. E8/E9, Gram identity,
+CAND-002 proof and Palomar remain outside this checkpoint.
+
+**Next:** RS-S030, prove the raw/direct sum equivalence, specialize
+E7/E4 including the zero shift, and attempt the exact row identity.
+No owner-decision blocker.

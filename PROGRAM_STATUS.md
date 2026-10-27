@@ -9,11 +9,9 @@ stays conjecture.
   (PROTOCOL §9.6) is lifted.
 - CAND-002(3) is restated as a standalone fixed-class conjecture (`CAND002_FixedClass`).
 - The H_P scale erratum is recorded (`RS_HP_SCALE_ERRATUM.md`).
-- Next: **RS-S029 (cloud Lean): the sextic character bridge**:
-  - the sextic `MulChar`;
-  - E7 and E4 in the sextic case;
-  - the row orientation identity.
-- Then RS-S030, Palomar packaging. The route is Lean → Palomar → paper → arXiv → journal.
+- **RS-S029 cloud checkpoint validated** (workflow 40485959252): sextic `MulChar`, nontriviality, rational-symbol agreement (including zero), residue-root quadratic lemma, and generic zero-shift Gauss theorem are kernel checked with standard axioms.
+- **Next RS-S030 (cloud Lean):** the still-missing direct `rawGauss`/Mathlib `gaussSum` equality, sextic E7/E4 and the finite row orientation identity.
+- Palomar packaging follows only when the remaining exact identities are proved. The route is Lean → Palomar → paper → arXiv → journal.
 - The RS-S026 to RS-S028 entries below are historical.
 
 **HISTORICAL — RS-S028 (2026-10-27):** Reciprocity Spectra is **mathematics-first**, CAND-002(3) logical bridge **OPEN**. The exact prime-ideal Vaughan sieve now has explicit Möbius/Λ Type I/II coefficients, primary-generator and rational/trace corrections, and an inert-prime error. A counterexample proves that a full-moduli Dirichlet-series pole residue alone cannot supply the prime-sieved coefficient. No moving-shift prime main term, signed fifth/non-five inequalities or analytic B₆ model has been proved. No Lean/Palomar/paper. Next RS-S029, explicit local arithmetic factors and Type II signed main term (or a rigorous narrower obstruction). See \`reciprocity_spectra/RS_S028_PRIME_PROJECTION_VAUGHAN.md\`.
@@ -22,7 +20,7 @@ stays conjecture.
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. Plan of record (2026-10-27): formalise what is exact; proof work parked.** RS-S029 is the next Lean session. Superseded: the earlier mathematics-first pause under PROTOCOL §9.6. The original fixed-class implications and analytic H_P bridge remain unproved.
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. Plan of record (2026-10-27): formalise what is exact; proof work parked.** RS-S029 verified the character bridge in part; RS-S030 completes E7/E4 and the row identity. Superseded: the earlier mathematics-first pause under PROTOCOL §9.6. The original fixed-class implications and analytic H_P bridge remain unproved.
 
 **Historical RS-S023 checkpoint (2026-10-26).** Formalisation had started in `formalisation/`, in-repo.
 

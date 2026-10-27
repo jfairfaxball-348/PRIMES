@@ -143,3 +143,24 @@ Palomar packaging is on hold.
 - **Next (RS-S029):** the sextic `MulChar` built from `sexticExp`, E7 and E4 in the sextic case, and
   the row orientation identity. Then Palomar packaging (RS-S030).
 - The full list is in `../reciprocity_spectra/RELEASE_INVENTORY.md`, "Plan of record".
+
+## RS-S029 checkpoint (2026-10-27): character, root and zero shift
+
+The new `ReciprocitySpectra/SexticCharacter.lean` builds the
+actual `sexticCharacter` from `sexticExp`. It proves multiplicativity,
+`sexticCharacter_ne_one`, matching `complexSymbol` on rational residues
+(including zero), and `residueRoot_poly` assuming prime norm and
+the second coordinate is nonzero in the residue field. The
+`Gauss.lean` lemmas `gauss_zero_shift` and `gauss_shift_all`
+handle the zero case for arbitrary nontrivial characters.
+
+All new theorems are printed in `Checks/Axioms.lean`. Cloud validation
+run [40485959252](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40485959252)
+passed the pinned build, axiom audit, 1764/1764 exponent check,
+full pytest, Ruff, 42 Gauss fixture comparisons and both audits.
+
+**Still missing:** identify the direct `rawGauss` finite range sum
+with `gaussSum` on `ZMod p` using the positive additive-character
+convention; specialize E7; connect shifted Gauss sums and handle zeros;
+prove the `residueMatVec` row orientation. These are RS-S030 tasks.
+No Palomar comparator or submission was prepared.
