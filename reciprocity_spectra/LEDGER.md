@@ -1740,18 +1740,18 @@ https://github.com/jfairfaxball-348/PRIMES/actions/runs/40405177673
 
 ### RS-S026 (2026-10-27): mathematics-first prime moment / dispersion checkpoint
 
-**Stage:** proof-obligation audit, hard prime-level and matrix-level route. **Branch:** \`rs-s026-mathematics-first\`. No Lean formalisation or paper/Palomar packaging; frozen CAND-002 and historical data unchanged.
+**Stage:** proof-obligation audit, hard prime-level and matrix-level route. **Branch:** `rs-s026-mathematics-first`. No Lean formalisation or paper/Palomar packaging; frozen CAND-002 and historical data unchanged.
 
-**Proof record:** \`reciprocity_spectra/RS_S026_PRIME_MOMENT_BRIDGE.md\`.
+**Proof record:** `reciprocity_spectra/RS_S026_PRIME_MOMENT_BRIDGE.md`.
 
 **Proved mathematically (not newly kernel checked):**
 
-1. For rational-normalised sextic sums and the original matrix orientation, \`(R_X w_κ)_ρ = conjugate(Σ_σ g_σ(ρκ)/sqrt(Nσ))\`, including prime-divisor zeros.
-2. If \`D_κ\` is the number of columns not dividing κ, and \`O_κ\` is the signed off-diagonal correlation against the prime Gram kernel, then exactly \`r_κ² = 1−1/D+O_κ/(D D_κ)\` and \`s_κ = N₆(κ)^(1/6) (O_κ/D_κ−1)/(O_1/D−1)\` whenever the denominator is nonzero. Crucial zero-diagonal correction included.
-3. The committed abstract unnormalised H_P implies for **each fixed shift u** \`Σ_{Nσ≤X} g_σ(u)/sqrt(Nσ) = 4c(u) X^(1/6)/log X + o_u(X^(1/6)/log X)\`, via Abel summation. It does not furnish uniformity for moving shifts \`u=ρκ\` of norm comparable to X.
+1. For rational-normalised sextic sums and the original matrix orientation, `(R_X w_κ)_ρ = conjugate(Σ_σ g_σ(ρκ)/sqrt(Nσ))`, including prime-divisor zeros.
+2. If `D_κ` is the number of columns not dividing κ, and `O_κ` is the signed off-diagonal correlation against the prime Gram kernel, then exactly `r_κ² = 1−1/D+O_κ/(D D_κ)` and `s_κ = N₆(κ)^(1/6) (O_κ/D_κ−1)/(O_1/D−1)` whenever the denominator is nonzero. Crucial zero-diagonal correction included.
+3. The committed abstract unnormalised H_P implies for **each fixed shift u** `Σ_{Nσ≤X} g_σ(u)/sqrt(Nσ) = 4c(u) X^(1/6)/log X + o_u(X^(1/6)/log X)`, via Abel summation. It does not furnish uniformity for moving shifts `u=ρκ` of norm comparable to X.
 4. A conditional two-point prime-correlation criterion would imply fixed-class enhancement and fifth suppression by the exact matrix identity; it is **unproved** and substantially restates the difficult signed dispersion task, rather than establishing an arithmetic mechanism.
 
-**Blocker:** H_P gives only raw one-point moments with arbitrary complex \`c(u)\`, and for moving shifts only cutoffs \`y≥N(u)/B\` with B fixed. It does not control Abel's missing initial segment, signed off-diagonal correlations or averaged squares. Frozen (1) is uniform only for t bounded away from 0; (2) addresses the opposite, large-t regime. No theorem yet bridges to fixed-class t→0; separate sufficient conditions and their limitations are proved in the record.
+**Blocker:** H_P gives only raw one-point moments with arbitrary complex `c(u)`, and for moving shifts only cutoffs `y≥N(u)/B` with B fixed. It does not control Abel's missing initial segment, signed off-diagonal correlations or averaged squares. Frozen (1) is uniform only for t bounded away from 0; (2) addresses the opposite, large-t regime. No theorem yet bridges to fixed-class t→0; separate sufficient conditions and their limitations are proved in the record.
 
 **Validation:** Independent arbitrary zero-diagonal unit-complex-matrix algebra checks at D=3,5,8, with every one-column deletion, pass for the exact norm and dispersion identity. These are consistency checks, not sextic number-theory evidence. All analytic claims are proved step by step in the record. No new conjecture testing, results JSON, Lean edits or frozen D1 changes.
 
