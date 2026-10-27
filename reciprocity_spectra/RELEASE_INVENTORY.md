@@ -400,7 +400,7 @@ The proof inventory does not change its mathematical classification: group
 (A) and exact (A′) items 1–3 remain Lean-proved in the finite model;
 optional E8/E9/Gram and CAND-002's asymptotic (1)–(3) remain outside the
 claimed proofs. The first Palomar draft compared 15 generic/elementary
-theorems. RS-S035 extends the independent Mathlib-only Challenge to 24
+theorems. RS-S035 extends the independent Mathlib-only Challenge to 26
 theorems including `gaussSum_sextic_eq_raw`,
 `rawGauss_modulus_sq` (specialised E7), `shiftedGauss_e4`
 (specialised E4 including zero), `classNumerator_reduction`,
@@ -418,3 +418,15 @@ required before merging or claiming a verified Palomar package.
 The root Apache-2.0 licence remains selected. `automation.methods`
 is intentionally empty pending the owner's truthful AI-use declaration;
 there is no assertion of no AI use. No submission or registry ID.
+
+**RS-S035 completed checkpoint (2026-10-27):** The scope now compares 26
+finite theorem statements, adding source-verified `sexticValue_one` and
+`sexticValue_mul` as needed for the actual sextic MulChar definition.
+Pinned cloud run **40522609418 PASS** on code commit `e15e314`.
+Independent comparator **40522609498 FAIL**: `ReciprocitySpectra.shiftedGauss`
+source-definition mismatch (a named unchanged frozen operation, not a
+mathematical counterexample). Earlier Comparator errors corrected in the
+branch: `res_mul` type, `Eis.instCommMonoid._proof_6` dependency, and
+`sexticValue_zero` missing simplifier. Actual independent acceptance is NOT
+proved; branch PR #14 remains unmerged. Next RS-S036 diagnoses exported
+constant/implicit elaboration fidelity without touching frozen library claims.
