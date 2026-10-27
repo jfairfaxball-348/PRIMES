@@ -1,7 +1,7 @@
-name: RS-S038 independent Comparator and NanoDa
+name: RS-S039 independent Comparator and NanoDa
 on:
   push:
-    branches: [rs-s035-palomar-coverage, rs-s036-comparator-fidelity, rs-s037-sextic-aux-fidelity, rs-s038-direct-shift-fidelity]
+    branches: [rs-s035-palomar-coverage, rs-s036-comparator-fidelity, rs-s037-sextic-aux-fidelity, rs-s038-direct-shift-fidelity, rs-s039-addchar-fidelity]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -36,32 +36,32 @@ jobs:
           git clone https://github.com/robsimmons/nanoda_lib.git .ci/nanoda
           git -C .ci/nanoda checkout 68d5ca9db226849b41a6fff59d796ff19d0a8840
           (cd .ci/nanoda && cargo build --release)
-      - name: Diagnose full exported directShiftedGauss type and body
+      - name: Diagnose full exported rationalAddChar type and body on both independent modules
         working-directory: formalisation
         shell: bash
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
-          lake build Challenge Solution > /tmp/rs038_build.log 2>&1 || { tail -80 /tmp/rs038_build.log; exit 1; }
-          printf 'import Challenge\nset_option pp.all true\n#print ReciprocitySpectra.directShiftedGauss\n' > /tmp/Rs038Challenge.lean
-          printf 'import Solution\nset_option pp.all true\n#print ReciprocitySpectra.directShiftedGauss\n' > /tmp/Rs038Solution.lean
-          lake env lean /tmp/Rs038Challenge.lean > /tmp/rs038_challenge.txt
-          lake env lean /tmp/Rs038Solution.lean > /tmp/rs038_solution.txt
+          lake build Challenge Solution > /tmp/rs039_build.log 2>&1 || { tail -80 /tmp/rs039_build.log; exit 1; }
+          printf 'import Challenge\nset_option pp.all true\n#print ReciprocitySpectra.rationalAddChar\n' > /tmp/Rs039Challenge.lean
+          printf 'import Solution\nset_option pp.all true\n#print ReciprocitySpectra.rationalAddChar\n' > /tmp/Rs039Solution.lean
+          lake env lean /tmp/Rs039Challenge.lean > /tmp/rs039_challenge.txt
+          lake env lean /tmp/Rs039Solution.lean > /tmp/rs039_solution.txt
           python3 - <<'PY'
           import difflib
           from pathlib import Path
-          c = Path('/tmp/rs038_challenge.txt').read_text().splitlines()
-          s = Path('/tmp/rs038_solution.txt').read_text().splitlines()
-          print('Direct exported constant: challenge lines=', len(c), 'source lines=',len(s))
+          c = Path('/tmp/rs039_challenge.txt').read_text().splitlines()
+          s = Path('/tmp/rs039_solution.txt').read_text().splitlines()
+          print('rationalAddChar exported constant: challenge lines=', len(c), 'source lines=',len(s))
           changes = list(difflib.unified_diff(c, s, fromfile='CHALLENGE', tofile='SOURCE', n=5, lineterm=''))
           print('Full exact type/body diff:', len(changes), 'lines')
           print('\n'.join(changes[:220]))
           PY
           for side in Challenge Solution; do
-            printf 'import %s\nset_option pp.all true\n#print ReciprocitySpectra.directShiftedGauss._proof_1\n' "$side" > /tmp/Rs038Aux.lean
-            lake env lean /tmp/Rs038Aux.lean > "/tmp/rs038_aux_$side.txt" 2>&1 || true
-            echo "== $side generated numeral witness =="
-            tail -30 "/tmp/rs038_aux_$side.txt"
+            printf 'import %s\nset_option pp.all true\n#print ReciprocitySpectra.rationalAddChar._proof_1\n' "$side" > /tmp/Rs039Aux.lean
+            lake env lean /tmp/Rs039Aux.lean > "/tmp/rs039_aux_$side.txt" 2>&1 || true
+            echo "== $side generated auxiliary witness if present =="
+            tail -30 "/tmp/rs039_aux_$side.txt"
           done
       - name: Independently compare all selected proofs (with NanoDa)
         working-directory: formalisation
