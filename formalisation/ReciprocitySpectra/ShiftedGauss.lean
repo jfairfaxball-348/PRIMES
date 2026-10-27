@@ -98,6 +98,7 @@ theorem sexticCharacter_eis (σ α : Eis)
     sexticCharacter (residueRoot σ) hr h2 h3 h6
       (res (residueRoot σ) α) = complexSymbol α σ := by
   rw [sexticCharacter_apply]
-  rfl
+  simp only [sexticValue, complexSymbol, symExp]
+  cases h : sexticExp (residueRoot σ) (res (residueRoot σ) α) <;> simp [h]
 
 end ReciprocitySpectra
