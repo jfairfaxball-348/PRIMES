@@ -28,3 +28,5 @@ open ReciprocitySpectra
 #print axioms sexticValue_mul
 #print axioms sexticCharacter_apply
 #print axioms sexticCharacter_rational
+
+#print axioms residueRoot_poly
