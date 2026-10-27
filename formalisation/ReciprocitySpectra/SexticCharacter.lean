@@ -83,17 +83,21 @@ theorem residueRoot_poly (σ : Eis)
   have hn_pos : 0 ≤ eisNorm σ := by
     dsimp [eisNorm]
     nlinarith [sq_nonneg (2 * σ.c - σ.d), sq_nonneg σ.d]
+  have hn_int : eisNorm σ = ((eisNorm σ).toNat : ℤ) :=
+    (Int.toNat_of_nonneg hn_pos).symm
   have hcast : (eisNorm σ : ZMod (eisNorm σ).toNat) = 0 := by
     calc
       (eisNorm σ : ZMod (eisNorm σ).toNat) =
-          (((eisNorm σ).toNat : ℕ) : ZMod (eisNorm σ).toNat) :=
-            congrArg (fun z : ℤ => (z : ZMod (eisNorm σ).toNat))
-              (Int.toNat_of_nonneg hn_pos).symm
+          (((eisNorm σ).toNat : ℤ) : ZMod (eisNorm σ).toNat) :=
+            congrArg (fun z : ℤ => (z : ZMod (eisNorm σ).toNat)) hn_int
       _ = 0 := by simp
   have hn : (σ.c : ZMod (eisNorm σ).toNat) ^ 2 -
       (σ.c : ZMod (eisNorm σ).toNat) * (σ.d : ZMod (eisNorm σ).toNat) +
       (σ.d : ZMod (eisNorm σ).toNat) ^ 2 = 0 := by
-    simpa only [eisNorm, Int.cast_sub, Int.cast_add, Int.cast_mul, pow_two] using hcast
+    change ((σ.c * σ.c - σ.c * σ.d + σ.d * σ.d : ℤ) :
+      ZMod (eisNorm σ).toNat) = 0 at hcast
+    push_cast at hcast
+    nlinarith [hcast]
   have hbr : (σ.d : ZMod (eisNorm σ).toNat) * residueRoot σ =
       -(σ.c : ZMod (eisNorm σ).toNat) := by
     dsimp [residueRoot]
