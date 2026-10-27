@@ -276,3 +276,37 @@ else stays conjecture.
 - all registered numerical outcomes (RS-S015 to RS-S021, with commits).
 
 **After (A′):** Palomar packaging (RS-S030), then the paper.
+
+## RS-S029 checkpoint (2026-10-27): first sextic character bridge, kernel checked
+
+**(A′) item 1: COMPLETE at the explicitly modelled split-prime level.**
+`formalisation/ReciprocitySpectra/SexticCharacter.lean` constructs `sexticCharacter`
+as a genuine `MulChar (ZMod p) ℂ` from the earlier computable
+`sexticExp`, proved multiplicative and zero on nonunits. It proves
+`sexticCharacter_ne_one` via the cyclic unit group and the primitive
+complex sixth root, and `sexticCharacter_rational` comparing its values
+with `complexSymbol ⟨n,0⟩ σ`, including zero. The `residueRoot_poly`
+lemma derives r²+r+1=0 from prime norm and nonzero σ.d in `ZMod p`.
+The character lemmas retain explicit hypotheses r²+r+1=0,
+2≠0, 3≠0 and 6∣p−1. This is the model of a split residue field,
+not a construction of the quotient ℤ[ω]/σ.
+
+**Generic E4 extension:** `Gauss.lean` now proves
+`gauss_zero_shift` and `gauss_shift_all` for any nontrivial
+finite-field multiplicative character; shifts by zero have Gauss
+sum exactly zero. This is kernel checked but not yet an equality
+involving `Model.shiftedGauss` (that definition does not yet exist).
+
+**(A′) items 2–3: OPEN.** No `rawGauss = gaussSum sexticCharacter
+rationalAddChar` theorem, sextic `rawGauss` modulus (E7), sextic
+shifted `rawGauss` formula (E4) or `residueMatVec` row identity was
+proved. Generic identities must not be relabelled sextic identities.
+The next unit RS-S030 tackles the actual Gauss bridge and orientation
+before Palomar packaging. Group (B) and (C) statuses are unchanged.
+
+**Validation:** GitHub Actions `40485959252`, pinned Lean 4.35.0 and
+Mathlib, both `ReciprocitySpectra` and `Checks` targets PASS;
+the axiom audit prints only standard axioms; exponent faithfulness
+1764/1764; complete Python suite, targeted Ruff, native/Python Gauss
+fixture and both evidence audit checkers PASS. The fixture is numerical
+and is not a Lean theorem. Conjectural CAND-002 claims remain unproved.
