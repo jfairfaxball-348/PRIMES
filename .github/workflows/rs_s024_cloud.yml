@@ -1,14 +1,14 @@
-name: RS-S025 cloud Lean validation
+name: RS-S034 cloud Lean and package validation
 
 on:
   push:
-    branches: [rs-s025-cloud]
+    branches: [rs-s034-palomar-prepare]
   pull_request:
     branches: [main]
   workflow_dispatch:
 
 concurrency:
-  group: rs-s025-cloud
+  group: rs-s034-palomar-prepare
   cancel-in-progress: true
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
       - name: Install pinned Lean and Mathlib cache
         run: bash formalisation/cloud_setup.sh
-      - name: Check both Lean build targets (fail hard)
+      - name: Check Lean library, checks and Palomar modules (fail hard)
         working-directory: formalisation
         run: |
           export PATH="$HOME/.elan/bin:$PATH"
@@ -30,9 +30,11 @@ jobs:
           code1=$?
           lake build Checks >> "$GITHUB_WORKSPACE/rs_s025_build.log" 2>&1
           code2=$?
-          echo "Lean library exit: $code1, Checks exit: $code2" >> "$GITHUB_WORKSPACE/rs_s025_build.log"
+          lake build Challenge Solution >> "$GITHUB_WORKSPACE/rs_s025_build.log" 2>&1
+          code3=$?
+          echo "Lean library exit: $code1, Checks exit: $code2, Palomar modules exit: $code3" >> "$GITHUB_WORKSPACE/rs_s025_build.log"
           cat "$GITHUB_WORKSPACE/rs_s025_build.log"
-          test "$code1" -eq 0 && test "$code2" -eq 0
+          test "$code1" -eq 0 && test "$code2" -eq 0 && test "$code3" -eq 0
       - name: Check for placeholders and unsafe axioms
         run: |
           if grep -R -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' formalisation/ReciprocitySpectra; then

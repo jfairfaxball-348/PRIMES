@@ -1,0 +1,28 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "ReciprocitySpectra.res_mul",
+    "ReciprocitySpectra.zeta_primitive",
+    "ReciprocitySpectra.exists_exp",
+    "ReciprocitySpectra.exp_unique",
+    "ReciprocitySpectra.sexticExp_mul",
+    "ReciprocitySpectra.symExp_mul",
+    "ReciprocitySpectra.sexticExp_mul_sixth_pow",
+    "ReciprocitySpectra.sexticExp_pow_five",
+    "ReciprocitySpectra.sexticExp_zeta",
+    "ReciprocitySpectra.unit_exponent_additive",
+    "ReciprocitySpectra.trace_residue",
+    "ReciprocitySpectra.gauss_modulus_sq",
+    "ReciprocitySpectra.gauss_shift",
+    "ReciprocitySpectra.gauss_zero_shift",
+    "ReciprocitySpectra.gauss_shift_all"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
