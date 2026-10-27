@@ -42,7 +42,7 @@ automation:
 review:
   status: "self-assessed"
   reviewers: []
-  notes: "RS-S034 pinned cloud build passed; RS-S035 pinned library/Checks/Challenge/Solution passed, but independent Comparator run 40522609498 rejected definition equality for shiftedGauss; NanoDa acceptance is not established."
+  notes: "RS-S037 scoped cloud validation 40542225221 passed, and the independent Comparator 40542225202 advanced past shiftedGauss and sexticCharacter but failed next at directShiftedGauss. The complete 26-theorem Comparator/NanoDa package is not accepted. No Palomar ID or owner-reviewed automation disclosure."
 fidelity:
   divergences: >-
     Split Eisenstein prime residue fields are explicitly modelled using ZMod p

@@ -958,3 +958,7 @@ Complete separate H25 source/tests remotely precommitted at `56bbdeb37d504ad429a
     level only).
 - **Session control:** one live prompt, RS-S002 / Phase 1a, in `NEXT_SESSION_PROMPT.md`. Owner
   decision blocker: none.
+
+## RS-S037 verification checkpoint (2026-10-27)
+
+The Reciprocity Spectra finite 26-theorem source library remains Lean-proved and unchanged. An exact generated numeral witness mismatch for `sexticCharacter` was repaired inside an independent Mathlib-only Challenge; pinned Comparator [40542225202](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40542225202) confirmed progress beyond it and **failed next at `directShiftedGauss`**. The full scoped cloud suite [40542225221](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40542225221) passed at the same code head `418c825`. No complete 26-theorem independent Comparator/NanoDa acceptance, Palomar ID or merge. Apache-2.0 selected; owner AI-use disclosure left pending, not represented as no AI. CAND-002(1)–(3) remain separate, unproved conjectures; no D1 changes. Single active RS-S038 handoff installed in `NEXT_SESSION_PROMPT.md`; see `reciprocity_spectra/LEDGER.md`.
