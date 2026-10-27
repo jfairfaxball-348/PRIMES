@@ -29,6 +29,9 @@ instance : Mul Eis := ⟨fun x y =>
   ⟨x.c * y.c - x.d * y.d, x.c * y.d + x.d * y.c - x.d * y.d⟩⟩
 
 /-- The Eisenstein sixth root 1+ω. -/
+@[simp] lemma mul_c (x y : Eis) : (x * y).c = x.c * y.c - x.d * y.d := rfl
+@[simp] lemma mul_d (x y : Eis) : (x * y).d = x.c * y.d + x.d * y.c - x.d * y.d := rfl
+
 def zeta6 : Eis := ⟨1, 1⟩
 end Eis
 
