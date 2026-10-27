@@ -14,6 +14,15 @@ namespace ReciprocitySpectra
 
 namespace Eis
 
+/-- Coordinatewise extensionality for the explicit Eisenstein pair. -/
+private theorem ext {x y : Eis} (hc : x.c = y.c) (hd : x.d = y.d) :
+    x = y := by
+  cases x
+  cases y
+  cases hc
+  cases hd
+  rfl
+
 /-- Multiplicative identity in the concrete coordinate-pair model of Z[ω]. -/
 instance : CommMonoid Eis where
   one := ⟨1, 0⟩
