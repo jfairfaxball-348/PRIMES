@@ -28,8 +28,11 @@ status:
     and full frozen row identity. Source signature matching alone does not
     establish independent Comparator or NanoDa acceptance. CAND-002(1)-(3), other
     asymptotics, optional Gram and composite-modulus results remain unproved.
-    Submission is blocked on independent Comparator and NanoDa acceptance,
-    module compilation and accurate owner-reviewed automation disclosure.
+    The independent Comparator, NanoDa and Lean kernel accepted all 26 finite
+    claims at verified RS-S039 code head 4cb25de8, accompanied by a successful
+    full scoped cloud suite. Final documentation-head validation and ordered
+    main merges remain required. Submission still requires accurate owner-reviewed
+    automation disclosure and independent registry acceptance.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []
@@ -42,7 +45,7 @@ automation:
 review:
   status: "self-assessed"
   reviewers: []
-  notes: "RS-S038 scoped cloud validation 40555785210 passed at code head 62091106, while Comparator 40555785331 cleared exact directShiftedGauss export fidelity but failed next at rationalAddChar. The complete 26-theorem Comparator/NanoDa package is not accepted. No Palomar ID or owner-reviewed automation disclosure."
+  notes: "RS-S039 code head 4cb25de8 passed full scoped cloud 40564457029 and all 26 claims in Comparator/NanoDa/Lean kernel 40564457111. Final docs-head checks and ordered merges still required. No Palomar submission/ID; accurate owner automation disclosure pending."
 fidelity:
   divergences: >-
     Split Eisenstein prime residue fields are explicitly modelled using ZMod p
