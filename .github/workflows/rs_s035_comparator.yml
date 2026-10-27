@@ -1,7 +1,7 @@
-name: RS-S035 independent Comparator and NanoDa
+name: RS-S037 independent Comparator and NanoDa
 on:
   push:
-    branches: [rs-s035-palomar-coverage, rs-s036-comparator-fidelity]
+    branches: [rs-s035-palomar-coverage, rs-s036-comparator-fidelity, rs-s037-sextic-aux-fidelity]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -57,8 +57,18 @@ jobs:
           print('Total differing lines:', len(diff))
           print('\n'.join(diff[:140]))
           PY
-          printf 'import Challenge\\nset_option pp.all true\\n#print ReciprocitySpectra.rawGauss._proof_1\\n#print ReciprocitySpectra.complexZeta6._proof_1\\n' > /tmp/Rs036ChallengeAux.lean
-          printf 'import Solution\\nset_option pp.all true\\n#print ReciprocitySpectra.sexticCharacter._proof_2\\n#print ReciprocitySpectra.sexticCharacter._proof_3\\n' > /tmp/Rs036SolutionAux.lean
+          cat > /tmp/Rs036ChallengeAux.lean <<'LEAN'
+          import Challenge
+          set_option pp.all true
+          #print ReciprocitySpectra.rawGauss._proof_1
+          #print ReciprocitySpectra.complexZeta6._proof_1
+          LEAN
+          cat > /tmp/Rs036SolutionAux.lean <<'LEAN'
+          import Solution
+          set_option pp.all true
+          #print ReciprocitySpectra.sexticCharacter._proof_2
+          #print ReciprocitySpectra.sexticCharacter._proof_3
+          LEAN
           lake env lean /tmp/Rs036ChallengeAux.lean > /tmp/rs036_aux_challenge.txt 2>&1 || echo 'Challenge auxiliary print could not resolve one or more names'
           lake env lean /tmp/Rs036SolutionAux.lean > /tmp/rs036_aux_solution.txt 2>&1 || echo 'Solution auxiliary print could not resolve one or more names'
           echo 'SOURCE character auxiliary proofs:'
