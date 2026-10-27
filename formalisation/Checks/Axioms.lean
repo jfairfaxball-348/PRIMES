@@ -1,4 +1,6 @@
 import ReciprocitySpectra.RowBridge
+import ReciprocitySpectra.RowSum
+import ReciprocitySpectra.ShiftConvention
 
 /-! Axiom audit: only the standard Lean axioms are permissible. -/
 
