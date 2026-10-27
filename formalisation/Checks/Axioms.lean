@@ -30,3 +30,5 @@ open ReciprocitySpectra
 #print axioms sexticCharacter_rational
 
 #print axioms residueRoot_poly
+
+#print axioms sexticCharacter_ne_one
