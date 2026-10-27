@@ -1,4 +1,3 @@
-import ReciprocitySpectra.ClassProduct
 import ReciprocitySpectra.RowBridge
 import ReciprocitySpectra.RowSum
 import ReciprocitySpectra.ShiftConvention
@@ -59,6 +58,3 @@ open ReciprocitySpectra
 #print axioms primeNorm_d_ne_zero
 #print axioms primarySplitPrimes_model
 #print axioms residueMatVec_orientation
-#print axioms classEisRepresentative_res
-#print axioms rowShift_eq_res_eis
-#print axioms residueMatVec_frozen_shift
