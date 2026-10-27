@@ -392,3 +392,41 @@ accurate declaration and the full package validates in pinned Comparator and
 NanoDa, **do not submit or claim a Palomar ID**. CAND-002 remains conjectural.
 
 **RS-S034 pinned-cloud result:** Pinned cloud validation run [40516664832](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40516664832) on code head `42d0607727aca68ad973da3903d845b0b949fa02` passed: library, Checks, Challenge, Solution built (all three Lean exit codes 0), the existing standard-axiom audit and exponent faithfulness ran, full pytest 366 passed, 42 Gauss comparison max error 1.5e-15, targeted Ruff and both frozen evidence audits passed. An earlier run failed because module visibility omitted native IR for `symExp` used by the faithfulness `#eval`; this was fixed using `import all ReciprocitySpectra.Sextic` and `import all Checks.Fixture200` in Checks/Faithfulness. This cloud validation does NOT run leanprover/comparator or NanoDa and does not make the metadata submission-valid.
+
+
+## RS-S035: independent exact-theorem comparator coverage (work in progress)
+
+The proof inventory does not change its mathematical classification: group
+(A) and exact (A′) items 1–3 remain Lean-proved in the finite model;
+optional E8/E9/Gram and CAND-002's asymptotic (1)–(3) remain outside the
+claimed proofs. The first Palomar draft compared 15 generic/elementary
+theorems. RS-S035 extends the independent Mathlib-only Challenge to 26
+theorems including `gaussSum_sextic_eq_raw`,
+`rawGauss_modulus_sq` (specialised E7), `shiftedGauss_e4`
+(specialised E4 including zero), `classNumerator_reduction`,
+`rowShift_eisenstein`, and `residueMatVec_frozen_orientation`.
+No theorem statement or proof in the existing library is edited.
+
+**Crucial comparator incident:** run 40520302610 failed on the
+statement for `res_mul` even though Lake compiled the proof library and
+Challenge/Solution: Challenge had erroneously placed `res_mul` inside
+`[Fact p.Prime]` scope whereas the original source theorem has no such
+assumption. RS-S035 removed this extra binder. Subsequent true Comparator
+and NanoDa results, not merely source-text comparison or Lake builds, are
+required before merging or claiming a verified Palomar package.
+
+The root Apache-2.0 licence remains selected. `automation.methods`
+is intentionally empty pending the owner's truthful AI-use declaration;
+there is no assertion of no AI use. No submission or registry ID.
+
+**RS-S035 completed checkpoint (2026-10-27):** The scope now compares 26
+finite theorem statements, adding source-verified `sexticValue_one` and
+`sexticValue_mul` as needed for the actual sextic MulChar definition.
+Pinned cloud run **40522609418 PASS** on code commit `e15e314`.
+Independent comparator **40522609498 FAIL**: `ReciprocitySpectra.shiftedGauss`
+source-definition mismatch (a named unchanged frozen operation, not a
+mathematical counterexample). Earlier Comparator errors corrected in the
+branch: `res_mul` type, `Eis.instCommMonoid._proof_6` dependency, and
+`sexticValue_zero` missing simplifier. Actual independent acceptance is NOT
+proved; branch PR #14 remains unmerged. Next RS-S036 diagnoses exported
+constant/implicit elaboration fidelity without touching frozen library claims.

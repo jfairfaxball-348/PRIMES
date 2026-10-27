@@ -16,7 +16,18 @@
     "ReciprocitySpectra.gauss_modulus_sq",
     "ReciprocitySpectra.gauss_shift",
     "ReciprocitySpectra.gauss_zero_shift",
-    "ReciprocitySpectra.gauss_shift_all"
+    "ReciprocitySpectra.gauss_shift_all",
+    "ReciprocitySpectra.sexticCharacter_apply",
+    "ReciprocitySpectra.sexticCharacter_ne_one",
+    "ReciprocitySpectra.gaussSum_sextic_eq_raw",
+    "ReciprocitySpectra.rawGauss_modulus_sq",
+    "ReciprocitySpectra.shiftedGauss_eq_gaussSum",
+    "ReciprocitySpectra.shiftedGauss_e4",
+    "ReciprocitySpectra.classNumerator_reduction",
+    "ReciprocitySpectra.rowShift_eisenstein",
+    "ReciprocitySpectra.residueMatVec_frozen_orientation",
+    "ReciprocitySpectra.sexticValue_one",
+    "ReciprocitySpectra.sexticValue_mul"
   ],
   "definition_names": [],
   "permitted_axioms": [

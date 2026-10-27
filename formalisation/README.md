@@ -240,3 +240,48 @@ Palomar's nonempty automation requirement. The root `../LICENSE` is
 Apache-2.0, as directed. No Palomar submission is authorised at this stage.
 
 **RS-S034 code-head green:** Pinned cloud validation run [40516664832](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40516664832) on code head `42d0607727aca68ad973da3903d845b0b949fa02` passed: library, Checks, Challenge, Solution built (all three Lean exit codes 0), the existing standard-axiom audit and exponent faithfulness ran, full pytest 366 passed, 42 Gauss comparison max error 1.5e-15, targeted Ruff and both frozen evidence audits passed. An earlier run failed because module visibility omitted native IR for `symExp` used by the faithfulness `#eval`; this was fixed using `import all ReciprocitySpectra.Sextic` and `import all Checks.Fixture200` in Checks/Faithfulness. This cloud validation does NOT run leanprover/comparator or NanoDa and does not make the metadata submission-valid.
+
+
+## RS-S035: expanded independent Palomar statement surface (pending verification)
+
+The independent Mathlib-only `Challenge.lean` now declares 26 exact theorem
+statements, compared by `comparator.json`: the previous 15 E0/E1/E2/E3/E5/E6
+and generic-character statements, plus the actual sextic MulChar applications,
+raw/direct Gauss bridge, specialised sextic E7 squared modulus, shifted E4
+(including zero), Eisenstein class numerator reduction, and the full frozen
+`residueMatVec_frozen_orientation` finite row identity. The definitions in
+the Challenge reproduce the mathematical operations from the proof library,
+without importing any proof-library files. The Solution imports the actual
+proved library. This is not an asymptotic proof.
+
+The 19 source files use `module`, and the independent Challenge imports
+only Mathlib; its 379-line size is below Palomar's 1,000-line cap. A source
+signature check reports nine out of nine newly selected theorem declarations
+match their original text. This does **not** imply independent theorem
+comparison has succeeded.
+
+Independent Comparator/NanoDa execution is now exercised in
+`.github/workflows/rs_s035_comparator.yml`; it is distinct from the
+pinned library, axioms, faithfulness and Python tests in the main cloud
+workflow. The first run 40520302610 built Challenge and Solution, but
+**Comparator failed** on `res_mul` because Challenge placed it under
+an extra implicit prime-field assumption; the extra scope has been
+removed. The corrected package requires a new complete verification.
+No Palomar ID, registration, or AI-disclosure assertion exists.
+`formalization.yaml` deliberately retains `automation.methods: []`
+pending the owner's accurate declaration; it is not submission-ready.
+
+**RS-S035 final verification finding:** The existing full pinned cloud pipeline
+[40522609418](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40522609418)
+passed at code head `e15e314` (library, Checks, Challenge, Solution,
+axioms, 1764/1764, 366 tests, 42 Gauss checks, Ruff and frozen audits).
+The separate independently pinned Comparator/NanoDa run
+[40522609498](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40522609498)
+**failed**, precisely: `Const does not match between challenge and target
+'ReciprocitySpectra.shiftedGauss'`. Prior runs detected an extra prime
+assumption on `res_mul`, mismatch in Eisenstein monoid proof constants, and a
+missing `sexticValue_zero` simp proof; these were corrected on the branch.
+26 theorem names are selected (two additional sextic character prerequisite
+laws), but **none of the 26 is certified as a full accepted comparator package**.
+PR #14 remains draft and unmerged; RS-S036 must resolve strict definition
+fidelity before any registration. Owner automation disclosure is still pending.

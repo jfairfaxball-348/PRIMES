@@ -1,4 +1,4 @@
-# RS-S034 draft: NOT FOR SUBMISSION. Automation declaration awaits owner review.
+# RS-S035 draft: NOT FOR SUBMISSION. Automation declaration awaits owner review.
 # No statement of "no AI used" is being made; AI assistance is known to have occurred.
 version: "v0.4"
 project:
@@ -6,10 +6,9 @@ project:
   description: >-
     A formal library of exact finite-field sextic residue-exponent laws in the
     split Eisenstein-prime model, character-level Gauss sum identities and
-    additional proved finite row identities. The initial auditable Comparator
-    challenge selects E0/E1/E2/E3/E5/E6 arithmetic and generic E4/E7 character
-    statements, but does not yet select the specialised sextic Gauss or full
-    finite Eisenstein matrix row theorem. It makes no asymptotic claim.
+    additional proved finite row identities. The expanded 26-theorem Challenge covers E0/E1/E2/E3/E5/E6,
+    generic character E4/E7, specialised sextic Gauss E4/E7 and finite
+    Eisenstein class reduction and frozen full matrix row orientation. It makes no asymptotic claim.
   authors: ["John Fairfax-Ball"]
   responsible_maintainers: ["John Fairfax-Ball"]
   license: "Apache-2.0"
@@ -24,14 +23,13 @@ sources:
     note: "In-repository mathematical formulation; no claim of original priority or external peer review."
 status:
   scope: >-
-    Draft comparator currently includes finite sextic exponent identities and
-    generic character-level Gauss identities. The library separately proves
-    the direct sextic modulus, shifted Gauss sum, finite row orientation, and
-    Eisenstein class numerator. They are NOT YET part of the independent
-    audited Challenge/Solution comparator selection. CAND-002(1)-(3), other
+    The draft comparator selects 26 finite identities including actual sextic
+    Gauss modulus, shifted sum with zero case, Eisenstein numerator reduction,
+    and full frozen row identity. Source signature matching alone does not
+    establish independent Comparator or NanoDa acceptance. CAND-002(1)-(3), other
     asymptotics, optional Gram and composite-modulus results remain unproved.
-    Submission is blocked on completing the Challenge coverage, independent
-    comparator, module compatibility, and owner automation disclosure.
+    Submission is blocked on independent Comparator and NanoDa acceptance,
+    module compilation and accurate owner-reviewed automation disclosure.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []
@@ -44,7 +42,7 @@ automation:
 review:
   status: "self-assessed"
   reviewers: []
-  notes: "Pinned Lean library and axiom audits completed before RS-S034; independent Comparator is pending."
+  notes: "RS-S034 pinned cloud build passed; RS-S035 pinned library/Checks/Challenge/Solution passed, but independent Comparator run 40522609498 rejected definition equality for shiftedGauss; NanoDa acceptance is not established."
 fidelity:
   divergences: >-
     Split Eisenstein prime residue fields are explicitly modelled using ZMod p
@@ -56,9 +54,25 @@ alignment:
     - source: "Finite E0–E3, E5–E6 sextic symbol and normalization laws"
       lean: "ReciprocitySpectra.sexticExp_mul"
       module: "ReciprocitySpectra.Sextic"
-      status: "proved, draft Comparator selection"
+      status: "proved, part of 24-statement draft Comparator"
     - source: "Generic E4/E7 Gauss character identities"
       lean: "ReciprocitySpectra.gauss_modulus_sq"
       module: "ReciprocitySpectra.Gauss"
-      status: "proved, draft Comparator selection; not specialised sextic E7"
+      status: "proved generic theorem, part of 24-statement draft Comparator"
+    - source: "Specialised sextic Gauss squared modulus (E7)"
+      lean: "ReciprocitySpectra.rawGauss_modulus_sq"
+      module: "ReciprocitySpectra.GaussBridge"
+      status: "proved in library, selected for independent Comparator check"
+    - source: "Specialised shifted sextic Gauss identity (E4, including zero)"
+      lean: "ReciprocitySpectra.shiftedGauss_e4"
+      module: "ReciprocitySpectra.ShiftedGauss"
+      status: "proved in library, selected for independent Comparator check"
+    - source: "Finite Eisenstein numerator reduction"
+      lean: "ReciprocitySpectra.classNumerator_reduction"
+      module: "ReciprocitySpectra.ClassProduct"
+      status: "proved in library, selected for independent Comparator check"
+    - source: "Full frozen finite matrix-row identity"
+      lean: "ReciprocitySpectra.residueMatVec_frozen_orientation"
+      module: "ReciprocitySpectra.ClassProduct"
+      status: "proved in library, selected for independent Comparator check"
 acknowledgements: "Lean 4 and Mathlib contributors; automation credits pending owner review."
