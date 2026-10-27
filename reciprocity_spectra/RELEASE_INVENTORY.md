@@ -310,3 +310,11 @@ the axiom audit prints only standard axioms; exponent faithfulness
 1764/1764; complete Python suite, targeted Ruff, native/Python Gauss
 fixture and both evidence audit checkers PASS. The fixture is numerical
 and is not a Lean theorem. Conjectural CAND-002 claims remain unproved.
+
+## RS-S030 checkpoint (2026-10-27): group (A′) item 2 COMPLETE
+
+**Lean, no proof placeholders:** `GaussBridge.lean` adds `zmod_sum_eq_range` (canonical finite reindexing), `rationalAddChar_nat` (positive-sign exponential at bounded rational residues), `gaussSum_sextic_eq_raw` (actual direct `rawGauss` = Mathlib `gaussSum` of the proven sextic character), and `rawGauss_modulus_sq` (sextic E7). All theorems retain explicit prime-field and sextic model hypotheses: prime norm, root equation, nonzero characteristic 2/3, and 6 | p-1. These are actual specialized results, not generic conditional character statements.
+
+**Verification:** pinned Lean 4.35.0 / Mathlib 56a005855ea1, GitHub Actions run 40489442361 SUCCESS. Both library and Checks targets pass, and the axiom audit reports only propext, Classical.choice and Quot.sound. Faithfulness 1764/1764, 366 Python tests, 42 native/Python Gauss checks, Ruff and evidence audits pass.
+
+**Group (A′) status:** item 1 (sextic MulChar) COMPLETE in RS-S029; item 2 (direct E7) COMPLETE in RS-S030; item 3 (specialized E4 including zero shifts and matrix row orientation) remains OPEN for RS-S031. Optional Gram, E8/E9 remain open/deferred. Palomar packaging is NOT authorized yet. Group (B) paper arguments and group (C) conjectures are unchanged; CAND-002 is unproved.
