@@ -354,8 +354,22 @@ theorem sexticCharacter._proof_3 : Nat.AtLeastTwo ((2 : Nat) + 1) :=
   Nat.instAtLeastTwoHAddOfNat (2 : Nat)
 
 noncomputable def sexticCharacter (r : ZMod p)
-    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
-    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1) :
+    (hr : r ^ 2 + r + 1 = 0)
+    (h2 : (@OfNat.ofNat (ZMod p) (nat_lit 2)
+      (@instOfNatAtLeastTwo (ZMod p) (nat_lit 2)
+        (@AddMonoidWithOne.toNatCast (ZMod p)
+      (@AddGroupWithOne.toAddMonoidWithOne (ZMod p)
+        (@Ring.toAddGroupWithOne (ZMod p)
+          (@DivisionRing.toRing (ZMod p)
+            (@Field.toDivisionRing (ZMod p) (ZMod.instField p)))))) sexticCharacter._proof_2)) ≠ 0)
+    (h3 : (@OfNat.ofNat (ZMod p) (nat_lit 3)
+      (@instOfNatAtLeastTwo (ZMod p) (nat_lit 3)
+        (@AddMonoidWithOne.toNatCast (ZMod p)
+      (@AddGroupWithOne.toAddMonoidWithOne (ZMod p)
+        (@Ring.toAddGroupWithOne (ZMod p)
+          (@DivisionRing.toRing (ZMod p)
+            (@Field.toDivisionRing (ZMod p) (ZMod.instField p)))))) sexticCharacter._proof_3)) ≠ 0)
+    (h6 : 6 ∣ p - 1) :
     MulChar (ZMod p) ℂ where
   toFun := sexticValue r
   map_one' := sexticValue_one hr h2 h3
