@@ -1,4 +1,8 @@
-import ReciprocitySpectra.Model
+module
+
+public import ReciprocitySpectra.Model
+
+@[expose] public section
 
 /-!
 # RS-S025: the rational additive-character bridge

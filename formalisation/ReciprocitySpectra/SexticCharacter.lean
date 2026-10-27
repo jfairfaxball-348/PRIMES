@@ -1,4 +1,8 @@
-import ReciprocitySpectra.CharacterBridge
+module
+
+public import ReciprocitySpectra.CharacterBridge
+
+@[expose] public section
 
 /-!
 # RS-S029: the sextic exponent as a multiplicative character

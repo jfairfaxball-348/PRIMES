@@ -1,3 +1,7 @@
+module
+
+@[expose] public section
+
 /-! Generated from `fixtures/sextic_200.json` (engine output at X = 200, D = 42).
 Records `p a b c d e` separated by `;`: (p, a, b) of the column prime, (c, d) of the row prime,
 engine exponent `e` (255 = zero). -/

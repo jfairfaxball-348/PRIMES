@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Sextic residue exponents at split primes of `ℤ[ω]` (CAND-002 inventory E0–E3, E5, E6)

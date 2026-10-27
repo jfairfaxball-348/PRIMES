@@ -1,4 +1,8 @@
-import ReciprocitySpectra.Model
+module
+
+public import ReciprocitySpectra.Model
+
+@[expose] public section
 
 /-!
 # CAND-002: formal **statements**, no proofs

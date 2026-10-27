@@ -1,4 +1,8 @@
-import ReciprocitySpectra.RowBridge
+module
+
+public import ReciprocitySpectra.RowBridge
+
+@[expose] public section
 
 /-!
 # RS-S032: sum the exact sextic row orientation over genuine prime columns

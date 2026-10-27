@@ -1,7 +1,11 @@
-import ReciprocitySpectra.RowBridge
-import ReciprocitySpectra.RowSum
-import ReciprocitySpectra.ShiftConvention
-import ReciprocitySpectra.ClassProduct
+module
+
+public import ReciprocitySpectra.RowBridge
+public import ReciprocitySpectra.RowSum
+public import ReciprocitySpectra.ShiftConvention
+public import ReciprocitySpectra.ClassProduct
+
+@[expose] public section
 
 /-! Axiom audit: only the standard Lean axioms are permissible. -/
 

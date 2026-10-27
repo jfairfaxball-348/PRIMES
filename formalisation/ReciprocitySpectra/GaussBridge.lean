@@ -1,4 +1,8 @@
-import ReciprocitySpectra.SexticCharacter
+module
+
+public import ReciprocitySpectra.SexticCharacter
+
+@[expose] public section
 
 /-!
 # RS-S030: the direct rational Gauss sum and the finite-field Gauss sum

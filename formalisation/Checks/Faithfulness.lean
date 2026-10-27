@@ -1,5 +1,9 @@
-import Checks.Fixture200
-import ReciprocitySpectra.Sextic
+module
+
+public import Checks.Fixture200
+public import ReciprocitySpectra.Sextic
+
+@[expose] public section
 
 /-!
 # Faithfulness check (PROTOCOL §10.2c)

@@ -1,16 +1,20 @@
-import ReciprocitySpectra.Sextic
-import ReciprocitySpectra.Gauss
-import ReciprocitySpectra.Model
-import ReciprocitySpectra.Conjecture
-import ReciprocitySpectra.CharacterBridge
+module
 
-import ReciprocitySpectra.SexticCharacter
+public import ReciprocitySpectra.Sextic
+public import ReciprocitySpectra.Gauss
+public import ReciprocitySpectra.Model
+public import ReciprocitySpectra.Conjecture
+public import ReciprocitySpectra.CharacterBridge
 
-import ReciprocitySpectra.GaussBridge
+public import ReciprocitySpectra.SexticCharacter
 
-import ReciprocitySpectra.ShiftedGauss
+public import ReciprocitySpectra.GaussBridge
 
-import ReciprocitySpectra.RowBridge
-import ReciprocitySpectra.RowSum
-import ReciprocitySpectra.ShiftConvention
-import ReciprocitySpectra.ClassProduct
+public import ReciprocitySpectra.ShiftedGauss
+
+public import ReciprocitySpectra.RowBridge
+public import ReciprocitySpectra.RowSum
+public import ReciprocitySpectra.ShiftConvention
+public import ReciprocitySpectra.ClassProduct
+
+@[expose] public section

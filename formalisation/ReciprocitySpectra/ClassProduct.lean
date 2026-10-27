@@ -1,5 +1,9 @@
-import ReciprocitySpectra.RowSum
-import ReciprocitySpectra.ShiftConvention
+module
+
+public import ReciprocitySpectra.RowSum
+public import ReciprocitySpectra.ShiftConvention
+
+@[expose] public section
 
 /-!
 # RS-S033: an actual Eisenstein numerator for finite sextic twist classes

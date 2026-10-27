@@ -1,4 +1,8 @@
-import ReciprocitySpectra.ShiftedGauss
+module
+
+public import ReciprocitySpectra.ShiftedGauss
+
+@[expose] public section
 
 /-!
 # RS-S031: finite class residues and exact row/column orientation
