@@ -70,9 +70,10 @@ def lattice(fig, ax):
     j = load("s019")
     pts = list({(c["kappa"][0][0][0],c["kappa"][0][0][1])
                 for c in j["runs"][0]["prime"]["classes"]})
-    xx,yy = zip(*sorted(pts))
+    xx,yy = zip(*sorted(pts), strict=False)
     ax.scatter(xx,yy,color=PALETTE[0],s=30)
-    ax.axhline(0,color="grey",lw=.5); ax.axvline(0,color="grey",lw=.5)
+    ax.axhline(0,color="grey",lw=.5)
+    ax.axvline(0,color="grey",lw=.5)
     style(ax,r"$a$ in $a+b\omega$",r"$b$ in $a+b\omega$","Sample primary prime representatives")
     ax.text(.02,.03,"Finite illustrative set from RS-S019 classes",transform=ax.transAxes,fontsize=7)
 
@@ -80,32 +81,41 @@ def baseline(fig, ax):
     a,b=load("s016"),load("s021")
     X=[int(k) for k in a["analysis"]["r_u1"].keys()]
     y=[a["analysis"]["r_u1"][str(x)] for x in X]
-    for k,v in b["score"]["r_u1"].items(): X.append(int(k));y.append(v)
-    pairs=sorted(zip(X,y))
+    for k,v in b["score"]["r_u1"].items():
+        X.append(int(k))
+    y.append(v)
+    pairs=sorted(zip(X,y, strict=False))
     ax.plot([x/1e6 for x,_ in pairs],[v for _,v in pairs],marker="o",color=PALETTE[0])
     style(ax,r"Cutoff $X$ ($10^6$)",r"Baseline $r_1$","Observed baseline strength")
 
 def collapse(fig, ax):
     a,b,c=load("s016"),load("s021"),load("s015")
-    for run in a["runs"]+c["runs"][:1]+b["runs"]:
-        X=run["X"]; vals=[]
+    for run in a["runs"]+c["runs"][:
+        1]+b["runs"]:
+        X=run["X"]
+        vals=[]
         if X<=1e6:
             r1=next((r["analysis"]["r_u1"][str(X)] for r in [a] if str(X) in r["analysis"]["r_u1"]),None)
         else:
             r1=b["score"]["r_u1"][str(X)]
-        if r1 is None: continue
+        if r1 is None:
+            continue
         for item in run["classes"]:
             k=item.get("k")
-            if k is None: k=item.get("exponents",[None])[0]
-            if k not in (1,2,3,4): continue
+            if k is None:
+                k=item.get("exponents",[None])[0]
+            if k not in (1,2,3,4):
+                continue
             n=item.get("N6")
-            if not n: continue
+            if not n:
+                continue
             s=item.get("s")
-            if s is None:s=((item["r"]**2-1)/(r1**2-1))*n**(1/6)
+            if s is None:
+                s=((item["r"]**2-1)/(r1**2-1))*n**(1/6)
             vals.append((math.log10(n/X),s))
         if vals:
             ii={160000:0,320000:1,640000:2,1000000:3,2000000:4,4000000:5}[X]
-            ax.scatter(*zip(*vals), s=9,marker=SHAPES[ii],alpha=.27,
+            ax.scatter(*zip(*vals, strict=False), s=9,marker=SHAPES[ii],alpha=.27,
                        color=PALETTE[ii],label=f"$X={X/1e6:g}\\times10^6$")
     bins=a["analysis"]["collapse_bins_t_eq_N6_over_X"]["k234"]
     ax.plot([p["log10_t_lo"]+.25 for p in bins],[p["mean_s"] for p in bins],
@@ -114,8 +124,10 @@ def collapse(fig, ax):
     ax.legend(ncol=2,fontsize=6,loc="lower left")
 
 def residuals(fig, ax):
-    j=load("s021"); p=j["score"]["A"]["bins"]
-    xx=[a["log10_t_lo"]+.25 for a in p]; yy=[a["diff"] for a in p]
+    j=load("s021")
+    p=j["score"]["A"]["bins"]
+    xx=[a["log10_t_lo"]+.25 for a in p]
+    yy=[a["diff"] for a in p]
     ax.axhspan(-.05,.05,color=PALETTE[2],alpha=.13,label="Registered ±0.05")
     ax.axhline(0,color="black",lw=.7)
     ax.scatter(xx,yy,c=PALETTE[0],s=[10+2*v["n"] for v in p])
@@ -138,7 +150,7 @@ def moduli(fig, ax):
     j=load("s019")["runs"][0]
     for idx,key in enumerate(["prime","unrestricted"]):
         vals=[(math.log10(c["t"]),c["s"]) for c in j[key]["classes"] if c["k"]!=5 and c["t"]>0]
-        ax.scatter(*zip(*vals),s=16,alpha=.45,color=PALETTE[idx],label=key)
+        ax.scatter(*zip(*vals, strict=False),s=16,alpha=.45,color=PALETTE[idx],label=key)
     style(ax,r"$\log_{10}(N_6/X)$",r"$s_\kappa$",
           "Prime vs. squarefree-modulus profiles, $X=2\\times10^5$")
     ax.legend()
@@ -146,19 +158,27 @@ def moduli(fig, ax):
 def parity(fig, ax):
     j=load("s020")["settings"]["rational"]["classes"]
     for idx,mod in enumerate([1,7]):
-        xs=[];ys=[];groups={}
+        xs=[]
+        ys=[]
+        groups={}
         for row in j:
-            if row["k"]!=2 or row["N_mod_12"]!=mod:continue
-            for part,s in row["s_by_part"].items():groups.setdefault(int(part),[]).append(s)
+            if row["k"]!=2 or row["N_mod_12"]!=mod:
+                continue
+            for part,s in row["s_by_part"].items():
+                groups.setdefault(int(part),[]).append(s)
         for part in sorted(groups):
-            xs.append(part);ys.append(sum(groups[part])/len(groups[part]))
-        if xs:ax.plot(xs,ys,marker=SHAPES[idx],color=PALETTE[idx],label=f"$N(\\pi)\\equiv{mod}\\pmod{{12}}$")
+            xs.append(part)
+            ys.append(sum(groups[part])/len(groups[part]))
+        if xs:
+            ax.plot(xs,ys,marker=SHAPES[idx],color=PALETTE[idx],label=f"N mod 12 = {mod}")
     style(ax,r"Row part $j=(\rho/\pi)_6$ exponent",r"Mean partitioned $s$",
           "Exploratory row-prime partition, exponent 2")
     ax.legend()
 
 def plateau(fig, ax):
-    j=load("s021"); d=j["stored_trend_K1"];d.update({str(k):v for k,v in j["score"]["H+"]["K1"].items()})
+    j=load("s021")
+    d=j["stored_trend_K1"]
+    d.update({str(k):v for k,v in j["score"]["H+"]["K1"].items()})
     data=sorted((float(k.replace("e5","e5").replace("e6","e6")),v) for k,v in d.items())
     ax.plot([x/1e6 for x,_ in data],[v for _,v in data],color=PALETTE[2],marker="o")
     ax.axhline(1,ls="--",color="grey",label="Open question $F(0^+)=1$")
@@ -169,7 +189,7 @@ def prereg(fig, ax):
     stages=["S015","S016","S017","S019","S020","S021"]
     events=["FAIL", "EXPLORE", "PASS / FAIL", "PASS", "PASS", "PASS"]
     colors=[PALETTE[1], "#777777",PALETTE[1],PALETTE[2],PALETTE[2],PALETTE[2]]
-    for i,(stage,event) in enumerate(zip(stages,events)):
+    for i,(stage,event) in enumerate(zip(stages,events, strict=False)):
         ax.scatter([i],[0],color=colors[i],s=170,zorder=3)
         ax.text(i,.22,event,ha="center",fontsize=8,rotation=30)
         ax.text(i,-.25,stage,ha="center")
@@ -184,8 +204,10 @@ def regimes(fig, ax):
         ax.plot(xx,np.full_like(xx,X),ls="--",lw=1,label=fr"$t=1$ at $\log_{{10}}X={X}$")
     ax.fill_between(xx,xx+2,xx+5,where=(xx+2<=xx+5),alpha=.10,color=PALETTE[0])
     ax.text(1.0,5.8,"fixed class: $N_6$ fixed,\n$X\\to\\infty$ is a separate boundary",fontsize=9)
-    style(ax,r"$\log_{10}N_6$",r"$\log_{10}X$","Parameter regions; conceptual, not evidence")
-    ax.set_ylim(3,8);ax.legend(fontsize=7)
+    style(ax,r"$\log_{10}N_6$",r"$\log_{10}X$","Parameter regions
+    conceptual, not evidence")
+    ax.set_ylim(3,8)
+    ax.legend(fontsize=7)
 
 def verification(fig, ax):
     ax.axis("off")
@@ -205,7 +227,8 @@ def normalisation(fig, ax):
     y=[j[k]["median_across_X_spread_of_bin_means"] for k in keys]
     ax.bar(x,y,color=[PALETTE[0],PALETTE[2],PALETTE[1]])
     ax.set_xticks(x,["baseline-normalised","control-referenced","unnormalised"])
-    style(ax,"",r"Median across-$X$ bin spread","Normalisation audit; same 600 finite points")
+    style(ax,"",r"Median across-$X$ bin spread","Normalisation audit
+    same 600 finite points")
     ax.tick_params(axis="x",labelrotation=12)
 
 def phase(fig,ax):
