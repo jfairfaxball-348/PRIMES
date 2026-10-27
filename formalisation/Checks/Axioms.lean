@@ -20,3 +20,6 @@ open ReciprocitySpectra
 #print axioms finite_gauss_orientation
 #print axioms rationalAddChar_primitive
 #print axioms rationalAddChar_apply
+
+#print axioms gauss_zero_shift
+#print axioms gauss_shift_all
