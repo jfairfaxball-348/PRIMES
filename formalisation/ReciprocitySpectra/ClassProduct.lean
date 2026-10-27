@@ -14,7 +14,7 @@ namespace ReciprocitySpectra
 
 /-- Multiplication of Eisenstein coordinate pairs is a commutative monoid.
 This is the original multiplication from Sextic.lean, with a genuine identity. -/
-instance : CommMonoid Eis where
+instance eisCommMonoid : CommMonoid Eis where
   one := ⟨1, 0⟩
   mul := fun x y =>
     ⟨x.c * y.c - x.d * y.d,
@@ -22,22 +22,22 @@ instance : CommMonoid Eis where
   one_mul := by
     intro x
     rcases x with ⟨a, b⟩
-    congr 1 <;> simp <;> ring
+    congr 1 <;> ring
   mul_one := by
     intro x
     rcases x with ⟨a, b⟩
-    congr 1 <;> simp <;> ring
+    congr 1 <;> ring
   mul_assoc := by
     intro x y z
     rcases x with ⟨a, b⟩
     rcases y with ⟨c, d⟩
     rcases z with ⟨e, f⟩
-    congr 1 <;> simp <;> ring
+    congr 1 <;> ring
   mul_comm := by
     intro x y
     rcases x with ⟨a, b⟩
     rcases y with ⟨c, d⟩
-    congr 1 <;> simp <;> ring
+    congr 1 <;> ring
 
 /-- A fixed sixth-power-free class has a genuine finite product in
 Eisenstein coordinates; no arbitrary infinite product is assumed. -/
@@ -56,8 +56,7 @@ theorem classEisRepresentative_res (σ : Eis) (κ : TwistClass)
   classical
   let r := residueRoot σ
   have hone : res r (1 : Eis) = 1 := by
-    change (1 : ZMod (eisNorm σ).toNat) + 0 * r = 1
-    ring
+    simp [res, eisCommMonoid]
   have hpow (π : Eis) (n : ℕ) :
       res r (π ^ n) = res r π ^ n := by
     induction n with
