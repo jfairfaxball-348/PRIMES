@@ -301,12 +301,20 @@ noncomputable def rowShift (κ : TwistClass) (ρ σ : Eis) :
   res (residueRoot σ) ρ * classResidue κ σ
 
 
+/-! RS-S038: exact generated numeral witness for the independent direct
+shifted finite Gauss definition. This is a proof-irrelevant source-fidelity
+witness only; the finite formula and all mathematical assumptions are unchanged. -/
+theorem directShiftedGauss._proof_1 : Nat.AtLeastTwo ((1 : Nat) + 1) :=
+  Nat.instAtLeastTwoHAddOfNat (1 : Nat)
+
 /-- Direct finite sextic Gauss sum using the reduced product a·t in the positive exponential. -/
 noncomputable def directShiftedGauss (σ : Eis)
     (a : ZMod (eisNorm σ).toNat) : ℂ :=
   ∑ t ∈ Finset.range (eisNorm σ).toNat,
     complexSymbol ⟨(t : ℤ), 0⟩ σ *
-      Complex.exp (2 * (Real.pi : ℂ) * Complex.I *
+      Complex.exp ((@OfNat.ofNat ℂ (nat_lit 2)
+        (@instOfNatAtLeastTwo ℂ (nat_lit 2) Complex.instNatCast directShiftedGauss._proof_1)) *
+        (Real.pi : ℂ) * Complex.I *
         ((a * (t : ZMod (eisNorm σ).toNat)).val : ℂ) /
         ((eisNorm σ).toNat : ℂ))
 

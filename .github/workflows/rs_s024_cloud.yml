@@ -1,14 +1,14 @@
-name: RS-S037 scoped cloud Lean and package validation
+name: RS-S038 scoped cloud Lean and package validation
 
 on:
   push:
-    branches: [rs-s034-palomar-prepare, rs-s036-comparator-fidelity, rs-s037-sextic-aux-fidelity]
+    branches: [rs-s034-palomar-prepare, rs-s036-comparator-fidelity, rs-s037-sextic-aux-fidelity, rs-s038-direct-shift-fidelity]
   pull_request:
     branches: [main]
   workflow_dispatch:
 
 concurrency:
-  group: rs-s037-palomar-${{ github.ref }}
+  group: rs-s038-palomar-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
