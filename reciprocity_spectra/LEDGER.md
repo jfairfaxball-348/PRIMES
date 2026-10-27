@@ -1798,3 +1798,70 @@ status unchanged. The generic large-sieve route is exhausted as in RS-S013,
 not the hard arithmetic-coefficient route. **Next:** RS-S028, make a
 non-circular arithmetic coefficient/model and Type II obligation explicit
 or prove its obstruction. No owner-decision blocker.
+
+
+### RS-S028 (2026-10-27): prime projection, ideal Vaughan blocks and residue-transfer obstruction
+
+**Stage:** mathematics-first proof-obligation audit on the hard prime/matrix route.
+**Session branch:** \`rs-s028-prime-projection-vaughan\`. **Proof record:**
+\`reciprocity_spectra/RS_S028_PRIME_PROJECTION_VAUGHAN.md\`.
+Frozen CAND-002 and historical predictions were not changed. No Lean or
+Palomar work was resumed.
+
+**New rigorously derived paper-level results (not new Lean proofs):**
+
+1. **Exact ideal prime projection.** Extend rational-normalized split-prime
+   Gauss weights to a squarefree, 6-coprime *ideal* trace-Gauss weight
+   \(b_u(\mathfrak a)\), multiplying by an explicitly defined
+   rational/trace correction at each degree-one prime. The formula
+   \(\sum_{\sigma\in P_X}g^{rat}_\sigma(u)/\sqrt{N\sigma}
+      =\sum_{N\mathfrak a\le X}(\Lambda_K(\mathfrak a)/
+      \log N\mathfrak a)b_u(\mathfrak a)-E_u^{inert}(X)\)
+   is exact; \(|E_u^{inert}(X)|\le\sqrt X\). Prime powers of
+   degree \(\ge2\) vanish by squarefree support; ramified 3
+   and inert 2 are excluded explicitly. The rational normalization
+   correction is **not** identified with a fixed Hecke character.
+2. **Exact ideal Vaughan decomposition.** Ideal convolution identities
+   give four explicit pieces I1-I2+I0+II. The actual Type II
+   coefficients are Möbius divisor sums \(\alpha_U(\mathfrak m)\)
+   and \(\Lambda_K(\mathfrak n)\), independent of any eigenvector
+   or fitted statistic. With U=V=X^(1/3+δ) on the top dyadic
+   shell, all nonzero Type II factors have norms strictly above
+   X^(1/3+δ) and at most X^(2/3−δ), for 0<δ<1/6.
+   Its surviving \(\mathfrak n\) is prime (prime powers
+   are excluded); coprime composite trace Gauss sums bring the
+   signed cubic reciprocal kernel with mod-4 and primary-generator
+   corrections. This is an exact decomposition **not** a
+   Type II cancellation theorem.
+3. **Analytic transfer counterexample.** Two explicitly constructed
+   nonnegative Dirichlet coefficient sequences share a simple
+   pole and residue at \(s=2/3\), yet their rational-prime
+   partial sums differ by
+   \(\sim(3/2)X^{2/3}/\log X\).
+   This rigorously rules out the *general logical inference*
+   "all-moduli pole residue determines the prime coefficient,"
+   not an arithmetic-specific Kubota theorem or CAND-002.
+4. **Error bookkeeping.** A row-averaged \(\ell^2\) log budget for
+   dyadic blocks is recorded, **explicitly unproved**. The
+   required positive no-five signed energy and nonpositive fifth
+   energy remain separate. No identified analytic \(B_6\)
+   model, uniform moving-shift bound, arithmetic main term or
+   sign theorem was produced.
+
+**Independent proof checks:** ideal convolution proved algebraically;
+the matching integer-monoid Vaughan identity independently checked
+for n=2..299 at U=11,V=13; the distinct-composite pairing in the
+Dirichlet-series counterexample checked on 167 odd primes below
+1000 and established by parity. These finite checks are **not**
+number-theoretic asymptotic evidence. Sources and assumptions
+are distinguished in the proof record. No project discovery-scale
+run or evidence JSON; no .lean, workflow, comparator or historical
+data edits.
+
+**Disposition:** CAND-002(3) remains OPEN, both endpoints unproved.
+The generic operator-norm route is still ruled out as in RS-S013;
+the arithmetic-coefficient hard route has **not** been exhausted.
+No status promotion and no owner blocker. **Next:** RS-S029,
+an exact arithmetic coefficient/local-factor and signed Type II
+obligation using the defined ideal Vaughan blocks, before any
+attempt to equate a Kubota residue with a prime main term.
