@@ -335,11 +335,23 @@ theorem rationalAddChar._proof_1 : Nat.AtLeastTwo ((1 : Nat) + 1) :=
   Nat.instAtLeastTwoHAddOfNat (1 : Nat)
 
 theorem rationalAddChar._proof_2 (p : ℕ) [NeZero p] :
-    Complex.exp (
-      (@OfNat.ofNat ℂ (nat_lit 2)
-        (@instOfNatAtLeastTwo ℂ (nat_lit 2) Complex.instNatCast
-          rationalAddChar._proof_1)) *
-      (Real.pi : ℂ) * Complex.I / (p : ℂ)) ^ p = 1 :=
+    (@HPow.hPow ℂ ℕ ℂ
+      (@instHPow ℂ ℕ
+        (@NPow.toPow ℂ
+          (@Monoid.toNPow ℂ
+            (@CommMonoid.toMonoid ℂ (@CommRing.toCommMonoid ℂ Complex.commRing)))))
+      (Complex.exp (
+        (@OfNat.ofNat ℂ (nat_lit 2)
+          (@instOfNatAtLeastTwo ℂ (nat_lit 2) Complex.instNatCast
+            rationalAddChar._proof_1)) *
+        (Real.pi : ℂ) * Complex.I / (p : ℂ))) p) =
+    (@OfNat.ofNat ℂ (nat_lit 1)
+      (@One.toOfNat1 ℂ
+        (@MulOne.toOne ℂ
+          (@MulOneClass.toMulOne ℂ
+            (@Monoid.toMulOneClass ℂ
+              (@CommMonoid.toMonoid ℂ
+                (@CommRing.toCommMonoid ℂ Complex.commRing)))))) :=
   (Complex.isPrimitiveRoot_exp p (NeZero.out)).pow_eq_one
 
 /-- Canonical positive-sign additive character of the finite prime residue field. -/
