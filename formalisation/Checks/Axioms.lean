@@ -1,4 +1,4 @@
-import ReciprocitySpectra.GaussBridge
+import ReciprocitySpectra.RowBridge
 
 /-! Axiom audit: only the standard Lean axioms are permissible. -/
 
