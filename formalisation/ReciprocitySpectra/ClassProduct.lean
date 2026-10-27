@@ -22,22 +22,22 @@ instance : CommMonoid Eis where
   one_mul := by
     intro x
     rcases x with ⟨a, b⟩
-    congr 1 <;> dsimp <;> ring
+    congr 1 <;> simp <;> ring
   mul_one := by
     intro x
     rcases x with ⟨a, b⟩
-    congr 1 <;> dsimp <;> ring
+    congr 1 <;> simp <;> ring
   mul_assoc := by
     intro x y z
     rcases x with ⟨a, b⟩
     rcases y with ⟨c, d⟩
     rcases z with ⟨e, f⟩
-    congr 1 <;> dsimp <;> ring
+    congr 1 <;> simp <;> ring
   mul_comm := by
     intro x y
     rcases x with ⟨a, b⟩
     rcases y with ⟨c, d⟩
-    congr 1 <;> dsimp <;> ring
+    congr 1 <;> simp <;> ring
 
 /-- A fixed sixth-power-free class has a genuine finite product in
 Eisenstein coordinates; no arbitrary infinite product is assumed. -/
@@ -55,17 +55,20 @@ theorem classEisRepresentative_res (σ : Eis) (κ : TwistClass)
     res (residueRoot σ) (classEisRepresentative κ) = classResidue κ σ := by
   classical
   let r := residueRoot σ
+  have hone : res r (1 : Eis) = 1 := by
+    change (1 : ZMod (eisNorm σ).toNat) + 0 * r = 1
+    ring
   have hpow (π : Eis) (n : ℕ) :
       res r (π ^ n) = res r π ^ n := by
     induction n with
-    | zero => simp [res]
+    | zero => simpa only [pow_zero] using hone
     | succ n ih =>
       rw [pow_succ, res_mul hr, ih, pow_succ]
   have hprod (s : Finset Eis) :
       res r (s.prod (fun π => π ^ (κ π).val)) =
         s.prod (fun π => res r π ^ (κ π).val) := by
     induction s using Finset.induction_on with
-    | empty => simp [res]
+    | empty => simpa only [Finset.prod_empty] using hone
     | @insert π s hs ih =>
       rw [Finset.prod_insert hs, Finset.prod_insert hs, res_mul hr,
           hpow π (κ π).val, ih]
