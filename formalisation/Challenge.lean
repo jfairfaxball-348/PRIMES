@@ -8,9 +8,8 @@ public import Mathlib
 These are exact elementary field and character identities in the proven
 Reciprocity Spectra library, NOT any asymptotic CAND-002 conjecture.
 
-This first Comparator surface covers the finite E0/E1/E2/E3/E5/E6 arithmetic
-and generic character identities underlying E4/E7. It does NOT yet select
-the specialised sextic Gauss modulus or the full finite matrix row identity.
+The comparator also selects the actual specialised sextic Gauss E7 and E4,
+finite Eisenstein numerator reduction and full frozen matrix-row identity.
 Its definitions repeat the proof library's definitions, rather than importing
 that library, as Palomar requires for an independent Challenge.
 -/
@@ -140,5 +139,274 @@ theorem gauss_shift_all [DecidableEq F] (χ : MulChar F ℂ)
     gaussSum χ (ψ.mulShift a) =
       if a = 0 then 0 else χ⁻¹ a * gaussSum χ ψ := by sorry
 end GaussIdentities
+
+/-! ## RS-S035: exact specialised finite claims
+
+The following definitions mirror the explicitly modeled Eisenstein coordinate
+pair arithmetic and finite sums in the proof library. None is an inferred
+identity in an unconstructed quotient ring. The advertised theorems are
+statement-only here and have proofs in Solution.
+-/
+
+namespace Eis
+/-- Multiplicative identity and laws for Eisenstein coordinate pairs. -/
+instance : CommMonoid Eis where
+  one := ⟨1, 0⟩
+  mul := (· * ·)
+  one_mul := by sorry
+  mul_one := by sorry
+  mul_assoc := by sorry
+  mul_comm := by sorry
+end Eis
+
+
+def eisNorm (x : Eis) : ℤ := x.c * x.c - x.c * x.d + x.d * x.d
+
+
+def primarySplitPrimes (X : ℕ) : Finset Eis :=
+  (((Finset.Icc (-(2 * (X : ℤ))) (2 * (X : ℤ))).product
+      (Finset.Icc (-(2 * (X : ℤ))) (2 * (X : ℤ)))).image
+    (fun ab : ℤ × ℤ => Eis.mk ab.1 ab.2)).filter
+      (fun x => x.c % 3 = 2 ∧ x.d % 3 = 0 ∧
+        (eisNorm x).toNat.Prime ∧ (eisNorm x).toNat ≤ X)
+
+
+def residueRoot (σ : Eis) : ZMod (eisNorm σ).toNat :=
+  -(σ.c : ZMod (eisNorm σ).toNat) *
+    (σ.d : ZMod (eisNorm σ).toNat)⁻¹
+
+
+noncomputable def complexZeta6 : ℂ :=
+  Complex.exp (Complex.I * ((Real.pi : ℂ) / 3))
+
+
+noncomputable def complexSymbol (num den : Eis) : ℂ :=
+  match symExp (residueRoot den) num with
+  | none => 0
+  | some k => complexZeta6 ^ k.val
+
+
+noncomputable def rawGauss (σ : Eis) : ℂ :=
+  ∑ t ∈ Finset.range (eisNorm σ).toNat,
+    complexSymbol ⟨(t : ℤ), 0⟩ σ *
+      Complex.exp (2 * (Real.pi : ℂ) * Complex.I * (t : ℂ) /
+        ((eisNorm σ).toNat : ℂ))
+
+
+noncomputable def normalizedGauss (σ : Eis) : ℂ :=
+  rawGauss σ / (Real.sqrt ((eisNorm σ).toNat : ℝ) : ℂ)
+
+
+abbrev TwistClass := Eis →₀ ZMod 6
+
+
+noncomputable def classSymbol (κ : TwistClass) (σ : Eis) : ℂ :=
+  κ.support.prod (fun π => complexSymbol π σ ^ (κ π).val)
+
+
+noncomputable def classVector (κ : TwistClass) (σ : Eis) : ℂ :=
+  star (normalizedGauss σ) * classSymbol κ σ
+
+
+noncomputable def residueMatrix (ρ σ : Eis) : ℂ :=
+  complexSymbol ρ σ
+
+
+noncomputable def residueMatVec (X : ℕ) (κ : TwistClass) (ρ : Eis) : ℂ :=
+  ∑ σ ∈ primarySplitPrimes X, residueMatrix ρ σ * classVector κ σ
+
+
+noncomputable def shiftedGauss (u σ : Eis) : ℂ :=
+  ∑ t ∈ Finset.range (eisNorm σ).toNat,
+    complexSymbol ⟨(t : ℤ), 0⟩ σ *
+      Complex.exp (2 * (Real.pi : ℂ) * Complex.I *
+        (((res (residueRoot σ) u).val : ℕ) : ℂ) * (t : ℂ) /
+        ((eisNorm σ).toNat : ℂ))
+
+
+noncomputable def classNumerator (κ : TwistClass) : Eis :=
+  ∏ a ∈ κ.support, a ^ (κ a).val
+
+
+noncomputable def classResidue (κ : TwistClass) (σ : Eis) :
+    ZMod (eisNorm σ).toNat :=
+  κ.support.prod (fun π => res (residueRoot σ) π ^ (κ π).val)
+
+
+noncomputable def rowShift (κ : TwistClass) (ρ σ : Eis) :
+    ZMod (eisNorm σ).toNat :=
+  res (residueRoot σ) ρ * classResidue κ σ
+
+theorem rowShift_symbol (σ ρ : Eis) (κ : TwistClass)
+    [Fact (eisNorm σ).toNat.Prime]
+    (hr : residueRoot σ ^ 2 + residueRoot σ + 1 = 0)
+    (h2 : (2 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h6 : 6 ∣ (eisNorm σ).toNat - 1) :
+    sexticCharacter (residueRoot σ) hr h2 h3 h6 (rowShift κ ρ σ) =
+      complexSymbol ρ σ * classSymbol κ σ := by
+  unfold rowShift
+  rw [map_mul, sexticCharacter_eis σ ρ hr h2 h3 h6,
+      sexticCharacter_class σ κ hr h2 h3 h6]
+
+
+noncomputable def directShiftedGauss (σ : Eis)
+    (a : ZMod (eisNorm σ).toNat) : ℂ :=
+  ∑ t ∈ Finset.range (eisNorm σ).toNat,
+    complexSymbol ⟨(t : ℤ), 0⟩ σ *
+      Complex.exp (2 * (Real.pi : ℂ) * Complex.I *
+        ((a * (t : ZMod (eisNorm σ).toNat)).val : ℂ) /
+        ((eisNorm σ).toNat : ℂ))
+
+
+noncomputable def sexticValue (r x : ZMod p) : ℂ :=
+  (sexticExp r x).elim 0 (fun k => complexZeta6 ^ k.val)
+
+@[simp] theorem sexticValue_zero (r : ZMod p) : sexticValue r 0 = 0 := by
+  simp [sexticValue, sexticExp]
+
+theorem sexticValue_of_some {r x : ZMod p} {k : Fin 6}
+    (h : sexticExp r x = some k) :
+    sexticValue r x = complexZeta6 ^ k.val := by
+  simp [sexticValue, h]
+
+theorem sexticValue_one {r : ZMod p}
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) :
+    sexticValue r 1 = 1 := by
+  have h1 : sexticExp r 1 = some (0 : Fin 6) :=
+    sexticExp_eq_some hr h2 h3 (one_ne_zero) (by simp)
+  simpa using sexticValue_of_some h1
+
+theorem sexticValue_mul {r : ZMod p}
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1)
+    (x y : ZMod p) :
+    sexticValue r (x * y) = sexticValue r x * sexticValue r y := by
+  by_cases hx : x = 0
+  · subst x
+    simp
+  by_cases hy : y = 0
+  · subst y
+    simp
+  obtain ⟨k, hk⟩ := exists_exp hr h2 h3 h6 hx
+  obtain ⟨l, hl⟩ := exists_exp hr h2 h3 h6 hy
+  have sx : sexticExp r x = some k :=
+    sexticExp_eq_some hr h2 h3 hx hk
+  have sy : sexticExp r y = some l :=
+    sexticExp_eq_some hr h2 h3 hy hl
+  have sxy : sexticExp r (x * y) = some (k + l) :=
+    sexticExp_mul hr h2 h3 sx sy
+  rw [sexticValue_of_some sx, sexticValue_of_some sy,
+    sexticValue_of_some sxy]
+  rw [Fin.val_add, ← complexZeta6_pow_mod (k.val + l.val), pow_add]
+
+
+noncomputable def rationalAddChar (p : ℕ) [NeZero p] : AddChar (ZMod p) ℂ :=
+  AddChar.zmodChar p (Complex.isPrimitiveRoot_exp p (NeZero.out)).pow_eq_one
+
+
+/-- The actual modelled sextic multiplicative character: its value is the
+    exponent-defined sexticValue, with the multiplicative laws supplied by
+    proved theorems in the Solution, not an arbitrary witness character. -/
+noncomputable def sexticCharacter {p : ℕ} [Fact p.Prime]
+    (r : ZMod p) (hr : r ^ 2 + r + 1 = 0)
+    (h2 : (2 : ZMod p) ≠ 0) (h3 : (3 : ZMod p) ≠ 0)
+    (h6 : 6 ∣ p - 1) : MulChar (ZMod p) ℂ where
+  toFun := sexticValue r
+  map_one' := by sorry
+  map_mul' := by sorry
+  map_nonunit' := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem sexticCharacter_apply (r : ZMod p)
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1)
+    (x : ZMod p) :
+    sexticCharacter r hr h2 h3 h6 x = sexticValue r x := rfl
+
+/-- Nontriviality follows from cyclicity of the split-prime field's
+multiplicative group. The Euler-criterion power cannot be identically one
+because its exponent is strictly smaller than the group's order. -/
+theorem sexticCharacter_ne_one (r : ZMod p)
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1) :
+    sexticCharacter r hr h2 h3 h6 ≠ 1 := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem sexticCharacter_ne_one (r : ZMod p)
+    (hr : r ^ 2 + r + 1 = 0) (h2 : (2 : ZMod p) ≠ 0)
+    (h3 : (3 : ZMod p) ≠ 0) (h6 : 6 ∣ p - 1) :
+    sexticCharacter r hr h2 h3 h6 ≠ 1 := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem gaussSum_sextic_eq_raw (σ : Eis)
+    [Fact (eisNorm σ).toNat.Prime]
+    (hr : residueRoot σ ^ 2 + residueRoot σ + 1 = 0)
+    (h2 : (2 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h6 : 6 ∣ (eisNorm σ).toNat - 1) :
+    gaussSum (sexticCharacter (residueRoot σ) hr h2 h3 h6)
+      (rationalAddChar (eisNorm σ).toNat) = rawGauss σ := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem rawGauss_modulus_sq (σ : Eis)
+    [Fact (eisNorm σ).toNat.Prime]
+    (hr : residueRoot σ ^ 2 + residueRoot σ + 1 = 0)
+    (h2 : (2 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h6 : 6 ∣ (eisNorm σ).toNat - 1) :
+    rawGauss σ * star (rawGauss σ) = ((eisNorm σ).toNat : ℂ) := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem shiftedGauss_eq_gaussSum (σ : Eis)
+    [Fact (eisNorm σ).toNat.Prime]
+    (hr : residueRoot σ ^ 2 + residueRoot σ + 1 = 0)
+    (h2 : (2 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h6 : 6 ∣ (eisNorm σ).toNat - 1)
+    (a : ZMod (eisNorm σ).toNat) :
+    directShiftedGauss σ a =
+      gaussSum (sexticCharacter (residueRoot σ) hr h2 h3 h6)
+        ((rationalAddChar (eisNorm σ).toNat).mulShift a) := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem shiftedGauss_e4 (σ : Eis)
+    [Fact (eisNorm σ).toNat.Prime]
+    (hr : residueRoot σ ^ 2 + residueRoot σ + 1 = 0)
+    (h2 : (2 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
+    (h6 : 6 ∣ (eisNorm σ).toNat - 1)
+    (a : ZMod (eisNorm σ).toNat) :
+    directShiftedGauss σ a =
+      star (sexticCharacter (residueRoot σ) hr h2 h3 h6 a) *
+        rawGauss σ := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem classNumerator_reduction (κ : TwistClass) (σ : Eis)
+    (hr : residueRoot σ ^ 2 + residueRoot σ + 1 = 0) :
+    res (residueRoot σ) (classNumerator κ) = classResidue κ σ := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem rowShift_eisenstein (κ : TwistClass) (ρ σ : Eis)
+    (hr : residueRoot σ ^ 2 + residueRoot σ + 1 = 0) :
+    rowShift κ ρ σ =
+      res (residueRoot σ) (ρ * classNumerator κ) := by sorry
+
+
+/-- Original exact theorem, with full mathematical hypotheses and quantifiers. -/
+theorem residueMatVec_frozen_orientation (X : ℕ) (κ : TwistClass) (ρ : Eis) :
+    residueMatVec X κ ρ =
+      ∑ σ ∈ primarySplitPrimes X,
+        star (shiftedGauss (ρ * classNumerator κ) σ /
+          (Real.sqrt ((eisNorm σ).toNat : ℝ) : ℂ)) := by sorry
 
 end ReciprocitySpectra
