@@ -58,7 +58,7 @@ theorem gauss_zero_shift (χ : MulChar F ℂ) (ψ : AddChar F ℂ)
 /-- Shift a Gauss sum by any field element, including zero. This is an
 unconditional finite-character identity *given* a nontrivial χ; the sextic
 character and its nontriviality still need constructing. -/
-theorem gauss_shift_all (χ : MulChar F ℂ) (ψ : AddChar F ℂ)
+theorem gauss_shift_all [DecidableEq F] (χ : MulChar F ℂ) (ψ : AddChar F ℂ)
     (hχ : χ ≠ 1) (a : F) :
     gaussSum χ (ψ.mulShift a) =
       if a = 0 then 0 else χ⁻¹ a * gaussSum χ ψ := by
