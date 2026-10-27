@@ -135,10 +135,24 @@ where the deterministic coefficient, with **no approximation**, is
 For fixed \(\lambda\),
 \(H_\lambda(X)\sim4(1-\lambda^{1/6})X^{1/6}/\log X\).
 
-**Proof.** Given \(\epsilon>0\), H_P supplies \(X_0(B,\epsilon)\)
-such that \(|A_u(y)-c(u)f(y)|\le\epsilon f(y)\) simultaneously for
-every \(y\ge\max(\lambda X,X_0)\) with \(N(u)\le B y\).
-The hypothesis on u ensures this at **every** \(y\in[\lambda X,X]\).
+**Proof.** We first handle a small but essential quantifier detail:
+Lean H_P is stated at **integer** cutoffs, whereas the following Abel
+integral uses real y. For any y in [\(\lambda X,X\)], put \(n=\lfloor
+y\rfloor\). For sufficiently large X, \(n\ge\lambda X/2\);
+thus \(N(u)\le B\lambda X\le 2Bn\), and H_P applies at n
+uniformly in u with the **fixed** constant \(2B\).
+We must also justify replacing \(f(n)\) by \(f(y)\) despite the
+possibly growing coefficient c(u). Apply H_P with error tolerance 1 at
+one integer \(n\asymp X\) in the interval: from the trivial
+\(|A_u(n)|\le\sum_{N\sigma\le n}\sqrt{N\sigma}
+\ll n^{3/2}/\log n\), we obtain uniformly
+\(|c(u)|\ll_{B,\lambda} X^{5/6}\).
+Since \(f(y)-f(\lfloor y\rfloor)
+=O_\lambda(X^{-1/3}/\log X)\), the coefficient rounding error is
+\(O_{B,\lambda}(X^{1/2}/\log X)=o(X^{2/3}/\log X)\).
+Thus the integer H_P yields, for every \(\epsilon>0\) and X large,
+\(|A_u(y)-c(u)f(y)|\le(\epsilon+o(1))f(y)\) at **every**
+real \(y\in[\lambda X,X]\), uniformly in eligible u.
 Stieltjes/Abel summation gives the exact identity
 \[
  M_u(\lambda X,X)
