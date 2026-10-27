@@ -2173,3 +2173,26 @@ blocker is cleared. Next RS-S040 is a distinct registry submission
 **preflight**, not submission itself; confirm current Palomar rules,
 repository-relative paths, metadata schema and new immutable commit, then
 prepare a separate submission action. No D1 material touched.
+
+
+## RS-S040 (2026-10-27): Palomar policy/schema/path preflight
+
+**Stage:** certification and release-package verification; baseline main `ff6ef1742582a9acddefe4ab56203b16c30d4ed4`.
+Checked live PalomarPolicy CONTRIBUTING and How to Submit against the actual nested
+`formalisation/` project. Exact form paths, root Apache-2.0 licence, comparator keys,
+26 selected original theorem names, public pinned dependencies, taxonomy codes, repository
+snapshot size, Challenge limits and truthful substantial ChatGPT disclosure are documented in
+`RS_S040_PALOMAR_PREFLIGHT.md`. Added a theorem-by-theorem plain-language reader's guide to
+`formalisation/README.md`. No Lean proof or Challenge statement was modified.
+
+**Verification:** independent Comparator/NanoDa/Lean kernel `40569785577` **SUCCESS** and
+scoped Lean/cloud `40569785692` **SUCCESS** on disclosure main `ff6ef1742582a9acddefe4ab56203b16c30d4ed4`.
+Challenge 515 lines/20,253 bytes exceeds only the advisory 300-line readability warning;
+tracked source tree is 10,456,370 bytes, below 500 MiB. Additional checks must pass at the
+final merged release-doc SHA. The general historical D1 Ruff CI failure is unrelated.
+
+**Disposition:** technical submission preflight PASS, conditional on final-SHA workflow reruns.
+No external Palomar intake, editorial judgement, registration or identifier occurred.
+Editorial paper-worthiness remains Palomar's independent decision. CAND-002(1)–(3)
+remain conjectural, and D1 is unchanged. Next RS-S041 is an author-invoked external
+submission step; it must not invent owner consent or bypass the actual Palomar portal.

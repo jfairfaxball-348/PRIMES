@@ -448,3 +448,17 @@ In stacked draft PR [#17](https://github.com/jfairfaxball-348/PRIMES/pull/17), t
 ## RS-S039 (2026-10-27): complete finite-package independent verification
 
 On code head 4cb25de8, the independent 26-theorem leanprover/Comparator+lean4export+Landrun+NanoDa passed (run 40564457111) with BOTH NanoDa and default Lean kernel accepting the solution. Challenge rationalAddChar, rationalAddChar._proof_1 and rationalAddChar._proof_2 match the proof source full exported pp.all types and bodies byte-for-byte. The 26 original theorem statements, specialized sextic E4/E7 and actual full finite row theorem are unchanged. Full scoped cloud passed at same head (40564457029). Final docs-head verification and ordered PR merges still required. Metadata automation.methods [] deliberately awaits truthful owner AI declaration. No Palomar ID and CAND-002 asymptotics remain conjectural.
+
+
+## RS-S040 Palomar live-policy preflight (2026-10-27)
+
+See [RS-S040 preflight](RS_S040_PALOMAR_PREFLIGHT.md) for the exact nested-project paths,
+26-theorem coverage, source-size and metadata audits, root licence, and the required
+owner-invoked intake sequence. Independent Comparator/NanoDa and scoped cloud both passed
+at the owner AI-disclosure main `ff6ef1742582a9acddefe4ab56203b16c30d4ed4` (runs 40569785577 and 40569785692).
+The 515-line Challenge triggers a Palomar readability warning, not the 1,000-line hard cap.
+Added the policy-requested theorem-level informal account to `formalisation/README.md`.
+No mathematical source or proof was edited, no registration was made, and the final documentation
+merge SHA still requires independent/scoped green workflows before intake. CAND-002 asymptotics
+remain unproved. The declaration of substantial OpenAI ChatGPT assistance and root Apache-2.0
+licence are retained.

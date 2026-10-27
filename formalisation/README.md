@@ -1,5 +1,56 @@
 # Reciprocity Spectra: Lean formalisation
 
+## Palomar reader's guide: exactly 26 finite compared statements (RS-S040)
+
+The externally auditable `Challenge.lean` repeats the finite definitions and states the 26
+selected results; `Solution.lean` imports the proved library. Each item below is a plain-language
+account of the precise **finite** theorem listed by `comparator.json`, not an additional claim
+or an assertion of novelty. The displayed hypotheses in `Challenge.lean` are authoritative.
+
+| # | Selected declaration | Mathematical content and scope |
+|---:|---|---|
+| 1 | `ReciprocitySpectra.res_mul` | Reduction of Eisenstein-coordinate multiplication to `ZMod p` preserves products, assuming the stated Eisenstein root equation. |
+| 2 | `ReciprocitySpectra.zeta_primitive` | `1+r` is a primitive sixth root for the stated prime-field and characteristic hypotheses. |
+| 3 | `ReciprocitySpectra.exists_exp` | Every nonzero residue has a sixth-root exponent for the Euler sextic power when six divides `p−1`. |
+| 4 | `ReciprocitySpectra.exp_unique` | The exponent between zero and five for a power of that primitive sixth root is unique. |
+| 5 | `ReciprocitySpectra.sexticExp_mul` | Nonzero sextic residue exponents add modulo six on multiplication. |
+| 6 | `ReciprocitySpectra.symExp_mul` | The corresponding exponent-addition law holds for Eisenstein-coordinate representatives. |
+| 7 | `ReciprocitySpectra.sexticExp_mul_sixth_pow` | Multiplication by a nonzero sixth power does not change the sextic exponent. |
+| 8 | `ReciprocitySpectra.sexticExp_pow_five` | Taking the fifth power negates the sextic exponent modulo six. |
+| 9 | `ReciprocitySpectra.sexticExp_zeta` | The chosen sixth root has the residue exponent `(p−1)/6` modulo six. |
+| 10 | `ReciprocitySpectra.unit_exponent_additive` | Unit exponents associated with integers of the form `6m+1` add modulo six under multiplication. |
+| 11 | `ReciprocitySpectra.trace_residue` | An exact residue-field trace normalisation identity holds when `br=−a`. |
+| 12 | `ReciprocitySpectra.gauss_modulus_sq` | A generic nontrivial multiplicative character and primitive additive character yield a Gauss sum with squared modulus equal to the finite-field cardinality. |
+| 13 | `ReciprocitySpectra.gauss_shift` | Shifting the additive character by a unit multiplies its Gauss sum by the inverse multiplicative character value. |
+| 14 | `ReciprocitySpectra.gauss_zero_shift` | The zero additive shift gives zero Gauss sum when the multiplicative character is nontrivial. |
+| 15 | `ReciprocitySpectra.gauss_shift_all` | One piecewise formula combines the generic nonzero-shift and zero-shift cases. |
+| 16 | `ReciprocitySpectra.sexticCharacter_apply` | The constructed specialised sextic multiplicative character evaluates to the exponent-defined complex sextic value on every field residue. |
+| 17 | `ReciprocitySpectra.sexticCharacter_ne_one` | Under the split-prime/root hypotheses, the specialised sextic multiplicative character is nontrivial. |
+| 18 | `ReciprocitySpectra.gaussSum_sextic_eq_raw` | The specialised sextic Gauss sum using the canonical positive-sign additive character equals the directly defined finite sum `rawGauss`. |
+| 19 | `ReciprocitySpectra.rawGauss_modulus_sq` | The specialised sextic direct Gauss sum has squared modulus equal to the prime norm under the required prime/root/six-divisibility hypotheses. |
+| 20 | `ReciprocitySpectra.shiftedGauss_eq_gaussSum` | The direct shifted sextic sum equals the library Gauss sum formed with the shifted additive character, for every shift. |
+| 21 | `ReciprocitySpectra.shiftedGauss_e4` | The direct shifted sextic sum equals the conjugate sextic character at the shift times the unshifted sum, including the zero-shift case. |
+| 22 | `ReciprocitySpectra.classNumerator_reduction` | Reduction of the finite Eisenstein class numerator agrees with the class-residue definition. |
+| 23 | `ReciprocitySpectra.rowShift_eisenstein` | The row shift is the reduced Eisenstein product of the row representative with the class numerator. |
+| 24 | `ReciprocitySpectra.residueMatVec_frozen_orientation` | The frozen finite residue-matrix/vector row is exactly the sum of conjugated normalized shifted Gauss sums over its indexed split primes. |
+| 25 | `ReciprocitySpectra.sexticValue_one` | The exponent-defined complex sextic residue value at one is one. |
+| 26 | `ReciprocitySpectra.sexticValue_mul` | The exponent-defined complex sextic residue value is multiplicative under the stated root and divisibility assumptions. |
+
+**Scope and known gaps.** The Eisenstein-coordinate ring is modelled using pairs of integers,
+with an explicitly chosen residue root in `ZMod p`, rather than a construction of the
+quotient ℤ[ω]/ρ inside Mathlib. Prime characteristic, the Eisenstein root equation,
+nonzero characteristic-two/three conditions, and divisibility by six are used only where
+shown in the formal statements; generic Gauss lemmas have their own character hypotheses.
+The matrix-row result is an exact **finite definitional identity**, not a spectral or
+asymptotic theorem. CAND-002(1), (2), (3) are stated without proofs and are **not** selected
+by Comparator. The statement-level `by sorry` placeholders in the independent Challenge
+are replaced by proofs from the Solution during Comparator verification; there are no
+admitted theorems in the proved library or Solution. This package is not a claim that
+Palomar has registered, endorsed, or reviewed the mathematics.
+
+For the policy and reproducible submission preflight, see
+[`reciprocity_spectra/RS_S040_PALOMAR_PREFLIGHT.md`](../reciprocity_spectra/RS_S040_PALOMAR_PREFLIGHT.md).
+
 Lean 4 (v4.35.0) and Mathlib (`56a005855ea1`, tag v4.35.0) formalisation of the exact identities
 behind CAND-002. See `../reciprocity_spectra/RELEASE_INVENTORY.md` and PROTOCOL §10. The conjecture
 itself is stated, not proved.
