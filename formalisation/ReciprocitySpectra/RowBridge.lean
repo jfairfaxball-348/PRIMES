@@ -65,7 +65,7 @@ theorem residueColumn_orientation (σ ρ : Eis) (κ : TwistClass)
     (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
     (h6 : 6 ∣ (eisNorm σ).toNat - 1) :
     residueMatrix ρ σ * classVector κ σ =
-      star (shiftedGauss σ (rowShift κ ρ σ) /
+      star (directShiftedGauss σ (rowShift κ ρ σ) /
         (Real.sqrt ((eisNorm σ).toNat : ℝ) : ℂ)) := by
   have hshift := shiftedGauss_e4 σ hr h2 h3 h6 (rowShift κ ρ σ)
   have hrow := rowShift_symbol σ ρ κ hr h2 h3 h6
