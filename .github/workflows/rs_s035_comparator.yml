@@ -56,6 +56,13 @@ jobs:
           diff = list(difflib.unified_diff(c.splitlines(), s.splitlines(), fromfile='CHALLENGE', tofile='SOLUTION', lineterm=''))
           print('Total differing lines:', len(diff))
           print('\n'.join(diff[:140]))
+          for label, data in (('CHALLENGE', c), ('SOURCE', s)):
+              marker = 'def ReciprocitySpectra.sexticCharacter :'
+              section = data[data.index(marker):]
+              print('=== ' + label + ' complete character exported expression ===')
+              for i, line in enumerate(section.splitlines()[:230], start=1):
+                  print(f'{i:03d} {line}')
+
           PY
           cat > /tmp/Rs036ChallengeAux.lean <<'LEAN'
           import Challenge
