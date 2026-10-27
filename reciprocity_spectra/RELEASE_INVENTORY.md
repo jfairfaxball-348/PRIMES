@@ -390,3 +390,5 @@ metadata invalid for Palomar submission. AI-assisted work is known to have
 occurred; no claim of “no AI used” has been made. Until the owner supplies an
 accurate declaration and the full package validates in pinned Comparator and
 NanoDa, **do not submit or claim a Palomar ID**. CAND-002 remains conjectural.
+
+**RS-S034 pinned-cloud result:** Pinned cloud validation run [40516664832](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40516664832) on code head `42d0607727aca68ad973da3903d845b0b949fa02` passed: library, Checks, Challenge, Solution built (all three Lean exit codes 0), the existing standard-axiom audit and exponent faithfulness ran, full pytest 366 passed, 42 Gauss comparison max error 1.5e-15, targeted Ruff and both frozen evidence audits passed. An earlier run failed because module visibility omitted native IR for `symExp` used by the faithfulness `#eval`; this was fixed using `import all ReciprocitySpectra.Sextic` and `import all Checks.Fixture200` in Checks/Faithfulness. This cloud validation does NOT run leanprover/comparator or NanoDa and does not make the metadata submission-valid.

@@ -2070,3 +2070,7 @@ Lake build would not establish Comparator or independent NanoDa acceptance.
 Continue in RS-S035 with completion of the substantive Challenge coverage,
 full toolchain/statement comparison and accurate owner-reviewed metadata.
 No D1 records, conjectural asymptotics or paper drafting touched.
+
+**RS-S034 code-head validation addendum (2026-10-27):** Pinned cloud validation run [40516664832](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40516664832) on code head `42d0607727aca68ad973da3903d845b0b949fa02` passed: library, Checks, Challenge, Solution built (all three Lean exit codes 0), the existing standard-axiom audit and exponent faithfulness ran, full pytest 366 passed, 42 Gauss comparison max error 1.5e-15, targeted Ruff and both frozen evidence audits passed. An earlier run failed because module visibility omitted native IR for `symExp` used by the faithfulness `#eval`; this was fixed using `import all ReciprocitySpectra.Sextic` and `import all Checks.Fixture200` in Checks/Faithfulness. This cloud validation does NOT run leanprover/comparator or NanoDa and does not make the metadata submission-valid.
+
+**Next dependency:** RS-S035 completes the independently audited Challenge for specialised E4/E7 and the finite matrix row identity, executes actual Comparator/NanoDa, and keeps AI disclosure pending human review. No Palomar entry exists.

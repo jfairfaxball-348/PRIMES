@@ -238,3 +238,5 @@ necessary but **not** a successful Comparator or NanoDa result.
 empty pending owner review; it does not assert “no AI used” and does not pass
 Palomar's nonempty automation requirement. The root `../LICENSE` is
 Apache-2.0, as directed. No Palomar submission is authorised at this stage.
+
+**RS-S034 code-head green:** Pinned cloud validation run [40516664832](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40516664832) on code head `42d0607727aca68ad973da3903d845b0b949fa02` passed: library, Checks, Challenge, Solution built (all three Lean exit codes 0), the existing standard-axiom audit and exponent faithfulness ran, full pytest 366 passed, 42 Gauss comparison max error 1.5e-15, targeted Ruff and both frozen evidence audits passed. An earlier run failed because module visibility omitted native IR for `symExp` used by the faithfulness `#eval`; this was fixed using `import all ReciprocitySpectra.Sextic` and `import all Checks.Fixture200` in Checks/Faithfulness. This cloud validation does NOT run leanprover/comparator or NanoDa and does not make the metadata submission-valid.
