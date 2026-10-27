@@ -15,7 +15,7 @@ namespace ReciprocitySpectra
 namespace Eis
 
 /-- Coordinatewise extensionality for the explicit Eisenstein pair. -/
-private theorem ext {x y : Eis} (hc : x.c = y.c) (hd : x.d = y.d) :
+theorem ext {x y : Eis} (hc : x.c = y.c) (hd : x.d = y.d) :
     x = y := by
   cases x
   cases y
