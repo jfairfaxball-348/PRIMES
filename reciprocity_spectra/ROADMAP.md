@@ -33,6 +33,14 @@ Next: RS-S014, a bounded invariant-formulation audit of the strength law.
 No automatic fallback, theorem graduation, or new candidate is authorized by
 this checkpoint; see `PROOF_ROUTE.md` section 7 and `NEXT_SESSION_PROMPT.md`.
 
+**Route revised (owner, 2026-10-27, after the Palomar review).** The route is now: **paper →
+arXiv preprint → journal**.
+
+- Lean formalisation is done and is a verification artefact, cited in the paper.
+- Palomar is optional: its editorial review declined the 26 finite identities on research interest,
+  not correctness.
+- Next session: **RS-S041, paper drafting, figure-rich** (`NEXT_SESSION_PROMPT.md`).
+
 **Plan of record (owner, 2026-10-27).** Proof work is out of the pipeline and parked as optional
 research (PROTOCOL §9.6). Formalise what is exact; everything else stays conjecture.
 

@@ -366,3 +366,11 @@ Post-merge independent verification on main `98c8f54d` succeeded in
 Comparator/NanoDa/Lean (40566801477) and scoped cloud (40566801479).
 No Palomar registration or editorial review has occurred; RS-S040 is a
 separate preflight of Palomar submission requirements.
+
+## Status (2026-10-27)
+
+- **Palomar:** the submission at `8b050b0` passed mechanical verification. Its editorial review
+  declined registration on research interest; the finite identities are elementary.
+- **Use:** the formalisation is retained as a **verification artefact**. The paper cites it by
+  commit, theorem names and Comparator runs.
+- **Future:** Palomar is optional, and may be revisited only for a substantive proved theorem.

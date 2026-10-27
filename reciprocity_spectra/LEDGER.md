@@ -2196,3 +2196,30 @@ No external Palomar intake, editorial judgement, registration or identifier occu
 Editorial paper-worthiness remains Palomar's independent decision. CAND-002(1)–(3)
 remain conjectural, and D1 is unchanged. Next RS-S041 is an author-invoked external
 submission step; it must not invent owner consent or bypass the actual Palomar portal.
+
+### RS-S041 owner checkpoint (2026-10-27): the Palomar editorial review, and a change of route
+
+**Palomar submission.** `jfairfaxball-348/PRIMES` at commit `8b050b0`, project `formalisation`,
+verification run 40574409436.
+
+- **Mechanical verification:** SUCCESS.
+- **Editorial automated review:** *problems identified*.
+  - The selected statements match their informal account.
+  - But the E0–E6 laws are elementary character and ring identities.
+  - The generic Gauss results follow from Mathlib.
+  - The matrix-row formula is a finite summation of the shift identity.
+  - The substantive spectral and asymptotic claims are unproved and not selected.
+  - So the research-interest requirement is not met. Registration is not offered.
+- The RS-S040 preflight had flagged this risk; PROTOCOL §10 nevertheless treated registration as a
+  gate. That gate was a planning error.
+
+**Owner decisions.**
+
+- Palomar is optional, not a gate (PROTOCOL §9.5 and §10 revised; AGENTS.md updated).
+- The Lean formalisation is a verification artefact, cited in the paper.
+- The owner withdraws the submission. The private status link is not recorded in the repository.
+- Route: paper → arXiv → journal.
+- The next session is figure-rich paper drafting.
+
+**Cleanup.** The 12 stale remote session branches were deleted. Eleven were contained in `main`;
+`rs-s031-shifted-e4-bridge` was not, and is kept as tag `archive/rs-s031-shifted-e4-bridge`.

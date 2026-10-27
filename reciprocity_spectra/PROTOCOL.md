@@ -146,8 +146,15 @@ These are binding for Reciprocity Spectra sessions until the owner changes them.
 4. **Merging (2026-10-26).** Standing instruction: never ask permission to merge. At closeout,
    once validation passes, merge the session branch into `main`, push, and delete the merged
    branch. This supersedes "merge only with the owner's explicit instruction in that session".
-5. **Release gate: formalization and registration (2026-10-26).** No paper, preprint, draft for
-   circulation or public claim of a result is written or released until the gate in §10 is passed.
+5. **Release gate revised (owner decision, 2026-10-27, after the Palomar editorial review).**
+   Palomar registration is **optional, not a gate**.
+   - Palomar registers Lean proofs of results of independent research interest. CAND-002's
+     substantive content is conjectural, and the formalised identities were judged elementary
+     (RS-S041 entry in LEDGER).
+   - The Lean formalisation is a **verification artefact**, cited in the paper by commit and
+     Comparator runs.
+   - Paper drafting, the arXiv preprint and journal submission proceed without registration.
+   - Palomar may be revisited only for a substantive proved theorem.
 6. **Proof work out of the pipeline; formalise what is exact (owner decision, 2026-10-27).**
    This supersedes the 2026-10-26 "mathematics before further formalisation" pause, which is
    lifted.
@@ -162,6 +169,14 @@ These are binding for Reciprocity Spectra sessions until the owner changes them.
      `RS_CAND002_LOGICAL_BRIDGE_AUDIT.md` and `RS_HP_SCALE_ERRATUM.md`.
 
 ## 10. Release gate: Lean formalization and Palomar registration
+
+> **Superseded in part (2026-10-27).** Stage 3 (Palomar registration) is optional and no longer
+> blocks stage 4 (drafting); see §9 item 5. Stages 1–2 (inventory and formalisation) are done.
+> The rules for drafting in stage 4 still apply:
+>
+> - label every claim as Lean-verified (by commit and theorem name), proved on paper (with gaps
+>   stated), or conjectural/numerical (with pre-registered evidence);
+> - keep the asymptotic laws conjectural.
 
 This is binding from 2026-10-26, by owner decision. It was prompted by the anonymous external
 review.

@@ -133,9 +133,10 @@ When a pattern is found, ask in this order:
 
 ## Graduation rule
 
-Release gate (Reciprocity Spectra, 2026-10-26): no paper or preprint is written for release until its
-exact results are formalized in Lean 4 and registered on the Palomar registry
-(`reciprocity_spectra/PROTOCOL.md` §10). Conjectural and numerical claims stay labelled as such.
+Release gate (Reciprocity Spectra; revised 2026-10-27): exact results are formalised in Lean 4 as a
+verification artefact cited in the paper. Palomar registration is optional and not a gate; it is
+reserved for a substantive proved theorem (`reciprocity_spectra/PROTOCOL.md` §9.5, §10).
+Conjectural and numerical claims stay labelled as such.
 The Reciprocity Spectra Lean formalisation lives in `formalisation/` in this repository (owner decision,
 2026-10-26). This is an exception to the export clause below for formalisation work. Novelty assessment
 and external review for Reciprocity Spectra are done independently by the owner and are not gates.
