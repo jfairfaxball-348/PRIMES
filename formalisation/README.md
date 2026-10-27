@@ -217,3 +217,24 @@ the asymptotic CAND-002 conjecture. After a successful closeout-head
 validation and merge, RS-S034 should prepare a Palomar Challenge/Solution
 and `formalization.yaml` for proved identities only. Optional Gram
 and CAND-002 proof remain out of the release pipeline.
+
+## RS-S034 Palomar staging — NOT YET ACCEPTED
+
+The Palomar policy now requires `module`-format Lean for **every** submitted
+source, including library and Checks. RS-S034's source-only migration wraps
+all 17 existing Lean files in public module scope and retains all existing
+theorem statements and proof terms. Run the pinned cloud action and repair
+any visibility regressions before describing the migration as validated.
+
+The initial statement surface is `Challenge.lean` (Mathlib-only,
+intentional `sorry` on compared theorem statements); `Solution.lean`
+exposes the corresponding proven declarations from the existing library.
+`comparator.json` currently covers 15 exact sextic/character lemmas, NOT
+the specialised E7/E4 or the full frozen finite matrix row identity. The
+challenge intentionally does not import the proof library. Compilation is
+necessary but **not** a successful Comparator or NanoDa result.
+
+`formalization.yaml` is a **draft**: `automation.methods` is deliberately
+empty pending owner review; it does not assert “no AI used” and does not pass
+Palomar's nonempty automation requirement. The root `../LICENSE` is
+Apache-2.0, as directed. No Palomar submission is authorised at this stage.

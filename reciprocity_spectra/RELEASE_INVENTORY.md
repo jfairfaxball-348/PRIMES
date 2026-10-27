@@ -364,3 +364,29 @@ unit is Palomar comparator/package preparation (RS-S034), after a clean
 final closeout-head run and merge. Optional Gram/E8/E9 and all paper-only
 and conjectural assertions remain outside this registration. CAND-002
 (1)–(3) has not been proved; no Palomar entry exists yet.
+
+## RS-S034 checkpoint (2026-10-27): first Palomar draft, NOT submission-ready
+
+The current Palomar policy requires every submitted Lean source to use Lean's
+module system, including the existing library and checks. RS-S034 added
+`module`, `public import`, and an exposed public section to all 17
+existing Lean source files without altering the mathematical theorem statements
+or proof bodies. This migration **must be validated** in the pinned cloud run;
+the RS-S033 baseline itself remains the most recent confirmed green checkpoint.
+
+A first independent, Mathlib-only `formalisation/Challenge.lean` restates
+the field-model definitions and 15 already-proved E0/E1/E2/E3/E5/E6 and
+generic E4/E7 identities. `Solution.lean` imports the genuine pinned proof
+library; `comparator.json` selects those 15 declarations. This Challenge
+does **not** yet select the more substantial sextic `rawGauss_modulus_sq`,
+`shiftedGauss_e4` or `residueMatVec_frozen_orientation` declarations.
+Do not describe this initial comparator as complete E0–E7 certification, nor
+assume that successful compilation is the independent Comparator check.
+
+The root repository now has Apache-2.0 `LICENSE` and metadata draft
+`formalisation/formalization.yaml`. Its `automation.methods` is
+**deliberately left empty pending the owner's disclosure**, which makes the
+metadata invalid for Palomar submission. AI-assisted work is known to have
+occurred; no claim of “no AI used” has been made. Until the owner supplies an
+accurate declaration and the full package validates in pinned Comparator and
+NanoDa, **do not submit or claim a Palomar ID**. CAND-002 remains conjectural.
