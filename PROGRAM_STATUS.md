@@ -2,18 +2,21 @@
 
 Status date: 2026-10-27
 
+**ACTIVE UPDATE — RS-S028 (2026-10-27):** Reciprocity Spectra is **mathematics-first**, CAND-002(3) logical bridge **OPEN**. The exact prime-ideal Vaughan sieve now has explicit Möbius/Λ Type I/II coefficients, primary-generator and rational/trace corrections, and an inert-prime error. A counterexample proves that a full-moduli Dirichlet-series pole residue alone cannot supply the prime-sieved coefficient. No moving-shift prime main term, signed fifth/non-five inequalities or analytic B₆ model has been proved. No Lean/Palomar/paper. Next RS-S029, explicit local arithmetic factors and Type II signed main term (or a rigorous narrower obstruction). See \`reciprocity_spectra/RS_S028_PRIME_PROJECTION_VAUGHAN.md\`.
+
 **ACTIVE UPDATE — RS-S027 (2026-10-27):** Reciprocity Spectra remains mathematics-first. Exact mod-4 sextic reciprocity transforms the signed prime kernel; raw abstract H_P gives a uniform Abel asymptotic on fixed upper intervals only. Neither fixed non-five enhancement nor fixed fifth suppression is proved. CAND-002(3) logical bridge OPEN; no new Lean/Palomar/paper; next RS-S028, arithmetic-coefficient Type II mechanism. See `reciprocity_spectra/RS_S027_SIGNED_KERNEL_TAIL.md`.
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. RS-S023 is complete (2026-10-26).** Formalisation has
-started in `formalisation/`, in-repo.
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA — RS-S028 closed, RS-S029 next.** Mathematical hard-route proof obligations take priority over further formalisation; the established Lean work is preserved but paused under PROTOCOL §9.6. The original fixed-class implications and analytic H_P bridge remain unproved.
+
+**Historical RS-S023 checkpoint (2026-10-26).** Formalisation had started in `formalisation/`, in-repo.
 
 - Proved in Lean, with no `sorry`: E0, E1, E2, E3, E5 and E6.
 - The faithfulness check against the engine passes: 1764 of 1764 entries.
 - Novelty assessment and external review are owner-run and not gates.
 - **Route:** formalise in Lean → Palomar → paper → arXiv → journal.
-- Next: **RS-S024:** E7, E4, the matrix definitions, and CAND-002 as a Lean `Prop`.
+- Historical next step at that checkpoint (since completed): **RS-S024**, E7, E4, matrix definitions and CAND-002 as a Lean `Prop`.
 
 Previous: RS-S022 is complete (2026-10-26). CAND-002 is frozen
 (CANDIDATE; NOVELTY_REQUIRES_EXPERT_REVIEW).** It is the shift-aspect crossover law for twisted
