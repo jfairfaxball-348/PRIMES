@@ -14,7 +14,7 @@ namespace ReciprocitySpectra
 /-- The direct positive-sign rational sextic Gauss sum with additive shift a.
     Unlike an abstract GaussSum, this displays the finite rational
     representatives and the exponential sign explicitly. -/
-noncomputable def shiftedGauss (σ : Eis)
+noncomputable def directShiftedGauss (σ : Eis)
     (a : ZMod (eisNorm σ).toNat) : ℂ :=
   ∑ t ∈ Finset.range (eisNorm σ).toNat,
     complexSymbol ⟨(t : ℤ), 0⟩ σ *
@@ -30,13 +30,13 @@ theorem shiftedGauss_eq_gaussSum (σ : Eis)
     (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
     (h6 : 6 ∣ (eisNorm σ).toNat - 1)
     (a : ZMod (eisNorm σ).toNat) :
-    shiftedGauss σ a =
+    directShiftedGauss σ a =
       gaussSum (sexticCharacter (residueRoot σ) hr h2 h3 h6)
         ((rationalAddChar (eisNorm σ).toNat).mulShift a) := by
   let p := (eisNorm σ).toNat
   haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
   rw [gaussSum, zmod_sum_eq_range]
-  unfold shiftedGauss
+  unfold directShiftedGauss
   apply Finset.sum_congr rfl
   intro t ht
   have hχ :
@@ -64,7 +64,7 @@ theorem shiftedGauss_e4 (σ : Eis)
     (h3 : (3 : ZMod (eisNorm σ).toNat) ≠ 0)
     (h6 : 6 ∣ (eisNorm σ).toNat - 1)
     (a : ZMod (eisNorm σ).toNat) :
-    shiftedGauss σ a =
+    directShiftedGauss σ a =
       star (sexticCharacter (residueRoot σ) hr h2 h3 h6 a) *
         rawGauss σ := by
   let p := (eisNorm σ).toNat
@@ -72,7 +72,7 @@ theorem shiftedGauss_e4 (σ : Eis)
   let χ := sexticCharacter (residueRoot σ) hr h2 h3 h6
   let ψ := rationalAddChar p
   calc
-    shiftedGauss σ a = gaussSum χ (ψ.mulShift a) :=
+    directShiftedGauss σ a = gaussSum χ (ψ.mulShift a) :=
       shiftedGauss_eq_gaussSum σ hr h2 h3 h6 a
     _ = (if a = 0 then 0 else χ⁻¹ a * gaussSum χ ψ) :=
       gauss_shift_all χ ψ
