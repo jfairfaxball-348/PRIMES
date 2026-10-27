@@ -1,0 +1,51 @@
+\documentclass[11pt]{amsart}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx,booktabs,microtype,hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\DeclareMathOperator{\Nm}{N}
+\newcommand{\PP}{\mathcal P}
+\newcommand{\OO}{\mathbb Z[\omega]}
+\newcommand{\rX}{R_X}
+\newcommand{\gtilde}{\widetilde g}
+\newcommand{\fig}[4]{%
+ \begin{figure}[htbp]\centering
+ \IfFileExists{figures/generated/#1.pdf}{\includegraphics[width=#2\linewidth]{figures/generated/#1.pdf}}{%
+ \fbox{\parbox{.85\linewidth}{Run \texttt{python figures/make\_all.py} before compiling to generate figure \texttt{#1.pdf}.}}}
+ \caption{#3}\label{fig:#4}\end{figure}}
+\title[A shift-aspect crossover for sextic vectors]{A shift-aspect crossover for twisted sextic Gauss-sum vectors:\\
+numerical evidence, conjectures, and a Lean-verified finite core}
+\author{John Fairfax-Ball}
+\date{Draft 1, 27 October 2026. Not submitted.}
+\begin{document}
+\begin{abstract}
+We numerically investigate the action of the sextic residue-symbol matrix indexed
+by primary split primes of the Eisenstein integers on vectors built from normalized
+sextic Gauss sums and multiplicative twists. A dimensionless excess statistic
+exhibits an empirical crossover in the ratio of sixth-power-free twist norm to
+prime cutoff. Separately, fifth-power twists display a negative large-aspect
+excess. The profiles were subjected to committed predictions, fresh twist-class
+tests, prime-versus-squarefree-modulus controls, and independent cutoff tests up
+to \(X=4\cdot10^6\); failed precursor predictions are retained. We state three
+conjectures, carefully distinguishing compact-aspect convergence from unproved
+fixed-class limits. A formally verified Lean 4 library establishes a finite
+residue-field and Gauss-sum core, including a matrix-row identity; it does not
+prove the numerical asymptotics. Exact signed Gram and reciprocity identities
+identify the additional analytic input a proof would require.
+\end{abstract}
+\maketitle
+\tableofcontents
+\input{sections/01_introduction}
+\input{sections/02_setup_methods}
+\input{sections/03_results}
+\input{sections/04_conjectures}
+\input{sections/05_proofs}
+\input{sections/06_context_limits}
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

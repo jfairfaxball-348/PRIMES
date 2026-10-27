@@ -1,0 +1,47 @@
+\section{Introduction and results at a glance}\label{sec:intro}
+For a cutoff \(X\), let \(\PP(X)\) index primary degree-one Eisenstein
+primes and consider the complex matrix with entries
+\((\rho/\sigma)_6\), extended by zero along the diagonal.
+Multiplying this matrix by a Gauss-sum vector twisted by
+\(\kappa\) produces an arithmetic analogue of a structured spectral
+probe. We study the quotient between the output norm and the
+random-phase scale. The central observation is a \emph{measured},
+not proved, crossover as the dimensionless parameter
+\(t=\Nm_6(\kappa)/X\) varies.
+
+\fig{visual_abstract}{.96}{Schematic overview of the arithmetic
+object and statistic. This panel is a diagram, not experimental
+evidence; formulas use the conventions of CAND-002 in
+\texttt{research/CONJECTURE\_REGISTER.md} at source commit
+\texttt{30965467}.}{visual}
+\fig{crossover}{.98}{The primary empirical profile. Exponents
+\(1\)--\(4\) and the frozen RS-S016 discovery-bin means are displayed
+against \(\log_{10}t\); transparent points are finite computed classes
+from RS-S015, RS-S016 and RS-S021. Sources:
+\texttt{results/rs\_s015\_class\_tests\_2026-10-26.json},
+\texttt{rs\_s016\_x\_dependence\_2026-10-26.json} and
+\texttt{rs\_s021\_large\_x\_2026-10-26.json}, at
+\texttt{30965467}. No extrapolation beyond the measured points is made.}{collapse}
+
+The candidate comprises three distinct \emph{conjectures}:
+a compact-\(t\) crossover, a large-\(t\) fifth-power deficit,
+and a separate fixed-class asymptotic. The third is \textbf{not}
+a consequence of the first two. Small positive \(t\) and the boundary
+\(t\to0\) are different regimes of quantification. The figure is not
+a proof of any limiting statement.
+
+The finite mathematical core consists of exact symbol and Gauss-sum
+relations formalized in Lean, and paper-level identities reducing the
+strength statistic to a signed two-point kernel. A proof of the observed
+shape would require estimates for moving-shift prime-modulus first
+moments and their \emph{signed} correlations, not a fit to a figure.
+
+The work relates to residue-matrix characterizations
+\cite{ddk2016}, metaplectic Gauss-sum theory
+\cite{patterson1987,kazhdan1984,broeker2013,chinta2003},
+the cubic and quartic first-moment problems
+\cite{dunn2024,ddhl2023}, and recent results on large-sieve
+nonorthogonality and sextic norms
+\cite{dfdh2026,xusang2026}. These citations provide context, not
+a claim of priority or an assertion that the present asymptotics
+are established.

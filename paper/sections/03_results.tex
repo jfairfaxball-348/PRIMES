@@ -1,0 +1,110 @@
+\section{Finite numerical results}\label{sec:results}
+\subsection{Baseline and collapse}
+The baseline \(r_1\) increases over the measured sequence of cutoffs.
+An increase in the baseline is \emph{not} assumed at unobserved
+scales and does not prove a positive limiting gap.
+\fig{r1_growth}{.85}{Recorded baseline strengths over cutoffs
+\(1.6\times10^5\) to \(4\times10^6\). Sources: RS-S016
+\texttt{analysis.r\_u1} and RS-S021 \texttt{score.r\_u1},
+\texttt{results/rs\_s016\_x\_dependence\_2026-10-26.json}
+and \texttt{rs\_s021\_large\_x\_2026-10-26.json}
+(\texttt{30965467}).}{baseline}
+
+The exponent-class curves plotted against \(\log_{10}(n/X)\)
+show a marked change between the small-aspect enhancement
+regime and the large-aspect region. The frozen reference
+\(F\) used for subsequent comparisons is an interpolated
+discovery bin table from RS-S016, not a derived analytic formula.
+\fig{exponent_profiles}{.91}{Exponent-resolved bin means from
+RS-S016's \texttt{analysis.collapse\_bins\_t\_eq\_N6\_over\_X};
+unlike the held-out points in Figure~\ref{fig:collapse},
+these bins are exploratory discovery summaries.
+Source: \texttt{rs\_s016\_x\_dependence\_2026-10-26.json}
+(\texttt{30965467}).}{profiles}
+
+\subsection{Fresh held-out classes and new scales}
+The RS-S017 tests used fresh twist classes rather than only those
+that suggested the collapse. The recorded Q1, Q2 and Q4 criteria
+passed while Q3 failed: \(30\) of \(224\) class--scale points
+had \(r\ge1\), contrary to its originally universal
+per-class clause. This failure remains part of the record.
+% Source: results/rs_s017_fresh_classes_2026-10-26.json score.Q3.r_failures, n_with_5 (two scales), and score.Q1/Q2/Q4.
+
+At \(X=2\times10^6\) and \(4\times10^6\), the
+matrix-free RS-S021 runs found all \(12\) scored bins within
+their registered \(\pm0.05\) difference from the frozen
+profile. This means the \emph{pre-registered finite test}
+passed; it cannot prove uniform convergence in \(X\).
+% Source: results/rs_s021_large_x_2026-10-26.json score.A.bins and score.A.outcome.
+\fig{holdout_residuals}{.88}{RS-S021 holdout mean
+minus frozen-profile mean, with the precommitted
+\(\pm0.05\) threshold. Marker areas represent bin sample
+counts. Source: \texttt{rs\_s021\_large\_x\_2026-10-26.json},
+\texttt{score.A.bins} (\texttt{30965467}).}{residuals}
+
+\subsection{Exponent five and the prime-modulus control}
+Fifth-power twists have a negative large-\(t\) excess,
+with the registered RS-S021 grouped means
+\(-1.0581\) and \(-1.0469\) at the two new cutoffs.
+% Source: results/rs_s021_large_x_2026-10-26.json score.B.mean_s_pi5_t_ge_3.
+RS-S020 independently found \(-0.9188\) with standard
+error \(0.0828\) on \(88\) fresh prime classes
+with \(400<\Nm(\pi)\le1000\), consistent with but not
+establishing a limiting value \(-1\).
+% Source: results/rs_s020_h_minus_2026-10-26.json score.mean_s, score.se, score.n, predictions.
+\fig{exponent_five}{.90}{Individual fifth-power classes at
+the two RS-S021 new scales. The horizontal reference
+\(-1\) is a conjectured large-aspect value, not a fit or
+an established limit. Source:
+\texttt{rs\_s021\_large\_x\_2026-10-26.json},
+\texttt{runs[].classes} (\texttt{30965467}).}{pi5}
+
+Comparing prime denominators to all squarefree denominators
+in the trace-normalised RS-S019 variant, the mean fifth-power
+excess was \(-1.0812\) versus \(-1.2224\) for the registered
+groups. The frozen test classified the deficit as intrinsic
+rather than a prime-sieve artefact. This does not equate the
+trace and rational normalisations or prove an analytic mechanism.
+% Source: results/rs_s019_moduli_2026-10-26.json score.prime.pi5_mean_s and score.unrestricted.pi5_mean_s, score.P.outcome.
+\fig{moduli}{.92}{Profiles for prime and all-squarefree denominator
+sets at \(X=2\times10^5\). These are RS-S019 \emph{trace}
+comparison runs, not the frozen rational-prime matrix.
+Source: \texttt{rs\_s019\_moduli\_2026-10-26.json},
+\texttt{runs[0].prime/unrestricted.classes} (\texttt{30965467}).}{moduli}
+
+\subsection{Parity structure and the small-\(t\) edge}
+The row-prime partition by \(j\) with
+\(\chi_\pi(\rho)=\zeta_6^j\), especially for exponent \(2\),
+shows an exploratory dependence on
+\(\Nm(\pi)\bmod12\). Aggregation by row partition
+must not be read as a proven Hecke coefficient formula.
+\fig{rho_parity}{.86}{Exploratory means across the row partitions
+for exponent \(2\), separated by prime norm modulo \(12\),
+in the \emph{rational} setting. Source:
+\texttt{rs\_s020\_rho\_partition\_2026-10-26.json},
+\texttt{settings.rational.classes} (\texttt{30965467}).
+No error bars or inferential claim are assigned.}{parity}
+
+The RS-S021 small-aspect aggregate \(K_1\) rose from
+\(0.9612\) at \(X=10^6\) to \(0.9701\) and \(0.9747\)
+at the two larger cutoffs. The finite test was classified
+as RISING, but \(F(0^+)=1\) is left as an open question.
+% Source: results/rs_s021_large_x_2026-10-26.json score.H+, stored_trend_K1.
+\fig{plateau}{.85}{Recorded low-aspect band mean
+at the six measured cutoffs, compared to the conjectural
+boundary value \(1\). Source: RS-S021
+\texttt{stored\_trend\_K1}, \texttt{score.H+.K1}
+(\texttt{30965467}).}{plateau}
+
+\subsection{Normalisation audit}
+A control-referenced definition and the frozen
+\(r_1\)-normalised excess show similar scale collapse.
+Without the \(r_1\) normalisation, the median across-\(X\)
+spread grows to \(0.0671\), versus \(0.0219\) in the
+frozen statistic. This is a finite artefact check, not
+an asymptotic universality theorem.
+% Source: results/rs_s022_cand002_audit_2026-10-26.json normalizations.*.median_across_X_spread_of_bin_means.
+\fig{normalisation}{.86}{Across-cutoff bin spread in the three
+RS-S022 definitions (frozen, control-referenced, raw). Source:
+\texttt{rs\_s022\_cand002\_audit\_2026-10-26.json},
+\texttt{normalizations} (\texttt{30965467}).}{normalisation}

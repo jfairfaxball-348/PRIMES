@@ -1,0 +1,102 @@
+\section{Arithmetic setup and computational method}\label{sec:setup}
+\subsection{Primes, residue symbols and normalisation}
+Put \(\omega=e^{2\pi i/3}\) and \(\zeta_6=1+\omega\).
+We use the repository's primary convention
+\(\rho=a+b\omega\), \(a\equiv2\pmod3\), \(b\equiv0\pmod3\),
+with rational prime norm \(p=\Nm(\rho)\le X\).
+There are two such chosen degree-one primes above each rational
+\(p\equiv1\pmod3\). Define \(D=|\PP(X)|\).
+For a denominator prime \(\sigma\), the symbol
+\(\chi_\sigma(u)=(u/\sigma)_6\) is the sextic residue symbol,
+and is zero whenever \(\sigma\mid u\).
+The residue matrix has \emph{numerator row} and \emph{denominator
+column}:
+\[
+ (\rX)_{\rho,\sigma}=\chi_\sigma(\rho),\qquad
+ (\rX)_{\rho,\rho}=0.
+\]
+
+Write \(e(z)=e^{2\pi iz}\), and for \(p=\Nm(\sigma)\) define
+the rational-normalized Gauss sum
+\[
+ \gtilde(\sigma)=p^{-1/2}\sum_{a=1}^{p-1}
+       \chi_\sigma(a)e(a/p).
+\]
+The rational additive character is essential; it differs from the
+trace character used in some composite-modulus comparisons.
+
+A twist class \(\kappa=\prod_\pi\pi^{e_\pi}\) has finitely
+many distinct factors, \(1\le e_\pi\le5\), taken modulo sixth powers.
+The factors may be split or inert, subject to the original
+coprimality convention. Put
+\[
+ n=\Nm_6(\kappa)=\prod_\pi\Nm(\pi)^{e_\pi},\qquad
+ w_\kappa(\sigma)=\overline{\gtilde(\sigma)}\chi_\sigma(\kappa).
+\]
+Define, where denominators are nonzero,
+\begin{align}
+ r_\kappa(X)&=\frac{\|\rX w_\kappa\|}
+                  {\sqrt D\,\|w_\kappa\|},&
+ \epsilon_\kappa(X)&=\frac{r_\kappa(X)^2-1}{r_1(X)^2-1},
+ \label{eq:r}\\
+ s_\kappa(X)&=n^{1/6}\epsilon_\kappa(X),&
+ t&=\frac nX.\label{eq:st}
+\end{align}
+A value \(r=1\) is a natural random-phase benchmark, but a finite
+comparison must use the symmetry-matched random control, not an
+unrestricted independent random matrix.
+
+\fig{primary_lattice}{.80}{Lattice plot of sample primary Eisenstein
+prime representatives in the RS-S019 class list, from
+\texttt{results/rs\_s019\_moduli\_2026-10-26.json}
+(\texttt{30965467}). This is illustrative of indexing, not
+a density measurement.}{lattice}
+
+\subsection{Experiment design, controls and computational validation}
+The programme used committed pre-data predictions with explicit
+tolerances. Discovery, new-class holdouts and new-scale holdouts
+are distinct. Failed tests were recorded without retrospectively
+changing their criteria. In particular, the RS-S015
+norm-only proposal and RS-S017 per-class fifth-power test failed;
+neither is described as a success merely because a weaker
+grouped statistic was subsequently supported.
+
+The null has the same matrix dimension and reciprocity/conjugation
+structure as the observed ensemble. Native finite-field and
+matrix-free implementations were cross-checked against existing
+engine outputs; the RS-S021 reproducibility file records a
+relative difference of at most \(5.27\times10^{-15}\)
+at its specified validation scale.
+% Source: reciprocity_spectra/results/rs_s021_large_x_2026-10-26.json, validation.X320000.max_relative_r_difference.
+This is an agreement of two numerical implementations, not a
+theorem about an infinite family.
+
+At large \(X\), a matrix-free native engine evaluates matrix--vector
+products without materializing the full dense \(D\times D\) array.
+Its code, run parameters, platform and control seeds are preserved
+with the result JSON. We do not treat repeated views of the same
+data as independent replications.
+
+\fig{prereg_timeline}{.96}{Chronology of finite prediction outcomes:
+RS-S015 failure; RS-S016 exploratory regime study; RS-S017 mixed
+pass/fail; RS-S019, S020 and S021 registered passes of their specified
+decisions. Source score blocks in the six corresponding
+\texttt{results/rs\_s0**.json} files at \texttt{30965467}.
+Timeline is schematic, not a new experiment.}{timeline}
+
+\begin{table}[htbp]\centering\small
+\begin{tabular}{@{}llll@{}}\toprule
+Session & Frozen test & Outcome & Preserved caveat\\\midrule
+S015 & PROV-RS14 P1--P3 & FAIL/PASS/FAIL & precursor refuted\\
+S017 & Q1,Q2,Q4 & PASS & fresh classes\\
+S017 & Q3 & FAIL & per-class \(r<1\) clause\\
+S019 & prime/all-moduli & PASS & finite comparison\\
+S020 & H-minus & PASS & grouped fifth classes\\
+S021 & new-scale A, B & PASS & finite \(X\le4\cdot10^6\)\\
+\bottomrule\end{tabular}
+\caption{Selected frozen prediction outcomes. The complete
+criteria and provenance reside in
+\texttt{research/CONJECTURE\_REGISTER.md} and
+\texttt{reciprocity\_spectra/results/} (\texttt{30965467}).}
+\label{tab:pred}
+\end{table}
