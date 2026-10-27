@@ -1,48 +1,41 @@
-# Single ready next-session prompt — Reciprocity Spectra RS-S040
+# Single ready next-session prompt — Reciprocity Spectra RS-S041
 
-**RS-S040: Palomar registry submission preflight. Status: READY.**
+**RS-S041: author-invoked Palomar submission intake. Status: READY TO INVOKE; NOT AN AUTHORISATION TO REGISTER.**
 
 @GitHub
 
 Repository: https://github.com/jfairfaxball-348/PRIMES
 
-Start from latest committed authoritative main, verify its SHA, and read
-AGENTS.md; docs/SESSION_PROTOCOL.md; reciprocity_spectra/PROTOCOL.md
-sections 7-10, LEDGER.md and RELEASE_INVENTORY.md; PROGRAM_STATUS.md;
-formalisation/README.md, formalization.yaml, Challenge.lean,
-Solution.lean, comparator.json, lean-toolchain, lakefile and
-lake-manifest.json; root Apache-2.0 LICENSE; and latest scoped cloud and
-independent Comparator run logs.
+Read latest authoritative main and its full SHA; AGENTS.md,
+docs/SESSION_PROTOCOL.md, reciprocity_spectra/PROTOCOL.md §10,
+reciprocity_spectra/LEDGER.md and RS_S040_PALOMAR_PREFLIGHT.md,
+formalisation/README.md, Challenge.lean, Solution.lean, comparator.json,
+formalization.yaml, lean-toolchain, lakefile.toml and lake-manifest.json,
+root LICENSE; then recheck the current PalomarRegistry/PalomarPolicy
+CONTRIBUTING.md and https://palomar-registry.org/how-to-submit.
 
-**Owner disclosure received 2026-10-27:** OpenAI's ChatGPT was used
-substantially in the formalisation. This is now expressly disclosed under
-automation.methods with an agent method and ChatGPT as the identified tool.
-Do not revert to [], assert "no AI used", or invent exact unrecorded model
-versions. The 26 original finite theorem declarations passed the actual
-independent Comparator/NanoDa and Lean kernels; main post-merge Comparator
-run 40566801477 and scoped cloud run 40566801479 both PASSED on
-98c8f54d. These earlier SHAs predate the disclosure commit; revalidate
-the current immutable candidate commit.
+**One bounded task:** on the owner's explicit invocation, perform a Palomar
+submission intake for the **finite proved 26-theorem package only**, based on
+a final, public, immutable main commit whose scoped Lean and **independent**
+Comparator/NanoDa workflows are both green. Use repository
+`jfairfaxball-348/PRIMES`, selected Lean project path `formalisation`,
+repo-relative Comparator path `formalisation/comparator.json`, and default
+metadata path `formalisation/formalization.yaml`; licence is root Apache-2.0.
+Check final package and source provenance before initiating intake. Retain the
+material assistance declaration naming **OpenAI ChatGPT** without guessing
+model versions. Do not edit theorem types or represent conjectures as proofs.
 
-**One bounded task:** complete the submission preflight against the LIVE
-PalomarRegistry/PalomarPolicy CONTRIBUTING.md and protocol, and the
-submit.palomar-registry.org instructions. Confirm exact repository-relative
-project/comparator configuration paths (the Lean project is in
-formalisation/), accepted metadata schema and provenance, all 26 selected
-theorem declarations, module imports, manifest pins, root license, size and
-Challenge restrictions. Correct only genuine release-package defects and
-re-run pinned Comparator/NanoDa and full scoped cloud validation on the
-final fixed commit. Report a definite submission-ready or blocked
-disposition with precise evidence, not just Lake compilation.
+**Author and irreversible-action boundary:** repository write-access proof
+requires the owner's GitHub browser sign-in (or the documented agent alternative)
+and truthful author/maintainer authorisation. The owner must explicitly approve
+any external submission, and final registry consent is separate; never claim
+consent, click an irreversible confirmation without consent, or invent a Palomar
+identifier. If access/consent is unavailable, checkpoint the exact state and
+suppress any further automated submit prompt per session protocol. Record the
+actual status URL/ID only if returned by the portal, and distinguish mechanical
+checks, pending review, revisions and registration precisely.
 
-**Bounds:** no proof research, CAND-002 asymptotic promotion, new numerical
-experiments, E8/E9/Gram, novelty audit, manuscript, external review or D1
-work. Keep CAND-002(1)-(3) labelled unproved. Do not invent a Palomar ID.
-Do not perform the external Palomar submission or consent to registration
-as part of this preflight; prepare a separately owner-invoked submission
-step once all requirements are confirmed. Preserve the honest substantial
-ChatGPT disclosure and Apache-2.0 license.
-
-Checkpoint the ledger, release inventory, status and exactly one valid next
-prompt, validate the final changes and merge following the committed
-protocol.
+No asymptotic proof research, CAND-002 promotion, experiments, D1, paper,
+arXiv, novelty audit or external review. Commit a truthful closeout, validate
+and merge documentation under the standing repository protocol; if owner action
+remains necessary, stop at that boundary rather than inventing a result.
