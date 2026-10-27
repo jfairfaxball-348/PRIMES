@@ -2150,3 +2150,26 @@ The unchanged source and Challenge `sexticCharacter` definitions are text-identi
 **Same-head full scoped cloud:** https://github.com/jfairfaxball-348/PRIMES/actions/runs/40564457029 SUCCESS: pinned Lean library, Checks, Challenge and Solution; standard-axiom audit (propext, Classical.choice, Quot.sound only), 1764/1764 faithfulness, 366 pytest, 42 Gauss checks, Ruff and frozen audits. Historical generic CI Ruff failures remain unrelated. Final documentation-closeout SHA needs independent Comparator and full scoped cloud checks before stacked PR #14 through #18 merge.
 
 **Release boundary:** specialized sextic E4/E7, Eisenstein product/reduction and full frozen finite residueMatVec row theorem included in the 26 selected statements, unchanged. CAND-002(1)–(3) are unproved asymptotic conjectures, optional E8/E9/Gram deferred. Apache-2.0 retained; there is NO Palomar submission/ID or paper. The only remaining submission blocker after final-head validation and ordered merge is OWNER-SUPPLIED, TRUTHFUL AI automation disclosure: formalisation/formalization.yaml automation.methods stays [] and is intentionally not Palomar-valid. Do not claim no AI used. Under docs/SESSION_PROTOCOL.md section 7, suppress the next-session prompt rather than opening unjustified RS-S040.
+
+
+## Owner AI disclosure supplied (2026-10-27): substantial OpenAI ChatGPT use
+
+The owner explicitly directed the public formalisation metadata to record that
+**OpenAI's ChatGPT was used substantially in the formalisation**. The
+`formalisation/formalization.yaml` `automation.methods` is no longer an
+empty placeholder: it declares `method: agent`, model/tool `OpenAI ChatGPT`,
+framework `ChatGPT`, and a human-directed Lean development/verification
+workflow. Exact underlying ChatGPT model versions were not tracked and are
+not asserted. Human authorship and responsibility remain with the named
+author. The revised disclosure does not claim the proofs are true because
+of AI output; the independent Lean/NanoDa checks remain the evidence.
+
+RS-S039 closed technically on main `98c8f54d`, with post-merge independent
+Comparator/NanoDa and Lean kernel SUCCESS run 40566801477 and scoped cloud
+SUCCESS run 40566801479. All 26 selected exact finite statements retain
+their proved status; CAND-002(1)–(3) remain conjectural. No Palomar
+submission, review or registry ID exists. The previous owner-declaration
+blocker is cleared. Next RS-S040 is a distinct registry submission
+**preflight**, not submission itself; confirm current Palomar rules,
+repository-relative paths, metadata schema and new immutable commit, then
+prepare a separate submission action. No D1 material touched.

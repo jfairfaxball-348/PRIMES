@@ -301,3 +301,17 @@ The independent Challenge's `directShiftedGauss` had reused `rawGauss._proof_1` 
 ## RS-S039 (2026-10-27): independent 26-theorem Comparator and NanoDa PASS
 
 Run https://github.com/jfairfaxball-348/PRIMES/actions/runs/40564457111 passed the ACTUAL pinned independent Comparator; NanoDa and Lean kernels accepted the full 26-statement finite package on 4cb25de8. The Challenge-only fixes replicate source-generated rationalAddChar numeral and root-of-unity proof witnesses, including exact CommRing typeclass instance paths. Full exported rationalAddChar and both helper theorems have zero pp.all diff. Paired cloud validation https://github.com/jfairfaxball-348/PRIMES/actions/runs/40564457029 passed all pinned Lean, axiom, 1764/1764 exponent, 366 Python, 42 Gauss, Ruff, and frozen audits. A final documentation-head rerun is required before merge. Source mathematics is unchanged; all CAND-002 asymptotics unproved. Apache-2.0 remains, the owner AI-use methods disclosure is PENDING, and no Palomar entry has been made.
+
+
+## Owner AI-use disclosure (2026-10-27)
+
+The author explicitly confirms substantial use of **OpenAI's ChatGPT** in
+the Lean formalisation. The structured `formalization.yaml`
+`automation.methods` now records ChatGPT and the AI-assisted,
+human-directed development workflow, without inventing unrecorded model
+versions. This replaces the previous intentionally empty disclosure.
+The original 26 selected mathematical statements remain unchanged.
+Post-merge independent verification on main `98c8f54d` succeeded in
+Comparator/NanoDa/Lean (40566801477) and scoped cloud (40566801479).
+No Palomar registration or editorial review has occurred; RS-S040 is a
+separate preflight of Palomar submission requirements.
