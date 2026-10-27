@@ -17,19 +17,19 @@ We investigate numerically the action of sextic residue-symbol matrices indexed 
 - Committed numerical JSON: https://github.com/jfairfaxball-348/PRIMES/tree/main/reciprocity_spectra/results
 - Figure generator: https://github.com/jfairfaxball-348/PRIMES/blob/main/paper/figures/make_all.py
 - Formal Lean library: https://github.com/jfairfaxball-348/PRIMES/tree/main/formalisation
-- Finite source baseline: commit \`8b050b06d1195491b17b92e68b2d92d9d2478cb0\`
+- Finite source baseline: commit `8b050b06d1195491b17b92e68b2d92d9d2478cb0`
 - Successful independent 26-result Comparator/NanoDa: https://github.com/jfairfaxball-348/PRIMES/actions/runs/40569785577
 - Matching scoped Lean verification: https://github.com/jfairfaxball-348/PRIMES/actions/runs/40569785692
-- Theorems listed in \`formalisation/README.md\`; no Palomar registration asserted.
+- Theorems listed in `formalisation/README.md`; no Palomar registration asserted.
 
 **AI-use disclosure (copy-ready, truthful):**
 OpenAI's ChatGPT was used substantially in the Lean formalisation and assisted with drafting this manuscript. The exact model versions were not consistently recorded. The author takes responsibility for the mathematical claims, results, verification, text, figures, and submission. Machine checking of the finite Lean corpus does not establish the asymptotic conjectures.
 
 **Source-package checklist (internal preflight, not evidence of upload):**
 - [ ] Build from clean checkout with Python plotting requirements, reproducible 14 vector-PDF+PNG pairs.
-- [ ] Run \`latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex\` from \`paper/\`, inspect rendered pages and citations.
-- [ ] Bundle \`main.tex\`, \`sections/*.tex\`, \`references.bib\`, **12 used figures** from \`figures/generated/*.pdf\` (14 generated but 2 excluded); adapt \`figures/generated\` paths for arXiv if needed.
-- [ ] Confirm arXiv submission toolchain supports the figure/font packages (\`amsart\`, \`graphicx\`, \`microtype\`, \`hyperref\`, \`enumitem\`).
+- [ ] Run `latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex` from `paper/`, inspect rendered pages and citations.
+- [ ] Bundle `main.tex`, `sections/*.tex`, `references.bib`, **12 used figures** from `figures/generated/*.pdf` (14 generated but 2 excluded); adapt `figures/generated` paths for arXiv if needed.
+- [ ] Confirm arXiv submission toolchain supports the figure/font packages (`amsart`, `graphicx`, `microtype`, `hyperref`, `enumitem`).
 - [ ] Bibliography verified from primary sources; no “Work on…” entries remain; recheck citation output in generated PDF.
 - [ ] Confirm metadata, content, and AI disclosure with owner.
 - [ ] Record actual version/commit/build artifact before any submission.
