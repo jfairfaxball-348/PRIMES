@@ -10,7 +10,8 @@ stays conjecture.
 - CAND-002(3) is restated as a standalone fixed-class conjecture (`CAND002_FixedClass`).
 - The H_P scale erratum is recorded (`RS_HP_SCALE_ERRATUM.md`).
 - **RS-S029 cloud checkpoint validated** (workflow 40485959252): sextic `MulChar`, nontriviality, rational-symbol agreement (including zero), residue-root quadratic lemma, and generic zero-shift Gauss theorem are kernel checked with standard axioms.
-- **Next RS-S030 (cloud Lean):** the still-missing direct `rawGauss`/Mathlib `gaussSum` equality, sextic E7/E4 and the finite row orientation identity.
+- **RS-S030 verified** (GitHub Actions 40489442361): direct sextic `rawGauss = gaussSum`, exact positive-sign additive character, finite residue reindexing and specialized E7 proved in Lean; standard axioms, 1764/1764 and Python validations pass.
+- **Next RS-S031 (cloud Lean):** specialized shifted Gauss E4 (including zero shift) and finite `residueMatVec` row orientation.
 - Palomar packaging follows only when the remaining exact identities are proved. The route is Lean → Palomar → paper → arXiv → journal.
 - The RS-S026 to RS-S028 entries below are historical.
 
@@ -20,7 +21,7 @@ stays conjecture.
 
 ## Current stage
 
-**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. Plan of record (2026-10-27): formalise what is exact; proof work parked.** RS-S029 verified the character bridge in part; RS-S030 completes E7/E4 and the row identity. Superseded: the earlier mathematics-first pause under PROTOCOL §9.6. The original fixed-class implications and analytic H_P bridge remain unproved.
+**ACTIVE PROGRAMME: RECIPROCITY SPECTRA. Plan of record (2026-10-27): formalise what is exact; proof work parked.** RS-S029 verified the sextic character; RS-S030 proved the direct Gauss bridge and sextic E7; RS-S031 targets E4 and the row identity. Superseded: the earlier mathematics-first pause under PROTOCOL §9.6. The original fixed-class implications and analytic H_P bridge remain unproved.
 
 **Historical RS-S023 checkpoint (2026-10-26).** Formalisation had started in `formalisation/`, in-repo.
 

@@ -164,3 +164,16 @@ with `gaussSum` on `ZMod p` using the positive additive-character
 convention; specialize E7; connect shifted Gauss sums and handle zeros;
 prove the `residueMatVec` row orientation. These are RS-S030 tasks.
 No Palomar comparator or submission was prepared.
+
+## RS-S030 checkpoint (2026-10-27): direct Gauss bridge and sextic E7
+
+`ReciprocitySpectra/GaussBridge.lean` proves four exact identities, without new axioms:
+
+- `zmod_sum_eq_range`: bijective finite reindexing between `ZMod p` and `Finset.range p`;
+- `rationalAddChar_nat`: canonical positive additive character equals the direct exponential on each bounded representative;
+- `gaussSum_sextic_eq_raw`: actual rational sextic `rawGauss` equals Mathlib `gaussSum` for the exponent-defined `sexticCharacter`, with explicit model assumptions;
+- `rawGauss_modulus_sq`: specialized E7, `rawGauss σ * star (rawGauss σ) = Nσ` over ℂ.
+
+All four are imported by `ReciprocitySpectra.lean` and audited in `Checks/Axioms.lean`. GitHub Actions [40489442361](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40489442361) passed both Lean targets (standard axioms only), 1764/1764 faithfulness, the 42-Gauss native/Python comparison, 366 tests, Ruff and the historical evidence audits.
+
+**Remaining (RS-S031):** direct shifted Gauss-sum E4 for all residues including zero, and the exact finite `residueMatVec` row-orientation identity with per-class products/conjugation/normalisation. No Palomar comparator or submission yet. CAND-002 remains an unproved conjecture.

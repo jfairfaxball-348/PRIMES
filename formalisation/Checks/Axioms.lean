@@ -1,4 +1,4 @@
-import ReciprocitySpectra.SexticCharacter
+import ReciprocitySpectra.GaussBridge
 
 /-! Axiom audit: only the standard Lean axioms are permissible. -/
 
@@ -32,3 +32,8 @@ open ReciprocitySpectra
 #print axioms residueRoot_poly
 
 #print axioms sexticCharacter_ne_one
+
+#print axioms zmod_sum_eq_range
+#print axioms rationalAddChar_nat
+#print axioms gaussSum_sextic_eq_raw
+#print axioms rawGauss_modulus_sq

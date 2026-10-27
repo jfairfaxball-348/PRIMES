@@ -1946,3 +1946,13 @@ CAND-002 proof and Palomar remain outside this checkpoint.
 **Next:** RS-S030, prove the raw/direct sum equivalence, specialize
 E7/E4 including the zero shift, and attempt the exact row identity.
 No owner-decision blocker.
+
+### RS-S030 (2026-10-27): exact direct sextic Gauss bridge and E7
+
+**Stage:** Lean formalization; **branch:** `rs-s030-exact-gauss-bridge`; **PR:** #9. The committed owner plan (PROTOCOL §9.6) governs: CAND-002 proof is parked as optional; release only exact formalized claims.
+
+**Kernel-checked (not numerical assumptions):** `GaussBridge.lean` proves bijective `ZMod p` / `Finset.range p` reindexing; the exact positive-sign additive exponential on canonical representatives; `gaussSum_sextic_eq_raw` equating the direct rational `rawGauss` sum to the proven exponent-based sextic character's Mathlib Gauss sum; and `rawGauss_modulus_sq` proving specialized E7, `Gσ·conj(Gσ)=Nσ`. The split-prime/model assumptions are explicit. All four theorems are audited in `Checks/Axioms.lean`, no sorry/new axiom.
+
+**Validation:** first build found a redundant final `rfl` after the equality had already been proved; removed. Pinned GitHub Actions run **40489442361 SUCCESS**: both Lean targets, standard axioms, 1764/1764 exponent faithfulness, 366 full pytest checks, Ruff, 42 Gauss fixture comparisons and evidence audits. No new asymptotic computation or status promotion.
+
+**Remainder:** direct positive-sign shifted Gauss sum, specialized E4 for zero/nonzero shifts and exact `residueMatVec` row orientation (including class products and conjugation). Generic E4 is known but NOT yet specialized to the matrix. Optional Gram identity is pending. CAND-002 and all asymptotic limits remain OPEN. No Palomar submission or paper work. **Next RS-S031** takes E4 + matrix orientation; Palomar only afterwards.
