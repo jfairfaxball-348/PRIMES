@@ -7,3 +7,7 @@ import ReciprocitySpectra.CharacterBridge
 import ReciprocitySpectra.SexticCharacter
 
 import ReciprocitySpectra.GaussBridge
+
+import ReciprocitySpectra.ShiftedGauss
+
+import ReciprocitySpectra.RowBridge

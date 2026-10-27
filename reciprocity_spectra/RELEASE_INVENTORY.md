@@ -318,3 +318,18 @@ and is not a Lean theorem. Conjectural CAND-002 claims remain unproved.
 **Verification:** pinned Lean 4.35.0 / Mathlib 56a005855ea1, GitHub Actions run 40489442361 SUCCESS. Both library and Checks targets pass, and the axiom audit reports only propext, Classical.choice and Quot.sound. Faithfulness 1764/1764, 366 Python tests, 42 native/Python Gauss checks, Ruff and evidence audits pass.
 
 **Group (A′) status:** item 1 (sextic MulChar) COMPLETE in RS-S029; item 2 (direct E7) COMPLETE in RS-S030; item 3 (specialized E4 including zero shifts and matrix row orientation) remains OPEN for RS-S031. Optional Gram, E8/E9 remain open/deferred. Palomar packaging is NOT authorized yet. Group (B) paper arguments and group (C) conjectures are unchanged; CAND-002 is unproved.
+
+
+## RS-S031 checkpoint (2026-10-27): specialized sextic E4 and per-column row identity
+
+**Lean library compiled on the pinned toolchain** for `ShiftedGauss.lean` and `RowBridge.lean`. These contain:
+
+- `directShiftedGauss σ a`, the direct positive-sign rational exponential sum at every residue `a : ZMod (N σ)`, including zero;
+- `shiftedGauss_eq_gaussSum`, exact finite reindexing to `gaussSum χ (ψ.mulShift a)`;
+- `shiftedGauss_e4`, actual sextic E4, `directShiftedGauss σ a = star (χσ a) * rawGauss σ` at every residue, with zero branch, explicit prime/root/characteristic/divisibility hypotheses;
+- `sexticCharacter_eis`, `sexticCharacter_class` and `rowShift_symbol`, using reductions of Eisenstein coordinate pairs and finite class products, including zero residues;
+- `residueColumn_orientation`, the correct exact per-column `residueMatrix ρ σ * classVector κ σ = star (directShiftedGauss σ (rowShift κ ρ σ) / sqrt(N σ))` under the explicit split-prime assumptions.
+
+**Precise remaining obligations:** prove that *every* `σ ∈ primarySplitPrimes X` satisfies those model hypotheses (not just assume them per column), sum the per-column theorem to obtain a theorem about the actual `residueMatVec`, and bridge the pre-existing `Conjecture.shiftedGauss (u σ : Eis)` convention (whose exponential uses a nonreduced product of rational representatives) to the new direct reduced-shift sum by exponential periodicity. The frozen conjecture definition is untouched. These are RS-S032 tasks, not completed RS-S031 theorems.
+
+The earlier RS-S030 E7 remains proved. The group (A′) *specialized E4 and per-column orientation* is proved; the full finite `residueMatVec` claim is not yet proved, so **Palomar packaging remains gated**. Optional finite Gram, E8/E9 and paper-only group (B) remain pending. CAND-002 (1)–(3), group (C), remains conjectural. No asymptotic result is claimed. **Full validation passed:** pinned cloud workflow [40493962451](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40493962451) built both Lean targets, audited only the standard three axioms, matched **1764/1764** exponent entries, passed **366** pytest tests, 42 Gauss comparisons (max 1.5e-15), targeted Ruff and both frozen-evidence audits. These do not prove the missing full finite sum.

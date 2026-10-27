@@ -1,4 +1,4 @@
-import ReciprocitySpectra.GaussBridge
+import ReciprocitySpectra.RowBridge
 
 /-! Axiom audit: only the standard Lean axioms are permissible. -/
 
@@ -37,3 +37,11 @@ open ReciprocitySpectra
 #print axioms rationalAddChar_nat
 #print axioms gaussSum_sextic_eq_raw
 #print axioms rawGauss_modulus_sq
+
+#print axioms shiftedGauss_eq_gaussSum
+#print axioms shiftedGauss_e4
+#print axioms sexticCharacter_eis
+
+#print axioms sexticCharacter_class
+#print axioms rowShift_symbol
+#print axioms residueColumn_orientation

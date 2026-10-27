@@ -177,3 +177,12 @@ No Palomar comparator or submission was prepared.
 All four are imported by `ReciprocitySpectra.lean` and audited in `Checks/Axioms.lean`. GitHub Actions [40489442361](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40489442361) passed both Lean targets (standard axioms only), 1764/1764 faithfulness, the 42-Gauss native/Python comparison, 366 tests, Ruff and the historical evidence audits.
 
 **Remaining (RS-S031):** direct shifted Gauss-sum E4 for all residues including zero, and the exact finite `residueMatVec` row-orientation identity with per-class products/conjugation/normalisation. No Palomar comparator or submission yet. CAND-002 remains an unproved conjecture.
+
+
+## RS-S031 checkpoint (2026-10-27): shifted sextic E4 and per-column orientation
+
+- `ReciprocitySpectra/ShiftedGauss.lean`: defines `directShiftedGauss σ a` on the full finite residue field (including zero), checks the positive exponential sign by finite reindexing into Mathlib `gaussSum`, proves specialized sextic E4 using the actual nontrivial `sexticCharacter`, and proves equality of the character with `complexSymbol α σ` at every Eisenstein residue.
+- `ReciprocitySpectra/RowBridge.lean`: defines the finite class-residue product and the row shift; proves character compatibility across support and the correct *per-column* matrix orientation with conjugation and square-root denominator. All theorems retain explicit split-prime field/root assumptions.
+- `Checks/Axioms.lean` imports `RowBridge` and audits the new theorems. Library Lean compilation succeeded on the pinned runner; GitHub Actions [40493962451](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40493962451) passed the pinned library and Checks builds; all audited new theorems use only propext, Classical.choice and Quot.sound. Faithfulness 1764/1764, 366 tests, 42 Gauss comparisons, targeted Ruff and evidence audits passed.
+
+**Not yet claimed:** the all-column sum over `primarySplitPrimes X` (requires membership-to-hypothesis lemmas), and identification of the pre-existing `Conjecture.shiftedGauss (u σ : Eis)` with `directShiftedGauss σ (res (residueRoot σ) u)` (requires an exponential-periodicity calculation for reduced and unreduced products). No conjecture `Prop` was altered and no Palomar package is authorized yet. RS-S032 should close these exact finite bridges before registration.
