@@ -107,6 +107,8 @@ theorem sexticCharacter_rational (σ : Eis)
     sexticCharacter (residueRoot σ) hr h2 h3 h6
       (n : ZMod (eisNorm σ).toNat) = complexSymbol ⟨n, 0⟩ σ := by
   rw [sexticCharacter_apply]
-  simp [sexticValue, complexSymbol, symExp, res]
+  simp only [sexticValue, complexSymbol, symExp, res, Eis.c, Eis.d,
+    Int.cast_zero, zero_mul, add_zero]
+  cases h : sexticExp (residueRoot σ) (n : ZMod (eisNorm σ).toNat) <;> simp [h]
 
 end ReciprocitySpectra
