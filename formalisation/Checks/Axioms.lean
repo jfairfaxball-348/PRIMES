@@ -1,6 +1,7 @@
 import ReciprocitySpectra.RowBridge
 import ReciprocitySpectra.RowSum
 import ReciprocitySpectra.ShiftConvention
+import ReciprocitySpectra.ClassProduct
 
 /-! Axiom audit: only the standard Lean axioms are permissible. -/
 
@@ -58,3 +59,11 @@ open ReciprocitySpectra
 #print axioms primeNorm_d_ne_zero
 #print axioms primarySplitPrimes_model
 #print axioms residueMatVec_orientation
+
+#print axioms res_one
+#print axioms res_pow_eis
+#print axioms res_prod_eis
+#print axioms classNumerator_reduction
+#print axioms rowShift_eisenstein
+#print axioms residueMatVec_frozen_orientation
+#print axioms Eis.ext

@@ -194,3 +194,26 @@ All four are imported by `ReciprocitySpectra.lean` and audited in `Checks/Axioms
 - `ShiftConvention.lean`: `positiveExp_mod` and `shiftedGauss_frozen_eq_direct` prove the unchanged `Conjecture.shiftedGauss` exponential convention agrees with the reduced direct sum for any Eisenstein shift (including zero). The frozen conjecture file was not edited.
 - All eight new theorem names are in `Checks/Axioms.lean`; pinned library+Checks validation [40505888940](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40505888940) passed, as did 1764/1764 exponents, 366 pytest tests, 42 Gauss checks, Ruff and both evidence audits. A final documentation-head run must also pass before merge.
 - **Open:** a column-independent Eisenstein representative for a general finite `TwistClass`, with a proof that reducing it equals `classResidue` for each column. The uncompiled attempt was removed; no representative identification is claimed. Therefore `residueMatVec_orientation` is presently expressed through the exact **residue-field** `rowShift`, not one frozen `shiftedGauss` of an Eisenstein product. This is RS-S033; Palomar is gated. Gram identity optional. CAND-002 unchanged and conjectural.
+
+
+## RS-S033 (2026-10-27): exact Eisenstein class product and frozen row sum
+
+`ReciprocitySpectra/ClassProduct.lean` now supplies the genuine coordinate-pair
+Eisenstein `CommMonoid`, finite class numerator
+`classNumerator κ := ∏ a ∈ κ.support, a ^ (κ a).val`,
+`res_one`, `res_pow_eis`, `res_prod_eis`,
+`classNumerator_reduction` and `rowShift_eisenstein`. The last theorem
+identifies the column-dependent reduced row shift with reduction of the
+**one actual** Eisenstein integer `ρ * classNumerator κ`.
+
+`residueMatVec_frozen_orientation` then proves the full, unconditional
+finite matrix row identity using the literal **unchanged**
+`Conjecture.shiftedGauss` and the exact conjugation/sqrt norm. This
+retains all zero cases and every class exponent. The code-checkpoint
+pinned Actions run [40511639019](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40511639019) passed both Lean builds, standard-axiom audit,
+1764/1764 exponent faithfulness, 366 Python tests, 42 Gauss values,
+Ruff and frozen audits. The new result is **finite algebra**, not
+the asymptotic CAND-002 conjecture. After a successful closeout-head
+validation and merge, RS-S034 should prepare a Palomar Challenge/Solution
+and `formalization.yaml` for proved identities only. Optional Gram
+and CAND-002 proof remain out of the release pipeline.

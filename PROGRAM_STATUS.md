@@ -1,5 +1,8 @@
 # PRIMES Programme Status
 
+**ACTIVE RS-S033 CHECKPOINT (2026-10-27):** Finite Eisenstein product `classNumerator κ : Eis`, reduction-to-`classResidue`, and the literal frozen `shiftedGauss(ρ * classNumerator κ, σ)` finite matrix-row orientation now compile and pass pinned Lean verification [40511639019](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40511639019). Both Lean targets, standard axiom audit, 1764/1764 exponent faithfulness, 366 pytest tests, 42 Gauss values, Ruff and both frozen evidence audits pass. Group (A′) 1–3 complete in the finite model; no conjectural/asymptotic theorem and no Palomar ID. **Next RS-S034:** Palomar packaging only after full final-commit validation and merge. D1 paused and untouched.
+
+
 **ACTIVE RS-S032 CHECKPOINT (2026-10-27):** Lean proves every indexed split-prime column satisfies the sextic field/root/characteristic hypotheses and the full, unconditional finite `residueMatVec` shifted row sum in the reduced residue-field convention (`RowSum.lean`). Exact positive exponential periodicity connects the frozen `Conjecture.shiftedGauss(u,σ)` with the direct model for any true Eisenstein u (`ShiftConvention.lean`), including zero. Pinned workflow 40505888940 PASSED. A remaining column-independent Eisenstein representative of a general TwistClass is NOT proved; the uncompiled attempt was removed, so no combined frozen `ρκ` row identity or Palomar packaging. RS-S033 addresses this one exact bridge. CAND-002 remains entirely conjectural; D1 untouched.
 
 **HISTORICAL RS-S031 CHECKPOINT:** Previous per-column result led to RS-S032; its open full reduced row sum and standalone shift-convention obligations are now discharged, except for the true Eisenstein class-product identification.

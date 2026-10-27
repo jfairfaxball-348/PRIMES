@@ -1980,3 +1980,61 @@ No owner-decision blocker.
 **Successful pinned validation checkpoint:** run [40505888940](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40505888940), library and Checks SUCCESS (standard axioms only); faithfulness 1764/1764; full pytest 366; 42 Gauss comparisons, targeted Ruff and both audits PASS. A final run of the documentation closeout commit is still required for merge. Repository-wide historical `ci` failures on paused D1 are unchanged.
 
 **One remaining identification:** the `rowShift` used in the proved finite sum is defined as a residue-field class product. It is **not yet proved** to be the reduction of one true Eisenstein `ρκ` for arbitrary `TwistClass`. An attempted finite Eisenstein `CommMonoid`/product bridge failed Lean elaboration and was removed from the branch; its errors were never promoted to a theorem. Accordingly the full reduced-model row identity and frozen shift-convention equality are both proved **separately**, but a single frozen-class `Conjecture.shiftedGauss(ρκ,σ)` row identity remains open. No Gram identity, no Palomar package, no CAND-002(1),(2),(3) proof. RS-S033 tackles precisely the missing finite Eisenstein class product; Palomar only after its theorem and complete pinned validation.
+
+
+### RS-S033 (2026-10-27): actual Eisenstein class product and frozen matrix row identity
+
+**Stage:** one bounded cloud Lean formalisation session; branch `rs-s033-eisenstein-product`,
+PR [#12](https://github.com/jfairfaxball-348/PRIMES/pull/12), forked from authoritative
+main `f148c76a1f4b7ad7008c76024934f5e472b30613`.
+Frozen `Conjecture.lean` and the paused D1 programme were not changed.
+No asymptotic proof, numerical discovery or Palomar packaging was attempted.
+
+**Exact new Lean results:** `ClassProduct.lean` equips the concrete pair model
+`Eis` with a proved commutative monoid (coordinatewise extensionality;
+identity, commutativity and associativity by explicit polynomial algebra).
+`res_one`, `res_pow_eis` and `res_prod_eis` prove exact finite reduction,
+including zero residues and exponent zero. The *column-independent*
+`classNumerator κ = ∏ a ∈ κ.support, a ^ (κ a).val : Eis` incorporates all
+six exponent classes. `classNumerator_reduction` identifies its reduction
+with the already-existing `classResidue` in every field where the split-root
+relation holds; `rowShift_eisenstein` identifies the actual Eisenstein
+product `ρ * classNumerator κ` with `rowShift κ ρ σ`.
+
+**Full frozen identity now kernel proved:** `residueMatVec_frozen_orientation`
+states literally, for all natural X, all twist classes κ and all Eisenstein rows ρ,
+
+```text
+residueMatVec X κ ρ =
+  ∑ σ ∈ primarySplitPrimes X,
+    star (shiftedGauss (ρ * classNumerator κ) σ /
+      (Real.sqrt ((eisNorm σ).toNat : ℝ) : ℂ)).
+```
+
+The proof combines the already-proved unconditional reduced-model row
+orientation, true Eisenstein product reduction, and the equality of frozen
+and direct shifted Gauss conventions. No class admissibility restriction is
+needed; diagonal zeros and other zero factors remain included.
+All new proof declarations are part of `Checks/Axioms.lean` (only
+`propext`, `Classical.choice`, `Quot.sound` observed), with no `sorry`
+or new axiom. This is an **exact finite theorem**, not CAND-002's unproved
+asymptotic assertions.
+
+**Validation:** initial compilation retries on this branch failed on
+the concrete monoid proof, an implicit modulus binder, coordinate
+extensionality and simplification of the identity; each was corrected in
+committed source before any theorem was declared finished. Final
+code-checkpoint pinned workflow [40511639019](https://github.com/jfairfaxball-348/PRIMES/actions/runs/40511639019) **SUCCESS**: Lean
+`ReciprocitySpectra` and `Checks`, standard axioms, 1764/1764
+engine exponent faithfulness, 366/366 pytest, 42 sextic Gauss fixture
+comparisons (max error approximately 1.5e-15), targeted Ruff and both
+frozen strength/candidate audit scripts. The documentation closeout commit
+must also receive its own pinned success before merge.
+
+**Disposition:** the exact group (A′) items 1–3 in the owner release plan
+are completed in the finite model, including the true Eisenstein product
+frozen-row bridge. Optional finite Gram, E8/E9, group (B), and all CAND-002
+(1)–(3) conjectural/asymptotic claims remain **OPEN or deferred**. No
+Palomar registry ID is claimed. Next: **RS-S034**, package *only* the proved
+finite Lean identities for Palomar from a fixed public main commit, following
+the comparator and registry's actual requirements.
