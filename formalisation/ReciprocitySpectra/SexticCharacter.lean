@@ -72,6 +72,50 @@ theorem sexticValue_mul {r : ZMod p}
     sexticValue_of_some sxy]
   rw [Fin.val_add, ← complexZeta6_pow_mod (k.val + l.val), pow_add]
 
+/-- A split-prime residue root satisfies its Eisenstein quadratic equation.
+The prime-norm hypothesis supplies the field; nonvanishing of the second
+coordinate in that field is explicit. Primarity is not needed for this
+algebraic identity. -/
+theorem residueRoot_poly (σ : Eis)
+    [Fact (eisNorm σ).toNat.Prime]
+    (hb : (σ.d : ZMod (eisNorm σ).toNat) ≠ 0) :
+    residueRoot σ ^ 2 + residueRoot σ + 1 = 0 := by
+  have hn_pos : 0 ≤ eisNorm σ := by
+    dsimp [eisNorm]
+    nlinarith [sq_nonneg (2 * σ.c - σ.d), sq_nonneg σ.d]
+  have hcast : (eisNorm σ : ZMod (eisNorm σ).toNat) = 0 := by
+    rw [show eisNorm σ = ((eisNorm σ).toNat : ℤ) from
+      (Int.toNat_of_nonneg hn_pos).symm]
+    simp
+  have hn : (σ.c : ZMod (eisNorm σ).toNat) ^ 2 -
+      (σ.c : ZMod (eisNorm σ).toNat) * (σ.d : ZMod (eisNorm σ).toNat) +
+      (σ.d : ZMod (eisNorm σ).toNat) ^ 2 = 0 := by
+    simpa [eisNorm, pow_two] using hcast
+  have hbr : (σ.d : ZMod (eisNorm σ).toNat) * residueRoot σ =
+      -(σ.c : ZMod (eisNorm σ).toNat) := by
+    dsimp [residueRoot]
+    calc
+      (σ.d : ZMod (eisNorm σ).toNat) *
+          (-(σ.c : ZMod (eisNorm σ).toNat) *
+            (σ.d : ZMod (eisNorm σ).toNat)⁻¹) =
+        -(σ.c : ZMod (eisNorm σ).toNat) *
+          ((σ.d : ZMod (eisNorm σ).toNat) *
+            (σ.d : ZMod (eisNorm σ).toNat)⁻¹) := by ring
+      _ = -(σ.c : ZMod (eisNorm σ).toNat) := by
+        rw [mul_inv_cancel₀ hb, mul_one]
+  have hz : (σ.d : ZMod (eisNorm σ).toNat) ^ 2 *
+      (residueRoot σ ^ 2 + residueRoot σ + 1) = 0 := by
+    calc
+      _ = ((σ.d : ZMod (eisNorm σ).toNat) * residueRoot σ) ^ 2 +
+          (σ.d : ZMod (eisNorm σ).toNat) *
+            ((σ.d : ZMod (eisNorm σ).toNat) * residueRoot σ) +
+          (σ.d : ZMod (eisNorm σ).toNat) ^ 2 := by ring
+      _ = (σ.c : ZMod (eisNorm σ).toNat) ^ 2 -
+          (σ.c : ZMod (eisNorm σ).toNat) * (σ.d : ZMod (eisNorm σ).toNat) +
+          (σ.d : ZMod (eisNorm σ).toNat) ^ 2 := by rw [hbr]; ring
+      _ = 0 := hn
+  exact (mul_eq_zero.mp hz).resolve_left (pow_ne_zero 2 hb)
+
 /-- The sextic `MulChar`, constructed without any additional axioms.
 The root and split-prime constraints are explicit parameters. -/
 noncomputable def sexticCharacter (r : ZMod p)
