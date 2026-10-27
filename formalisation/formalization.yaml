@@ -6,7 +6,7 @@ project:
   description: >-
     A formal library of exact finite-field sextic residue-exponent laws in the
     split Eisenstein-prime model, character-level Gauss sum identities and
-    additional proved finite row identities. The expanded 24-theorem Challenge covers E0/E1/E2/E3/E5/E6,
+    additional proved finite row identities. The expanded 26-theorem Challenge covers E0/E1/E2/E3/E5/E6,
     generic character E4/E7, specialised sextic Gauss E4/E7 and finite
     Eisenstein class reduction and frozen full matrix row orientation. It makes no asymptotic claim.
   authors: ["John Fairfax-Ball"]
@@ -23,7 +23,7 @@ sources:
     note: "In-repository mathematical formulation; no claim of original priority or external peer review."
 status:
   scope: >-
-    The draft comparator selects 24 finite identities including actual sextic
+    The draft comparator selects 26 finite identities including actual sextic
     Gauss modulus, shifted sum with zero case, Eisenstein numerator reduction,
     and full frozen row identity. Source signature matching alone does not
     establish independent Comparator or NanoDa acceptance. CAND-002(1)-(3), other
@@ -42,7 +42,7 @@ automation:
 review:
   status: "self-assessed"
   reviewers: []
-  notes: "RS-S034 pinned cloud build passed; RS-S035 independent Comparator and NanoDa acceptance are not yet confirmed."
+  notes: "RS-S034 pinned cloud build passed; RS-S035 pinned library/Checks/Challenge/Solution passed, but independent Comparator run 40522609498 rejected definition equality for shiftedGauss; NanoDa acceptance is not established."
 fidelity:
   divergences: >-
     Split Eisenstein prime residue fields are explicitly modelled using ZMod p
