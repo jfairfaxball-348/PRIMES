@@ -57,11 +57,25 @@ jobs:
           print('Full exact type/body diff:', len(changes), 'lines')
           print('\n'.join(changes[:220]))
           PY
-          for side in Challenge Solution; do
-            printf 'import %s\nset_option pp.all true\n#print ReciprocitySpectra.rationalAddChar._proof_1\n' "$side" > /tmp/Rs039Aux.lean
-            lake env lean /tmp/Rs039Aux.lean > "/tmp/rs039_aux_$side.txt" 2>&1 || true
-            echo "== $side generated auxiliary witness if present =="
-            tail -30 "/tmp/rs039_aux_$side.txt"
+          for aux in _proof_1 _proof_2; do
+            for side in Challenge Solution; do
+              printf 'import %s\nset_option pp.all true\n#print ReciprocitySpectra.rationalAddChar.%s\n' "$side" "$aux" > /tmp/Rs039Aux.lean
+              lake env lean /tmp/Rs039Aux.lean > "/tmp/rs039_${aux}_${side}.txt" 2>&1 || true
+            done
+            echo "== Exact generated auxiliary declaration ${aux}, full type/value =="
+            python3 - "$aux" <<'PY'
+          import difflib
+          import sys
+          from pathlib import Path
+          aux = sys.argv[1]
+          c = Path(f'/tmp/rs039_{aux}_Challenge.txt').read_text().splitlines()
+          s = Path(f'/tmp/rs039_{aux}_Solution.txt').read_text().splitlines()
+          print('Challenge:', '\\n'.join(c))
+          print('Source:', '\\n'.join(s))
+          diff = list(difflib.unified_diff(c, s, fromfile='CHALLENGE', tofile='SOURCE', lineterm=''))
+          print('Generated constant exact diff lines:', len(diff))
+          print('\\n'.join(diff[:240]))
+          PY
           done
       - name: Independently compare all selected proofs (with NanoDa)
         working-directory: formalisation
