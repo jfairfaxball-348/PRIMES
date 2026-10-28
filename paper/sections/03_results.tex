@@ -31,15 +31,17 @@ per-class clause. This failure remains part of the record.
 % Source: results/rs_s017_fresh_classes_2026-10-26.json score.Q3.r_failures, n_with_5 (two scales), and score.Q1/Q2/Q4.
 
 At \(X=2\times10^6\) and \(4\times10^6\), the
-matrix-free RS-S021 runs found all \(12\) scored bins within
-their registered \(\pm0.05\) difference from the frozen
-profile. This means the \emph{pre-registered finite test}
-passed; it cannot prove uniform convergence in \(X\).
+matrix-free RS-S021 runs found all \(12\) scored bins within \(0.05\) of the frozen
+profile. The \emph{registered} acceptance tolerance was
+\(\pm0.12\), so the finite test passed with an observed
+maximum absolute bin difference of \(0.04946\).
+This cannot prove uniform convergence in \(X\).
 % Source: results/rs_s021_large_x_2026-10-26.json score.A.bins and score.A.outcome.
 \fig{holdout_residuals}{.88}{RS-S021 holdout mean
 minus frozen-profile mean, with the precommitted
-\(\pm0.05\) threshold. Marker areas represent bin sample
-counts. Source: \texttt{rs\_s021\_large\_x\_2026-10-26.json},
+\(\pm0.12\) acceptance band. All observed differences
+happen to lie within \(\pm0.05\). Marker areas represent
+bin sample counts. Source: \texttt{rs\_s021\_large\_x\_2026-10-26.json},
 \texttt{score.A.bins} (\texttt{30965467}).}{residuals}
 
 \subsection{Exponent five and the prime-modulus control}

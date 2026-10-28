@@ -1,0 +1,72 @@
+name: RS-S042 Paper Revision and Evidence Audit
+on:
+  push:
+    branches: [rs-s042-arxiv-internal-revision]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  audit-and-paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Python dependencies
+        run: python -m pip install -e ".[dev]" numpy scipy matplotlib
+      - name: Check plotting syntax and Ruff
+        run: |
+          python -m compileall -q paper/figures
+          ruff check paper/figures/make_all.py
+      - name: Full pytest
+        run: pytest
+      - name: Frozen evidence audits
+        run: |
+          python reciprocity_spectra/scripts/audit_strength.py --check
+          python reciprocity_spectra/scripts/audit_cand002.py --check
+      - name: Generate fourteen PDF and PNG pairs from committed JSON
+        run: |
+          python paper/figures/make_all.py
+          test "$(find paper/figures/generated -maxdepth 1 -name '*.pdf' | wc -l)" -eq 14
+          test "$(find paper/figures/generated -maxdepth 1 -name '*.png' | wc -l)" -eq 14
+      - name: Check referenced figure count and source audit
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          tex="\n".join(x.read_text() for x in sorted(Path("paper/sections").glob("*.tex")))
+          names=re.findall(r"\\fig\{([^}]+)\}",tex)
+          assert len(names)==12,(len(names),names)
+          assert len(set(names))==12
+          assert all((Path("paper/figures/generated")/(x+".pdf")).exists() for x in names)
+          assert "±0.12" in Path("paper/NUMERICAL_SOURCE_AUDIT.md").read_text()
+          assert "Not submitted" not in Path("paper/main.tex").read_text()
+          print("Manuscript: 12 nonduplicated referenced figures; source-audit and draft-label checks passed")
+          PY
+      - name: Install TeX
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+      - name: Clean-build PDF
+        run: |
+          make -C paper clean
+          python paper/figures/make_all.py
+          make -C paper main.pdf
+          pdftotext paper/main.pdf - | grep -qi 'shift-aspect crossover'
+          ! grep -Ei 'undefined references|undefined citations|not found|latex error' paper/main.log
+      - name: Upload PDF, PNG previews and complete paper source
+        uses: actions/upload-artifact@v4
+        with:
+          name: rs-s042-paper-internal-preview
+          path: |
+            paper/main.pdf
+            paper/main.tex
+            paper/references.bib
+            paper/sections/*.tex
+            paper/figures/generated/*.png
+            paper/figures/generated/*.pdf
+            paper/NUMERICAL_SOURCE_AUDIT.md
+            paper/ARXIV_METADATA.md
+          retention-days: 14

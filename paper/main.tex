@@ -15,13 +15,12 @@
 \newcommand{\gtilde}{\widetilde g}
 \newcommand{\fig}[4]{%
  \begin{figure}[htbp]\centering
- \IfFileExists{figures/generated/#1.pdf}{\includegraphics[width=#2\linewidth]{figures/generated/#1.pdf}}{%
- \fbox{\parbox{.85\linewidth}{Run \texttt{python figures/make\_all.py} before compiling to generate figure \texttt{#1.pdf}.}}}
+ \includegraphics[width=#2\linewidth]{figures/generated/#1.pdf}
  \caption{#3}\label{fig:#4}\end{figure}}
 \title[A shift-aspect crossover for sextic vectors]{A shift-aspect crossover for twisted sextic Gauss-sum vectors:\\
 numerical evidence, conjectures, and a Lean-verified finite core}
 \author{John Fairfax-Ball}
-\date{Draft 1, 27 October 2026. Not submitted.}
+\date{}
 \begin{document}
 \begin{abstract}
 We numerically investigate the action of the sextic residue-symbol matrix indexed
@@ -39,7 +38,7 @@ prove the numerical asymptotics. Exact signed Gram and reciprocity identities
 identify the additional analytic input a proof would require.
 \end{abstract}
 \maketitle
-\tableofcontents
+
 \input{sections/01_introduction}
 \input{sections/02_setup_methods}
 \input{sections/03_results}
