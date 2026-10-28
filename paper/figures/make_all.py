@@ -198,15 +198,21 @@ def prereg(fig, ax):
     ax.axis("off")
 
 def regimes(fig, ax):
-    xx=np.linspace(-2,6,300)
-    for X in [5,6]:
-        # log10 t = log10 N6 - log10 X
-        ax.plot(xx,np.full_like(xx,X),ls="--",lw=1,label=fr"$t=1$ at $\log_{{10}}X={X}$")
-    ax.fill_between(xx,xx+2,xx+5,where=(xx+2<=xx+5),alpha=.10,color=PALETTE[0])
-    ax.text(1.0,5.8,"fixed class: $N_6$ fixed,\n$X\\to\\infty$ is a separate boundary",fontsize=9)
-    style(ax,r"$\log_{10}N_6$",r"$\log_{10}X$","Parameter regions; conceptual, not evidence")
-    ax.set_ylim(3,8)
-    ax.legend(fontsize=7)
+    # y=log10 X, x=log10 N6, so log10(t)=x-y. The t=1 locus is y=x.
+    xx = np.linspace(-1, 8, 300)
+    ax.plot(xx, xx, color="black", linewidth=1.4, label=r"$t=1:\ \log_{10}X=\log_{10}N_6$")
+    ax.fill_between(xx, xx - 1, xx + 1, color=PALETTE[0], alpha=.12,
+                    label=r"compact positive $t$ (diagonal band)")
+    ax.annotate("fixed $N_6$, $X$ increases", xy=(2, 7.5), xytext=(2.4, 5.5),
+                arrowprops=dict(arrowstyle="->", color=PALETTE[1]),
+                color=PALETTE[1], fontsize=8)
+    ax.annotate(r"large $t$ ($N_6/X\gg 1$)", xy=(6.5, 3.7),
+                xytext=(4.6, 1.7), arrowprops=dict(arrowstyle="->"),
+                fontsize=8)
+    style(ax, r"$\log_{10}N_6$", r"$\log_{10}X$",
+          "Compact-aspect and fixed-class limits are distinct")
+    ax.set(xlim=(0, 8), ylim=(0, 8))
+    ax.legend(loc="upper left", fontsize=7)
 
 def verification(fig, ax):
     ax.axis("off")
